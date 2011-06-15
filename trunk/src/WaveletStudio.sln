@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaveLib", "WaveLib\WaveLib.csproj", "{003D0672-355F-416B-9E88-DC95F0762329}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgebraicInterpreter", "AlgebraicInterpreter\AlgebraicInterpreter.csproj", "{6C93ED8A-6232-4A09-93CE-49849676EA7F}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B84405B3-006D-456C-ABEC-A62E971EB68F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaveLib.Tests", "WaveLib.Tests\WaveLib.Tests.csproj", "{A182FEB7-2FB2-448F-A62C-751F73B8E63B}"
@@ -39,16 +37,6 @@ Global
 		{003D0672-355F-416B-9E88-DC95F0762329}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{003D0672-355F-416B-9E88-DC95F0762329}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{003D0672-355F-416B-9E88-DC95F0762329}.Release|x86.ActiveCfg = Release|Any CPU
-		{6C93ED8A-6232-4A09-93CE-49849676EA7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6C93ED8A-6232-4A09-93CE-49849676EA7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6C93ED8A-6232-4A09-93CE-49849676EA7F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{6C93ED8A-6232-4A09-93CE-49849676EA7F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{6C93ED8A-6232-4A09-93CE-49849676EA7F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6C93ED8A-6232-4A09-93CE-49849676EA7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6C93ED8A-6232-4A09-93CE-49849676EA7F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6C93ED8A-6232-4A09-93CE-49849676EA7F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{6C93ED8A-6232-4A09-93CE-49849676EA7F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{6C93ED8A-6232-4A09-93CE-49849676EA7F}.Release|x86.ActiveCfg = Release|Any CPU
 		{A182FEB7-2FB2-448F-A62C-751F73B8E63B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A182FEB7-2FB2-448F-A62C-751F73B8E63B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A182FEB7-2FB2-448F-A62C-751F73B8E63B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU

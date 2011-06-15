@@ -53,12 +53,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalExtension.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AlgebraicInterpreter\AlgebraicInterpreter.csproj">
-      <Project>{6C93ED8A-6232-4A09-93CE-49849676EA7F}</Project>
-      <Name>AlgebraicInterpreter</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
