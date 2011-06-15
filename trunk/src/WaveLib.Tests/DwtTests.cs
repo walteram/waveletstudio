@@ -64,17 +64,53 @@ namespace WaveLib.Tests
             var points = new double[] { 5, 6, 7, 8, 1, 2, 3, 4 };
             var signal = new Signal(points, 1);
             var wavelet = MotherWavelet.LoadFromName("haar");
-            var levels = Dwt.ExecuteDwt(signal, wavelet, 1, SignalExtension.ExtensionMode.SymmetricHalfPoint);
+            var levels = Dwt.ExecuteDwt(signal, wavelet, 1);
             var output = Dwt.ExecuteIDwt(levels, wavelet, 0);
-
+            Assert.IsTrue(SequenceEquals(output, signal.Points));
+        }
+        
+        [TestMethod]
+        public void TestIDwtTwoLevels()
+        {
+            var points = new double[] { 5, 6, 7, 8, 1, 2, 3, 4, 4, 5, 6, 1, 2, 4, 6, 7, 5, 6  };
+            var signal = new Signal(points, 1);
+            var wavelet = MotherWavelet.LoadFromName("db4");
+            var levels = Dwt.ExecuteDwt(signal, wavelet, 2);
+            var output = Dwt.ExecuteIDwt(levels, wavelet, 999);
             Assert.IsTrue(SequenceEquals(output, signal.Points));
         }
 
-        private static bool SequenceEquals(ILArray<double> double1, ILArray<double> double2)
+        [TestMethod]
+        public void TestIDwtTwoLevelsPeriodicPadding()
         {
+            var points = new double[] { 5, 6, 7, 8, 1, 2, 3, 4, 4, 5, 6, 1, 2, 4, 6, 7, 5, 6, 5, 6, 7, 8, 1, 2, 3, 4, 4, 5, 6, 1, 2, 4, 6, 7, 5, 6, 5, 6, 7, 8, 1, 2, 3, 4, 4, 5, 6, 1, 2, 4, 6, 7, 5, 6, 5, 6, 7, 8, 1, 2, 3, 4, 4, 5, 6, 1, 2, 4, 6, 7, 5, 6 };
+            var signal = new Signal(points, 1);
+            var wavelet = MotherWavelet.LoadFromName("coif4");
+            var levels = Dwt.ExecuteDwt(signal, wavelet, 2, SignalExtension.ExtensionMode.PeriodicPadding);
+            var output = Dwt.ExecuteIDwt(levels, wavelet, 999);
+            Assert.IsTrue(SequenceEquals(output, signal.Points));
+        }
+
+        [TestMethod]
+        public void TestIDwtTwoLevelsZeroPadding()
+        {
+            var points = new double[] { 5, 6, 7, 8, 1, 2, 3, 4, 4, 5, 6, 1, 2, 4, 6, 7, 5, 6 };
+            var signal = new Signal(points, 1);
+            var wavelet = MotherWavelet.LoadFromName("sym4");
+            var levels = Dwt.ExecuteDwt(signal, wavelet, 2, SignalExtension.ExtensionMode.ZeroPadding);
+            var output = Dwt.ExecuteIDwt(levels, wavelet, 999);
+            Assert.IsTrue(SequenceEquals(output, signal.Points));
+        }
+
+        private static bool SequenceEquals(ILBaseArray<double> double1, ILArray<double> double2)
+        {
+            if (double1.Length != double2.Length)
+            {
+                return false;
+            }
             for (var i = 0; i < double1.Count(); i++)
             {
-                if (!AlmostEquals(double1.GetValue(i), double2.GetValue(i), 0.0000001))
+                if (!AlmostEquals(double1.GetValue(i), double2.GetValue(i), 0.000001))
                     return false;
             }
             return true;

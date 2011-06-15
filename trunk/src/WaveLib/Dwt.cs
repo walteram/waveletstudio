@@ -41,7 +41,7 @@ namespace WaveLib
             return levels;
         }
 
-        public static ILArray<double> ExecuteIDwt(List<DecompositionLevel> decompositionLevels, MotherWavelet motherWavelet, int level = 0, SignalExtension.ExtensionMode extensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint)
+        public static ILArray<double> ExecuteIDwt(List<DecompositionLevel> decompositionLevels, MotherWavelet motherWavelet, int level = 0)
         {
             if (level == 0 || level > decompositionLevels.Count)
             {
@@ -68,6 +68,10 @@ namespace WaveLib
                     approximation = SignalExtension.Deextend(approximation, decompositionLevels[i - 1].Details.Length);
                 }
                 details = decompositionLevels[i - 1].Details;
+                if (details.Length > approximation.Length)
+                {
+                    details = SignalExtension.Deextend(details, approximation.Length);
+                }
             }
 
             return approximation;
