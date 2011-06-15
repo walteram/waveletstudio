@@ -8,9 +8,16 @@ namespace WaveLib
 
         public int PointsPerSecond { get; set; }
 
+        
         public Signal()
         {
             Points = new ILArray<double>();
+            PointsPerSecond = 1;
+        }
+
+        public Signal(params double[] points)
+        {
+            Points = new ILArray<double>(points);
             PointsPerSecond = 1;
         }
 
