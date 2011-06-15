@@ -16,7 +16,7 @@ namespace WaveLib.Tests
         [TestMethod]
         public void TestLengthIsPowerOf2()
         {
-            var signal = new Signal(new double[] { 1, 2, 3, 4, 5 }, 1);
+            var signal = new Signal(new ILArray<double>(new double[] { 1, 2, 3, 4, 5 }), 1);
             Assert.IsFalse(signal.LengthIsPowerOf2());
 
             signal = new Signal(new double[] { 1, 2, 3, 4 }, 1);
