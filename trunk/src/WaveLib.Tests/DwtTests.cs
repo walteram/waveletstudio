@@ -12,14 +12,14 @@ namespace WaveLib.Tests
         [TestMethod]
         public void TestDwt()
         {
-            var signal = new Signal(new double[] {5, 6, 7, 8, 1, 2, 3, 4,}, 1);
+            var signal = new Signal(5, 6, 7, 8, 1, 2, 3, 4);
             var wavelet = MotherWavelet.LoadFromName("haar");
             var output = Dwt.ExecuteDwt(signal, wavelet, 1, SignalExtension.ExtensionMode.SymmetricHalfPoint);
             var expectedApproximation = new ILArray<double>(new[] { 7.7781745930520172, 10.606601717798206, 2.1213203435596411, 4.9497474683058291 });
             var expectedDetails = new ILArray<double>(new[] { -0.707106781186547, -0.707106781186547, -0.707106781186547, -0.707106781186547 });
 
             Assert.IsTrue(SequenceEquals(output[0].Approximation, expectedApproximation));
-            Assert.IsTrue(SequenceEquals(output[0].Details, expectedDetails));
+            Assert.IsTrue(SequenceEquals(output[0].Detail, expectedDetails));
         }
 
         [TestMethod]
@@ -35,9 +35,9 @@ namespace WaveLib.Tests
             var expectedD2 = new ILArray<double>(new[] { 0.21139340497972126, -0.44097376814889744, -1.6517956385039554, 2.0257051634726118, 0.439518138572961, -0.082787884460846284, -0.0376262841822663 });
 
             Assert.IsTrue(SequenceEquals(output[0].Approximation, expectedA1));
-            Assert.IsTrue(SequenceEquals(output[0].Details, expectedD1));
+            Assert.IsTrue(SequenceEquals(output[0].Detail, expectedD1));
             Assert.IsTrue(SequenceEquals(output[1].Approximation, expectedA2));
-            Assert.IsTrue(SequenceEquals(output[1].Details, expectedD2));          
+            Assert.IsTrue(SequenceEquals(output[1].Detail, expectedD2));          
         }
 
         [TestMethod]
@@ -53,9 +53,9 @@ namespace WaveLib.Tests
             var expectedD2 = new ILArray<double>(new[] { 2.7173723736570405, 0.48069973385706888, -0.87632966992803074, 1.9614893811889251, -3.7742274826859972, 2.9640617322585006, -3.4730659923310214 });
 
             Assert.IsTrue(SequenceEquals(output[0].Approximation, expectedA1));
-            Assert.IsTrue(SequenceEquals(output[0].Details, expectedD1));
+            Assert.IsTrue(SequenceEquals(output[0].Detail, expectedD1));
             Assert.IsTrue(SequenceEquals(output[1].Approximation, expectedA2));
-            Assert.IsTrue(SequenceEquals(output[1].Details, expectedD2));
+            Assert.IsTrue(SequenceEquals(output[1].Detail, expectedD2));
         }
 
         [TestMethod]

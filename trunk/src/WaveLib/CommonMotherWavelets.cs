@@ -3,10 +3,19 @@ using System.Text.RegularExpressions;
 
 namespace WaveLib
 {
+    /// <summary>
+    /// Provides common mother-wavelets for general purposes
+    /// </summary>
     public static class CommonMotherWavelets
     {
+        /// <summary>
+        /// Wavelet list
+        /// </summary>
         public static Dictionary<string, double[]> Wavelets { get; private set; }
 
+        /// <summary>
+        /// Static Constructor
+        /// </summary>
         static CommonMotherWavelets()
         {
             Wavelets = new Dictionary<string, double[]>
@@ -37,6 +46,11 @@ namespace WaveLib
                            };
         }
 
+        /// <summary>
+        /// Retrieves a mother-wavelet using its name
+        /// </summary>
+        /// <param name="name">Mother-wavelet name. Examples: (db4, haar, coif1, meyer, sym3) </param>
+        /// <returns></returns>
         public static MotherWavelet GetWaveletFromName(string name)
         {
             name = name.ToLower();
