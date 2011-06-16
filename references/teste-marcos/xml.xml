@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<pdfsam_saved_jobs version="2.2.1" savedate="16-Jun-2011" selection="org.pdfsam.plugin.merge.GUI.MergeMainGUI">
+  <plugin class="org.pdfsam.guiclient.gui.panels.JInfoPanel" name="About"/>
+  <plugin class="org.pdfsam.plugin.mix.GUI.MixMainGUI" name="Alternate Mix">
+    <destination value=""/>
+    <step value="1"/>
+    <secondstep value="1"/>
+    <reverse_first value="false"/>
+    <reverse_second value="true"/>
+    <overwrite value="true"/>
+    <compressed value="true"/>
+    <pdfversion value="5"/>
+  </plugin>
+  <plugin class="org.pdfsam.plugin.merge.GUI.MergeMainGUI" name="Merge/Extract">
+    <filelist>
+      <file name="D:\Projetos\WaveletStudio\references\teste-marcos\TeseMarcosCandidoCAPA.pdf" pageselection="All"/>
+      <file name="D:\Projetos\WaveletStudio\references\teste-marcos\TeseMarcosCandidoCapitulo1_Introducao.pdf" pageselection="All"/>
+      <file name="D:\Projetos\WaveletStudio\references\teste-marcos\TeseMarcosCandidoCapitulo2_CaracterizacaodaCarga.pdf" pageselection="All"/>
+      <file name="D:\Projetos\WaveletStudio\references\teste-marcos\TeseMarcosCandidoCapitulo3_Rev1_Algoritmo_parte1.pdf" pageselection="All"/>
+      <file name="D:\Projetos\WaveletStudio\references\teste-marcos\TeseMarcosCandidoCapitulo3_Rev1_Algoritmo_parte2.pdf" pageselection="All"/>
+      <file name="D:\Projetos\WaveletStudio\references\teste-marcos\TeseMarcosCandidoCapitulo3_Rev1_Algoritmo_parte3.pdf" pageselection="All"/>
+      <file name="D:\Projetos\WaveletStudio\references\teste-marcos\TeseMarcosCandidoCapitulo4_Rev1_Conclusao.pdf" pageselection="All"/>
+      <file name="D:\Projetos\WaveletStudio\references\teste-marcos\TeseMarcosCandidoCapitulo5_Referenciasbibliografica.pdf" pageselection="All"/>
+      <file name="D:\Projetos\WaveletStudio\references\teste-marcos\TeseMarcosCandidoApendiceA_Fornoaarco_PosicaoBrasil_.pdf" pageselection="All"/>
+      <file name="D:\Projetos\WaveletStudio\references\teste-marcos\TeseMarcosCandidoApendiceB_Analiseregimepermanente_.pdf" pageselection="All"/>
+      <file name="D:\Projetos\WaveletStudio\references\teste-marcos\TeseMarcosCandidoApendiceC_DadosSistemaeletrico_.pdf" pageselection="All"/>
+      <file name="D:\Projetos\WaveletStudio\references\teste-marcos\TeseMarcosCandidoApendiceD_Flicker_.pdf" pageselection="All"/>
+    </filelist>
+    <destination value="D:\Projetos\WaveletStudio\references\teste-marcos\Tese.pdf"/>
+    <overwrite value="true"/>
+    <merge_type value="false"/>
+    <compressed value="true"/>
+    <pdfversion value="7"/>
+  </plugin>
+  <plugin class="org.pdfsam.plugin.rotate.GUI.RotateMainGUI" name="Rotate">
+    <filelist/>
+    <rotation value="90"/>
+    <pages value="all"/>
+    <destination value=""/>
+    <overwrite value="true"/>
+    <compressed value="true"/>
+    <pdfversion value="5"/>
+    <prefix value="pdfsam_"/>
+  </plugin>
+  <plugin class="org.pdfsam.guiclient.gui.panels.JSettingsPanel" name="Settings"/>
+  <plugin class="org.pdfsam.plugin.split.GUI.SplitMainGUI" name="Split">
+    <source/>
+    <split_option/>
+    <npages value=""/>
+    <thispage value=""/>
+    <splitsize value=""/>
+    <bookmarkslevel/>
+    <destination value=""/>
+    <prefix value="pdfsam_"/>
+    <overwrite value="true"/>
+    <compressed value="true"/>
+    <pdfversion value="5"/>
+  </plugin>
+  <plugin class="org.pdfsam.plugin.vcomposer.GUI.VComposerMainGUI" name="Visual document composer">
+    <input-documents/>
+    <output-document/>
+    <destination value=""/>
+    <overwrite value="true"/>
+    <compressed value="true"/>
+    <pdfversion value="5"/>
+  </plugin>
+  <plugin class="org.pdfsam.plugin.vpagereorder.GUI.VPageReorderMainGUI" name="Visual reorder">
+    <source/>
+    <destination value=""/>
+    <overwrite value="true"/>
+    <compressed value="true"/>
+    <pdfversion value="5"/>
+  </plugin>
+</pdfsam_saved_jobs>
