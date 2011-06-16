@@ -46,7 +46,7 @@
   <ItemGroup>
     <Compile Include="CommonMotherWavelets.cs" />
     <Compile Include="DecompositionLevel.cs" />
-    <Compile Include="WaveLibMath.cs" />
+    <Compile Include="MathUtils.cs" />
     <Compile Include="Signal.cs" />
     <Compile Include="MotherWavelet.cs" />
     <Compile Include="Dwt.cs" />

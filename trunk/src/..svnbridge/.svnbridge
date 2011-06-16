@@ -2,4 +2,9 @@
 TestResults
 *.suo
 *.user
+</Value></Property><Property><Name>bugtraq:number</Name><Value>true</Value></Property><Property><Name>svn:ignore</Name><Value>_ReSharper.WaveletStudio
+TestResults
+*.suo
+*.user
+*.docstates
 </Value></Property></Properties></ItemProperties>

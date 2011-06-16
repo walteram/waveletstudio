@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="CommonMotherWaveletsTests.cs" />
     <Compile Include="DwtTests.cs" />
+    <Compile Include="MathUtilsTests.cs" />
     <Compile Include="MotherWaveletTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalExtensionTests.cs" />
