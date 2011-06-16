@@ -13,16 +13,6 @@ namespace WaveLib
         /// <summary>
         /// Detail coefficients of this decomposition level
         /// </summary>
-        public ILArray<double> Detail { get; set; }
-
-        public double GetDetailsEnergy()
-        {
-            var energy = 0d;
-            for (var i = 0; i < Detail.Length; i++)
-            {
-                energy += Math.Pow(Math.Abs(Detail.GetValue(i)), 2);
-            }
-            return energy;
-        }
+        public ILArray<double> Detail { get; set; }        
     }
 }

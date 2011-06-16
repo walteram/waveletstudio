@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using ILNumerics;
 using ILNumerics.BuiltInFunctions;
 
@@ -24,21 +23,16 @@ namespace WaveLib
             
             var approximation = signal.Points.C;
             var details = signal.Points.C;
-            
+
+            var extensionSize = motherWavelet.Filters.DecompositionLowPassFilter.Length - 1;
             for (var i = 1; i <= level; i++)
             {
-                var extensionSize = motherWavelet.Filters.DecompositionLowPassFilter.Length - 1;
-                var finalSize = (int)Math.Floor((approximation.Length - 1) / 2d) + (motherWavelet.Filters.DecompositionLowPassFilter.Length / 2);
-
                 approximation = SignalExtension.Extend(approximation, extensionMode, extensionSize);
+                approximation = MathUtils.Convolve(approximation, motherWavelet.Filters.DecompositionLowPassFilter);
+                approximation = MathUtils.DownSample(approximation);
                 details = SignalExtension.Extend(details, extensionMode, extensionSize);
-
-                approximation = Convolve(approximation, motherWavelet.Filters.DecompositionLowPassFilter);
-                approximation = DownSample(approximation);
-
-                details = Convolve(details, motherWavelet.Filters.DecompositionHighPassFilter);
-                details = DownSample(details);
-                
+                details = MathUtils.Convolve(details, motherWavelet.Filters.DecompositionHighPassFilter);
+                details = MathUtils.DownSample(details);                
                 
                 levels.Add(new DecompositionLevel
                                {
@@ -68,11 +62,11 @@ namespace WaveLib
 
             for (var i = level - 1; i >= 0; i--)
             {
-                approximation = UpSample(approximation);
-                approximation = Convolve(approximation, motherWavelet.Filters.ReconstructionLowPassFilter, true, -1);
+                approximation = MathUtils.UpSample(approximation);
+                approximation = MathUtils.Convolve(approximation, motherWavelet.Filters.ReconstructionLowPassFilter, true, -1);
 
-                details = UpSample(details);
-                details = Convolve(details, motherWavelet.Filters.ReconstructionHighPassFilter, true, -1);
+                details = MathUtils.UpSample(details);
+                details = MathUtils.Convolve(details, motherWavelet.Filters.ReconstructionHighPassFilter, true, -1);
 
                 //sum approximation with details
                 approximation = ILMath.add(approximation, details);
@@ -86,64 +80,6 @@ namespace WaveLib
                 details = decompositionLevels[i - 1].Detail;                
             }
             return approximation;
-        }
-
-        public static ILArray<double> Convolve(ILArray<double> input, ILArray<double> filter, bool returnOnlyValid = true, int margin = 0)
-        {
-            if (input.Length < filter.Length)
-            {
-                var auxSignal = input.C;
-                input = filter.C;
-                filter = auxSignal;
-            }
-            var result = new double[input.Length + filter.Length - 1];
-            for (var i = 0; i < input.Length; i++)
-            {
-                for (var j = 0; j < filter.Length; j++)
-                {
-                    result[i + j] = result[i + j] + input.GetValue(i) * filter.GetValue(j);
-                }
-            }
-
-            if (returnOnlyValid)
-            {
-                var size = input.Length - filter.Length + 1;
-                var padding = (result.Length - size) / 2;
-                return new ILArray<double>(result)[string.Format("{0}:1:{1}", padding + margin, padding + size - 1 - margin)];
-            }
-            return new ILArray<double>(result);
-        }
-        
-        public static ILArray<double> DownSample(ILArray<double> input)
-        {
-            var size = input.Length/2;
-            var result = new double[size];
-            var j = 0;
-            for (var i = 0; i < input.Length; i++)
-            {
-                if (i%2 == 0) 
-                    continue;
-                result[j] = input.GetValue(i);
-                j++;
-            }
-            return new ILArray<double>(result);
-        }
-
-        public static ILArray<double> UpSample(ILArray<double> input)
-        {
-            if (input.IsEmpty)
-            {
-                return ILMath.empty();
-            }
-            var size = input.Length * 2;
-            var result = new double[size-1];
-            for (var i = 0; i < input.Length; i++)
-            {
-                result[i*2] = input.GetValue(i);
-            }
-            return new ILArray<double>(result);
-        }
-
-        
+        }                
     }
 }

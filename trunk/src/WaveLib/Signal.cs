@@ -7,7 +7,6 @@ namespace WaveLib
         public ILArray<double> Points { get; set; }
 
         public int PointsPerSecond { get; set; }
-
         
         public Signal()
         {
@@ -60,9 +59,9 @@ namespace WaveLib
             Points[string.Format("{0}:1:{1}", length, Points.Length - 1)] = null;            
         }
 
-        private bool IsPowerOf2(int x)
+        private static bool IsPowerOf2(int x)
         {
             return (x != 0) && ((x & (x - 1)) == 0);
-        }        
+        }
     }
 }
