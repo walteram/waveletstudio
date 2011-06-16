@@ -13,7 +13,7 @@ namespace WaveLib
             AntisymmetricWholePoint,
             PeriodicPadding,
             ZeroPadding,
-            SmoothPadding0, //Continuous 
+            SmoothPadding0, //Continuous
             SmoothPadding1
         }
 
