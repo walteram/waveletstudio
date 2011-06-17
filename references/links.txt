@@ -1,0 +1,6 @@
+Decimation-in-time (DIT) Radix-2 FFT:
+http://cnx.org/content/m12016/latest/
+
+
+Apostila
+http://pt.scribd.com/doc/36135435/29/Conjugado-Complexo
