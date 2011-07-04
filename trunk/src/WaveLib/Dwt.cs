@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using ILNumerics;
 using ILNumerics.BuiltInFunctions;
 
 namespace WaveLib
 {
     public static class Dwt
-    {
+    {        
         public static List<DecompositionLevel> ExecuteDwt(Signal signal, MotherWavelet motherWavelet, int level, SignalExtension.ExtensionMode extensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint)
         {
             var levels = new List<DecompositionLevel>();
