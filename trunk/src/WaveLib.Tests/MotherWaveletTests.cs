@@ -12,10 +12,10 @@ namespace WaveLib.Tests
             var motherWavelet = new MotherWavelet(new[] {0.341506350946110, 0.591506350946110, 0.158493649053890, -0.091506350946110});
             var filters = motherWavelet.Filters;
 
-            Assert.IsTrue(filters.DecompositionHighPassFilter.SequenceEqual(new[] { -0.48296291314453427, 0.83651630373780783, -0.22414386804201272, -0.12940952255126076 }));
-            Assert.IsTrue(filters.DecompositionLowPassFilter.SequenceEqual(new[] { -0.12940952255126076, 0.22414386804201272, 0.83651630373780783, 0.48296291314453427 }));
-            Assert.IsTrue(filters.ReconstructionHighPassFilter.SequenceEqual(new[] { -0.12940952255126076, -0.22414386804201272, 0.83651630373780783, -0.48296291314453427 }));
-            Assert.IsTrue(filters.ReconstructionLowPassFilter.SequenceEqual(new[] { 0.48296291314453427, 0.83651630373780783, 0.22414386804201272, -0.12940952255126076 }));            
+            Assert.IsTrue(filters.DecompositionHighPassFilter.SequenceEqual(new[] { -0.48296291314453466, 0.8365163037378085, -0.22414386804201292, -0.12940952255126087 }));
+            Assert.IsTrue(filters.DecompositionLowPassFilter.SequenceEqual(new[] { -0.12940952255126087, 0.22414386804201292, 0.8365163037378085, 0.48296291314453466 }));
+            Assert.IsTrue(filters.ReconstructionHighPassFilter.SequenceEqual(new[] { -0.12940952255126087, -0.22414386804201292, 0.8365163037378085, -0.48296291314453466 }));
+            Assert.IsTrue(filters.ReconstructionLowPassFilter.SequenceEqual(new[] { 0.48296291314453466, 0.8365163037378085, 0.22414386804201292, -0.12940952255126087 }));            
         }
 
         [TestMethod]
