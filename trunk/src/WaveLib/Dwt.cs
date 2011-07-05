@@ -2,16 +2,27 @@
 using ILNumerics;
 using ILNumerics.BuiltInFunctions;
 
-namespace WaveLib
+namespace WaveletStudio.WaveLib
 {
+    /// <summary>
+    /// Discreet Wavelet Transform and its inverse
+    /// </summary>
     public static class Dwt
     {        
+        /// <summary>
+        /// Multilevel 1-D Discreete Wavelet Transform
+        /// </summary>
+        /// <param name="signal">The signal. Example: new Signal(5, 6, 7, 8, 1, 2, 3, 4)</param>
+        /// <param name="motherWavelet">The mother wavelet to be used. Example: CommonMotherWavelets.GetWaveletFromName("DB4")</param>
+        /// <param name="level">The depth-level to perform the DWT</param>
+        /// <param name="extensionMode">Signal extension mode</param>
+        /// <returns></returns>
         public static List<DecompositionLevel> ExecuteDwt(Signal signal, MotherWavelet motherWavelet, int level, SignalExtension.ExtensionMode extensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint)
         {
             var levels = new List<DecompositionLevel>();
             
-            var approximation = signal.Points.C;
-            var details = signal.Points.C;
+            var approximation = signal.Samples.C;
+            var details = signal.Samples.C;
             
             for (var i = 1; i <= level; i++)
             {
@@ -37,7 +48,14 @@ namespace WaveLib
             return levels;
         }
 
-        public static ILArray<double> ExecuteIDwt(List<DecompositionLevel> decompositionLevels, MotherWavelet motherWavelet, int level = 0, SignalExtension.ExtensionMode extensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint)
+        /// <summary>
+        /// Multilevel inverse discrete 1-D wavelet transform
+        /// </summary>
+        /// <param name="decompositionLevels">The decomposition levels of the DWT</param>
+        /// <param name="motherWavelet">The mother wavelet to be used. Example: CommonMotherWavelets.GetWaveletFromName("DB4") </param>
+        /// <param name="level">The depth-level to perform the DWT</param>
+        /// <returns></returns>
+        public static ILArray<double> ExecuteIDwt(List<DecompositionLevel> decompositionLevels, MotherWavelet motherWavelet, int level = 0)
         {
             if (level == 0 || level > decompositionLevels.Count)
             {
@@ -69,6 +87,14 @@ namespace WaveLib
             return approximation;
         }
 
+        /// <summary>
+        /// Convolves vectors input and filter.
+        /// </summary>
+        /// <param name="input">The input signal</param>
+        /// <param name="filter">The filter</param>
+        /// <param name="returnOnlyValid">True to return only the middle of the array</param>
+        /// <param name="margin">Margin to be used if returnOnlyValid is set to true</param>
+        /// <returns></returns>
         public static ILArray<double> Convolve(ILArray<double> input, ILArray<double> filter, bool returnOnlyValid = true, int margin = 0)
         {
             if (input.Length < filter.Length)
@@ -95,6 +121,11 @@ namespace WaveLib
             return new ILArray<double>(result);
         }
         
+        /// <summary>
+        /// Decreases the sampling rate of the input by keeping every odd sample starting with the first sample.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static ILArray<double> DownSample(ILArray<double> input)
         {
             var size = input.Length/2;
@@ -110,6 +141,11 @@ namespace WaveLib
             return new ILArray<double>(result);
         }
 
+        /// <summary>
+        /// Increases the sampling rate of the input by inserting n-1 zeros between samples. 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public static ILArray<double> UpSample(ILArray<double> input)
         {
             if (input.IsEmpty)

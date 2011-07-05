@@ -8,8 +8,8 @@
     <ProjectGuid>{003D0672-355F-416B-9E88-DC95F0762329}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WaveLib</RootNamespace>
-    <AssemblyName>WaveLib</AssemblyName>
+    <RootNamespace>WaveletStudio.WaveLib</RootNamespace>
+    <AssemblyName>WaveletStudio.WaveLib</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -29,14 +29,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\WaveLib.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\WaveletStudio.WaveLib.xml</DocumentationFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ILNumerics.Net">
-      <HintPath>..\..\res\libs\ILNumerics\ILNumerics.Net.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="ILNumerics">
+      <HintPath>..\..\res\libs\ILNumerics\ILNumerics.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -56,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalExtension.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

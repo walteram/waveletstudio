@@ -1,11 +1,8 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using ILNumerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace WaveLib.Tests
+namespace WaveletStudio.WaveLib.Tests
 {
     [TestClass]
     public class SignalExtensionTests

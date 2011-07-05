@@ -1,21 +1,20 @@
-﻿using System;
-using ILNumerics;
+﻿using ILNumerics;
 
-namespace WaveLib
+namespace WaveletStudio.WaveLib
 {
+    /// <summary>
+    /// Used as the return of a DWT operation and as the input of a IDWT operation
+    /// </summary>
     public class DecompositionLevel
     {
+        /// <summary>
+        /// Approximation coefficients
+        /// </summary>
         public ILArray<double> Approximation { get; set; }
-        public ILArray<double> Details { get; set; }
-
-        public double GetDetailsEnergy()
-        {
-            var energy = 0d;
-            for (var i = 0; i < Details.Length; i++)
-            {
-                energy += Math.Pow(Math.Abs(Details.GetValue(i)), 2);
-            }
-            return energy;
-        }
+        
+        /// <summary>
+        /// Detais coefficients
+        /// </summary>
+        public ILArray<double> Details { get; set; }        
     }
 }

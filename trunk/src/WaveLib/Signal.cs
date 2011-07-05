@@ -1,29 +1,61 @@
 ﻿using ILNumerics;
 
-namespace WaveLib
+namespace WaveletStudio.WaveLib
 {
+    /// <summary>
+    /// 1-D Signal
+    /// </summary>
     public class Signal
     {
-        public ILArray<double> Points { get; set; }
+        /// <summary>
+        /// Samples of the signal
+        /// </summary>
+        public ILArray<double> Samples { get; set; }
 
-        public int PointsPerSecond { get; set; }
+        /// <summary>
+        /// Quantity of samples per second. It will be used in the future
+        /// </summary>
+        public int SamplesPerSecond { get; set; }
 
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public Signal()
         {
-            Points = new ILArray<double>();
-            PointsPerSecond = 1;
+            Samples = new ILArray<double>();
+            SamplesPerSecond = 1;
         }
 
-        public Signal(double[] points, int pointsPerSecond)
+        /// <summary>
+        /// Aditional constructor, passing an array of double with the samples of the signal
+        /// </summary>
+        /// <param name="samples">The samples of the signal</param>
+        public Signal(params double[] samples)
         {
-            Points = new ILArray<double>(points);
-            PointsPerSecond = pointsPerSecond;
+            Samples = new ILArray<double>(samples);
+            SamplesPerSecond = 1;
         }
 
-        public Signal(ILArray<double> points, int pointsPerSecond)
+        /// <summary>
+        /// Aditional constructor, passing an array of double with the samples of the signal and the number of samples per second
+        /// </summary>
+        /// <param name="samples">The samples of the signal</param>
+        /// <param name="samplesPerSecond">Quantity of samples per second</param>
+        public Signal(double[] samples, int samplesPerSecond)
         {
-            Points = points;
-            PointsPerSecond = pointsPerSecond;
+            Samples = new ILArray<double>(samples);
+            SamplesPerSecond = samplesPerSecond;
+        }
+
+        /// <summary>
+        /// Aditional constructor, passing an array of double with the samples of the signal and the number of samples per second
+        /// </summary>
+        /// <param name="samples">The samples of the signal</param>
+        /// <param name="samplesPerSecond">Quantity of samples per second</param>
+        public Signal(ILArray<double> samples, int samplesPerSecond)
+        {
+            Samples = samples;
+            SamplesPerSecond = samplesPerSecond;
         }
 
         /// <summary>
@@ -32,7 +64,7 @@ namespace WaveLib
         /// <returns></returns>
         public bool LengthIsPowerOf2()
         {
-            return IsPowerOf2(Points.Length);
+            return IsPowerOf2(Samples.Length);
         }
 
         /// <summary>
@@ -41,16 +73,17 @@ namespace WaveLib
         /// <returns></returns>
         public void MakeLengthPowerOfTwo()
         {
-            if (LengthIsPowerOf2())
+            if (LengthIsPowerOf2() || Samples.Length == 0)
             {
                 return;
             }
-            var length = Points.Length;
+            var length = Samples.Length;
             while (!(IsPowerOf2(length)) && length > 0)
             {
                 length--;
             }
-            Points[string.Format("{0}:1:{1}", length, Points.Length - 1)] = null;            
+            
+            Samples = Samples[string.Format("0:1:{0}", length-1)];
         }
 
         private bool IsPowerOf2(int x)

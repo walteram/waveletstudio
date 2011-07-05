@@ -1,16 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace WaveLib
+namespace WaveletStudio.WaveLib
 {
+    /// <summary>
+    /// Provides common mother wavelets, like Daubechies, Haar, etc.
+    /// </summary>
     public static class CommonMotherWavelets
     {
+        /// <summary>
+        /// List of wavelets. 
+        /// </summary>
         public static Dictionary<string, double[]> Wavelets { get; private set; }
-        private static Dictionary<string, MotherWavelet> _motherWaveletsCache;
+
+        private static readonly Dictionary<string, MotherWavelet> MotherWaveletsCache;
 
         static CommonMotherWavelets()
         {
-            _motherWaveletsCache = new Dictionary<string, MotherWavelet>();
+            MotherWaveletsCache = new Dictionary<string, MotherWavelet>();
             Wavelets = new Dictionary<string, double[]>
                            {
                                {"coif1", new[]{-0.051429728471, 0.238929728471, 0.602859456942, 0.272140543058, -0.051429728471, -0.011070271529000}},
@@ -39,6 +46,11 @@ namespace WaveLib
                            };
         }
 
+        /// <summary>
+        /// Gets the Mother Wavelet object base on it name. Returns null if the name is not found.
+        /// </summary>
+        /// <param name="name">The name of the wavelet. Examples: db4, haar, sym2, dmeyer, coif3</param>
+        /// <returns></returns>
         public static MotherWavelet GetWaveletFromName(string name)
         {
             name = name.ToLower();
@@ -46,7 +58,7 @@ namespace WaveLib
             {
                 name = name.Replace("d", "db").Replace("dbaub", "db").Replace("dbb", "db");
             }
-            if (!_motherWaveletsCache.ContainsKey(name))
+            if (!MotherWaveletsCache.ContainsKey(name))
             {
                 if (!Wavelets.ContainsKey(name))
                 {
@@ -54,10 +66,10 @@ namespace WaveLib
                 }
                 var wavelet = new MotherWavelet(name, Wavelets[name]);
                 wavelet.CalculateFilters();
-                _motherWaveletsCache.Add(name, wavelet);
+                MotherWaveletsCache.Add(name, wavelet);
                 return wavelet;
             }
-            return _motherWaveletsCache[name];
+            return MotherWaveletsCache[name];
         }
     }
 }

@@ -15,7 +15,7 @@
           <Configuration>
             <CodeCoverage xmlns="">
               <Regular>
-                <CodeCoverageItem binaryFile="WaveLib\bin\Debug\WaveLib.dll" pdbFile="WaveLib\bin\Debug\WaveLib.pdb" instrumentInPlace="true" />
+                <CodeCoverageItem binaryFile="WaveLib\bin\Debug\WaveletStudio.WaveLib.dll" pdbFile="WaveLib\bin\Debug\WaveletStudio.WaveLib.pdb" instrumentInPlace="true" />
               </Regular>
             </CodeCoverage>
           </Configuration>

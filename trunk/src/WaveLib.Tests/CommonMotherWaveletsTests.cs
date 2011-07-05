@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace WaveLib.Tests
+namespace WaveletStudio.WaveLib.Tests
 {
     [TestClass]
     public class CommonMotherWaveletsTests
