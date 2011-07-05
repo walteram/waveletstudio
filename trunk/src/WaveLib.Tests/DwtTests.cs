@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using ILNumerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace WaveLib.Tests
+namespace WaveletStudio.WaveLib.Tests
 {
     [TestClass]
     public class DwtTests
@@ -13,7 +12,7 @@ namespace WaveLib.Tests
         [TestMethod]
         public void TestDwt()
         {
-            var signal = new Signal(new double[] {5, 6, 7, 8, 1, 2, 3, 4,}, 1);
+            var signal = new Signal(5, 6, 7, 8, 1, 2, 3, 4);
             var wavelet = MotherWavelet.LoadFromName("haar");
             var output = Dwt.ExecuteDwt(signal, wavelet, 1, SignalExtension.ExtensionMode.SymmetricHalfPoint);
             var expectedApproximation = new ILArray<double>(new[] { 7.7781745930520172, 10.606601717798206, 2.1213203435596411, 4.9497474683058291 });
@@ -62,16 +61,16 @@ namespace WaveLib.Tests
         [TestMethod]
         public void TestIDwt()
         {
-            var points = new double[] { 5, 6, 7, 8, 1, 2, 3, 4, 1.1, 2.4444451 };
+            var points = new[] { 5, 6, 7, 8, 1, 2, 3, 4, 1.1, 2.4444451 };
             var signal = new Signal(points, 1);
             var wavelet = MotherWavelet.LoadFromName("haar");
             var levels = Dwt.ExecuteDwt(signal, wavelet, 2);
             var output = Dwt.ExecuteIDwt(levels, wavelet);                        
-            Assert.IsTrue(SequenceEquals(output, signal.Points));
+            Assert.IsTrue(SequenceEquals(output, signal.Samples));
 
             levels = Dwt.ExecuteDwt(signal, wavelet, 3, SignalExtension.ExtensionMode.SymmetricWholePoint);
             output = Dwt.ExecuteIDwt(levels, wavelet, 10);
-            Assert.IsTrue(SequenceEquals(output, signal.Points));
+            Assert.IsTrue(SequenceEquals(output, signal.Samples));
         }
 
         private static bool SequenceEquals(ILArray<double> double1, ILArray<double> double2)

@@ -1,32 +1,47 @@
 ﻿using System;
 
-namespace WaveLib
+namespace WaveletStudio.WaveLib
 {
+    /// <summary>
+    /// Mother wavelet base class
+    /// </summary>
     public class MotherWavelet
     {
+        /// <summary>
+        /// Name of the mother wavelet
+        /// </summary>
         public string Name { get; set; }
 
-        public bool SupportCwt { get; set; }
-
-        public bool SupportDwt { get; set; }
-
+        /// <summary>
+        /// The scaling function of the mother wavelet, used to calculate the filters
+        /// </summary>
         public double[] ScalingFilter { get; private set; }
-
-        public Func<int, double> Function {get; set; }
 
         private FiltersStruct _filters;
 
+        /// <summary>
+        /// Constructior using the name and the scaling filter
+        /// </summary>
+        /// <param name="name">Name of the mother wavelet</param>
+        /// <param name="scalingFilter">The scaling function of the mother wavelet</param>
         public MotherWavelet(string name, double[] scalingFilter)
         {
             Name = name;
             ScalingFilter = scalingFilter;
         }
-        
+
+        /// <summary>
+        /// Constructior using the name and the scaling filter
+        /// </summary>
+        /// <param name="scalingFilter">The scaling function of the mother wavelet</param>
         public MotherWavelet(double[] scalingFilter)
         {
             ScalingFilter = scalingFilter; 
         }
         
+        /// <summary>
+        /// Decomposition and Reconstruction filters
+        /// </summary>
         public FiltersStruct Filters
         {
             get 
@@ -39,14 +54,32 @@ namespace WaveLib
             }
         }
 
+        /// <summary>
+        /// Decomposition and Reconstruction filters base-type
+        /// </summary>
         public struct FiltersStruct
         {
+            /// <summary>
+            /// Decomposition Low-pass Filter
+            /// </summary>
             public double[] DecompositionLowPassFilter;
+            /// <summary>
+            /// Decomposition High-pass Filter
+            /// </summary>
             public double[] DecompositionHighPassFilter;
+            /// <summary>
+            /// Reconstruction Low-pass Filter
+            /// </summary>
             public double[] ReconstructionLowPassFilter;
+            /// <summary>
+            /// Reconstruction High-pass Filter
+            /// </summary>
             public double[] ReconstructionHighPassFilter;
         }
 
+        /// <summary>
+        /// Calculates the reconstruction and decomposition filters 
+        /// </summary>
         public void CalculateFilters()
         {
             var filterLength = ScalingFilter.Length;
@@ -84,6 +117,11 @@ namespace WaveLib
             Array.Reverse(_filters.DecompositionHighPassFilter);
         }
 
+        /// <summary>
+        /// Loads the mother-wavelet by its name. Just a link to CommonMotherWavelets.GetWaveletFromName.
+        /// </summary>
+        /// <param name="name">Mother-wavelet name</param>
+        /// <returns></returns>
         public static MotherWavelet LoadFromName(string name)
         {
             return CommonMotherWavelets.GetWaveletFromName(name);

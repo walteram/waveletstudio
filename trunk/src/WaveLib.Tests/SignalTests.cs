@@ -1,11 +1,7 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using ILNumerics;
+﻿using ILNumerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace WaveLib.Tests
+namespace WaveletStudio.WaveLib.Tests
 {
     /// <summary>
     /// Summary description for UnitTest1
@@ -31,17 +27,17 @@ namespace WaveLib.Tests
         {
             var signal = new Signal(new ILArray<double>(new double[] { 1, 2, 3, 4, 5 }), 1);
             signal.MakeLengthPowerOfTwo();
-            Assert.AreEqual(4, signal.Points.Length);
-            Assert.IsTrue(signal.Points.Equals(new ILArray<double>(new double[] { 1, 2, 3, 4 })));
+            Assert.AreEqual(4, signal.Samples.Length);
+            Assert.IsTrue(signal.Samples.Equals(new ILArray<double>(new double[] { 1, 2, 3, 4 })));
 
             signal = new Signal(new double[] { 1, 2, 3, 4 }, 1);
             signal.MakeLengthPowerOfTwo();
-            Assert.AreEqual(4, signal.Points.Length);
-            Assert.IsTrue(signal.Points.Equals(new ILArray<double>(new double[] { 1, 2, 3, 4 })));
+            Assert.AreEqual(4, signal.Samples.Length);
+            Assert.IsTrue(signal.Samples.Equals(new ILArray<double>(new double[] { 1, 2, 3, 4 })));
 
             signal = new Signal();
             signal.MakeLengthPowerOfTwo();
-            Assert.AreEqual(0, signal.Points.Length);
+            Assert.AreEqual(0, signal.Samples.Length);
         }
     }
 }

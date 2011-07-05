@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace WaveLib.Tests
+namespace WaveletStudio.WaveLib.Tests
 {
     [TestClass]
     public class MotherWaveletTests
