@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonMotherWaveletsTests.cs" />
+    <Compile Include="DecompositionLevelTests.cs" />
     <Compile Include="DwtTests.cs" />
     <Compile Include="MotherWaveletTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -11,11 +11,11 @@ namespace WaveletStudio.WaveLib.Tests
         {
             var input = new ILArray<double>(new double[] {4, 2, 1, 5, 1, 5, 8, 9, 3});
             var expected = 226d;
-            Assert.AreEqual(expected, WaveletStudio.WaveLib.WaveLibMath.GetAccumulatedEnergy(input));
+            Assert.AreEqual(expected, WaveLib.WaveLibMath.GetAccumulatedEnergy(input));
 
             input = new ILArray<double>(new double[] { });
             expected = 0d;
-            Assert.AreEqual(expected, WaveletStudio.WaveLib.WaveLibMath.GetAccumulatedEnergy(input));
+            Assert.AreEqual(expected, WaveLib.WaveLibMath.GetAccumulatedEnergy(input));
         }
     }
 }
