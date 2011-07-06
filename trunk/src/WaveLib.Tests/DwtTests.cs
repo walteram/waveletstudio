@@ -7,8 +7,7 @@ namespace WaveletStudio.WaveLib.Tests
 {
     [TestClass]
     public class DwtTests
-    {
-        
+    {        
         [TestMethod]
         public void TestDwt()
         {
