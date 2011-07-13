@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ILNumerics;
 
 namespace WaveletStudio.WaveLib
@@ -8,6 +9,11 @@ namespace WaveletStudio.WaveLib
     /// </summary>
     public class DecompositionLevel
     {
+        /// <summary>
+        /// Level index in DWT
+        /// </summary>
+        public int Index { get; set; }
+        
         /// <summary>
         /// Approximation coefficients
         /// </summary>
@@ -19,52 +25,78 @@ namespace WaveletStudio.WaveLib
         public ILArray<double> Details { get; set; }
 
         /// <summary>
+        /// Signal from which this level was created
+        /// </summary>
+        public Signal Signal { get; set; }
+
+        /// <summary>
         /// TODO: In progress.
         /// </summary>
         public class Disturbance
         {
-            public double Start;
-            public double Finish;
-            public double Length;
-            public double[] Samples;
+            public int Start;
+            public int Finish;
+            public int Length;
+
+            public int SignalStart;
+            public int SignalFinish;
+            public int SignalLength;
         }
 
         /// <summary>
         /// TODO: In progress. This method is not full tested...
         /// </summary>
         /// <returns></returns>
-        public List<Disturbance> GetDisturbances()
+        public List<Disturbance> GetDisturbances(double threshold = 0.1)
         {
-            var disturbances = new List<Disturbance>();
             int? start = null;
             int? finish = null;
 
-            for (var i = 0; i < Details.Length; i++)
+            var details = Details;
+            var disturbances = new List<Disturbance>();
+            var mode = WaveLibMath.Mode(details);
+            for (var i = 0; i < details.Length; i++)
             {
-                if (Details.GetValue(i) != 0 && start == null)
+                var sampleValue = details.GetValue(i);
+                var abs = Math.Abs(sampleValue - mode);
+                if (abs > Math.Abs(sampleValue) * threshold && start == null)
                 {
                     start = i;
                 }
-                if (Details.GetValue(i) == 0 && start != null && i < Details.Length - 1 && Details[i + 1] == 0 && i > 0 || Details[i] != 0 && i == Details.Length - 1 && start != null)
+                else if (abs <= sampleValue * threshold && start != null)
                 {
-                    if (i == Details.Length-1)
+                    if (i == details.Length - 1 || Index == 0)
                     {
-                        finish = i;   
+                        finish = i - 1;
                     }
                     else
                     {
-                        finish = i - 1;
+                        var nextSampleValue = details.GetValue(i + 1);
+                        var nextAbs = Math.Abs(nextSampleValue - mode);
+                        if (nextAbs <= nextSampleValue * threshold)
+                        {
+                            finish = i - 1;
+                        }
                     }
                 }
                 if (start != null && finish != null)
                 {
+                    var length = finish.Value - start.Value + 1;
+                    var signalStart = start.Value * Math.Pow(2, Index + 1) + 1;
+                    var signalFinish = finish.Value * Math.Pow(2, Index + 1) + (Math.Pow(2, Index+1) - 2);
+                    var signalLength = signalFinish - signalStart + 1;
                     disturbances.Add(new Disturbance
                                          {
                                              Start = start.Value,
                                              Finish = finish.Value,
-                                             Length = finish.Value - start.Value + 1                                             
+                                             Length = length,
+
+                                             SignalStart = (int) signalStart,
+                                             SignalFinish = (int) signalFinish,
+                                             SignalLength = (int) signalLength
                                          });
-                    start = finish = null;
+                    start = null;
+                    finish = null;
                 }
             }
             return disturbances;
