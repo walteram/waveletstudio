@@ -17,5 +17,29 @@ namespace WaveletStudio.WaveLib.Tests
             expected = 0d;
             Assert.AreEqual(expected, WaveLib.WaveLibMath.GetAccumulatedEnergy(input));
         }
+
+        [TestMethod]
+        public void TestMode()
+        {
+            var input = new ILArray<double>(new[] { 1.1, 1.1, 2, 3, 1, 2.5, 1.1, 459, 3.5, 1.1 });
+            var expected = 1.1;
+            Assert.AreEqual(expected, WaveLib.WaveLibMath.Mode(input));
+
+            input = new ILArray<double>(new double[] { });
+            expected = 0d;
+            Assert.AreEqual(expected, WaveLib.WaveLibMath.Mode(input));
+
+            input = new ILArray<double>(new[] { 1.1, 1.1, 2.2, 2.2 });
+            expected = 1.1;
+            Assert.AreEqual(expected, WaveLib.WaveLibMath.Mode(input));
+
+            input = new ILArray<double>(new[] { 1.1, 1.1, 2.2, 2.2, 3.3, 3.3, 3.3 });
+            expected = 3.3;
+            Assert.AreEqual(expected, WaveLib.WaveLibMath.Mode(input));
+
+            input = new ILArray<double>(new[] { 1.1, 1.1, 2.2, 2.2, 3.3, 3.3, 3.3, 1.1, 1.1, 2.2, 2.2, 1.1, 1.1, 2.2, 2.2, 3.3, 3.3, 3.3, 3.3, 3.3, 3.3, 1.1, 1.1, 2.2, 1.1, 1.1, 2.2, 2.2, 3.3, 3.3, 3.3, 2.2, 3.3, 3.3, 3.3, 1.1, 1.1, 2.2, 2.2, 3.3, 3.3, 3.3 });
+            expected = 3.3;
+            Assert.AreEqual(expected, WaveLib.WaveLibMath.Mode(input));
+        }
     }
 }

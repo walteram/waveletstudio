@@ -36,10 +36,12 @@ namespace WaveletStudio.WaveLib
 
                 details = Convolve(details, motherWavelet.Filters.DecompositionHighPassFilter);
                 details = DownSample(details);
-                
-                
+
+
                 levels.Add(new DecompositionLevel
                                {
+                                   Signal = signal,
+                                   Index = i - 1,
                                    Approximation = approximation,
                                    Details = details
                                });
