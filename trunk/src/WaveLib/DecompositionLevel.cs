@@ -51,19 +51,23 @@ namespace WaveletStudio.WaveLib
         {
             int? start = null;
             int? finish = null;
-
+            var existsZero = false;
             var details = Details;
             var disturbances = new List<Disturbance>();
             var mode = WaveLibMath.Mode(details);
             for (var i = 0; i < details.Length; i++)
             {
+                if (i==86)
+                {
+                    var a = 1;
+                }
                 var sampleValue = details.GetValue(i);
-                var abs = Math.Abs(sampleValue - mode);
-                if (abs > Math.Abs(sampleValue) * threshold && start == null)
+                var abs = Math.Abs(Math.Abs(sampleValue) - Math.Abs(mode));
+                if (abs > Math.Abs(sampleValue) * threshold && start == null )
                 {
                     start = i;
                 }
-                else if (abs <= sampleValue * threshold && start != null)
+                else if (abs <= Math.Abs(sampleValue) * threshold && start != null)
                 {
                     if (i == details.Length - 1 || Index == 0)
                     {
@@ -78,6 +82,10 @@ namespace WaveletStudio.WaveLib
                             finish = i - 1;
                         }
                     }
+                }
+                else if (abs <= sampleValue * threshold && start == null)
+                {
+                    existsZero = true;
                 }
                 if (start != null && finish != null)
                 {
