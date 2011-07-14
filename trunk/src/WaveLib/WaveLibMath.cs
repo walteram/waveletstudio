@@ -39,7 +39,7 @@ namespace WaveletStudio.WaveLib
             {
                 return 0;
             }
-            var sortedSamples = ILNumerics.BuiltInFunctions.ILMath.unique(samples);
+            var sortedSamples = ILNumerics.BuiltInFunctions.ILMath.unique(samples);            
             var maxFreq = sortedSamples.GetValue(0);
             var maxOccurrences = 0;
             Parallel.For(0, sortedSamples.Length, i =>

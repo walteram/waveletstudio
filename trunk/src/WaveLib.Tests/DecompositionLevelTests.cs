@@ -1,4 +1,6 @@
-﻿using ILNumerics;
+﻿using System.IO;
+using System.Linq;
+using ILNumerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace WaveletStudio.WaveLib.Tests
@@ -60,6 +62,25 @@ namespace WaveletStudio.WaveLib.Tests
             Assert.AreEqual(17, disturbances[0].SignalStart);
             Assert.AreEqual(62, disturbances[0].SignalFinish);
             Assert.AreEqual(46, disturbances[0].SignalLength);
+        }
+
+        [TestMethod]
+        public void TestGetDisturbancesSag()
+        {
+            var samples = ReadFile("sag.csv");
+            var signal = new Signal(samples);
+            var levels = Dwt.ExecuteDwt(signal, CommonMotherWavelets.GetWaveletFromName("db10"), 1);
+
+            var disturbances = levels[0].GetDisturbances(0.001);
+            Assert.AreEqual(1, disturbances.Count);
+            Assert.AreEqual(17, disturbances[0].SignalStart);
+            Assert.AreEqual(62, disturbances[0].SignalFinish);
+            Assert.AreEqual(46, disturbances[0].SignalLength);
+        }
+
+        private double[] ReadFile(string filename)
+        {
+            return File.ReadAllText(@"C:\Wavelet\WaveletStudio\trunk\res\testdata\" + filename).Split(',').Select(it => double.Parse(it.Replace(".", ","))).ToArray();
         }
     }
 }
