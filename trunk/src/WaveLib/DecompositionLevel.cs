@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using ILNumerics;
 
 namespace WaveletStudio.WaveLib
@@ -18,7 +20,7 @@ namespace WaveletStudio.WaveLib
         /// Approximation coefficients
         /// </summary>
         public ILArray<double> Approximation { get; set; }
-        
+
         /// <summary>
         /// Detais coefficients
         /// </summary>
@@ -36,78 +38,89 @@ namespace WaveletStudio.WaveLib
         {
             public int Start;
             public int Finish;
-            public int Length;
 
             public int SignalStart;
             public int SignalFinish;
-            public int SignalLength;
+
+            internal Disturbance(int start, int finish, int detailsLength, int signalLength)
+            {
+                Start = start;
+                Finish = finish;
+                
+                SignalStart = (int)WaveLibMath.Scale(start, 0, detailsLength, 0, signalLength);
+                SignalFinish = (int)WaveLibMath.Scale(finish, 0, detailsLength, 0, signalLength);
+                
+            }
         }
 
         /// <summary>
-        /// TODO: In progress. This method is not full tested...
+        /// Gets the disturbances in the signal based on the normal density distribution of the details coefficients
         /// </summary>
+        /// <param name="threshold">The higher the threshold, the higher the tolerance in flutuations on energy of the details</param>
+        /// <param name="minimunDistance">Minimun distance between disturbances to consider a new one</param>
         /// <returns></returns>
-        public List<Disturbance> GetDisturbances(double threshold = 0.1)
+        public List<Disturbance> GetDisturbances(double threshold = 0.1, int minimunDistance = 3)
         {
-            int? start = null;
-            int? finish = null;
-            var existsZero = false;
-            var details = Details;
+            threshold = 1 - threshold;
             var disturbances = new List<Disturbance>();
-            var mode = WaveLibMath.Mode(details);
-            for (var i = 0; i < details.Length; i++)
+            var mean = ILNumerics.BuiltInFunctions.ILMath.mean(Details).GetValue(0);
+            var deviation = WaveLibMath.StandardDeviation(Details.Values.ToArray());
+            var samples = new List<Sample>();
+            var min = double.MaxValue;
+            var max = double.MinValue;
+            for (var i = 0; i < Details.Length; i++)
             {
-                if (i==86)
-                {
-                    var a = 1;
-                }
-                var sampleValue = details.GetValue(i);
-                var abs = Math.Abs(Math.Abs(sampleValue) - Math.Abs(mode));
-                if (abs > Math.Abs(sampleValue) * threshold && start == null )
+                var sample = Details.GetValue(i);
+                var norm = WaveLibMath.NormalDistribution(sample, mean, deviation);
+                if (norm < min)                
+                    min = norm;                
+                if (norm > max)                
+                    max = norm;                
+                samples.Add(new Sample { Index = i, Value = sample, NormalValue = norm });
+            }
+            //ajusta a escala da distribuição normal para 0..1, removendo os valores maiores que threshold
+            for (var i = samples.Count - 1; i >= 0; i--)
+            {
+                samples[i].NormalValue = WaveLibMath.Scale(samples[i].NormalValue, min, max, 0, 1);
+                if (samples[i].NormalValue > threshold)
+                    samples.RemoveAt(i);   
+            }
+            int? start = null;
+            var startIndex = 0;
+            for (var i = 0; i < samples.Count; i++)
+            {
+                if (start == null)
                 {
                     start = i;
+                    startIndex = samples[i].Index;
                 }
-                else if (abs <= Math.Abs(sampleValue) * threshold && start != null)
+                else if (samples[i].Index - samples[i - 1].Index >= minimunDistance || i == samples.Count - 1)
                 {
-                    if (i == details.Length - 1 || Index == 0)
+                    disturbances.Add(new Disturbance(startIndex, samples[i - 1].Index, Details.Length, Signal.Samples.Length));
+                    if (i < samples.Count - 1)
                     {
-                        finish = i - 1;
+                        start = i;
+                        startIndex = samples[i].Index;
                     }
                     else
                     {
-                        var nextSampleValue = details.GetValue(i + 1);
-                        var nextAbs = Math.Abs(nextSampleValue - mode);
-                        if (nextAbs <= nextSampleValue * threshold)
-                        {
-                            finish = i - 1;
-                        }
+                        disturbances.Add(new Disturbance(samples[i].Index, samples[i].Index, Details.Length, Signal.Samples.Length));
                     }
                 }
-                else if (abs <= sampleValue * threshold && start == null)
-                {
-                    existsZero = true;
-                }
-                if (start != null && finish != null)
-                {
-                    var length = finish.Value - start.Value + 1;
-                    var signalStart = start.Value * Math.Pow(2, Index + 1) + 1;
-                    var signalFinish = finish.Value * Math.Pow(2, Index + 1) + (Math.Pow(2, Index+1) - 2);
-                    var signalLength = signalFinish - signalStart + 1;
-                    disturbances.Add(new Disturbance
-                                         {
-                                             Start = start.Value,
-                                             Finish = finish.Value,
-                                             Length = length,
-
-                                             SignalStart = (int) signalStart,
-                                             SignalFinish = (int) signalFinish,
-                                             SignalLength = (int) signalLength
-                                         });
-                    start = null;
-                    finish = null;
-                }
+            }
+            if (disturbances.Count > 1 && disturbances[disturbances.Count - 1].Finish - disturbances[disturbances.Count - 2].Finish < minimunDistance)
+            {
+                disturbances[disturbances.Count - 2].Finish = disturbances[disturbances.Count - 1].Finish;
+                disturbances.RemoveAt(disturbances.Count - 1);
             }
             return disturbances;
+        }
+
+        private class Sample
+        {
+            public int Index { get; set; }
+            public double Value { get; set; }
+            public double NormalValue { get; set; }
         }
     }
 }

@@ -23,7 +23,7 @@ namespace WaveletStudio.WaveLib
             
             var approximation = signal.Samples.C;
             var details = signal.Samples.C;
-            
+            var realLength = signal.Samples.Length;
             for (var i = 1; i <= level; i++)
             {
                 var extensionSize = motherWavelet.Filters.DecompositionLowPassFilter.Length - 1;
@@ -37,6 +37,7 @@ namespace WaveletStudio.WaveLib
                 details = Convolve(details, motherWavelet.Filters.DecompositionHighPassFilter);
                 details = DownSample(details);
 
+                realLength = realLength / 2;
 
                 levels.Add(new DecompositionLevel
                                {
