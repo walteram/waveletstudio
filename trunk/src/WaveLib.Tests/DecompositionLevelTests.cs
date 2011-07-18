@@ -10,7 +10,7 @@ namespace WaveletStudio.WaveLib.Tests
         [TestMethod]
         public void TestGetDisturbances()
         {
-            var signal = new Signal(1, 1, 1, 1, 1, 1, 1, 0.5, 2, 1.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 2, 1, 1, 1, 4, 5, 4, 2, 1, 1);
+            var signal = new Signal(1, 1, 1, 1, 1, 1, 1, 0.5, 2, 1.5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 2, 1, 1, 1, 4, 5, 4, 5, 1);
             var levels = Dwt.ExecuteDwt(signal, CommonMotherWavelets.GetWaveletFromName("haar"), 1);
             var disturbances = levels[0].GetDisturbances(0.01, 2);
 

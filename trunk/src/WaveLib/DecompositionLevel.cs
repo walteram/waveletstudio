@@ -61,9 +61,14 @@ namespace WaveletStudio.WaveLib
                 Start = start;
                 Finish = finish;
                 
-                SignalStart = (int)WaveLibMath.Scale(start, 0, detailsLength, 0, signalLength);
-                SignalFinish = (int)WaveLibMath.Scale(finish, 0, detailsLength, 0, signalLength);
-                
+                SignalStart = (int)WaveLibMath.Scale(start, 0, detailsLength, 0, signalLength) + 1;
+                SignalFinish = (int)WaveLibMath.Scale(finish, 0, detailsLength, 0, signalLength) + 1;
+
+                if (start % 2 != 0 && finish % 2 != 0)
+                {
+                    SignalFinish--;
+                }
+
             }
         }
 
@@ -124,7 +129,7 @@ namespace WaveletStudio.WaveLib
             }
             if (disturbances.Count > 1 && disturbances[disturbances.Count - 1].Finish - disturbances[disturbances.Count - 2].Finish < minimunDistance)
             {
-                disturbances[disturbances.Count - 2].Finish = disturbances[disturbances.Count - 1].Finish;
+                disturbances[disturbances.Count - 2] = new Disturbance(disturbances[disturbances.Count - 2].Start, disturbances[disturbances.Count - 1].Finish, Details.Length, Signal.Samples.Length);
                 disturbances.RemoveAt(disturbances.Count - 1);
             }
             return disturbances;
