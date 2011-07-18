@@ -36,10 +36,24 @@ namespace WaveletStudio.WaveLib
         /// </summary>
         public class Disturbance
         {
+            /// <summary>
+            /// Start of the disturbance in the details level (index of the sample)
+            /// </summary>
             public int Start;
+
+            /// <summary>
+            /// Finish of the disturbance in the details level (index of the sample)
+            /// </summary>
             public int Finish;
 
+            /// <summary>
+            /// Start of the disturbance in the signal (index of the sample)
+            /// </summary>
             public int SignalStart;
+
+            /// <summary>
+            /// Finish of the disturbance in the signal (index of the sample)
+            /// </summary>
             public int SignalFinish;
 
             internal Disturbance(int start, int finish, int detailsLength, int signalLength)
@@ -54,7 +68,7 @@ namespace WaveletStudio.WaveLib
         }
 
         /// <summary>
-        /// Gets the disturbances in the signal based on the normal density distribution of the details coefficients
+        /// Estimates the disturbances in the signal based on the normal distribution of the details coefficients
         /// </summary>
         /// <param name="threshold">The higher the threshold, the higher the tolerance in flutuations on energy of the details</param>
         /// <param name="minimunDistance">Minimun distance between disturbances to consider a new one</param>
