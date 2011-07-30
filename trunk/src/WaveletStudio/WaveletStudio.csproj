@@ -34,7 +34,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ILNumerics">
+    <Reference Include="ILNumerics, Version=1.4.1.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\res\libs\ILNumerics\ILNumerics.dll</HintPath>
     </Reference>
     <Reference Include="System" />
