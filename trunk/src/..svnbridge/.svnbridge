@@ -7,4 +7,11 @@
 _ReSharper.WaveletStudio
 TestResults
 *.docstates
+</Value></Property><Property><Name>bugtraq:number</Name><Value>true</Value></Property><Property><Name>svn:ignore</Name><Value>*.user
+*.suo
+*.vsmdi
+_ReSharper.WaveletStudio
+TestResults
+*.docstates
+*.sdf
 </Value></Property></Properties></ItemProperties>
