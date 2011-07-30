@@ -4,4 +4,6 @@ bin
 obj
 Labs.5.1.ReSharper.user
 *.suo
+TestResults
+*.sdf
 </Value></Property></Properties></ItemProperties>
