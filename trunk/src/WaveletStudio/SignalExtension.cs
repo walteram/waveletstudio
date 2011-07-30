@@ -1,7 +1,7 @@
 ﻿using ILNumerics;
 using ILNumerics.BuiltInFunctions;
 
-namespace WaveletStudio.WaveLib
+namespace WaveletStudio
 {
     /// <summary>
     /// Signal extension methods

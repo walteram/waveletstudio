@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using ILNumerics;
 
-namespace WaveletStudio.WaveLib
+namespace WaveletStudio
 {
     /// <summary>
     /// Used as the return of a DWT operation and as the input of a IDWT operation
@@ -32,7 +30,7 @@ namespace WaveletStudio.WaveLib
         public Signal Signal { get; set; }
 
         /// <summary>
-        /// TODO: In progress.
+        /// Single disturbance identified in a signal
         /// </summary>
         public class Disturbance
         {
@@ -61,8 +59,8 @@ namespace WaveletStudio.WaveLib
                 Start = start;
                 Finish = finish;
                 
-                SignalStart = (int)WaveLibMath.Scale(start, 0, detailsLength, 0, signalLength) + 1;
-                SignalFinish = (int)WaveLibMath.Scale(finish, 0, detailsLength, 0, signalLength) + 1;
+                SignalStart = (int)WaveMath.Scale(start, 0, detailsLength, 0, signalLength) + 1;
+                SignalFinish = (int)WaveMath.Scale(finish, 0, detailsLength, 0, signalLength) + 1;
 
                 if (start % 2 != 0 && finish % 2 != 0)
                 {
@@ -83,26 +81,31 @@ namespace WaveletStudio.WaveLib
             threshold = 1 - threshold;
             var disturbances = new List<Disturbance>();
             var mean = ILNumerics.BuiltInFunctions.ILMath.mean(Details).GetValue(0);
-            var deviation = WaveLibMath.StandardDeviation(Details.Values.ToArray());
-            var samples = new List<Sample>();
+            var deviation = WaveMath.StandardDeviation(Details.Values.ToArray());
+            var samples = new List<KeyValuePair<int, double>>();
             var min = double.MaxValue;
             var max = double.MinValue;
             for (var i = 0; i < Details.Length; i++)
             {
                 var sample = Details.GetValue(i);
-                var norm = WaveLibMath.NormalDistribution(sample, mean, deviation);
+                var norm = WaveMath.NormalDistribution(sample, mean, deviation);
+                if (double.IsNaN(norm))
+                    continue;
                 if (norm < min)                
                     min = norm;                
                 if (norm > max)                
                     max = norm;                
-                samples.Add(new Sample { Index = i, Value = sample, NormalValue = norm });
+                samples.Add(new KeyValuePair<int, double>(i, norm));
             }
             //ajusta a escala da distribuição normal para 0..1, removendo os valores maiores que threshold
             for (var i = samples.Count - 1; i >= 0; i--)
             {
-                samples[i].NormalValue = WaveLibMath.Scale(samples[i].NormalValue, min, max, 0, 1);
-                if (samples[i].NormalValue > threshold)
-                    samples.RemoveAt(i);   
+                var scaledNorm = WaveMath.Scale(samples[i].Value, min, max, 0, 1);
+                samples[i] = new KeyValuePair<int, double>(i, scaledNorm);
+                if (scaledNorm > threshold)
+                    samples.RemoveAt(i);
+                else
+                    samples[i] = new KeyValuePair<int, double>(i, scaledNorm);
             }
             int? start = null;
             var startIndex = 0;
@@ -111,35 +114,28 @@ namespace WaveletStudio.WaveLib
                 if (start == null)
                 {
                     start = i;
-                    startIndex = samples[i].Index;
+                    startIndex = samples[i].Key;
                 }
-                else if (samples[i].Index - samples[i - 1].Index >= minimunDistance || i == samples.Count - 1)
+                else if (samples[i].Key - samples[i - 1].Key >= minimunDistance || i == samples.Count - 1)
                 {
-                    disturbances.Add(new Disturbance(startIndex, samples[i - 1].Index, Details.Length, Signal.Samples.Length));
+                    disturbances.Add(new Disturbance(startIndex, samples[i - 1].Key, Details.Length, Signal.Samples.Length));
                     if (i < samples.Count - 1)
                     {
                         start = i;
-                        startIndex = samples[i].Index;
+                        startIndex = samples[i].Key;
                     }
                     else
                     {
-                        disturbances.Add(new Disturbance(samples[i].Index, samples[i].Index, Details.Length, Signal.Samples.Length));
+                        disturbances.Add(new Disturbance(samples[i].Key, samples[i].Key, Details.Length, Signal.Samples.Length));
                     }
                 }
             }
-            if (disturbances.Count > 1 && disturbances[disturbances.Count - 1].Finish - disturbances[disturbances.Count - 2].Finish < minimunDistance)
+            if (disturbances.Count > 1 && (disturbances[disturbances.Count - 1].Finish - disturbances[disturbances.Count - 2].Finish) < minimunDistance)
             {
                 disturbances[disturbances.Count - 2] = new Disturbance(disturbances[disturbances.Count - 2].Start, disturbances[disturbances.Count - 1].Finish, Details.Length, Signal.Samples.Length);
                 disturbances.RemoveAt(disturbances.Count - 1);
             }
             return disturbances;
-        }
-
-        private class Sample
-        {
-            public int Index { get; set; }
-            public double Value { get; set; }
-            public double NormalValue { get; set; }
         }
     }
 }

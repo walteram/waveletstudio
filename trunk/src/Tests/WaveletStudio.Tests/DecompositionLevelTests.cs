@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace WaveletStudio.WaveLib.Tests
+namespace WaveletStudio.Tests
 {
     [TestClass]
     public class DecompositionLevelTests
@@ -15,6 +15,16 @@ namespace WaveletStudio.WaveLib.Tests
             var disturbances = levels[0].GetDisturbances(0.01, 2);
 
             Assert.AreEqual(3, disturbances.Count);
+        }
+
+        [TestMethod]
+        public void TestGetNoDisturbances()
+        {
+            var signal = new Signal(0, 0, 0, 0, 0, 0, 0, 0);
+            var levels = Dwt.ExecuteDwt(signal, CommonMotherWavelets.GetWaveletFromName("db4"), 1);
+            var disturbances = levels[0].GetDisturbances(0.01, 2);
+
+            Assert.AreEqual(0, disturbances.Count);
         }
 
         [TestMethod]
