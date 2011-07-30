@@ -2,12 +2,12 @@
 using System.Threading.Tasks;
 using ILNumerics;
 
-namespace WaveletStudio.WaveLib
+namespace WaveletStudio
 {
     /// <summary>
     /// Common math and statistical operations
     /// </summary>
-    public static class WaveLibMath
+    public static class WaveMath
     {
         /// <summary>
         /// Gets the accumulated energy of a signal
@@ -39,7 +39,7 @@ namespace WaveletStudio.WaveLib
         }
 
         /// <summary>
-        /// Calculates the mode of an array, using the Paralleling
+        /// Calculates the mode of an array
         /// </summary>
         /// <param name="samples"></param>
         /// <returns></returns>
@@ -52,23 +52,23 @@ namespace WaveletStudio.WaveLib
             var sortedSamples = ILNumerics.BuiltInFunctions.ILMath.unique(samples);
             var maxFreq = sortedSamples.GetValue(0);
             var maxOccurrences = 0;
-            Parallel.For(0, sortedSamples.Length, i =>
+            for (var i = 0; i < sortedSamples.Length; i++)
             {
                 var occurrences = 0;
-                Parallel.For(0, samples.Length, j =>
+                for (var j = 0; j < samples.Length; j++)
                 {
                     if (samples.GetValue(j) == sortedSamples.GetValue(i))
                     {
                         occurrences++;
                     }
-                });
+                }                
                 if (occurrences <= maxOccurrences)
                 {
-                    return;
+                    continue;
                 }
                 maxOccurrences = occurrences;
                 maxFreq = sortedSamples.GetValue(i);
-            });
+            }
             return (maxFreq);
         }
 
@@ -95,8 +95,12 @@ namespace WaveletStudio.WaveLib
         /// <returns></returns>
         public static double[] NormalDistribution(double[] x, double mean, double deviation)
         {
-            Parallel.For(0, x.Length, i => x[i] = NormalDistribution(x[i], mean, deviation));
-            return x;
+            var y = new double[x.Length];
+            for (var i = 0; i < x.Length; i++)
+            {
+                y[i] = NormalDistribution(x[i], mean, deviation);
+            }
+            return y;
         }
 
         /// <summary>
@@ -132,11 +136,11 @@ namespace WaveletStudio.WaveLib
         {
             var sum = 0d;
             var sumOfSqrs = 0d;
-            Parallel.For(0, x.Length, i =>
-                                          {
-                                              sum += x[i];
-                                              sumOfSqrs += Math.Pow(x[i], 2);
-                                          });
+            foreach (var sample in x)
+            {
+                sum += sample;
+                sumOfSqrs += Math.Pow(sample, 2);
+            }            
             var topSum = (x.Length * sumOfSqrs) - (Math.Pow(sum, 2));
             return Math.Sqrt(topSum / (x.Length * (x.Length - 1)));
         }

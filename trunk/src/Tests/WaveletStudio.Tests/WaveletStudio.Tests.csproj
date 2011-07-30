@@ -3,15 +3,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>
+    </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{003D0672-355F-416B-9E88-DC95F0762329}</ProjectGuid>
+    <ProjectGuid>{A182FEB7-2FB2-448F-A62C-751F73B8E63B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WaveletStudio.WaveLib</RootNamespace>
-    <AssemblyName>WaveletStudio.WaveLib</AssemblyName>
+    <RootNamespace>WaveletStudio.Tests</RootNamespace>
+    <AssemblyName>WaveletStudio.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,40 +25,45 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>none</DebugType>
+    <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\WaveletStudio.WaveLib.xml</DocumentationFile>
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ILNumerics">
       <HintPath>..\..\res\libs\ILNumerics\ILNumerics.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonMotherWavelets.cs" />
-    <Compile Include="DecompositionLevel.cs" />
-    <Compile Include="WaveLibMath.cs" />
-    <Compile Include="Signal.cs" />
-    <Compile Include="MotherWavelet.cs" />
-    <Compile Include="Dwt.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SignalExtension.cs" />
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="CommonMotherWaveletsTests.cs" />
+    <Compile Include="DecompositionLevelTests.cs" />
+    <Compile Include="DwtTests.cs" />
+    <Compile Include="MotherWaveletTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignalExtensionTests.cs" />
+    <Compile Include="SignalTests.cs" />
+    <Compile Include="WaveMathTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WaveletStudio\WaveletStudio.csproj">
+      <Project>{003D0672-355F-416B-9E88-DC95F0762329}</Project>
+      <Name>WaveletStudio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

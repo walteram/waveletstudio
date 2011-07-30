@@ -1,6 +1,6 @@
 ﻿using ILNumerics;
 
-namespace WaveletStudio.WaveLib
+namespace WaveletStudio
 {
     /// <summary>
     /// 1-D Signal

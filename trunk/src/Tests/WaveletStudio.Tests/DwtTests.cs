@@ -3,7 +3,7 @@ using System.Linq;
 using ILNumerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace WaveletStudio.WaveLib.Tests
+namespace WaveletStudio.Tests
 {
     [TestClass]
     public class DwtTests

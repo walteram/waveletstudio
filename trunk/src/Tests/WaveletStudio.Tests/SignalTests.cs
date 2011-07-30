@@ -1,7 +1,7 @@
 ﻿using ILNumerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace WaveletStudio.WaveLib.Tests
+namespace WaveletStudio.Tests
 {
     /// <summary>
     /// Summary description for UnitTest1
