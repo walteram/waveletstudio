@@ -46,12 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonMotherWavelets.cs" />
-    <Compile Include="DecompositionLevel.cs" />
+    <Compile Include="Wavelet\CommonMotherWavelets.cs" />
+    <Compile Include="Wavelet\DecompositionLevel.cs" />
+    <Compile Include="SignalGeneration\CommonSignalBase.cs" />
+    <Compile Include="SignalGeneration\Sawtooth.cs" />
+    <Compile Include="SignalGeneration\Sine.cs" />
+    <Compile Include="SignalGeneration\Square.cs" />
+    <Compile Include="SignalGeneration\Triangle.cs" />
     <Compile Include="WaveMath.cs" />
     <Compile Include="Signal.cs" />
-    <Compile Include="MotherWavelet.cs" />
-    <Compile Include="Dwt.cs" />
+    <Compile Include="Wavelet\MotherWavelet.cs" />
+    <Compile Include="Wavelet\Dwt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalExtension.cs" />
   </ItemGroup>

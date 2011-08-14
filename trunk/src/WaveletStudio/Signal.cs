@@ -1,4 +1,5 @@
-﻿using ILNumerics;
+﻿using System.Text;
+using ILNumerics;
 
 namespace WaveletStudio
 {
@@ -13,9 +14,19 @@ namespace WaveletStudio
         public ILArray<double> Samples { get; set; }
 
         /// <summary>
-        /// Quantity of samples per second. It will be used in the future
+        /// Sampling Rate
         /// </summary>
-        public int SamplesPerSecond { get; set; }
+        public int SamplingRate { get; set; }
+
+        /// <summary>
+        /// Start of the signal in the time
+        /// </summary>
+        public double Start { get; set; }
+
+        /// <summary>
+        /// Finish od the signal in the time
+        /// </summary>
+        public double Finish { get; set; }
 
         /// <summary>
         /// Default constructor
@@ -23,7 +34,7 @@ namespace WaveletStudio
         public Signal()
         {
             Samples = new ILArray<double>();
-            SamplesPerSecond = 1;
+            SamplingRate = 1;
         }
 
         /// <summary>
@@ -33,7 +44,7 @@ namespace WaveletStudio
         public Signal(params double[] samples)
         {
             Samples = new ILArray<double>(samples);
-            SamplesPerSecond = 1;
+            SamplingRate = 1;
         }
 
         /// <summary>
@@ -44,7 +55,7 @@ namespace WaveletStudio
         public Signal(double[] samples, int samplesPerSecond)
         {
             Samples = new ILArray<double>(samples);
-            SamplesPerSecond = samplesPerSecond;
+            SamplingRate = samplesPerSecond;
         }
 
         /// <summary>
@@ -55,7 +66,7 @@ namespace WaveletStudio
         public Signal(ILArray<double> samples, int samplesPerSecond)
         {
             Samples = samples;
-            SamplesPerSecond = samplesPerSecond;
+            SamplingRate = samplesPerSecond;
         }
 
         /// <summary>
@@ -89,6 +100,36 @@ namespace WaveletStudio
         private bool IsPowerOf2(int x)
         {
             return (x != 0) && ((x & (x - 1)) == 0);
-        }        
+        }
+
+        /// <summary>
+        /// Gets all the samples of the signal separated with a space
+        /// </summary>
+        /// <returns></returns>
+        public new string ToString()
+        {
+            return ToString(3);
+        }
+
+        /// <summary>
+        /// Gets all the samples of the signal separated with a space
+        /// </summary>
+        /// <param name="precision"></param>
+        /// <returns></returns>
+        public string ToString(int precision)
+        {
+            var format = "{0:0.";
+            for (var i = 0; i < precision; i++)
+            {
+                format += "0";
+            }
+            format += "} ";
+            var str = new StringBuilder();
+            for (var i = 0; i < Samples.Length; i++)
+            {
+                str.Append(string.Format(System.Globalization.CultureInfo.InvariantCulture, format, Samples.GetValue(i)));
+            }
+            return str.ToString().Trim();
+        }
     }
 }

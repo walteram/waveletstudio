@@ -2,7 +2,7 @@
 using ILNumerics;
 using ILNumerics.BuiltInFunctions;
 
-namespace WaveletStudio
+namespace WaveletStudio.Wavelet
 {
     /// <summary>
     /// Discreet Wavelet Transform and its inverse

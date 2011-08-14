@@ -2,8 +2,9 @@
 using System.Linq;
 using ILNumerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using WaveletStudio.Wavelet;
 
-namespace WaveletStudio.Tests
+namespace WaveletStudio.Tests.Wavelet
 {
     [TestClass]
     public class DwtTests
