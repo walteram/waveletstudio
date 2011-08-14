@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WaveletStudio
+namespace WaveletStudio.Wavelet
 {
     /// <summary>
     /// Mother wavelet base class

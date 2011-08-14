@@ -2,7 +2,7 @@
 using System.Linq;
 using ILNumerics;
 
-namespace WaveletStudio
+namespace WaveletStudio.Wavelet
 {
     /// <summary>
     /// Used as the return of a DWT operation and as the input of a IDWT operation

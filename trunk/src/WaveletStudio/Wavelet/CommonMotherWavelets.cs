@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace WaveletStudio
+namespace WaveletStudio.Wavelet
 {
     /// <summary>
     /// Provides common mother wavelets, like Daubechies, Haar, etc.
