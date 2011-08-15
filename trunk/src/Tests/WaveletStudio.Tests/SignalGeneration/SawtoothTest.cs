@@ -18,7 +18,7 @@ namespace WaveletStudio.Tests.SignalGeneration
                 Start = 0,
                 Finish = 1,
                 SamplingRate = 120,
-                EndingOption = CommonSignalBase.EndingOptionEnum.ExcludeLast
+                IgnoreLastSample = true
             };
             var output = sampler.ExecuteSampler();
             var outputText = output.ToString();

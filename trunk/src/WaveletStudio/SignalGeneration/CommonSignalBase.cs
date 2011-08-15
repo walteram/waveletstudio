@@ -6,7 +6,7 @@ namespace WaveletStudio.SignalGeneration
     /// Common signal base
     /// </summary>
     public abstract class CommonSignalBase
-    {
+    {        
         /// <summary>
         /// Name of the signal
         /// </summary>
@@ -45,7 +45,7 @@ namespace WaveletStudio.SignalGeneration
         /// <summary>
         /// Defines it the last sample will be included in signal
         /// </summary>
-        public EndingOptionEnum EndingOption = EndingOptionEnum.IncludeLast;
+        public bool IgnoreLastSample;
 
         /// <summary>
         /// Executes the sampler
@@ -102,26 +102,28 @@ namespace WaveletStudio.SignalGeneration
         protected double GetFinish()
         {
             var finish = Finish;
-            if (EndingOption == EndingOptionEnum.ExcludeLast)
+            if (IgnoreLastSample)
             {
                 finish = finish - SamplingInterval;
             }
             return finish;
-        }        
+        }
 
-        /// <summary>
-        /// Defines how the last sample will be processed in the signal
-        /// </summary>
-        public enum EndingOptionEnum
+        protected CommonSignalBase()
         {
-            /// <summary>
-            /// Includes the last sample
-            /// </summary>
-            IncludeLast,
-            /// <summary>
-            /// Ignores the last sample
-            /// </summary>
-            ExcludeLast
+            Amplitude = 1;
+            Frequency = 60;
+            Phase = 0;
+            Offset = 0;
+            Start = 0;
+            Finish = 1;
+            SamplingRate = 44100;
+            IgnoreLastSample = false;
+        }
+
+        public CommonSignalBase Clone()
+        {
+            return (CommonSignalBase) MemberwiseClone();
         }
     }
 }

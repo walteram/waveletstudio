@@ -1,11 +1,13 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using ILNumerics;
 
 namespace WaveletStudio
 {
     /// <summary>
     /// 1-D Signal
-    /// </summary>
+    /// </summary>    
     public class Signal
     {
         /// <summary>
@@ -27,6 +29,11 @@ namespace WaveletStudio
         /// Finish od the signal in the time
         /// </summary>
         public double Finish { get; set; }
+
+        /// <summary>
+        /// Interval in time between samples
+        /// </summary>
+        public double SamplingInterval { get; set; }
 
         /// <summary>
         /// Default constructor
@@ -130,6 +137,38 @@ namespace WaveletStudio
                 str.Append(string.Format(System.Globalization.CultureInfo.InvariantCulture, format, Samples.GetValue(i)));
             }
             return str.ToString().Trim();
+        }
+
+        /// <summary>
+        /// Get all the samples in a key value array pair
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<double[]> GetSamplesPair()
+        {
+            if (Samples.IsEmpty)
+            {
+                return new List<double[]>();
+            }
+            var samples = new List<double[]>();
+            var x = Start;
+            var interval = SamplingInterval;
+            if (interval == 0)
+            {
+                interval = 1;
+            }
+            for (var i = 0; i < Samples.Length; i++)
+            {
+                samples.Add(new []{Samples.GetValue(i), x});
+                x = Convert.ToDouble(Convert.ToDecimal(x) + Convert.ToDecimal(interval));
+            }
+            return samples;
+        }
+
+        public Signal Clone()
+        {
+            var newSignal = (Signal) MemberwiseClone();
+            newSignal.Samples = (ILArray<double>) Samples.Clone();
+            return newSignal;
         }
     }
 }
