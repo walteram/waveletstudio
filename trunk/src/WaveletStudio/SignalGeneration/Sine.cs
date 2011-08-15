@@ -37,7 +37,8 @@ namespace WaveletStudio.SignalGeneration
                         {
                             SamplingRate = SamplingRate,
                             Start = Start,
-                            Finish = Finish
+                            Finish = Finish,
+                            SamplingInterval = SamplingInterval
                         };            
         }
     }

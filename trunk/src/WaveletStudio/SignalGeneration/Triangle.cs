@@ -18,7 +18,7 @@ namespace WaveletStudio.SignalGeneration
         /// </summary>
         public override string Name
         {
-            get { return "Square"; }
+            get { return "Triangle"; }
         }
 
         /// <summary>
@@ -39,7 +39,8 @@ namespace WaveletStudio.SignalGeneration
             {
                 SamplingRate = SamplingRate,
                 Start = Start,
-                Finish = Finish
+                Finish = Finish,
+                SamplingInterval = SamplingInterval
             };
         }
     }
