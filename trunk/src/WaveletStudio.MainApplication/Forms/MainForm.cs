@@ -9,6 +9,7 @@ using Qios.DevSuite.Components.Ribbon;
 using WaveletStudio.MainApplication.Properties;
 using WaveletStudio.ProcessingSteps;
 using WaveletStudio.SignalGeneration;
+using ZedGraph;
 
 namespace WaveletStudio.MainApplication.Forms
 {
@@ -18,9 +19,8 @@ namespace WaveletStudio.MainApplication.Forms
         public MainForm()
         {
             InitializeComponent();
-            zedGraphControl1.GraphPane.IsFontsScaled = false;
-            zedGraphControl2.GraphPane.IsFontsScaled = false;
-            
+            OriginalSignalGraph.GraphPane.IsFontsScaled = false;
+            CreatedSignalGraph.GraphPane.IsFontsScaled = false;
         }
 
         private void MainFormLoad(object sender, System.EventArgs e)
@@ -119,24 +119,58 @@ namespace WaveletStudio.MainApplication.Forms
                 compositeItem.Checked = compositeItem.ItemName == templateName;
             }
 
-            var step = (GenerateSignalStep)ProcessingSteps.FirstOrDefault(it => it.Key == GenerateSignalStep.StepKey);
+            var step = ProcessingSteps.GetStep(GenerateSignalStep.StepKey) as GenerateSignalStep;
             if (step == null)
             {
                 ProcessingSteps.RemoveAll(it => it.ProcessingType == ProcessingStepBase.ProcessingTypeEnum.CreateSignal);
                 ProcessingSteps.Insert(0, step = new GenerateSignalStep());
             }
             step.Template = _signalGenerationForm.Template;
+            ProcessingSteps.Process();
+            UpdateGraph(step.Signal, OriginalSignalGraph);
         }
-        
+
         private void SignalTemplatePanelCaptionShowDialogItemActivated(object sender, QCompositeEventArgs e)
         {
             ShowSignalGenerationForm(null);
         }
 
+        private void UpdateGraph(Signal signal, ZedGraphControl graph)
+        {
+            var title = "";
+            if (graph == OriginalSignalGraph)
+                title = "Original Signal";
+            else if (graph == OriginalSignalGraph)
+                title = "Output";
+
+            var samples = signal.GetSamplesPair();
+            var pane = graph.GraphPane;
+
+            if (pane.CurveList.Count > 0)
+                pane.CurveList.RemoveAt(0);
+            var yAxys = new PointPairList();
+            yAxys.AddRange(samples.Select(it => new PointPair(it[1], it[0])));
+            pane.AddCurve("", yAxys, Color.Red, SymbolType.None);
+            pane.Legend.IsVisible = false;
+            pane.Title.IsVisible = title != "";
+            pane.Title.Text = title;
+            pane.Title.FontSpec = new FontSpec("Arial", 11, Color.Black, true, false, false);
+            pane.XAxis.Title.IsVisible = false;
+            pane.YAxis.Title.IsVisible = false;
+            if (!pane.IsZoomed && samples != null)
+            {
+                pane.XAxis.Scale.Min = samples.ElementAt(0)[1];
+                pane.XAxis.Scale.Max = samples.ElementAt(samples.Count() - 1)[1];
+            }
+            graph.AxisChange();
+            graph.Invalidate();
+            graph.Refresh();
+        }
+
         private void Button1Click(object sender, EventArgs e)
         {
             //zedGraphControl1.Font = new Font("Arial", 1);
-            zedGraphControl1.GraphPane.IsFontsScaled = false;
+            
             //zedGraphControl1.GraphPane.Title.FontSpec = new FontSpec("Arial", 5, Color.Black, false,false, false, Color.Transparent, Brushes.Transparent, FillType.None);
             return;
 

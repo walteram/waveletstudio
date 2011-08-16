@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace WaveletStudio.ProcessingSteps
 {
@@ -17,6 +18,11 @@ namespace WaveletStudio.ProcessingSteps
                 }
             }
             return null;
+        }
+
+        public ProcessingStepBase GetStep(int key)
+        {
+            return this.FirstOrDefault(it => it.Key == key);
         }
     }
 }

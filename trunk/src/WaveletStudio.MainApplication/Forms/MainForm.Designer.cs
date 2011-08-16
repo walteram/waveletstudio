@@ -81,10 +81,10 @@
             this.qCompositeText11 = new Qios.DevSuite.Components.QCompositeText();
             this.qCompositeText12 = new Qios.DevSuite.Components.QCompositeText();
             this.SplitContainer = new System.Windows.Forms.SplitContainer();
-            this.zedGraphControl1 = new ZedGraph.ZedGraphControl();
+            this.OriginalSignalGraph = new ZedGraph.ZedGraphControl();
             this.ShowOriginalSignalCheckBox = new System.Windows.Forms.CheckBox();
             this.ShowCreatedSignal = new System.Windows.Forms.CheckBox();
-            this.zedGraphControl2 = new ZedGraph.ZedGraphControl();
+            this.CreatedSignalGraph = new ZedGraph.ZedGraphControl();
             ((System.ComponentModel.ISupportInitialize)(this.FormCaption)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SignalPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
@@ -180,8 +180,8 @@
             // 
             this.Ribbon.ActiveTabPage = this.SignalPage;
             this.Ribbon.Caption = this.FormCaption;
-            this.Ribbon.Controls.Add(this.SignalPage);
             this.Ribbon.Controls.Add(this.ScalarButton);
+            this.Ribbon.Controls.Add(this.SignalPage);
             this.Ribbon.Cursor = System.Windows.Forms.Cursors.Default;
             this.Ribbon.Dock = System.Windows.Forms.DockStyle.Top;
             this.Ribbon.Location = new System.Drawing.Point(0, 28);
@@ -194,9 +194,9 @@
             // 
             // ScalarButton
             // 
-            this.ScalarButton.Location = new System.Drawing.Point(412, 3);
+            this.ScalarButton.Location = new System.Drawing.Point(829, 98);
             this.ScalarButton.Name = "ScalarButton";
-            this.ScalarButton.Size = new System.Drawing.Size(75, 23);
+            this.ScalarButton.Size = new System.Drawing.Size(23, 20);
             this.ScalarButton.TabIndex = 26;
             this.ScalarButton.Text = "button1";
             this.ScalarButton.UseVisualStyleBackColor = true;
@@ -1394,41 +1394,42 @@
             // 
             // SplitContainer
             // 
-            this.SplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.SplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SplitContainer.Location = new System.Drawing.Point(2, 172);
             this.SplitContainer.Name = "SplitContainer";
+            this.SplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // SplitContainer.Panel1
             // 
-            this.SplitContainer.Panel1.Controls.Add(this.zedGraphControl2);
+            this.SplitContainer.Panel1.Controls.Add(this.OriginalSignalGraph);
             this.SplitContainer.Panel1MinSize = 50;
             // 
             // SplitContainer.Panel2
             // 
-            this.SplitContainer.Panel2.Controls.Add(this.zedGraphControl1);
+            this.SplitContainer.Panel2.Controls.Add(this.CreatedSignalGraph);
             this.SplitContainer.Panel2MinSize = 50;
             this.SplitContainer.Size = new System.Drawing.Size(886, 585);
-            this.SplitContainer.SplitterDistance = 434;
+            this.SplitContainer.SplitterDistance = 300;
             this.SplitContainer.TabIndex = 46;
             // 
-            // zedGraphControl1
+            // OriginalSignalGraph
             // 
-            this.zedGraphControl1.AutoSize = true;
-            this.zedGraphControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.zedGraphControl1.IsAntiAlias = true;
-            this.zedGraphControl1.Location = new System.Drawing.Point(0, 0);
-            this.zedGraphControl1.Name = "zedGraphControl1";
-            this.zedGraphControl1.ScrollGrace = 0D;
-            this.zedGraphControl1.ScrollMaxX = 0D;
-            this.zedGraphControl1.ScrollMaxY = 0D;
-            this.zedGraphControl1.ScrollMaxY2 = 0D;
-            this.zedGraphControl1.ScrollMinX = 0D;
-            this.zedGraphControl1.ScrollMinY = 0D;
-            this.zedGraphControl1.ScrollMinY2 = 0D;
-            this.zedGraphControl1.Size = new System.Drawing.Size(448, 585);
-            this.zedGraphControl1.TabIndex = 46;
+            this.OriginalSignalGraph.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OriginalSignalGraph.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OriginalSignalGraph.Location = new System.Drawing.Point(0, 0);
+            this.OriginalSignalGraph.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OriginalSignalGraph.Name = "OriginalSignalGraph";
+            this.OriginalSignalGraph.ScrollGrace = 0D;
+            this.OriginalSignalGraph.ScrollMaxX = 0D;
+            this.OriginalSignalGraph.ScrollMaxY = 0D;
+            this.OriginalSignalGraph.ScrollMaxY2 = 0D;
+            this.OriginalSignalGraph.ScrollMinX = 0D;
+            this.OriginalSignalGraph.ScrollMinY = 0D;
+            this.OriginalSignalGraph.ScrollMinY2 = 0D;
+            this.OriginalSignalGraph.Size = new System.Drawing.Size(886, 300);
+            this.OriginalSignalGraph.TabIndex = 47;
             // 
             // ShowOriginalSignalCheckBox
             // 
@@ -1458,21 +1459,22 @@
             this.ShowCreatedSignal.UseVisualStyleBackColor = true;
             this.ShowCreatedSignal.CheckedChanged += new System.EventHandler(this.ShowOriginalSignalCheckBoxCheckedChanged);
             // 
-            // zedGraphControl2
+            // CreatedSignalGraph
             // 
-            this.zedGraphControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.zedGraphControl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.zedGraphControl2.Location = new System.Drawing.Point(0, 0);
-            this.zedGraphControl2.Name = "zedGraphControl2";
-            this.zedGraphControl2.ScrollGrace = 0D;
-            this.zedGraphControl2.ScrollMaxX = 0D;
-            this.zedGraphControl2.ScrollMaxY = 0D;
-            this.zedGraphControl2.ScrollMaxY2 = 0D;
-            this.zedGraphControl2.ScrollMinX = 0D;
-            this.zedGraphControl2.ScrollMinY = 0D;
-            this.zedGraphControl2.ScrollMinY2 = 0D;
-            this.zedGraphControl2.Size = new System.Drawing.Size(434, 585);
-            this.zedGraphControl2.TabIndex = 47;
+            this.CreatedSignalGraph.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CreatedSignalGraph.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatedSignalGraph.Location = new System.Drawing.Point(0, 0);
+            this.CreatedSignalGraph.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CreatedSignalGraph.Name = "CreatedSignalGraph";
+            this.CreatedSignalGraph.ScrollGrace = 0D;
+            this.CreatedSignalGraph.ScrollMaxX = 0D;
+            this.CreatedSignalGraph.ScrollMaxY = 0D;
+            this.CreatedSignalGraph.ScrollMaxY2 = 0D;
+            this.CreatedSignalGraph.ScrollMinX = 0D;
+            this.CreatedSignalGraph.ScrollMinY = 0D;
+            this.CreatedSignalGraph.ScrollMinY2 = 0D;
+            this.CreatedSignalGraph.Size = new System.Drawing.Size(886, 281);
+            this.CreatedSignalGraph.TabIndex = 48;
             // 
             // MainForm
             // 
@@ -1497,7 +1499,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.qCompositeControl1)).EndInit();
             this.SplitContainer.Panel1.ResumeLayout(false);
             this.SplitContainer.Panel2.ResumeLayout(false);
-            this.SplitContainer.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer)).EndInit();
             this.SplitContainer.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -1559,10 +1560,10 @@
         private Qios.DevSuite.Components.QCompositeText qCompositeText11;
         private Qios.DevSuite.Components.QCompositeText qCompositeText12;
         private System.Windows.Forms.SplitContainer SplitContainer;
-        private ZedGraph.ZedGraphControl zedGraphControl1;
         private System.Windows.Forms.CheckBox ShowOriginalSignalCheckBox;
         private System.Windows.Forms.CheckBox ShowCreatedSignal;
-        private ZedGraph.ZedGraphControl zedGraphControl2;        
+        private ZedGraph.ZedGraphControl OriginalSignalGraph;
+        private ZedGraph.ZedGraphControl CreatedSignalGraph;        
 
     }
 }
