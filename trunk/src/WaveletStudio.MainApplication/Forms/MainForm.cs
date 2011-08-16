@@ -6,8 +6,8 @@ using System.Reflection;
 using System.Windows.Forms;
 using Qios.DevSuite.Components;
 using Qios.DevSuite.Components.Ribbon;
-using WaveletStudio.MainApplication.ProcessingSteps;
 using WaveletStudio.MainApplication.Properties;
+using WaveletStudio.ProcessingSteps;
 using WaveletStudio.SignalGeneration;
 
 namespace WaveletStudio.MainApplication.Forms
@@ -133,21 +133,21 @@ namespace WaveletStudio.MainApplication.Forms
             ShowSignalGenerationForm(null);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button1Click(object sender, EventArgs e)
         {
             //zedGraphControl1.Font = new Font("Arial", 1);
             zedGraphControl1.GraphPane.IsFontsScaled = false;
             //zedGraphControl1.GraphPane.Title.FontSpec = new FontSpec("Arial", 5, Color.Black, false,false, false, Color.Transparent, Brushes.Transparent, FillType.None);
             return;
 
-            var step = new ScalarStep {Operation = ScalarStep.OperationEnum.Multiply, Scalar = 2.1};
-            ProcessingSteps.RemoveAll(it => it.Key == ScalarStep.StepKey);
-            ProcessingSteps.Add(step);
+            //var step = new ScalarStep {Operation = ScalarStep.OperationEnum.Multiply, Scalar = 2.1};
+            //ProcessingSteps.RemoveAll(it => it.Key == ScalarStep.StepKey);
+            //ProcessingSteps.Add(step);
 
-            var resultSignal = ProcessingSteps.Process();
+            //var resultSignal = ProcessingSteps.Process();
         }
 
-        private void qCompositeItem1_ItemActivated(object sender, QCompositeEventArgs e)
+        private void QCompositeItem1ItemActivated(object sender, QCompositeEventArgs e)
         {
 
         }

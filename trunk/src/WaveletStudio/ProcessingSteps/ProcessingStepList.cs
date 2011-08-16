@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WaveletStudio.MainApplication.ProcessingSteps
+namespace WaveletStudio.ProcessingSteps
 {
     public class ProcessingStepList : List<ProcessingStepBase>
     {

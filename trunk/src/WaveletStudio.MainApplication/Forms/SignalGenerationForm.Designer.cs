@@ -465,6 +465,6 @@
         private System.Windows.Forms.CheckBox IgnoreLastSampleField;
         private ZedGraph.ZedGraphControl GraphControl;
         private System.Windows.Forms.Button UseSignalButton;
-        private System.Windows.Forms.Button CancelButton;
+        private new System.Windows.Forms.Button CancelButton;
     }
 }

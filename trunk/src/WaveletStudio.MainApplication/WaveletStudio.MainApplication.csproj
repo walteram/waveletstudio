@@ -82,13 +82,8 @@
     <Compile Include="Forms\SignalGenerationForm.Designer.cs">
       <DependentUpon>SignalGenerationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProcessingSteps\GenerateSignalStep.cs" />
-    <Compile Include="ProcessingSteps\ProcessingStepBase.cs" />
-    <Compile Include="ProcessingSteps\ProcessingStepList.cs" />
-    <Compile Include="ProcessingSteps\ScalarStep.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QCompositeEventListener.cs" />
     <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Controls\WizardControl.resx">
       <DependentUpon>WizardControl.cs</DependentUpon>

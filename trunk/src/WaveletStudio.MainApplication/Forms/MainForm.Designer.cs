@@ -200,7 +200,7 @@
             this.ScalarButton.TabIndex = 26;
             this.ScalarButton.Text = "button1";
             this.ScalarButton.UseVisualStyleBackColor = true;
-            this.ScalarButton.Click += new System.EventHandler(this.button1_Click);
+            this.ScalarButton.Click += new System.EventHandler(this.Button1Click);
             // 
             // qRibbonItem1
             // 
@@ -245,7 +245,7 @@
             this.qCompositeItem1.Configuration.Padding = new Qios.DevSuite.Components.QPadding(3, 3, 3, 3);
             this.qCompositeItem1.Configuration.StretchHorizontal = true;
             this.qCompositeItem1.Items.Add(this.qCompositeGroup1);
-            this.qCompositeItem1.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.qCompositeItem1_ItemActivated);
+            this.qCompositeItem1.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.QCompositeItem1ItemActivated);
             // 
             // qCompositeGroup1
             // 
