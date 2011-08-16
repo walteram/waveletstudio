@@ -19,7 +19,7 @@ namespace WaveletStudio.MainApplication
             Application.SetCompatibleTextRenderingDefault(false);
 
             QColorScheme.Global.InheritCurrentThemeFromWindows = false;
-            //QColorScheme.Global.CurrentTheme = "LunaBlue";
+            QColorScheme.Global.CurrentTheme = "LunaBlue";
 
             Application.Run(new MainForm());
         }
