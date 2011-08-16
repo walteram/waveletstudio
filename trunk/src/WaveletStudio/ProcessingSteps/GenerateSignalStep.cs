@@ -1,7 +1,6 @@
-﻿using System;
-using WaveletStudio.SignalGeneration;
+﻿using WaveletStudio.SignalGeneration;
 
-namespace WaveletStudio.MainApplication.ProcessingSteps
+namespace WaveletStudio.ProcessingSteps
 {
     public class GenerateSignalStep : ProcessingStepBase
     {

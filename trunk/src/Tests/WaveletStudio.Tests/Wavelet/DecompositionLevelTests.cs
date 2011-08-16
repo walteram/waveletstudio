@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Wavelet;
@@ -64,7 +65,8 @@ namespace WaveletStudio.Tests.Wavelet
         
         private double[] ReadFile(string filename)
         {
-            return File.ReadAllText(@"C:\Wavelet\WaveletStudio\trunk\res\testdata\" + filename).Split(',').Select(it => double.Parse(it.Replace(".", ","))).ToArray();
+            var path = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\res\testdata\", filename);
+            return File.ReadAllText(path).Split(',').Select(it => double.Parse(it.Replace(".", ","))).ToArray();
         }
     }
 }
