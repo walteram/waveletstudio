@@ -6,13 +6,14 @@ namespace WaveletStudio.MainApplication.Controls
 {
     public static class QControlUtils
     {
-        public static QCompositeItem CreateCompositeListItem(string itemName, string imageResourceName, string title, string text, int borderWidth, QPartDirection direction, QPartAlignment textAlignment, Color? color)
+        public static QCompositeItem CreateCompositeListItem(string itemName, string imageResourceName, string title, string text, int borderWidth, QPartDirection direction, QPartAlignment textAlignment, Color? color, int imageWidth = 64, int imageHeight = 48)
         {
             var item = new QCompositeItem();
-            var image = QControlUtils.GetImageFromResource(imageResourceName);
-            var itemGroup = QControlUtils.GetSolidColorCompositeGroup(direction, color, 1);
-            var textsGroup = QControlUtils.GetSolidColorCompositeGroup(QPartDirection.Vertical, color, 0);
+            var image = GetImageFromResource(imageResourceName);
+            var itemGroup = GetSolidColorCompositeGroup(direction, color, 1);
+            var textsGroup = GetSolidColorCompositeGroup(QPartDirection.Vertical, color, 0, true, false);
             var fontDefinition = new QFontDefinition { Bold = true, Size = -1 };
+            image.Configuration.MaximumSize = new Size(imageWidth, imageHeight);
             textsGroup.Items.Add(new QCompositeText { Title = title, Configuration = { AlignmentHorizontal = textAlignment, FontDefinition = fontDefinition, FontDefinitionHot = fontDefinition, FontDefinitionPressed = fontDefinition } });
             if (!string.IsNullOrEmpty(text))
             {
@@ -32,11 +33,19 @@ namespace WaveletStudio.MainApplication.Controls
             item.ItemName = itemName;
             item.Configuration.Margin = new QMargin(3, 3, 3, 3);
             item.Configuration.Padding = new QPadding(4, 4, 4, 4);
+            if (direction == QPartDirection.Horizontal)
+            {
+                item.Configuration.StretchHorizontal = true;
+            }
+            else
+            {
+                item.Configuration.StretchVertical = true;
+            }
             item.Configuration.Appearance.BorderWidth = borderWidth;
             return item;
         }
 
-        public static QCompositeGroup GetSolidColorCompositeGroup(QPartDirection direction, Color? color, int borderWidth)
+        public static QCompositeGroup GetSolidColorCompositeGroup(QPartDirection direction, Color? color, int borderWidth, bool stretchHorizontal = true, bool stretchVertical = true)
         {
             var group = new QCompositeGroup { Configuration = { Direction = direction } };
             if (color != null)
@@ -55,11 +64,11 @@ namespace WaveletStudio.MainApplication.Controls
                 group.ColorScheme.CompositeItemPressedBackground2.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
                 group.Configuration.Appearance.BorderWidth = borderWidth;
             }
-            if (direction == QPartDirection.Vertical)
+            if (stretchHorizontal)
             {
                 group.Configuration.StretchHorizontal = true;
             }
-            else
+            if (stretchVertical)
             {
                 group.Configuration.StretchVertical = true;
             }

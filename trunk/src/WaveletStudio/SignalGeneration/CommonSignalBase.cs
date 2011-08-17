@@ -11,6 +11,17 @@ namespace WaveletStudio.SignalGeneration
         /// Name of the signal
         /// </summary>
         public abstract string Name { get; }
+
+        /// <summary>
+        /// Description
+        /// </summary>
+        public string Description 
+        { 
+            get
+            {
+                return string.Format(System.Globalization.CultureInfo.InvariantCulture, "A={0:0.###}, F={1:0.###}, φ={2}, D={3:0.###}; x={4:0.###}...{5:0.###}, fs={6}", Amplitude, Frequency, Phase, Offset, Start, Finish, SamplingRate);
+            }
+        }
         
         /// <summary>
         /// Start of the signal in time
@@ -67,7 +78,7 @@ namespace WaveletStudio.SignalGeneration
             set
             {
                 _samplingInterval = value;
-                if (value != 0)
+                if (value != 0d)
                 {
                     SamplingRate = Convert.ToInt32(Math.Round(1 / value));   
                 }                
