@@ -10,7 +10,12 @@ namespace WaveletStudio.ProcessingSteps
 
         public override string Name
         {
-            get { return "Generate Signal from Template";  }
+            get { return Template.Name; }
+        }
+
+        public override string Description
+        {
+            get { return Template.Description; }
         }
 
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.CreateSignal; } }

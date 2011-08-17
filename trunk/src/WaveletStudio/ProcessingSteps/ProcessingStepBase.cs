@@ -1,10 +1,16 @@
-﻿namespace WaveletStudio.ProcessingSteps
+﻿using System;
+
+namespace WaveletStudio.ProcessingSteps
 {
     public abstract class ProcessingStepBase
     {
+        public Guid Id { get; private set; }
+        
         public abstract int Key { get; }
 
         public abstract string Name { get; }
+
+        public abstract string Description { get; }
 
         public abstract ProcessingTypeEnum ProcessingType { get; }
 
@@ -20,6 +26,11 @@
             InsertDisturbance,
             Process,
             Export
+        }
+
+        protected ProcessingStepBase()
+        {
+            Id = Guid.NewGuid();
         }
     }
 }

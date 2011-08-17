@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using Qios.DevSuite.Components;
 using WaveletStudio.MainApplication.Forms;
+using WaveletStudio.ProcessingSteps;
+using WaveletStudio.SignalGeneration;
 
 namespace WaveletStudio.MainApplication
 {
@@ -19,9 +21,28 @@ namespace WaveletStudio.MainApplication
             Application.SetCompatibleTextRenderingDefault(false);
 
             QColorScheme.Global.InheritCurrentThemeFromWindows = false;
-            QColorScheme.Global.CurrentTheme = "LunaBlue";
+            //QColorScheme.Global.CurrentTheme = "LunaSilver";
 
-            Application.Run(new MainForm());
+            
+            var template = new Sawtooth
+            {
+                Amplitude = 2,
+                Frequency = 5,
+                Phase = 0,
+                Offset = 0,
+                Start = 0,
+                Finish = 1,
+                SamplingRate = 120,
+                IgnoreLastSample = true
+            };
+            template.ExecuteSampler();
+            var previous = new GenerateSignalStep {Template = template};            
+            var step = new ScalarStep();
+            previous.Process(null);
+            step.Process(previous);
+
+            Application.Run(new SignalOperationForm(step, previous));
+            //Application.Run(new MainForm());
         }
     }
 }

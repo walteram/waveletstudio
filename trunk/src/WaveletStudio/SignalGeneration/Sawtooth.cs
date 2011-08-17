@@ -19,7 +19,7 @@ namespace WaveletStudio.SignalGeneration
         {
             get { return "Sawtooth"; }
         }
-
+        
         /// <summary>
         /// Generates the signal
         /// </summary>
