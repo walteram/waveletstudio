@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Attributes\DisplayAttribute.cs" />
+    <Compile Include="Controls\QControlUtils.cs" />
     <Compile Include="Controls\WizardControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
