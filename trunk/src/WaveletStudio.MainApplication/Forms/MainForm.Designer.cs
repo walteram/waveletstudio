@@ -61,30 +61,21 @@
             this.qCompositeText6 = new Qios.DevSuite.Components.QCompositeText();
             this.qCompositeItem4 = new Qios.DevSuite.Components.QCompositeItem();
             this.qCompositeGroup10 = new Qios.DevSuite.Components.QCompositeGroup();
-            this.qCompositeGroup11 = new Qios.DevSuite.Components.QCompositeGroup();
-            this.qCompositeImage4 = new Qios.DevSuite.Components.QCompositeImage();
             this.qCompositeGroup12 = new Qios.DevSuite.Components.QCompositeGroup();
             this.qCompositeText7 = new Qios.DevSuite.Components.QCompositeText();
             this.qCompositeText8 = new Qios.DevSuite.Components.QCompositeText();
             this.qCompositeItem5 = new Qios.DevSuite.Components.QCompositeItem();
             this.qCompositeGroup13 = new Qios.DevSuite.Components.QCompositeGroup();
             this.qCompositeGroup14 = new Qios.DevSuite.Components.QCompositeGroup();
-            this.qCompositeImage5 = new Qios.DevSuite.Components.QCompositeImage();
-            this.qCompositeGroup15 = new Qios.DevSuite.Components.QCompositeGroup();
-            this.qCompositeText9 = new Qios.DevSuite.Components.QCompositeText();
-            this.qCompositeText10 = new Qios.DevSuite.Components.QCompositeText();
             this.qCompositeItem6 = new Qios.DevSuite.Components.QCompositeItem();
-            this.qCompositeGroup16 = new Qios.DevSuite.Components.QCompositeGroup();
             this.qCompositeGroup17 = new Qios.DevSuite.Components.QCompositeGroup();
-            this.qCompositeImage6 = new Qios.DevSuite.Components.QCompositeImage();
-            this.qCompositeGroup18 = new Qios.DevSuite.Components.QCompositeGroup();
-            this.qCompositeText11 = new Qios.DevSuite.Components.QCompositeText();
-            this.qCompositeText12 = new Qios.DevSuite.Components.QCompositeText();
             this.SplitContainer = new System.Windows.Forms.SplitContainer();
             this.OriginalSignalGraph = new ZedGraph.ZedGraphControl();
+            this.CreatedSignalGraph = new ZedGraph.ZedGraphControl();
             this.ShowOriginalSignalCheckBox = new System.Windows.Forms.CheckBox();
             this.ShowCreatedSignal = new System.Windows.Forms.CheckBox();
-            this.CreatedSignalGraph = new ZedGraph.ZedGraphControl();
+            this.qCompositeImage5 = new Qios.DevSuite.Components.QCompositeImage();
+            this.qCompositeGroup16 = new Qios.DevSuite.Components.QCompositeGroup();
             ((System.ComponentModel.ISupportInitialize)(this.FormCaption)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SignalPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
@@ -237,9 +228,11 @@
             this.qCompositeControl1.Size = new System.Drawing.Size(200, 628);
             this.qCompositeControl1.TabIndex = 27;
             this.qCompositeControl1.Text = "qCompositeControl1";
+            this.qCompositeControl1.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.qCompositeControl1_ItemActivated);
             // 
             // qCompositeItem1
             // 
+            this.qCompositeItem1.ColorScheme.InheritCurrentThemeFromGlobal = false;
             this.qCompositeItem1.Configuration.Appearance.BorderWidth = 2;
             this.qCompositeItem1.Configuration.MinimumSize = new System.Drawing.Size(0, 50);
             this.qCompositeItem1.Configuration.Padding = new Qios.DevSuite.Components.QPadding(3, 3, 3, 3);
@@ -353,6 +346,17 @@
             this.qCompositeGroup2.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
             this.qCompositeGroup2.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
             this.qCompositeGroup2.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup2.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.qCompositeGroup2.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.qCompositeGroup2.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.qCompositeGroup2.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.qCompositeGroup2.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup2.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.qCompositeGroup2.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.qCompositeGroup2.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.qCompositeGroup2.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.qCompositeGroup2.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup2.ColorScheme.CompositeItemPressedBorder.SetColor("Default", System.Drawing.Color.White, false);
             this.qCompositeGroup2.ColorScheme.CompositeSeparator1.SetColor("Default", System.Drawing.Color.Empty, false);
             this.qCompositeGroup2.ColorScheme.CompositeSeparator1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
             this.qCompositeGroup2.ColorScheme.CompositeSeparator1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
@@ -391,27 +395,35 @@
             this.qCompositeGroup3.ColorScheme.CompositeGroupBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeGroupBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeGroupBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemExpandedBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemExpandedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemExpandedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemExpandedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemExpandedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemExpandedBackground2.SetColor("Default", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeScrollButtonHotBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeScrollButtonHotBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeScrollButtonHotBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeScrollButtonHotBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup3.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup3.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup3.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup3.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup3.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup3.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup3.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup3.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup3.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup3.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.ColorScheme.InheritCurrentThemeFromGlobal = false;
             this.qCompositeGroup3.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
+            this.qCompositeGroup3.ColorScheme.Transparent.SetColor("Default", System.Drawing.Color.White, false);
             this.qCompositeGroup3.Configuration.Appearance.BorderWidth = 0;
             this.qCompositeGroup3.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
             this.qCompositeGroup3.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
@@ -894,66 +906,7 @@
             this.qCompositeGroup10.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
             this.qCompositeGroup10.Configuration.StretchHorizontal = true;
             this.qCompositeGroup10.Configuration.StretchVertical = true;
-            this.qCompositeGroup10.Items.Add(this.qCompositeGroup11);
             this.qCompositeGroup10.Items.Add(this.qCompositeGroup12);
-            // 
-            // qCompositeGroup11
-            // 
-            this.qCompositeGroup11.ColorScheme.CompositeGroupBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeGroupBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeGroupBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeGroupBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeGroupBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeGroupBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeGroupBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeGroupBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeGroupBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeGroupBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemExpandedBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemExpandedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemExpandedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemExpandedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemExpandedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemExpandedBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemExpandedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemExpandedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemExpandedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemExpandedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup11.ColorScheme.CompositeSeparator1.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.qCompositeGroup11.ColorScheme.CompositeSeparator1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.qCompositeGroup11.ColorScheme.CompositeSeparator1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.qCompositeGroup11.ColorScheme.CompositeSeparator1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.qCompositeGroup11.ColorScheme.CompositeSeparator1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.qCompositeGroup11.ColorScheme.ContainerControlBackground1.SetColor("Default", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup11.ColorScheme.ContainerControlBackground1.SetColor("LunaBlue", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup11.ColorScheme.ContainerControlBackground1.SetColor("LunaOlive", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup11.ColorScheme.ContainerControlBackground1.SetColor("LunaSilver", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup11.ColorScheme.ContainerControlBackground1.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup11.ColorScheme.ContainerControlBackground2.SetColor("Default", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup11.ColorScheme.ContainerControlBackground2.SetColor("LunaBlue", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup11.ColorScheme.ContainerControlBackground2.SetColor("LunaOlive", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup11.ColorScheme.ContainerControlBackground2.SetColor("LunaSilver", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup11.ColorScheme.ContainerControlBackground2.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup11.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
-            this.qCompositeGroup11.Configuration.Appearance.BorderWidth = 0;
-            this.qCompositeGroup11.Configuration.Appearance.SmoothingMode = Qios.DevSuite.Components.QSmoothingMode.None;
-            this.qCompositeGroup11.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
-            this.qCompositeGroup11.Configuration.StretchVertical = true;
-            this.qCompositeGroup11.Items.Add(this.qCompositeImage4);
-            // 
-            // qCompositeImage4
-            // 
-            this.qCompositeImage4.Image = global::WaveletStudio.MainApplication.Properties.Resources.signals_commonsignals_sine;
             // 
             // qCompositeGroup12
             // 
@@ -1087,7 +1040,6 @@
             this.qCompositeGroup13.Configuration.StretchHorizontal = true;
             this.qCompositeGroup13.Configuration.StretchVertical = true;
             this.qCompositeGroup13.Items.Add(this.qCompositeGroup14);
-            this.qCompositeGroup13.Items.Add(this.qCompositeGroup15);
             // 
             // qCompositeGroup14
             // 
@@ -1143,70 +1095,154 @@
             this.qCompositeGroup14.Configuration.StretchVertical = true;
             this.qCompositeGroup14.Items.Add(this.qCompositeImage5);
             // 
-            // qCompositeImage5
-            // 
-            this.qCompositeImage5.Image = global::WaveletStudio.MainApplication.Properties.Resources.signals_commonsignals_sine;
-            // 
-            // qCompositeGroup15
-            // 
-            this.qCompositeGroup15.ColorScheme.CompositeGroupBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeGroupBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeGroupBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeGroupBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeGroupBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeGroupBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeGroupBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeGroupBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeGroupBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeGroupBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonHotBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonHotBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonHotBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonHotBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup15.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
-            this.qCompositeGroup15.Configuration.Appearance.BorderWidth = 0;
-            this.qCompositeGroup15.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
-            this.qCompositeGroup15.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
-            this.qCompositeGroup15.Configuration.StretchHorizontal = true;
-            this.qCompositeGroup15.Configuration.StretchVertical = true;
-            this.qCompositeGroup15.Items.Add(this.qCompositeText9);
-            this.qCompositeGroup15.Items.Add(this.qCompositeText10);
-            // 
-            // qCompositeText9
-            // 
-            this.qCompositeText9.Configuration.FontDefinition = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
-            this.qCompositeText9.Configuration.FontDefinitionExpanded = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
-            this.qCompositeText9.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
-            this.qCompositeText9.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
-            this.qCompositeText9.Title = "qCompositeText1";
-            // 
-            // qCompositeText10
-            // 
-            this.qCompositeText10.Title = "qCompositeText2";
-            // 
             // qCompositeItem6
             // 
             this.qCompositeItem6.Configuration.Appearance.BorderWidth = 2;
             this.qCompositeItem6.Configuration.MinimumSize = new System.Drawing.Size(0, 50);
             this.qCompositeItem6.Configuration.Padding = new Qios.DevSuite.Components.QPadding(3, 3, 3, 3);
             this.qCompositeItem6.Configuration.StretchHorizontal = true;
-            this.qCompositeItem6.Items.Add(this.qCompositeGroup16);
+            this.qCompositeItem6.Items.Add(this.qCompositeGroup17);
+            // 
+            // qCompositeGroup17
+            // 
+            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup17.ColorScheme.CompositeSeparator1.SetColor("Default", System.Drawing.Color.Empty, false);
+            this.qCompositeGroup17.ColorScheme.CompositeSeparator1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
+            this.qCompositeGroup17.ColorScheme.CompositeSeparator1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
+            this.qCompositeGroup17.ColorScheme.CompositeSeparator1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
+            this.qCompositeGroup17.ColorScheme.CompositeSeparator1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.qCompositeGroup17.ColorScheme.ContainerControlBackground1.SetColor("Default", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
+            this.qCompositeGroup17.ColorScheme.ContainerControlBackground1.SetColor("LunaBlue", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
+            this.qCompositeGroup17.ColorScheme.ContainerControlBackground1.SetColor("LunaOlive", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
+            this.qCompositeGroup17.ColorScheme.ContainerControlBackground1.SetColor("LunaSilver", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
+            this.qCompositeGroup17.ColorScheme.ContainerControlBackground1.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
+            this.qCompositeGroup17.ColorScheme.ContainerControlBackground2.SetColor("Default", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
+            this.qCompositeGroup17.ColorScheme.ContainerControlBackground2.SetColor("LunaBlue", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
+            this.qCompositeGroup17.ColorScheme.ContainerControlBackground2.SetColor("LunaOlive", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
+            this.qCompositeGroup17.ColorScheme.ContainerControlBackground2.SetColor("LunaSilver", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
+            this.qCompositeGroup17.ColorScheme.ContainerControlBackground2.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
+            this.qCompositeGroup17.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
+            this.qCompositeGroup17.Configuration.Appearance.BorderWidth = 0;
+            this.qCompositeGroup17.Configuration.Appearance.SmoothingMode = Qios.DevSuite.Components.QSmoothingMode.None;
+            this.qCompositeGroup17.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
+            this.qCompositeGroup17.Configuration.StretchVertical = true;
+            // 
+            // SplitContainer
+            // 
+            this.SplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.SplitContainer.Location = new System.Drawing.Point(2, 172);
+            this.SplitContainer.Name = "SplitContainer";
+            this.SplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // SplitContainer.Panel1
+            // 
+            this.SplitContainer.Panel1.Controls.Add(this.OriginalSignalGraph);
+            this.SplitContainer.Panel1MinSize = 50;
+            // 
+            // SplitContainer.Panel2
+            // 
+            this.SplitContainer.Panel2.Controls.Add(this.CreatedSignalGraph);
+            this.SplitContainer.Panel2MinSize = 50;
+            this.SplitContainer.Size = new System.Drawing.Size(886, 585);
+            this.SplitContainer.SplitterDistance = 300;
+            this.SplitContainer.TabIndex = 46;
+            // 
+            // OriginalSignalGraph
+            // 
+            this.OriginalSignalGraph.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OriginalSignalGraph.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.OriginalSignalGraph.Location = new System.Drawing.Point(0, 0);
+            this.OriginalSignalGraph.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.OriginalSignalGraph.Name = "OriginalSignalGraph";
+            this.OriginalSignalGraph.ScrollGrace = 0D;
+            this.OriginalSignalGraph.ScrollMaxX = 0D;
+            this.OriginalSignalGraph.ScrollMaxY = 0D;
+            this.OriginalSignalGraph.ScrollMaxY2 = 0D;
+            this.OriginalSignalGraph.ScrollMinX = 0D;
+            this.OriginalSignalGraph.ScrollMinY = 0D;
+            this.OriginalSignalGraph.ScrollMinY2 = 0D;
+            this.OriginalSignalGraph.Size = new System.Drawing.Size(886, 300);
+            this.OriginalSignalGraph.TabIndex = 47;
+            // 
+            // CreatedSignalGraph
+            // 
+            this.CreatedSignalGraph.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CreatedSignalGraph.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreatedSignalGraph.Location = new System.Drawing.Point(0, 0);
+            this.CreatedSignalGraph.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.CreatedSignalGraph.Name = "CreatedSignalGraph";
+            this.CreatedSignalGraph.ScrollGrace = 0D;
+            this.CreatedSignalGraph.ScrollMaxX = 0D;
+            this.CreatedSignalGraph.ScrollMaxY = 0D;
+            this.CreatedSignalGraph.ScrollMaxY2 = 0D;
+            this.CreatedSignalGraph.ScrollMinX = 0D;
+            this.CreatedSignalGraph.ScrollMinY = 0D;
+            this.CreatedSignalGraph.ScrollMinY2 = 0D;
+            this.CreatedSignalGraph.Size = new System.Drawing.Size(886, 281);
+            this.CreatedSignalGraph.TabIndex = 48;
+            // 
+            // ShowOriginalSignalCheckBox
+            // 
+            this.ShowOriginalSignalCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ShowOriginalSignalCheckBox.AutoSize = true;
+            this.ShowOriginalSignalCheckBox.Checked = true;
+            this.ShowOriginalSignalCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ShowOriginalSignalCheckBox.Location = new System.Drawing.Point(2, 768);
+            this.ShowOriginalSignalCheckBox.Name = "ShowOriginalSignalCheckBox";
+            this.ShowOriginalSignalCheckBox.Size = new System.Drawing.Size(123, 17);
+            this.ShowOriginalSignalCheckBox.TabIndex = 47;
+            this.ShowOriginalSignalCheckBox.Text = "Show Original Signal";
+            this.ShowOriginalSignalCheckBox.UseVisualStyleBackColor = true;
+            this.ShowOriginalSignalCheckBox.CheckedChanged += new System.EventHandler(this.ShowOriginalSignalCheckBoxCheckedChanged);
+            // 
+            // ShowCreatedSignal
+            // 
+            this.ShowCreatedSignal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ShowCreatedSignal.AutoSize = true;
+            this.ShowCreatedSignal.Checked = true;
+            this.ShowCreatedSignal.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ShowCreatedSignal.Location = new System.Drawing.Point(131, 768);
+            this.ShowCreatedSignal.Name = "ShowCreatedSignal";
+            this.ShowCreatedSignal.Size = new System.Drawing.Size(119, 17);
+            this.ShowCreatedSignal.TabIndex = 48;
+            this.ShowCreatedSignal.Text = "ShowCreatedSignal";
+            this.ShowCreatedSignal.UseVisualStyleBackColor = true;
+            this.ShowCreatedSignal.CheckedChanged += new System.EventHandler(this.ShowOriginalSignalCheckBoxCheckedChanged);
+            // 
+            // qCompositeImage5
+            // 
+            this.qCompositeImage5.Image = global::WaveletStudio.MainApplication.Properties.Resources.signals_commonsignals_sine;
             // 
             // qCompositeGroup16
             // 
@@ -1278,203 +1314,6 @@
             this.qCompositeGroup16.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
             this.qCompositeGroup16.Configuration.StretchHorizontal = true;
             this.qCompositeGroup16.Configuration.StretchVertical = true;
-            this.qCompositeGroup16.Items.Add(this.qCompositeGroup17);
-            this.qCompositeGroup16.Items.Add(this.qCompositeGroup18);
-            // 
-            // qCompositeGroup17
-            // 
-            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeGroupBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemExpandedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup17.ColorScheme.CompositeSeparator1.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.qCompositeGroup17.ColorScheme.CompositeSeparator1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.qCompositeGroup17.ColorScheme.CompositeSeparator1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.qCompositeGroup17.ColorScheme.CompositeSeparator1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.qCompositeGroup17.ColorScheme.CompositeSeparator1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.qCompositeGroup17.ColorScheme.ContainerControlBackground1.SetColor("Default", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup17.ColorScheme.ContainerControlBackground1.SetColor("LunaBlue", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup17.ColorScheme.ContainerControlBackground1.SetColor("LunaOlive", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup17.ColorScheme.ContainerControlBackground1.SetColor("LunaSilver", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup17.ColorScheme.ContainerControlBackground1.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup17.ColorScheme.ContainerControlBackground2.SetColor("Default", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup17.ColorScheme.ContainerControlBackground2.SetColor("LunaBlue", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup17.ColorScheme.ContainerControlBackground2.SetColor("LunaOlive", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup17.ColorScheme.ContainerControlBackground2.SetColor("LunaSilver", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup17.ColorScheme.ContainerControlBackground2.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64))))), false);
-            this.qCompositeGroup17.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
-            this.qCompositeGroup17.Configuration.Appearance.BorderWidth = 0;
-            this.qCompositeGroup17.Configuration.Appearance.SmoothingMode = Qios.DevSuite.Components.QSmoothingMode.None;
-            this.qCompositeGroup17.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
-            this.qCompositeGroup17.Configuration.StretchVertical = true;
-            this.qCompositeGroup17.Items.Add(this.qCompositeImage6);
-            // 
-            // qCompositeImage6
-            // 
-            this.qCompositeImage6.Image = global::WaveletStudio.MainApplication.Properties.Resources.signals_commonsignals_sine;
-            // 
-            // qCompositeGroup18
-            // 
-            this.qCompositeGroup18.ColorScheme.CompositeGroupBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeGroupBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeGroupBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeGroupBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeGroupBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeGroupBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeGroupBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeGroupBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeGroupBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeGroupBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonHotBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonHotBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonHotBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonHotBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.qCompositeGroup18.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
-            this.qCompositeGroup18.Configuration.Appearance.BorderWidth = 0;
-            this.qCompositeGroup18.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
-            this.qCompositeGroup18.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
-            this.qCompositeGroup18.Configuration.StretchHorizontal = true;
-            this.qCompositeGroup18.Configuration.StretchVertical = true;
-            this.qCompositeGroup18.Items.Add(this.qCompositeText11);
-            this.qCompositeGroup18.Items.Add(this.qCompositeText12);
-            // 
-            // qCompositeText11
-            // 
-            this.qCompositeText11.Configuration.FontDefinition = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
-            this.qCompositeText11.Configuration.FontDefinitionExpanded = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
-            this.qCompositeText11.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
-            this.qCompositeText11.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
-            this.qCompositeText11.Title = "qCompositeText1";
-            // 
-            // qCompositeText12
-            // 
-            this.qCompositeText12.Title = "qCompositeText2";
-            // 
-            // SplitContainer
-            // 
-            this.SplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SplitContainer.Location = new System.Drawing.Point(2, 172);
-            this.SplitContainer.Name = "SplitContainer";
-            this.SplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // SplitContainer.Panel1
-            // 
-            this.SplitContainer.Panel1.Controls.Add(this.OriginalSignalGraph);
-            this.SplitContainer.Panel1MinSize = 50;
-            // 
-            // SplitContainer.Panel2
-            // 
-            this.SplitContainer.Panel2.Controls.Add(this.CreatedSignalGraph);
-            this.SplitContainer.Panel2MinSize = 50;
-            this.SplitContainer.Size = new System.Drawing.Size(886, 585);
-            this.SplitContainer.SplitterDistance = 300;
-            this.SplitContainer.TabIndex = 46;
-            // 
-            // OriginalSignalGraph
-            // 
-            this.OriginalSignalGraph.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OriginalSignalGraph.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OriginalSignalGraph.Location = new System.Drawing.Point(0, 0);
-            this.OriginalSignalGraph.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.OriginalSignalGraph.Name = "OriginalSignalGraph";
-            this.OriginalSignalGraph.ScrollGrace = 0D;
-            this.OriginalSignalGraph.ScrollMaxX = 0D;
-            this.OriginalSignalGraph.ScrollMaxY = 0D;
-            this.OriginalSignalGraph.ScrollMaxY2 = 0D;
-            this.OriginalSignalGraph.ScrollMinX = 0D;
-            this.OriginalSignalGraph.ScrollMinY = 0D;
-            this.OriginalSignalGraph.ScrollMinY2 = 0D;
-            this.OriginalSignalGraph.Size = new System.Drawing.Size(886, 300);
-            this.OriginalSignalGraph.TabIndex = 47;
-            // 
-            // ShowOriginalSignalCheckBox
-            // 
-            this.ShowOriginalSignalCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ShowOriginalSignalCheckBox.AutoSize = true;
-            this.ShowOriginalSignalCheckBox.Checked = true;
-            this.ShowOriginalSignalCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowOriginalSignalCheckBox.Location = new System.Drawing.Point(2, 768);
-            this.ShowOriginalSignalCheckBox.Name = "ShowOriginalSignalCheckBox";
-            this.ShowOriginalSignalCheckBox.Size = new System.Drawing.Size(123, 17);
-            this.ShowOriginalSignalCheckBox.TabIndex = 47;
-            this.ShowOriginalSignalCheckBox.Text = "Show Original Signal";
-            this.ShowOriginalSignalCheckBox.UseVisualStyleBackColor = true;
-            this.ShowOriginalSignalCheckBox.CheckedChanged += new System.EventHandler(this.ShowOriginalSignalCheckBoxCheckedChanged);
-            // 
-            // ShowCreatedSignal
-            // 
-            this.ShowCreatedSignal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.ShowCreatedSignal.AutoSize = true;
-            this.ShowCreatedSignal.Checked = true;
-            this.ShowCreatedSignal.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ShowCreatedSignal.Location = new System.Drawing.Point(131, 768);
-            this.ShowCreatedSignal.Name = "ShowCreatedSignal";
-            this.ShowCreatedSignal.Size = new System.Drawing.Size(119, 17);
-            this.ShowCreatedSignal.TabIndex = 48;
-            this.ShowCreatedSignal.Text = "ShowCreatedSignal";
-            this.ShowCreatedSignal.UseVisualStyleBackColor = true;
-            this.ShowCreatedSignal.CheckedChanged += new System.EventHandler(this.ShowOriginalSignalCheckBoxCheckedChanged);
-            // 
-            // CreatedSignalGraph
-            // 
-            this.CreatedSignalGraph.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CreatedSignalGraph.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreatedSignalGraph.Location = new System.Drawing.Point(0, 0);
-            this.CreatedSignalGraph.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.CreatedSignalGraph.Name = "CreatedSignalGraph";
-            this.CreatedSignalGraph.ScrollGrace = 0D;
-            this.CreatedSignalGraph.ScrollMaxX = 0D;
-            this.CreatedSignalGraph.ScrollMaxY = 0D;
-            this.CreatedSignalGraph.ScrollMaxY2 = 0D;
-            this.CreatedSignalGraph.ScrollMinX = 0D;
-            this.CreatedSignalGraph.ScrollMinY = 0D;
-            this.CreatedSignalGraph.ScrollMinY2 = 0D;
-            this.CreatedSignalGraph.Size = new System.Drawing.Size(886, 281);
-            this.CreatedSignalGraph.TabIndex = 48;
             // 
             // MainForm
             // 
@@ -1520,14 +1359,12 @@
         private Qios.DevSuite.Components.QCompositeItem qCompositeItem1;
         private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup1;
         private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup2;
-        private Qios.DevSuite.Components.QCompositeImage qCompositeImage1;
         private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup3;
         private Qios.DevSuite.Components.QCompositeText qCompositeText3;
         private Qios.DevSuite.Components.QCompositeText qCompositeText4;
         private Qios.DevSuite.Components.QCompositeItem qCompositeItem2;
         private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup4;
         private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup5;
-        private Qios.DevSuite.Components.QCompositeImage qCompositeImage2;
         private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup6;
         private Qios.DevSuite.Components.QCompositeText qCompositeText1;
         private Qios.DevSuite.Components.QCompositeText qCompositeText2;
@@ -1540,30 +1377,23 @@
         private Qios.DevSuite.Components.QCompositeText qCompositeText6;
         private Qios.DevSuite.Components.QCompositeItem qCompositeItem4;
         private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup10;
-        private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup11;
-        private Qios.DevSuite.Components.QCompositeImage qCompositeImage4;
         private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup12;
         private Qios.DevSuite.Components.QCompositeText qCompositeText7;
         private Qios.DevSuite.Components.QCompositeText qCompositeText8;
         private Qios.DevSuite.Components.QCompositeItem qCompositeItem5;
         private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup13;
         private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup14;
-        private Qios.DevSuite.Components.QCompositeImage qCompositeImage5;
-        private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup15;
-        private Qios.DevSuite.Components.QCompositeText qCompositeText9;
-        private Qios.DevSuite.Components.QCompositeText qCompositeText10;
         private Qios.DevSuite.Components.QCompositeItem qCompositeItem6;
-        private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup16;
-        private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup17;
-        private Qios.DevSuite.Components.QCompositeImage qCompositeImage6;
-        private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup18;
-        private Qios.DevSuite.Components.QCompositeText qCompositeText11;
-        private Qios.DevSuite.Components.QCompositeText qCompositeText12;
         private System.Windows.Forms.SplitContainer SplitContainer;
         private System.Windows.Forms.CheckBox ShowOriginalSignalCheckBox;
         private System.Windows.Forms.CheckBox ShowCreatedSignal;
         private ZedGraph.ZedGraphControl OriginalSignalGraph;
-        private ZedGraph.ZedGraphControl CreatedSignalGraph;        
+        private ZedGraph.ZedGraphControl CreatedSignalGraph;
+        private Qios.DevSuite.Components.QCompositeImage qCompositeImage2;
+        private Qios.DevSuite.Components.QCompositeImage qCompositeImage1;
+        private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup17;
+        private Qios.DevSuite.Components.QCompositeImage qCompositeImage5;
+        private Qios.DevSuite.Components.QCompositeGroup qCompositeGroup16;        
 
     }
 }

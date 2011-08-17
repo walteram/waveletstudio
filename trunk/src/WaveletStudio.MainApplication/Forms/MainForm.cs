@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using Qios.DevSuite.Components;
 using Qios.DevSuite.Components.Ribbon;
+using WaveletStudio.MainApplication.Controls;
 using WaveletStudio.MainApplication.Properties;
 using WaveletStudio.ProcessingSteps;
 using WaveletStudio.SignalGeneration;
@@ -38,45 +39,17 @@ namespace WaveletStudio.MainApplication.Forms
             foreach (var type in Utils.GetTypes("WaveletStudio.SignalGeneration"))
             {
                 var signal = (CommonSignalBase)Activator.CreateInstance(type);
-                var image = Resources.ResourceManager.GetObject("signals_commonsignals_" + signal.Name.ToLower());
-                if (image == null)
-                    image = Resources.ResourceManager.GetObject("signals_commonsignals_sine");
-
-                var compositeGroup = new QCompositeGroup{ Configuration = {Direction = QPartDirection.Vertical}};
-                var compositeItem = new QCompositeItem();
-                compositeGroup.Items.Add(new QCompositeImage
-                                        {
-                                            Image = (Image)image,                                            
-                                        });
-                compositeGroup.Items.Add(new QCompositeText
-                                        {
-                                            Title = signal.Name,
-                                            Configuration = {AlignmentHorizontal = QPartAlignment.Centered}
-                                        });                
-                compositeItem.Items.Add(compositeGroup);
-                compositeGroup.ColorScheme.CompositeItemHotBackground1.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeGroup.ColorScheme.CompositeItemHotBackground2.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeGroup.ColorScheme.CompositeItemExpandedBackground1.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeGroup.ColorScheme.CompositeItemExpandedBackground2.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeGroup.ColorScheme.CompositeItemPressedBackground1.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeGroup.ColorScheme.CompositeItemPressedBackground2.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeGroup.ColorScheme.CompositeItemBackground1.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeGroup.ColorScheme.CompositeItemBackground2.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeGroup.ColorScheme.CompositeItemDisabledBackground1.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeGroup.ColorScheme.CompositeItemDisabledBackground2.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeGroup.ColorScheme.CompositeItemPressedBackground1.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeGroup.ColorScheme.CompositeItemPressedBackground2.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-
-                compositeItem.ColorScheme.CompositeItemPressedBackground1.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeItem.ColorScheme.CompositeItemPressedBackground2.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeItem.ColorScheme.CompositeItemBackground1.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeItem.ColorScheme.CompositeItemBackground2.SetColor(QColorScheme.Global.CurrentTheme, Color.White);
-                compositeItem.ItemName = signal.Name;                  
-                compositeItem.Configuration.Margin = new QMargin(3,3,3,3);
-                compositeItem.Configuration.Padding = new QPadding(3,3,3,3);
-                compositeItem.Configuration.Appearance.BorderWidth = 3;
-                compositeItem.ItemActivated += SignalTemplateSelected;
-                SignalTemplatesComposite.Items.Add(compositeItem);
+                var item = QControlUtils.CreateCompositeListItem(
+                                                                    signal.Name,
+                                                                    "signals_commonsignals_" + signal.Name.ToLower(),
+                                                                    signal.Name,
+                                                                    "",
+                                                                    1,
+                                                                    QPartDirection.Vertical,
+                                                                    QPartAlignment.Centered,
+                                                                    Color.White);
+                item.ItemActivated += SignalTemplateSelected;
+                SignalTemplatesComposite.Items.Add(item);
             }
             
         }
@@ -85,7 +58,7 @@ namespace WaveletStudio.MainApplication.Forms
 
         public ProcessingStepList ProcessingSteps = new ProcessingStepList();
 
-        private void SignalTemplateSelected(object sender, QCompositeEventArgs args)
+        public void SignalTemplateSelected(object sender, QCompositeEventArgs args)
         {
             var templateName = ((QCompositeItem) sender).ItemName;
             var firstTime = _signalGenerationForm == null;
@@ -95,7 +68,8 @@ namespace WaveletStudio.MainApplication.Forms
                 ShowSignalGenerationForm(templateName);
                 return;
             }
-            _signalGenerationForm.SignalTemplateName = templateName;            
+            _signalGenerationForm.SignalTemplateName = templateName;
+            _signalGenerationForm.Run();
             SelectSignalGenerationTemplate(_signalGenerationForm.SignalTemplateName);
         }
 
@@ -198,6 +172,19 @@ namespace WaveletStudio.MainApplication.Forms
             {
                 ShowOriginalSignalCheckBox.Checked = true;
             }
+        }
+
+        private void UpdateProcessingStepsList()
+        {
+            foreach (var item in ProcessingSteps)
+            {
+                
+            }
+        }
+
+        private void qCompositeControl1_ItemActivated(object sender, QCompositeEventArgs e)
+        {
+
         }
 
     }
