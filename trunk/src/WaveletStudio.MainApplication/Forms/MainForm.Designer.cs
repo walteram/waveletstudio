@@ -40,11 +40,14 @@
             this.ShowCreatedSignal = new System.Windows.Forms.CheckBox();
             this.qCompositeGroup16 = new Qios.DevSuite.Components.QCompositeGroup();
             this.Ribbon = new Qios.DevSuite.Components.Ribbon.QRibbon();
-            this.SignalPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
+            this.SignalRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
             this.SignalTemplatePanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
             this.SignalTemplatesComposite = new Qios.DevSuite.Components.QCompositeGroup();
             this.ScalarButton = new System.Windows.Forms.Button();
             this.StepsComposite = new Qios.DevSuite.Components.QCompositeControl();
+            this.OperationsRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
+            this.OperationsFunctionsPanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
+            this.OperationsFunctionsComposite = new Qios.DevSuite.Components.QCompositeGroup();
             ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer)).BeginInit();
             this.SplitContainer.Panel1.SuspendLayout();
@@ -52,8 +55,9 @@
             this.SplitContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
             this.Ribbon.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SignalPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SignalRibbonPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StepsComposite)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OperationsRibbonPage)).BeginInit();
             this.SuspendLayout();
             // 
             // qRibbonCaption2
@@ -86,9 +90,9 @@
             // 
             // SplitContainer
             // 
-            this.SplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.SplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SplitContainer.Location = new System.Drawing.Point(2, 172);
             this.SplitContainer.Name = "SplitContainer";
             this.SplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -241,9 +245,10 @@
             // 
             // Ribbon
             // 
-            this.Ribbon.ActiveTabPage = this.SignalPage;
+            this.Ribbon.ActiveTabPage = this.SignalRibbonPage;
             this.Ribbon.Controls.Add(this.ScalarButton);
-            this.Ribbon.Controls.Add(this.SignalPage);
+            this.Ribbon.Controls.Add(this.SignalRibbonPage);
+            this.Ribbon.Controls.Add(this.OperationsRibbonPage);
             this.Ribbon.Cursor = System.Windows.Forms.Cursors.Default;
             this.Ribbon.Dock = System.Windows.Forms.DockStyle.Top;
             this.Ribbon.Form = this;
@@ -255,16 +260,16 @@
             this.Ribbon.TabStripConfiguration.ButtonAreaMargin = new Qios.DevSuite.Components.QMargin(35, 5, 0, 0);
             this.Ribbon.Text = "Sinal";
             // 
-            // SignalPage
+            // SignalRibbonPage
             // 
-            this.SignalPage.ButtonOrder = 0;
-            this.SignalPage.HotkeyText = "QR";
-            this.SignalPage.Items.Add(this.SignalTemplatePanel);
-            this.SignalPage.Location = new System.Drawing.Point(2, 28);
-            this.SignalPage.Name = "SignalPage";
-            this.SignalPage.PersistGuid = new System.Guid("ea85f321-5f5d-4be5-b84e-e09b73b23a86");
-            this.SignalPage.Size = new System.Drawing.Size(1088, 106);
-            this.SignalPage.Text = "Signal";
+            this.SignalRibbonPage.ButtonOrder = 0;
+            this.SignalRibbonPage.HotkeyText = "QR";
+            this.SignalRibbonPage.Items.Add(this.SignalTemplatePanel);
+            this.SignalRibbonPage.Location = new System.Drawing.Point(2, 28);
+            this.SignalRibbonPage.Name = "SignalRibbonPage";
+            this.SignalRibbonPage.PersistGuid = new System.Guid("ea85f321-5f5d-4be5-b84e-e09b73b23a86");
+            this.SignalRibbonPage.Size = new System.Drawing.Size(1088, 106);
+            this.SignalRibbonPage.Text = "Signal";
             // 
             // SignalTemplatePanel
             // 
@@ -352,6 +357,74 @@
             this.StepsComposite.TabIndex = 51;
             this.StepsComposite.Text = "qCompositeControl1";
             // 
+            // OperationsRibbonPage
+            // 
+            this.OperationsRibbonPage.ButtonOrder = 1;
+            this.OperationsRibbonPage.Items.Add(this.OperationsFunctionsPanel);
+            this.OperationsRibbonPage.Location = new System.Drawing.Point(2, 28);
+            this.OperationsRibbonPage.Name = "OperationsRibbonPage";
+            this.OperationsRibbonPage.PersistGuid = new System.Guid("e11d0cdc-ac5f-4668-9777-2c1ea1c812c5");
+            this.OperationsRibbonPage.Size = new System.Drawing.Size(1088, 106);
+            this.OperationsRibbonPage.Text = "Operations";
+            // 
+            // OperationsFunctionsPanel
+            // 
+            this.OperationsFunctionsPanel.Items.Add(this.OperationsFunctionsComposite);
+            this.OperationsFunctionsPanel.Title = "Functions";
+            // 
+            // OperationsFunctionsComposite
+            // 
+            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
+            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
+            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
+            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
+            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
+            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
+            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
+            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
+            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBorder.SetColor("Default", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.OperationsFunctionsComposite.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
+            this.OperationsFunctionsComposite.Configuration.ShrinkHorizontal = true;
+            this.OperationsFunctionsComposite.Configuration.ShrinkVertical = true;
+            this.OperationsFunctionsComposite.Configuration.StretchHorizontal = true;
+            this.OperationsFunctionsComposite.Configuration.StretchVertical = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,8 +448,9 @@
             this.SplitContainer.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).EndInit();
             this.Ribbon.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SignalPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.SignalRibbonPage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StepsComposite)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OperationsRibbonPage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -395,11 +469,14 @@
         private Qios.DevSuite.Components.Ribbon.QRibbonCaption qRibbonCaption2;
         private Qios.DevSuite.Components.Ribbon.QRibbonApplicationButton qRibbonApplicationButton1;
         private Qios.DevSuite.Components.Ribbon.QRibbon Ribbon;
-        private Qios.DevSuite.Components.Ribbon.QRibbonPage SignalPage;
+        private Qios.DevSuite.Components.Ribbon.QRibbonPage SignalRibbonPage;
         private Qios.DevSuite.Components.Ribbon.QRibbonPanel SignalTemplatePanel;
         private Qios.DevSuite.Components.QCompositeGroup SignalTemplatesComposite;
         private System.Windows.Forms.Button ScalarButton;
-        private Qios.DevSuite.Components.QCompositeControl StepsComposite;        
+        private Qios.DevSuite.Components.QCompositeControl StepsComposite;
+        private Qios.DevSuite.Components.Ribbon.QRibbonPage OperationsRibbonPage;
+        private Qios.DevSuite.Components.Ribbon.QRibbonPanel OperationsFunctionsPanel;
+        private Qios.DevSuite.Components.QCompositeGroup OperationsFunctionsComposite;        
 
     }
 }

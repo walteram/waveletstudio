@@ -23,6 +23,7 @@ namespace WaveletStudio.ProcessingSteps
         public enum ProcessingTypeEnum
         {
             CreateSignal,
+            Operation,
             InsertDisturbance,
             Process,
             Export
