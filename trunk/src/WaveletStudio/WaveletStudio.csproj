@@ -50,6 +50,7 @@
     <Compile Include="ProcessingSteps\ProcessingStepBase.cs" />
     <Compile Include="ProcessingSteps\ProcessingStepList.cs" />
     <Compile Include="ProcessingSteps\ScalarStep.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="Wavelet\CommonMotherWavelets.cs" />
     <Compile Include="Wavelet\DecompositionLevel.cs" />
     <Compile Include="SignalGeneration\CommonSignalBase.cs" />

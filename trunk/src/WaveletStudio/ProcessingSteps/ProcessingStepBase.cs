@@ -32,5 +32,7 @@ namespace WaveletStudio.ProcessingSteps
         {
             Id = Guid.NewGuid();
         }
+
+        public abstract ProcessingStepBase Clone();
     }
 }

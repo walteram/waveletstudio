@@ -22,7 +22,6 @@ namespace WaveletStudio.MainApplication
 
             QColorScheme.Global.InheritCurrentThemeFromWindows = false;
             //QColorScheme.Global.CurrentTheme = "LunaSilver";
-
             
             var template = new Sawtooth
             {
@@ -36,13 +35,17 @@ namespace WaveletStudio.MainApplication
                 IgnoreLastSample = true
             };
             template.ExecuteSampler();
-            var previous = new GenerateSignalStep {Template = template};            
+            var previous = new GenerateSignalStep();// {Template = template};
             var step = new ScalarStep();
             previous.Process(null);
             step.Process(previous);
 
-            Application.Run(new SignalOperationForm(step, previous));
-            //Application.Run(new MainForm());
+            //Application.Run(new SignalOperationForm(step, previous));
+
+            //new SignalOperationForm(step, previous).Show();
+
+            //Application.Run(new SignalOperationForm("Alow mundô!!", previous, null));
+            Application.Run(new MainForm());
         }
     }
 }
