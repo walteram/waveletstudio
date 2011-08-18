@@ -5,61 +5,85 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using Qios.DevSuite.Components.Ribbon;
-using WaveletStudio.MainApplication.Properties;
 using WaveletStudio.ProcessingSteps;
-using WaveletStudio.SignalGeneration;
 
 namespace WaveletStudio.MainApplication.Forms
 {
     public partial class SignalOperationForm : QRibbonForm
     {
-        private ProcessingStepBase _previousStep;
+        private readonly ProcessingStepBase _previousStep;
         private ProcessingStepBase _step;
+        private ProcessingStepBase _stepBackup;
 
-        public SignalOperationForm(ProcessingStepBase step, ProcessingStepBase previousStep)
+        public SignalOperationForm(string title, ref ProcessingStepBase step, ProcessingStepBase previousStep)
         {
             InitializeComponent();
-
+            FormCaption.Text = title;
+            GraphControl.ContextMenuBuilder += (sender, strip, pt, state) => strip.Items.RemoveByKey("set_default");
             _step = step;
+            _stepBackup = step.Clone();
             _previousStep = previousStep;
+            CreateFields();
+        }
 
+        private void CreateFields()
+        {
             //Monta campos
-            var type = step.GetType();
+            var type = _step.GetType();
             var validPropertyTypes = new List<Type> { typeof(int), typeof(decimal), typeof(double), typeof(string), typeof(bool) };
 
             var topLocation = 81;
             foreach (var property in type.GetProperties().Where(p => p.CanWrite && (p.PropertyType.IsEnum || validPropertyTypes.Contains(p.PropertyType))))
             {
-                var labelValue = Resources.ResourceManager.GetString(property.Name) ?? property.Name;
-                var defaultValue = property.GetValue(step, null).ToString();
+                var labelValue = ApplicationUtils.GetResourceString(property.Name);
+                var defaultValue = (property.GetValue(_step, null) ?? "").ToString();
 
                 if (property.PropertyType != typeof(bool))
                 {
                     var label = new Label { Name = "Label" + property.Name, Text = labelValue + @":", Location = new Point(11, topLocation + 3) };
-                    Controls.Add(label);   
-                }                
+                    Controls.Add(label);
+                }
 
                 Control field;
                 if (property.PropertyType.IsEnum)
                 {
-                    field = new ComboBox {DropDownStyle = ComboBoxStyle.DropDownList };
-                    ((ComboBox) field).SelectedIndexChanged += FieldValueChanged;
+                    field = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
+                    ((ComboBox)field).SelectedIndexChanged += FieldValueChanged;
                     foreach (var item in Enum.GetNames(property.PropertyType))
                     {
-                        ((ComboBox)field).Items.Add(Resources.ResourceManager.GetString(item.ToLower()) ?? item);   
-                    }                                        
+                        ((ComboBox)field).Items.Add(ApplicationUtils.GetResourceString(item.ToLower()));
+                    }
+                    if (!string.IsNullOrEmpty(defaultValue))
+                        ((ComboBox) field).SelectedItem = defaultValue;
                 }
                 else if (property.PropertyType == typeof(int) || property.PropertyType == typeof(decimal) || property.PropertyType == typeof(double))
-                {                    
-                    field = new NumericUpDown {Minimum = int.MinValue, Maximum = int.MaxValue};
-                    ((NumericUpDown) field).Scroll += FieldValueChanged;
-                    ((NumericUpDown) field).ValueChanged += FieldValueChanged;
+                {
+                    field = new NumericUpDown { Minimum = int.MinValue, Maximum = int.MaxValue };
+                    ((NumericUpDown)field).Scroll += FieldValueChanged;
+                    ((NumericUpDown)field).ValueChanged += FieldValueChanged;
+                    if (property.PropertyType != typeof(int))
+                    {
+                        ((NumericUpDown)field).DecimalPlaces = 3;
+                        ((NumericUpDown)field).Increment = 0.1m;
+                    }
                 }
                 else if (property.PropertyType == typeof(bool))
-                {                    
+                {
                     field = new CheckBox { AutoSize = true, Text = labelValue, Checked = bool.Parse(defaultValue) };
-                    ((CheckBox) field).CheckedChanged += FieldValueChanged;
-                }                
+                    ((CheckBox)field).CheckedChanged += FieldValueChanged;
+                }
+                else if (property.PropertyType == typeof(string) && type.GetProperty(property.Name + "List") != null)
+                {
+                    var list = (List<string>)type.GetProperty(property.Name + "List").GetValue(_step, null);
+                    field = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
+                    ((ComboBox)field).SelectedIndexChanged += FieldValueChanged;
+                    foreach (var item in list)
+                    {
+                        ((ComboBox)field).Items.Add(ApplicationUtils.GetResourceString(item));
+                    }
+                    if (!string.IsNullOrEmpty(defaultValue))
+                        ((ComboBox)field).SelectedItem = defaultValue;
+                }
                 else
                 {
                     field = new TextBox();
@@ -70,35 +94,15 @@ namespace WaveletStudio.MainApplication.Forms
                 field.Tag = property;
                 field.Location = new Point(115, topLocation);
                 if (property.PropertyType != typeof(bool))
-                    field.Text = defaultValue;                
+                    field.Text = defaultValue;
 
                 Controls.Add(field);
                 topLocation += 26;
             }
         }
-
-        public bool RunInBackground;
-
-        public Signal GeneratedSignal;
-
-        private bool _raiseEvents;
-
-        private bool _raiseListEvent = true;
-
-        public Signal Run()
-        {
-            _raiseListEvent = false;
-            _step.Process(_previousStep);
-            _raiseListEvent = true;
-            return GeneratedSignal;
-        }
-
+        
         private void FieldValueChanged(object sender, EventArgs e)
         {
-            //if (!_raiseEvents)
-            //    return;
-            //UpdateSignalFromFields();            
-
             var control = (Control) sender;
             if (control.Tag == null)
                 return;
@@ -110,10 +114,10 @@ namespace WaveletStudio.MainApplication.Forms
                 value = Convert.ToInt32(((NumericUpDown)control).Value);
             else if (property.PropertyType == typeof(decimal))
                 value = Convert.ToDecimal(((NumericUpDown)control).Value);
-            else if (property.PropertyType.IsEnum)
-            {
+            else if (property.PropertyType.IsEnum)            
                 value = Enum.Parse(property.PropertyType, control.Text);
-            }
+            else if (property.PropertyType == typeof(bool))
+                value = ((CheckBox)control).Checked;
             else
                 value = control.Text;
             property.SetValue(_step, value, null);
@@ -121,60 +125,10 @@ namespace WaveletStudio.MainApplication.Forms
             UpdateGraph();
         }
         
-        private bool _isRunningUpdate;
-
-        private void UpdateSignalFromFields()
-        {
-            if (_isRunningUpdate)
-            {
-                return;
-            }
-            _isRunningUpdate = true;
-            foreach (Control control in Controls)
-            {
-                if (control.Tag == null)
-                    continue;
-                object value;
-                var property = (PropertyInfo) control.Tag;
-                if (property.PropertyType == typeof(double))
-                    value = double.Parse(control.Text);
-                else if (property.PropertyType == typeof(int))
-                    value = int.Parse(control.Text);
-                else if (property.PropertyType == typeof(decimal))
-                    value = decimal.Parse(control.Text);
-                else if (property.PropertyType.IsEnum)
-                {
-                    value = Enum.Parse(property.PropertyType, control.Text);
-                }
-                else
-                    value = control.Text;
-                property.SetValue(_step, value, null);
-            }            
-            UpdateGraph();
-            _isRunningUpdate = false;
-        }
-
-        private void UpdateFieldsFromSignal()
-        {
-            /*
-            _raiseEvents = false;
-            AmplitudeField.Value = Convert.ToDecimal(Template.Amplitude);
-            FrequencyField.Value = Convert.ToDecimal(Template.Frequency);
-            PhaseField.Value = Convert.ToDecimal(Template.Phase);
-            OffsetField.Value = Convert.ToDecimal(Template.Offset);
-            StartField.Value = Convert.ToDecimal(Template.Start);
-            FinishField.Value = Convert.ToDecimal(Template.Finish);
-            SamplingRateField.Value = Convert.ToDecimal(Template.SamplingRate);
-            IgnoreLastSampleField.Checked = Template.IgnoreLastSample;
-            _raiseEvents = true;
-            UpdateGraph();*/
-        }
-
         private void UpdateGraph()
         {
             _step.Process(_previousStep);
-            GeneratedSignal = _step.Signal;
-            var samples = GeneratedSignal.GetSamplesPair();
+            var samples = _step.Signal.GetSamplesPair();
             var pane = GraphControl.GraphPane;
             
             if (pane.CurveList.Count > 0)
@@ -186,7 +140,7 @@ namespace WaveletStudio.MainApplication.Forms
             pane.Title.IsVisible = false;
             pane.XAxis.Title.IsVisible = false;
             pane.YAxis.Title.IsVisible = false;
-            if (!pane.IsZoomed)
+            if (!pane.IsZoomed && samples.Count() != 0)
             {
                 pane.XAxis.Scale.Min = samples.ElementAt(0)[1];
                 pane.XAxis.Scale.Max = samples.ElementAt(samples.Count() - 1)[1];                
@@ -198,17 +152,13 @@ namespace WaveletStudio.MainApplication.Forms
 
         private void GraphControlMouseDoubleClick(object sender, MouseEventArgs e)
         {
-            GraphControl.ZoomOutAll(GraphControl.GraphPane);
-        }
-
-        private void UseSignalButtonClick(object sender, EventArgs e)
-        {
-
+            GraphControl.ZoomOutAll(GraphControl.GraphPane);            
         }
 
         private void CancelButtonClick(object sender, EventArgs e)
         {
-            
-        }        
+            _step = _stepBackup.Clone();
+            _step.Process(_previousStep);
+        }   
     }
 }

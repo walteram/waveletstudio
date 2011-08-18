@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.qRibbonCaption2 = new Qios.DevSuite.Components.Ribbon.QRibbonCaption();
+            this.FormCaption = new Qios.DevSuite.Components.Ribbon.QRibbonCaption();
             this.label1 = new System.Windows.Forms.Label();
             this.GraphControl = new ZedGraph.ZedGraphControl();
             this.UseSignalButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FormCaption)).BeginInit();
             this.SuspendLayout();
             // 
-            // qRibbonCaption2
+            // FormCaption
             // 
-            this.qRibbonCaption2.Configuration.ApplicationButtonAreaConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 4, 0, -8);
-            this.qRibbonCaption2.Configuration.IconConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            this.qRibbonCaption2.Location = new System.Drawing.Point(0, 0);
-            this.qRibbonCaption2.Name = "qRibbonCaption2";
-            this.qRibbonCaption2.Size = new System.Drawing.Size(787, 28);
-            this.qRibbonCaption2.TabIndex = 25;
-            this.qRibbonCaption2.Text = "Signal Form Generation";
+            this.FormCaption.Configuration.ApplicationButtonAreaConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 4, 0, -8);
+            this.FormCaption.Configuration.IconConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
+            this.FormCaption.Location = new System.Drawing.Point(0, 0);
+            this.FormCaption.Name = "FormCaption";
+            this.FormCaption.Size = new System.Drawing.Size(787, 28);
+            this.FormCaption.TabIndex = 25;
+            this.FormCaption.Text = "Wavelet Studio";
             // 
             // label1
             // 
@@ -54,13 +54,13 @@
             this.label1.Size = new System.Drawing.Size(287, 26);
             this.label1.TabIndex = 26;
             this.label1.Text = "Use this tool to create a new signal based on a template.\r\nSelect and configure t" +
-    "he template using the settings bellow.";
+                "he template using the settings bellow.";
             // 
             // GraphControl
             // 
-            this.GraphControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GraphControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.GraphControl.AutoSize = true;
             this.GraphControl.IsAntiAlias = true;
             this.GraphControl.Location = new System.Drawing.Point(305, 41);
@@ -86,7 +86,6 @@
             this.UseSignalButton.TabIndex = 45;
             this.UseSignalButton.Text = "Use Signal";
             this.UseSignalButton.UseVisualStyleBackColor = true;
-            this.UseSignalButton.Click += new System.EventHandler(this.UseSignalButtonClick);
             // 
             // CancelButton
             // 
@@ -108,15 +107,15 @@
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.UseSignalButton);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.qRibbonCaption2);
+            this.Controls.Add(this.FormCaption);
             this.Controls.Add(this.GraphControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SignalOperationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Signal Form Generation";
-            ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption2)).EndInit();
+            this.Text = "Wavelet Studio";
+            ((System.ComponentModel.ISupportInitialize)(this.FormCaption)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,7 +123,7 @@
 
         #endregion
 
-        private Qios.DevSuite.Components.Ribbon.QRibbonCaption qRibbonCaption2;
+        private Qios.DevSuite.Components.Ribbon.QRibbonCaption FormCaption;
         private System.Windows.Forms.Label label1;
         private ZedGraph.ZedGraphControl GraphControl;
         private System.Windows.Forms.Button UseSignalButton;

@@ -85,5 +85,11 @@
             Subtract,
             Divide
         }
+
+        public override ProcessingStepBase Clone()
+        {
+            var step = (ScalarStep)MemberwiseClone();
+            return step;
+        }
     }
 }

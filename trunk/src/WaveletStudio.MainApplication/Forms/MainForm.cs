@@ -45,63 +45,42 @@ namespace WaveletStudio.MainApplication.Forms
                                                                     QPartDirection.Vertical,
                                                                     QPartAlignment.Centered,
                                                                     Color.White);
-                item.ItemActivated += SignalTemplateSelected;
+                item.ItemActivated += (sender, args) => ShowSignalGenerationForm(((QCompositeItem)sender).ItemName, false);
                 SignalTemplatesComposite.Items.Add(item);
             }            
         }
 
-        private SignalGenerationForm _signalGenerationForm;
-
         public ProcessingStepList ProcessingSteps = new ProcessingStepList();
 
-        public void SignalTemplateSelected(object sender, QCompositeEventArgs args)
+        private void ShowSignalGenerationForm(string templateName, bool showForm)
         {
-            var templateName = ((QCompositeItem) sender).ItemName;
-            var firstTime = _signalGenerationForm == null;
-
-            if (firstTime)
-            {
-                ShowSignalGenerationForm(templateName);
-                return;
-            }
-            _signalGenerationForm.SignalTemplateName = templateName;
-            _signalGenerationForm.Run();
-            SelectSignalGenerationTemplate(_signalGenerationForm.SignalTemplateName);
-        }
-
-        private void ShowSignalGenerationForm(string templateName)
-        {
-            if (_signalGenerationForm == null)            
-                _signalGenerationForm = new SignalGenerationForm();
-            if (!string.IsNullOrEmpty(templateName))
-                _signalGenerationForm.SignalTemplateName = templateName;
-            _signalGenerationForm.ShowDialog();
-            if (_signalGenerationForm.GeneratedSignal == null || _signalGenerationForm.DialogResult != DialogResult.OK)
-                return;
-            SelectSignalGenerationTemplate(_signalGenerationForm.SignalTemplateName);
-        }
-
-        private void SelectSignalGenerationTemplate(string templateName)
-        {
-            foreach (var item in SignalTemplatesComposite.Items)
-            {
-                var compositeItem = (QCompositeItem) item;
-                compositeItem.Checked = compositeItem.ItemName == templateName;
-            }
-
-            var step = ProcessingSteps.GetStep(GenerateSignalStep.StepKey) as GenerateSignalStep;
+            ProcessingStepBase step = ProcessingSteps.GetStep(GenerateSignalStep.StepKey) as GenerateSignalStep;
             if (step == null)
             {
                 ProcessingSteps.RemoveAll(it => it.ProcessingType == ProcessingStepBase.ProcessingTypeEnum.CreateSignal);
-                ProcessingSteps.Insert(0, step = new GenerateSignalStep());
+                step = new GenerateSignalStep();
+                ProcessingSteps.Insert(0, step);
+                showForm = true;
             }
-            step.Template = _signalGenerationForm.Template;
+            if (templateName != null)
+                ((GenerateSignalStep)step).TemplateName = templateName;
+            step.Process(null);
+            if (showForm)
+            {
+                var form = new SignalOperationForm(ApplicationUtils.GetResourceString("signaltemplates"), ref step, null);
+                form.ShowDialog();
+                templateName = ((GenerateSignalStep)step).TemplateName;
+            }
+            foreach (QCompositeItem item in SignalTemplatesComposite.Items)
+            {
+                item.Checked = item.ItemName == templateName;
+            }
             UpdateForm();
         }
-
+        
         private void SignalTemplatePanelCaptionShowDialogItemActivated(object sender, QCompositeEventArgs e)
         {
-            ShowSignalGenerationForm(null);
+            ShowSignalGenerationForm(null, true);
         }
 
         private void UpdateGraph(Signal signal, ZedGraphControl graph)
@@ -142,14 +121,6 @@ namespace WaveletStudio.MainApplication.Forms
             graph.Refresh();
         }
 
-        private void Button1Click(object sender, EventArgs e)
-        {
-            var step = new ScalarStep {Operation = ScalarStep.OperationEnum.Multiply, Scalar = 2.1};
-            ProcessingSteps.RemoveAll(it => it.Key == ScalarStep.StepKey);
-            ProcessingSteps.Add(step);
-            UpdateForm();
-        }
-
         private void UpdateForm()
         {
             ProcessingSteps.Process();
@@ -168,7 +139,7 @@ namespace WaveletStudio.MainApplication.Forms
                 CreatedSignalGraph.GraphPane.CurveList.Clear();
         }
 
-        public void UpdateProcessingStepsList()
+        private void UpdateProcessingStepsList()
         {
             StepsComposite.Items.Clear();
             foreach (var step in ProcessingSteps)
@@ -187,7 +158,7 @@ namespace WaveletStudio.MainApplication.Forms
             }
         }
 
-        private void ShowOriginalSignalCheckBoxCheckedChanged(object sender, EventArgs e)
+        private void ShowSignalCheckBoxCheckedChanged(object sender, EventArgs e)
         {
             SplitContainer.Panel1Collapsed = !ShowOriginalSignalCheckBox.Checked;
             SplitContainer.Panel2Collapsed = !ShowCreatedSignal.Checked;
@@ -201,11 +172,20 @@ namespace WaveletStudio.MainApplication.Forms
             }
         }
 
-        public void StepSelected(object sender, QCompositeEventArgs args)
+        private void StepSelected(object sender, QCompositeEventArgs args)
         {
             var stepName = ((QCompositeItem)sender).ItemName;
             MessageBox.Show(stepName);
         }
+
+        private void ScalarButtonClick(object sender, EventArgs e)
+        {
+            var step = new ScalarStep { Operation = ScalarStep.OperationEnum.Multiply, Scalar = 2.1 };
+            ProcessingSteps.RemoveAll(it => it.Key == ScalarStep.StepKey);
+            ProcessingSteps.Add(step);
+            UpdateForm();
+        }
+
     }
 }
 
