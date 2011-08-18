@@ -77,7 +77,7 @@ namespace WaveletStudio.MainApplication.Controls
 
         public static QCompositeImage GetImageFromResource(string name)
         {
-            var image =  Resources.ResourceManager.GetObject(name) ?? new Bitmap(64,48);
+            var image =  Resources.ResourceManager.GetObject(name.Replace(" ", "")) ?? new Bitmap(64,48);
             return new QCompositeImage {Image = (Image)image};
         }
     }

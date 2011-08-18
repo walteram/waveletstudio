@@ -17,7 +17,7 @@
             get { return _description; }
         }
 
-        public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Process; } }
+        public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Operation; } }
 
         public override int PreferredOrder { get { return 1; } }
 

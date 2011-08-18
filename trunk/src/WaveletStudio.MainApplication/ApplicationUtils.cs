@@ -6,10 +6,11 @@ namespace WaveletStudio.MainApplication
     {
         public static string GetResourceString(string name)
         {
-            var resource = Resources.ResourceManager.GetObject(name.ToLower()) ?? "";
+            var key = name.ToLower().Replace(" ", "");
+            var resource = Resources.ResourceManager.GetObject(key) ?? "";
             if (resource.GetType() != typeof(string)) 
             {
-                resource = Resources.ResourceManager.GetString(name.ToLower() + "_text") ?? "";
+                resource = Resources.ResourceManager.GetString(key + "_text") ?? "";
             }
             if (resource.ToString() == "")
             {
