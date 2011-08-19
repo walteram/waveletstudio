@@ -127,5 +127,11 @@ namespace WaveletStudio.ProcessingSteps
             Signal = Template.ExecuteSampler();
             return step;
         }
+
+        public static GenerateSignalStep Clone(ProcessingStepBase step)
+        {
+            var casted = (GenerateSignalStep) step;
+            return (GenerateSignalStep)casted.Clone();
+        }
     }
 }

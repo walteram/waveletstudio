@@ -43,11 +43,10 @@
             this.SignalRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
             this.SignalTemplatePanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
             this.SignalTemplatesComposite = new Qios.DevSuite.Components.QCompositeGroup();
-            this.ScalarButton = new System.Windows.Forms.Button();
-            this.StepsComposite = new Qios.DevSuite.Components.QCompositeControl();
             this.OperationsRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
             this.OperationsFunctionsPanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
             this.OperationsFunctionsComposite = new Qios.DevSuite.Components.QCompositeGroup();
+            this.StepsComposite = new Qios.DevSuite.Components.QCompositeControl();
             ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SplitContainer)).BeginInit();
             this.SplitContainer.Panel1.SuspendLayout();
@@ -56,8 +55,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
             this.Ribbon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SignalRibbonPage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StepsComposite)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationsRibbonPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StepsComposite)).BeginInit();
             this.SuspendLayout();
             // 
             // qRibbonCaption2
@@ -90,9 +89,9 @@
             // 
             // SplitContainer
             // 
-            this.SplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SplitContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.SplitContainer.Location = new System.Drawing.Point(2, 172);
             this.SplitContainer.Name = "SplitContainer";
             this.SplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -246,7 +245,6 @@
             // Ribbon
             // 
             this.Ribbon.ActiveTabPage = this.SignalRibbonPage;
-            this.Ribbon.Controls.Add(this.ScalarButton);
             this.Ribbon.Controls.Add(this.SignalRibbonPage);
             this.Ribbon.Controls.Add(this.OperationsRibbonPage);
             this.Ribbon.Cursor = System.Windows.Forms.Cursors.Default;
@@ -275,7 +273,6 @@
             // 
             this.SignalTemplatePanel.Items.Add(this.SignalTemplatesComposite);
             this.SignalTemplatePanel.Title = "Signal Templates";
-            this.SignalTemplatePanel.CaptionShowDialogItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.SignalTemplatePanelCaptionShowDialogItemActivated);
             // 
             // SignalTemplatesComposite
             // 
@@ -329,33 +326,6 @@
             this.SignalTemplatesComposite.Configuration.ShrinkVertical = true;
             this.SignalTemplatesComposite.Configuration.StretchHorizontal = true;
             this.SignalTemplatesComposite.Configuration.StretchVertical = true;
-            // 
-            // ScalarButton
-            // 
-            this.ScalarButton.Location = new System.Drawing.Point(829, 98);
-            this.ScalarButton.Name = "ScalarButton";
-            this.ScalarButton.Size = new System.Drawing.Size(23, 20);
-            this.ScalarButton.TabIndex = 26;
-            this.ScalarButton.Text = "button1";
-            this.ScalarButton.UseVisualStyleBackColor = true;
-            this.ScalarButton.Click += new System.EventHandler(this.ScalarButtonClick);
-            // 
-            // StepsComposite
-            // 
-            this.StepsComposite.ColorScheme.CompositeBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.StepsComposite.ColorScheme.CompositeBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.StepsComposite.ColorScheme.CompositeBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.StepsComposite.ColorScheme.CompositeBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.StepsComposite.ColorScheme.CompositeBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.StepsComposite.ColorScheme.CompositeBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.StepsComposite.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
-            this.StepsComposite.Configuration.ScrollConfiguration.ScrollVertical = Qios.DevSuite.Components.QCompositeScrollVisibility.Automatic;
-            this.StepsComposite.Dock = System.Windows.Forms.DockStyle.Right;
-            this.StepsComposite.Location = new System.Drawing.Point(868, 166);
-            this.StepsComposite.Name = "StepsComposite";
-            this.StepsComposite.Size = new System.Drawing.Size(226, 628);
-            this.StepsComposite.TabIndex = 51;
-            this.StepsComposite.Text = "qCompositeControl1";
             // 
             // OperationsRibbonPage
             // 
@@ -425,6 +395,23 @@
             this.OperationsFunctionsComposite.Configuration.StretchHorizontal = true;
             this.OperationsFunctionsComposite.Configuration.StretchVertical = true;
             // 
+            // StepsComposite
+            // 
+            this.StepsComposite.ColorScheme.CompositeBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
+            this.StepsComposite.ColorScheme.CompositeBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
+            this.StepsComposite.ColorScheme.CompositeBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
+            this.StepsComposite.ColorScheme.CompositeBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
+            this.StepsComposite.ColorScheme.CompositeBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.StepsComposite.ColorScheme.CompositeBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
+            this.StepsComposite.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
+            this.StepsComposite.Configuration.ScrollConfiguration.ScrollVertical = Qios.DevSuite.Components.QCompositeScrollVisibility.Automatic;
+            this.StepsComposite.Dock = System.Windows.Forms.DockStyle.Right;
+            this.StepsComposite.Location = new System.Drawing.Point(868, 166);
+            this.StepsComposite.Name = "StepsComposite";
+            this.StepsComposite.Size = new System.Drawing.Size(226, 628);
+            this.StepsComposite.TabIndex = 51;
+            this.StepsComposite.Text = "qCompositeControl1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -449,8 +436,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).EndInit();
             this.Ribbon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SignalRibbonPage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.StepsComposite)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationsRibbonPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StepsComposite)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -472,7 +459,6 @@
         private Qios.DevSuite.Components.Ribbon.QRibbonPage SignalRibbonPage;
         private Qios.DevSuite.Components.Ribbon.QRibbonPanel SignalTemplatePanel;
         private Qios.DevSuite.Components.QCompositeGroup SignalTemplatesComposite;
-        private System.Windows.Forms.Button ScalarButton;
         private Qios.DevSuite.Components.QCompositeControl StepsComposite;
         private Qios.DevSuite.Components.Ribbon.QRibbonPage OperationsRibbonPage;
         private Qios.DevSuite.Components.Ribbon.QRibbonPanel OperationsFunctionsPanel;

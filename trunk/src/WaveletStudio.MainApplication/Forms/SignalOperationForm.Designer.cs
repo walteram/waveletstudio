@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.FormCaption = new Qios.DevSuite.Components.Ribbon.QRibbonCaption();
-            this.label1 = new System.Windows.Forms.Label();
             this.GraphControl = new ZedGraph.ZedGraphControl();
             this.UseSignalButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
@@ -45,16 +44,6 @@
             this.FormCaption.Size = new System.Drawing.Size(787, 28);
             this.FormCaption.TabIndex = 25;
             this.FormCaption.Text = "Wavelet Studio";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(287, 26);
-            this.label1.TabIndex = 26;
-            this.label1.Text = "Use this tool to create a new signal based on a template.\r\nSelect and configure t" +
-                "he template using the settings bellow.";
             // 
             // GraphControl
             // 
@@ -84,7 +73,7 @@
             this.UseSignalButton.Name = "UseSignalButton";
             this.UseSignalButton.Size = new System.Drawing.Size(75, 23);
             this.UseSignalButton.TabIndex = 45;
-            this.UseSignalButton.Text = "Use Signal";
+            this.UseSignalButton.Text = "&OK";
             this.UseSignalButton.UseVisualStyleBackColor = true;
             // 
             // CancelButton
@@ -95,7 +84,7 @@
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
             this.CancelButton.TabIndex = 46;
-            this.CancelButton.Text = "Cancel";
+            this.CancelButton.Text = "&Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             this.CancelButton.Click += new System.EventHandler(this.CancelButtonClick);
             // 
@@ -106,7 +95,6 @@
             this.ClientSize = new System.Drawing.Size(787, 374);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.UseSignalButton);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.FormCaption);
             this.Controls.Add(this.GraphControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -124,7 +112,6 @@
         #endregion
 
         private Qios.DevSuite.Components.Ribbon.QRibbonCaption FormCaption;
-        private System.Windows.Forms.Label label1;
         private ZedGraph.ZedGraphControl GraphControl;
         private System.Windows.Forms.Button UseSignalButton;
         private new System.Windows.Forms.Button CancelButton;

@@ -12,7 +12,7 @@ namespace WaveletStudio.MainApplication.Forms
     public partial class SignalOperationForm : QRibbonForm
     {
         private readonly ProcessingStepBase _previousStep;
-        private ProcessingStepBase _step;
+        public ProcessingStepBase Step;
         private ProcessingStepBase _stepBackup;
 
         public SignalOperationForm(string title, ref ProcessingStepBase step, ProcessingStepBase previousStep)
@@ -20,7 +20,7 @@ namespace WaveletStudio.MainApplication.Forms
             InitializeComponent();
             FormCaption.Text = title;
             GraphControl.ContextMenuBuilder += (sender, strip, pt, state) => strip.Items.RemoveByKey("set_default");
-            _step = step;
+            Step = step;
             _stepBackup = step.Clone();
             _previousStep = previousStep;
             CreateFields();
@@ -29,14 +29,14 @@ namespace WaveletStudio.MainApplication.Forms
         private void CreateFields()
         {
             //Monta campos
-            var type = _step.GetType();
+            var type = Step.GetType();
             var validPropertyTypes = new List<Type> { typeof(int), typeof(decimal), typeof(double), typeof(string), typeof(bool) };
 
-            var topLocation = 81;
-            foreach (var property in type.GetProperties().Where(p => p.CanWrite && (p.PropertyType.IsEnum || validPropertyTypes.Contains(p.PropertyType))))
+            var topLocation = 41;
+            foreach (var property in type.GetProperties().Where(p => p.CanWrite && (p.PropertyType.IsEnum || validPropertyTypes.Contains(p.PropertyType)) && p.Name != "Index" ))
             {
                 var labelValue = ApplicationUtils.GetResourceString(property.Name);
-                var defaultValue = (property.GetValue(_step, null) ?? "").ToString();
+                var defaultValue = (property.GetValue(Step, null) ?? "").ToString();
 
                 if (property.PropertyType != typeof(bool))
                 {
@@ -51,7 +51,7 @@ namespace WaveletStudio.MainApplication.Forms
                     ((ComboBox)field).SelectedIndexChanged += FieldValueChanged;
                     foreach (var item in Enum.GetNames(property.PropertyType))
                     {
-                        ((ComboBox)field).Items.Add(ApplicationUtils.GetResourceString(item.ToLower()));
+                        ((ComboBox)field).Items.Add(ApplicationUtils.GetResourceString(item));
                     }
                     if (!string.IsNullOrEmpty(defaultValue))
                         ((ComboBox) field).SelectedItem = defaultValue;
@@ -74,7 +74,7 @@ namespace WaveletStudio.MainApplication.Forms
                 }
                 else if (property.PropertyType == typeof(string) && type.GetProperty(property.Name + "List") != null)
                 {
-                    var list = (List<string>)type.GetProperty(property.Name + "List").GetValue(_step, null);
+                    var list = (List<string>)type.GetProperty(property.Name + "List").GetValue(Step, null);
                     field = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
                     ((ComboBox)field).SelectedIndexChanged += FieldValueChanged;
                     foreach (var item in list)
@@ -120,22 +120,22 @@ namespace WaveletStudio.MainApplication.Forms
                 value = ((CheckBox)control).Checked;
             else
                 value = control.Text;
-            property.SetValue(_step, value, null);
+            property.SetValue(Step, value, null);
             
             UpdateGraph();
         }
         
         private void UpdateGraph()
         {
-            _step.Process(_previousStep);
-            var samples = _step.Signal.GetSamplesPair();
+            Step.Process(_previousStep);
+            var samples = Step.Signal.GetSamplesPair();
             var pane = GraphControl.GraphPane;
             
             if (pane.CurveList.Count > 0)
                 pane.CurveList.RemoveAt(0);
             var yAxys = new ZedGraph.PointPairList();
             yAxys.AddRange(samples.Select(it => new ZedGraph.PointPair(it[1], it[0])));
-            pane.AddCurve(_step.Name, yAxys, Color.Red, ZedGraph.SymbolType.None);
+            pane.AddCurve(Step.Name, yAxys, Color.Red, ZedGraph.SymbolType.None);
             pane.Legend.IsVisible = false;
             pane.Title.IsVisible = false;
             pane.XAxis.Title.IsVisible = false;
@@ -157,8 +157,8 @@ namespace WaveletStudio.MainApplication.Forms
 
         private void CancelButtonClick(object sender, EventArgs e)
         {
-            _step = _stepBackup.Clone();
-            _step.Process(_previousStep);
+            Step = _stepBackup.Clone();
+            Step.Process(_previousStep);
         }   
     }
 }
