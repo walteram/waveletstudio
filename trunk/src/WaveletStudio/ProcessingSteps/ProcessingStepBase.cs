@@ -4,6 +4,8 @@ namespace WaveletStudio.ProcessingSteps
 {
     public abstract class ProcessingStepBase
     {
+        public int Index { get; set; }
+
         public Guid Id { get; private set; }
         
         public abstract int Key { get; }
@@ -18,7 +20,9 @@ namespace WaveletStudio.ProcessingSteps
 
         public abstract Signal Signal { get; set; }
 
-        public abstract void Process(ProcessingStepBase previousProcess);        
+        public abstract void Process(ProcessingStepBase previousProcess);
+
+        public object Tag { get; set; }
 
         public enum ProcessingTypeEnum
         {

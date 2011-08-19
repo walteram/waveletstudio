@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="errorinvalidoriginalsignal" xml:space="preserve">
+    <value>Before performing any operation is necessary to select a source. 
+Click in the Signal tab and select a signal source.</value>
+  </data>
   <data name="finish" xml:space="preserve">
     <value>Finish Time</value>
   </data>

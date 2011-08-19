@@ -23,7 +23,7 @@
 
         public override Signal Signal { get; set; }
 
-        private double _scalar;
+        private double _scalar = 1;
         public double Scalar
         {
             get { return _scalar; }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace WaveletStudio.ProcessingSteps
@@ -18,6 +19,30 @@ namespace WaveletStudio.ProcessingSteps
                 }
             }
             return null;
+        }
+
+        public new void Insert(int index, ProcessingStepBase item)
+        {
+            if (index >= Count)
+                Add(item);
+            else
+                base.Insert(index, item);
+            RecreateIndexes();
+        }
+
+        public new int RemoveAll(Predicate<ProcessingStepBase> match)
+        {
+            var retVal = base.RemoveAll(match);
+            RecreateIndexes();
+            return retVal;
+        }
+
+        private void RecreateIndexes()
+        {
+            for (var i = 0; i < Count; i++)
+            {
+                this[i].Index = i;
+            }
         }
 
         public ProcessingStepBase GetStep(int key)

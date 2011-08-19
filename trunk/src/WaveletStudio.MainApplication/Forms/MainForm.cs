@@ -20,13 +20,28 @@ namespace WaveletStudio.MainApplication.Forms
         public MainForm()
         {
             InitializeComponent();
-            OriginalSignalGraph.GraphPane.IsFontsScaled = false;
-            CreatedSignalGraph.GraphPane.IsFontsScaled = false;
+
+            SignalTemplatePanel.CaptionShowDialogItemActivated += (sender, args) => ShowSignalGenerationForm(null, true);
+            ConfigureGraph(OriginalSignalGraph, "Original Signal");
+            ConfigureGraph(CreatedSignalGraph, "Created Signal");
+        }
+
+        private void ConfigureGraph(ZedGraphControl graph, string title)
+        {
+            var pane = graph.GraphPane;
+            graph.ContextMenuBuilder += (sender, strip, pt, state) => strip.Items.RemoveByKey("set_default");
+            pane.IsFontsScaled = false;
+            pane.Title.FontSpec = new FontSpec("Arial", 11, Color.Black, true, false, false){Border = new Border(false, Color.Transparent, 0)};
+            pane.Title.Text = ApplicationUtils.GetResourceString(title);
+            pane.Legend.IsVisible = false;
+            pane.XAxis.Title.IsVisible = false;
+            pane.YAxis.Title.IsVisible = false;
         }
 
         private void MainFormLoad(object sender, EventArgs e)
         {
             LoadRibbon();
+            WindowState = FormWindowState.Maximized;
         }
 
         private void LoadRibbon()
@@ -54,57 +69,83 @@ namespace WaveletStudio.MainApplication.Forms
                 if (step.ProcessingType != processingType)
                     continue;
 
-                var item = QControlUtils.CreateCompositeListItem(step.Name, step.Name.ToLower(), ApplicationUtils.GetResourceString(step.Name), "", 1, QPartDirection.Vertical, QPartAlignment.Centered, Color.White);
-                item.ItemActivated += (sender, args) => ShowOperationForm(null, type, true);
+                var item = QControlUtils.CreateCompositeListItem(type.FullName, step.Name.ToLower(), ApplicationUtils.GetResourceString(step.Name), "", 1, QPartDirection.Vertical, QPartAlignment.Centered, Color.White);
+                
+                item.ItemActivated += (sender, args) => ShowOperationForm(((QCompositeItem)sender).ItemName, true);
                 compositeGroup.Items.Add(item);
             }
         }
 
-        private void ShowSignalGenerationForm(string templateName, bool forceShowForm)
+        private void ShowSignalGenerationForm(string templateName, bool forceShowForm, ProcessingStepBase step = null)
         {
-            ProcessingStepBase step = ProcessingSteps.GetStep(GenerateSignalStep.StepKey) as GenerateSignalStep;
-            if (step == null)
+            var currentStep = step ?? ProcessingSteps.FirstOrDefault(it => it.Key == GenerateSignalStep.StepKey);
+            if (currentStep != null)
             {
-                ProcessingSteps.RemoveAll(it => it.ProcessingType == ProcessingStepBase.ProcessingTypeEnum.CreateSignal);
+                step = GenerateSignalStep.Clone(currentStep);
+            }
+            else
+            {
                 step = new GenerateSignalStep();
-                ProcessingSteps.Insert(0, step);
                 forceShowForm = true;
             }
-            if (templateName != null)
+            if (!string.IsNullOrEmpty(templateName))
                 ((GenerateSignalStep)step).TemplateName = templateName;
-            step.Process(null);
+
             if (forceShowForm)
             {
                 var form = new SignalOperationForm(ApplicationUtils.GetResourceString("signaltemplates"), ref step, null);
                 form.ShowDialog();
+                if (form.DialogResult != DialogResult.OK)
+                    return;
                 templateName = ((GenerateSignalStep)step).TemplateName;
             }
             foreach (QCompositeItem item in SignalTemplatesComposite.Items)
             {
                 item.Checked = item.ItemName == templateName;
             }
+            ProcessingSteps.RemoveAll(it => it.ProcessingType == ProcessingStepBase.ProcessingTypeEnum.CreateSignal);
+            ProcessingSteps.Insert(0, step);
             UpdateForm();
         }
-        
-        private void ShowOperationForm(ProcessingStepBase step, Type type, bool forceShowForm)
+
+        private void ShowOperationForm(string stepFullName, bool forceShowForm, ProcessingStepBase step = null, ProcessingStepBase previousStep = null)
         {
-            //MessageBox.Show(type.Name);
-            var previousStep = CurrentSelectedStep ?? ProcessingSteps.Last();
+            if(!CheckOriginalSignal())
+                return;
+            var inserting = false;
+            if (previousStep == null)
+            {
+                previousStep = CurrentSelectedStep ?? ProcessingSteps.Last();
+            }            
             if (step == null)
             {
-                step = (ProcessingStepBase)Activator.CreateInstance(type);
-            }
-            if (forceShowForm)
+                step = (ProcessingStepBase)Activator.CreateInstance(Utils.GetType(stepFullName));
+                inserting = true;
+            }            
+            if (!forceShowForm) 
+                return;
+            var form = new SignalOperationForm(ApplicationUtils.GetResourceString("signaltemplates"), ref step, previousStep);
+            form.ShowDialog();
+            if (inserting && form.DialogResult == DialogResult.OK)
             {
-                var form = new SignalOperationForm(ApplicationUtils.GetResourceString("signaltemplates"), ref step, previousStep);
-                form.ShowDialog();
+                ProcessingSteps.Insert(previousStep.Index+1, step);
             }
+            if (form.DialogResult != DialogResult.OK)
+            {
+                ProcessingSteps[step.Index] = form.Step.Clone();
+            }            
+            
+            UpdateForm();
         }
 
-        
-        private void SignalTemplatePanelCaptionShowDialogItemActivated(object sender, QCompositeEventArgs e)
+        private bool CheckOriginalSignal()
         {
-            ShowSignalGenerationForm(null, true);
+            if (ProcessingSteps.Count == 0)
+            {
+                MessageBox.Show(ApplicationUtils.GetResourceString("errorinvalidoriginalsignal"), @"Wavelet Studio", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+            return true;
         }
 
         private void UpdateGraph(Signal signal, ZedGraphControl graph)
@@ -115,25 +156,12 @@ namespace WaveletStudio.MainApplication.Forms
                 pane.CurveList.Clear();
                 return;
             }
-            var title = "";
-            if (graph == OriginalSignalGraph)
-                title = "Original Signal";
-            else if (graph == OriginalSignalGraph)
-                title = "Output";
-
-            var samples = signal.GetSamplesPair();            
-            
+            var samples = signal.GetSamplesPair();                        
             if (pane.CurveList.Count > 0)
                 pane.CurveList.RemoveAt(0);
             var yAxys = new PointPairList();
             yAxys.AddRange(samples.Select(it => new PointPair(it[1], it[0])));
             pane.AddCurve("", yAxys, Color.Red, SymbolType.None);
-            pane.Legend.IsVisible = false;
-            pane.Title.IsVisible = title != "";
-            pane.Title.Text = title;
-            pane.Title.FontSpec = new FontSpec("Arial", 11, Color.Black, true, false, false);
-            pane.XAxis.Title.IsVisible = false;
-            pane.YAxis.Title.IsVisible = false;
             if (!pane.IsZoomed && samples != null)
             {
                 pane.XAxis.Scale.Min = samples.ElementAt(0)[1];
@@ -155,7 +183,7 @@ namespace WaveletStudio.MainApplication.Forms
             else
                 OriginalSignalGraph.GraphPane.CurveList.Clear();
             
-            var lastStep = ProcessingSteps.LastOrDefault(it => it.ProcessingType != ProcessingStepBase.ProcessingTypeEnum.CreateSignal);
+            var lastStep = ProcessingSteps.LastOrDefault();
             if (lastStep != null)
                 UpdateGraph(lastStep.Signal, CreatedSignalGraph);
             else
@@ -189,16 +217,18 @@ namespace WaveletStudio.MainApplication.Forms
 
         private void StepSelected(object sender, QCompositeEventArgs args)
         {
-            var stepName = ((QCompositeItem)sender).ItemName;
-            MessageBox.Show(stepName);
-        }
+            var stepId = Guid.Parse(((QCompositeItem)sender).ItemName);
+            var step = ProcessingSteps.FirstOrDefault(it => it.Id == stepId);
+            var previousStep = ProcessingSteps.FirstOrDefault(it => it.Index == step.Index - 1);
 
-        private void ScalarButtonClick(object sender, EventArgs e)
-        {
-            var step = new ScalarStep { Operation = ScalarStep.OperationEnum.Multiply, Scalar = 2.1 };
-            ProcessingSteps.RemoveAll(it => it.Key == ScalarStep.StepKey);
-            ProcessingSteps.Add(step);
-            UpdateForm();
+            if (step is GenerateSignalStep)
+            {
+                ShowSignalGenerationForm(null, true);
+            }
+            else if (step.ProcessingType == ProcessingStepBase.ProcessingTypeEnum.Operation)
+            {
+                ShowOperationForm(null, true, step, previousStep);
+            }
         }
     }
 }
