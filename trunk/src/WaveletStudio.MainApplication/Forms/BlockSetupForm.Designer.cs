@@ -1,6 +1,6 @@
 ﻿namespace WaveletStudio.MainApplication.Forms
 {
-    partial class SignalOperationForm
+    partial class BlockSetupForm
     {
         /// <summary>
         /// Required designer variable.

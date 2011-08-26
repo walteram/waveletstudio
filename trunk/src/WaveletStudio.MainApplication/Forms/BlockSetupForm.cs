@@ -5,30 +5,29 @@ using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using Qios.DevSuite.Components.Ribbon;
-using WaveletStudio.ProcessingSteps;
+using WaveletStudio.Blocks;
 
 namespace WaveletStudio.MainApplication.Forms
 {
-    public partial class SignalOperationForm : QRibbonForm
+    public partial class BlockSetupForm : QRibbonForm
     {
-        private readonly ProcessingStepBase _previousStep;
-        public ProcessingStepBase Step;
-        private ProcessingStepBase _stepBackup;
+        private readonly BlockBase _previousStep;
+        public BlockBase Step;
+        private readonly BlockBase _blockBackup;
 
-        public SignalOperationForm(string title, ref ProcessingStepBase step, ProcessingStepBase previousStep)
+        public BlockSetupForm(string title, ref BlockBase step, BlockBase previousStep)
         {
             InitializeComponent();
             FormCaption.Text = title;
             GraphControl.ContextMenuBuilder += (sender, strip, pt, state) => strip.Items.RemoveByKey("set_default");
             Step = step;
-            _stepBackup = step.Clone();
+            _blockBackup = step.Clone();
             _previousStep = previousStep;
             CreateFields();
         }
 
         private void CreateFields()
         {
-            //Monta campos
             var type = Step.GetType();
             var validPropertyTypes = new List<Type> { typeof(int), typeof(decimal), typeof(double), typeof(string), typeof(bool) };
 
@@ -126,13 +125,13 @@ namespace WaveletStudio.MainApplication.Forms
         }
         
         private void UpdateGraph()
-        {
+        {/*
             Step.Process(_previousStep);
             var samples = Step.Signal.GetSamplesPair();
             var pane = GraphControl.GraphPane;
-            
             if (pane.CurveList.Count > 0)
                 pane.CurveList.RemoveAt(0);
+            
             var yAxys = new ZedGraph.PointPairList();
             yAxys.AddRange(samples.Select(it => new ZedGraph.PointPair(it[1], it[0])));
             pane.AddCurve(Step.Name, yAxys, Color.Red, ZedGraph.SymbolType.None);
@@ -147,7 +146,7 @@ namespace WaveletStudio.MainApplication.Forms
             }            
             GraphControl.AxisChange();
             GraphControl.Invalidate();
-            GraphControl.Refresh();
+            GraphControl.Refresh();*/
         }
 
         private void GraphControlMouseDoubleClick(object sender, MouseEventArgs e)
@@ -157,8 +156,8 @@ namespace WaveletStudio.MainApplication.Forms
 
         private void CancelButtonClick(object sender, EventArgs e)
         {
-            Step = _stepBackup.Clone();
-            Step.Process(_previousStep);
+            Step = _blockBackup.Clone();
+            //Step.Process(_previousStep);
         }   
     }
 }

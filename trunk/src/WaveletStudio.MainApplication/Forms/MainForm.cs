@@ -4,8 +4,8 @@ using System.Linq;
 using System.Windows.Forms;
 using Qios.DevSuite.Components;
 using Qios.DevSuite.Components.Ribbon;
+using WaveletStudio.Blocks;
 using WaveletStudio.MainApplication.Controls;
-using WaveletStudio.ProcessingSteps;
 using WaveletStudio.SignalGeneration;
 using ZedGraph;
 
@@ -13,9 +13,9 @@ namespace WaveletStudio.MainApplication.Forms
 {
     public partial class MainForm : QRibbonForm
     {
-        public ProcessingStepList ProcessingSteps = new ProcessingStepList();
+        public BlockList Blocks = new BlockList();
 
-        public ProcessingStepBase CurrentSelectedStep = null; 
+        public BlockBase CurrentSelectedBlock; 
 
         public MainForm()
         {
@@ -24,6 +24,23 @@ namespace WaveletStudio.MainApplication.Forms
             SignalTemplatePanel.CaptionShowDialogItemActivated += (sender, args) => ShowSignalGenerationForm(null, true);
             ConfigureGraph(OriginalSignalGraph, "Original Signal");
             ConfigureGraph(CreatedSignalGraph, "Created Signal");
+            PlotComplex();
+        }
+
+
+        private void PlotComplex()
+        {
+            var yAxys = new PointPairList();
+            yAxys.Add(3, 2);
+            yAxys.Add(3, -2);
+            yAxys.Add(-3, -2);
+            yAxys.Add(-3, 2);
+            yAxys.Add(3, 2);
+            var pane = CreatedSignalGraph.GraphPane;
+            pane.AddCurve("", yAxys, Color.Red, SymbolType.None);
+            CreatedSignalGraph.AxisChange();
+            CreatedSignalGraph.Invalidate();
+            CreatedSignalGraph.Refresh();
         }
 
         private void ConfigureGraph(ZedGraphControl graph, string title)
@@ -35,7 +52,7 @@ namespace WaveletStudio.MainApplication.Forms
             pane.Title.Text = ApplicationUtils.GetResourceString(title);
             pane.Legend.IsVisible = false;
             pane.XAxis.Title.IsVisible = false;
-            pane.YAxis.Title.IsVisible = false;
+            pane.YAxis.Title.IsVisible = false;            
         }
 
         private void MainFormLoad(object sender, EventArgs e)
@@ -47,7 +64,7 @@ namespace WaveletStudio.MainApplication.Forms
         private void LoadRibbon()
         {
             LoadSignalTemplates();
-            LoadSteps(OperationsFunctionsComposite, ProcessingStepBase.ProcessingTypeEnum.Operation);
+            LoadSteps(OperationsFunctionsComposite, BlockBase.ProcessingTypeEnum.Operation);
         }
 
         private void LoadSignalTemplates()
@@ -61,11 +78,11 @@ namespace WaveletStudio.MainApplication.Forms
             }
         }
 
-        private void LoadSteps(QCompositeItemBase compositeGroup, ProcessingStepBase.ProcessingTypeEnum processingType)
+        private void LoadSteps(QCompositeItemBase compositeGroup, BlockBase.ProcessingTypeEnum processingType)
         {
-            foreach (var type in Utils.GetTypes("WaveletStudio.ProcessingSteps").Where(t => t.BaseType == typeof(ProcessingStepBase)))
+            foreach (var type in Utils.GetTypes("WaveletStudio.ProcessingSteps").Where(t => t.BaseType == typeof(BlockBase)))
             {
-                var step = (ProcessingStepBase)Activator.CreateInstance(type);
+                var step = (BlockBase)Activator.CreateInstance(type);
                 if (step.ProcessingType != processingType)
                     continue;
 
@@ -76,63 +93,63 @@ namespace WaveletStudio.MainApplication.Forms
             }
         }
 
-        private void ShowSignalGenerationForm(string templateName, bool forceShowForm, ProcessingStepBase step = null)
+        private void ShowSignalGenerationForm(string templateName, bool forceShowForm, BlockBase step = null)
         {
-            var currentStep = step ?? ProcessingSteps.FirstOrDefault(it => it.Key == GenerateSignalStep.StepKey);
+            var currentStep = step ?? Blocks.FirstOrDefault(it => it.Key == GenerateSignalBlock.StepKey);
             if (currentStep != null)
             {
-                step = GenerateSignalStep.Clone(currentStep);
+                step = GenerateSignalBlock.Clone(currentStep);
             }
             else
             {
-                step = new GenerateSignalStep();
+                step = new GenerateSignalBlock();
                 forceShowForm = true;
             }
             if (!string.IsNullOrEmpty(templateName))
-                ((GenerateSignalStep)step).TemplateName = templateName;
+                ((GenerateSignalBlock)step).TemplateName = templateName;
 
             if (forceShowForm)
             {
-                var form = new SignalOperationForm(ApplicationUtils.GetResourceString("signaltemplates"), ref step, null);
+                var form = new BlockSetupForm(ApplicationUtils.GetResourceString("signaltemplates"), ref step, null);
                 form.ShowDialog();
                 if (form.DialogResult != DialogResult.OK)
                     return;
-                templateName = ((GenerateSignalStep)step).TemplateName;
+                templateName = ((GenerateSignalBlock)step).TemplateName;
             }
             foreach (QCompositeItem item in SignalTemplatesComposite.Items)
             {
                 item.Checked = item.ItemName == templateName;
             }
-            ProcessingSteps.RemoveAll(it => it.ProcessingType == ProcessingStepBase.ProcessingTypeEnum.CreateSignal);
-            ProcessingSteps.Insert(0, step);
+            Blocks.RemoveAll(it => it.ProcessingType == BlockBase.ProcessingTypeEnum.CreateSignal);
+            Blocks.Insert(0, step);
             UpdateForm();
         }
 
-        private void ShowOperationForm(string stepFullName, bool forceShowForm, ProcessingStepBase step = null, ProcessingStepBase previousStep = null)
+        private void ShowOperationForm(string stepFullName, bool forceShowForm, BlockBase step = null, BlockBase previousStep = null)
         {
             if(!CheckOriginalSignal())
                 return;
             var inserting = false;
             if (previousStep == null)
             {
-                previousStep = CurrentSelectedStep ?? ProcessingSteps.Last();
+                previousStep = CurrentSelectedBlock ?? Blocks.Last();
             }            
             if (step == null)
             {
-                step = (ProcessingStepBase)Activator.CreateInstance(Utils.GetType(stepFullName));
+                step = (BlockBase)Activator.CreateInstance(Utils.GetType(stepFullName));
                 inserting = true;
             }            
             if (!forceShowForm) 
                 return;
-            var form = new SignalOperationForm(ApplicationUtils.GetResourceString("signaltemplates"), ref step, previousStep);
+            var form = new BlockSetupForm(ApplicationUtils.GetResourceString("signaltemplates"), ref step, previousStep);
             form.ShowDialog();
             if (inserting && form.DialogResult == DialogResult.OK)
             {
-                ProcessingSteps.Insert(previousStep.Index+1, step);
+                Blocks.Insert(previousStep.Index+1, step);
             }
             if (form.DialogResult != DialogResult.OK)
             {
-                ProcessingSteps[step.Index] = form.Step.Clone();
+                Blocks[step.Index] = form.Step.Clone();
             }            
             
             UpdateForm();
@@ -140,7 +157,7 @@ namespace WaveletStudio.MainApplication.Forms
 
         private bool CheckOriginalSignal()
         {
-            if (ProcessingSteps.Count == 0)
+            if (Blocks.Count == 0)
             {
                 MessageBox.Show(ApplicationUtils.GetResourceString("errorinvalidoriginalsignal"), @"Wavelet Studio", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return false;
@@ -173,27 +190,27 @@ namespace WaveletStudio.MainApplication.Forms
         }
 
         private void UpdateForm()
-        {
-            ProcessingSteps.Process();
+        {/*
+            Blocks.Process();
             UpdateProcessingStepsList();
 
-            var firstStep = ProcessingSteps.FirstOrDefault();
+            var firstStep = Blocks.FirstOrDefault();
             if (firstStep != null)
                 UpdateGraph(firstStep.Signal, OriginalSignalGraph);
             else
                 OriginalSignalGraph.GraphPane.CurveList.Clear();
             
-            var lastStep = ProcessingSteps.LastOrDefault();
+            var lastStep = Blocks.LastOrDefault();
             if (lastStep != null)
                 UpdateGraph(lastStep.Signal, CreatedSignalGraph);
             else
-                CreatedSignalGraph.GraphPane.CurveList.Clear();
+                CreatedSignalGraph.GraphPane.CurveList.Clear();*/
         }
 
         private void UpdateProcessingStepsList()
         {
             StepsComposite.Items.Clear();
-            foreach (var step in ProcessingSteps)
+            foreach (var step in Blocks)
             {
                 var item = QControlUtils.CreateCompositeListItem(step.Id.ToString(), step.Name.ToLower().Replace(" ", ""), step.Name, step.Description.Replace(";", "\r\n"), 1, QPartDirection.Horizontal, QPartAlignment.Near, Color.White, 60, 45);
                 item.ItemActivated += StepSelected;
@@ -218,14 +235,14 @@ namespace WaveletStudio.MainApplication.Forms
         private void StepSelected(object sender, QCompositeEventArgs args)
         {
             var stepId = Guid.Parse(((QCompositeItem)sender).ItemName);
-            var step = ProcessingSteps.FirstOrDefault(it => it.Id == stepId);
-            var previousStep = ProcessingSteps.FirstOrDefault(it => it.Index == step.Index - 1);
+            var step = Blocks.FirstOrDefault(it => it.Id == stepId);
+            var previousStep = Blocks.FirstOrDefault(it => it.Index == step.Index - 1);
 
-            if (step is GenerateSignalStep)
+            if (step is GenerateSignalBlock)
             {
                 ShowSignalGenerationForm(null, true);
             }
-            else if (step.ProcessingType == ProcessingStepBase.ProcessingTypeEnum.Operation)
+            else if (step.ProcessingType == BlockBase.ProcessingTypeEnum.Operation)
             {
                 ShowOperationForm(null, true, step, previousStep);
             }
