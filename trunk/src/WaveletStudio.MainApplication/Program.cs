@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
 using Qios.DevSuite.Components;
+using WaveletStudio.Blocks;
 using WaveletStudio.MainApplication.Forms;
-using WaveletStudio.ProcessingSteps;
 using WaveletStudio.SignalGeneration;
 
 namespace WaveletStudio.MainApplication
@@ -35,10 +35,10 @@ namespace WaveletStudio.MainApplication
                 IgnoreLastSample = true
             };
             template.ExecuteSampler();
-            var previous = new GenerateSignalStep();// {Template = template};
-            var step = new ScalarStep();
-            previous.Process(null);
-            step.Process(previous);
+            var previous = new GenerateSignalBlock();// {Template = template};
+            var step = new ScalarOperationBlock();
+            //previous.Process(null);
+            //step.Process(previous);
 
             //Application.Run(new SignalOperationForm(step, previous));
 

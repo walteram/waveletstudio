@@ -16,6 +16,16 @@ namespace WaveletStudio
         public ILArray<double> Samples { get; set; }
 
         /// <summary>
+        /// Defines if the signal is complex
+        /// </summary>
+        public bool IsComplex { get; set; }
+
+        /// <summary>
+        /// Complex signal samples
+        /// </summary>
+        public ILArray<complex> ComplexSamples { get; set; }
+
+        /// <summary>
         /// Sampling Rate
         /// </summary>
         public int SamplingRate { get; set; }
@@ -169,6 +179,11 @@ namespace WaveletStudio
             var newSignal = (Signal) MemberwiseClone();
             newSignal.Samples = (ILArray<double>) Samples.Clone();
             return newSignal;
+        }
+
+        public Signal Copy()
+        {
+            return (Signal)MemberwiseClone();            
         }
     }
 }

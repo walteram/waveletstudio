@@ -9,10 +9,10 @@ namespace WaveletStudio
     {
         public static IEnumerable<Type> GetTypes(string namespaceName)
         {
-            var assemblies = Assembly.GetAssembly(typeof(Signal)).GetTypes().Where(it => it.Namespace == namespaceName && !it.IsAbstract && !it.IsInterface && !it.IsEnum);
+            var assemblies = Assembly.GetAssembly(typeof(Signal)).GetTypes().Where(it => it.Namespace == namespaceName && !it.IsAbstract && !it.IsInterface && !it.IsEnum && it.IsPublic);
             if (assemblies.Count() == 0)
             {
-                assemblies = Assembly.GetAssembly(typeof(Signal)).GetTypes().Where(it => it.Namespace == namespaceName && !it.IsAbstract && !it.IsInterface && !it.IsEnum);
+                assemblies = Assembly.GetAssembly(typeof(Signal)).GetTypes().Where(it => it.Namespace == namespaceName && !it.IsAbstract && !it.IsInterface && !it.IsEnum && it.IsPublic);
             }
             return assemblies;
         }

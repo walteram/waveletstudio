@@ -46,10 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProcessingSteps\GenerateSignalStep.cs" />
-    <Compile Include="ProcessingSteps\ProcessingStepBase.cs" />
-    <Compile Include="ProcessingSteps\ProcessingStepList.cs" />
-    <Compile Include="ProcessingSteps\ScalarStep.cs" />
+    <Compile Include="Blocks\NodeBase.cs" />
+    <Compile Include="Blocks\OutputBlockNode.cs" />
+    <Compile Include="Blocks\BlockConnection.cs" />
+    <Compile Include="Blocks\GenerateSignalBlock.cs" />
+    <Compile Include="Blocks\BlockBase.cs" />
+    <Compile Include="Blocks\BlockList.cs" />
+    <Compile Include="Blocks\InputBlockNode.cs" />
+    <Compile Include="Blocks\ScalarOperationBlock.cs" />
+    <Compile Include="SignalGeneration\Binary.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Wavelet\CommonMotherWavelets.cs" />
     <Compile Include="Wavelet\DecompositionLevel.cs" />

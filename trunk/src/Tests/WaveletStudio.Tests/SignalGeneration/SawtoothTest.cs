@@ -9,6 +9,12 @@ namespace WaveletStudio.Tests.SignalGeneration
         [TestMethod]
         public void TestSawtooth()
         {
+            var x = new ILNumerics.ILArray<double>(new []{1d, 2d, 3d, 4d, 5d, 6d, 7d, 8d});
+            var sin = ILNumerics.BuiltInFunctions.ILMath.sin(x);
+            var cos = ILNumerics.BuiltInFunctions.ILMath.cos(x);
+            var hh = ILNumerics.BuiltInFunctions.ILMath.ccomplex(cos, sin);
+            
+            
             var sampler = new Sawtooth
             {
                 Amplitude = 2,
