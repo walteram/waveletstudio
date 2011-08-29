@@ -6,36 +6,36 @@ using System.Reflection;
 using System.Windows.Forms;
 using Qios.DevSuite.Components.Ribbon;
 using WaveletStudio.Blocks;
+using WaveletStudio.Blocks.CustomAttributes;
 
 namespace WaveletStudio.MainApplication.Forms
 {
     public partial class BlockSetupForm : QRibbonForm
     {
-        private readonly BlockBase _previousStep;
-        public BlockBase Step;
-        private readonly BlockBase _blockBackup;
+        private readonly BlockBase _tempBlock;
+        public BlockBase Block { get; private set; }
 
-        public BlockSetupForm(string title, ref BlockBase step, BlockBase previousStep)
+        public BlockSetupForm(string title, ref BlockBase block)
         {
             InitializeComponent();
             FormCaption.Text = title;
-            GraphControl.ContextMenuBuilder += (sender, strip, pt, state) => strip.Items.RemoveByKey("set_default");
-            Step = step;
-            _blockBackup = step.Clone();
-            _previousStep = previousStep;
+            ApplicationUtils.ConfigureGraph(GraphControl, title);            
+            _tempBlock = block.Clone();
+            Block = block;
             CreateFields();
+            LoadBlockOutputs();
         }
 
         private void CreateFields()
         {
-            var type = Step.GetType();
+            var type = _tempBlock.GetType();
             var validPropertyTypes = new List<Type> { typeof(int), typeof(decimal), typeof(double), typeof(string), typeof(bool) };
 
             var topLocation = 41;
-            foreach (var property in type.GetProperties().Where(p => p.CanWrite && (p.PropertyType.IsEnum || validPropertyTypes.Contains(p.PropertyType)) && p.Name != "Index" ))
+            foreach (var property in type.GetProperties().Where(p => p.GetCustomAttributes(typeof(Parameter), true).Length > 0 && p.CanWrite && (p.PropertyType.IsEnum || validPropertyTypes.Contains(p.PropertyType))))
             {
                 var labelValue = ApplicationUtils.GetResourceString(property.Name);
-                var defaultValue = (property.GetValue(Step, null) ?? "").ToString();
+                var defaultValue = (property.GetValue(_tempBlock, null) ?? "").ToString();
 
                 if (property.PropertyType != typeof(bool))
                 {
@@ -73,7 +73,7 @@ namespace WaveletStudio.MainApplication.Forms
                 }
                 else if (property.PropertyType == typeof(string) && type.GetProperty(property.Name + "List") != null)
                 {
-                    var list = (List<string>)type.GetProperty(property.Name + "List").GetValue(Step, null);
+                    var list = (List<string>)type.GetProperty(property.Name + "List").GetValue(_tempBlock, null);
                     field = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList };
                     ((ComboBox)field).SelectedIndexChanged += FieldValueChanged;
                     foreach (var item in list)
@@ -119,24 +119,51 @@ namespace WaveletStudio.MainApplication.Forms
                 value = ((CheckBox)control).Checked;
             else
                 value = control.Text;
-            property.SetValue(Step, value, null);
+            property.SetValue(_tempBlock, value, null);
             
             UpdateGraph();
         }
         
+        private void LoadBlockOutputs()
+        {
+            ShowOutputList.Items.Clear();
+            foreach (var output in Block.OutputNodes)
+            {
+                ShowOutputList.Items.Add(output.Name);
+            }
+            if (ShowOutputList.Items.Count > 0)
+                ShowOutputList.SelectedIndex = 0;
+            if (ShowOutputList.Items.Count > 1)
+            {                
+                ShowOutputList.Visible = true;
+                ShowOutputLabel.Visible = true;
+            }
+            else
+            {
+                ShowOutputList.Visible = false;
+                ShowOutputLabel.Visible = false;
+            }
+        }
+
         private void UpdateGraph()
-        {/*
-            Step.Process(_previousStep);
-            var samples = Step.Signal.GetSamplesPair();
+        {
             var pane = GraphControl.GraphPane;
             if (pane.CurveList.Count > 0)
                 pane.CurveList.RemoveAt(0);
-            
+            _tempBlock.Execute();
+            var outputNode = _tempBlock.OutputNodes.FirstOrDefault(it => it.Name == ShowOutputList.Text);
+            if (outputNode == null || outputNode.Object == null)
+            {
+                NoDataLabel.Visible = true;
+                return;
+            }
+            NoDataLabel.Visible = false;
+            var samples = ((Signal)outputNode.Object).GetSamplesPair();
             var yAxys = new ZedGraph.PointPairList();
             yAxys.AddRange(samples.Select(it => new ZedGraph.PointPair(it[1], it[0])));
-            pane.AddCurve(Step.Name, yAxys, Color.Red, ZedGraph.SymbolType.None);
+            pane.AddCurve(outputNode.Name, yAxys, Color.Red, ZedGraph.SymbolType.None);
             pane.Legend.IsVisible = false;
-            pane.Title.IsVisible = false;
+            pane.Title.Text = ApplicationUtils.GetResourceString(outputNode.Name);
             pane.XAxis.Title.IsVisible = false;
             pane.YAxis.Title.IsVisible = false;
             if (!pane.IsZoomed && samples.Count() != 0)
@@ -146,7 +173,7 @@ namespace WaveletStudio.MainApplication.Forms
             }            
             GraphControl.AxisChange();
             GraphControl.Invalidate();
-            GraphControl.Refresh();*/
+            GraphControl.Refresh();
         }
 
         private void GraphControlMouseDoubleClick(object sender, MouseEventArgs e)
@@ -154,10 +181,27 @@ namespace WaveletStudio.MainApplication.Forms
             GraphControl.ZoomOutAll(GraphControl.GraphPane);            
         }
 
-        private void CancelButtonClick(object sender, EventArgs e)
+        private void ShowOutputListSelectedIndexChanged(object sender, EventArgs e)
         {
-            Step = _blockBackup.Clone();
-            //Step.Process(_previousStep);
-        }   
+            UpdateGraph();
+        }
+
+        private void UseSignalButtonClick(object sender, EventArgs e)
+        {
+            var outputNodes = Block.OutputNodes;            
+            var inputNodes = Block.InputNodes;
+            Block = _tempBlock.Clone();
+            Block.OutputNodes = outputNodes;
+            Block.InputNodes = inputNodes;
+            foreach (var node in inputNodes)
+            {
+                node.Root = Block;
+            }
+            foreach (var node in outputNodes)
+            {
+                node.Root = Block;
+            }
+            Block.Execute();
+        }
     }
 }

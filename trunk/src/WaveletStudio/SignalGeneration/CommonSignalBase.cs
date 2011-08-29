@@ -5,6 +5,7 @@ namespace WaveletStudio.SignalGeneration
     /// <summary>
     /// Common signal base
     /// </summary>
+    [Serializable]
     public abstract class CommonSignalBase
     {        
         /// <summary>
@@ -78,7 +79,7 @@ namespace WaveletStudio.SignalGeneration
             set
             {
                 _samplingInterval = value;
-                if (value != 0d)
+                if (Math.Abs(value - 0d) > double.Epsilon)
                 {
                     SamplingRate = Convert.ToInt32(Math.Round(1 / value));   
                 }                
@@ -120,6 +121,9 @@ namespace WaveletStudio.SignalGeneration
             return finish;
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         protected CommonSignalBase()
         {
             Amplitude = 1;
@@ -132,6 +136,10 @@ namespace WaveletStudio.SignalGeneration
             IgnoreLastSample = false;
         }
 
+        /// <summary>
+        /// Creates a cloned 
+        /// </summary>
+        /// <returns></returns>
         public CommonSignalBase Clone()
         {
             return (CommonSignalBase) MemberwiseClone();

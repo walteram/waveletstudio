@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Qios.DevSuite.Components;
-using WaveletStudio.Blocks;
 using WaveletStudio.MainApplication.Forms;
-using WaveletStudio.SignalGeneration;
 
 namespace WaveletStudio.MainApplication
 {
@@ -18,34 +16,12 @@ namespace WaveletStudio.MainApplication
             System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("en-US");           
 
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            //Application.SetCompatibleTextRenderingDefault(false);
 
             QColorScheme.Global.InheritCurrentThemeFromWindows = false;
             //QColorScheme.Global.CurrentTheme = "LunaSilver";
-            
-            var template = new Sawtooth
-            {
-                Amplitude = 2,
-                Frequency = 5,
-                Phase = 0,
-                Offset = 0,
-                Start = 0,
-                Finish = 1,
-                SamplingRate = 120,
-                IgnoreLastSample = true
-            };
-            template.ExecuteSampler();
-            var previous = new GenerateSignalBlock();// {Template = template};
-            var step = new ScalarOperationBlock();
-            //previous.Process(null);
-            //step.Process(previous);
 
-            //Application.Run(new SignalOperationForm(step, previous));
-
-            //new SignalOperationForm(step, previous).Show();
-
-            //Application.Run(new SignalOperationForm("Alow mundô!!", previous, null));
-            Application.Run(new MainForm());
+            Application.Run(new DiagramForm());
         }
     }
 }
