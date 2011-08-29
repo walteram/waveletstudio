@@ -49,7 +49,9 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlocksConnectionTest.cs" />
+    <Compile Include="Blocks\BlocksConnectionTest.cs" />
+    <Compile Include="Blocks\ScalarOperationBlockTest.cs" />
+    <Compile Include="Blocks\GenerateSignalBlockTest.cs" />
     <Compile Include="SignalGeneration\SawtoothTest.cs" />
     <Compile Include="SignalGeneration\SineTest.cs" />
     <Compile Include="SignalGeneration\SquareTest.cs" />

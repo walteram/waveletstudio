@@ -7,7 +7,8 @@ namespace WaveletStudio
 {
     /// <summary>
     /// 1-D Signal
-    /// </summary>    
+    /// </summary>   
+    [Serializable] 
     public class Signal
     {
         /// <summary>
@@ -174,16 +175,26 @@ namespace WaveletStudio
             return samples;
         }
 
+        /// <summary>
+        /// Clones the signal, including the samples
+        /// </summary>
+        /// <returns></returns>
         public Signal Clone()
         {
-            var newSignal = (Signal) MemberwiseClone();
+            var newSignal = Copy();
             newSignal.Samples = (ILArray<double>) Samples.Clone();
             return newSignal;
         }
 
+        /// <summary>
+        /// Clone the signal without cloning the samples
+        /// </summary>
+        /// <returns></returns>
         public Signal Copy()
         {
-            return (Signal)MemberwiseClone();            
+            var signal = (Signal)MemberwiseClone();
+            signal.Samples = null;
+            return signal;
         }
     }
 }

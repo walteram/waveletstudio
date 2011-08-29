@@ -21,19 +21,21 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>none</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\WaveletStudio.MainApplication.XML</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ILNumerics">
@@ -78,6 +80,12 @@
     <Compile Include="Forms\BlockSetupForm.Designer.cs">
       <DependentUpon>BlockSetupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DiagramForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DiagramForm.Designer.cs">
+      <DependentUpon>DiagramForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +104,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BlockSetupForm.resx">
       <DependentUpon>BlockSetupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DiagramForm.resx">
+      <DependentUpon>DiagramForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -123,6 +134,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\labs\DiagramControl\Diagram.NET.csproj">
+      <Project>{46FE3660-273C-474B-BA51-835F5CDEDA58}</Project>
+      <Name>Diagram.NET</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WaveletStudio\WaveletStudio.csproj">
       <Project>{003D0672-355F-416B-9E88-DC95F0762329}</Project>
       <Name>WaveletStudio</Name>

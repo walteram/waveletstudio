@@ -32,6 +32,9 @@
             this.GraphControl = new ZedGraph.ZedGraphControl();
             this.UseSignalButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.ShowOutputLabel = new System.Windows.Forms.Label();
+            this.ShowOutputList = new System.Windows.Forms.ComboBox();
+            this.NoDataLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.FormCaption)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +45,7 @@
             this.FormCaption.Location = new System.Drawing.Point(0, 0);
             this.FormCaption.Name = "FormCaption";
             this.FormCaption.Size = new System.Drawing.Size(787, 28);
-            this.FormCaption.TabIndex = 25;
+            this.FormCaption.TabIndex = 0;
             this.FormCaption.Text = "Wavelet Studio";
             // 
             // GraphControl
@@ -50,8 +53,6 @@
             this.GraphControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.GraphControl.AutoSize = true;
-            this.GraphControl.IsAntiAlias = true;
             this.GraphControl.Location = new System.Drawing.Point(305, 41);
             this.GraphControl.Name = "GraphControl";
             this.GraphControl.ScrollGrace = 0D;
@@ -61,8 +62,8 @@
             this.GraphControl.ScrollMinX = 0D;
             this.GraphControl.ScrollMinY = 0D;
             this.GraphControl.ScrollMinY2 = 0D;
-            this.GraphControl.Size = new System.Drawing.Size(471, 321);
-            this.GraphControl.TabIndex = 44;
+            this.GraphControl.Size = new System.Drawing.Size(471, 295);
+            this.GraphControl.TabIndex = 100;
             this.GraphControl.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.GraphControlMouseDoubleClick);
             // 
             // UseSignalButton
@@ -72,9 +73,10 @@
             this.UseSignalButton.Location = new System.Drawing.Point(178, 339);
             this.UseSignalButton.Name = "UseSignalButton";
             this.UseSignalButton.Size = new System.Drawing.Size(75, 23);
-            this.UseSignalButton.TabIndex = 45;
+            this.UseSignalButton.TabIndex = 102;
             this.UseSignalButton.Text = "&OK";
             this.UseSignalButton.UseVisualStyleBackColor = true;
+            this.UseSignalButton.Click += new System.EventHandler(this.UseSignalButtonClick);
             // 
             // CancelButton
             // 
@@ -83,24 +85,57 @@
             this.CancelButton.Location = new System.Drawing.Point(12, 339);
             this.CancelButton.Name = "CancelButton";
             this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 46;
+            this.CancelButton.TabIndex = 101;
             this.CancelButton.Text = "&Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButtonClick);
             // 
-            // SignalOperationForm
+            // ShowOutputLabel
+            // 
+            this.ShowOutputLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowOutputLabel.AutoSize = true;
+            this.ShowOutputLabel.Location = new System.Drawing.Point(577, 347);
+            this.ShowOutputLabel.Name = "ShowOutputLabel";
+            this.ShowOutputLabel.Size = new System.Drawing.Size(72, 13);
+            this.ShowOutputLabel.TabIndex = 103;
+            this.ShowOutputLabel.Text = "Show Output:";
+            // 
+            // ShowOutputList
+            // 
+            this.ShowOutputList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowOutputList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ShowOutputList.FormattingEnabled = true;
+            this.ShowOutputList.Location = new System.Drawing.Point(655, 344);
+            this.ShowOutputList.Name = "ShowOutputList";
+            this.ShowOutputList.Size = new System.Drawing.Size(121, 21);
+            this.ShowOutputList.TabIndex = 104;
+            this.ShowOutputList.SelectedIndexChanged += new System.EventHandler(this.ShowOutputListSelectedIndexChanged);
+            // 
+            // NoDataLabel
+            // 
+            this.NoDataLabel.AutoSize = true;
+            this.NoDataLabel.BackColor = System.Drawing.Color.Transparent;
+            this.NoDataLabel.Location = new System.Drawing.Point(439, 182);
+            this.NoDataLabel.Name = "NoDataLabel";
+            this.NoDataLabel.Size = new System.Drawing.Size(203, 13);
+            this.NoDataLabel.TabIndex = 105;
+            this.NoDataLabel.Text = "Connect the block input to see the graph.";
+            this.NoDataLabel.Visible = false;
+            // 
+            // BlockSetupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 374);
+            this.Controls.Add(this.NoDataLabel);
+            this.Controls.Add(this.ShowOutputList);
+            this.Controls.Add(this.ShowOutputLabel);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.UseSignalButton);
             this.Controls.Add(this.FormCaption);
             this.Controls.Add(this.GraphControl);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "SignalOperationForm";
+            this.Name = "BlockSetupForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Wavelet Studio";
             ((System.ComponentModel.ISupportInitialize)(this.FormCaption)).EndInit();
@@ -115,5 +150,8 @@
         private ZedGraph.ZedGraphControl GraphControl;
         private System.Windows.Forms.Button UseSignalButton;
         private new System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Label ShowOutputLabel;
+        private System.Windows.Forms.ComboBox ShowOutputList;
+        private System.Windows.Forms.Label NoDataLabel;
     }
 }

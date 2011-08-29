@@ -10,6 +10,7 @@ namespace WaveletStudio.SignalGeneration
     /// phi -> Phase
     /// D   -> Offset
     ///</summary>
+    [Serializable]
     public class Sawtooth : CommonSignalBase
     {
         /// <summary>

@@ -46,13 +46,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Blocks\NodeBase.cs" />
-    <Compile Include="Blocks\OutputBlockNode.cs" />
-    <Compile Include="Blocks\BlockConnection.cs" />
+    <Compile Include="Blocks\BlockNodeBase.cs" />
+    <Compile Include="Blocks\BlockOutputNode.cs" />
+    <Compile Include="Blocks\CustomAttributes\Parameter.cs" />
+    <Compile Include="Blocks\CustomAttributes\SingleInputOutputBlock.cs" />
     <Compile Include="Blocks\GenerateSignalBlock.cs" />
     <Compile Include="Blocks\BlockBase.cs" />
     <Compile Include="Blocks\BlockList.cs" />
-    <Compile Include="Blocks\InputBlockNode.cs" />
+    <Compile Include="Blocks\BlockInputNode.cs" />
     <Compile Include="Blocks\ScalarOperationBlock.cs" />
     <Compile Include="SignalGeneration\Binary.cs" />
     <Compile Include="Utils.cs" />

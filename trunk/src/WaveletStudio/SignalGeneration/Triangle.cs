@@ -11,6 +11,7 @@ namespace WaveletStudio.SignalGeneration
     /// phi -> Phase
     /// D   -> Offset
     ///</summary>
+    [Serializable]
     public class Triangle : CommonSignalBase
     {
         /// <summary>

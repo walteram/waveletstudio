@@ -22,8 +22,8 @@ namespace WaveletStudio.MainApplication.Forms
             InitializeComponent();
 
             SignalTemplatePanel.CaptionShowDialogItemActivated += (sender, args) => ShowSignalGenerationForm(null, true);
-            ConfigureGraph(OriginalSignalGraph, "Original Signal");
-            ConfigureGraph(CreatedSignalGraph, "Created Signal");
+            ApplicationUtils.ConfigureGraph(OriginalSignalGraph, "Original Signal");
+            ApplicationUtils.ConfigureGraph(CreatedSignalGraph, "Created Signal");
             PlotComplex();
         }
 
@@ -41,18 +41,6 @@ namespace WaveletStudio.MainApplication.Forms
             CreatedSignalGraph.AxisChange();
             CreatedSignalGraph.Invalidate();
             CreatedSignalGraph.Refresh();
-        }
-
-        private void ConfigureGraph(ZedGraphControl graph, string title)
-        {
-            var pane = graph.GraphPane;
-            graph.ContextMenuBuilder += (sender, strip, pt, state) => strip.Items.RemoveByKey("set_default");
-            pane.IsFontsScaled = false;
-            pane.Title.FontSpec = new FontSpec("Arial", 11, Color.Black, true, false, false){Border = new Border(false, Color.Transparent, 0)};
-            pane.Title.Text = ApplicationUtils.GetResourceString(title);
-            pane.Legend.IsVisible = false;
-            pane.XAxis.Title.IsVisible = false;
-            pane.YAxis.Title.IsVisible = false;            
         }
 
         private void MainFormLoad(object sender, EventArgs e)
@@ -94,7 +82,7 @@ namespace WaveletStudio.MainApplication.Forms
         }
 
         private void ShowSignalGenerationForm(string templateName, bool forceShowForm, BlockBase step = null)
-        {
+        {/*
             var currentStep = step ?? Blocks.FirstOrDefault(it => it.Key == GenerateSignalBlock.StepKey);
             if (currentStep != null)
             {
@@ -122,11 +110,12 @@ namespace WaveletStudio.MainApplication.Forms
             }
             Blocks.RemoveAll(it => it.ProcessingType == BlockBase.ProcessingTypeEnum.CreateSignal);
             Blocks.Insert(0, step);
-            UpdateForm();
+            UpdateForm();*/
         }
 
         private void ShowOperationForm(string stepFullName, bool forceShowForm, BlockBase step = null, BlockBase previousStep = null)
         {
+            /*
             if(!CheckOriginalSignal())
                 return;
             var inserting = false;
@@ -149,10 +138,10 @@ namespace WaveletStudio.MainApplication.Forms
             }
             if (form.DialogResult != DialogResult.OK)
             {
-                Blocks[step.Index] = form.Step.Clone();
+                Blocks[step.Index] = form.TempStep.Clone();
             }            
             
-            UpdateForm();
+            UpdateForm();*/
         }
 
         private bool CheckOriginalSignal()
@@ -233,7 +222,7 @@ namespace WaveletStudio.MainApplication.Forms
         }
 
         private void StepSelected(object sender, QCompositeEventArgs args)
-        {
+        {/*
             var stepId = Guid.Parse(((QCompositeItem)sender).ItemName);
             var step = Blocks.FirstOrDefault(it => it.Id == stepId);
             var previousStep = Blocks.FirstOrDefault(it => it.Index == step.Index - 1);
@@ -245,7 +234,7 @@ namespace WaveletStudio.MainApplication.Forms
             else if (step.ProcessingType == BlockBase.ProcessingTypeEnum.Operation)
             {
                 ShowOperationForm(null, true, step, previousStep);
-            }
+            }*/
         }
     }
 }
