@@ -94,19 +94,19 @@ namespace WaveletStudio.Tests.Wavelet
         {
             var signal = new ILArray<double>(new double[] { 1, 2, 3, 4, 5, 6, 7, 8 });
             var filter = new ILArray<double>(new double[] {1, 2, 3});
-            var convolved = Dwt.Convolve(signal, filter);
+            var convolved = WaveMath.Convolve(signal, filter);
             var expected = new ILArray<double>(new double[] { 10, 16, 22, 28, 34, 40 });
             Assert.IsTrue(convolved.SequenceEqual(expected));
 
             signal = new ILArray<double>(new double[] { 1, 2, 3});
             filter = new ILArray<double>(new double[] { 1, 2, 3, 4, 5 });
-            convolved = Dwt.Convolve(signal, filter);
+            convolved = WaveMath.Convolve(signal, filter);
             expected = new ILArray<double>(new double[] { 10, 16, 22 });
             Assert.IsTrue(convolved.SequenceEqual(expected));
 
             signal = new ILArray<double>(new double[] { 1, 2, 3, 4, 5, 6, 7, 8 });
             filter = new ILArray<double>(new double[] { 1, 2, 3, 4 });
-            convolved = Dwt.Convolve(signal, filter, false);
+            convolved = WaveMath.Convolve(signal, filter, false);
             expected = new ILArray<double>(new double[] { 1, 4, 10, 20, 30, 40, 50, 60, 61, 52, 32  });
             Assert.IsTrue(convolved.SequenceEqual(expected));
         }
@@ -115,17 +115,17 @@ namespace WaveletStudio.Tests.Wavelet
         public void TestDownsample()
         {
             var input = new ILArray<double>(new double[] { 1, 2, 3, 4, 5, 6, 7, 8 });
-            var downSampled = Dwt.DownSample(input);
+            var downSampled = WaveMath.DownSample(input);
             var expected = new ILArray<double>(new double[] { 2, 4, 6, 8 });
             Assert.IsTrue(downSampled.SequenceEqual(expected));
 
             input = new ILArray<double>(new double[] { 1, 2, 3 });
-            downSampled = Dwt.DownSample(input);
+            downSampled = WaveMath.DownSample(input);
             expected = new ILArray<double>(new double[] { 2 });
             Assert.IsTrue(downSampled.SequenceEqual(expected));
             
             input = new ILArray<double>(new double[] { 1 });
-            downSampled = Dwt.DownSample(input);
+            downSampled = WaveMath.DownSample(input);
             expected = new ILArray<double>(new double[] { });
             Assert.IsTrue(downSampled.SequenceEqual(expected));
         }
@@ -134,22 +134,22 @@ namespace WaveletStudio.Tests.Wavelet
         public void TestUpsample()
         {
             var input = new ILArray<double>(new double[] { 1 });
-            var upSampled = Dwt.UpSample(input);
+            var upSampled = WaveMath.UpSample(input);
             var expected = new ILArray<double>(new double[] { 1 });
             Assert.IsTrue(upSampled.SequenceEqual(expected));
 
             input = new ILArray<double>(new double[] { 1, 2 });
-            upSampled = Dwt.UpSample(input);
+            upSampled = WaveMath.UpSample(input);
             expected = new ILArray<double>(new double[] { 1, 0, 2 });
             Assert.IsTrue(upSampled.SequenceEqual(expected));
 
             input = new ILArray<double>(new double[] { 1, 2, 3, 4, 5 });
-            upSampled = Dwt.UpSample(input);
+            upSampled = WaveMath.UpSample(input);
             expected = new ILArray<double>(new double[] { 1, 0, 2, 0, 3, 0, 4, 0, 5 });
             Assert.IsTrue(upSampled.SequenceEqual(expected));
 
             input = new ILArray<double>(new double[] { });
-            upSampled = Dwt.UpSample(input);
+            upSampled = WaveMath.UpSample(input);
             expected = new ILArray<double>(new double[] { });
             Assert.IsTrue(upSampled.SequenceEqual(expected));
         }

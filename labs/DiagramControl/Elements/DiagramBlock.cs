@@ -35,18 +35,32 @@ namespace DiagramNet.Elements
 			_connectionTextProperty = connectionTextProperty;
 			State = blockState;
 			SyncContructors();
+            _inputStates = inputStates;
+            _outputStates = outputStates;
 
-			Connects = new ConnectorElement[inputStates.Length + outputStates.Length];
-			_inputStates = inputStates;
-			_outputStates = outputStates;
-			for (var i = 0; i < inputStates.Length; i++)
-			{
-				Connects[i] = new ConnectorElement(this) { State = inputStates[i] };
-			}
-			for (var i = 0; i < outputStates.Length; i++)
-			{
-				Connects[inputStates.Length + i] = new ConnectorElement(this) { State = outputStates[i] };
-			}
+            if (Connects == null || Connects.Length != inputStates.Length + outputStates.Length)
+		    {
+		        Connects = new ConnectorElement[inputStates.Length + outputStates.Length];
+                for (var i = 0; i < inputStates.Length; i++)
+                {
+                    Connects[i] = new ConnectorElement(this) { State = inputStates[i] };
+                }
+                for (var i = 0; i < outputStates.Length; i++)
+                {
+                    Connects[inputStates.Length + i] = new ConnectorElement(this) { State = outputStates[i] };
+                }
+		    }
+            else
+            {
+                for (var i = 0; i < inputStates.Length; i++)
+                {
+                    Connects[i].State = inputStates[i];
+                }
+                for (var i = 0; i < outputStates.Length; i++)
+                {
+                    Connects[inputStates.Length + i].State = outputStates[i];
+                }
+            }
 			UpdateConnectorsPosition();
 			SyncContructors(); 
 		}

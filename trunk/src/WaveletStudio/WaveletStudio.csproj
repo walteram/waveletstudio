@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="Blocks\BlockNodeBase.cs" />
     <Compile Include="Blocks\BlockOutputNode.cs" />
+    <Compile Include="Blocks\ConvolutionBlock.cs" />
+    <Compile Include="Blocks\DownSampleBlock.cs" />
     <Compile Include="Blocks\CustomAttributes\Parameter.cs" />
     <Compile Include="Blocks\CustomAttributes\SingleInputOutputBlock.cs" />
     <Compile Include="Blocks\GenerateSignalBlock.cs" />

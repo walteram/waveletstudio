@@ -178,6 +178,7 @@
             // 
             // SignalTemplatePanel
             // 
+            this.SignalTemplatePanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
             this.SignalTemplatePanel.Items.Add(this.SignalTemplatesComposite);
             this.SignalTemplatePanel.Title = "Signal Templates";
             // 
@@ -246,6 +247,7 @@
             // 
             // OperationsFunctionsPanel
             // 
+            this.OperationsFunctionsPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
             this.OperationsFunctionsPanel.Items.Add(this.OperationsFunctionsComposite);
             this.OperationsFunctionsPanel.Title = "Functions";
             // 
@@ -304,9 +306,9 @@
             // 
             // Designer
             // 
-            this.Designer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.Designer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.Designer.AutoScroll = true;
             this.Designer.BackColor = System.Drawing.SystemColors.Window;
             this.Designer.Location = new System.Drawing.Point(2, 168);

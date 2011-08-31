@@ -1,5 +1,6 @@
 ﻿using System;
 using ILNumerics;
+using ILNumerics.BuiltInFunctions;
 
 namespace WaveletStudio
 {
@@ -48,7 +49,7 @@ namespace WaveletStudio
             {
                 return 0;
             }
-            var sortedSamples = ILNumerics.BuiltInFunctions.ILMath.unique(samples);
+            var sortedSamples = ILMath.unique(samples);
             var maxFreq = sortedSamples.GetValue(0);
             var maxOccurrences = 0;
             for (var i = 0; i < sortedSamples.Length; i++)
@@ -142,6 +143,80 @@ namespace WaveletStudio
             }            
             var topSum = (x.Length * sumOfSqrs) - (Math.Pow(sum, 2));
             return Math.Sqrt(topSum / (x.Length * (x.Length - 1)));
+        }
+
+        /// <summary>
+        /// Convolves vectors input and filter.
+        /// </summary>
+        /// <param name="input">The input signal</param>
+        /// <param name="filter">The filter</param>
+        /// <param name="returnOnlyValid">True to return only the middle of the array</param>
+        /// <param name="margin">Margin to be used if returnOnlyValid is set to true</param>
+        /// <returns></returns>
+        public static ILArray<double> Convolve(ILArray<double> input, ILArray<double> filter, bool returnOnlyValid = true, int margin = 0)
+        {
+            if (input.Length < filter.Length)
+            {
+                var auxSignal = input.C;
+                input = filter.C;
+                filter = auxSignal;
+            }
+            var result = new double[input.Length + filter.Length - 1];
+            for (var i = 0; i < input.Length; i++)
+            {
+                for (var j = 0; j < filter.Length; j++)
+                {
+                    result[i + j] = result[i + j] + input.GetValue(i) * filter.GetValue(j);
+                }
+            }
+
+            if (returnOnlyValid)
+            {
+                var size = input.Length - filter.Length + 1;
+                var padding = (result.Length - size) / 2;
+                return new ILArray<double>(result)[String.Format("{0}:1:{1}", padding + margin, padding + size - 1 - margin)];
+            }
+            return new ILArray<double>(result);
+        }
+
+        /// <summary>
+        /// Decreases the sampling rate of the input by keeping every odd sample starting with the first sample.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static ILArray<double> DownSample(ILArray<double> input)
+        {
+            var size = input.Length / 2;
+            var result = new double[size];
+            var j = 0;
+            for (var i = 0; i < input.Length; i++)
+            {
+                if (i % 2 == 0)
+                    continue;
+                result[j] = input.GetValue(i);
+                j++;
+            }
+            return new ILArray<double>(result);
+        }
+
+        /// <summary>
+        /// Increases the sampling rate of the input by inserting n-1 zeros between samples. 
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static ILArray<double> UpSample(ILArray<double> input)
+        {
+            if (input.IsEmpty)
+            {
+                return ILMath.empty();
+            }
+            var size = input.Length * 2;
+            var result = new double[size - 1];
+            for (var i = 0; i < input.Length; i++)
+            {
+                result[i * 2] = input.GetValue(i);
+            }
+            return new ILArray<double>(result);
         }
     }
 }
