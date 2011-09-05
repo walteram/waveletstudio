@@ -33,8 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ILNumerics">
-      <HintPath>..\..\..\res\libs\ILNumerics\ILNumerics.dll</HintPath>
+    <Reference Include="ILNumerics.Net">
+      <HintPath>..\..\..\res\libs\ILNumerics\ILNumerics.Net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -50,12 +50,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blocks\BlocksConnectionTest.cs" />
+    <Compile Include="Blocks\ConvolveBlockTest.cs" />
     <Compile Include="Blocks\ScalarOperationBlockTest.cs" />
     <Compile Include="Blocks\GenerateSignalBlockTest.cs" />
+    <Compile Include="SignalGeneration\BinaryTest.cs" />
     <Compile Include="SignalGeneration\SawtoothTest.cs" />
     <Compile Include="SignalGeneration\SineTest.cs" />
     <Compile Include="SignalGeneration\SquareTest.cs" />
     <Compile Include="SignalGeneration\TriangleTest.cs" />
+    <Compile Include="TestUtils.cs" />
     <Compile Include="Wavelet\CommonMotherWaveletsTests.cs" />
     <Compile Include="Wavelet\DecompositionLevelTests.cs" />
     <Compile Include="Wavelet\DwtTests.cs" />
@@ -70,6 +73,9 @@
       <Project>{003D0672-355F-416B-9E88-DC95F0762329}</Project>
       <Name>WaveletStudio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Blocks\CustomAttributes\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

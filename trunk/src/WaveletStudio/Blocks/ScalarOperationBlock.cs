@@ -64,7 +64,7 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Scalar value
         /// </summary>
-        [Parameter("Scalar Value")]
+        [Parameter]
         public double Value
         {
             get { return _scalar; }

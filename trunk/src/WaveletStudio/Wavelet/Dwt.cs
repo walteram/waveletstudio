@@ -8,7 +8,7 @@ namespace WaveletStudio.Wavelet
     /// Discreet Wavelet Transform and its inverse
     /// </summary>
     public static class Dwt
-    {        
+    {
         /// <summary>
         /// Multilevel 1-D Discreete Wavelet Transform
         /// </summary>
@@ -16,8 +16,9 @@ namespace WaveletStudio.Wavelet
         /// <param name="motherWavelet">The mother wavelet to be used. Example: CommonMotherWavelets.GetWaveletFromName("DB4")</param>
         /// <param name="level">The depth-level to perform the DWT</param>
         /// <param name="extensionMode">Signal extension mode</param>
+        /// <param name="convolutionMode">Defines what convolution function should be used</param>
         /// <returns></returns>
-        public static List<DecompositionLevel> ExecuteDwt(Signal signal, MotherWavelet motherWavelet, int level, SignalExtension.ExtensionMode extensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint)
+        public static List<DecompositionLevel> ExecuteDwt(Signal signal, MotherWavelet motherWavelet, int level, SignalExtension.ExtensionMode extensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint, ConvolutionModeEnum convolutionMode = ConvolutionModeEnum.Fft)
         {
             var levels = new List<DecompositionLevel>();
             
@@ -31,10 +32,10 @@ namespace WaveletStudio.Wavelet
                 approximation = SignalExtension.Extend(approximation, extensionMode, extensionSize);
                 details = SignalExtension.Extend(details, extensionMode, extensionSize);
 
-                approximation = WaveMath.Convolve(approximation, motherWavelet.Filters.DecompositionLowPassFilter);
+                approximation = WaveMath.Convolve(convolutionMode, approximation, motherWavelet.Filters.DecompositionLowPassFilter);
                 approximation = WaveMath.DownSample(approximation);
 
-                details = WaveMath.Convolve(details, motherWavelet.Filters.DecompositionHighPassFilter);
+                details = WaveMath.Convolve(convolutionMode, details, motherWavelet.Filters.DecompositionHighPassFilter);
                 details = WaveMath.DownSample(details);
 
                 realLength = realLength / 2;
@@ -57,8 +58,9 @@ namespace WaveletStudio.Wavelet
         /// <param name="decompositionLevels">The decomposition levels of the DWT</param>
         /// <param name="motherWavelet">The mother wavelet to be used. Example: CommonMotherWavelets.GetWaveletFromName("DB4") </param>
         /// <param name="level">The depth-level to perform the DWT</param>
+        /// <param name="convolutionMode">Defines what convolution function should be used</param>
         /// <returns></returns>
-        public static ILArray<double> ExecuteIDwt(List<DecompositionLevel> decompositionLevels, MotherWavelet motherWavelet, int level = 0)
+        public static ILArray<double> ExecuteIDwt(List<DecompositionLevel> decompositionLevels, MotherWavelet motherWavelet, int level = 0, ConvolutionModeEnum convolutionMode = ConvolutionModeEnum.Fft)
         {
             if (level == 0 || level > decompositionLevels.Count)
             {
@@ -70,10 +72,10 @@ namespace WaveletStudio.Wavelet
             for (var i = level - 1; i >= 0; i--)
             {
                 approximation = WaveMath.UpSample(approximation);
-                approximation = WaveMath.Convolve(approximation, motherWavelet.Filters.ReconstructionLowPassFilter, true, -1);
+                approximation = WaveMath.Convolve(convolutionMode, approximation, motherWavelet.Filters.ReconstructionLowPassFilter, true, -1);
 
                 details = WaveMath.UpSample(details);
-                details = WaveMath.Convolve(details, motherWavelet.Filters.ReconstructionHighPassFilter, true, -1);
+                details = WaveMath.Convolve(convolutionMode, details, motherWavelet.Filters.ReconstructionHighPassFilter, true, -1);
 
                 //sum approximation with details
                 approximation = ILMath.add(approximation, details);
