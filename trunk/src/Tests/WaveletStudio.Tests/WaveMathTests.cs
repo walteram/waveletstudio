@@ -78,5 +78,110 @@ namespace WaveletStudio.Tests
             result = WaveMath.NormalDensity(input, 2, 0);
             Assert.IsTrue(double.IsNaN(result));
         }
+        
+        [TestMethod]
+        public void TestConvolve()
+        {
+            var signal = new ILArray<double>(new double[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            var filter = new ILArray<double>(new double[] { 1, 2, 3 });
+            var convolved = WaveMath.Convolve(ConvolutionModeEnum.Normal, signal, filter);
+            var expected = new ILArray<double>(new double[] { 10, 16, 22, 28, 34, 40 });
+            Assert.IsTrue(convolved.SequenceEqual(expected));
+
+            signal = new ILArray<double>(new double[] { 1, 2, 3 });
+            filter = new ILArray<double>(new double[] { 1, 2, 3, 4, 5 });
+            convolved = WaveMath.ConvolveNormal(signal, filter);
+            expected = new ILArray<double>(new double[] { 10, 16, 22 });
+            Assert.IsTrue(convolved.SequenceEqual(expected));
+
+            signal = new ILArray<double>(new double[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            filter = new ILArray<double>(new double[] { 1, 2, 3, 4 });
+            convolved = WaveMath.ConvolveNormal(signal, filter, false);
+            expected = new ILArray<double>(new double[] { 1, 4, 10, 20, 30, 40, 50, 60, 61, 52, 32 });
+            Assert.IsTrue(convolved.SequenceEqual(expected));
+        }
+
+        [TestMethod]
+        [DeploymentItem("libfftw3-3.dll")]
+        [DeploymentItem("libfftw3f-3.dll")]
+        public void TestConvolveFft()
+        {
+
+            var signal = new ILArray<double>(new double[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            var filter = new ILArray<double>(new double[] { 1, 2, 3 });
+            var convolved = WaveMath.Convolve(ConvolutionModeEnum.Fft, signal, filter);
+            var expected = new ILArray<double>(new double[] { 10, 16, 22, 28, 34, 40 });
+            Assert.IsTrue(SequenceEquals(convolved, expected));
+
+            signal = new ILArray<double>(new double[] { 1, 2, 3 });
+            filter = new ILArray<double>(new double[] { 1, 2, 3, 4, 5 });
+            convolved = WaveMath.ConvolveFft(signal, filter);
+            expected = new ILArray<double>(new double[] { 10, 16, 22 });
+            Assert.IsTrue(SequenceEquals(convolved, expected));
+
+            signal = new ILArray<double>(new double[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            filter = new ILArray<double>(new double[] { 1, 2, 3, 4 });
+            convolved = WaveMath.ConvolveFft(signal, filter, false);
+            expected = new ILArray<double>(new double[] { 1, 4, 10, 20, 30, 40, 50, 60, 61, 52, 32 });
+            Assert.IsTrue(SequenceEquals(convolved, expected));
+        }
+
+        [TestMethod]
+        public void TestDownsample()
+        {
+            var input = new ILArray<double>(new double[] { 1, 2, 3, 4, 5, 6, 7, 8 });
+            var downSampled = WaveMath.DownSample(input);
+            var expected = new ILArray<double>(new double[] { 2, 4, 6, 8 });
+            Assert.IsTrue(downSampled.SequenceEqual(expected));
+
+            input = new ILArray<double>(new double[] { 1, 2, 3 });
+            downSampled = WaveMath.DownSample(input);
+            expected = new ILArray<double>(new double[] { 2 });
+            Assert.IsTrue(downSampled.SequenceEqual(expected));
+
+            input = new ILArray<double>(new double[] { 1 });
+            downSampled = WaveMath.DownSample(input);
+            expected = new ILArray<double>(new double[] { });
+            Assert.IsTrue(downSampled.SequenceEqual(expected));
+        }
+
+        [TestMethod]
+        public void TestUpsample()
+        {
+            var input = new ILArray<double>(new double[] { 1 });
+            var upSampled = WaveMath.UpSample(input);
+            var expected = new ILArray<double>(new double[] { 1 });
+            Assert.IsTrue(upSampled.SequenceEqual(expected));
+
+            input = new ILArray<double>(new double[] { 1, 2 });
+            upSampled = WaveMath.UpSample(input);
+            expected = new ILArray<double>(new double[] { 1, 0, 2 });
+            Assert.IsTrue(upSampled.SequenceEqual(expected));
+
+            input = new ILArray<double>(new double[] { 1, 2, 3, 4, 5 });
+            upSampled = WaveMath.UpSample(input);
+            expected = new ILArray<double>(new double[] { 1, 0, 2, 0, 3, 0, 4, 0, 5 });
+            Assert.IsTrue(upSampled.SequenceEqual(expected));
+
+            input = new ILArray<double>(new double[] { });
+            upSampled = WaveMath.UpSample(input);
+            expected = new ILArray<double>(new double[] { });
+            Assert.IsTrue(upSampled.SequenceEqual(expected));
+        }
+
+        private static bool SequenceEquals(ILArray<double> double1, ILArray<double> double2)
+        {
+            for (var i = 0; i < double1.Count(); i++)
+            {
+                if (!AlmostEquals(double1.GetValue(i), double2.GetValue(i), 0.0000001))
+                    return false;
+            }
+            return true;
+        }
+
+        private static bool AlmostEquals(double double1, double double2, double precision)
+        {
+            return (Math.Abs(double1 - double2) <= precision);
+        } 
     }
 }

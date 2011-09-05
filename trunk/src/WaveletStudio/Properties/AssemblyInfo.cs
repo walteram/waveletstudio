@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WaveLib")]
+[assembly: AssemblyTitle("WaveletStudio")]
 [assembly: AssemblyDescription("Biblioteca construída em C# com o objetivo de auxiliar o estudo de sinais através da Análise Wavelet")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WaveLib")]
+[assembly: AssemblyProduct("WaveletStudio")]
 [assembly: AssemblyCopyright("Copyright © Walter Amorim")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -34,3 +34,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("0.3.0.0")]
 [assembly: AssemblyFileVersion("0.3.0.0")]
+[assembly: InternalsVisibleTo("WaveletStudio.Tests")]

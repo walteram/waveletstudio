@@ -38,8 +38,8 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ILNumerics">
-      <HintPath>..\..\res\libs\ILNumerics\ILNumerics.dll</HintPath>
+    <Reference Include="ILNumerics.Net">
+      <HintPath>..\..\res\libs\ILNumerics\ILNumerics.Net.dll</HintPath>
     </Reference>
     <Reference Include="Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa, processorArchitecture=MSIL">
       <HintPath>..\..\res\libs\Qios\Qios.DevSuite.Components.dll</HintPath>
@@ -86,12 +86,6 @@
     <Compile Include="Forms\DiagramForm.Designer.cs">
       <DependentUpon>DiagramForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\WizardControl.resx">
@@ -107,9 +101,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DiagramForm.resx">
       <DependentUpon>DiagramForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -143,7 +134,9 @@
       <Name>WaveletStudio</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\convolution.png" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\signals_commonsignals_sine.png" />
   </ItemGroup>
@@ -158,6 +151,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\operation_scalar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\downsample.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\downsampleImg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="convolutionImg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\convolutionImg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scalarimg.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

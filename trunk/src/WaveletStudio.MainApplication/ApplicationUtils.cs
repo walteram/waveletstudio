@@ -26,6 +26,8 @@ namespace WaveletStudio.MainApplication
         {
             var bitmap = new Bitmap(width, height);
             var image = (Image) (Resources.ResourceManager.GetObject(name.ToLower().Replace(" ", "")));
+            if (image == null && name.ToLower().EndsWith("img"))
+                return GetResourceImage(name.Substring(0, name.Length - 3), width, height);
             if (image == null)
                 return bitmap;
             

@@ -163,7 +163,7 @@ namespace WaveletStudio
             var samples = new List<double[]>();
             var x = Start;
             var interval = SamplingInterval;
-            if (interval == 0)
+            if (Math.Abs(interval - 0) < double.Epsilon)
             {
                 interval = 1;
             }
@@ -182,7 +182,7 @@ namespace WaveletStudio
         public Signal Clone()
         {
             var newSignal = Copy();
-            newSignal.Samples = (ILArray<double>) Samples.Clone();
+            newSignal.Samples = Samples.C;
             return newSignal;
         }
 

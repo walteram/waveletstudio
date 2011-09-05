@@ -16,6 +16,8 @@ namespace WaveletStudio.Tests.Blocks
             newSignal.Finish = 6;
             newSignal.Execute();
 
+            Assert.AreEqual("A=1, F=60, φ=0, D=0; x=0...5, fs=1", signalBlock.Description);            
+
             Assert.AreNotSame(signalBlock.OutputNodes[0], newSignal.OutputNodes[0]);
             Assert.AreNotSame(signalBlock.OutputNodes[0].Object, newSignal.OutputNodes[0].Object);
 

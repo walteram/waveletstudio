@@ -60,6 +60,43 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap convolution {
+            get {
+                object obj = ResourceManager.GetObject("convolution", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap convolutionimg {
+            get {
+                object obj = ResourceManager.GetObject("convolutionimg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convolution Mode.
+        /// </summary>
+        internal static string convolutionmode {
+            get {
+                return ResourceManager.GetString("convolutionmode", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap downsample {
+            get {
+                object obj = ResourceManager.GetObject("downsample", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap downsampleimg {
+            get {
+                object obj = ResourceManager.GetObject("downsampleimg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Before performing any operation is necessary to select a source. 
         ///Click in the Signal tab and select a signal source..
@@ -67,6 +104,15 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static string errorinvalidoriginalsignal {
             get {
                 return ResourceManager.GetString("errorinvalidoriginalsignal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FFT.
+        /// </summary>
+        internal static string fft {
+            get {
+                return ResourceManager.GetString("fft", resourceCulture);
             }
         }
         
@@ -94,6 +140,15 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static string ignorelastsample {
             get {
                 return ResourceManager.GetString("ignorelastsample", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return only valid samples.
+        /// </summary>
+        internal static string returnonlyvalid {
+            get {
+                return ResourceManager.GetString("returnonlyvalid", resourceCulture);
             }
         }
         
@@ -126,6 +181,13 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static string scalaroperation_text {
             get {
                 return ResourceManager.GetString("scalaroperation_text", resourceCulture);
+            }
+        }
+        
+        internal static System.Drawing.Bitmap scalaroperationimg {
+            get {
+                object obj = ResourceManager.GetObject("scalaroperationimg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

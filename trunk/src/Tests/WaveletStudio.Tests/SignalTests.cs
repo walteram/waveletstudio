@@ -1,4 +1,5 @@
-﻿using ILNumerics;
+﻿using System.Linq;
+using ILNumerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace WaveletStudio.Tests
@@ -9,6 +10,36 @@ namespace WaveletStudio.Tests
     [TestClass]
     public class SignalTests
     {
+        [TestMethod]
+        public void TestClone()
+        {
+            var signal = new Signal(new double[] { 1, 2, 3, 4, 5 }, 1);
+            var pair = signal.GetSamplesPair();
+
+            var i = 0;
+            foreach (var item in pair)
+            {
+                Assert.AreEqual(item[1], i);
+                Assert.AreEqual(item[0], signal.Samples.GetValue(i));                
+                i++;
+            }
+
+            signal = new Signal();
+            pair = signal.GetSamplesPair();
+            Assert.AreEqual(0, pair.ToList().Count);
+
+        }
+
+        [TestMethod]
+        public void TestGetSamplesPair()
+        {
+            var signal = new Signal(new double[] { 1, 2, 3, 4, 5 }, 1);
+            var clone = signal.Clone();
+            Assert.IsTrue(TestUtils.SequenceEquals(signal.Samples, clone.Samples));
+            Assert.AreNotSame(signal, clone);
+            Assert.AreNotSame(signal.Samples, clone.Samples);
+        }
+        
         [TestMethod]
         public void TestLengthIsPowerOf2()
         {

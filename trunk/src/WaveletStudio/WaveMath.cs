@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using ILNumerics;
 using ILNumerics.BuiltInFunctions;
+using ILNumerics.Misc;
 
 namespace WaveletStudio
 {
@@ -49,7 +51,7 @@ namespace WaveletStudio
             {
                 return 0;
             }
-            var sortedSamples = ILMath.unique(samples);
+            var sortedSamples = Unique(samples);
             var maxFreq = sortedSamples.GetValue(0);
             var maxOccurrences = 0;
             for (var i = 0; i < sortedSamples.Length; i++)
@@ -57,7 +59,7 @@ namespace WaveletStudio
                 var occurrences = 0;
                 for (var j = 0; j < samples.Length; j++)
                 {
-                    if (samples.GetValue(j) == sortedSamples.GetValue(i))
+                    if (Math.Abs(samples.GetValue(j) - sortedSamples.GetValue(i)) < double.Epsilon)
                     {
                         occurrences++;
                     }
@@ -70,6 +72,41 @@ namespace WaveletStudio
                 maxFreq = sortedSamples.GetValue(i);
             }
             return (maxFreq);
+        }
+
+        private static ILArray<double> Unique(ILArray<double> x)
+        {
+            // 1. Handle empty and singleton cases
+            /*
+            if (x.IsEmpty)
+                return new ILArray<double>();
+
+            if (x.IsScalar)
+                return x.C;
+            */
+            // 2. Sort
+            var x1 = x.Values.ToArray();
+            Array.Sort(x1);
+
+            // 3. Declarations
+            var unqCount = 1;
+            for (var i = 1; i < x1.Length; i++)
+                if (Math.Abs(x1[i - 1] - x1[i]) > double.Epsilon)
+                    unqCount++;
+
+            var unq = ILMemoryPool.Pool.New<double>(unqCount);
+
+            // 4. Unique
+            unq[0] = x1[0];
+            for (int i = 1, j = 1; i < x1.Length; i++)
+            {
+                if (Math.Abs(x1[i - 1] - x1[i]) <= double.Epsilon) 
+                    continue;
+                unq[j] = x1[i];
+                j++;
+            }
+
+            return new ILArray<double>(unq);
         }
 
         /// <summary>
@@ -148,12 +185,28 @@ namespace WaveletStudio
         /// <summary>
         /// Convolves vectors input and filter.
         /// </summary>
+        /// <param name="convolutionMode">Defines what convolution function should be used</param> 
+        /// <param name="input">The input signal</param>
+        /// <param name="filter">The filter</param>
+        /// <param name="returnOnlyValid">True to return only the middle of the array</param>
+        /// <param name="margin">Margin to be used if returnOnlyValid is set to true</param>        
+        /// <returns></returns>
+        public static ILArray<double> Convolve(ConvolutionModeEnum convolutionMode, ILArray<double> input, ILArray<double> filter, bool returnOnlyValid = true, int margin = 0)
+        {
+            return convolutionMode == ConvolutionModeEnum.Normal ? 
+                        ConvolveNormal(input, filter, returnOnlyValid, margin) : 
+                        ConvolveFft(input, filter, returnOnlyValid, margin);
+        }
+
+        /// <summary>
+        /// Convolves vectors input and filter.
+        /// </summary>
         /// <param name="input">The input signal</param>
         /// <param name="filter">The filter</param>
         /// <param name="returnOnlyValid">True to return only the middle of the array</param>
         /// <param name="margin">Margin to be used if returnOnlyValid is set to true</param>
         /// <returns></returns>
-        public static ILArray<double> Convolve(ILArray<double> input, ILArray<double> filter, bool returnOnlyValid = true, int margin = 0)
+        public static ILArray<double> ConvolveNormal(ILArray<double> input, ILArray<double> filter, bool returnOnlyValid = true, int margin = 0)
         {
             if (input.Length < filter.Length)
             {
@@ -177,6 +230,36 @@ namespace WaveletStudio
                 return new ILArray<double>(result)[String.Format("{0}:1:{1}", padding + margin, padding + size - 1 - margin)];
             }
             return new ILArray<double>(result);
+        }
+
+        public static ILArray<double> ConvolveFft(ILArray<double> input, ILArray<double> filter, bool returnOnlyValid = true, int margin = 0)
+        {
+            ILMath.FFT = new ILNumerics.Native.ILFFTW3FFT();
+            if (input.Length < filter.Length)
+            {
+                var auxSignal = input.C;
+                input = filter.C;
+                filter = auxSignal;
+            }
+            var dim = input.Length + filter.Length - 1;
+            var inputNew = ILMath.zeros(1, dim);
+            var filterNew = ILMath.zeros(1, dim);
+            inputNew["0:1:" + (input.Length - 1)] = input;
+            filterNew["0:1:" + (filter.Length - 1)] = filter;            
+            var ifft = ILMath.ifft(ILMath.fft(inputNew) * ILMath.fft(filterNew));
+            var result = ILMath.real(ifft);
+
+            if (returnOnlyValid)
+            {
+                var size = input.Length - filter.Length + 1;
+                var padding = (result.Length - size) / 2;
+                var start = padding + margin;
+                var end = padding + size - 1 - margin;
+                var newResul = new ILArray<double>(1, end - start + 1);
+                newResul["0:1:end"] = result[String.Format("{0}:1:{1}", padding + margin, padding + size - 1 - margin)];
+                return newResul;
+            }
+            return result;
         }
 
         /// <summary>
@@ -218,5 +301,11 @@ namespace WaveletStudio
             }
             return new ILArray<double>(result);
         }
+    }
+
+    public enum ConvolutionModeEnum
+    {
+        Normal,
+        Fft
     }
 }

@@ -50,10 +50,11 @@ namespace WaveletStudio.MainApplication.Forms
                     ((ComboBox)field).SelectedIndexChanged += FieldValueChanged;
                     foreach (var item in Enum.GetNames(property.PropertyType))
                     {
-                        ((ComboBox)field).Items.Add(ApplicationUtils.GetResourceString(item));
+                        ((ComboBox)field).Items.Add(new ListItem{Text = ApplicationUtils.GetResourceString(item), Value = item});
+                        if (defaultValue == item)
+                            ((ComboBox) field).SelectedIndex = ((ComboBox) field).Items.Count -1;    
                     }
-                    if (!string.IsNullOrEmpty(defaultValue))
-                        ((ComboBox) field).SelectedItem = defaultValue;
+                        
                 }
                 else if (property.PropertyType == typeof(int) || property.PropertyType == typeof(decimal) || property.PropertyType == typeof(double))
                 {
@@ -78,10 +79,10 @@ namespace WaveletStudio.MainApplication.Forms
                     ((ComboBox)field).SelectedIndexChanged += FieldValueChanged;
                     foreach (var item in list)
                     {
-                        ((ComboBox)field).Items.Add(ApplicationUtils.GetResourceString(item));
-                    }
-                    if (!string.IsNullOrEmpty(defaultValue))
-                        ((ComboBox)field).SelectedItem = defaultValue;
+                        ((ComboBox)field).Items.Add(new ListItem { Text = ApplicationUtils.GetResourceString(item), Value = item });
+                        if (defaultValue == item)
+                            ((ComboBox)field).SelectedIndex = ((ComboBox)field).Items.Count-1;
+                    }                    
                 }
                 else
                 {
@@ -114,7 +115,7 @@ namespace WaveletStudio.MainApplication.Forms
             else if (property.PropertyType == typeof(decimal))
                 value = Convert.ToDecimal(((NumericUpDown)control).Value);
             else if (property.PropertyType.IsEnum)            
-                value = Enum.Parse(property.PropertyType, control.Text);
+                value = Enum.Parse(property.PropertyType, ((ListItem)((ComboBox)control).SelectedItem).Value);
             else if (property.PropertyType == typeof(bool))
                 value = ((CheckBox)control).Checked;
             else
@@ -202,6 +203,17 @@ namespace WaveletStudio.MainApplication.Forms
                 node.Root = Block;
             }
             Block.Execute();
+        }
+
+        internal class ListItem
+        {
+            public string Text { get; set; }
+            public string Value { get; set; }
+
+            public override string ToString()
+            {
+                return Text;
+            }
         }
     }
 }

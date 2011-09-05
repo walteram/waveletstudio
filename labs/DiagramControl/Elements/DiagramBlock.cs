@@ -69,8 +69,9 @@ namespace DiagramNet.Elements
 		{
 			for (var i = 0; i < _inputStates.Length; i++)
 			{
-				var top = (SizeValue.Height / (_inputStates.Length + 1)) * (i + 1);
-				var loc = new Point(LocationValue.X, LocationValue.Y + top);
+				//var top = (SizeValue.Height / (_inputStates.Length + 1)) * (i + 1)-10;
+                var top = 20 * (i+1);
+                var loc = new Point(LocationValue.X, LocationValue.Y + top);
 				var connect = Connects[i];
 				connect.Location = new Point(loc.X - ConnectSize, loc.Y - ConnectSize);
 				connect.Size = new Size(ConnectSize * 2, ConnectSize * 2);
@@ -80,7 +81,8 @@ namespace DiagramNet.Elements
 
 			for (var i = 0; i < _outputStates.Length; i++)
 			{
-				var top = (SizeValue.Height / (_outputStates.Length + 1)) * (i + 1);
+				//var top = (SizeValue.Height / (_outputStates.Length + 1)) * (i + 1)-10;
+                var top = 20 * (i + 1);
 				var loc = new Point(LocationValue.X + SizeValue.Width, LocationValue.Y + top);
 				var connect = Connects[_inputStates.Length+i];
 				connect.Location = new Point(loc.X - ConnectSize, loc.Y - ConnectSize);
@@ -126,7 +128,7 @@ namespace DiagramNet.Elements
 					posX = conn.Location.X - 42;
 					alignment = StringAlignment.Far;
 				}
-				var connectorLabel = new LabelElement(posX, conn.Location.Y - conn.Size.Height / 2, 40, 12) { Text = labelText, Alignment = alignment, Font = new Font(FontFamily.GenericSansSerif, 8) };
+				var connectorLabel = new LabelElement(posX, conn.Location.Y - conn.Size.Height / 2, 40, 12) { Text = labelText, Alignment = alignment, Font = new Font(FontFamily.GenericSansSerif, 7) };
 				connectorLabel.Draw(g);
 			}		    
 		}

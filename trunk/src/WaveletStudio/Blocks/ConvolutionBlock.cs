@@ -1,4 +1,5 @@
 ﻿using System;
+using WaveletStudio.Blocks.CustomAttributes;
 
 namespace WaveletStudio.Blocks
 {
@@ -17,6 +18,8 @@ namespace WaveletStudio.Blocks
             InputNodes.Add(new BlockInputNode(ref root, "Signal1", "S1"));
             InputNodes.Add(new BlockInputNode(ref root, "Signal2", "S2"));
             OutputNodes.Add(new BlockOutputNode(ref root, "Output", "Out"));
+            ConvolutionMode = ConvolutionModeEnum.Fft;
+            ReturnOnlyValid = false;
         }
         
         /// <summary>
@@ -34,6 +37,18 @@ namespace WaveletStudio.Blocks
         {
             get { return "Compute convolution of two inputs"; }
         }
+
+        /// <summary>
+        /// The convolution mode to be used.
+        /// </summary>
+        [Parameter]
+        public ConvolutionModeEnum ConvolutionMode { get; set; }
+
+        /// <summary>
+        /// The 
+        /// </summary>
+        [Parameter]
+        public bool ReturnOnlyValid { get; set; }
 
         /// <summary>
         /// Processing type
@@ -54,7 +69,7 @@ namespace WaveletStudio.Blocks
             Signal filter = inputNode2.Object;
 
             var output = signal.Copy();
-            output.Samples = WaveMath.Convolve(signal.Samples, filter.Samples, false);
+            output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filter.Samples, ReturnOnlyValid);
             OutputNodes[0].Object = output;
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();

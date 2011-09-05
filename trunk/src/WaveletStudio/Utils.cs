@@ -17,12 +17,7 @@ namespace WaveletStudio
         /// <returns></returns>
         public static IEnumerable<Type> GetTypes(string namespaceName)
         {
-            var assemblies = Assembly.GetAssembly(typeof(Signal)).GetTypes().Where(it => it.Namespace == namespaceName && !it.IsAbstract && !it.IsInterface && !it.IsEnum && it.IsPublic);
-            if (assemblies.Count() == 0)
-            {
-                assemblies = Assembly.GetAssembly(typeof(Signal)).GetTypes().Where(it => it.Namespace == namespaceName && !it.IsAbstract && !it.IsInterface && !it.IsEnum && it.IsPublic);
-            }
-            return assemblies;
+            return Assembly.GetAssembly(typeof(Signal)).GetTypes().Where(it => it.Namespace == namespaceName && !it.IsAbstract && !it.IsInterface && !it.IsEnum && it.IsPublic);            
         }
 
         /// <summary>
@@ -32,8 +27,7 @@ namespace WaveletStudio
         /// <returns></returns>
         public static Type GetType(string fullname)
         {
-            return Assembly.GetAssembly(typeof(Signal)).GetType(fullname) ??
-                           Assembly.GetAssembly(typeof(Signal)).GetType(fullname);
+            return Assembly.GetAssembly(typeof(Signal)).GetType(fullname);
         }
     }
 }
