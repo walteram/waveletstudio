@@ -9,8 +9,8 @@ namespace WaveletStudio.Tests.SignalGeneration
         [TestMethod]
         public void TestBinary()
         {
-            var sampler = new Binary()
-            {
+            var sampler = new Binary
+                              {
                 Amplitude = 2,
                 Offset = 1,
                 Start = 0,

@@ -159,7 +159,7 @@ namespace WaveletStudio.MainApplication.Forms
                 return;
             }
             NoDataLabel.Visible = false;
-            var samples = ((Signal)outputNode.Object).GetSamplesPair();
+            var samples = outputNode.Object.GetSamplesPair();
             var yAxys = new ZedGraph.PointPairList();
             yAxys.AddRange(samples.Select(it => new ZedGraph.PointPair(it[1], it[0])));
             pane.AddCurve(outputNode.Name, yAxys, Color.Red, ZedGraph.SymbolType.None);

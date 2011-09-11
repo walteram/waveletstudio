@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using ILNumerics;
 
 namespace WaveletStudio
 {
@@ -14,18 +13,8 @@ namespace WaveletStudio
         /// <summary>
         /// Samples of the signal
         /// </summary>
-        public ILArray<double> Samples { get; set; }
-
-        /// <summary>
-        /// Defines if the signal is complex
-        /// </summary>
-        public bool IsComplex { get; set; }
-
-        /// <summary>
-        /// Complex signal samples
-        /// </summary>
-        public ILArray<complex> ComplexSamples { get; set; }
-
+        public double[] Samples { get; set; }
+        
         /// <summary>
         /// Sampling Rate
         /// </summary>
@@ -51,7 +40,7 @@ namespace WaveletStudio
         /// </summary>
         public Signal()
         {
-            Samples = new ILArray<double>();
+            Samples = new double[0];
             SamplingRate = 1;
         }
 
@@ -61,7 +50,7 @@ namespace WaveletStudio
         /// <param name="samples">The samples of the signal</param>
         public Signal(params double[] samples)
         {
-            Samples = new ILArray<double>(samples);
+            Samples = samples;
             SamplingRate = 1;
         }
 
@@ -71,17 +60,6 @@ namespace WaveletStudio
         /// <param name="samples">The samples of the signal</param>
         /// <param name="samplesPerSecond">Quantity of samples per second</param>
         public Signal(double[] samples, int samplesPerSecond)
-        {
-            Samples = new ILArray<double>(samples);
-            SamplingRate = samplesPerSecond;
-        }
-
-        /// <summary>
-        /// Aditional constructor, passing an array of double with the samples of the signal and the number of samples per second
-        /// </summary>
-        /// <param name="samples">The samples of the signal</param>
-        /// <param name="samplesPerSecond">Quantity of samples per second</param>
-        public Signal(ILArray<double> samples, int samplesPerSecond)
         {
             Samples = samples;
             SamplingRate = samplesPerSecond;
@@ -111,8 +89,10 @@ namespace WaveletStudio
             {
                 length--;
             }
-            
-            Samples = Samples[string.Format("0:1:{0}", length-1)];
+
+            var newArray = new double[length];
+            Array.Copy(Samples, newArray, length);
+            Samples = newArray;
         }
 
         private bool IsPowerOf2(int x)
@@ -156,7 +136,7 @@ namespace WaveletStudio
         /// <returns></returns>
         public IEnumerable<double[]> GetSamplesPair()
         {
-            if (Samples.IsEmpty)
+            if (Samples.Length == 0)
             {
                 return new List<double[]>();
             }
@@ -167,9 +147,9 @@ namespace WaveletStudio
             {
                 interval = 1;
             }
-            for (var i = 0; i < Samples.Length; i++)
+            foreach (var t in Samples)
             {
-                samples.Add(new []{Samples.GetValue(i), x});
+                samples.Add(new []{t, x});
                 x = Convert.ToDouble(Convert.ToDecimal(x) + Convert.ToDecimal(interval));
             }
             return samples;
@@ -181,9 +161,9 @@ namespace WaveletStudio
         /// <returns></returns>
         public Signal Clone()
         {
-            var newSignal = Copy();
-            newSignal.Samples = Samples.C;
-            return newSignal;
+            var signal = (Signal)MemberwiseClone();
+            signal.Samples = (double[]) Samples.Clone();
+            return signal;
         }
 
         /// <summary>

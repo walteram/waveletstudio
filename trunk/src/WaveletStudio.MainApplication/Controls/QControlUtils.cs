@@ -45,7 +45,7 @@ namespace WaveletStudio.MainApplication.Controls
             return item;
         }
 
-        public static QCompositeGroup GetSolidColorCompositeGroup(QPartDirection direction, Color? color, int borderWidth, bool stretchHorizontal = true, bool stretchVertical = true)
+        private static QCompositeGroup GetSolidColorCompositeGroup(QPartDirection direction, Color? color, int borderWidth, bool stretchHorizontal = true, bool stretchVertical = true)
         {
             var group = new QCompositeGroup { Configuration = { Direction = direction } };
             if (color != null)
@@ -75,7 +75,7 @@ namespace WaveletStudio.MainApplication.Controls
             return group;
         }
 
-        public static QCompositeImage GetImageFromResource(string name)
+        private static QCompositeImage GetImageFromResource(string name)
         {
             var image =  Resources.ResourceManager.GetObject(name.Replace(" ", "")) ?? new Bitmap(64,48);
             return new QCompositeImage {Image = (Image)image};
