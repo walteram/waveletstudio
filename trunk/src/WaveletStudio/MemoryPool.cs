@@ -21,7 +21,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace WaveletStudio {
+namespace WaveletStudio 
+{
     /// <summary>
     /// Memory pool serving as temporary storage for System.Array objects.
     /// Based in the ILNumerics Memory Pool.
@@ -172,7 +173,23 @@ namespace WaveletStudio {
             }
             return ret ?? (new T[length]);
         }
-        
+
+        /// <summary>
+        /// Request a System.Array instance and optionally clear the array
+        /// </summary>
+        /// <typeparam name="T">value type</typeparam>
+        /// <param name="length">length of array</param>
+        /// <param name="clear">if true, the elements of the array returned are set to default(T).</param>
+        /// <returns>System.Array - either from the pool or a newly created array</returns>
+        /// <remarks><para>If a suitable System.Array was found in the pool, this object is returned. Otherwise a new array is created.</para>
+        /// <para>If the <paramref name="clear">clear </paramref> parameter was set to false, the <paramref name="iscleared">iscleared</paramref> parameter can be used to determine, if the object was returnd from the pool and may need extra clearing.</para>
+        /// <para>If a new array could not get created due to an OutOfMemoryException, a garbage collection is triggered and the array is again requested from the pool. If this failes again, another attempt to create the array is done. Exceptions eventually thrown from this last attempt are not catched and transported back to the callee.</para></remarks>
+        public T[] New<T>(int length, bool clear)
+        {
+            bool iscleared;
+            return New<T>(length, clear, out iscleared);
+        }
+
         /// <summary>
         /// Request a System.Array instance and optionally clear the array
         /// </summary>

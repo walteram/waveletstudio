@@ -8,6 +8,47 @@ namespace WaveletStudio.Tests.Functions
     public class WaveMathTests
     {
         [TestMethod]
+        public void TestAddArrays()
+        {
+            var array1 = new [] { 1.2, 2.3, 3.4, 4.5 };
+            var array2 = new [] { 1.1, 2.2, 3.3, 0 };
+            var expected = new[] { 2.3, 4.5, 6.7, 4.5 };
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Add(array1, array2)));
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Add(array2, array1)));
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Add(array1, array2.SubArray(3))));
+        }
+
+        [TestMethod]
+        public void TestAddScalar()
+        {
+            var array1 = new[] { 1.2, 2.3, 3.4, 4.5 };
+            const double scalar = 1.1;
+            var expected = new[] { 2.3, 3.4, 4.5, 5.6 };
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Add(array1, scalar)));
+        }
+
+        [TestMethod]
+        public void TestMultiplyArrays()
+        {
+            var array1 = new[] { 1.2, 2.3, 3.4, 4.5 };
+            var array2 = new[] { 1.1, 2.2, 3.3, 1 };
+            var expected = new[] { 1.32, 5.06, 11.22, 4.5 };
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Multiply(array1, array2)));
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Multiply(array2, array1)));
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Multiply(array1, array2.SubArray(3))));
+        }
+
+        [TestMethod]
+        public void TestMultiplyScalar()
+        {
+            var array1 = new[] { 1.2, 2.3, 3.4, 4.5 };
+            const double scalar = 1.1;
+            var expected = new[] { 1.32, 2.53, 3.74, 4.95 };
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Multiply(array1, scalar)));
+        }
+
+
+        [TestMethod]
         public void TestGetAccumulatedEnergy()
         {
             var input = new double[] {4, 2, 1, 5, 1, 5, 8, 9, 3};

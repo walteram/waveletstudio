@@ -1,4 +1,6 @@
-﻿namespace WaveletStudio.Functions
+﻿using System;
+
+namespace WaveletStudio.Functions
 {
     public static partial class WaveMath
     {
@@ -83,6 +85,13 @@
             {
                 newArray[i] *= scalar;
             }
+            return newArray;
+        }
+
+        public static double[] SubArray(this double[] array, int length)
+        {
+            var newArray = MemoryPool.Pool.New<double>(length, true);
+            Array.Copy(array, newArray, length > array.Length ? array.Length : length);
             return newArray;
         }
     }

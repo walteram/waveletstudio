@@ -83,6 +83,13 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap cosine {
+            get {
+                object obj = ResourceManager.GetObject("cosine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap downsample {
             get {
                 object obj = ResourceManager.GetObject("downsample", resourceCulture);

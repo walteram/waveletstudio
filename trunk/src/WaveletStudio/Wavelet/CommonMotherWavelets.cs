@@ -54,7 +54,7 @@ namespace WaveletStudio.Wavelet
         public static MotherWavelet GetWaveletFromName(string name)
         {
             name = name.ToLower();
-            if (Regex.Match(name, "[?d|^daub][0-9]+").Length > 0)
+            if ((name.StartsWith("d") || name.StartsWith("daub")) && Regex.Match(name, "[?d|^daub][0-9]+").Length > 0)
             {
                 name = name.Replace("d", "db").Replace("dbaub", "db").Replace("dbb", "db");
             }
