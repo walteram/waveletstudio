@@ -55,12 +55,13 @@
     <Compile Include="Functions\WaveMath_Operations.cs" />
     <Compile Include="MemoryPool.cs" />
     <Compile Include="SignalGeneration\Binary.cs" />
+    <Compile Include="SignalGeneration\Sine.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="Wavelet\CommonMotherWavelets.cs" />
     <Compile Include="Wavelet\DecompositionLevel.cs" />
     <Compile Include="SignalGeneration\CommonSignalBase.cs" />
     <Compile Include="SignalGeneration\Sawtooth.cs" />
-    <Compile Include="SignalGeneration\Sine.cs" />
+    <Compile Include="SignalGeneration\Cosine.cs" />
     <Compile Include="SignalGeneration\Square.cs" />
     <Compile Include="SignalGeneration\Triangle.cs" />
     <Compile Include="Functions\WaveMath_General.cs" />

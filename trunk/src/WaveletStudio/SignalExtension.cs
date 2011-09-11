@@ -58,7 +58,7 @@ namespace WaveletStudio
         {
             if (input.Length == 0)
             {
-                return new double[extensionSize * 2];
+                return MemoryPool.Pool.New<double>(extensionSize * 2, true);
             }
             var pointsHalfLength = input.Length;
             while (extensionSize > input.Length)
@@ -68,8 +68,8 @@ namespace WaveletStudio
             }
             var beforeSize = extensionSize;
             var afterSize = extensionSize;
-            var beforeExtension = new double[beforeSize];
-            var afterExtension = new double[afterSize];
+            var beforeExtension = MemoryPool.Pool.New<double>(beforeSize, true);
+            var afterExtension = MemoryPool.Pool.New<double>(afterSize, true);
 
             if (extensionMode != ExtensionMode.ZeroPadding)
             {
@@ -148,7 +148,7 @@ namespace WaveletStudio
                 }
             }
 
-            var newPoints = new double[beforeSize + input.Length + afterSize];            
+            var newPoints = MemoryPool.Pool.New<double>(beforeSize + input.Length + afterSize);            
             if (beforeSize > 0)
                 beforeExtension.CopyTo(newPoints, 0);
             input.CopyTo(newPoints, beforeSize);    
@@ -169,14 +169,14 @@ namespace WaveletStudio
                 return input;
             }
             var padding = (input.Length - size)/2;
-            var result = new double[size];
+            var result = MemoryPool.Pool.New<double>(size);
             Array.Copy(input, padding, result, 0, size);
             return result;
         }
 
         private static double[] GetAntisymmetricWholePointBefore(double[] points, int beforeSize)
-        {            
-            var beforeExtension = new double[beforeSize];
+        {
+            var beforeExtension = MemoryPool.Pool.New<double>(beforeSize);
             if (points.Length == 1)
             {
                 for (var i = 0; i < beforeSize; i++)
@@ -198,7 +198,7 @@ namespace WaveletStudio
 
         private static double[] GetAntisymmetricWholePointAfter(double[] points, int afterSize)
         {
-            var afterExtension = new double[afterSize];
+            var afterExtension = MemoryPool.Pool.New<double>(afterSize);
             if (points.Length == 1)
             {
                 for (var i = 0; i < afterSize; i++)

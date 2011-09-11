@@ -87,20 +87,20 @@ namespace WaveletStudio.Wavelet
            
 
             //Calculating Lo_R
-            _filters.ReconstructionLowPassFilter = new double[filterLength];
+            _filters.ReconstructionLowPassFilter = MemoryPool.Pool.New<double>(filterLength);
             for (var i = 0; i < filterLength; i++)
             {
                 _filters.ReconstructionLowPassFilter[i] = ScalingFilter[i] * sqrt2;
             }
 
             //Calculating Lo_D  (inverse of Lo_R)
-            _filters.DecompositionLowPassFilter = new double[filterLength];
+            _filters.DecompositionLowPassFilter = MemoryPool.Pool.New<double>(filterLength);
             _filters.ReconstructionLowPassFilter.CopyTo(_filters.DecompositionLowPassFilter, 0);
             Array.Reverse(_filters.DecompositionLowPassFilter);
 
             //Calculating Hi_R (qmf(Lo_R))
             var k = 0;
-            _filters.ReconstructionHighPassFilter = new double[filterLength];
+            _filters.ReconstructionHighPassFilter = MemoryPool.Pool.New<double>(filterLength);
             for (var i = filterLength - 1; i >= 0; i--)
             {
                 _filters.ReconstructionHighPassFilter[k] = _filters.ReconstructionLowPassFilter[i];
@@ -112,7 +112,7 @@ namespace WaveletStudio.Wavelet
             }
 
             //Calculating Hi_D  (inverse of Hi_R)
-            _filters.DecompositionHighPassFilter = new double[filterLength];
+            _filters.DecompositionHighPassFilter = MemoryPool.Pool.New<double>(filterLength);
             _filters.ReconstructionHighPassFilter.CopyTo(_filters.DecompositionHighPassFilter, 0);
             Array.Reverse(_filters.DecompositionHighPassFilter);
         }

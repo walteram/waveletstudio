@@ -51,6 +51,7 @@
     <Compile Include="Blocks\GenerateSignalBlockTest.cs" />
     <Compile Include="FFT\ManagedFFTTests.cs" />
     <Compile Include="SignalGeneration\BinaryTest.cs" />
+    <Compile Include="SignalGeneration\CosineTest.cs" />
     <Compile Include="SignalGeneration\SawtoothTest.cs" />
     <Compile Include="SignalGeneration\SineTest.cs" />
     <Compile Include="SignalGeneration\SquareTest.cs" />

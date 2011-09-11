@@ -89,8 +89,7 @@ namespace WaveletStudio
             {
                 length--;
             }
-
-            var newArray = new double[length];
+            var newArray = MemoryPool.Pool.New<double>(length);
             Array.Copy(Samples, newArray, length);
             Samples = newArray;
         }
@@ -125,7 +124,7 @@ namespace WaveletStudio
             var str = new StringBuilder();
             for (var i = 0; i < Samples.Length; i++)
             {
-                str.Append(string.Format(System.Globalization.CultureInfo.InvariantCulture, format, Samples.GetValue(i)));
+                str.Append(string.Format(System.Globalization.CultureInfo.InvariantCulture, format, Samples[i]));
             }
             return str.ToString().Trim();
         }

@@ -133,12 +133,12 @@ namespace WaveletStudio.Functions
         /// <returns></returns>
         public static double[] NormalDistribution(double[] x, double mean, double deviation)
         {
-            var y = new double[x.Length];
+            var result = MemoryPool.Pool.New<double>(x.Length);
             for (var i = 0; i < x.Length; i++)
             {
-                y[i] = NormalDistribution(x[i], mean, deviation);
+                result[i] = NormalDistribution(x[i], mean, deviation);
             }
-            return y;
+            return result;
         }
 
         /// <summary>
@@ -213,7 +213,7 @@ namespace WaveletStudio.Functions
                 input = filter;
                 filter = auxSignal;
             }
-            var result = new double[input.Length + filter.Length - 1];
+            var result = MemoryPool.Pool.New<double>(input.Length + filter.Length - 1);
             for (var i = 0; i < input.Length; i++)
             {
                 for (var j = 0; j < filter.Length; j++)
@@ -228,7 +228,7 @@ namespace WaveletStudio.Functions
                 var padding = (result.Length - size) / 2;
                 
                 var arraySize = (padding + size - 1 - margin) - (padding + margin) + 1;
-                var newResult = new double[arraySize];
+                var newResult = MemoryPool.Pool.New<double>(arraySize);
                 Array.Copy(result, padding + margin, newResult, 0, arraySize);
                 return newResult;
             }
@@ -253,9 +253,9 @@ namespace WaveletStudio.Functions
             }
             var realSize = input.Length + filter.Length - 1;
             var size = ((realSize > 0) && ((realSize & (realSize - 1)) == 0) ? realSize : SignalExtension.NextPowerOf2(realSize));
-            var inputFFT = new double[size * 2];
-            var filterFFT = new double[size * 2];
-            var ifft = new double[size * 2];
+            var inputFFT = MemoryPool.Pool.New<double>(size * 2);
+            var filterFFT = MemoryPool.Pool.New<double>(size * 2);
+            var ifft = MemoryPool.Pool.New<double>(size * 2);
             
             for (var i = 0; i < input.Length; i++)
             {
@@ -266,16 +266,16 @@ namespace WaveletStudio.Functions
                 filterFFT[i * 2] = filter[i];
             }
 
-            ManagedFFT.FFT(inputFFT, true);
-            ManagedFFT.FFT(filterFFT, true);
+            ManagedFFT.FFT(ref inputFFT, true);
+            ManagedFFT.FFT(ref filterFFT, true);
             for (var i = 0; i < ifft.Length; i = i + 2)
             {
                 ifft[i] = inputFFT[i]*filterFFT[i] - inputFFT[i + 1]*filterFFT[i + 1];
                 ifft[i+1] = (inputFFT[i] * filterFFT[i+1] + inputFFT[i + 1] * filterFFT[i]) * -1;
             }
-            ManagedFFT.FFT(ifft, false);
+            ManagedFFT.FFT(ref ifft, false);
 
-            var ifft2 = new double[size];
+            var ifft2 = MemoryPool.Pool.New<double>(size);
             ifft2[0] = ifft[0];
             for (var i = 0; i < ifft2.Length-2; i = i + 1)
             {
@@ -294,7 +294,7 @@ namespace WaveletStudio.Functions
                 start = 0;
                 size = realSize;
             }
-            var result = new double[size];
+            var result = MemoryPool.Pool.New<double>(size);
             Array.Copy(ifft2, start, result, 0, size);
             return result;
         }
@@ -307,7 +307,7 @@ namespace WaveletStudio.Functions
         public static double[] DownSample(double[] input)
         {
             var size = input.Length / 2;
-            var result = new double[size];
+            var result = MemoryPool.Pool.New<double>(size);
             var j = 0;
             for (var i = 0; i < input.Length; i++)
             {
@@ -331,7 +331,7 @@ namespace WaveletStudio.Functions
                 return new double[0];
             }
             var size = input.Length * 2;
-            var result = new double[size - 1];
+            var result = MemoryPool.Pool.New<double>(size - 1);
             for (var i = 0; i < input.Length; i++)
             {
                 result[i * 2] = input[i];

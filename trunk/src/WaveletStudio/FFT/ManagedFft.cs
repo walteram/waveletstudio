@@ -5,6 +5,7 @@
 // as this header is left in place.
 using System;
 using System.Collections.Generic;
+using WaveletStudio.Functions;
 
 namespace WaveletStudio.FFT
 {
@@ -25,16 +26,18 @@ namespace WaveletStudio.FFT
         /// and imaginary parts</param>
         /// <param name="forward">true for a forward transform, false for 
         /// inverse transform</param>
-        public static void FFT(double[] data, bool forward)
+        public static void FFT(ref double[] data, bool forward)
         {
             var n = data.Length;
             // checks n is a power of 2 in 2's complement format
             if ((n & (n - 1)) != 0)
-                throw new ArgumentException(
-                    "data length " + n + " in FFT is not a power of 2");
+            {
+                data = data.SubArray(SignalExtension.NextPowerOf2(n));
+                n = data.Length;
+            }            
             n /= 2;    // n is the number of samples
 
-            Reverse(data, n); // bit index data reversal
+            Reverse(ref data, n); // bit index data reversal
 
             // do transform: so single point transforms, then doubles, etc.
             double sign = forward ? 1 : -1;
@@ -85,17 +88,18 @@ namespace WaveletStudio.FFT
         /// and imaginary parts</param>
         /// <param name="forward">true for a forward transform, false for 
         /// inverse transform</param>
-        public static void TableFFT(double[] data, bool forward)
+        public static void TableFFT(ref double[] data, bool forward)
         {
             var n = data.Length;
             // checks n is a power of 2 in 2's complement format
             if ((n & (n - 1)) != 0)
-                throw new ArgumentException(
-                    "data length " + n + " in FFT is not a power of 2"
-                    );
+            {
+                data = data.SubArray(SignalExtension.NextPowerOf2(n));
+                n = data.Length;
+            }            
             n /= 2;    // n is the number of samples
 
-            Reverse(data, n); // bit index data reversal
+            Reverse(ref data, n); // bit index data reversal
 
             // make table if needed
             if (CosTable.Count != n)
@@ -148,18 +152,21 @@ namespace WaveletStudio.FFT
         /// and imaginary parts</param>
         /// <param name="forward">true for a forward transform, false for 
         /// inverse transform</param>
-        public static void RealFFT(double[] data, bool forward)
+        public static void RealFFT(ref double[] data, bool forward)
         {
             var n = data.Length; // # of real inputs, 1/2 the complex length
             // checks n is a power of 2 in 2's complement format
             if ((n & (n - 1)) != 0)
-                throw new ArgumentException("data length " + n + " in FFT is not a power of 2");
+            {
+                data = data.SubArray(SignalExtension.NextPowerOf2(n));
+                n = data.Length;
+            }
 
             double sign = -1;
             if (forward)
             { 
                 // do packed FFT. This can be changed to FFT to save memory
-                TableFFT(data, true);
+                TableFFT(ref data, true);
                 sign = 1;
             }
 
@@ -210,7 +217,7 @@ namespace WaveletStudio.FFT
                 data[0] = 0.5 * (temp + data[1]);
                 data[1] = 0.5 * (temp - data[1]);
                 // do packed FFT. This can be changed to FFT to save memory
-                TableFFT(data, false);
+                TableFFT(ref data, false);
             }
         }
 
@@ -259,7 +266,7 @@ namespace WaveletStudio.FFT
         /// </summary>
         /// <param name="data"></param>
         /// <param name="n"></param>
-        private static void Reverse(double[] data, int n)
+        private static void Reverse(ref double[] data, int n)
         {
             // bit reverse the indices. This is exercise 5 in section 
             // 7.2.1.1 of Knuth's TAOCP the idea is a binary counter 
