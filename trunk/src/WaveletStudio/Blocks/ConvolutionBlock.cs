@@ -1,10 +1,11 @@
 ﻿using System;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Functions;
 
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Executes a scalar operation in a signal
+    /// Executes a scalar operation in a dy
     /// </summary>
     [Serializable]
     public class ConvolutionBlock : BlockBase
@@ -18,7 +19,7 @@ namespace WaveletStudio.Blocks
             InputNodes.Add(new BlockInputNode(ref root, "Signal1", "S1"));
             InputNodes.Add(new BlockInputNode(ref root, "Signal2", "S2"));
             OutputNodes.Add(new BlockOutputNode(ref root, "Output", "Out"));
-            ConvolutionMode = ConvolutionModeEnum.Fft;
+            ConvolutionMode = ConvolutionModeEnum.ManagedFft;
             ReturnOnlyValid = false;
         }
         
@@ -65,8 +66,8 @@ namespace WaveletStudio.Blocks
             if (inputNode1 == null || inputNode1.Object == null || inputNode2 == null || inputNode2.Object == null)
                 return;
 
-            Signal signal = inputNode1.Object;
-            Signal filter = inputNode2.Object;
+            var signal = inputNode1.Object;
+            var filter = inputNode2.Object;
 
             var output = signal.Copy();
             output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filter.Samples, ReturnOnlyValid);

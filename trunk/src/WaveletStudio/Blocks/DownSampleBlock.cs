@@ -1,4 +1,5 @@
 ﻿using System;
+using WaveletStudio.Functions;
 
 namespace WaveletStudio.Blocks
 {
@@ -48,7 +49,7 @@ namespace WaveletStudio.Blocks
             if (inputNode == null || inputNode.Object == null)
                 return;
 
-            Signal signal = inputNode.Object;
+            var signal = inputNode.Object;
 
             var output = signal.Copy();
             output.Samples = WaveMath.DownSample(signal.Samples);

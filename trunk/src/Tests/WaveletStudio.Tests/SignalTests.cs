@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using ILNumerics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace WaveletStudio.Tests
@@ -56,15 +55,15 @@ namespace WaveletStudio.Tests
         [TestMethod]
         public void TestMakeLengthPowerOfTwo()
         {
-            var signal = new Signal(new ILArray<double>(new double[] { 1, 2, 3, 4, 5 }), 1);
+            var signal = new Signal(new double[] { 1, 2, 3, 4, 5 }, 1);
             signal.MakeLengthPowerOfTwo();
             Assert.AreEqual(4, signal.Samples.Length);
-            Assert.IsTrue(signal.Samples.Equals(new ILArray<double>(new double[] { 1, 2, 3, 4 })));
+            Assert.IsTrue(TestUtils.SequenceEquals(signal.Samples, new double[] { 1, 2, 3, 4 }));
 
             signal = new Signal(new double[] { 1, 2, 3, 4 }, 1);
             signal.MakeLengthPowerOfTwo();
             Assert.AreEqual(4, signal.Samples.Length);
-            Assert.IsTrue(signal.Samples.Equals(new ILArray<double>(new double[] { 1, 2, 3, 4 })));
+            Assert.IsTrue(TestUtils.SequenceEquals(signal.Samples, new double[] { 1, 2, 3, 4 }));
 
             signal = new Signal();
             signal.MakeLengthPowerOfTwo();

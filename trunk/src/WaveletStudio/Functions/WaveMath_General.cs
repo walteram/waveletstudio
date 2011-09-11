@@ -1,31 +1,24 @@
 ﻿using System;
-using System.Linq;
-using ILNumerics;
-using ILNumerics.BuiltInFunctions;
-using ILNumerics.Misc;
+using WaveletStudio.FFT;
 
-namespace WaveletStudio
+namespace WaveletStudio.Functions
 {
     /// <summary>
     /// Common math and statistical operations
     /// </summary>
-    public static class WaveMath
+    public static partial class WaveMath
     {
         /// <summary>
         /// Gets the accumulated energy of a signal
         /// </summary>
         /// <param name="samples"></param>
         /// <returns></returns>
-        public static double GetAccumulatedEnergy(ILArray<double> samples)
+        public static double GetAccumulatedEnergy(double[] samples)
         {
-            if (samples.IsEmpty)
-            {
-                return 0;
-            }
             var energy = 0d;
-            for (var i = 0; i < samples.Length; i++)
+            foreach (var t in samples)
             {
-                energy += GetEnergy(samples.GetValue(i));
+                energy += GetEnergy(t);
             }
             return energy;
         }
@@ -45,68 +38,76 @@ namespace WaveletStudio
         /// </summary>
         /// <param name="samples"></param>
         /// <returns></returns>
-        public static double Mode(ILArray<double> samples)
+        public static double Mode(double[] samples)
         {
-            if (samples.IsEmpty)
+            if (samples.Length == 0)
             {
                 return 0;
             }
             var sortedSamples = Unique(samples);
-            var maxFreq = sortedSamples.GetValue(0);
+            var maxFreq = sortedSamples[0];
             var maxOccurrences = 0;
-            for (var i = 0; i < sortedSamples.Length; i++)
+            foreach (var t in sortedSamples)
             {
                 var occurrences = 0;
-                for (var j = 0; j < samples.Length; j++)
+                foreach (var t1 in samples)
                 {
-                    if (Math.Abs(samples.GetValue(j) - sortedSamples.GetValue(i)) < double.Epsilon)
+                    if (Math.Abs(t1 - t) < double.Epsilon)
                     {
                         occurrences++;
                     }
-                }                
+                }
                 if (occurrences <= maxOccurrences)
                 {
                     continue;
                 }
                 maxOccurrences = occurrences;
-                maxFreq = sortedSamples.GetValue(i);
+                maxFreq = t;
             }
             return (maxFreq);
         }
 
-        private static ILArray<double> Unique(ILArray<double> x)
+        /// <summary>
+        /// Calculates the mean of an array
+        /// </summary>
+        /// <param name="samples"></param>
+        /// <returns></returns>
+        public static double Mean(double[] samples)
         {
-            // 1. Handle empty and singleton cases
-            /*
-            if (x.IsEmpty)
-                return new ILArray<double>();
+            var sum = 0d;
+            foreach (var value in samples)
+            {
+                sum += value;
+            }
+            return sum / (samples.Length);
+        }
 
-            if (x.IsScalar)
-                return x.C;
-            */
-            // 2. Sort
-            var x1 = x.Values.ToArray();
-            Array.Sort(x1);
+        /// <summary>
+        /// Removes the repeated values in an array
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns></returns>
+        private static double[] Unique(double[] array)
+        {
+            Array.Sort(array);
 
-            // 3. Declarations
             var unqCount = 1;
-            for (var i = 1; i < x1.Length; i++)
-                if (Math.Abs(x1[i - 1] - x1[i]) > double.Epsilon)
+            for (var i = 1; i < array.Length; i++)
+                if (Math.Abs(array[i - 1] - array[i]) > double.Epsilon)
                     unqCount++;
 
-            var unq = ILMemoryPool.Pool.New<double>(unqCount);
+            var unq = MemoryPool.Pool.New<double>(unqCount);
 
-            // 4. Unique
-            unq[0] = x1[0];
-            for (int i = 1, j = 1; i < x1.Length; i++)
+            unq[0] = array[0];
+            for (int i = 1, j = 1; i < array.Length; i++)
             {
-                if (Math.Abs(x1[i - 1] - x1[i]) <= double.Epsilon) 
+                if (Math.Abs(array[i - 1] - array[i]) <= double.Epsilon) 
                     continue;
-                unq[j] = x1[i];
+                unq[j] = array[i];
                 j++;
             }
 
-            return new ILArray<double>(unq);
+            return unq;
         }
 
         /// <summary>
@@ -191,11 +192,9 @@ namespace WaveletStudio
         /// <param name="returnOnlyValid">True to return only the middle of the array</param>
         /// <param name="margin">Margin to be used if returnOnlyValid is set to true</param>        
         /// <returns></returns>
-        public static ILArray<double> Convolve(ConvolutionModeEnum convolutionMode, ILArray<double> input, ILArray<double> filter, bool returnOnlyValid = true, int margin = 0)
+        public static double[] Convolve(ConvolutionModeEnum convolutionMode, double[] input, double[] filter, bool returnOnlyValid = true, int margin = 0)
         {
-            return convolutionMode == ConvolutionModeEnum.Normal ? 
-                        ConvolveNormal(input, filter, returnOnlyValid, margin) : 
-                        ConvolveFft(input, filter, returnOnlyValid, margin);
+            return convolutionMode == ConvolutionModeEnum.Normal ? ConvolveNormal(input, filter, returnOnlyValid, margin) : ConvolveManagedFft(input, filter, returnOnlyValid, margin);
         }
 
         /// <summary>
@@ -206,12 +205,12 @@ namespace WaveletStudio
         /// <param name="returnOnlyValid">True to return only the middle of the array</param>
         /// <param name="margin">Margin to be used if returnOnlyValid is set to true</param>
         /// <returns></returns>
-        public static ILArray<double> ConvolveNormal(ILArray<double> input, ILArray<double> filter, bool returnOnlyValid = true, int margin = 0)
+        public static double[] ConvolveNormal(double[] input, double[] filter, bool returnOnlyValid = true, int margin = 0)
         {
             if (input.Length < filter.Length)
             {
-                var auxSignal = input.C;
-                input = filter.C;
+                var auxSignal = input;
+                input = filter;
                 filter = auxSignal;
             }
             var result = new double[input.Length + filter.Length - 1];
@@ -219,7 +218,7 @@ namespace WaveletStudio
             {
                 for (var j = 0; j < filter.Length; j++)
                 {
-                    result[i + j] = result[i + j] + input.GetValue(i) * filter.GetValue(j);
+                    result[i + j] = result[i + j] + input[i] * filter[j];
                 }
             }
 
@@ -227,38 +226,76 @@ namespace WaveletStudio
             {
                 var size = input.Length - filter.Length + 1;
                 var padding = (result.Length - size) / 2;
-                return new ILArray<double>(result)[String.Format("{0}:1:{1}", padding + margin, padding + size - 1 - margin)];
+                
+                var arraySize = (padding + size - 1 - margin) - (padding + margin) + 1;
+                var newResult = new double[arraySize];
+                Array.Copy(result, padding + margin, newResult, 0, arraySize);
+                return newResult;
             }
-            return new ILArray<double>(result);
+            return result;
         }
 
-        public static ILArray<double> ConvolveFft(ILArray<double> input, ILArray<double> filter, bool returnOnlyValid = true, int margin = 0)
+        /// <summary>
+        /// Convolves vectors input and filter using a managed FFT algorithm.
+        /// </summary>
+        /// <param name="input">The input signal</param>
+        /// <param name="filter">The filter</param>
+        /// <param name="returnOnlyValid">True to return only the middle of the array</param>
+        /// <param name="margin">Margin to be used if returnOnlyValid is set to true</param>
+        /// <returns></returns>
+        public static double[] ConvolveManagedFft(double[] input, double[] filter, bool returnOnlyValid = true, int margin = 0)
         {
-            ILMath.FFT = new ILNumerics.Native.ILFFTW3FFT();
             if (input.Length < filter.Length)
             {
-                var auxSignal = input.C;
-                input = filter.C;
+                var auxSignal = input;
+                input = filter;
                 filter = auxSignal;
             }
-            var dim = input.Length + filter.Length - 1;
-            var inputNew = ILMath.zeros(1, dim);
-            var filterNew = ILMath.zeros(1, dim);
-            inputNew["0:1:" + (input.Length - 1)] = input;
-            filterNew["0:1:" + (filter.Length - 1)] = filter;            
-            var ifft = ILMath.ifft(ILMath.fft(inputNew) * ILMath.fft(filterNew));
-            var result = ILMath.real(ifft);
+            var realSize = input.Length + filter.Length - 1;
+            var size = ((realSize > 0) && ((realSize & (realSize - 1)) == 0) ? realSize : SignalExtension.NextPowerOf2(realSize));
+            var inputFFT = new double[size * 2];
+            var filterFFT = new double[size * 2];
+            var ifft = new double[size * 2];
+            
+            for (var i = 0; i < input.Length; i++)
+            {
+                inputFFT[i * 2] = input[i];
+            }
+            for (var i = 0; i < filter.Length; i++)
+            {
+                filterFFT[i * 2] = filter[i];
+            }
 
+            ManagedFFT.FFT(inputFFT, true);
+            ManagedFFT.FFT(filterFFT, true);
+            for (var i = 0; i < ifft.Length; i = i + 2)
+            {
+                ifft[i] = inputFFT[i]*filterFFT[i] - inputFFT[i + 1]*filterFFT[i + 1];
+                ifft[i+1] = (inputFFT[i] * filterFFT[i+1] + inputFFT[i + 1] * filterFFT[i]) * -1;
+            }
+            ManagedFFT.FFT(ifft, false);
+
+            var ifft2 = new double[size];
+            ifft2[0] = ifft[0];
+            for (var i = 0; i < ifft2.Length-2; i = i + 1)
+            {
+                ifft2[i + 1] = ifft[ifft.Length - 2 - i*2];
+            }
+            int start;
             if (returnOnlyValid)
             {
-                var size = input.Length - filter.Length + 1;
-                var padding = (result.Length - size) / 2;
-                var start = padding + margin;
-                var end = padding + size - 1 - margin;
-                var newResul = new ILArray<double>(1, end - start + 1);
-                newResul["0:1:end"] = result[String.Format("{0}:1:{1}", padding + margin, padding + size - 1 - margin)];
-                return newResul;
+                size = input.Length - filter.Length + 1;
+                var padding = (realSize - size) / 2;
+                start = padding + margin;               
+                size = input.Length - filter.Length - margin * 2 + 1;
             }
+            else
+            {
+                start = 0;
+                size = realSize;
+            }
+            var result = new double[size];
+            Array.Copy(ifft2, start, result, 0, size);
             return result;
         }
 
@@ -267,7 +304,7 @@ namespace WaveletStudio
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static ILArray<double> DownSample(ILArray<double> input)
+        public static double[] DownSample(double[] input)
         {
             var size = input.Length / 2;
             var result = new double[size];
@@ -276,10 +313,10 @@ namespace WaveletStudio
             {
                 if (i % 2 == 0)
                     continue;
-                result[j] = input.GetValue(i);
+                result[j] = input[i];
                 j++;
             }
-            return new ILArray<double>(result);
+            return result;
         }
 
         /// <summary>
@@ -287,25 +324,25 @@ namespace WaveletStudio
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public static ILArray<double> UpSample(ILArray<double> input)
+        public static double[] UpSample(double[] input)
         {
-            if (input.IsEmpty)
+            if (input.Length == 0)
             {
-                return ILMath.empty();
+                return new double[0];
             }
             var size = input.Length * 2;
             var result = new double[size - 1];
             for (var i = 0; i < input.Length; i++)
             {
-                result[i * 2] = input.GetValue(i);
+                result[i * 2] = input[i];
             }
-            return new ILArray<double>(result);
-        }
+            return result;
+        }        
     }
 
     public enum ConvolutionModeEnum
     {
         Normal,
-        Fft
+        ManagedFft
     }
 }

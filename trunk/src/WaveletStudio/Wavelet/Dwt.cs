@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using ILNumerics;
-using ILNumerics.BuiltInFunctions;
+using WaveletStudio.Functions;
 
 namespace WaveletStudio.Wavelet
 {
@@ -18,12 +17,13 @@ namespace WaveletStudio.Wavelet
         /// <param name="extensionMode">Signal extension mode</param>
         /// <param name="convolutionMode">Defines what convolution function should be used</param>
         /// <returns></returns>
-        public static List<DecompositionLevel> ExecuteDwt(Signal signal, MotherWavelet motherWavelet, int level, SignalExtension.ExtensionMode extensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint, ConvolutionModeEnum convolutionMode = ConvolutionModeEnum.Fft)
+        public static List<DecompositionLevel> ExecuteDwt(Signal signal, MotherWavelet motherWavelet, int level, SignalExtension.ExtensionMode extensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint, ConvolutionModeEnum convolutionMode = ConvolutionModeEnum.ManagedFft)
         {
             var levels = new List<DecompositionLevel>();
-            
-            var approximation = signal.Samples.C;
-            var details = signal.Samples.C;
+
+            var approximation = (double[])signal.Samples.Clone();
+            var details = (double[])signal.Samples.Clone();
+
             var realLength = signal.Samples.Length;
             for (var i = 1; i <= level; i++)
             {
@@ -47,11 +47,11 @@ namespace WaveletStudio.Wavelet
                                    Approximation = approximation,
                                    Details = details
                                });
-                details = approximation.C;
+                details = (double[]) approximation.Clone();
             }
             return levels;
         }
-
+        
         /// <summary>
         /// Multilevel inverse discrete 1-D wavelet transform
         /// </summary>
@@ -60,14 +60,14 @@ namespace WaveletStudio.Wavelet
         /// <param name="level">The depth-level to perform the DWT</param>
         /// <param name="convolutionMode">Defines what convolution function should be used</param>
         /// <returns></returns>
-        public static ILArray<double> ExecuteIDwt(List<DecompositionLevel> decompositionLevels, MotherWavelet motherWavelet, int level = 0, ConvolutionModeEnum convolutionMode = ConvolutionModeEnum.Fft)
+        public static double[] ExecuteIDwt(List<DecompositionLevel> decompositionLevels, MotherWavelet motherWavelet, int level = 0, ConvolutionModeEnum convolutionMode = ConvolutionModeEnum.ManagedFft)
         {
             if (level == 0 || level > decompositionLevels.Count)
             {
                 level = decompositionLevels.Count;
             }
-            var approximation = decompositionLevels[level-1].Approximation.C;
-            var details = decompositionLevels[level - 1].Details.C;
+            var approximation = (double[])decompositionLevels[level-1].Approximation.Clone();
+            var details = (double[]) decompositionLevels[level - 1].Details.Clone();
 
             for (var i = level - 1; i >= 0; i--)
             {
@@ -78,7 +78,7 @@ namespace WaveletStudio.Wavelet
                 details = WaveMath.Convolve(convolutionMode, details, motherWavelet.Filters.ReconstructionHighPassFilter, true, -1);
 
                 //sum approximation with details
-                approximation = ILMath.add(approximation, details);
+                approximation = WaveMath.Add(approximation, details);
 
                 if (i <= 0) 
                     continue;
@@ -86,10 +86,11 @@ namespace WaveletStudio.Wavelet
                 {
                     approximation = SignalExtension.Deextend(approximation, decompositionLevels[i - 1].Details.Length);
                 }
-                details = decompositionLevels[i - 1].Details;
+
+                details = (double[]) decompositionLevels[i - 1].Details.Clone();
             }
 
             return approximation;
-        }
+        }        
     }
 }

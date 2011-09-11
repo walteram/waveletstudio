@@ -1,5 +1,6 @@
 ﻿using System;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Functions;
 
 namespace WaveletStudio.Blocks
 {
@@ -88,16 +89,16 @@ namespace WaveletStudio.Blocks
             switch (Operation)
             {
                 case OperationEnum.Multiply:
-                    output.Samples = input.Samples * Value;
+                    output.Samples = WaveMath.Multiply(input.Samples, Value);
                     break;
                 case OperationEnum.Sum:
-                    output.Samples = input.Samples + Value;
+                    output.Samples = WaveMath.Add(input.Samples, Value);
                     break;
                 case OperationEnum.Subtract:
-                    output.Samples = input.Samples - Value;
+                    output.Samples = WaveMath.Add(input.Samples, -Value);
                     break;
                 case OperationEnum.Divide:
-                    output.Samples = input.Samples / Value;
+                    output.Samples = WaveMath.Multiply(input.Samples, 1/Value);
                     break;
             }
             OutputNodes[0].Object = output;

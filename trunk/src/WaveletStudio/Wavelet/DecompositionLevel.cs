@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using ILNumerics;
+using WaveletStudio.Functions;
 
 namespace WaveletStudio.Wavelet
 {
@@ -17,12 +16,12 @@ namespace WaveletStudio.Wavelet
         /// <summary>
         /// Approximation coefficients
         /// </summary>
-        public ILArray<double> Approximation { get; set; }
+        public double[] Approximation { get; set; }
 
         /// <summary>
         /// Detais coefficients
         /// </summary>
-        public ILArray<double> Details { get; set; }
+        public double[] Details { get; set; }
 
         /// <summary>
         /// Signal from which this level was created
@@ -80,14 +79,14 @@ namespace WaveletStudio.Wavelet
         {
             threshold = 1 - threshold;
             var disturbances = new List<Disturbance>();
-            var mean = ILNumerics.BuiltInFunctions.ILMath.mean(Details).GetValue(0);
-            var deviation = WaveMath.StandardDeviation(Details.Values.ToArray());
+            var mean = WaveMath.Mean(Details);
+            var deviation = WaveMath.StandardDeviation(Details);
             var samples = new List<KeyValuePair<int, double>>();
             var min = double.MaxValue;
             var max = double.MinValue;
             for (var i = 0; i < Details.Length; i++)
             {
-                var sample = Details.GetValue(i);
+                var sample = Details[i];
                 var norm = WaveMath.NormalDistribution(sample, mean, deviation);
                 if (double.IsNaN(norm))
                     continue;

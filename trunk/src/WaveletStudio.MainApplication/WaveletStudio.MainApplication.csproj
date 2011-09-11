@@ -38,42 +38,22 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ILNumerics.Net">
-      <HintPath>..\..\res\libs\ILNumerics\ILNumerics.Net.dll</HintPath>
-    </Reference>
     <Reference Include="Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa, processorArchitecture=MSIL">
       <HintPath>..\..\res\libs\Qios\Qios.DevSuite.Components.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
     <Reference Include="ZedGraph">
       <HintPath>..\..\res\libs\ZedGraph\ZedGraph.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationUtils.cs" />
-    <Compile Include="Attributes\DisplayAttribute.cs" />
     <Compile Include="Controls\QControlUtils.cs" />
-    <Compile Include="Controls\WizardControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\WizardControl.Designer.cs">
-      <DependentUpon>WizardControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\WizardPage.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\WizardPage.Designer.cs">
-      <DependentUpon>WizardPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\BlockSetupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,14 +68,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Controls\WizardControl.resx">
-      <DependentUpon>WizardControl.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\WizardPage.resx">
-      <DependentUpon>WizardPage.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BlockSetupForm.resx">
       <DependentUpon>BlockSetupForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,9 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\downsampleImg.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="convolutionImg.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\convolutionImg.png" />
