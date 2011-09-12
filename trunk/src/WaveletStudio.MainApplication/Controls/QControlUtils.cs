@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using Qios.DevSuite.Components;
 using WaveletStudio.MainApplication.Properties;
 
@@ -78,7 +79,14 @@ namespace WaveletStudio.MainApplication.Controls
         private static QCompositeImage GetImageFromResource(string name)
         {
             var image =  Resources.ResourceManager.GetObject(name.Replace(" ", "")) ?? new Bitmap(64,48);
-            return new QCompositeImage {Image = (Image)image};
+            try
+            {
+                return new QCompositeImage { Image = (Image)image };
+            }
+            catch (Exception)
+            {
+                return new QCompositeImage { Image = new Bitmap(64, 48) };
+            }            
         }
     }
 }

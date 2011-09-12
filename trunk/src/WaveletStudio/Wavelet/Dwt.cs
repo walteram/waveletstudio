@@ -17,7 +17,7 @@ namespace WaveletStudio.Wavelet
         /// <param name="extensionMode">Signal extension mode</param>
         /// <param name="convolutionMode">Defines what convolution function should be used</param>
         /// <returns></returns>
-        public static List<DecompositionLevel> ExecuteDwt(Signal signal, MotherWavelet motherWavelet, int level, SignalExtension.ExtensionMode extensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint, ConvolutionModeEnum convolutionMode = ConvolutionModeEnum.ManagedFft)
+        public static List<DecompositionLevel> ExecuteDwt(Signal signal, MotherWavelet motherWavelet, int level, SignalExtension.ExtensionMode extensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint, ConvolutionModeEnum convolutionMode = ConvolutionModeEnum.ManagedFFT)
         {
             var levels = new List<DecompositionLevel>();
 
@@ -60,7 +60,7 @@ namespace WaveletStudio.Wavelet
         /// <param name="level">The depth-level to perform the DWT</param>
         /// <param name="convolutionMode">Defines what convolution function should be used</param>
         /// <returns></returns>
-        public static double[] ExecuteIDwt(List<DecompositionLevel> decompositionLevels, MotherWavelet motherWavelet, int level = 0, ConvolutionModeEnum convolutionMode = ConvolutionModeEnum.ManagedFft)
+        public static double[] ExecuteIDwt(List<DecompositionLevel> decompositionLevels, MotherWavelet motherWavelet, int level = 0, ConvolutionModeEnum convolutionMode = ConvolutionModeEnum.ManagedFFT)
         {
             if (level == 0 || level > decompositionLevels.Count)
             {

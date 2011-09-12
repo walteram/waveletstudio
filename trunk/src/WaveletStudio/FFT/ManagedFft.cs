@@ -18,6 +18,20 @@ namespace WaveletStudio.FFT
     public static class ManagedFFT
     {
         /// <summary>
+        /// Compute the forward or inverse Fourier Transform of data using the specified mode
+        /// </summary>
+        /// <param name="data">The complex data stored as alternating real and imaginary parts</param>
+        /// <param name="forward">true for a forward transform, false for inverse transform</param>
+        /// <param name="mode">Mode to be used</param>
+        public static void FFT(ref double[] data, bool forward, ManagedFFTModeEnum mode)
+        {
+            if(mode == ManagedFFTModeEnum.Dynamic)
+                DynamicFFT(ref data, forward);
+            else
+                TableFFT(ref data, forward);
+        }
+
+        /// <summary>
         /// Compute the forward or inverse Fourier Transform of data, with 
         /// data containing complex valued data as alternating real and 
         /// imaginary parts. The length must be a power of 2.
@@ -26,7 +40,7 @@ namespace WaveletStudio.FFT
         /// and imaginary parts</param>
         /// <param name="forward">true for a forward transform, false for 
         /// inverse transform</param>
-        public static void FFT(ref double[] data, bool forward)
+        public static void DynamicFFT(ref double[] data, bool forward)
         {
             var n = data.Length;
             // checks n is a power of 2 in 2's complement format

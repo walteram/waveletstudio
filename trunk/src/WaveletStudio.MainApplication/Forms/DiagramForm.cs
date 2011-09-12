@@ -15,10 +15,6 @@ namespace WaveletStudio.MainApplication.Forms
 {
     public partial class DiagramForm : QRibbonForm
     {
-        public BlockList Blocks = new BlockList();
-
-        public BlockBase CurrentSelectedBlock;
-
         public DiagramForm()
         {
             InitializeComponent();

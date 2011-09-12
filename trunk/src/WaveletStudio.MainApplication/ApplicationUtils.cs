@@ -25,7 +25,7 @@ namespace WaveletStudio.MainApplication
         public static Image GetResourceImage(string name, int width = 64, int height = 48)
         {
             var bitmap = new Bitmap(width, height);
-            var image = (Image) (Resources.ResourceManager.GetObject(name.ToLower().Replace(" ", "")));
+            var image = (Resources.ResourceManager.GetObject(name.ToLower().Replace(" ", ""))) as Image;
             if (image == null && name.ToLower().EndsWith("img"))
                 return GetResourceImage(name.Substring(0, name.Length - 3), width, height);
             if (image == null)
