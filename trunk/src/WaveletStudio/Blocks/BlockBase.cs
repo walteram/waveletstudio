@@ -50,6 +50,12 @@ namespace WaveletStudio.Blocks
         public abstract void Execute();
 
         /// <summary>
+        /// Creates the input and output nodes
+        /// </summary>
+        /// <param name="root"></param>
+        protected abstract void CreateNodes(ref BlockBase root);
+
+        /// <summary>
         /// Type of action done by the block
         /// </summary>
         public enum ProcessingTypeEnum
@@ -88,10 +94,27 @@ namespace WaveletStudio.Blocks
         public abstract BlockBase Clone();
 
         /// <summary>
+        /// Clones this block but mantains the links
+        /// </summary>
+        /// <returns></returns>
+        public abstract BlockBase CloneWithLinks();
+
+        /// <summary>
         /// Clones this object
         /// </summary>
         /// <returns></returns>
         protected new BlockBase MemberwiseClone()
+        {
+            var block = (BlockBase)base.MemberwiseClone();
+            CreateNodes(ref block);
+            return block;
+        }
+
+        /// <summary>
+        /// Clones this object
+        /// </summary>
+        /// <returns></returns>
+        protected BlockBase MemberwiseCloneWithLinks()
         {
             var block = (BlockBase)base.MemberwiseClone();
             block.InputNodes = new List<BlockInputNode>();
@@ -106,5 +129,7 @@ namespace WaveletStudio.Blocks
             }
             return block;
         }
+
+        
     }
 }

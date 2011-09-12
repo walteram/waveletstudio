@@ -19,6 +19,7 @@
 #endregion
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Text;
 
 namespace WaveletStudio 
@@ -30,6 +31,7 @@ namespace WaveletStudio
     /// <remarks>The pool reduces the pressure on the systems memory done by larger objects.
     /// <para>Arrays created in ILNumerics.Net will try to reclaim its memory from this pool. If attempt fails, the memory is gathered from the managed heap normally.</para>
     /// <para>Disposed array objects register their underlying System.Array in the pool for later reusing. The process is triggered by the garbage collector or by the user calling the Dispose function available for all array objects.</para></remarks>
+    [ExcludeFromCodeCoverage]
     public class MemoryPool 
     {
         /// <summary>
@@ -182,7 +184,7 @@ namespace WaveletStudio
         /// <param name="clear">if true, the elements of the array returned are set to default(T).</param>
         /// <returns>System.Array - either from the pool or a newly created array</returns>
         /// <remarks><para>If a suitable System.Array was found in the pool, this object is returned. Otherwise a new array is created.</para>
-        /// <para>If the <paramref name="clear">clear </paramref> parameter was set to false, the <paramref name="iscleared">iscleared</paramref> parameter can be used to determine, if the object was returnd from the pool and may need extra clearing.</para>
+        /// <para>If the <paramref name="clear">clear </paramref> parameter was set to false, the iscleared parameter can be used to determine, if the object was returnd from the pool and may need extra clearing.</para>
         /// <para>If a new array could not get created due to an OutOfMemoryException, a garbage collection is triggered and the array is again requested from the pool. If this failes again, another attempt to create the array is done. Exceptions eventually thrown from this last attempt are not catched and transported back to the callee.</para></remarks>
         public T[] New<T>(int length, bool clear)
         {

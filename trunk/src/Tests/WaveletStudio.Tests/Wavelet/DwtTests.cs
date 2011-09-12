@@ -79,7 +79,7 @@ namespace WaveletStudio.Tests.Wavelet
         }
 
         [TestMethod]
-        public void TestIDwtWithManagedFft()
+        public void TestIDwtWithManagedFFT()
         {
             var points = new[] { 5, 6, 7, 8, 1, 2, 3, 4, 2.444, 1.1234 };
             var signal = new Signal(points, 1);

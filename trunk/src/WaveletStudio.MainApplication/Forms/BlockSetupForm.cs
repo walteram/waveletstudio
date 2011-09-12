@@ -19,8 +19,8 @@ namespace WaveletStudio.MainApplication.Forms
         {
             InitializeComponent();
             FormCaption.Text = title;
-            ApplicationUtils.ConfigureGraph(GraphControl, title);            
-            _tempBlock = block.Clone();
+            ApplicationUtils.ConfigureGraph(GraphControl, title);
+            _tempBlock = block.CloneWithLinks();
             Block = block;
             CreateFields();
             LoadBlockOutputs();
@@ -191,7 +191,7 @@ namespace WaveletStudio.MainApplication.Forms
         {
             var outputNodes = Block.OutputNodes;            
             var inputNodes = Block.InputNodes;
-            Block = _tempBlock.Clone();
+            Block = _tempBlock.CloneWithLinks();
             Block.OutputNodes = outputNodes;
             Block.InputNodes = inputNodes;
             foreach (var node in inputNodes)

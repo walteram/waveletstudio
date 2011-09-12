@@ -49,9 +49,7 @@ namespace WaveletStudio.Blocks
         /// <returns></returns>
         public BlockOutputNode Clone()
         {
-            var node = (BlockOutputNode) MemberwiseClone();
-            node.Object = null;
-            return node;
+            return (BlockOutputNode)MemberwiseClone();
         }
     }
 }

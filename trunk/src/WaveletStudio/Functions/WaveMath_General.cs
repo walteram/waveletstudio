@@ -83,6 +83,52 @@ namespace WaveletStudio.Functions
         }
 
         /// <summary>
+        /// Calculates the absulte value of an array
+        /// </summary>
+        /// <param name="samples"></param>
+        /// <returns></returns>
+        public static double[] Abs(double[] samples)
+        {
+            var newArray = MemoryPool.Pool.New<double>(samples.Length);
+            for (var i = 0; i < samples.Length; i++)
+            {
+                newArray[i] = Math.Abs(samples[i]);
+            }
+            return newArray;
+        }
+
+        /// <summary>
+        /// Calculates the absulte value of an complex array
+        /// </summary>
+        /// <param name="samples"></param>
+        /// <returns></returns>
+        public static double[] AbsFromComplex(double[] samples)
+        {
+            var newArray = MemoryPool.Pool.New<double>(samples.Length/2);
+            for (var i = 0; i < samples.Length; i = i + 2)
+            {
+                newArray[i/2] = Math.Sqrt(Math.Pow(samples[i], 2) + Math.Pow(samples[i+1], 2));
+            }
+            return newArray;
+        }
+
+        /// <summary>
+        /// Normalize an array dividing each sample by the array length
+        /// </summary>
+        /// <param name="samples"></param>
+        /// <param name="samplesLength"></param>
+        /// <returns></returns>
+        public static double[] Normalize(double[] samples, int samplesLength)
+        {
+            var newArray = (double[])samples.Clone();
+            for (var i = 0; i < newArray.Length; i++)
+            {
+                newArray[i] /= samplesLength;
+            }
+            return newArray;
+        }
+
+        /// <summary>
         /// Removes the repeated values in an array
         /// </summary>
         /// <param name="array"></param>
@@ -190,11 +236,12 @@ namespace WaveletStudio.Functions
         /// <param name="input">The input signal</param>
         /// <param name="filter">The filter</param>
         /// <param name="returnOnlyValid">True to return only the middle of the array</param>
-        /// <param name="margin">Margin to be used if returnOnlyValid is set to true</param>        
+        /// <param name="margin">Margin to be used if returnOnlyValid is set to true</param>
+        /// <param name="mode">FFT mode</param>
         /// <returns></returns>
-        public static double[] Convolve(ConvolutionModeEnum convolutionMode, double[] input, double[] filter, bool returnOnlyValid = true, int margin = 0)
+        public static double[] Convolve(ConvolutionModeEnum convolutionMode, double[] input, double[] filter, bool returnOnlyValid = true, int margin = 0, ManagedFFTModeEnum mode = ManagedFFTModeEnum.UseLookupTable)
         {
-            return convolutionMode == ConvolutionModeEnum.Normal ? ConvolveNormal(input, filter, returnOnlyValid, margin) : ConvolveManagedFft(input, filter, returnOnlyValid, margin);
+            return convolutionMode == ConvolutionModeEnum.Normal ? ConvolveNormal(input, filter, returnOnlyValid, margin) : ConvolveManagedFFT(input, filter, returnOnlyValid, margin, mode);
         }
 
         /// <summary>
@@ -242,8 +289,9 @@ namespace WaveletStudio.Functions
         /// <param name="filter">The filter</param>
         /// <param name="returnOnlyValid">True to return only the middle of the array</param>
         /// <param name="margin">Margin to be used if returnOnlyValid is set to true</param>
+        /// <param name="mode">Mode</param>
         /// <returns></returns>
-        public static double[] ConvolveManagedFft(double[] input, double[] filter, bool returnOnlyValid = true, int margin = 0)
+        public static double[] ConvolveManagedFFT(double[] input, double[] filter, bool returnOnlyValid = true, int margin = 0, ManagedFFTModeEnum mode = ManagedFFTModeEnum.UseLookupTable)
         {
             if (input.Length < filter.Length)
             {
@@ -256,7 +304,7 @@ namespace WaveletStudio.Functions
             var inputFFT = MemoryPool.Pool.New<double>(size * 2);
             var filterFFT = MemoryPool.Pool.New<double>(size * 2);
             var ifft = MemoryPool.Pool.New<double>(size * 2);
-            
+
             for (var i = 0; i < input.Length; i++)
             {
                 inputFFT[i * 2] = input[i];
@@ -265,15 +313,17 @@ namespace WaveletStudio.Functions
             {
                 filterFFT[i * 2] = filter[i];
             }
-
-            ManagedFFT.FFT(ref inputFFT, true);
-            ManagedFFT.FFT(ref filterFFT, true);
+            
+            ManagedFFT.FFT(ref inputFFT, true, mode);
+            ManagedFFT.FFT(ref filterFFT, true, mode);
             for (var i = 0; i < ifft.Length; i = i + 2)
             {
+                if (i >= filterFFT.Length)
+                    break;
                 ifft[i] = inputFFT[i]*filterFFT[i] - inputFFT[i + 1]*filterFFT[i + 1];
                 ifft[i+1] = (inputFFT[i] * filterFFT[i+1] + inputFFT[i + 1] * filterFFT[i]) * -1;
             }
-            ManagedFFT.FFT(ref ifft, false);
+            ManagedFFT.FFT(ref ifft, false, mode);
 
             var ifft2 = MemoryPool.Pool.New<double>(size);
             ifft2[0] = ifft[0];
@@ -323,26 +373,43 @@ namespace WaveletStudio.Functions
         /// Increases the sampling rate of the input by inserting n-1 zeros between samples. 
         /// </summary>
         /// <param name="input"></param>
+        /// <param name="paddRight"></param>
+        /// <param name="insertionCount"></param>
         /// <returns></returns>
-        public static double[] UpSample(double[] input)
+        public static double[] UpSample(double[] input, bool paddRight = true, int insertionCount = 1)
         {
             if (input.Length == 0)
             {
                 return new double[0];
             }
-            var size = input.Length * 2;
-            var result = MemoryPool.Pool.New<double>(size - 1);
+            var size = input.Length * (insertionCount+1);
+            var result = MemoryPool.Pool.New<double>(size - (paddRight ? insertionCount : 0));
             for (var i = 0; i < input.Length; i++)
             {
-                result[i * 2] = input[i];
+                result[i * (insertionCount + 1)] = input[i];
             }
             return result;
-        }        
+        }
     }
 
     public enum ConvolutionModeEnum
     {
         Normal,
-        ManagedFft
+        ManagedFFT
+    }
+
+    /// <summary>
+    /// Computation mode
+    /// </summary>
+    public enum ManagedFFTModeEnum
+    {
+        /// <summary>
+        /// Store the trigonometric values in a table (faster)
+        /// </summary>
+        UseLookupTable,
+        /// <summary>
+        /// Dynamicaly compute the trigonometric values (use less memory)
+        /// </summary>
+        Dynamic
     }
 }

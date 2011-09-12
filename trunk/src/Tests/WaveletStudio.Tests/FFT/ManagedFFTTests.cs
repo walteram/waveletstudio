@@ -30,19 +30,25 @@ namespace WaveletStudio.Tests.FFT
             double[] a6C = { 4, 5.3, -2, -1.3, 2, 3.3, 0, -3.3 };  // complex FFT, ...
 
             double[][] tests = { t4, a4R, a4C, t4A, a4Ar, a4Ac, t8, a8R, a8C, t32, a32R, a32C, t6, a6R, a6C };
-
-            var ret = true;
+            
             for (var testIndex = 0; testIndex < tests.Length; testIndex += 3)
             {
                 var test = tests[testIndex];
                 var answerReal = tests[testIndex + 1];
                 var answerComplex = tests[testIndex + 2];
 
-                ret &= Test(ManagedFFT.RealFFT, test, answerReal);
-                ret &= Test(ManagedFFT.FFT, test, answerComplex);
-                ret &= Test(ManagedFFT.TableFFT, test, answerComplex);                
-            }
-            Assert.IsTrue(ret);
+                Assert.IsTrue(Test(ManagedFFT.RealFFT, test, answerReal));
+                Assert.IsTrue(Test(ManagedFFT.DynamicFFT, test, answerComplex));
+                Assert.IsTrue(Test(ManagedFFT.TableFFT, test, answerComplex));                
+            }            
+
+            var data = tests[0].ToArray();
+            ManagedFFT.FFT(ref data, true, ManagedFFTModeEnum.Dynamic);
+            Assert.IsTrue(Compare(data, tests[2]));
+
+            data = tests[0].ToArray();
+            ManagedFFT.FFT(ref data, true, ManagedFFTModeEnum.UseLookupTable);
+            Assert.IsTrue(Compare(data, tests[2]));
         }
 
         delegate void FFTAction(ref double[] data, bool forward);

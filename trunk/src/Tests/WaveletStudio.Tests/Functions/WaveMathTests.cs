@@ -142,24 +142,24 @@ namespace WaveletStudio.Tests.Functions
         }
 
         [TestMethod]
-        public void TestConvolveManagedFft()
+        public void TestConvolveManagedFFT()
         {
 
             var signal = new double[] { 1, 2, 3, 4, 5, 6, 7, 8 };
             var filter = new double[] { 1, 2, 3 };
-            var convolved = WaveMath.Convolve(ConvolutionModeEnum.ManagedFft, signal, filter);
+            var convolved = WaveMath.Convolve(ConvolutionModeEnum.ManagedFFT, signal, filter);
             var expected = new double[] { 10, 16, 22, 28, 34, 40 };
             Assert.IsTrue(TestUtils.SequenceEquals(convolved, expected));
 
             signal = new double[] { 1, 2, 3 };
             filter = new double[] { 1, 2, 3, 4, 5 };
-            convolved = WaveMath.ConvolveManagedFft(signal, filter);
+            convolved = WaveMath.ConvolveManagedFFT(signal, filter);
             expected = new double[] { 10, 16, 22 };
             Assert.IsTrue(TestUtils.SequenceEquals(convolved, expected));
 
             signal = new double[] { 1, 2, 3, 4, 5, 6, 7, 8 };
             filter = new double[] { 1, 2, 3, 4 };
-            convolved = WaveMath.ConvolveManagedFft(signal, filter, false);
+            convolved = WaveMath.ConvolveManagedFFT(signal, filter, false);
             expected = new double[] { 1, 4, 10, 20, 30, 40, 50, 60, 61, 52, 32 };
             Assert.IsTrue(TestUtils.SequenceEquals(convolved, expected));
         }
@@ -199,6 +199,16 @@ namespace WaveletStudio.Tests.Functions
             input = new double[] { 1, 2, 3, 4, 5 };
             upSampled = WaveMath.UpSample(input);
             expected = new double[] { 1, 0, 2, 0, 3, 0, 4, 0, 5 };
+            Assert.IsTrue(upSampled.SequenceEqual(expected));
+
+            input = new double[] { 1, 2, 3, 4 };
+            upSampled = WaveMath.UpSample(input, true, 2);
+            expected = new double[] { 1, 0, 0, 2, 0, 0, 3, 0, 0, 4 };
+            Assert.IsTrue(upSampled.SequenceEqual(expected));
+
+            input = new double[] { 1, 2, 3, 4 };
+            upSampled = WaveMath.UpSample(input, false, 3);
+            expected = new double[] { 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4, 0, 0, 0 };
             Assert.IsTrue(upSampled.SequenceEqual(expected));
 
             input = new double[] { };

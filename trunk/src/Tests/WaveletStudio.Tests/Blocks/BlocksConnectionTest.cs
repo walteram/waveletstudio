@@ -26,8 +26,7 @@ namespace WaveletStudio.Tests.Blocks
 
             var outputText = multOutputNode.Object.ToString(0);
 
-            Assert.AreEqual("3 5 3 5 3",
-                            outputText);
+            Assert.AreEqual("3 5 3 5 3", outputText);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
 
@@ -17,10 +18,15 @@ namespace WaveletStudio.Blocks
         public ScalarOperationBlock()
         {
             BlockBase root = this;
-            InputNodes.Add(new BlockInputNode(ref root, "Signal", "In"));
-            OutputNodes.Add(new BlockOutputNode(ref root, "Output", "Out"));
+            CreateNodes(ref root);
         }
-        
+
+        protected override sealed void CreateNodes(ref BlockBase root)
+        {
+            root.InputNodes = new List<BlockInputNode> {new BlockInputNode(ref root, "Signal", "In")};
+            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Output", "Out")};
+        }
+
         /// <summary>
         /// Name of the block
         /// </summary>
@@ -55,8 +61,8 @@ namespace WaveletStudio.Blocks
             get { return _operation; }
             set
             {
-                SetOperationDescription();
                 _operation = value;
+                SetOperationDescription();
             }
         }
 
@@ -71,8 +77,8 @@ namespace WaveletStudio.Blocks
             get { return _scalar; }
             set
             {
-                SetOperationDescription();
                 _scalar = value;
+                SetOperationDescription();
             }
         }        
 
@@ -157,6 +163,15 @@ namespace WaveletStudio.Blocks
         public override BlockBase Clone()
         {
             return MemberwiseClone();            
+        }
+
+        /// <summary>
+        /// Clones this block but mantains the links
+        /// </summary>
+        /// <returns></returns>
+        public override BlockBase CloneWithLinks()
+        {
+            return MemberwiseCloneWithLinks();
         }
     }
 }

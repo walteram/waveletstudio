@@ -19,7 +19,7 @@ namespace WaveletStudio.Blocks
         public GenerateSignalBlock()
         {
             BlockBase root = this;
-            OutputNodes.Add(new BlockOutputNode(ref root, "Signal", "S"));
+            CreateNodes(ref root);
 
             TemplateNameList = new List<string>();
             TemplateNameList.AddRange(Utils.GetTypes("WaveletStudio.SignalGeneration").Select(it => it.Name).ToArray());
@@ -136,6 +136,11 @@ namespace WaveletStudio.Blocks
                 OutputNodes[0].ConnectingNode.Root.Execute();            
         }
 
+        protected override sealed void CreateNodes(ref BlockBase root)
+        {
+            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Signal", "S")};
+        }
+
         private bool LoadTemplate(string templateName)
         {
             if (_template == null || templateName != TemplateName)
@@ -165,6 +170,18 @@ namespace WaveletStudio.Blocks
             var block = (GenerateSignalBlock)MemberwiseClone();
             block._template = _template.Clone();            
             block.Execute();            
+            return block;
+        }
+
+        /// <summary>
+        /// Clones this block but mantains the links
+        /// </summary>
+        /// <returns></returns>
+        public override BlockBase CloneWithLinks()
+        {
+            var block = (GenerateSignalBlock)MemberwiseClone();
+            block._template = _template.Clone();
+            block.Execute();
             return block;
         }
     }

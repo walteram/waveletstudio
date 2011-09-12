@@ -20,6 +20,10 @@ namespace WaveletStudio.Blocks
             {
                 ExecuteBlock(block);
             }
+            foreach (var block in this.Where(block => block.InputNodes.Count == 0 && !block.Cascade))
+            {
+                ExecuteBlock(block);
+            }
         }
 
         private void ExecuteBlock(BlockBase block)

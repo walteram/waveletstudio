@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
 
@@ -16,10 +17,8 @@ namespace WaveletStudio.Blocks
         public ConvolutionBlock()
         {
             BlockBase root = this;
-            InputNodes.Add(new BlockInputNode(ref root, "Signal1", "S1"));
-            InputNodes.Add(new BlockInputNode(ref root, "Signal2", "S2"));
-            OutputNodes.Add(new BlockOutputNode(ref root, "Output", "Out"));
-            ConvolutionMode = ConvolutionModeEnum.ManagedFft;
+            CreateNodes(ref root);
+            ConvolutionMode = ConvolutionModeEnum.ManagedFFT;
             ReturnOnlyValid = false;
         }
         
@@ -46,7 +45,13 @@ namespace WaveletStudio.Blocks
         public ConvolutionModeEnum ConvolutionMode { get; set; }
 
         /// <summary>
-        /// The 
+        /// The FFT mode to be used.
+        /// </summary>
+        [Parameter]
+        public ManagedFFTModeEnum ManagedFFTMode { get; set; }
+
+        /// <summary>
+        /// The block returns only the valid samples (central area)
         /// </summary>
         [Parameter]
         public bool ReturnOnlyValid { get; set; }
@@ -70,19 +75,38 @@ namespace WaveletStudio.Blocks
             var filter = inputNode2.Object;
 
             var output = signal.Copy();
-            output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filter.Samples, ReturnOnlyValid);
+            output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filter.Samples, ReturnOnlyValid, 0, ManagedFFTMode);
             OutputNodes[0].Object = output;
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
         }
-        
+
+        protected override sealed void CreateNodes(ref BlockBase root)
+        {
+            root.InputNodes = new List<BlockInputNode>
+                                  {
+                                      new BlockInputNode(ref root, "Signal1", "S1"),
+                                      new BlockInputNode(ref root, "Signal2", "S2")
+                                  };
+            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Output", "Out")};
+        }
+
         /// <summary>
         /// Clones this block
         /// </summary>
         /// <returns></returns>
         public override BlockBase Clone()
         {
-            return MemberwiseClone();            
+            return MemberwiseClone();
+        }
+
+        /// <summary>
+        /// Clones this block but mantains the links
+        /// </summary>
+        /// <returns></returns>
+        public override BlockBase CloneWithLinks()
+        {
+            return MemberwiseCloneWithLinks();
         }
     }
 }
