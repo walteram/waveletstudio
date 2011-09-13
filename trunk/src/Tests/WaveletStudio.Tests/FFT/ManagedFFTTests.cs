@@ -43,7 +43,7 @@ namespace WaveletStudio.Tests.FFT
             }            
 
             var data = tests[0].ToArray();
-            ManagedFFT.FFT(ref data, true, ManagedFFTModeEnum.Dynamic);
+            ManagedFFT.FFT(ref data, true, ManagedFFTModeEnum.DynamicTrigonometricValues);
             Assert.IsTrue(Compare(data, tests[2]));
 
             data = tests[0].ToArray();

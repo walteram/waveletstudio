@@ -14,7 +14,12 @@ namespace WaveletStudio
         /// Samples of the signal
         /// </summary>
         public double[] Samples { get; set; }
-        
+
+        /// <summary>
+        /// Complex samples of the signal
+        /// </summary>
+        public bool IsComplex { get; set; }
+
         /// <summary>
         /// Sampling Rate
         /// </summary>

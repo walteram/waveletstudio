@@ -353,15 +353,19 @@ namespace WaveletStudio.Functions
         /// Decreases the sampling rate of the input by keeping every odd sample starting with the first sample.
         /// </summary>
         /// <param name="input"></param>
+        /// <param name="factor"></param>
+        /// <param name="invert"></param>
         /// <returns></returns>
-        public static double[] DownSample(double[] input)
+        public static double[] DownSample(double[] input, int factor = 2, bool invert = false)
         {
-            var size = input.Length / 2;
+            var size = input.Length / factor;
             var result = MemoryPool.Pool.New<double>(size);
-            var j = 0;
+            var j = 0;            
             for (var i = 0; i < input.Length; i++)
             {
-                if (i % 2 == 0)
+                if (!invert && i % factor == 0)
+                    continue;
+                if(invert && i % factor != 0)
                     continue;
                 result[j] = input[i];
                 j++;
@@ -410,6 +414,6 @@ namespace WaveletStudio.Functions
         /// <summary>
         /// Dynamicaly compute the trigonometric values (use less memory)
         /// </summary>
-        Dynamic
+        DynamicTrigonometricValues
     }
 }

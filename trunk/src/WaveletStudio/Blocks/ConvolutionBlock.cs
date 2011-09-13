@@ -41,14 +41,14 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// The convolution mode to be used.
         /// </summary>
-        [Parameter]
+        //[Parameter] - Normal mode is too slow! So i removed from user interface
         public ConvolutionModeEnum ConvolutionMode { get; set; }
 
         /// <summary>
         /// The FFT mode to be used.
         /// </summary>
         [Parameter]
-        public ManagedFFTModeEnum ManagedFFTMode { get; set; }
+        public ManagedFFTModeEnum Mode { get; set; }
 
         /// <summary>
         /// The block returns only the valid samples (central area)
@@ -75,7 +75,7 @@ namespace WaveletStudio.Blocks
             var filter = inputNode2.Object;
 
             var output = signal.Copy();
-            output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filter.Samples, ReturnOnlyValid, 0, ManagedFFTMode);
+            output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filter.Samples, ReturnOnlyValid, 0, Mode);
             OutputNodes[0].Object = output;
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();

@@ -63,7 +63,7 @@
             // 
             // qRibbonApplicationButton1
             // 
-            this.qRibbonApplicationButton1.ForegroundImage = global::WaveletStudio.MainApplication.Properties.Resources.sine;
+            this.qRibbonApplicationButton1.ForegroundImage = global::WaveletStudio.MainApplication.Properties.Resources.imgsine;
             // 
             // qRibbonItem1
             // 
