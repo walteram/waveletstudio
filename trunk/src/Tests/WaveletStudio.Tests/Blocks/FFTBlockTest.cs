@@ -9,31 +9,31 @@ namespace WaveletStudio.Tests.Blocks
         [TestMethod]
         public void TestFFTBlockExecute()
         {
-            var signalBlock = new GenerateSignalBlock { TemplateName = "Binary", Start = 0, Finish = 5, SamplingRate = 1, IgnoreLastSample = true };
+            //Test with periodic signal
+            var signalBlock = new GenerateSignalBlock { TemplateName = "Binary", Start = 0, Finish = 7, SamplingRate = 1, Offset = 1.1};
             var fftBlock = new FFTBlock();
             fftBlock.Execute();
 
-            //todo: implement test
-
-            /*
             signalBlock.OutputNodes[0].ConnectTo(fftBlock.InputNodes[0]);
             Assert.IsNotNull(fftBlock.Name);
             Assert.IsNotNull(fftBlock.Description);
             Assert.IsNotNull(fftBlock.ProcessingType);
 
             signalBlock.Execute();
-            Assert.AreEqual("2.2 2.2", fftBlock.OutputNodes[0].Object.ToString(1));
+            Assert.AreEqual("1.6 0.0 0.0 0.0", fftBlock.OutputNodes[0].Object.ToString(1));
 
-            var downSampleBlock2 = (DownSampleBlock)fftBlock.Clone();
-            fftBlock.OutputNodes[0].ConnectTo(downSampleBlock2.InputNodes[0]);
+            //Test cascade
+            var scalarBlock = new ScalarOperationBlock{Value = 1, Operation = ScalarOperationBlock.OperationEnum.Sum};
+            fftBlock.OutputNodes[0].ConnectTo(scalarBlock.InputNodes[0]);
             signalBlock.Execute();
-            Assert.AreEqual("2.2", downSampleBlock2.OutputNodes[0].Object.ToString(1));
+            Assert.AreEqual("2.6 1.0 1.0 1.0", scalarBlock.OutputNodes[0].Object.ToString(1));
 
+            //Test when cascade is false
             fftBlock.Cascade = false;
-            downSampleBlock2 = (DownSampleBlock)fftBlock.Clone();
-            fftBlock.OutputNodes[0].ConnectTo(downSampleBlock2.InputNodes[0]);
+            var fftBlock2 = (FFTBlock)fftBlock.Clone();
+            fftBlock.OutputNodes[0].ConnectTo(fftBlock2.InputNodes[0]);
             signalBlock.Execute();
-            Assert.IsNull(downSampleBlock2.OutputNodes[0].Object);*/
+            Assert.IsNull(fftBlock2.OutputNodes[0].Object);
         }
     }
 }

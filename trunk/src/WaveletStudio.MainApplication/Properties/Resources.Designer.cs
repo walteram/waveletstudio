@@ -60,20 +60,6 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap convolution {
-            get {
-                object obj = ResourceManager.GetObject("convolution", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap convolutionimg {
-            get {
-                object obj = ResourceManager.GetObject("convolutionimg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         /// <summary>
         ///   Looks up a localized string similar to Convolution Mode.
         /// </summary>
@@ -83,24 +69,12 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap cosine {
+        /// <summary>
+        ///   Looks up a localized string similar to Dynamic (slower, uses less memory).
+        /// </summary>
+        internal static string dynamictrigonometricvalues {
             get {
-                object obj = ResourceManager.GetObject("cosine", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap downsample {
-            get {
-                object obj = ResourceManager.GetObject("downsample", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap downsampleimg {
-            get {
-                object obj = ResourceManager.GetObject("downsampleimg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("dynamictrigonometricvalues", resourceCulture);
             }
         }
         
@@ -150,6 +124,97 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgconvolution {
+            get {
+                object obj = ResourceManager.GetObject("imgconvolution", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgconvolutionmini {
+            get {
+                object obj = ResourceManager.GetObject("imgconvolutionmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgcosine {
+            get {
+                object obj = ResourceManager.GetObject("imgcosine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgdownsample {
+            get {
+                object obj = ResourceManager.GetObject("imgdownsample", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgdownsamplemini {
+            get {
+                object obj = ResourceManager.GetObject("imgdownsamplemini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgfft {
+            get {
+                object obj = ResourceManager.GetObject("imgfft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgfftmini {
+            get {
+                object obj = ResourceManager.GetObject("imgfftmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgsawtooth {
+            get {
+                object obj = ResourceManager.GetObject("imgsawtooth", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgscalar {
+            get {
+                object obj = ResourceManager.GetObject("imgscalar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgscalarmini {
+            get {
+                object obj = ResourceManager.GetObject("imgscalarmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgsine {
+            get {
+                object obj = ResourceManager.GetObject("imgsine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgsquare {
+            get {
+                object obj = ResourceManager.GetObject("imgsquare", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgtriangle {
+            get {
+                object obj = ResourceManager.GetObject("imgtriangle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Return only valid samples.
         /// </summary>
@@ -168,20 +233,6 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap sawtooth {
-            get {
-                object obj = ResourceManager.GetObject("sawtooth", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap scalaroperation {
-            get {
-                object obj = ResourceManager.GetObject("scalaroperation", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         /// <summary>
         ///   Looks up a localized string similar to Scalar.
         /// </summary>
@@ -191,33 +242,12 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap scalaroperationimg {
-            get {
-                object obj = ResourceManager.GetObject("scalaroperationimg", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         /// <summary>
         ///   Looks up a localized string similar to Signal Templates.
         /// </summary>
         internal static string signaltemplates {
             get {
                 return ResourceManager.GetString("signaltemplates", resourceCulture);
-            }
-        }
-        
-        internal static System.Drawing.Bitmap sine {
-            get {
-                object obj = ResourceManager.GetObject("sine", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        internal static System.Drawing.Bitmap square {
-            get {
-                object obj = ResourceManager.GetObject("square", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -239,10 +269,12 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap triangle {
+        /// <summary>
+        ///   Looks up a localized string similar to Use trigonometric table (faster).
+        /// </summary>
+        internal static string uselookuptable {
             get {
-                object obj = ResourceManager.GetObject("triangle", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("uselookuptable", resourceCulture);
             }
         }
     }

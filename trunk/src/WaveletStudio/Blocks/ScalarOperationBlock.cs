@@ -32,7 +32,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Name
         {
-            get { return "Scalar Operation"; }
+            get { return "Scalar"; }
         }
 
         private string _description = "Multiply, add or subtract or divide the samples of a signal by a scalar number";

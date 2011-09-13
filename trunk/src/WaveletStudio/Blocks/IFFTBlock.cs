@@ -10,12 +10,12 @@ namespace WaveletStudio.Blocks
     /// Executes a scalar operation in a dy
     /// </summary>
     [Serializable]
-    public class FFTBlock : BlockBase
+    public class IFFTBlock : BlockBase
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public FFTBlock()
+        public IFFTBlock()
         {
             BlockBase root = this;
             CreateNodes(ref root);
@@ -26,7 +26,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Name
         {
-            get { return "FFT"; }
+            get { return "IFFT"; }
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Description
         {
-            get { return "Compute fast Fourier transform (FFT) of input"; }
+            get { return "Compute inverse fast Fourier transform (IFFT) of input"; }
         }
         
         /// <summary>
@@ -58,26 +58,18 @@ namespace WaveletStudio.Blocks
                 return;
 
             var inputSignal = inputNode.Object;
-            var fft = WaveMath.UpSample(inputSignal.Samples, false);
-            ManagedFFT.FFT(ref fft, true, Mode);
-            var abs = WaveMath.AbsFromComplex(fft);
-            abs = WaveMath.Normalize(fft.SubArray(abs.Length / 2), abs.Length);
+            var ifft = inputSignal.Samples;
+            ManagedFFT.FFT(ref ifft, false, Mode);
+            ifft = WaveMath.DownSample(ifft, 2, true);
 
-            var absSignal = new Signal(abs)
+            var signal = new Signal(ifft)
                              {
                                  Start = 0,
-                                 Finish = abs.Length-1,
-                                 SamplingInterval = 0.5 / (Convert.ToDouble(abs.Length) / Convert.ToDouble(inputSignal.SamplingRate))
+                                 Finish = ifft.Length - 1,
+                                 SamplingInterval = 0.5 / (Convert.ToDouble(ifft.Length) / Convert.ToDouble(inputSignal.SamplingRate))
                              };
-            var fftSignal = new Signal(fft)
-                            {
-                                Start = 0,
-                                Finish = fft.Length-1,
-                                SamplingInterval = (Convert.ToDouble(abs.Length) / Convert.ToDouble(inputSignal.SamplingRate))
-                            };
-
-            OutputNodes[0].Object = absSignal;
-            OutputNodes[1].Object = fftSignal;
+            
+            OutputNodes[0].Object = signal;
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
         }
@@ -87,8 +79,7 @@ namespace WaveletStudio.Blocks
             root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, "Signal", "In") };
             root.OutputNodes = new List<BlockOutputNode>
                                    {
-                                       new BlockOutputNode(ref root, "Absolute Value", "Abs"),
-                                       new BlockOutputNode(ref root, "Complex FFT", "FFT")
+                                       new BlockOutputNode(ref root, "Output", "IFFT")
                                    };
         }
 

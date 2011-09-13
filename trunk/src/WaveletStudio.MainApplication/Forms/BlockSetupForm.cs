@@ -90,7 +90,7 @@ namespace WaveletStudio.MainApplication.Forms
                     field.TextChanged += FieldValueChanged;
                 }
                 field.Name = "ClassField" + property.Name;
-                field.Size = new Size(138, 21);
+                field.Size = new Size(180, 21);
                 field.Tag = property;
                 field.Location = new Point(115, topLocation);
                 if (property.PropertyType != typeof(bool))

@@ -25,7 +25,7 @@ namespace WaveletStudio.FFT
         /// <param name="mode">Mode to be used</param>
         public static void FFT(ref double[] data, bool forward, ManagedFFTModeEnum mode)
         {
-            if(mode == ManagedFFTModeEnum.Dynamic)
+            if(mode == ManagedFFTModeEnum.DynamicTrigonometricValues)
                 DynamicFFT(ref data, forward);
             else
                 TableFFT(ref data, forward);
