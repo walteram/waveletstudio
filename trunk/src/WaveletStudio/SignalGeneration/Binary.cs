@@ -6,18 +6,9 @@ namespace WaveletStudio.SignalGeneration
     ///<summary>
     /// Create a binary wave: y(x) = 0, 1, 0, 1, 0, 1....
     ///</summary>
-    internal class Binary : CommonSignalBase
+    [Serializable]
+    public class Binary : CommonSignalBase
     {
-        /// <summary>
-        /// Not used in this signal
-        /// </summary>
-        protected new double Frequency { get; set; }
-
-        /// <summary>
-        /// Not used in this signal
-        /// </summary>
-        protected new double Phase { get; set; }
-
         /// <summary>
         /// Name
         /// </summary>

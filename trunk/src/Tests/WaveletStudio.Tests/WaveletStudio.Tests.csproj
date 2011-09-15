@@ -50,6 +50,7 @@
     <Compile Include="Blocks\ConvolutionBlockTest.cs" />
     <Compile Include="Blocks\FFTBlockTest.cs" />
     <Compile Include="Blocks\DownSampleBlockTest.cs" />
+    <Compile Include="Blocks\IFFTBlockTest.cs" />
     <Compile Include="Blocks\NodesTest.cs" />
     <Compile Include="Blocks\ScalarOperationBlockTest.cs" />
     <Compile Include="Blocks\GenerateSignalBlockTest.cs" />

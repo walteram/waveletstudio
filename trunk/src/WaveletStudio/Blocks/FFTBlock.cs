@@ -7,7 +7,7 @@ using WaveletStudio.Functions;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Executes a scalar operation in a dy
+    /// FFT
     /// </summary>
     [Serializable]
     public class FFTBlock : BlockBase
@@ -80,6 +80,8 @@ namespace WaveletStudio.Blocks
             OutputNodes[1].Object = fftSignal;
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
+            if (Cascade && OutputNodes[1].ConnectingNode != null)
+                OutputNodes[1].ConnectingNode.Root.Execute();
         }
 
         protected override sealed void CreateNodes(ref BlockBase root)

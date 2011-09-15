@@ -179,7 +179,7 @@ namespace WaveletStudio.Blocks
         /// <returns></returns>
         public override BlockBase CloneWithLinks()
         {
-            var block = (GenerateSignalBlock)MemberwiseClone();
+            var block = (GenerateSignalBlock)MemberwiseCloneWithLinks();
             block._template = _template.Clone();
             block.Execute();
             return block;

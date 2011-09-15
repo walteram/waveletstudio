@@ -104,10 +104,12 @@ namespace WaveletStudio.Functions
         /// <returns></returns>
         public static double[] AbsFromComplex(double[] samples)
         {
-            var newArray = MemoryPool.Pool.New<double>(samples.Length/2);
+            var newArray = MemoryPool.Pool.New<double>(Convert.ToInt32(Math.Ceiling(samples.Length / 2d)));
             for (var i = 0; i < samples.Length; i = i + 2)
             {
-                newArray[i/2] = Math.Sqrt(Math.Pow(samples[i], 2) + Math.Pow(samples[i+1], 2));
+                var real = samples[i];
+                var complex = i + 1 < samples.Length ? samples[i + 1] : 0;
+                newArray[i/2] = Math.Sqrt(Math.Pow(real, 2) + Math.Pow(complex, 2));
             }
             return newArray;
         }
@@ -318,8 +320,6 @@ namespace WaveletStudio.Functions
             ManagedFFT.FFT(ref filterFFT, true, mode);
             for (var i = 0; i < ifft.Length; i = i + 2)
             {
-                if (i >= filterFFT.Length)
-                    break;
                 ifft[i] = inputFFT[i]*filterFFT[i] - inputFFT[i + 1]*filterFFT[i + 1];
                 ifft[i+1] = (inputFFT[i] * filterFFT[i+1] + inputFFT[i + 1] * filterFFT[i]) * -1;
             }

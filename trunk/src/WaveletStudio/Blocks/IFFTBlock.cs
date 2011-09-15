@@ -7,7 +7,7 @@ using WaveletStudio.Functions;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Executes a scalar operation in a dy
+    /// IFFT
     /// </summary>
     [Serializable]
     public class IFFTBlock : BlockBase
