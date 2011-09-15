@@ -7,7 +7,7 @@ namespace WaveletStudio.SignalGeneration
     /// Create a binary wave: y(x) = 0, 1, 0, 1, 0, 1....
     ///</summary>
     [Serializable]
-    public class Binary : CommonSignalBase
+    internal class Binary : CommonSignalBase
     {
         /// <summary>
         /// Name
