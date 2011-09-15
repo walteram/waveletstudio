@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 
 namespace WaveletStudio.Tests.Blocks
@@ -27,6 +28,41 @@ namespace WaveletStudio.Tests.Blocks
             var outputText = multOutputNode.Object.ToString(0);
 
             Assert.AreEqual("3 5 3 5 3", outputText);
+        }
+
+        [TestMethod]
+        public void TestCloneWithLinks()
+        {
+            AssertBlock(new ConvolutionBlock());
+            AssertBlock(new DownSampleBlock());
+            AssertBlock(new FFTBlock());
+            AssertBlock(new GenerateSignalBlock());
+            AssertBlock(new IFFTBlock());
+            AssertBlock(new ScalarOperationBlock());
+        }
+
+        private static void AssertBlock(BlockBase block)
+        {
+            var blockList = new BlockList { block };
+            foreach (var inputNode in block.InputNodes)
+            {
+                var signalBlock = new GenerateSignalBlock
+                                      {
+                                          TemplateName = "Binary",
+                                          Start = 0,
+                                          Finish = 4,
+                                          SamplingRate = 1,
+                                          IgnoreLastSample = true
+                                      };
+                signalBlock.OutputNodes[0].ConnectTo(inputNode);
+                blockList.Add(signalBlock);
+            }            
+            blockList.ExecuteAll();
+            var clone = block.CloneWithLinks();
+            foreach (var outputNode in block.OutputNodes)
+            {
+                Assert.IsNotNull(outputNode.Object.Samples);
+            }
         }
     }
 }

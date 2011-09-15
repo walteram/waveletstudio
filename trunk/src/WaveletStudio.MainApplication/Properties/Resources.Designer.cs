@@ -173,6 +173,20 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgifft {
+            get {
+                object obj = ResourceManager.GetObject("imgifft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgifftmini {
+            get {
+                object obj = ResourceManager.GetObject("imgifftmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgsawtooth {
             get {
                 object obj = ResourceManager.GetObject("imgsawtooth", resourceCulture);

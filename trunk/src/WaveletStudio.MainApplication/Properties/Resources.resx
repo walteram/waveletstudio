@@ -200,4 +200,10 @@ Click in the Signal tab and select a signal source.</value>
   <data name="uselookuptable" xml:space="preserve">
     <value>Use trigonometric table (faster)</value>
   </data>
+  <data name="imgifft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgifft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgifftmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgifftmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

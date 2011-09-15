@@ -47,6 +47,29 @@ namespace WaveletStudio.Tests.Functions
             Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Multiply(array1, scalar)));
         }
 
+        [TestMethod]
+        public void TestAbs()
+        {
+            var input = new [] {2.1, 3.2, -1, -1.3, -100, 145, -2};
+            var expected = new [] {2.1, 3.2, 1, 1.3, 100, 145, 2};
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Abs(input)));
+
+            input = new double[] { };
+            expected = new double[] { };
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Abs(input)));
+        }
+
+        [TestMethod]
+        public void TestAbsFromComplex()
+        {
+            var input = new[] { 2.1, 3.2, 1, -1.3, -100, 145, -2 };
+            var expected = new[] { 3.8275318418009276, 1.6401219466856727, 176.13914953808538, 2 };
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.AbsFromComplex(input)));
+
+            input = new double[] { };
+            expected = new double[] { };
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.AbsFromComplex(input)));
+        }
 
         [TestMethod]
         public void TestGetAccumulatedEnergy()
