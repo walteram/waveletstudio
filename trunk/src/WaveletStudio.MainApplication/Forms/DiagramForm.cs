@@ -35,6 +35,7 @@ namespace WaveletStudio.MainApplication.Forms
         private void LoadRibbon()
         {
             LoadSignalTemplates();
+            LoadBlocks(SignalTemplatesComposite, BlockBase.ProcessingTypeEnum.CreateSignal);
             LoadBlocks(OperationsFunctionsComposite, BlockBase.ProcessingTypeEnum.Operation);
         }
 
@@ -74,7 +75,7 @@ namespace WaveletStudio.MainApplication.Forms
             foreach (var type in Utils.GetTypes("WaveletStudio.Blocks").Where(t => t.BaseType == typeof(BlockBase)))
             {
                 var block = (BlockBase)Activator.CreateInstance(type);
-                if (block.ProcessingType != processingType)
+                if (block.ProcessingType != processingType || type == typeof(GenerateSignalBlock))
                     continue;
 
                 var item = QControlUtils.CreateCompositeListItem(type.FullName, "img" + block.Name.ToLower(), ApplicationUtils.GetResourceString(block.Name), "", 1, QPartDirection.Vertical, QPartAlignment.Centered, Color.White);
