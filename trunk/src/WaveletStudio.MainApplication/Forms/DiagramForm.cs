@@ -135,7 +135,7 @@ namespace WaveletStudio.MainApplication.Forms
             setupForm.ShowDialog();
             if (setupForm.DialogResult == DialogResult.OK)
             {
-                diagramBlock.Refresh(ApplicationUtils.GetResourceImage(setupForm.Block.Name.ToLower(), 30, 20), ApplicationUtils.GetResourceString(setupForm.Block.Name), setupForm.Block, setupForm.Block.InputNodes.ToArray(), setupForm.Block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
+                diagramBlock.Refresh(ApplicationUtils.GetResourceImage("img" + setupForm.Block.Name.ToLower() + "mini", 30, 20), ApplicationUtils.GetResourceString(setupForm.Block.Name), setupForm.Block, setupForm.Block.InputNodes.ToArray(), setupForm.Block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
                 diagramBlock.Invalidate();
                 diagramBlock.State = setupForm.Block;
             }

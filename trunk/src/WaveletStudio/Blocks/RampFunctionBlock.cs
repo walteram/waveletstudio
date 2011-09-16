@@ -21,16 +21,17 @@ namespace WaveletStudio.Blocks
 
             Amplitude = 1;
             Offset = 0;
-            Start = 0;
-            Finish = 1;
-            SamplingRate = 44100;
-            IgnoreLastSample = false;            
+            Start = RampStart = 0;
+            Finish = RampFinish = 1;
+            SamplingRate = 32768;
+            IgnoreLastSample = false;
+            ReturnToZero = true;
         }
 
         /// <summary>
         /// Name
         /// </summary>
-        public override string Name { get { return "Ramp Function"; } }
+        public override string Name { get { return "Ramp"; } }
 
         /// <summary>
         /// Description
@@ -65,6 +66,18 @@ namespace WaveletStudio.Blocks
         /// </summary>
         [Parameter]
         public double Finish { get; set; }
+
+        /// <summary>
+        /// Start of the ramp in time
+        /// </summary>
+        [Parameter]
+        public double RampStart { get; set; }
+
+        /// <summary>
+        /// Finish of the ramp in time
+        /// </summary>
+        [Parameter]
+        public double RampFinish { get; set; }
 
         private int _samplingRate;
 
@@ -129,6 +142,11 @@ namespace WaveletStudio.Blocks
             }
         }
 
+        /// <summary>
+        /// Return the sample value to 0 
+        /// </summary>
+        [Parameter]
+        public bool ReturnToZero { get; set; }
 
         /// <summary>
         /// Executes the block
@@ -137,9 +155,25 @@ namespace WaveletStudio.Blocks
         {
             var samples = new List<double>();
             var finish = GetFinish();
+            var lastValue = Offset;
             for (var x = Start; x <= finish; x += SamplingInterval)
             {
-                var value = Amplitude * x + Offset;
+                double value;
+
+                if (x >= RampStart && x <= RampFinish)
+                {
+                    value = Amplitude * (x-RampStart) + Offset;
+                    if (!ReturnToZero && x < RampFinish)
+                        lastValue = value;
+                }                
+                else if(x < RampStart)
+                {
+                    value = Offset;
+                }
+                else
+                {
+                    value = lastValue;
+                }
                 samples.Add(value);
             }
             var signal = new Signal(samples.ToArray())

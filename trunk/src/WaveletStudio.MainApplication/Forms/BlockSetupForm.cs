@@ -39,7 +39,7 @@ namespace WaveletStudio.MainApplication.Forms
 
                 if (property.PropertyType != typeof(bool))
                 {
-                    var label = new Label { Name = "Label" + property.Name, Text = labelValue + @":", Location = new Point(11, topLocation + 3) };
+                    var label = new Label { Name = "Label" + property.Name, Text = labelValue + @":", Location = new Point(6, topLocation + 3), Width = 108, Padding = new Padding(0)};
                     Controls.Add(label);
                 }
 
