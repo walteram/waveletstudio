@@ -187,6 +187,13 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgramp {
+            get {
+                object obj = ResourceManager.GetObject("imgramp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgsawtooth {
             get {
                 object obj = ResourceManager.GetObject("imgsawtooth", resourceCulture);
@@ -230,11 +237,38 @@ namespace WaveletStudio.MainApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ramp Finish.
+        /// </summary>
+        internal static string rampfinish {
+            get {
+                return ResourceManager.GetString("rampfinish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ramp Start.
+        /// </summary>
+        internal static string rampstart {
+            get {
+                return ResourceManager.GetString("rampstart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Return only valid samples.
         /// </summary>
         internal static string returnonlyvalid {
             get {
                 return ResourceManager.GetString("returnonlyvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Return value to zero in the end.
+        /// </summary>
+        internal static string returntozero {
+            get {
+                return ResourceManager.GetString("returntozero", resourceCulture);
             }
         }
         

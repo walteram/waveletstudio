@@ -29,7 +29,7 @@ namespace WaveletStudio.Blocks
             Offset = 0;
             Start = 0;
             Finish = 1;
-            SamplingRate = 44100;
+            SamplingRate = 32768;
             IgnoreLastSample = false;
             TemplateName = TemplateNameList.ElementAt(0);
         }
