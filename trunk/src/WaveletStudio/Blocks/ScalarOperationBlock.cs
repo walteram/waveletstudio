@@ -93,10 +93,14 @@ namespace WaveletStudio.Blocks
             var connectingNode = InputNodes[0].ConnectingNode as BlockOutputNode;
             if (connectingNode == null || connectingNode.Object == null)
                 return;
-            var input = connectingNode.Object;
-            var output = input.Copy();
-            output.Samples = WaveMath.GetScalarOperationFunction(Operation)(input.Samples, Value);            
-            OutputNodes[0].Object = output;
+
+            OutputNodes[0].Object.Clear();
+            foreach (var signal in connectingNode.Object)
+            {
+                var output = signal.Copy();
+                output.Samples = WaveMath.GetScalarOperationFunction(Operation)(signal.Samples, Value);
+                OutputNodes[0].Object.Add(output);   
+            }            
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
         }

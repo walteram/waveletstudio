@@ -61,7 +61,11 @@ namespace WaveletStudio.Blocks
         public enum ProcessingTypeEnum
         {
             /// <summary>
-            /// The block creates or loads a signal
+            /// The block loads an external signal
+            /// </summary>
+            LoadSignal,
+            /// <summary>
+            /// The block creates a signal
             /// </summary>
             CreateSignal,
             /// <summary>

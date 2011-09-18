@@ -183,7 +183,7 @@ namespace WaveletStudio.Blocks
                 Finish = Finish,
                 SamplingInterval = SamplingInterval
             };
-            OutputNodes[0].Object = signal;
+            OutputNodes[0].Object = new List<Signal> { signal };
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();            
         }

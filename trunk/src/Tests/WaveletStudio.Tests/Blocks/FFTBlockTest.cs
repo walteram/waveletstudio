@@ -34,7 +34,7 @@ namespace WaveletStudio.Tests.Blocks
             var fftBlock2 = (FFTBlock)fftBlock.Clone();
             fftBlock.OutputNodes[0].ConnectTo(fftBlock2.InputNodes[0]);
             signalBlock.Execute();
-            Assert.IsNull(fftBlock2.OutputNodes[0].Object);
+            Assert.AreEqual(0, fftBlock2.OutputNodes[0].Object.Count);
         }
     }
 }

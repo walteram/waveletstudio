@@ -248,4 +248,25 @@ Click in the Signal tab and select a signal source.</value>
   <data name="imgsummini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgsummini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="columnseparator" xml:space="preserve">
+    <value>Column separator</value>
+  </data>
+  <data name="filepath" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="ignorefirstrow" xml:space="preserve">
+    <value>Ignore first row</value>
+  </data>
+  <data name="imgcsvsignal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\csv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="samplinginterval" xml:space="preserve">
+    <value>Sample time interval</value>
+  </data>
+  <data name="signalnameinfirstcolumn" xml:space="preserve">
+    <value>First column contains signal name</value>
+  </data>
+  <data name="signalstart" xml:space="preserve">
+    <value>Signal start time</value>
+  </data>
 </root>

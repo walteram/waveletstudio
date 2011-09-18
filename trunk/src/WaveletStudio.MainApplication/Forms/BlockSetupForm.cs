@@ -153,13 +153,13 @@ namespace WaveletStudio.MainApplication.Forms
                 pane.CurveList.RemoveAt(0);
             _tempBlock.Execute();
             var outputNode = _tempBlock.OutputNodes.FirstOrDefault(it => it.Name == ShowOutputList.Text);
-            if (outputNode == null || outputNode.Object == null)
+            if (outputNode == null || outputNode.Object == null || outputNode.Object.Count == 0)
             {
                 NoDataLabel.Visible = true;
                 return;
             }
             NoDataLabel.Visible = false;
-            var samples = outputNode.Object.GetSamplesPair();
+            var samples = outputNode.Object[0].GetSamplesPair();
             var yAxys = new ZedGraph.PointPairList();
             yAxys.AddRange(samples.Select(it => new ZedGraph.PointPair(it[1], it[0])));
             pane.AddCurve(outputNode.Name, yAxys, Color.Red, ZedGraph.SymbolType.None);

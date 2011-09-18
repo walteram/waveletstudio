@@ -56,6 +56,7 @@
     <Compile Include="Blocks\NodesTest.cs" />
     <Compile Include="Blocks\ScalarOperationBlockTest.cs" />
     <Compile Include="Blocks\GenerateSignalBlockTest.cs" />
+    <Compile Include="Blocks\SignalFromCSVBlockTest.cs" />
     <Compile Include="FFT\ManagedFFTTests.cs" />
     <Compile Include="SignalGeneration\BinaryTest.cs" />
     <Compile Include="SignalGeneration\CosineTest.cs" />
@@ -79,7 +80,11 @@
       <Name>WaveletStudio</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="example.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

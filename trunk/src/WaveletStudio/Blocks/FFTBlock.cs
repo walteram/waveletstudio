@@ -57,27 +57,32 @@ namespace WaveletStudio.Blocks
             if (inputNode == null || inputNode.Object == null)
                 return;
 
-            var inputSignal = inputNode.Object;
-            var fft = WaveMath.UpSample(inputSignal.Samples, false);
-            ManagedFFT.FFT(ref fft, true, Mode);
-            var abs = WaveMath.AbsFromComplex(fft);
-            abs = WaveMath.Normalize(fft.SubArray(abs.Length / 2), abs.Length);
+            OutputNodes[0].Object.Clear();
+            OutputNodes[1].Object.Clear();
+            foreach (var inputSignal in inputNode.Object)
+            {
+                var fft = WaveMath.UpSample(inputSignal.Samples, false);
+                ManagedFFT.FFT(ref fft, true, Mode);
+                var abs = WaveMath.AbsFromComplex(fft);
+                abs = WaveMath.Normalize(fft.SubArray(abs.Length / 2), abs.Length);
 
-            var absSignal = new Signal(abs)
-                             {
-                                 Start = 0,
-                                 Finish = abs.Length-1,
-                                 SamplingInterval = 0.5 / (Convert.ToDouble(abs.Length) / Convert.ToDouble(inputSignal.SamplingRate))
-                             };
-            var fftSignal = new Signal(fft)
-                            {
-                                Start = 0,
-                                Finish = fft.Length-1,
-                                SamplingInterval = (Convert.ToDouble(abs.Length) / Convert.ToDouble(inputSignal.SamplingRate))
-                            };
+                var absSignal = new Signal(abs)
+                {
+                    Start = 0,
+                    Finish = abs.Length - 1,
+                    SamplingInterval = 0.5 / (Convert.ToDouble(abs.Length) / Convert.ToDouble(inputSignal.SamplingRate))
+                };
+                var fftSignal = new Signal(fft)
+                {
+                    Start = 0,
+                    Finish = fft.Length - 1,
+                    SamplingInterval = (Convert.ToDouble(abs.Length) / Convert.ToDouble(inputSignal.SamplingRate))
+                };
 
-            OutputNodes[0].Object = absSignal;
-            OutputNodes[1].Object = fftSignal;
+                OutputNodes[0].Object.Add(absSignal);
+                OutputNodes[1].Object.Add(fftSignal);
+            }
+            
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
             if (Cascade && OutputNodes[1].ConnectingNode != null)

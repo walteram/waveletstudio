@@ -61,6 +61,15 @@ namespace WaveletStudio.MainApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Column separator.
+        /// </summary>
+        internal static string columnseparator {
+            get {
+                return ResourceManager.GetString("columnseparator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Convolution Mode.
         /// </summary>
         internal static string convolutionmode {
@@ -98,6 +107,15 @@ namespace WaveletStudio.MainApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to File.
+        /// </summary>
+        internal static string filepath {
+            get {
+                return ResourceManager.GetString("filepath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Finish Time.
         /// </summary>
         internal static string finish {
@@ -112,6 +130,15 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static string frequency {
             get {
                 return ResourceManager.GetString("frequency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ignore first row.
+        /// </summary>
+        internal static string ignorefirstrow {
+            get {
+                return ResourceManager.GetString("ignorefirstrow", resourceCulture);
             }
         }
         
@@ -141,6 +168,13 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static System.Drawing.Bitmap imgcosine {
             get {
                 object obj = ResourceManager.GetObject("imgcosine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgcsvsignal {
+            get {
+                object obj = ResourceManager.GetObject("imgcsvsignal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -343,6 +377,15 @@ namespace WaveletStudio.MainApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sample time interval.
+        /// </summary>
+        internal static string samplinginterval {
+            get {
+                return ResourceManager.GetString("samplinginterval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sampling Rate (Hz).
         /// </summary>
         internal static string samplingrate {
@@ -357,6 +400,24 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static string scalaroperation_text {
             get {
                 return ResourceManager.GetString("scalaroperation_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First column contains signal name.
+        /// </summary>
+        internal static string signalnameinfirstcolumn {
+            get {
+                return ResourceManager.GetString("signalnameinfirstcolumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signal start time.
+        /// </summary>
+        internal static string signalstart {
+            get {
+                return ResourceManager.GetString("signalstart", resourceCulture);
             }
         }
         

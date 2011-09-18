@@ -71,12 +71,20 @@ namespace WaveletStudio.Blocks
             if (inputNode1 == null || inputNode1.Object == null || inputNode2 == null || inputNode2.Object == null)
                 return;
 
-            var signal = inputNode1.Object;
-            var filter = inputNode2.Object;
-
-            var output = signal.Copy();
-            output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filter.Samples, ReturnOnlyValid, 0, Mode);
-            OutputNodes[0].Object = output;
+            var outputs = new List<Signal>();
+            var signals = inputNode1.Object;
+            var filters = inputNode2.Object;
+            for (var i = 0; i < signals.Count; i++)
+            {
+                var signal = signals[i];
+                var output = signal.Copy();
+                if (i < filters.Count)
+                {
+                    output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filters[i].Samples, ReturnOnlyValid, 0, Mode);                    
+                }
+                outputs.Add(output);
+            }
+            OutputNodes[0].Object = outputs;
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
         }

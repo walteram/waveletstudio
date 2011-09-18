@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
+using WaveletStudio.Functions;
 
 namespace WaveletStudio.Tests.Blocks
 {
@@ -30,7 +31,7 @@ namespace WaveletStudio.Tests.Blocks
             downSampleBlock2 = (DownSampleBlock)downSampleBlock.Clone();
             downSampleBlock.OutputNodes[0].ConnectTo(downSampleBlock2.InputNodes[0]);
             signalBlock.Execute();
-            Assert.IsNull(downSampleBlock2.OutputNodes[0].Object);
+            Assert.AreEqual(0, downSampleBlock2.OutputNodes[0].Object.Count);
         }
     }
 }

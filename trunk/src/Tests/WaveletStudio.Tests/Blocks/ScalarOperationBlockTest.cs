@@ -45,7 +45,7 @@ namespace WaveletStudio.Tests.Blocks
             scalarBlock2 = (ScalarOperationBlock)scalarBlock.Clone();
             scalarBlock.OutputNodes[0].ConnectTo(scalarBlock2.InputNodes[0]);
             signalBlock.Execute();
-            Assert.IsNull(scalarBlock2.OutputNodes[0].Object);
+            Assert.AreEqual(0, scalarBlock2.OutputNodes[0].Object.Count);
         }
     }
 }
