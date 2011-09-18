@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
+using WaveletStudio.Functions;
 
 namespace WaveletStudio.Tests.Blocks
 {
@@ -28,7 +29,7 @@ namespace WaveletStudio.Tests.Blocks
             Assert.AreEqual("0.0 1.0 0.0 1.0 0.0", signalBlock.OutputNodes[0].Object.ToString(1));
 
             signalBlock.Cascade = false;
-            var scalarBlock = new ScalarOperationBlock { Operation = ScalarOperationBlock.OperationEnum.Sum, Value = 1.5 };
+            var scalarBlock = new ScalarOperationBlock { Operation = WaveMath.OperationEnum.Sum, Value = 1.5 };
             signalBlock.OutputNodes[0].ConnectTo(scalarBlock.InputNodes[0]);            
             signalBlock.Execute();
             Assert.IsNull(scalarBlock.OutputNodes[0].Object);

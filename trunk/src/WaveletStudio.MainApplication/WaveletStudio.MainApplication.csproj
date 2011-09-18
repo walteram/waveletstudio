@@ -154,6 +154,36 @@
   <ItemGroup>
     <None Include="Resources\signals_commonsignals_ramp.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgoperation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgoperationMini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgdividemini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgmultiplymini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgsubtractmini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgsummini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgscalardividemini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgscalarmultiplymini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgscalarsubtractmini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgscalarsummini.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

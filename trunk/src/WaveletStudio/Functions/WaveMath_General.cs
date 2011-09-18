@@ -52,7 +52,7 @@ namespace WaveletStudio.Functions
                 var occurrences = 0;
                 foreach (var t1 in samples)
                 {
-                    if (Math.Abs(t1 - t) < double.Epsilon)
+                    if (Math.Abs(t1 - t) < Double.Epsilon)
                     {
                         occurrences++;
                     }
@@ -141,7 +141,7 @@ namespace WaveletStudio.Functions
 
             var unqCount = 1;
             for (var i = 1; i < array.Length; i++)
-                if (Math.Abs(array[i - 1] - array[i]) > double.Epsilon)
+                if (Math.Abs(array[i - 1] - array[i]) > Double.Epsilon)
                     unqCount++;
 
             var unq = MemoryPool.Pool.New<double>(unqCount);
@@ -149,7 +149,7 @@ namespace WaveletStudio.Functions
             unq[0] = array[0];
             for (int i = 1, j = 1; i < array.Length; i++)
             {
-                if (Math.Abs(array[i - 1] - array[i]) <= double.Epsilon) 
+                if (Math.Abs(array[i - 1] - array[i]) <= Double.Epsilon) 
                     continue;
                 unq[j] = array[i];
                 j++;

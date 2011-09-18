@@ -218,4 +218,34 @@ Click in the Signal tab and select a signal source.</value>
   <data name="returntozero" xml:space="preserve">
     <value>Return value to zero in the end</value>
   </data>
+  <data name="imgdividemini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgdividemini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgmultiplymini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgmultiplymini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgoperation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgoperation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgoperationmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgoperationMini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgscalardividemini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgscalardividemini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgscalarmultiplymini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgscalarmultiplymini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgscalarsubtractmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgscalarsubtractmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgscalarsummini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgscalarsummini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgsubtractmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgsubtractmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgsummini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgsummini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

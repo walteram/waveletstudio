@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
+using WaveletStudio.Functions;
 
 namespace WaveletStudio.Tests.Blocks
 {
@@ -23,7 +24,7 @@ namespace WaveletStudio.Tests.Blocks
             Assert.AreEqual("1.6 0.0 0.0 0.0", fftBlock.OutputNodes[0].Object.ToString(1));
 
             //Test cascade
-            var scalarBlock = new ScalarOperationBlock{Value = 1, Operation = ScalarOperationBlock.OperationEnum.Sum};
+            var scalarBlock = new ScalarOperationBlock{Value = 1, Operation = WaveMath.OperationEnum.Sum};
             fftBlock.OutputNodes[0].ConnectTo(scalarBlock.InputNodes[0]);
             signalBlock.Execute();
             Assert.AreEqual("2.6 1.0 1.0 1.0", scalarBlock.OutputNodes[0].Object.ToString(1));

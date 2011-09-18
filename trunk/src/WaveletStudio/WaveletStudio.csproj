@@ -43,6 +43,7 @@
     <Compile Include="Blocks\BlockNodeBase.cs" />
     <Compile Include="Blocks\BlockOutputNode.cs" />
     <Compile Include="Blocks\ConvolutionBlock.cs" />
+    <Compile Include="Blocks\SampleBasedOperationBlock.cs" />
     <Compile Include="Blocks\RampFunctionBlock.cs" />
     <Compile Include="Blocks\IFFTBlock.cs" />
     <Compile Include="Blocks\FFTBlock.cs" />

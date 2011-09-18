@@ -145,6 +145,13 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgdividemini {
+            get {
+                object obj = ResourceManager.GetObject("imgdividemini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgdownsample {
             get {
                 object obj = ResourceManager.GetObject("imgdownsample", resourceCulture);
@@ -187,6 +194,27 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgmultiplymini {
+            get {
+                object obj = ResourceManager.GetObject("imgmultiplymini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgoperation {
+            get {
+                object obj = ResourceManager.GetObject("imgoperation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgoperationmini {
+            get {
+                object obj = ResourceManager.GetObject("imgoperationmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgramp {
             get {
                 object obj = ResourceManager.GetObject("imgramp", resourceCulture);
@@ -208,9 +236,37 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgscalardividemini {
+            get {
+                object obj = ResourceManager.GetObject("imgscalardividemini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgscalarmini {
             get {
                 object obj = ResourceManager.GetObject("imgscalarmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgscalarmultiplymini {
+            get {
+                object obj = ResourceManager.GetObject("imgscalarmultiplymini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgscalarsubtractmini {
+            get {
+                object obj = ResourceManager.GetObject("imgscalarsubtractmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgscalarsummini {
+            get {
+                object obj = ResourceManager.GetObject("imgscalarsummini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -225,6 +281,20 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static System.Drawing.Bitmap imgsquare {
             get {
                 object obj = ResourceManager.GetObject("imgsquare", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgsubtractmini {
+            get {
+                object obj = ResourceManager.GetObject("imgsubtractmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgsummini {
+            get {
+                object obj = ResourceManager.GetObject("imgsummini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
