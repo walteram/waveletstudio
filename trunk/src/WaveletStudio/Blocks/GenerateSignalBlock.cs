@@ -131,7 +131,7 @@ namespace WaveletStudio.Blocks
         public override void Execute()
         {
             LoadTemplate(TemplateName);
-            OutputNodes[0].Object = _template.ExecuteSampler();
+            OutputNodes[0].Object = new List<Signal> { _template.ExecuteSampler() };
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();            
         }

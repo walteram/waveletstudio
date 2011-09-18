@@ -1,8 +1,4 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 using WaveletStudio.Functions;
 
@@ -39,11 +35,11 @@ namespace WaveletStudio.Tests.Blocks
             var ifftBlock2 = (IFFTBlock)ifftBlock.Clone();
             ifftBlock.OutputNodes[0].ConnectTo(ifftBlock2.InputNodes[0]);
             signalBlock.Execute();
-            Assert.IsNull(ifftBlock2.OutputNodes[0].Object);
+            Assert.AreEqual(0, ifftBlock2.OutputNodes[0].Object.Count);
 
             ifftBlock2.Cascade = false;
             ifftBlock2.Execute();
-            Assert.IsNotNull(ifftBlock2.OutputNodes[0].Object);
+            Assert.IsNotNull(ifftBlock2.OutputNodes[0].Object[0]);
         }
     }
 }

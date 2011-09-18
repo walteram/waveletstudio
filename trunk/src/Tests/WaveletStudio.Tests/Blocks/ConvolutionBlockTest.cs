@@ -23,7 +23,7 @@ namespace WaveletStudio.Tests.Blocks
             Assert.IsNotNull(convolutionBlock.ProcessingType);
 
             signalBlock1.Execute();
-            Assert.IsNull(convolutionBlock.OutputNodes[0].Object);
+            Assert.IsNull(convolutionBlock.OutputNodes[0].Object[0].Samples);
 
             signalBlock2.Execute();
             Assert.IsNotNull(convolutionBlock.OutputNodes[0].Object);
@@ -43,7 +43,7 @@ namespace WaveletStudio.Tests.Blocks
             convolutionBlock.Cascade = false;
             convolutionBlock.OutputNodes[0].ConnectTo(convolutionBlock2.InputNodes[0]);
             convolutionBlock.Execute();
-            Assert.IsNull(convolutionBlock2.OutputNodes[0].Object);
+            Assert.AreEqual(0, convolutionBlock2.OutputNodes[0].Object.Count);
 
             convolutionBlock.Cascade = true;
             convolutionBlock.OutputNodes[0].ConnectTo(convolutionBlock2.InputNodes[0]);
@@ -68,7 +68,7 @@ namespace WaveletStudio.Tests.Blocks
             //Creates signal and filter by sine wave
             var signalBlock = new GenerateSignalBlock { TemplateName = "Sine", Start = 0, Finish = 1, SamplingRate = signalLength, IgnoreLastSample = true };
             signalBlock.Execute();
-            var signal = signalBlock.OutputNodes[0].Object.Samples;
+            var signal = signalBlock.OutputNodes[0].Object[0].Samples;
             var filter = new double[filterLength];
             Array.Copy(signal, filter, filterLength);
 

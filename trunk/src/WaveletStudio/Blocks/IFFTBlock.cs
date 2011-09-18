@@ -57,19 +57,22 @@ namespace WaveletStudio.Blocks
             if (inputNode == null || inputNode.Object == null)
                 return;
 
-            var inputSignal = inputNode.Object;
-            var ifft = inputSignal.Samples;
-            ManagedFFT.FFT(ref ifft, false, Mode);
-            ifft = WaveMath.DownSample(ifft, 2, true);
+            OutputNodes[0].Object.Clear();
+            foreach (var inputSignal in inputNode.Object)
+            {
+                var ifft = inputSignal.Samples;
+                ManagedFFT.FFT(ref ifft, false, Mode);
+                ifft = WaveMath.DownSample(ifft, 2, true);
 
-            var signal = new Signal(ifft)
-                             {
-                                 Start = 0,
-                                 Finish = ifft.Length - 1,
-                                 SamplingInterval = 0.5 / (Convert.ToDouble(ifft.Length) / Convert.ToDouble(inputSignal.SamplingRate))
-                             };
-            
-            OutputNodes[0].Object = signal;
+                var signal = new Signal(ifft)
+                {
+                    Start = 0,
+                    Finish = ifft.Length - 1,
+                    SamplingInterval = 0.5 / (Convert.ToDouble(ifft.Length) / Convert.ToDouble(inputSignal.SamplingRate))
+                };
+                OutputNodes[0].Object.Add(signal);
+            }
+
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
         }

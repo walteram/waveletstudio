@@ -49,11 +49,13 @@ namespace WaveletStudio.Blocks
             if (inputNode == null || inputNode.Object == null)
                 return;
 
-            var signal = inputNode.Object;
-
-            var output = signal.Copy();
-            output.Samples = WaveMath.DownSample(signal.Samples);
-            OutputNodes[0].Object = output;
+            OutputNodes[0].Object.Clear();
+            foreach (var signal in inputNode.Object)
+            {
+                var output = signal.Copy();
+                output.Samples = WaveMath.DownSample(signal.Samples);
+                OutputNodes[0].Object.Add(output);
+            }            
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
         }

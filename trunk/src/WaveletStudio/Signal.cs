@@ -11,6 +11,11 @@ namespace WaveletStudio
     public class Signal
     {
         /// <summary>
+        /// Name of the signal
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Samples of the signal
         /// </summary>
         public double[] Samples { get; set; }

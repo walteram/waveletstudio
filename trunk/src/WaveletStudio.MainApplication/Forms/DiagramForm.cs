@@ -34,6 +34,7 @@ namespace WaveletStudio.MainApplication.Forms
 
         private void LoadRibbon()
         {
+            LoadBlocks(SignalSourceComposite, BlockBase.ProcessingTypeEnum.LoadSignal);
             LoadSignalTemplates();
             LoadBlocks(SignalTemplatesComposite, BlockBase.ProcessingTypeEnum.CreateSignal);
             LoadBlocks(OperationsFunctionsComposite, BlockBase.ProcessingTypeEnum.Operation);

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using WaveletStudio.FFT;
 
 namespace WaveletStudio.Functions
@@ -295,6 +296,8 @@ namespace WaveletStudio.Functions
         /// <returns></returns>
         public static double[] ConvolveManagedFFT(double[] input, double[] filter, bool returnOnlyValid = true, int margin = 0, ManagedFFTModeEnum mode = ManagedFFTModeEnum.UseLookupTable)
         {
+            if (input == null || filter == null)
+                return null;
             if (input.Length < filter.Length)
             {
                 var auxSignal = input;
@@ -393,6 +396,11 @@ namespace WaveletStudio.Functions
                 result[i * (insertionCount + 1)] = input[i];
             }
             return result;
+        }
+
+        public static string ToString(this List<Signal> signalList, int precision)
+        {
+            return signalList.Count == 0 ? "" : signalList[0].ToString(precision);
         }
     }
 

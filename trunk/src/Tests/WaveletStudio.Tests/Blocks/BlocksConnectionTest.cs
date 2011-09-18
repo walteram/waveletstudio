@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 using WaveletStudio.Functions;
 
@@ -42,6 +41,7 @@ namespace WaveletStudio.Tests.Blocks
             AssertBlock(new ScalarOperationBlock());
             AssertBlock(new RampFunctionBlock());
             AssertBlock(new SampleBasedOperationBlock());
+            AssertBlock(new SignalFromCSVBlock());
         }
 
         private static void AssertBlock(BlockBase block)
@@ -64,7 +64,7 @@ namespace WaveletStudio.Tests.Blocks
             var clone = block.CloneWithLinks();
             foreach (var outputNode in block.OutputNodes)
             {
-                Assert.IsNotNull(outputNode.Object.Samples);
+                Assert.IsNotNull(outputNode.Object[0].Samples);
             }
         }
     }

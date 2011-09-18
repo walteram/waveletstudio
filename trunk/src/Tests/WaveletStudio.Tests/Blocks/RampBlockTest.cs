@@ -32,11 +32,11 @@ namespace WaveletStudio.Tests.Blocks
             var scalarBlock = new ScalarOperationBlock { Operation = WaveMath.OperationEnum.Sum, Value = 1.5 };
             signalBlock.OutputNodes[0].ConnectTo(scalarBlock.InputNodes[0]);
             signalBlock.Execute();
-            Assert.IsNull(scalarBlock.OutputNodes[0].Object);
+            Assert.AreEqual(0, scalarBlock.OutputNodes[0].Object.Count);
 
             signalBlock.Cascade = true;
             signalBlock.Execute();
-            Assert.IsNotNull(scalarBlock.OutputNodes[0].Object);
+            Assert.IsNotNull(scalarBlock.OutputNodes[0].Object[0]);
             Assert.AreEqual("2.5 2.5 4.5 6.5 2.5 2.5", scalarBlock.OutputNodes[0].Object.ToString(1));
 
             signalBlock.IgnoreLastSample = true;

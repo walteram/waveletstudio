@@ -76,10 +76,31 @@ namespace WaveletStudio.Blocks
         public override void Execute()
         {
             SetOperationDescription();
-            var signals = InputNodes.Where(it => it.ConnectingNode != null).Select(it => ((BlockOutputNode)it.ConnectingNode).Object).ToArray();
-            if(signals.Length == 0)
+
+            var inputNode1 = InputNodes[0].ConnectingNode as BlockOutputNode;
+            var inputNode2 = InputNodes[1].ConnectingNode as BlockOutputNode;
+            if (inputNode1 == null || inputNode1.Object.Count == 0 || inputNode2 == null || inputNode2.Object.Count == 0)
                 return;
-            OutputNodes[0].Object = WaveMath.ExecuteOperation(Operation, signals);
+            if(inputNode2.Object.Count > inputNode1.Object.Count)
+            {
+                inputNode1 = InputNodes[1].ConnectingNode as BlockOutputNode;
+                inputNode2 = InputNodes[0].ConnectingNode as BlockOutputNode;
+            }
+
+            OutputNodes[0].Object.Clear();
+            for (var i = 0; i < inputNode1.Object.Count; i++)
+            {
+                var signal1 = inputNode1.Object[i];
+                if (i < inputNode2.Object.Count)
+                {
+                    var signal2 = inputNode2.Object[i];
+                    OutputNodes[0].Object.Add(WaveMath.ExecuteOperation(Operation, signal1, signal2));
+                }
+                else
+                {
+                    OutputNodes[0].Object.Add(signal1.Clone());
+                }
+            }
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
         }
