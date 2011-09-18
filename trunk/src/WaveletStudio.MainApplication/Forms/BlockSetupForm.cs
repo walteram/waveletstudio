@@ -191,7 +191,7 @@ namespace WaveletStudio.MainApplication.Forms
         {
             var outputNodes = Block.OutputNodes;            
             var inputNodes = Block.InputNodes;
-            Block = _tempBlock.CloneWithLinks();
+            Block = _tempBlock.Clone();
             Block.OutputNodes = outputNodes;
             Block.InputNodes = inputNodes;
             foreach (var node in inputNodes)
@@ -202,6 +202,7 @@ namespace WaveletStudio.MainApplication.Forms
             {
                 node.Root = Block;
             }
+
             Block.Execute();
         }
 

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
+using WaveletStudio.Functions;
 
 namespace WaveletStudio.Tests.Blocks
 {
@@ -10,7 +11,7 @@ namespace WaveletStudio.Tests.Blocks
         public void TestScalarOperationBlockExecute()
         {
             var signalBlock = new GenerateSignalBlock { TemplateName = "Binary", Start = 0, Finish = 5, SamplingRate = 1, IgnoreLastSample = true };
-            var scalarBlock = new ScalarOperationBlock { Operation = ScalarOperationBlock.OperationEnum.Sum, Value = 1.5 };
+            var scalarBlock = new ScalarOperationBlock { Operation = WaveMath.OperationEnum.Sum, Value = 1.5 };
             scalarBlock.Execute();
             
             signalBlock.OutputNodes[0].ConnectTo(scalarBlock.InputNodes[0]);
@@ -21,20 +22,20 @@ namespace WaveletStudio.Tests.Blocks
             signalBlock.Execute();
             Assert.AreEqual("1.5 2.5 1.5 2.5 1.5", scalarBlock.OutputNodes[0].Object.ToString(1));
 
-            scalarBlock.Operation = ScalarOperationBlock.OperationEnum.Multiply;
+            scalarBlock.Operation = WaveMath.OperationEnum.Multiply;
             signalBlock.Execute();
             Assert.AreEqual("0.0 1.5 0.0 1.5 0.0", scalarBlock.OutputNodes[0].Object.ToString(1));
 
-            scalarBlock.Operation = ScalarOperationBlock.OperationEnum.Subtract;
+            scalarBlock.Operation = WaveMath.OperationEnum.Subtract;
             signalBlock.Execute();
             Assert.AreEqual("-1.5 -0.5 -1.5 -0.5 -1.5", scalarBlock.OutputNodes[0].Object.ToString(1));
 
-            scalarBlock.Operation = ScalarOperationBlock.OperationEnum.Divide;
+            scalarBlock.Operation = WaveMath.OperationEnum.Divide;
             signalBlock.Execute();
             Assert.AreEqual("0.00 0.67 0.00 0.67 0.00", scalarBlock.OutputNodes[0].Object.ToString(2));
             
             var scalarBlock2 = (ScalarOperationBlock)scalarBlock.Clone();
-            scalarBlock2.Operation = ScalarOperationBlock.OperationEnum.Sum;
+            scalarBlock2.Operation = WaveMath.OperationEnum.Sum;
             scalarBlock2.Value = 3.1;
             scalarBlock.OutputNodes[0].ConnectTo(scalarBlock2.InputNodes[0]);
             signalBlock.Execute();

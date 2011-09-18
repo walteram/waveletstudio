@@ -17,7 +17,7 @@ namespace WaveletStudio
         /// <returns></returns>
         public static IEnumerable<Type> GetTypes(string namespaceName)
         {
-            return Assembly.GetAssembly(typeof(Signal)).GetTypes().Where(it => it.Namespace == namespaceName && !it.IsAbstract && !it.IsInterface && !it.IsEnum && it.IsPublic);            
+            return Assembly.GetAssembly(typeof(Signal)).GetTypes().Where(it => it.Namespace == namespaceName && !it.IsAbstract && !it.IsInterface && !it.IsEnum && it.IsPublic).OrderBy(it => it.FullName);
         }
 
         /// <summary>

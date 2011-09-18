@@ -163,7 +163,7 @@ namespace WaveletStudio.Blocks
                 if (x >= RampStart && x <= RampFinish)
                 {
                     value = Amplitude * (x-RampStart) + Offset;
-                    if (!ReturnToZero && x < RampFinish)
+                    if (!ReturnToZero && x <= RampFinish)
                         lastValue = value;
                 }                
                 else if(x < RampStart)

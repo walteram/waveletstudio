@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
+using WaveletStudio.Functions;
 
 namespace WaveletStudio.Tests.Blocks
 {
@@ -11,8 +12,8 @@ namespace WaveletStudio.Tests.Blocks
         public void TestConnection()
         {
             var signalBlock = new GenerateSignalBlock{TemplateName = "Binary", Start = 0, Finish = 5, SamplingRate = 1, IgnoreLastSample = true};
-            var sumBlock = new ScalarOperationBlock { Operation = ScalarOperationBlock.OperationEnum.Sum, Value = 1.5 };
-            var multBlock = new ScalarOperationBlock { Operation = ScalarOperationBlock.OperationEnum.Multiply, Value = 2 };
+            var sumBlock = new ScalarOperationBlock { Operation = WaveMath.OperationEnum.Sum, Value = 1.5 };
+            var multBlock = new ScalarOperationBlock { Operation = WaveMath.OperationEnum.Multiply, Value = 2 };
 
             var signalOutputNode = signalBlock.OutputNodes[0];
             var sumInputNode = sumBlock.InputNodes[0];
@@ -39,6 +40,8 @@ namespace WaveletStudio.Tests.Blocks
             AssertBlock(new GenerateSignalBlock());
             AssertBlock(new IFFTBlock());
             AssertBlock(new ScalarOperationBlock());
+            AssertBlock(new RampFunctionBlock());
+            AssertBlock(new SampleBasedOperationBlock());
         }
 
         private static void AssertBlock(BlockBase block)

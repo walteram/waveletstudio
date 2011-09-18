@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
 
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Executes a scalar operation in a signal
+    /// Sum two or more signals
     /// </summary>
-    [SingleInputOutputBlock]
     [Serializable]
-    public class ScalarOperationBlock : BlockBase
+    public class SampleBasedOperationBlock : BlockBase
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public ScalarOperationBlock()
+        public SampleBasedOperationBlock()
         {
             BlockBase root = this;
             CreateNodes(ref root);
@@ -23,11 +23,15 @@ namespace WaveletStudio.Blocks
 
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode> {new BlockInputNode(ref root, "Signal", "In")};
+            root.InputNodes = new List<BlockInputNode>
+                                  {
+                                      new BlockInputNode(ref root, "Signal1", "S1"),
+                                      new BlockInputNode(ref root, "Signal2", "S2")
+                                  };
             root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Output", "Out")};
         }
 
-        private string _name = "Scalar";
+        private string _name = "Operation";
 
         /// <summary>
         /// Name of the block
@@ -37,14 +41,12 @@ namespace WaveletStudio.Blocks
             get { return _name; }
         }
 
-        private string _description = "Multiply, add or subtract or divide the samples of a signal by a scalar number";
-
         /// <summary>
         /// Description of the block
         /// </summary>
         public override string Description
         {
-            get { return _description; }
+            get { return "Sum, subtract, multiply or divide two or more blocks"; }
         }
 
         /// <summary>
@@ -52,7 +54,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Operation; } }
 
-        private WaveMath.OperationEnum _operation;
+        private WaveMath.OperationEnum _operation = WaveMath.OperationEnum.Sum;
 
         /// <summary>
         /// Math operation to be used
@@ -66,23 +68,7 @@ namespace WaveletStudio.Blocks
                 _operation = value;
                 SetOperationDescription();
             }
-        }
-
-        private double _scalar = 1;
-
-        /// <summary>
-        /// Scalar value
-        /// </summary>
-        [Parameter]
-        public double Value
-        {
-            get { return _scalar; }
-            set
-            {
-                _scalar = value;
-                SetOperationDescription();
-            }
-        }        
+        } 
 
         /// <summary>
         /// Executes the block
@@ -90,23 +76,19 @@ namespace WaveletStudio.Blocks
         public override void Execute()
         {
             SetOperationDescription();
-            var connectingNode = InputNodes[0].ConnectingNode as BlockOutputNode;
-            if (connectingNode == null || connectingNode.Object == null)
+            var signals = InputNodes.Where(it => it.ConnectingNode != null).Select(it => ((BlockOutputNode)it.ConnectingNode).Object).ToArray();
+            if(signals.Length == 0)
                 return;
-            var input = connectingNode.Object;
-            var output = input.Copy();
-            output.Samples = WaveMath.GetScalarOperationFunction(Operation)(input.Samples, Value);            
-            OutputNodes[0].Object = output;
+            OutputNodes[0].Object = WaveMath.ExecuteOperation(Operation, signals);
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
         }
 
         private void SetOperationDescription()
         {
-            _name = "Scalar " + Enum.GetName(typeof(WaveMath.OperationEnum), Operation);
-            _description = "y(x) = y(x) " + WaveMath.GetOperationSymbol(Operation) + " " + string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:0.####}", Value);
+            _name = Enum.GetName(typeof(WaveMath.OperationEnum), Operation);
         }
-        
+
         /// <summary>
         /// Clones this block
         /// </summary>
