@@ -48,6 +48,7 @@
     <Compile Include="Blocks\BlockListTest.cs" />
     <Compile Include="Blocks\BlocksConnectionTest.cs" />
     <Compile Include="Blocks\ConvolutionBlockTest.cs" />
+    <Compile Include="Blocks\WaveletBlockTest.cs" />
     <Compile Include="Blocks\SampleBasedOperationBlockTest.cs" />
     <Compile Include="Blocks\RampBlockTest.cs" />
     <Compile Include="Blocks\FFTBlockTest.cs" />

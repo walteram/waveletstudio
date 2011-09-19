@@ -133,6 +133,27 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Icon icoColor {
+            get {
+                object obj = ResourceManager.GetObject("icoColor", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon icoCopy {
+            get {
+                object obj = ResourceManager.GetObject("icoCopy", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon icoPaste {
+            get {
+                object obj = ResourceManager.GetObject("icoPaste", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Ignore first row.
         /// </summary>
@@ -312,6 +333,13 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgsplash {
+            get {
+                object obj = ResourceManager.GetObject("imgsplash", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgsquare {
             get {
                 object obj = ResourceManager.GetObject("imgsquare", resourceCulture);
@@ -336,6 +364,27 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static System.Drawing.Bitmap imgtriangle {
             get {
                 object obj = ResourceManager.GetObject("imgtriangle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgwavelet {
+            get {
+                object obj = ResourceManager.GetObject("imgwavelet", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgwavelet40x40 {
+            get {
+                object obj = ResourceManager.GetObject("imgwavelet40x40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgwaveletmini {
+            get {
+                object obj = ResourceManager.GetObject("imgwaveletmini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

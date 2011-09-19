@@ -93,10 +93,10 @@ namespace WaveletStudio
                 {
                     if (beforeSize > 0)
                     {
-                        Array.Copy(input, 1, beforeExtension, 0, beforeSize);
+                        Array.Copy(input, input.Length > beforeSize ? 1 : 0, beforeExtension, 0, beforeSize);
                         Array.Reverse(beforeExtension);
                     }
-                    Array.Copy(input, input.Length - afterSize - 1, afterExtension, 0, afterSize);
+                    Array.Copy(input, input.Length - afterSize - 1 < 0 ? 0 : input.Length - afterSize - 1, afterExtension, 0, afterSize);
                     Array.Reverse(afterExtension);
                 }
                 else if (extensionMode == ExtensionMode.AntisymmetricWholePoint)
@@ -188,7 +188,7 @@ namespace WaveletStudio
             var k = beforeSize - 1;
             for (var i = 0; i < beforeSize; i++)
             {
-                var dif = points[i] - points[i + 1];
+                var dif = (i + 1 < points.Length) ? points[i] - points[i + 1] : 0;
                 var previous = i == 0 ? points[0] : beforeExtension[k + 1];
                 beforeExtension[k] = previous + dif;
                 k--;
@@ -210,7 +210,7 @@ namespace WaveletStudio
             var k = 0;
             for (var i = points.Length - 1; i >= points.Length - afterSize; i--)
             {
-                var dif = points[i] - points[i - 1];
+                var dif = i >= 1 ? points[i] - points[i - 1] : 0;
                 var previous = k == 0 ? points[i] : afterExtension[k - 1];
                 afterExtension[k] = previous + dif;
                 k++;
