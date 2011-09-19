@@ -35,6 +35,7 @@
             this.ShowOutputLabel = new System.Windows.Forms.Label();
             this.ShowOutputList = new System.Windows.Forms.ComboBox();
             this.NoDataLabel = new System.Windows.Forms.Label();
+            this.ShowOutputSignal = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.FormCaption)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +94,7 @@
             // 
             this.ShowOutputLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ShowOutputLabel.AutoSize = true;
-            this.ShowOutputLabel.Location = new System.Drawing.Point(577, 347);
+            this.ShowOutputLabel.Location = new System.Drawing.Point(307, 345);
             this.ShowOutputLabel.Name = "ShowOutputLabel";
             this.ShowOutputLabel.Size = new System.Drawing.Size(72, 13);
             this.ShowOutputLabel.TabIndex = 103;
@@ -101,10 +102,10 @@
             // 
             // ShowOutputList
             // 
-            this.ShowOutputList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowOutputList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ShowOutputList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ShowOutputList.FormattingEnabled = true;
-            this.ShowOutputList.Location = new System.Drawing.Point(655, 344);
+            this.ShowOutputList.Location = new System.Drawing.Point(385, 342);
             this.ShowOutputList.Name = "ShowOutputList";
             this.ShowOutputList.Size = new System.Drawing.Size(121, 21);
             this.ShowOutputList.TabIndex = 104;
@@ -121,11 +122,24 @@
             this.NoDataLabel.Text = "Connect the block input to see the graph.";
             this.NoDataLabel.Visible = false;
             // 
+            // ShowOutputSignal
+            // 
+            this.ShowOutputSignal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ShowOutputSignal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ShowOutputSignal.FormattingEnabled = true;
+            this.ShowOutputSignal.Location = new System.Drawing.Point(512, 342);
+            this.ShowOutputSignal.Name = "ShowOutputSignal";
+            this.ShowOutputSignal.Size = new System.Drawing.Size(264, 21);
+            this.ShowOutputSignal.TabIndex = 106;
+            this.ShowOutputSignal.Visible = false;
+            this.ShowOutputSignal.SelectedIndexChanged += new System.EventHandler(this.ShowOutputSignalSelectedIndexChanged);
+            // 
             // BlockSetupForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 374);
+            this.Controls.Add(this.ShowOutputSignal);
             this.Controls.Add(this.NoDataLabel);
             this.Controls.Add(this.ShowOutputList);
             this.Controls.Add(this.ShowOutputLabel);
@@ -153,5 +167,6 @@
         private System.Windows.Forms.Label ShowOutputLabel;
         private System.Windows.Forms.ComboBox ShowOutputList;
         private System.Windows.Forms.Label NoDataLabel;
+        private System.Windows.Forms.ComboBox ShowOutputSignal;
     }
 }

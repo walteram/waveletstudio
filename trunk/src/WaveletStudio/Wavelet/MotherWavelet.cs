@@ -5,6 +5,7 @@ namespace WaveletStudio.Wavelet
     /// <summary>
     /// Mother wavelet base class
     /// </summary>
+    [Serializable]
     public class MotherWavelet
     {
         /// <summary>
@@ -57,6 +58,7 @@ namespace WaveletStudio.Wavelet
         /// <summary>
         /// Decomposition and Reconstruction filters base-type
         /// </summary>
+        [Serializable]
         public struct FiltersStruct
         {
             /// <summary>

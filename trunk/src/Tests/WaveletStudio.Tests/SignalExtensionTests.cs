@@ -55,6 +55,9 @@ namespace WaveletStudio.Tests
             extended = SignalExtension.Extend(points, SignalExtension.ExtensionMode.SymmetricWholePoint, 1);
             expected = new double[] { 6, 2, 6, 1, 6, 5, 0, 5 };
             Assert.IsTrue(extended.SequenceEqual(expected));
+
+            points = new double[] { 2, 6, 1, 6, 5, 0 };
+            SignalExtension.Extend(points, SignalExtension.ExtensionMode.SymmetricWholePoint, 8);
         }
 
         [TestMethod]
@@ -93,6 +96,9 @@ namespace WaveletStudio.Tests
             extended = SignalExtension.Extend(points, SignalExtension.ExtensionMode.AntisymmetricWholePoint, 1);
             expected = new double[] { 0, 0 };
             Assert.IsTrue(extended.SequenceEqual(expected));
+
+            points = new double[] { 2, 6, 1, 6, 5, 0 };
+            SignalExtension.Extend(points, SignalExtension.ExtensionMode.AntisymmetricWholePoint, 8);
         }
 
         [TestMethod]

@@ -17,7 +17,7 @@ namespace WaveletStudio.MainApplication.Forms
 
         public BlockSetupForm(string title, ref BlockBase block)
         {
-            InitializeComponent();
+            InitializeComponent();            
             FormCaption.Text = title;
             ApplicationUtils.ConfigureGraph(GraphControl, title);
             _tempBlock = block.CloneWithLinks();
@@ -79,8 +79,10 @@ namespace WaveletStudio.MainApplication.Forms
                     ((ComboBox)field).SelectedIndexChanged += FieldValueChanged;
                     foreach (var item in list)
                     {
-                        ((ComboBox)field).Items.Add(new ListItem { Text = ApplicationUtils.GetResourceString(item), Value = item });
-                        if (defaultValue == item)
+                        var value = item.Contains("|") ? item.Split('|')[0] : item;
+                        var key = item.Contains("|") ? item.Split('|')[1] : item;
+                        ((ComboBox)field).Items.Add(new ListItem { Text = ApplicationUtils.GetResourceString(key), Value = value });
+                        if (defaultValue == item || defaultValue == value)
                             ((ComboBox)field).SelectedIndex = ((ComboBox)field).Items.Count-1;
                     }                    
                 }
@@ -116,13 +118,15 @@ namespace WaveletStudio.MainApplication.Forms
                 value = Convert.ToDecimal(((NumericUpDown)control).Value);
             else if (property.PropertyType.IsEnum)            
                 value = Enum.Parse(property.PropertyType, ((ListItem)((ComboBox)control).SelectedItem).Value);
+            else if (sender.GetType() == typeof(ComboBox) || property.PropertyType.IsEnum)
+                value = ((ListItem)((ComboBox)control).SelectedItem).Value;
             else if (property.PropertyType == typeof(bool))
                 value = ((CheckBox)control).Checked;
             else
                 value = control.Text;
-            property.SetValue(_tempBlock, value, null);
-            
+            property.SetValue(_tempBlock, value, null);            
             UpdateGraph();
+            UpdateSignalList();
         }
         
         private void LoadBlockOutputs()
@@ -143,6 +147,7 @@ namespace WaveletStudio.MainApplication.Forms
             {
                 ShowOutputList.Visible = false;
                 ShowOutputLabel.Visible = false;
+                ShowOutputSignal.Visible = false;
             }
         }
 
@@ -159,7 +164,10 @@ namespace WaveletStudio.MainApplication.Forms
                 return;
             }
             NoDataLabel.Visible = false;
-            var samples = outputNode.Object[0].GetSamplesPair();
+            var index = ShowOutputSignal.SelectedIndex;
+            if (index == -1 || index > outputNode.Object.Count - 1)
+                index = 0;
+            var samples = outputNode.Object[index].GetSamplesPair();
             var yAxys = new ZedGraph.PointPairList();
             yAxys.AddRange(samples.Select(it => new ZedGraph.PointPair(it[1], it[0])));
             pane.AddCurve(outputNode.Name, yAxys, Color.Red, ZedGraph.SymbolType.None);
@@ -184,7 +192,29 @@ namespace WaveletStudio.MainApplication.Forms
 
         private void ShowOutputListSelectedIndexChanged(object sender, EventArgs e)
         {
+            UpdateSignalList();
             UpdateGraph();
+        }
+
+        private void UpdateSignalList()
+        {
+            var currentIndex = ShowOutputSignal.SelectedIndex;
+            ShowOutputSignal.Items.Clear();
+            var outputNode = _tempBlock.OutputNodes.FirstOrDefault(it => it.Name == ShowOutputList.Text);
+            if (outputNode == null || outputNode.Object == null || outputNode.Object.Count == 0)
+            {
+                ShowOutputSignal.Visible = false;
+            }
+            else
+            {
+                foreach (var signal in outputNode.Object)
+                {
+                    ShowOutputSignal.Items.Add(string.IsNullOrEmpty(signal.Name) ? "Signal" : signal.Name);
+                }
+                if (ShowOutputSignal.Items.Count > 0)
+                    ShowOutputSignal.SelectedIndex = ShowOutputSignal.Items.Count > currentIndex ? currentIndex : 0;
+                ShowOutputSignal.Visible = true;
+            }
         }
 
         private void UseSignalButtonClick(object sender, EventArgs e)
@@ -215,6 +245,11 @@ namespace WaveletStudio.MainApplication.Forms
             {
                 return Text;
             }
+        }
+
+        private void ShowOutputSignalSelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateGraph();
         }
     }
 }

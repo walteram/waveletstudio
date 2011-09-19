@@ -47,6 +47,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
     <Reference Include="ZedGraph">
       <HintPath>..\..\res\libs\ZedGraph\ZedGraph.dll</HintPath>
     </Reference>
@@ -66,6 +67,12 @@
     <Compile Include="Forms\DiagramForm.Designer.cs">
       <DependentUpon>DiagramForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\DiagramFormMainMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\DiagramFormMainMenu.Designer.cs">
+      <DependentUpon>DiagramFormMainMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\BlockSetupForm.resx">
@@ -73,6 +80,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DiagramForm.resx">
       <DependentUpon>DiagramForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DiagramFormMainMenu.resx">
+      <DependentUpon>DiagramFormMainMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -87,7 +97,7 @@
     <None Include="app.config" />
     <None Include="Properties\DataSources\WaveletStudio.SignalGeneration.CommonSignalBase.datasource" />
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -186,6 +196,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\csv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgwavelet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgwaveletmini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgwavelet40x40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

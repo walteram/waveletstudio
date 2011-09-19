@@ -66,6 +66,8 @@ namespace WaveletStudio.Wavelet
             {
                 level = decompositionLevels.Count;
             }
+            if (level <= 0)
+                return null;
             var approximation = (double[])decompositionLevels[level-1].Approximation.Clone();
             var details = (double[]) decompositionLevels[level - 1].Details.Clone();
 
