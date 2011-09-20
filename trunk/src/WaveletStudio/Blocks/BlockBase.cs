@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace WaveletStudio.Blocks
 {
@@ -9,6 +10,8 @@ namespace WaveletStudio.Blocks
     [Serializable]
     public abstract class BlockBase
     {
+        public StringBuilder GeneratedData { get; set; }
+
         /// <summary>
         /// Inputs
         /// </summary>
@@ -22,7 +25,7 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Id of the block (changes for each instance)
         /// </summary>
-        public Guid Id { get; private set; }
+        public Guid Id { get; set; }
         
         /// <summary>
         /// Name of the block

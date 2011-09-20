@@ -31,6 +31,14 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Constructor
         /// </summary>
+        protected BlockNodeBase()
+        {
+
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         /// <param name="root">The block object thar contains this node</param>
         /// <param name="name">Name</param>
         /// <param name="shortName">Short name</param>

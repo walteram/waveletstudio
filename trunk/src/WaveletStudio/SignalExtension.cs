@@ -6,7 +6,7 @@ namespace WaveletStudio
     /// <summary>
     /// Signal extension methods
     /// </summary>
-    public static class SignalExtension
+    public class SignalExtension
     {
         /// <summary>
         /// Extension modes

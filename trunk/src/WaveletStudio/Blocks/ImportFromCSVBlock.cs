@@ -10,12 +10,12 @@ namespace WaveletStudio.Blocks
     /// </summary>
     [SingleInputOutputBlock]
     [Serializable]
-    public class SignalFromCSVBlock : BlockBase
+    public class ImportFromCSVBlock : BlockBase
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public SignalFromCSVBlock()
+        public ImportFromCSVBlock()
         {
             BlockBase root = this;
             CreateNodes(ref root);
@@ -28,7 +28,7 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Name
         /// </summary>
-        public override string Name { get { return "CSV Signal"; } }
+        public override string Name { get { return "CSV File"; } }
 
         /// <summary>
         /// Description
@@ -150,7 +150,7 @@ namespace WaveletStudio.Blocks
         /// <returns></returns>
         public override BlockBase Clone()
         {
-            var block = (SignalFromCSVBlock)MemberwiseClone();
+            var block = (ImportFromCSVBlock)MemberwiseClone();
             block.Execute();
             return block;
         }
@@ -161,7 +161,7 @@ namespace WaveletStudio.Blocks
         /// <returns></returns>
         public override BlockBase CloneWithLinks()
         {
-            var block = (SignalFromCSVBlock)MemberwiseCloneWithLinks();
+            var block = (ImportFromCSVBlock)MemberwiseCloneWithLinks();
             block.Execute();
             return block;
         }

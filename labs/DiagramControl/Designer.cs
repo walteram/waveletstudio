@@ -798,10 +798,8 @@ namespace DiagramNet
         #region Open/Save File
         public void SaveXml(string fileName)
         {
-            var serializer = new XmlSerializer(typeof(Document));
-            Stream stream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
-            serializer.Serialize(stream, _document);
-            stream.Close();
+            var serializer = new CustomXmlSerializer.XmlSerializer();
+            serializer.Serialize(_document, fileName);
         }
 
         public void SaveBinary(string fileName)
@@ -823,11 +821,8 @@ namespace DiagramNet
 
         public void OpenXml(string fileName)
         {
-            var formatter = new XmlSerializer(typeof(Document));
-            Stream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.Read);
-            _document = (Document)formatter.Deserialize(stream);
-            stream.Close();
-            RecreateEventsHandlers();
+            var deserializer = new CustomXmlSerializer.XmlDeserializer();
+            _document = (Document) deserializer.Deserialize(fileName);
         }
         #endregion
 

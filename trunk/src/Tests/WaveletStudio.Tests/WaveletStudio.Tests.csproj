@@ -57,7 +57,7 @@
     <Compile Include="Blocks\NodesTest.cs" />
     <Compile Include="Blocks\ScalarOperationBlockTest.cs" />
     <Compile Include="Blocks\GenerateSignalBlockTest.cs" />
-    <Compile Include="Blocks\SignalFromCSVBlockTest.cs" />
+    <Compile Include="Blocks\ImportFromCSVBlockTest.cs" />
     <Compile Include="FFT\ManagedFFTTests.cs" />
     <Compile Include="SignalGeneration\BinaryTest.cs" />
     <Compile Include="SignalGeneration\CosineTest.cs" />

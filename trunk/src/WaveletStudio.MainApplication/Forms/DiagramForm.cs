@@ -69,16 +69,15 @@ namespace WaveletStudio.MainApplication.Forms
             }
             var recentFiles = Settings.Default.RecentFileList.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
             var lastFile = recentFiles.Count() > 0 ? recentFiles[0] : "";
-            if (Settings.Default.AutoLoadLastFile && lastFile != "" && File.Exists(lastFile))
+            if (!Settings.Default.AutoLoadLastFile || lastFile == "" || !File.Exists(lastFile)) 
+                return;
+            try
             {
-                try
-                {
-                    OpenFile(lastFile);
-                }
-                catch (Exception exception)
-                {
-                    Trace.TraceWarning(exception.Message + exception.StackTrace);
-                }
+                OpenFile(lastFile);
+            }
+            catch (Exception exception)
+            {
+                Trace.TraceWarning(exception.Message + exception.StackTrace);
             }
         }
 
@@ -96,6 +95,7 @@ namespace WaveletStudio.MainApplication.Forms
             LoadSignalTemplates();
             LoadBlocks(SignalTemplatesComposite, BlockBase.ProcessingTypeEnum.CreateSignal);
             LoadBlocks(OperationsFunctionsComposite, BlockBase.ProcessingTypeEnum.Operation);
+            LoadBlocks(ExportToFileComposite, BlockBase.ProcessingTypeEnum.Export);            
         }
 
         private void LoadSignalTemplates()
@@ -191,7 +191,12 @@ namespace WaveletStudio.MainApplication.Forms
                 return;
             var diagramBlock = (DiagramBlock) e.Element;
             var block = (BlockBase) diagramBlock.State;
-            var setupForm = new BlockSetupForm(ApplicationUtils.GetResourceString(block.Name), ref block);
+            
+            BlockSetupBaseForm setupForm;
+            if(block.ProcessingType == BlockBase.ProcessingTypeEnum.Export)
+                setupForm = new TextBlockSetupForm(ApplicationUtils.GetResourceString(block.Name), ref block);
+            else
+                setupForm = new BlockSetupForm(ApplicationUtils.GetResourceString(block.Name), ref block);
             setupForm.ShowDialog();
             if (setupForm.DialogResult != DialogResult.OK) 
                 return;

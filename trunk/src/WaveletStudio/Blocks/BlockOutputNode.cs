@@ -17,6 +17,14 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Constructor
         /// </summary>
+        public BlockOutputNode()
+        {
+
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
         /// <param name="root">The block object thar contains this node</param>
         /// <param name="name">Name of the output</param>
         /// <param name="shortName">Short name</param>

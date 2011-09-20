@@ -193,9 +193,9 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap imgcsvsignal {
+        internal static System.Drawing.Bitmap imgcsvfile {
             get {
-                object obj = ResourceManager.GetObject("imgcsvsignal", resourceCulture);
+                object obj = ResourceManager.GetObject("imgcsvfile", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -217,6 +217,13 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static System.Drawing.Bitmap imgdownsamplemini {
             get {
                 object obj = ResourceManager.GetObject("imgdownsamplemini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgexportcsv {
+            get {
+                object obj = ResourceManager.GetObject("imgexportcsv", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

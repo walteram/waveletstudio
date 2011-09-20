@@ -19,6 +19,11 @@ namespace DiagramNet.Elements
             InitConnectors();
         }
 
+        protected NodeElement()
+        {
+            
+        }
+
         [Browsable(false)]
         public virtual ConnectorElement[] Connectors
         {

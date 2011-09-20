@@ -4,101 +4,106 @@ using DiagramNet.Elements.Controllers;
 
 namespace DiagramNet.Elements
 {
-	[Serializable]
-	public class ConnectorElement: RectangleElement, IControllable 
-	{
-		private readonly NodeElement _parentElement;
-		private readonly ElementCollection _links = new ElementCollection();
-		public bool IsStart;
-		public object State;
-		public string ShortName;
+    [Serializable]
+    public class ConnectorElement: RectangleElement, IControllable 
+    {
+        private readonly NodeElement _parentElement;
+        private readonly ElementCollection _links = new ElementCollection();
+        public bool IsStart;
+        public object State;
+        public string ShortName;
 
-		[NonSerialized]
-		private ConnectorController _controller;
+        [NonSerialized]
+        private ConnectorController _controller;
 
-		internal ConnectorElement(NodeElement parent): base(new Rectangle(0, 0, 0, 0))
-		{
-			_parentElement = parent;
-			BorderColorValue = Color.Black;
-			FillColor1Value = Color.LightGray;
-			FillColor2Value = Color.Empty;
-		}
+        public ConnectorElement()
+        {
 
-		public NodeElement ParentElement
-		{
-			get
-			{
-				return _parentElement;
-			}
-		}
+        }
 
-		internal void AddLink(BaseLinkElement lnk)
-		{
-			_links.Add(lnk);
-		}
+        public ConnectorElement(NodeElement parent): base(new Rectangle(0, 0, 0, 0))
+        {
+            _parentElement = parent;
+            BorderColorValue = Color.Black;
+            FillColor1Value = Color.LightGray;
+            FillColor2Value = Color.Empty;
+        }
 
-		public void RemoveLink(BaseLinkElement lnk)
-		{
-			_links.Remove(lnk);
-		}
+        public NodeElement ParentElement
+        {
+            get
+            {
+                return _parentElement;
+            }
+        }
 
-		public ElementCollection Links
-		{
-			get
-			{
-				return _links;
-			}
-		}
+        internal void AddLink(BaseLinkElement lnk)
+        {
+            _links.Add(lnk);
+        }
 
-		internal CardinalDirection GetDirection()
-		{
-			var rec = new Rectangle(_parentElement.Location, _parentElement.Size);
-			var refPoint = new Point(LocationValue.X - _parentElement.Location.X + (SizeValue.Width / 2),
-									   LocationValue.Y - _parentElement.Location.Y + (SizeValue.Height / 2));
+        public void RemoveLink(BaseLinkElement lnk)
+        {
+            _links.Remove(lnk);
+        }
 
-			return DiagramUtil.GetDirection(rec, refPoint);
-		}
+        public ElementCollection Links
+        {
+            get
+            {
+                return _links;
+            }
+        }
 
-		IController IControllable.GetController()
-		{
-			return _controller ?? (_controller = new ConnectorController(this));
-		}
+        internal CardinalDirection GetDirection()
+        {
+            var rec = new Rectangle(_parentElement.Location, _parentElement.Size);
+            var refPoint = new Point(LocationValue.X - _parentElement.Location.X + (SizeValue.Width / 2),
+                                       LocationValue.Y - _parentElement.Location.Y + (SizeValue.Height / 2));
+
+            return DiagramUtil.GetDirection(rec, refPoint);
+        }
+
+        IController IControllable.GetController()
+        {
+            return _controller ?? (_controller = new ConnectorController(this));
+        }
 
 
-		public override Point Location
-		{
-			get
-			{
-				return base.Location;
-			}
-			set
-			{
-				if (value == base.Location) return;
-				
-				foreach(BaseLinkElement lnk in _links)
-				{
-					lnk.NeedCalcLink = true;					
-				}
-				base.Location = value;
-			}
-		}
-	
-		public override Size Size
-		{
-			get
-			{
-				return base.Size;
-			}
-			set
-			{
-				if (value == base.Size) return;
+        public override Point Location
+        {
+            get
+            {
+                return base.Location;
+            }
+            set
+            {
+                if (value == base.Location) return;
+                
+                foreach(BaseLinkElement lnk in _links)
+                {
+                    lnk.NeedCalcLink = true;					
+                }
+                base.Location = value;
+            }
+        }
+    
+        public override Size Size
+        {
+            get
+            {
+                return base.Size;
+            }
+            set
+            {
+                if (value == base.Size) return;
 
-				foreach(BaseLinkElement lnk in _links)
-				{
-					lnk.NeedCalcLink = true;
-				}
-				base.Size = value;
-			}
-		}
-	}
+                foreach(BaseLinkElement lnk in _links)
+                {
+                    lnk.NeedCalcLink = true;
+                }
+                base.Size = value;
+            }
+        }
+    }
 }

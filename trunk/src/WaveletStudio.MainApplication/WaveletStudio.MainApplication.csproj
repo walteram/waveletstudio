@@ -38,6 +38,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CustomXmlSerializer">
+      <HintPath>..\..\res\libs\CustomXmlSerializer\CustomXmlSerializer.dll</HintPath>
+    </Reference>
     <Reference Include="Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa, processorArchitecture=MSIL">
       <HintPath>..\..\res\libs\Qios\Qios.DevSuite.Components.dll</HintPath>
     </Reference>
@@ -61,6 +64,18 @@
     <Compile Include="Forms\BlockSetupForm.Designer.cs">
       <DependentUpon>BlockSetupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\BlockSetupBaseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BlockSetupBaseForm.Designer.cs">
+      <DependentUpon>BlockSetupBaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TextBlockSetupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TextBlockSetupForm.Designer.cs">
+      <DependentUpon>TextBlockSetupForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DiagramForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +92,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\BlockSetupForm.resx">
       <DependentUpon>BlockSetupForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BlockSetupBaseForm.resx">
+      <DependentUpon>BlockSetupBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TextBlockSetupForm.resx">
+      <DependentUpon>TextBlockSetupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DiagramForm.resx">
       <DependentUpon>DiagramForm.cs</DependentUpon>
@@ -208,6 +229,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\csv1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

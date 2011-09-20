@@ -9,13 +9,13 @@ using WaveletStudio.Functions;
 namespace WaveletStudio.Tests.Blocks
 {
     [TestClass]
-    public class SignalFromCSVBlockTest
+    public class ImportFromCSVBlockTest
     {
         [TestMethod]
         [DeploymentItem("example.csv")]
         public void TestSignalFromCSVBlockExecute()
         {
-            var csvBlock = new SignalFromCSVBlock {IgnoreFirstRow = true, SignalNameInFirstColumn = true};
+            var csvBlock = new ImportFromCSVBlock {IgnoreFirstRow = true, SignalNameInFirstColumn = true};
             csvBlock.Execute();
             Assert.IsNotNull(csvBlock.Name);
             Assert.IsNotNull(csvBlock.Description);
@@ -38,7 +38,7 @@ namespace WaveletStudio.Tests.Blocks
             csvBlock.Execute();
             Assert.AreEqual(0, scalarBlock.OutputNodes[0].Object.Count);
 
-            var csvBlock2 = (SignalFromCSVBlock)csvBlock.Clone();
+            var csvBlock2 = (ImportFromCSVBlock)csvBlock.Clone();
             csvBlock2.OutputNodes[0].ConnectTo(scalarBlock.InputNodes[0]);
             csvBlock2.Cascade = true;
             csvBlock2.Execute();
