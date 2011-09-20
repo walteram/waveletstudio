@@ -52,7 +52,7 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Available templates
         /// </summary>
-        public List<string> TemplateNameList { get; private set; }
+        public List<string> TemplateNameList { get; set; }
 
         private string _templateName;
         /// <summary>

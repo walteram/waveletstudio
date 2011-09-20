@@ -29,7 +29,7 @@ namespace DiagramNet
 			}
 		}
 
-		internal virtual int Add(BaseElement element)
+		public virtual int Add(BaseElement element)
 		{
 			_needCalc = true;
 

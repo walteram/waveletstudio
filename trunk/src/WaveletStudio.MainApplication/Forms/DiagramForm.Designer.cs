@@ -38,9 +38,10 @@ namespace WaveletStudio.MainApplication.Forms
             this.qRibbonCaption1 = new Qios.DevSuite.Components.Ribbon.QRibbonCaption();
             this.AppMenuButton = new Qios.DevSuite.Components.Ribbon.QRibbonApplicationButton();
             this.qRibbonLaunchBar1 = new Qios.DevSuite.Components.Ribbon.QRibbonLaunchBar();
+            this.CutElementShortcut = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
             this.CopyElementShortcut = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
             this.PasteElementShortcut = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
-            this.CutElementShortcut = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
+            this.Separator1 = new Qios.DevSuite.Components.QCompositeSeparator();
             this.UndoShortcut = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
             this.RedoShortcut = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
             this.qRibbonItem14 = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
@@ -55,12 +56,15 @@ namespace WaveletStudio.MainApplication.Forms
             this.OperationsFunctionsPanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
             this.OperationsFunctionsComposite = new Qios.DevSuite.Components.QCompositeGroup();
             this.Designer = new DiagramNet.Designer(this.components);
-            this.Separator1 = new Qios.DevSuite.Components.QCompositeSeparator();
+            this.ExportDataRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
+            this.ExportDataPanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
+            this.ExportToFileComposite = new Qios.DevSuite.Components.QCompositeGroup();
             ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
             this.Ribbon.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SignalRibbonPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationsRibbonPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExportDataRibbonPage)).BeginInit();
             this.SuspendLayout();
             // 
             // qRibbonItem1
@@ -179,6 +183,13 @@ namespace WaveletStudio.MainApplication.Forms
             this.qRibbonLaunchBar1.Items.Add(this.qRibbonItem14);
             this.qRibbonLaunchBar1.Items.Add(this.qRibbonItem17);
             // 
+            // CutElementShortcut
+            // 
+            this.CutElementShortcut.HotkeyText = "Cut";
+            this.CutElementShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("CutElementShortcut.Icon")));
+            this.CutElementShortcut.ToolTipText = "Cut";
+            this.CutElementShortcut.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.CutElementShortcutItemActivated);
+            // 
             // CopyElementShortcut
             // 
             this.CopyElementShortcut.HotkeyText = "Copy";
@@ -194,13 +205,6 @@ namespace WaveletStudio.MainApplication.Forms
             this.PasteElementShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("PasteElementShortcut.Icon")));
             this.PasteElementShortcut.ToolTipText = "Paste";
             this.PasteElementShortcut.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.PasteElementShortcutItemActivated);
-            // 
-            // CutElementShortcut
-            // 
-            this.CutElementShortcut.HotkeyText = "Cut";
-            this.CutElementShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("CutElementShortcut.Icon")));
-            this.CutElementShortcut.ToolTipText = "Cut";
-            this.CutElementShortcut.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.CutElementShortcutItemActivated);
             // 
             // UndoShortcut
             // 
@@ -235,6 +239,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.Ribbon.ActiveTabPage = this.SignalRibbonPage;
             this.Ribbon.Controls.Add(this.SignalRibbonPage);
             this.Ribbon.Controls.Add(this.OperationsRibbonPage);
+            this.Ribbon.Controls.Add(this.ExportDataRibbonPage);
             this.Ribbon.Cursor = System.Windows.Forms.Cursors.Default;
             this.Ribbon.Dock = System.Windows.Forms.DockStyle.Top;
             this.Ribbon.Form = this;
@@ -462,6 +467,75 @@ namespace WaveletStudio.MainApplication.Forms
             this.Designer.ElementResized += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementResized);
             this.Designer.ElementConnected += new DiagramNet.Designer.ElementConnectEventHandler(this.DesignerElementConnected);
             // 
+            // ExportDataRibbonPage
+            // 
+            this.ExportDataRibbonPage.ButtonOrder = 2;
+            this.ExportDataRibbonPage.Items.Add(this.ExportDataPanel);
+            this.ExportDataRibbonPage.Location = new System.Drawing.Point(2, 28);
+            this.ExportDataRibbonPage.Name = "ExportDataRibbonPage";
+            this.ExportDataRibbonPage.PersistGuid = new System.Guid("9272663a-8526-411c-a907-cafff24991eb");
+            this.ExportDataRibbonPage.Size = new System.Drawing.Size(940, 106);
+            this.ExportDataRibbonPage.Text = "Export Data";
+            // 
+            // ExportDataPanel
+            // 
+            this.ExportDataPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
+            this.ExportDataPanel.Items.Add(this.ExportToFileComposite);
+            this.ExportDataPanel.Title = "Export to File";
+            // 
+            // ExportToFileComposite
+            // 
+            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
+            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
+            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
+            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
+            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
+            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
+            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
+            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
+            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBorder.SetColor("Default", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ExportToFileComposite.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
+            this.ExportToFileComposite.Configuration.ShrinkHorizontal = true;
+            this.ExportToFileComposite.Configuration.ShrinkVertical = true;
+            this.ExportToFileComposite.Configuration.StretchHorizontal = true;
+            this.ExportToFileComposite.Configuration.StretchVertical = true;
+            // 
             // DiagramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -480,6 +554,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.Ribbon.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.SignalRibbonPage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.OperationsRibbonPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExportDataRibbonPage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -509,6 +584,9 @@ namespace WaveletStudio.MainApplication.Forms
         private Qios.DevSuite.Components.Ribbon.QRibbonPanel OperationsFunctionsPanel;
         private Qios.DevSuite.Components.QCompositeGroup OperationsFunctionsComposite;
         internal DiagramNet.Designer Designer;
-        private Qios.DevSuite.Components.QCompositeSeparator Separator1;        
+        private Qios.DevSuite.Components.QCompositeSeparator Separator1;
+        private Qios.DevSuite.Components.Ribbon.QRibbonPage ExportDataRibbonPage;
+        private Qios.DevSuite.Components.Ribbon.QRibbonPanel ExportDataPanel;
+        private Qios.DevSuite.Components.QCompositeGroup ExportToFileComposite;        
     }
 }

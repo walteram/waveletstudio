@@ -125,18 +125,29 @@ namespace WaveletStudio
         /// <returns></returns>
         public string ToString(int precision)
         {
+            return ToString(precision, " ");
+        }
+
+        /// <summary>
+        /// Gets all the samples of the signal separated with the separator parameter
+        /// </summary>
+        /// <param name="precision"></param>
+        /// <param name="separator"></param>
+        /// <returns></returns>
+        public string ToString(int precision, string separator)
+        {
             var format = "{0:0.";
             for (var i = 0; i < precision; i++)
             {
                 format += "0";
             }
-            format += "} ";
+            format += "}" + separator;
             var str = new StringBuilder();
-            for (var i = 0; i < Samples.Length; i++)
+            foreach (var t in Samples)
             {
-                str.Append(string.Format(System.Globalization.CultureInfo.InvariantCulture, format, Samples[i]));
+                str.Append(string.Format(System.Globalization.CultureInfo.InvariantCulture, format, t));
             }
-            return str.ToString().Trim();
+            return str.ToString().TrimEnd(separator.ToCharArray());
         }
 
         /// <summary>

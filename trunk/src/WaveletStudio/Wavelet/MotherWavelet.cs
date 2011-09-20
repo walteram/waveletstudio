@@ -16,7 +16,7 @@ namespace WaveletStudio.Wavelet
         /// <summary>
         /// The scaling function of the mother wavelet, used to calculate the filters
         /// </summary>
-        public double[] ScalingFilter { get; private set; }
+        public double[] ScalingFilter { get; set; }
 
         private FiltersStruct _filters;
 

@@ -21,6 +21,11 @@ namespace DiagramNet.Elements
 
         private static int _nextPosition = 50;
 
+        public DiagramBlock()
+        {
+
+        }
+
         public DiagramBlock(Image image, string labelText, object blockState, object[] inputStates, object[] outputStates, PropertyInfo connectionTextProperty) : base(_nextPosition, _nextPosition, 80, 80)
         {
             Overrided = true;

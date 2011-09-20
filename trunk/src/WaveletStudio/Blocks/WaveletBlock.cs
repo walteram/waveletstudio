@@ -46,7 +46,7 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Available wavelet functions
         /// </summary>
-        public List<string> WaveletNameList { get; private set; }
+        public List<string> WaveletNameList { get; set; }
 
         private string _waveletName;
         /// <summary>
@@ -107,6 +107,7 @@ namespace WaveletStudio.Blocks
             OutputNodes[0].Object.Clear();
             OutputNodes[1].Object.Clear();
             OutputNodes[2].Object.Clear();
+            OutputNodes[3].Object.Clear();
             foreach (var signal in connectingNode.Object)
             {
                 var name = signal.Name;
@@ -119,17 +120,20 @@ namespace WaveletStudio.Blocks
                     appSignal.Name = name + "Approximation Level " + (level.Index + 1);
                     appSignal.Samples = level.Approximation;
                     OutputNodes[0].Object.Add(appSignal);
+                    OutputNodes[3].Object.Add(appSignal);
 
                     var detSignal = signal.Copy();
                     detSignal.Name = name + "Details Level " + (level.Index + 1);
                     detSignal.Samples = level.Details;
                     OutputNodes[1].Object.Add(detSignal);
+                    OutputNodes[3].Object.Add(detSignal);
                 }
                 var reconstruction = Dwt.ExecuteIDwt(decompositionLevels, _motherWavelet, Level);
                 var recSignal = signal.Copy();
                 recSignal.Name = name + "Reconstruction";
                 recSignal.Samples = reconstruction;
                 OutputNodes[2].Object.Add(recSignal);
+                OutputNodes[3].Object.Add(recSignal);
             }
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
@@ -142,7 +146,8 @@ namespace WaveletStudio.Blocks
                                    {
                                        new BlockOutputNode(ref root, "Aproximation", "Apx"),
                                        new BlockOutputNode(ref root, "Details", "Det"),
-                                       new BlockOutputNode(ref root, "Reconstruction", "Rc")
+                                       new BlockOutputNode(ref root, "Reconstruction", "Rc"),
+                                       new BlockOutputNode(ref root, "All", "All"),
                                    };
         }
 
