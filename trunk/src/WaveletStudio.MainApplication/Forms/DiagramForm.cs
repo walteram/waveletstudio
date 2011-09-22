@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -18,8 +17,6 @@ namespace WaveletStudio.MainApplication.Forms
 {
     public partial class DiagramForm : QRibbonForm
     {
-        public bool FirstWindow { get; set; }
-
         private string _currentFile;
         public string CurrentFile
         {
@@ -56,29 +53,9 @@ namespace WaveletStudio.MainApplication.Forms
         
         private void DiagramFormLoad(object sender, EventArgs e)
         {            
-            LoadRibbon();
+            LoadRibbon();            
             WindowState = FormWindowState.Maximized;
-            AppMenuButton.Visible = true;
-            if(!FirstWindow)
-                return;
-
-            if (Settings.Default["RecentFileList"] == null)
-            {
-                Settings.Default["RecentFileList"] = "";
-                Settings.Default.Save();                
-            }
-            var recentFiles = Settings.Default.RecentFileList.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-            var lastFile = recentFiles.Count() > 0 ? recentFiles[0] : "";
-            if (!Settings.Default.AutoLoadLastFile || lastFile == "" || !File.Exists(lastFile)) 
-                return;
-            try
-            {
-                OpenFile(lastFile);
-            }
-            catch (Exception exception)
-            {
-                Trace.TraceWarning(exception.Message + exception.StackTrace);
-            }
+            AppMenuButton.Visible = true;                       
         }
 
         private void ConfigureDesigner()
@@ -302,6 +279,7 @@ namespace WaveletStudio.MainApplication.Forms
             try
             {
                 OpenFile(openDialog.FileName);
+                AddRecentFile(openDialog.FileName);
             }
             catch (Exception exception)
             {
@@ -347,10 +325,15 @@ namespace WaveletStudio.MainApplication.Forms
         {
             if ((Path.GetDirectoryName(filename) + "").ToLower() == Utils.AssemblyDirectory.ToLower())
                 filename = Path.GetFileName(filename) + "";
-            if (Settings.Default.RecentFileList.Contains("|" + filename + "|"))
-                Settings.Default["RecentFileList"] = Settings.Default["RecentFileList"].ToString().Replace("|" + filename + "|", "");
-            Settings.Default["RecentFileList"] = "|" + filename + "|" + Settings.Default["RecentFileList"];
+            if (Settings.Default.RecentFileList.Contains(filename))
+                Settings.Default.RecentFileList.Remove(filename);
+            Settings.Default.RecentFileList.Insert(0, filename);
             Settings.Default.Save();
+        }
+
+        private void DiagramFormFormClosing(object sender, FormClosingEventArgs e)
+        {
+            AppContext.Context.FormClosing(this);
         }
     }
 }

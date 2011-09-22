@@ -23,30 +23,38 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool AutoLoadLastFile {
             get {
                 return ((bool)(this["AutoLoadLastFile"]));
             }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string RecentFileList {
-            get {
-                return ((string)(this["RecentFileList"]));
+            set {
+                this["AutoLoadLastFile"] = value;
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public global::System.Collections.Specialized.StringCollection RecentFileList {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["RecentFileList"]));
+            }
+            set {
+                this["RecentFileList"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool AutoShowBlockSetupForm {
             get {
                 return ((bool)(this["AutoShowBlockSetupForm"]));
+            }
+            set {
+                this["AutoShowBlockSetupForm"] = value;
             }
         }
     }

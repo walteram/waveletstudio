@@ -55,10 +55,10 @@ namespace WaveletStudio.MainApplication.Forms
             this.OperationsRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
             this.OperationsFunctionsPanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
             this.OperationsFunctionsComposite = new Qios.DevSuite.Components.QCompositeGroup();
-            this.Designer = new DiagramNet.Designer(this.components);
             this.ExportDataRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
             this.ExportDataPanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
             this.ExportToFileComposite = new Qios.DevSuite.Components.QCompositeGroup();
+            this.Designer = new DiagramNet.Designer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
             this.Ribbon.SuspendLayout();
@@ -450,23 +450,6 @@ namespace WaveletStudio.MainApplication.Forms
             this.OperationsFunctionsComposite.Configuration.StretchHorizontal = true;
             this.OperationsFunctionsComposite.Configuration.StretchVertical = true;
             // 
-            // Designer
-            // 
-            this.Designer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.Designer.AutoScroll = true;
-            this.Designer.BackColor = System.Drawing.SystemColors.Window;
-            this.Designer.Changed = false;
-            this.Designer.Location = new System.Drawing.Point(2, 168);
-            this.Designer.Name = "Designer";
-            this.Designer.Size = new System.Drawing.Size(940, 291);
-            this.Designer.TabIndex = 54;
-            this.Designer.ElementDoubleClick += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementDoubleClick);
-            this.Designer.ElementMoved += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementMoved);
-            this.Designer.ElementResized += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementResized);
-            this.Designer.ElementConnected += new DiagramNet.Designer.ElementConnectEventHandler(this.DesignerElementConnected);
-            // 
             // ExportDataRibbonPage
             // 
             this.ExportDataRibbonPage.ButtonOrder = 2;
@@ -536,6 +519,23 @@ namespace WaveletStudio.MainApplication.Forms
             this.ExportToFileComposite.Configuration.StretchHorizontal = true;
             this.ExportToFileComposite.Configuration.StretchVertical = true;
             // 
+            // Designer
+            // 
+            this.Designer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.Designer.AutoScroll = true;
+            this.Designer.BackColor = System.Drawing.SystemColors.Window;
+            this.Designer.Changed = false;
+            this.Designer.Location = new System.Drawing.Point(2, 168);
+            this.Designer.Name = "Designer";
+            this.Designer.Size = new System.Drawing.Size(940, 291);
+            this.Designer.TabIndex = 54;
+            this.Designer.ElementDoubleClick += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementDoubleClick);
+            this.Designer.ElementMoved += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementMoved);
+            this.Designer.ElementResized += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementResized);
+            this.Designer.ElementConnected += new DiagramNet.Designer.ElementConnectEventHandler(this.DesignerElementConnected);
+            // 
             // DiagramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,6 +548,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wavelet Studio";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DiagramFormFormClosing);
             this.Load += new System.EventHandler(this.DiagramFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).EndInit();

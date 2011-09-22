@@ -5,7 +5,6 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.ComponentModel;
-using System.Xml.Serialization;
 using DiagramNet.Elements;
 using DiagramNet.Elements.Controllers;
 using DiagramNet.Events;
@@ -796,12 +795,6 @@ namespace DiagramNet
         #endregion
 
         #region Open/Save File
-        public void SaveXml(string fileName)
-        {
-            var serializer = new CustomXmlSerializer.XmlSerializer();
-            serializer.Serialize(_document, fileName);
-        }
-
         public void SaveBinary(string fileName)
         {
             IFormatter formatter = new BinaryFormatter();
@@ -819,11 +812,6 @@ namespace DiagramNet
             RecreateEventsHandlers();
         }
 
-        public void OpenXml(string fileName)
-        {
-            var deserializer = new CustomXmlSerializer.XmlDeserializer();
-            _document = (Document) deserializer.Deserialize(fileName);
-        }
         #endregion
 
         #region Copy/Paste

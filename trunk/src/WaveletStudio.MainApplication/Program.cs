@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Collections.Specialized;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Reflection;
 using System.Windows.Forms;
 using Qios.DevSuite.Components;
-using WaveletStudio.MainApplication.Forms;
 using WaveletStudio.MainApplication.Properties;
 
 namespace WaveletStudio.MainApplication
 {
-    static class Program
+    static class Program 
     {
         /// <summary>
         /// The main entry point for the application.
@@ -27,10 +22,8 @@ namespace WaveletStudio.MainApplication
             ShowSplashScreen();
 
             QColorScheme.Global.CurrentTheme = "LunaSilver";
-            QColorScheme.Global.InheritCurrentThemeFromWindows = true;
-            var mainDiagramForm = new DiagramForm();
-            mainDiagramForm.FirstWindow = true;
-            Application.Run(mainDiagramForm);
+            QColorScheme.Global.InheritCurrentThemeFromWindows = true;            
+            Application.Run(new AppContext());            
         }
 
         private static QTranslucentWindow _splashScreen;

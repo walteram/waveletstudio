@@ -35,6 +35,7 @@ namespace WaveletStudio.MainApplication.Forms
             if (OnBeforeInitializing != null)
                 OnBeforeInitializing();
             TempBlock = block.CloneWithLinks();
+            TempBlock.Cascade = false;
             Block = block;
             CreateFields();
             if (OnAfterInitializing != null)
@@ -159,7 +160,7 @@ namespace WaveletStudio.MainApplication.Forms
             {
                 node.Root = Block;
             }
-
+            Block.Cascade = true;
             Block.Execute();
         }
 

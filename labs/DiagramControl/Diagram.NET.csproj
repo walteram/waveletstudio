@@ -91,9 +91,6 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CustomXmlSerializer">
-      <HintPath>..\..\trunk\res\libs\CustomXmlSerializer\CustomXmlSerializer.dll</HintPath>
-    </Reference>
     <Reference Include="System">
       <Name>System</Name>
     </Reference>

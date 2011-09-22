@@ -38,9 +38,6 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CustomXmlSerializer">
-      <HintPath>..\..\res\libs\CustomXmlSerializer\CustomXmlSerializer.dll</HintPath>
-    </Reference>
     <Reference Include="Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa, processorArchitecture=MSIL">
       <HintPath>..\..\res\libs\Qios\Qios.DevSuite.Components.dll</HintPath>
     </Reference>
@@ -56,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppContext.cs" />
     <Compile Include="ApplicationUtils.cs" />
     <Compile Include="Controls\QControlUtils.cs" />
     <Compile Include="Forms\BlockSetupForm.cs">
