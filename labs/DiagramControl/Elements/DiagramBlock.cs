@@ -79,7 +79,6 @@ namespace DiagramNet.Elements
         {
             for (var i = 0; i < _inputStates.Length; i++)
             {
-                //var top = (SizeValue.Height / (_inputStates.Length + 1)) * (i + 1)-10;
                 var top = 20 * (i+1);
                 var loc = new Point(LocationValue.X, LocationValue.Y + top);
                 var connect = Connects[i];
@@ -88,14 +87,13 @@ namespace DiagramNet.Elements
                 connect.IsStart = true;
                 connect.State = _inputStates[i];
             }
-
+            var yOffset = _outputStates.Length > 2 ? 10 : 0;
             for (var i = 0; i < _outputStates.Length; i++)
             {
-                //var top = (SizeValue.Height / (_outputStates.Length + 1)) * (i + 1)-10;
                 var top = 20 * (i + 1);
                 var loc = new Point(LocationValue.X + SizeValue.Width, LocationValue.Y + top);
                 var connect = Connects[_inputStates.Length+i];
-                connect.Location = new Point(loc.X - ConnectSize, loc.Y - ConnectSize);
+                connect.Location = new Point(loc.X - ConnectSize, loc.Y - ConnectSize - yOffset);
                 connect.Size = new Size(ConnectSize * 2, ConnectSize * 2);
                 connect.IsStart = false;
                 connect.State = _outputStates[i];
@@ -117,7 +115,7 @@ namespace DiagramNet.Elements
             IsInvalidated = false;			
 
             var image = new ImageElement(_image, Rectangle);
-            var label = new LabelElement(Rectangle.Location.X, image.Top + image.Height + 2,Rectangle.Size.Width, 12) {Text = _labelText, Font = new Font(FontFamily.GenericSansSerif, 8)};
+            var label = new LabelElement(Rectangle.Location.X, image.Top + image.Height + 2,Rectangle.Size.Width, 12) {Text = _labelText, Font = new Font(FontFamily.GenericSansSerif, 8) };
             Rectangle.Draw(g);
             image.Draw(g);
             label.Draw(g);
@@ -138,7 +136,7 @@ namespace DiagramNet.Elements
                     posX = conn.Location.X - 42;
                     alignment = StringAlignment.Far;
                 }
-                var connectorLabel = new LabelElement(posX, conn.Location.Y - conn.Size.Height / 2, 40, 12) { Text = labelText, Alignment = alignment, Font = new Font(FontFamily.GenericSansSerif, 7) };
+                var connectorLabel = new LabelElement(posX, conn.Location.Y - conn.Size.Height / 2 , 40, 12) { Text = labelText, Alignment = alignment, Font = new Font(FontFamily.GenericSansSerif, 7) };
                 connectorLabel.Draw(g);
             }		    
         }

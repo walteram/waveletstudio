@@ -55,7 +55,7 @@ namespace WaveletStudio.MainApplication.Forms
         {
             DocumentItems.Clear();
             var i = 0;
-            foreach (var file in Settings.Default.RecentFileList.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries))
+            foreach (var file in Settings.Default.RecentFileList)
             {
                 if (!File.Exists(file) && !File.Exists(Path.Combine(Utils.AssemblyDirectory, file))) 
                     continue;
