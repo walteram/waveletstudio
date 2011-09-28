@@ -250,6 +250,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.Ribbon.TabIndex = 53;
             this.Ribbon.TabStripConfiguration.ButtonAreaMargin = new Qios.DevSuite.Components.QMargin(35, 5, 0, 0);
             this.Ribbon.Text = "Sinal";
+            this.Ribbon.HelpButtonActivated += new System.EventHandler(this.RibbonHelpButtonActivated);
             // 
             // SignalRibbonPage
             // 

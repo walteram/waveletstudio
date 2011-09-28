@@ -335,6 +335,19 @@ namespace WaveletStudio.MainApplication.Forms
         {
             AppContext.Context.FormClosing(this);
         }
+
+        private void RibbonHelpButtonActivated(object sender, EventArgs e)
+        {
+            const string target = "http://www.waveletstudio.net";
+            try
+            {
+                System.Diagnostics.Process.Start(target);
+            }
+            catch(Exception)
+            {
+                MessageBox.Show(@"You can get help in this application at the folowing site: " + '\n' + target, @"Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }
 
