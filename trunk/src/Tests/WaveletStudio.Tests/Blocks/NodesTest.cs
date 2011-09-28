@@ -15,9 +15,16 @@ namespace WaveletStudio.Tests.Blocks
         {
             BlockBase root1 = new ConvolutionBlock();
             BlockBase root2 = new ConvolutionBlock();
-            var out1 = new BlockOutputNode(ref root1, "Out1", "O");
-            var in1 = new BlockInputNode(ref root2, "In1", "I");
+            var in1 = new BlockInputNode();
+            var out1 = new BlockOutputNode();
+            Assert.IsNull(in1.ConnectingNode);
+            Assert.IsNull(in1.Root);
+            Assert.IsNull(out1.ConnectingNode);
+            Assert.IsNull(out1.Root);
+            Assert.IsNull(out1.Object);
 
+            out1 = new BlockOutputNode(ref root1, "Out1", "O");
+            in1= new BlockInputNode(ref root2, "In1", "I");
             in1.ConnectTo(out1);            
             Assert.AreSame(out1.ConnectingNode, in1);
             Assert.AreSame(in1.ConnectingNode, out1);

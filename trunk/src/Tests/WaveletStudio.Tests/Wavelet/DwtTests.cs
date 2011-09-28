@@ -76,6 +76,9 @@ namespace WaveletStudio.Tests.Wavelet
             levels = Dwt.ExecuteDwt(signal, wavelet, 3, SignalExtension.ExtensionMode.SymmetricWholePoint, ConvolutionModeEnum.Normal);
             output = Dwt.ExecuteIDwt(levels, wavelet, 10);
             Assert.IsTrue(TestUtils.SequenceEquals(output, signal.Samples));
+
+            output = Dwt.ExecuteIDwt(levels, wavelet, -1);
+            Assert.IsNull(output);
         }
 
         [TestMethod]
