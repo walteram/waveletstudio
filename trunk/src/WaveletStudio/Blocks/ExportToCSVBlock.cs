@@ -7,7 +7,7 @@ using WaveletStudio.Blocks.CustomAttributes;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Export a signal to a CSV file
+    /// Exports a single signal or a signal list to a CSV file
     /// </summary>
     [SingleInputOutputBlock]
     [Serializable]
