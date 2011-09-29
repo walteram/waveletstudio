@@ -6,7 +6,7 @@ using WaveletStudio.Functions;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Executes a scalar operation in a dy
+    /// Convolve two signals.
     /// </summary>
     [Serializable]
     public class ConvolutionBlock : BlockBase

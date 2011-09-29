@@ -5,7 +5,7 @@ using WaveletStudio.Functions;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Executes a scalar operation in a signal
+    /// Decreases the sampling rate of the input by keeping every odd sample starting with the first sample.
     /// </summary>
     [Serializable]
     public class DownSampleBlock : BlockBase
