@@ -82,6 +82,10 @@ namespace WaveletStudio.Blocks
                 {
                     output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filters[i].Samples, ReturnOnlyValid, 0, Mode);                    
                 }
+                else if (filters.Count > 0)
+                {
+                    output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filters[0].Samples, ReturnOnlyValid, 0, Mode);
+                }
                 outputs.Add(output);
             }
             OutputNodes[0].Object = outputs;
