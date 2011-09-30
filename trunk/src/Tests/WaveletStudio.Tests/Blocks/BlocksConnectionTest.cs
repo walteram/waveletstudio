@@ -42,6 +42,7 @@ namespace WaveletStudio.Tests.Blocks
             AssertBlock(new RampFunctionBlock());
             AssertBlock(new SampleBasedOperationBlock());
             AssertBlock(new ImportFromCSVBlock());
+            AssertBlock(new WaveletBlock());
         }
 
         private static void AssertBlock(BlockBase block)

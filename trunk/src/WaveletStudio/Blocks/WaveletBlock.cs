@@ -84,7 +84,7 @@ namespace WaveletStudio.Blocks
         }
 
         /// <summary>
-        /// Decomposition level count
+        /// Number of levels
         /// </summary>
         [Parameter]
         public int Level { get; set; }
