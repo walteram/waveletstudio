@@ -11,7 +11,10 @@ namespace WaveletStudio.Tests.Blocks
         public void TestScalarOperationBlockExecute()
         {
             var signalBlock = new GenerateSignalBlock { TemplateName = "Binary", Start = 0, Finish = 5, SamplingRate = 1, IgnoreLastSample = true };
-            var scalarBlock = new ScalarOperationBlock { Operation = WaveMath.OperationEnum.Sum, Value = 1.5 };
+            var scalarBlock = new ScalarOperationBlock
+                                  {
+                                      Operation = WaveMath.OperationEnum.Sum, Value = 1.5
+                                  };
             scalarBlock.Execute();
             
             signalBlock.OutputNodes[0].ConnectTo(scalarBlock.InputNodes[0]);
