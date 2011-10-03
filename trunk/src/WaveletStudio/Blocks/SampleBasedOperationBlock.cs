@@ -78,7 +78,7 @@ namespace WaveletStudio.Blocks
 
             var inputNode1 = InputNodes[0].ConnectingNode as BlockOutputNode;
             var inputNode2 = InputNodes[1].ConnectingNode as BlockOutputNode;
-            if (inputNode1 == null || inputNode1.Object.Count == 0 || inputNode2 == null || inputNode2.Object.Count == 0)
+            if (inputNode1 == null || inputNode1.Object.Count == 0 || inputNode2 == null)
                 return;
             if(inputNode2.Object.Count > inputNode1.Object.Count)
             {

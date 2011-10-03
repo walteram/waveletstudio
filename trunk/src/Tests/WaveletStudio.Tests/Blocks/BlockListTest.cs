@@ -21,10 +21,24 @@ namespace WaveletStudio.Tests.Blocks
             signalBlock2.ConnectTo(convolutionBlock1);
             convolutionBlock1.ConnectTo(convolutionBlock2);
             signalBlock2.ConnectTo(convolutionBlock2);
-
             blockList.ExecuteAll();
 
             Assert.AreEqual("4 20 45 78 111 114 103 74 33 18", convolutionBlock2.OutputNodes[0].Object.ToString(0));
+
+            convolutionBlock1 = new ConvolutionBlock();
+            convolutionBlock1.InputNodes.Clear();
+            signalBlock1.ConnectTo(convolutionBlock1);
+            signalBlock1.Execute();
+            Assert.AreEqual(0, convolutionBlock1.OutputNodes[0].Object.Count);
+
+            convolutionBlock1 = new ConvolutionBlock();
+            signalBlock1 = new GenerateSignalBlock();
+            signalBlock2.OutputNodes.Clear();
+            signalBlock2.ConnectTo(convolutionBlock1);
+            signalBlock1.ConnectTo(convolutionBlock1);
+            signalBlock1.Execute();
+            Assert.AreEqual(0, convolutionBlock1.OutputNodes[0].Object.Count);
+
         }
     }
 }

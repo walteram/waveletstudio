@@ -135,8 +135,12 @@ namespace WaveletStudio.Blocks
                 OutputNodes[2].Object.Add(recSignal);
                 OutputNodes[3].Object.Add(recSignal);
             }
-            if (Cascade && (OutputNodes.Any(it => it.ConnectingNode != null)))
-                OutputNodes.First(it => it.ConnectingNode != null).ConnectingNode.Root.Execute();
+            if(!Cascade)
+                return;
+            foreach (var output in OutputNodes.Where(output => output.ConnectingNode != null))
+            {
+                output.ConnectingNode.Root.Execute();
+            }            
         }
 
         protected override sealed void CreateNodes(ref BlockBase root)
