@@ -17,10 +17,10 @@ namespace WaveletStudio.Tests.Blocks
             var convolutionBlock2 = new ConvolutionBlock();
             var blockList = new BlockList { signalBlock1, signalBlock2, signalBlock3, convolutionBlock1, convolutionBlock2 };
 
-            signalBlock1.OutputNodes[0].ConnectTo(convolutionBlock1.InputNodes[0]);
-            signalBlock2.OutputNodes[0].ConnectTo(convolutionBlock1.InputNodes[1]);
-            convolutionBlock1.OutputNodes[0].ConnectTo(convolutionBlock2.InputNodes[0]);
-            signalBlock2.OutputNodes[0].ConnectTo(convolutionBlock2.InputNodes[1]);            
+            signalBlock1.ConnectTo(convolutionBlock1);
+            signalBlock2.ConnectTo(convolutionBlock1);
+            convolutionBlock1.ConnectTo(convolutionBlock2);
+            signalBlock2.ConnectTo(convolutionBlock2);
 
             blockList.ExecuteAll();
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace WaveletStudio.Blocks
@@ -137,6 +138,23 @@ namespace WaveletStudio.Blocks
             return block;
         }
 
-        
+        /// <summary>
+        /// Connects to another block
+        /// </summary>
+        /// <param name="block"></param>
+        public void ConnectTo(BlockBase block)
+        {
+            if(OutputNodes.Count == 0 || block.InputNodes.Count == 0)
+                return;
+
+            var outputNode = OutputNodes.FirstOrDefault(it => it.ConnectingNode == null);
+            var inputNode = block.InputNodes.FirstOrDefault(it => it.ConnectingNode == null);
+            if (outputNode == null)
+                outputNode = OutputNodes[0];
+            if (inputNode == null)
+                inputNode = block.InputNodes[0];
+
+            outputNode.ConnectTo(inputNode);
+        }
     }
 }

@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
 
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Sum two or more signals
+    /// Sum, subtract, multiply or divided two or more signals
     /// </summary>
     [Serializable]
     public class SampleBasedOperationBlock : BlockBase
@@ -46,7 +45,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Description
         {
-            get { return "Sum, subtract, multiply or divide two or more blocks"; }
+            get { return "Sum, subtract, multiply or divide two or more signals"; }
         }
 
         /// <summary>
@@ -91,15 +90,21 @@ namespace WaveletStudio.Blocks
             for (var i = 0; i < inputNode1.Object.Count; i++)
             {
                 var signal1 = inputNode1.Object[i];
+                Signal signal2;
                 if (i < inputNode2.Object.Count)
                 {
-                    var signal2 = inputNode2.Object[i];
-                    OutputNodes[0].Object.Add(WaveMath.ExecuteOperation(Operation, signal1, signal2));
+                    signal2 = inputNode2.Object[i];                    
+                }
+                else if (inputNode2.Object.Count > 0)
+                {
+                    signal2 = inputNode2.Object[0];                    
                 }
                 else
                 {
                     OutputNodes[0].Object.Add(signal1.Clone());
+                    continue;
                 }
+                OutputNodes[0].Object.Add(WaveMath.ExecuteOperation(Operation, signal1, signal2));
             }
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
