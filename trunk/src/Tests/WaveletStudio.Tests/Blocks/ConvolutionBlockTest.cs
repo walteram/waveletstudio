@@ -39,6 +39,10 @@ namespace WaveletStudio.Tests.Blocks
             signalBlock2.Execute();
             Assert.AreEqual("6.348 29.854 65.508 113.520 177.480 221.144 230.292 221.144 177.480 113.520 65.508 29.854 6.348", convolutionBlock2.OutputNodes[0].Object.ToString(3));
 
+            signalBlock1.OutputNodes[0].Object.Add(new Signal(new double[] { 1, 2, 3, 4 }));
+            convolutionBlock.Execute();
+            Assert.AreEqual("2.300 7.900 15.800 27.000 29.000 23.700 20.100 0.000", convolutionBlock.OutputNodes[0].Object[1].ToString(3));
+
             convolutionBlock2 = (ConvolutionBlock)convolutionBlock.Clone();
             convolutionBlock.Cascade = false;
             convolutionBlock.OutputNodes[0].ConnectTo(convolutionBlock2.InputNodes[0]);

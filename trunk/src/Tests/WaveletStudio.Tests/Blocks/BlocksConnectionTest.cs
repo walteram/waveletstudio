@@ -35,6 +35,7 @@ namespace WaveletStudio.Tests.Blocks
         {
             AssertBlock(new ConvolutionBlock());
             AssertBlock(new DownSampleBlock());
+            AssertBlock(new ExportToCSVBlock());
             AssertBlock(new FFTBlock());
             AssertBlock(new GenerateSignalBlock());
             AssertBlock(new IFFTBlock());

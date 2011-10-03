@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 using WaveletStudio.Functions;
 
@@ -19,6 +20,8 @@ namespace WaveletStudio.Tests.Blocks
                                        ExtensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint
                                    };
             waveletBlock.Execute();
+            Assert.IsTrue(waveletBlock.WaveletNameList.Count > 0);
+            Assert.AreEqual("db4", waveletBlock.WaveletName);
 
             signalBlock.OutputNodes[0].ConnectTo(waveletBlock.InputNodes[0]);
             Assert.IsNotNull(waveletBlock.Name);
@@ -48,6 +51,22 @@ namespace WaveletStudio.Tests.Blocks
             waveletBlock.OutputNodes[0].ConnectTo(block2.InputNodes[0]);
             signalBlock.Execute();
             Assert.AreEqual(0, block2.OutputNodes[0].Object.Count);
+
+            waveletBlock.Cascade = true;
+            signalBlock.ConnectTo(waveletBlock);
+            waveletBlock.ConnectTo(block2);
+            waveletBlock.Execute();
+            Assert.AreEqual(4, block2.OutputNodes[0].Object.Count);
+
+            try
+            {
+                waveletBlock.WaveletName = "nonono"; 
+                Assert.Fail("Exception not thrown!");
+            }
+            catch (Exception)
+            {
+                Assert.IsTrue(true, "Exception thrown! Yeay!");
+            }
 
         }
     }

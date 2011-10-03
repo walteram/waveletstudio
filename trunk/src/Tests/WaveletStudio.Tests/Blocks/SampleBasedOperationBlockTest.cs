@@ -49,7 +49,12 @@ namespace WaveletStudio.Tests.Blocks
             signalBlock2.OutputNodes[0].Object.Add(new Signal(new double[]{1, 2, 3, 4}));
             block.Execute();
             Assert.AreEqual("0 2 0 1 0", block.OutputNodes[0].Object[0].ToString(0));
-            Assert.AreEqual("1 2 3 4", block.OutputNodes[0].Object[1].ToString(0));
+            Assert.AreEqual("1 3 3 4", block.OutputNodes[0].Object[1].ToString(0));
+
+            signalBlock2.OutputNodes[0].Object.Clear();
+            block.Execute();
+            Assert.AreEqual(1, block.OutputNodes[0].Object.Count);
+            Assert.AreEqual("0 1 0", block.OutputNodes[0].Object[0].ToString(0));
         }
     }
 }
