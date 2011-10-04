@@ -38,6 +38,9 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DiagramNet">
+      <HintPath>..\..\res\libs\Diagram.net\DiagramNet.dll</HintPath>
+    </Reference>
     <Reference Include="Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa, processorArchitecture=MSIL">
       <HintPath>..\..\res\libs\Qios\Qios.DevSuite.Components.dll</HintPath>
     </Reference>
@@ -126,10 +129,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\labs\DiagramControl\Diagram.NET.csproj">
-      <Project>{46FE3660-273C-474B-BA51-835F5CDEDA58}</Project>
-      <Name>Diagram.NET</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WaveletStudio\WaveletStudio.csproj">
       <Project>{003D0672-355F-416B-9E88-DC95F0762329}</Project>
       <Name>WaveletStudio</Name>
