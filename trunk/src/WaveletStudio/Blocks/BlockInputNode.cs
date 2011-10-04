@@ -8,6 +8,9 @@ namespace WaveletStudio.Blocks
     [Serializable]
     public class BlockInputNode : BlockNodeBase
     {
+        /// <summary>
+        /// Default constructor
+        /// </summary>
         public BlockInputNode()
         {
 

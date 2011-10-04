@@ -40,12 +40,21 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.LoadSignal; } }
 
+        /// <summary>
+        /// Path to the file
+        /// </summary>
         [Parameter]
         public string FilePath { get; set; }
 
+        /// <summary>
+        /// Column separator
+        /// </summary>
         [Parameter]
         public string ColumnSeparator { get; set; }
 
+        /// <summary>
+        /// Signal start
+        /// </summary>
         [Parameter]
         public int SignalStart { get; set; }
 
@@ -53,6 +62,9 @@ namespace WaveletStudio.Blocks
 
         private double _samplingInterval;
 
+        /// <summary>
+        /// Sampling interval
+        /// </summary>
         [Parameter]
         public double SamplingInterval 
         {
@@ -67,9 +79,15 @@ namespace WaveletStudio.Blocks
             }
         }
 
+        /// <summary>
+        /// Ignore first row when reading the file
+        /// </summary>
         [Parameter]
         public bool IgnoreFirstRow { get; set; }
 
+        /// <summary>
+        /// If treue, the first column contains the name of the signal
+        /// </summary>
         [Parameter]
         public bool SignalNameInFirstColumn { get; set; }
 
@@ -138,6 +156,10 @@ namespace WaveletStudio.Blocks
                              };            
         }
 
+        /// <summary>
+        /// Creates the input and output nodes
+        /// </summary>
+        /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
             root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Signal", "S")};

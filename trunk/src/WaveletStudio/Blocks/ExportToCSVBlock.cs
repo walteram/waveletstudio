@@ -41,15 +41,27 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Export; } }
 
+        /// <summary>
+        /// Path to the file
+        /// </summary>
         [Parameter]
         public string FilePath { get; set; }
 
+        /// <summary>
+        /// Column separator
+        /// </summary>
         [Parameter]
         public string ColumnSeparator { get; set; }
 
+        /// <summary>
+        /// Number of decimal places
+        /// </summary>
         [Parameter]
         public int DecimalPlaces { get; set; }
 
+        /// <summary>
+        /// Include signal name in first column
+        /// </summary>
         [Parameter]
         public bool IncludeSignalNameInFirstColumn { get; set; }
 
@@ -77,6 +89,10 @@ namespace WaveletStudio.Blocks
             File.WriteAllText(filePath, stringBuilder.ToString());                   
         }
 
+        /// <summary>
+        /// Creates the input and output nodes
+        /// </summary>
+        /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
             root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, "Signal", "S") };            

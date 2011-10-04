@@ -21,6 +21,7 @@ namespace WaveletStudio.Tests.Blocks
             exportBlock.Execute();
 
             Assert.IsNotNull(exportBlock.Name);
+            Assert.IsNotNull(exportBlock.FilePath);
             Assert.IsNotNull(exportBlock.Description);
             Assert.IsNotNull(exportBlock.ProcessingType);            
             signalBlock.ConnectTo(exportBlock);
