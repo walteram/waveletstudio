@@ -61,7 +61,7 @@ namespace WaveletStudio.MainApplication.Forms
         {
             var pane = GraphControl.GraphPane;
             if (pane.CurveList.Count > 0)
-                pane.CurveList.RemoveAt(0);
+                pane.CurveList.Clear();
             TempBlock.Execute();
             var outputNode = TempBlock.OutputNodes.FirstOrDefault(it => it.Name == ShowOutputList.Text);
             if (outputNode == null || outputNode.Object == null || outputNode.Object.Count == 0)
