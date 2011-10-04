@@ -73,10 +73,31 @@ namespace WaveletStudio.MainApplication.Forms
             var index = ShowOutputSignal.SelectedIndex;
             if (index == -1 || index > outputNode.Object.Count - 1)
                 index = 0;
-            var samples = outputNode.Object[index].GetSamplesPair();
+            var signal = outputNode.Object[index];
+            var samples = signal.GetSamplesPair();
+            
             var yAxys = new ZedGraph.PointPairList();
             yAxys.AddRange(samples.Select(it => new ZedGraph.PointPair(it[1], it[0])));
             pane.AddCurve(outputNode.Name, yAxys, Color.Red, ZedGraph.SymbolType.None);
+
+            if (signal.CustomPlot != null && signal.CustomPlot.Length > 0)
+            {
+                if (signal.CustomPlot.Length == 2)
+                {
+                    var minValue = signal.Samples.Min();
+                    var maxValue = signal.Samples.Max();
+
+                    var y2Axys = new ZedGraph.PointPairList
+                                     {{signal.CustomPlot[0], minValue}, {signal.CustomPlot[0], maxValue}};
+                    pane.AddCurve("Previous Size", y2Axys, Color.Orange, ZedGraph.SymbolType.None);
+
+                    var y3Axys = new ZedGraph.PointPairList
+                                     {{signal.CustomPlot[1], minValue}, {signal.CustomPlot[1], maxValue}};
+                    pane.AddCurve("Previous Size", y3Axys, Color.Orange, ZedGraph.SymbolType.None);
+
+                }
+            }
+
             pane.Legend.IsVisible = false;
             pane.Title.Text = ApplicationUtils.GetResourceString(outputNode.Name);
             pane.XAxis.Title.IsVisible = false;

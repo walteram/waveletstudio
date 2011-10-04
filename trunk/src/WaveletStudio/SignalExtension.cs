@@ -6,7 +6,7 @@ namespace WaveletStudio
     /// <summary>
     /// Signal extension methods
     /// </summary>
-    public class SignalExtension
+    public static class SignalExtension
     {
         /// <summary>
         /// Extension modes
@@ -48,6 +48,23 @@ namespace WaveletStudio
         }
 
         /// <summary>
+        /// Extends a signal using the specified extension mode
+        /// </summary>
+        /// <param name="input">Signal to extend</param>
+        /// <param name="extensionMode">The extension mode</param>
+        /// <param name="beforeSize">The extension size of the left side</param>
+        /// <param name="afterSize">The extension size of right left side</param>
+        /// <returns></returns>
+        public static void Extend(ref Signal input, ExtensionMode extensionMode, int beforeSize, int afterSize)
+        {
+            var samples = Extend(input.Samples, extensionMode, beforeSize, afterSize);
+            input.Samples = samples;
+            input.CustomPlot = new[]{input.Start, input.Finish};
+            input.Start -= input.SamplingInterval * beforeSize;
+            input.Finish += input.SamplingInterval * afterSize;
+        }
+        
+        /// <summary>
         /// Extends an array using the specified extension mode
         /// </summary>
         /// <param name="input">Array to extend</param>
@@ -56,18 +73,29 @@ namespace WaveletStudio
         /// <returns></returns>
         public static double[] Extend(double[] input, ExtensionMode extensionMode, int extensionSize)
         {
+            return Extend(input, extensionMode, extensionSize, extensionSize);
+        }
+
+        /// <summary>
+        /// Extends an array using the specified extension mode
+        /// </summary>
+        /// <param name="input">Array to extend</param>
+        /// <param name="extensionMode">The extension mode</param>
+        /// <param name="beforeSize">The extension size of the left side</param>
+        /// <param name="afterSize">The extension size of right left side</param>
+        /// <returns></returns>
+        public static double[] Extend(double[] input, ExtensionMode extensionMode, int beforeSize, int afterSize)
+        {
             if (input.Length == 0)
             {
-                return MemoryPool.Pool.New<double>(extensionSize * 2, true);
+                return MemoryPool.Pool.New<double>(beforeSize + afterSize, true);
             }
             var pointsHalfLength = input.Length;
-            while (extensionSize > input.Length)
+            while (beforeSize > input.Length || afterSize > input.Length)
             {
                 input = Extend(input, extensionMode, pointsHalfLength);
                 return input;
             }
-            var beforeSize = extensionSize;
-            var afterSize = extensionSize;
             var beforeExtension = MemoryPool.Pool.New<double>(beforeSize, true);
             var afterExtension = MemoryPool.Pool.New<double>(afterSize, true);
 

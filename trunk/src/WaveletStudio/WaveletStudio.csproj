@@ -44,6 +44,7 @@
     <Compile Include="Blocks\BlockOutputNode.cs" />
     <Compile Include="Blocks\ConvolutionBlock.cs" />
     <Compile Include="Blocks\ExportToCSVBlock.cs" />
+    <Compile Include="Blocks\SignalExtensionBlock.cs" />
     <Compile Include="Blocks\WaveletBlock.cs" />
     <Compile Include="Blocks\ImportFromCSVBlock.cs" />
     <Compile Include="Blocks\SampleBasedOperationBlock.cs" />
