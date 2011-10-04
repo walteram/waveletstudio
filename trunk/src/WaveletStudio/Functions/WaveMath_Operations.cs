@@ -169,6 +169,12 @@ namespace WaveletStudio.Functions
             return Multiply(array, Math.Abs(scalar) < Double.Epsilon ? 0 : 1 / scalar);
         }
 
+        /// <summary>
+        /// Gets a subarrar with the specified length
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="length"></param>
+        /// <returns></returns>
         public static double[] SubArray(this double[] array, int length)
         {
             var newArray = MemoryPool.Pool.New<double>(length, true);
@@ -176,6 +182,13 @@ namespace WaveletStudio.Functions
             return newArray;
         }
 
+
+        /// <summary>
+        /// Executes an operation between two or more signals
+        /// </summary>
+        /// <param name="operation"></param>
+        /// <param name="signals"></param>
+        /// <returns></returns>
         public static Signal ExecuteOperation(OperationEnum operation, params Signal[] signals)
         {
             signals = signals.Where(it => it != null && it.Samples != null && it.Samples.Length > 0).OrderByDescending(it => it.Samples.Length).ToArray();
@@ -191,6 +204,11 @@ namespace WaveletStudio.Functions
             return newSignal;
         }
 
+        /// <summary>
+        /// Gets the function of specified operation
+        /// </summary>
+        /// <param name="operation"></param>
+        /// <returns></returns>
         public static Func<double[], double[], double[]> GetOperationFunction(OperationEnum operation)
         {
             if (operation == OperationEnum.Sum)
@@ -202,6 +220,11 @@ namespace WaveletStudio.Functions
             return Multiply;
         }
 
+        /// <summary>
+        /// Gets the function of specified scalar operation
+        /// </summary>
+        /// <param name="operation"></param>
+        /// <returns></returns>
         public static Func<double[], double, double[]> GetScalarOperationFunction(OperationEnum operation)
         {
             if (operation == OperationEnum.Sum)
@@ -213,6 +236,11 @@ namespace WaveletStudio.Functions
             return Multiply;
         }
 
+        /// <summary>
+        /// Gets the symbol of the specified operation
+        /// </summary>
+        /// <param name="operation"></param>
+        /// <returns></returns>
         public static string GetOperationSymbol(OperationEnum operation)
         {
             string signal;
@@ -233,23 +261,7 @@ namespace WaveletStudio.Functions
             }
             return signal;
         }
-
-
-        /// <summary>
-        /// Operation Mode
-        /// </summary>
-        public enum OperationModeEnum
-        {
-            /// <summary>
-            /// Sample by sample
-            /// </summary>
-            SampleBased,
-            /// <summary>
-            /// Correlate
-            /// </summary>
-            TimeBased
-        }
-
+        
         /// <summary>
         /// Operation
         /// </summary>

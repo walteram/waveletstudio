@@ -398,15 +398,30 @@ namespace WaveletStudio.Functions
             return result;
         }
 
+        /// <summary>
+        /// Gets all the samples of the signal separated with a space
+        /// </summary>
+        /// <param name="signalList"></param>
+        /// <param name="precision"></param>
+        /// <returns></returns>
         public static string ToString(this List<Signal> signalList, int precision)
         {
             return signalList.Count == 0 ? "" : signalList[0].ToString(precision);
         }
     }
 
+    /// <summary>
+    /// Convolution mode
+    /// </summary>
     public enum ConvolutionModeEnum
     {
+        /// <summary>
+        /// Normal
+        /// </summary>
         Normal,
+        /// <summary>
+        /// FFT with the managed library
+        /// </summary>
         ManagedFFT
     }
 

@@ -11,7 +11,10 @@ namespace WaveletStudio.Blocks
     [Serializable]
     public abstract class BlockBase
     {
-        public StringBuilder GeneratedData { get; set; }
+        /// <summary>
+        /// Generated data (used only in text-based blocks)
+        /// </summary>
+        public StringBuilder GeneratedData { get; protected set; }
 
         /// <summary>
         /// Inputs

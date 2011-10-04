@@ -89,6 +89,10 @@ namespace WaveletStudio.Blocks
                 OutputNodes[1].ConnectingNode.Root.Execute();
         }
 
+        /// <summary>
+        /// Creates the input and output nodes
+        /// </summary>
+        /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
             root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, "Signal", "In") };
