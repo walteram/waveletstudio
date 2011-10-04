@@ -23,7 +23,7 @@ namespace WaveletStudio.Tests.Blocks
             Assert.IsNotNull(convolutionBlock.ProcessingType);
 
             signalBlock1.Execute();
-            Assert.IsNull(convolutionBlock.OutputNodes[0].Object[0].Samples);
+            Assert.AreEqual("1.2 2.2 1.2 2.2 1.2", convolutionBlock.OutputNodes[0].Object[0].ToString(1));
 
             signalBlock2.Execute();
             Assert.IsNotNull(convolutionBlock.OutputNodes[0].Object);

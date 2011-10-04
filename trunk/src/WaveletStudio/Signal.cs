@@ -46,6 +46,11 @@ namespace WaveletStudio
         public double SamplingInterval { get; set; }
 
         /// <summary>
+        /// Custom plotting
+        /// </summary>
+        public double[] CustomPlot { get; set; }
+
+        /// <summary>
         /// Default constructor
         /// </summary>
         public Signal()
@@ -167,9 +172,11 @@ namespace WaveletStudio
             {
                 interval = 1;
             }
+            if (Double.IsInfinity(interval))
+                interval = 0;
             foreach (var t in Samples)
             {
-                samples.Add(new []{t, x});
+                samples.Add(new []{t, x});                
                 x = Convert.ToDouble(Convert.ToDecimal(x) + Convert.ToDecimal(interval));
             }
             return samples;

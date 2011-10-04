@@ -104,7 +104,7 @@ namespace WaveletStudio.Blocks
                 var output = signal.Copy();
                 output.Samples = WaveMath.GetScalarOperationFunction(Operation)(signal.Samples, Value);
                 OutputNodes[0].Object.Add(output);   
-            }            
+            }
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
         }

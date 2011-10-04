@@ -98,6 +98,15 @@ namespace WaveletStudio.MainApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extension size (0 to use next power of 2).
+        /// </summary>
+        internal static string extensionsize {
+            get {
+                return ResourceManager.GetString("extensionsize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to FFT.
         /// </summary>
         internal static string fft {
