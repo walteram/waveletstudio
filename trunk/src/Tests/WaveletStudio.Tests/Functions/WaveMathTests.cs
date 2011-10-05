@@ -254,6 +254,8 @@ namespace WaveletStudio.Tests.Functions
             convolved = WaveMath.ConvolveManagedFFT(signal, filter, false);
             expected = new double[] { 1, 4, 10, 20, 30, 40, 50, 60, 61, 52, 32 };
             Assert.IsTrue(TestUtils.SequenceEquals(convolved, expected));
+
+            Assert.IsNull(WaveMath.ConvolveManagedFFT(null, null, false));
         }
 
         [TestMethod]

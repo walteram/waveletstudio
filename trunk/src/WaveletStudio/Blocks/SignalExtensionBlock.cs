@@ -77,8 +77,8 @@ namespace WaveletStudio.Blocks
                 if (ExtensionSize <= 0)
                 {
                     var size = SignalExtension.NextPowerOf2(signal.Samples.Length);
-                    beforeSize = afterSize = size/2;
-                    while (beforeSize + afterSize < size)
+                    beforeSize = afterSize = (size - signal.Samples.Length) / 2;
+                    while (beforeSize + afterSize + signal.Samples.Length < size)
                         afterSize++;
                 }
 

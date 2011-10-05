@@ -84,17 +84,16 @@ namespace WaveletStudio.MainApplication.Forms
             {
                 if (signal.CustomPlot.Length == 2)
                 {
-                    var minValue = signal.Samples.Min();
-                    var maxValue = signal.Samples.Max();
+                    var minValue = signal.Samples.Min() * 1.1;
+                    var maxValue = signal.Samples.Max() * 1.1;
 
-                    var y2Axys = new ZedGraph.PointPairList
-                                     {{signal.CustomPlot[0], minValue}, {signal.CustomPlot[0], maxValue}};
-                    pane.AddCurve("Previous Size", y2Axys, Color.Orange, ZedGraph.SymbolType.None);
-
-                    var y3Axys = new ZedGraph.PointPairList
-                                     {{signal.CustomPlot[1], minValue}, {signal.CustomPlot[1], maxValue}};
-                    pane.AddCurve("Previous Size", y3Axys, Color.Orange, ZedGraph.SymbolType.None);
-
+                    var area = new ZedGraph.PointPairList{
+                                                            {signal.CustomPlot[0], minValue}, {signal.CustomPlot[0], maxValue},
+                                                            {signal.CustomPlot[0], maxValue}, {signal.CustomPlot[1], maxValue},
+                                                            {signal.CustomPlot[1], maxValue}, {signal.CustomPlot[1], minValue}, 
+                                                            {signal.CustomPlot[1], minValue}, {signal.CustomPlot[0], minValue}
+                                                         };
+                    pane.AddCurve("Previous Size", area, Color.Orange, ZedGraph.SymbolType.None);
                 }
             }
 

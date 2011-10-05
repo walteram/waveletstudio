@@ -168,12 +168,10 @@ namespace WaveletStudio
             var samples = new List<double[]>();
             var x = Start;
             var interval = SamplingInterval;
-            if (Math.Abs(interval - 0) < double.Epsilon)
+            if (Math.Abs(interval - 0) < double.Epsilon || Double.IsInfinity(interval))
             {
-                interval = 1;
+                interval = 1;                
             }
-            if (Double.IsInfinity(interval))
-                interval = 0;
             foreach (var t in Samples)
             {
                 samples.Add(new []{t, x});                

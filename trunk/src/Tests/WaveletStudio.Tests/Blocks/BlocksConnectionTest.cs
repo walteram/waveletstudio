@@ -31,6 +31,7 @@ namespace WaveletStudio.Tests.Blocks
         }
 
         [TestMethod]
+        [DeploymentItem("example.csv")]
         public void TestCloneWithLinks()
         {
             AssertBlock(new ConvolutionBlock());
@@ -42,7 +43,9 @@ namespace WaveletStudio.Tests.Blocks
             AssertBlock(new ScalarOperationBlock());
             AssertBlock(new RampFunctionBlock());
             AssertBlock(new SampleBasedOperationBlock());
+            AssertBlock(new SignalExtensionBlock());
             AssertBlock(new ImportFromCSVBlock());
+            AssertBlock(new ImportFromTextBlock{Text = "1234"});
             AssertBlock(new WaveletBlock());
         }
 

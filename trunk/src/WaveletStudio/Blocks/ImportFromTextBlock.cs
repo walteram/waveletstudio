@@ -6,20 +6,19 @@ using WaveletStudio.Blocks.CustomAttributes;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Generates a signal based on a CSV file
+    /// Generates a signal based on a text
     /// </summary>
     [SingleInputOutputBlock]
     [Serializable]
-    public class ImportFromCSVBlock : BlockBase
+    public class ImportFromTextBlock : BlockBase
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public ImportFromCSVBlock()
+        public ImportFromTextBlock()
         {
             BlockBase root = this;
             CreateNodes(ref root);
-            FilePath = "example.csv";
             ColumnSeparator = ",";
             SignalStart = 0;
             SamplingInterval = 1;
@@ -28,12 +27,12 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Name
         /// </summary>
-        public override string Name { get { return "CSV File"; } }
+        public override string Name { get { return "Text"; } }
 
         /// <summary>
         /// Description
         /// </summary>
-        public override string Description { get { return "Generates a signal based on a CSV file"; } }
+        public override string Description { get { return "Generates a signal based on a text"; } }
 
         /// <summary>
         /// Processing type
@@ -41,10 +40,10 @@ namespace WaveletStudio.Blocks
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.LoadSignal; } }
 
         /// <summary>
-        /// Path to the file
+        /// Text
         /// </summary>
         [Parameter]
-        public string FilePath { get; set; }
+        public string Text { get; set; }
 
         /// <summary>
         /// Column separator
@@ -80,12 +79,6 @@ namespace WaveletStudio.Blocks
         }
 
         /// <summary>
-        /// Ignore first row when reading the file
-        /// </summary>
-        [Parameter]
-        public bool IgnoreFirstRow { get; set; }
-
-        /// <summary>
         /// If true, the first column contains the name of the signal
         /// </summary>
         [Parameter]
@@ -97,26 +90,20 @@ namespace WaveletStudio.Blocks
         public override void Execute()
         {
             OutputNodes[0].Object.Clear();
-            var filePath = FilePath;
-            if(!Path.IsPathRooted(filePath))
-                filePath = Path.Combine(Utils.AssemblyDirectory, filePath);
-            if(!File.Exists(filePath))
+            if(string.IsNullOrEmpty(Text))
                 return;
 
             var lineNumber = 0;
-            var lines = File.ReadAllLines(filePath);
+            var lines = Text.Split('\n');
             foreach (var line in lines)
             {
                 lineNumber++;
-                if (lineNumber == 1 && IgnoreFirstRow)
-                    continue;
                 var signal = ParseLine(line);
-                if (signal != null)
-                {
-                    if (signal.Name == "")
-                        signal.Name = "Line " + lineNumber;
-                    OutputNodes[0].Object.Add(signal);   
-                }                
+                if (signal == null) 
+                    continue;
+                if (signal.Name == "")
+                    signal.Name = "Line " + lineNumber;
+                OutputNodes[0].Object.Add(signal);
             }
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();            
@@ -128,7 +115,7 @@ namespace WaveletStudio.Blocks
                 return null;
 
             var values = new List<double>();
-            var samples = line.Split(new[] {ColumnSeparator}, StringSplitOptions.RemoveEmptyEntries);
+            var samples = line.Trim().Split(new[] {ColumnSeparator}, StringSplitOptions.RemoveEmptyEntries);
             var columnNumber = 0;
             var signalName = "";
             foreach (var sampleString in samples)
@@ -172,7 +159,7 @@ namespace WaveletStudio.Blocks
         /// <returns></returns>
         public override BlockBase Clone()
         {
-            var block = (ImportFromCSVBlock)MemberwiseClone();
+            var block = (ImportFromTextBlock)MemberwiseClone();
             block.Execute();
             return block;
         }
@@ -183,7 +170,7 @@ namespace WaveletStudio.Blocks
         /// <returns></returns>
         public override BlockBase CloneWithLinks()
         {
-            var block = (ImportFromCSVBlock)MemberwiseCloneWithLinks();
+            var block = (ImportFromTextBlock)MemberwiseCloneWithLinks();
             block.Execute();
             return block;
         }

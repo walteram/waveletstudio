@@ -50,12 +50,13 @@ namespace WaveletStudio.MainApplication.Forms
             var topLocation = 41;
             foreach (var property in type.GetProperties().Where(p => p.GetCustomAttributes(typeof(Parameter), true).Length > 0 && p.CanWrite && (p.PropertyType.IsEnum || validPropertyTypes.Contains(p.PropertyType))))
             {
+                var height = 21;
                 var labelValue = ApplicationUtils.GetResourceString(property.Name);
                 var defaultValue = (property.GetValue(TempBlock, null) ?? "").ToString();
 
                 if (property.PropertyType != typeof(bool))
                 {
-                    var label = new Label { Name = "Label" + property.Name, Text = labelValue + @":", Location = new Point(6, topLocation + 3), Width = 108, Height = 26, Padding = new Padding(0)};
+                    var label = new Label { Name = "Label" + property.Name, Text = labelValue + @":", Location = new Point(6, topLocation + 3), Width = 108, Height = height+5, Padding = new Padding(0)};
                     Controls.Add(label);
                 }
 
@@ -103,19 +104,27 @@ namespace WaveletStudio.MainApplication.Forms
                     }                    
                 }
                 else
-                {
-                    field = new TextBox();
+                {                                       
+                    if (property.Name == "Text")
+                    {
+                        field = new TextBox{Multiline = true, ScrollBars = ScrollBars.Vertical };
+                        height = 100;
+                    }
+                    else
+                    {
+                        field = new TextBox();
+                    }
                     field.TextChanged += FieldValueChanged;
                 }
                 field.Name = "ClassField" + property.Name;
-                field.Size = new Size(180, 21);
+                field.Size = new Size(180, height);
                 field.Tag = property;
                 field.Location = new Point(115, topLocation);
                 if (property.PropertyType != typeof(bool))
                     field.Text = defaultValue;
 
                 Controls.Add(field);
-                topLocation += 26;
+                topLocation += height + 5;
             }
         }
 
