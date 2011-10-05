@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace WaveletStudio.Tests
@@ -27,6 +28,9 @@ namespace WaveletStudio.Tests
             pair = signal.GetSamplesPair();
             Assert.AreEqual(0, pair.ToList().Count);
 
+            signal = new Signal(new double[] { 1, 2, 3, 4, 5 }) { SamplingInterval = Double.PositiveInfinity };
+            pair = signal.GetSamplesPair();
+            Assert.AreEqual(5, pair.ToList().Count);
         }
 
         [TestMethod]

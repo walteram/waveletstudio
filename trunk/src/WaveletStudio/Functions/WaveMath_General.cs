@@ -408,6 +408,18 @@ namespace WaveletStudio.Functions
         {
             return signalList.Count == 0 ? "" : signalList[0].ToString(precision);
         }
+
+        /// <summary>
+        /// Gets all the samples of the signal separated with the specified separator
+        /// </summary>
+        /// <param name="signalList"></param>
+        /// <param name="precision"></param>
+        /// <param name="separator"></param>
+        /// <returns></returns>
+        public static string ToString(this List<Signal> signalList, int precision, string separator)
+        {
+            return signalList.Count == 0 ? "" : signalList[0].ToString(precision, separator);
+        }
     }
 
     /// <summary>

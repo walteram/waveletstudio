@@ -431,4 +431,22 @@ Click in the Signal tab and select a signal source.</value>
   <data name="extensionsize" xml:space="preserve">
     <value>Extension size (0 to use next power of 2)</value>
   </data>
+  <data name="imgdeextend" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\deextend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgdeextendmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\deextendimg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgextend" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\extend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgextendmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\extendimg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgtext" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgtextmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\textmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

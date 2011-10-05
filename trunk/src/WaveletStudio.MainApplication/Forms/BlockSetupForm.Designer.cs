@@ -40,7 +40,7 @@
             this.GraphControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.GraphControl.Location = new System.Drawing.Point(305, 41);
+            this.GraphControl.Location = new System.Drawing.Point(303, 40);
             this.GraphControl.Name = "GraphControl";
             this.GraphControl.ScrollGrace = 0D;
             this.GraphControl.ScrollMaxX = 0D;
@@ -76,13 +76,17 @@
             // 
             // NoDataLabel
             // 
-            this.NoDataLabel.AutoSize = true;
-            this.NoDataLabel.BackColor = System.Drawing.Color.Transparent;
-            this.NoDataLabel.Location = new System.Drawing.Point(439, 182);
+            this.NoDataLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoDataLabel.BackColor = System.Drawing.Color.White;
+            this.NoDataLabel.Location = new System.Drawing.Point(437, 163);
+            this.NoDataLabel.MinimumSize = new System.Drawing.Size(100, 50);
             this.NoDataLabel.Name = "NoDataLabel";
-            this.NoDataLabel.Size = new System.Drawing.Size(203, 13);
+            this.NoDataLabel.Size = new System.Drawing.Size(220, 50);
             this.NoDataLabel.TabIndex = 105;
             this.NoDataLabel.Text = "Connect the block input to see the graph.";
+            this.NoDataLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.NoDataLabel.Visible = false;
             // 
             // ShowOutputSignal

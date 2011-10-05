@@ -530,7 +530,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.Designer.Changed = false;
             this.Designer.Location = new System.Drawing.Point(2, 168);
             this.Designer.Name = "Designer";
-            this.Designer.Size = new System.Drawing.Size(940, 291);
+            this.Designer.Size = new System.Drawing.Size(940, 289);
             this.Designer.TabIndex = 54;
             this.Designer.ElementDoubleClick += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementDoubleClick);
             this.Designer.ElementMoved += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementMoved);
@@ -541,7 +541,7 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 460);
+            this.ClientSize = new System.Drawing.Size(946, 462);
             this.Controls.Add(this.Designer);
             this.Controls.Add(this.Ribbon);
             this.Controls.Add(this.qRibbonCaption1);

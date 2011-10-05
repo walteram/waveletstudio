@@ -209,6 +209,20 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgdeextend {
+            get {
+                object obj = ResourceManager.GetObject("imgdeextend", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgdeextendmini {
+            get {
+                object obj = ResourceManager.GetObject("imgdeextendmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgdividemini {
             get {
                 object obj = ResourceManager.GetObject("imgdividemini", resourceCulture);
@@ -233,6 +247,20 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static System.Drawing.Bitmap imgexportcsv {
             get {
                 object obj = ResourceManager.GetObject("imgexportcsv", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgextend {
+            get {
+                object obj = ResourceManager.GetObject("imgextend", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgextendmini {
+            get {
+                object obj = ResourceManager.GetObject("imgextendmini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -373,6 +401,20 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static System.Drawing.Bitmap imgsummini {
             get {
                 object obj = ResourceManager.GetObject("imgsummini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgtext {
+            get {
+                object obj = ResourceManager.GetObject("imgtext", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgtextmini {
+            get {
+                object obj = ResourceManager.GetObject("imgtextmini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -55,7 +55,7 @@ namespace WaveletStudio.MainApplication.Forms
         {            
             LoadRibbon();            
             WindowState = FormWindowState.Maximized;
-            AppMenuButton.Visible = true;                       
+            AppMenuButton.Visible = true;                                   
         }
 
         private void ConfigureDesigner()

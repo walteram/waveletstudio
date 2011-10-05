@@ -163,6 +163,18 @@ namespace WaveletStudio.Tests
         }
 
         [TestMethod]
+        public void TestExtendSignal()
+        {
+            var points = new double[] { 2, 6, 1, 6, 5, 0, 4, 5, 3, 4 };
+            var signal = new Signal(points) {Start = 0, Finish = 9, SamplingRate = 1, SamplingInterval = 1};
+            var expected = new double[] { 2, 2, 2, 2, 6, 1, 6, 5, 0, 4, 5, 3, 4, 4, 4, 4 };
+            SignalExtension.Extend(ref signal, SignalExtension.ExtensionMode.SmoothPadding0, 3, 3);            
+            Assert.IsTrue(signal.Samples.SequenceEqual(expected));
+            Assert.AreEqual(-3, signal.Start);
+            Assert.AreEqual(12, signal.Finish);
+        }
+
+        [TestMethod]
         public void TestNextPowerOf2()
         {
             Assert.AreEqual(1024, SignalExtension.NextPowerOf2(1000));

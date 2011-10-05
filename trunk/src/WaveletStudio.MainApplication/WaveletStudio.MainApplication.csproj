@@ -230,6 +230,24 @@
   <ItemGroup>
     <None Include="Resources\csv1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\extend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deextend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\extendimg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\deextendimg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textmini.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
