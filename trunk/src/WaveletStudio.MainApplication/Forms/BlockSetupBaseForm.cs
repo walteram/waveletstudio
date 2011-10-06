@@ -114,7 +114,7 @@ namespace WaveletStudio.MainApplication.Forms
                     {
                         field = new TextBox();
                     }
-                    field.TextChanged += FieldValueChanged;
+                    field.LostFocus += FieldValueChanged;
                 }
                 field.Name = "ClassField" + property.Name;
                 field.Size = new Size(180, height);
