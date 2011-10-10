@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using WaveletStudio.Blocks.CustomAttributes;
-using WaveletStudio.FFT;
 using WaveletStudio.Functions;
 
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// FFT
+    /// Resample input at higher rate by inserting zeros.
     /// </summary>
     [Serializable]
-    public class FFTBlock : BlockBase
+    public class UpSampleBlock : BlockBase
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public FFTBlock()
+        public UpSampleBlock()
         {
             BlockBase root = this;
             CreateNodes(ref root);
+            Factor = 2;
         }
         
         /// <summary>
@@ -26,27 +26,27 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Name
         {
-            get { return "FFT"; }
+            get { return "Upsample"; }
         }
 
         /// <summary>
-        /// Description of the block
+        /// Upsample factor
+        /// </summary>
+        [Parameter]
+        public uint Factor { get; set; }
+
+        /// <summary>
+        /// Number of 
         /// </summary>
         public override string Description
         {
-            get { return "Compute fast Fourier transform (FFT) of input"; }
+            get { return "Resample input at higher rate by inserting zeros."; }
         }
-        
+
         /// <summary>
         /// Processing type
         /// </summary>
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Operation; } }
-
-        /// <summary>
-        /// Computation mode
-        /// </summary>
-        [Parameter]
-        public ManagedFFTModeEnum Mode { get; set; } 
 
         /// <summary>
         /// Executes the block
@@ -58,35 +58,14 @@ namespace WaveletStudio.Blocks
                 return;
 
             OutputNodes[0].Object.Clear();
-            OutputNodes[1].Object.Clear();
-            foreach (var inputSignal in inputNode.Object)
+            foreach (var signal in inputNode.Object)
             {
-                var fft = WaveMath.UpSample(inputSignal.Samples);
-                ManagedFFT.FFT(ref fft, true, Mode);
-                var abs = WaveMath.AbsFromComplex(fft);
-                abs = WaveMath.Normalize(fft.SubArray(abs.Length / 2), abs.Length);
-
-                var absSignal = new Signal(abs)
-                {
-                    Start = 0,
-                    Finish = abs.Length - 1,
-                    SamplingInterval = 0.5 / (Convert.ToDouble(abs.Length) / Convert.ToDouble(inputSignal.SamplingRate))
-                };
-                var fftSignal = new Signal(fft)
-                {
-                    Start = 0,
-                    Finish = fft.Length - 1,
-                    SamplingInterval = (Convert.ToDouble(abs.Length) / Convert.ToDouble(inputSignal.SamplingRate))
-                };
-
-                OutputNodes[0].Object.Add(absSignal);
-                OutputNodes[1].Object.Add(fftSignal);
-            }
-            
+                var output = signal.Clone();
+                output.Samples = WaveMath.UpSample(signal.Samples, Convert.ToInt32(Factor));                
+                OutputNodes[0].Object.Add(output);
+            }            
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
-            if (Cascade && OutputNodes[1].ConnectingNode != null)
-                OutputNodes[1].ConnectingNode.Root.Execute();
         }
 
         /// <summary>
@@ -95,12 +74,10 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, "Signal", "In") };
-            root.OutputNodes = new List<BlockOutputNode>
-                                   {
-                                       new BlockOutputNode(ref root, "Absolute Value", "Abs"),
-                                       new BlockOutputNode(ref root, "Complex FFT", "FFT")
-                                   };
+            root.InputNodes = new List<BlockInputNode>();
+            root.OutputNodes = new List<BlockOutputNode>();
+            root.InputNodes.Add(new BlockInputNode(ref root, "Signal", "In"));
+            root.OutputNodes.Add(new BlockOutputNode(ref root, "Output", "Out"));
         }
 
         /// <summary>

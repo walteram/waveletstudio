@@ -296,17 +296,21 @@ namespace WaveletStudio.Tests.Functions
             Assert.IsTrue(upSampled.SequenceEqual(expected));
 
             input = new double[] { 1, 2, 3, 4 };
-            upSampled = WaveMath.UpSample(input, true, 2);
+            upSampled = WaveMath.UpSample(input, 3);
             expected = new double[] { 1, 0, 0, 2, 0, 0, 3, 0, 0, 4 };
             Assert.IsTrue(upSampled.SequenceEqual(expected));
 
             input = new double[] { 1, 2, 3, 4 };
-            upSampled = WaveMath.UpSample(input, false, 3);
+            upSampled = WaveMath.UpSample(input, 4, false);
             expected = new double[] { 1, 0, 0, 0, 2, 0, 0, 0, 3, 0, 0, 0, 4, 0, 0, 0 };
             Assert.IsTrue(upSampled.SequenceEqual(expected));
 
             input = new double[] { };
             upSampled = WaveMath.UpSample(input);
+            expected = new double[] { };
+            Assert.IsTrue(upSampled.SequenceEqual(expected));
+
+            upSampled = WaveMath.UpSample(null);
             expected = new double[] { };
             Assert.IsTrue(upSampled.SequenceEqual(expected));
         }        

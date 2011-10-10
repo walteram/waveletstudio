@@ -426,6 +426,20 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgupsample {
+            get {
+                object obj = ResourceManager.GetObject("imgupsample", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgupsamplemini {
+            get {
+                object obj = ResourceManager.GetObject("imgupsamplemini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgwavelet {
             get {
                 object obj = ResourceManager.GetObject("imgwavelet", resourceCulture);

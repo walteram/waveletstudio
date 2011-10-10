@@ -25,7 +25,9 @@ namespace WaveletStudio.MainApplication.Forms
 
         protected void AfterInitializing()
         {
+            UpdateGraph();
             LoadBlockOutputs();
+            UpdateSignalList();            
         }
 
         protected void FieldValueChanged()
@@ -118,8 +120,8 @@ namespace WaveletStudio.MainApplication.Forms
 
         private void ShowOutputListSelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateSignalList();
             UpdateGraph();
+            UpdateSignalList();
         }
 
         private void UpdateSignalList()

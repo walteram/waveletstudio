@@ -66,6 +66,7 @@ namespace WaveletStudio.SignalGeneration
         public abstract Signal ExecuteSampler();
 
         private double _samplingInterval;
+
         /// <summary>
         /// Gets or sets  the interval of samples (1/SamplingRate)
         /// </summary>

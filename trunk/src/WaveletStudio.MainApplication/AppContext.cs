@@ -32,7 +32,9 @@ namespace WaveletStudio.MainApplication
         {
             if (!Settings.Default.AutoLoadLastFile || Settings.Default.RecentFileList.Count == 0)
                 return;
-            foreach (var file in Settings.Default.RecentFileList)
+            var recentFiles = new string[Settings.Default.RecentFileList.Count];
+            Settings.Default.RecentFileList.CopyTo(recentFiles, 0);
+            foreach (var file in recentFiles)
             {
                 var filepath = file;
                 if (!Path.IsPathRooted(filepath))

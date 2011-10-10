@@ -15,20 +15,36 @@ namespace WaveletStudio
         /// </summary>
         public string Name { get; set; }
 
+        private double[] _samples;
         /// <summary>
         /// Samples of the signal
         /// </summary>
-        public double[] Samples { get; set; }
+        public double[] Samples
+        {
+            get
+            {
+                return _samples;
+            }
+            set
+            {
+                if (_samples != null && value != null)
+                    SamplingInterval *= Convert.ToDouble(_samples.Length) / value.Length;
+                _samples = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets the number of samples in the signal
+        /// </summary>
+        public int SamplesCount 
+        {
+            get { return _samples != null ? _samples.Length : 0; }
+        }
 
         /// <summary>
         /// Complex samples of the signal
         /// </summary>
         public bool IsComplex { get; set; }
-
-        /// <summary>
-        /// Sampling Rate
-        /// </summary>
-        public int SamplingRate { get; set; }
 
         /// <summary>
         /// Start of the signal in the time
@@ -40,10 +56,46 @@ namespace WaveletStudio
         /// </summary>
         public double Finish { get; set; }
 
+        private double _samplingInterval;
         /// <summary>
-        /// Interval in time between samples
+        /// Gets or sets  the interval of samples (1/SamplingRate)
         /// </summary>
-        public double SamplingInterval { get; set; }
+        /// <returns></returns>
+        public double SamplingInterval
+        {
+            get
+            {
+                return _samplingInterval;
+            }
+            set
+            {
+                _samplingInterval = value;
+                if (Math.Abs(value - 0d) > double.Epsilon)
+                {
+                    SamplingRate = Convert.ToInt32(Math.Round(1 / value));
+                }
+            }
+        }
+
+        private int _samplingRate;
+        /// <summary>
+        /// Sampling rate used on sampling
+        /// </summary>
+        public int SamplingRate
+        {
+            get
+            {
+                return _samplingRate;
+            }
+            set
+            {
+                _samplingRate = value;
+                if (value == 0)
+                    _samplingInterval = 1;
+                else
+                    _samplingInterval = 1d / value;
+            }
+        }
 
         /// <summary>
         /// Custom plotting
@@ -141,6 +193,8 @@ namespace WaveletStudio
         /// <returns></returns>
         public string ToString(int precision, string separator)
         {
+            if (Samples == null)
+                return "";
             var format = "{0:0.";
             for (var i = 0; i < precision; i++)
             {
@@ -167,15 +221,10 @@ namespace WaveletStudio
             }
             var samples = new List<double[]>();
             var x = Start;
-            var interval = SamplingInterval;
-            if (Math.Abs(interval - 0) < double.Epsilon || Double.IsInfinity(interval))
-            {
-                interval = 1;                
-            }
             foreach (var t in Samples)
             {
-                samples.Add(new []{t, x});                
-                x = Convert.ToDouble(Convert.ToDecimal(x) + Convert.ToDecimal(interval));
+                samples.Add(new []{t, x});
+                x = Convert.ToDouble(Convert.ToDecimal(x) + Convert.ToDecimal(SamplingInterval));
             }
             return samples;
         }

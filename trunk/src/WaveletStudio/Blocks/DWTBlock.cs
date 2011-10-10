@@ -10,14 +10,14 @@ namespace WaveletStudio.Blocks
     /// Wavelet decomposition block
     /// </summary>
     [Serializable]
-    public class WaveletBlock : BlockBase
+    public class DWTBlock : BlockBase
     {
         private MotherWavelet _motherWavelet;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public WaveletBlock()
+        public DWTBlock()
         {
             BlockBase root = this;
             CreateNodes(ref root);
@@ -31,7 +31,7 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Name
         /// </summary>
-        public override string Name { get { return "Wavelet"; } }
+        public override string Name { get { return "DWT"; } }
 
         /// <summary>
         /// Description
@@ -61,7 +61,7 @@ namespace WaveletStudio.Blocks
             }
             set
             {
-                if (value.Contains("|"))
+                if(value.Contains("|")) 
                     value = value.Split('|')[0];
                 if (!LoadWavelets(value))
                 {
@@ -138,12 +138,12 @@ namespace WaveletStudio.Blocks
                 OutputNodes[2].Object.Add(recSignal);
                 OutputNodes[3].Object.Add(recSignal);
             }
-            if (!Cascade)
+            if(!Cascade)
                 return;
             foreach (var output in OutputNodes.Where(output => output.ConnectingNode != null))
             {
                 output.ConnectingNode.Root.Execute();
-            }
+            }            
         }
 
         /// <summary>
@@ -168,8 +168,8 @@ namespace WaveletStudio.Blocks
         /// <returns></returns>
         public override BlockBase Clone()
         {
-            var block = (WaveletBlock)MemberwiseClone();
-            block.Execute();
+            var block = (DWTBlock)MemberwiseClone();
+            block.Execute();            
             return block;
         }
 
@@ -179,7 +179,7 @@ namespace WaveletStudio.Blocks
         /// <returns></returns>
         public override BlockBase CloneWithLinks()
         {
-            var block = (WaveletBlock)MemberwiseCloneWithLinks();
+            var block = (DWTBlock)MemberwiseCloneWithLinks();
             block.Execute();
             return block;
         }

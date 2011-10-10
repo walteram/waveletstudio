@@ -11,9 +11,25 @@ namespace WaveletStudio.Tests
     public class SignalTests
     {
         [TestMethod]
-        public void TestClone()
+        public void TestSamplesCount()
         {
             var signal = new Signal(new double[] { 1, 2, 3, 4, 5 }, 1);
+            Assert.AreEqual(5, signal.SamplesCount);
+
+            signal.Samples = null;
+            Assert.AreEqual(0, signal.SamplesCount);
+
+            signal = new Signal();
+            Assert.AreEqual(0, signal.SamplesCount);
+
+            signal.Samples = null;
+            Assert.AreEqual("", signal.ToString());
+        }
+        
+        [TestMethod]
+        public void TestGetSamplesPair()
+        {
+            var signal = new Signal(new double[] { 1, 2, 3, 4, 5 }, 1);            
             var pair = signal.GetSamplesPair();
 
             var i = 0;
@@ -28,13 +44,13 @@ namespace WaveletStudio.Tests
             pair = signal.GetSamplesPair();
             Assert.AreEqual(0, pair.ToList().Count);
 
-            signal = new Signal(new double[] { 1, 2, 3, 4, 5 }) { SamplingInterval = Double.PositiveInfinity };
+            signal.SamplingInterval = 1d/0d;
             pair = signal.GetSamplesPair();
-            Assert.AreEqual(5, pair.ToList().Count);
+            Assert.AreEqual(0, pair.ToList().Count);
         }
 
         [TestMethod]
-        public void TestGetSamplesPair()
+        public void TestClone()
         {
             var signal = new Signal(new double[] { 1, 2, 3, 4, 5 }, 1);
             var clone = signal.Clone();

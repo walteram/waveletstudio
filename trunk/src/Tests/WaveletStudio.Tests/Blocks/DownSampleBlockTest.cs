@@ -20,12 +20,12 @@ namespace WaveletStudio.Tests.Blocks
             Assert.IsNotNull(downSampleBlock.ProcessingType);
 
             signalBlock.Execute();
-            Assert.AreEqual("2.2 2.2", downSampleBlock.OutputNodes[0].Object.ToString(1));
+            Assert.AreEqual("1.2 1.2 1.2", downSampleBlock.OutputNodes[0].Object.ToString(1));
 
             var downSampleBlock2 = (DownSampleBlock)downSampleBlock.Clone();
             downSampleBlock.OutputNodes[0].ConnectTo(downSampleBlock2.InputNodes[0]);
             signalBlock.Execute();
-            Assert.AreEqual("2.2", downSampleBlock2.OutputNodes[0].Object.ToString(1));
+            Assert.AreEqual("1.2 1.2", downSampleBlock2.OutputNodes[0].Object.ToString(1));
 
             downSampleBlock.Cascade = false;
             downSampleBlock2 = (DownSampleBlock)downSampleBlock.Clone();

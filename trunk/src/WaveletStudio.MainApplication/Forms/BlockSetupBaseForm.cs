@@ -45,7 +45,7 @@ namespace WaveletStudio.MainApplication.Forms
         private void CreateFields()
         {
             var type = TempBlock.GetType();
-            var validPropertyTypes = new List<Type> { typeof(int), typeof(decimal), typeof(double), typeof(string), typeof(bool) };
+            var validPropertyTypes = new List<Type> { typeof(uint),  typeof(int), typeof(decimal), typeof(double), typeof(string), typeof(bool) };
 
             var topLocation = 41;
             foreach (var property in type.GetProperties().Where(p => p.GetCustomAttributes(typeof(Parameter), true).Length > 0 && p.CanWrite && (p.PropertyType.IsEnum || validPropertyTypes.Contains(p.PropertyType))))
@@ -73,12 +73,20 @@ namespace WaveletStudio.MainApplication.Forms
                     }
                         
                 }
-                else if (property.PropertyType == typeof(int) || property.PropertyType == typeof(decimal) || property.PropertyType == typeof(double))
+                else if (property.PropertyType == typeof(uint) || property.PropertyType == typeof(int) || property.PropertyType == typeof(decimal) || property.PropertyType == typeof(double))
                 {
-                    field = new NumericUpDown { Minimum = int.MinValue, Maximum = int.MaxValue };
+                    field = new NumericUpDown { Minimum = uint.MinValue, Maximum = uint.MaxValue };
+
                     ((NumericUpDown)field).Scroll += FieldValueChanged;
                     ((NumericUpDown)field).ValueChanged += FieldValueChanged;
-                    if (property.PropertyType != typeof(int))
+                    if (property.PropertyType == typeof(uint))
+                    {
+                        ((NumericUpDown)field).DecimalPlaces = 0;
+                        ((NumericUpDown)field).Increment = 1;
+                        ((NumericUpDown)field).Minimum = 1;
+                        ((NumericUpDown)field).Maximum = uint.MaxValue;
+                    }
+                    else if (property.PropertyType != typeof(int))
                     {
                         ((NumericUpDown)field).DecimalPlaces = 3;
                         ((NumericUpDown)field).Increment = 0.1m;
@@ -137,6 +145,8 @@ namespace WaveletStudio.MainApplication.Forms
             var property = (PropertyInfo)control.Tag;
             if (property.PropertyType == typeof(double))
                 value = Convert.ToDouble(((NumericUpDown)control).Value);
+            else if (property.PropertyType == typeof(uint))
+                value = Convert.ToUInt32(((NumericUpDown)control).Value);
             else if (property.PropertyType == typeof(int))
                 value = Convert.ToInt32(((NumericUpDown)control).Value);
             else if (property.PropertyType == typeof(decimal))
