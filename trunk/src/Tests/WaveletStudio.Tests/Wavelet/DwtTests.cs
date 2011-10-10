@@ -13,7 +13,7 @@ namespace WaveletStudio.Tests.Wavelet
         {
             var signal = new Signal(5, 6, 7, 8, 1, 2, 3, 4);
             var wavelet = MotherWavelet.LoadFromName("haar");
-            var output = Dwt.ExecuteDwt(signal, wavelet, 1);
+            var output = DWT.ExecuteDWT(signal, wavelet, 1);
             var expectedApproximation = new[] { 7.7781745930520172, 10.606601717798206, 2.1213203435596411, 4.9497474683058291 };
             var expectedDetails = new[] { -0.707106781186547, -0.707106781186547, -0.707106781186547, -0.707106781186547 };
 
@@ -32,7 +32,7 @@ namespace WaveletStudio.Tests.Wavelet
         {
             var signal = new Signal(new double[] { 5, 6, 7, 8, 1, 2, 3, 4 }, 1);
             var wavelet = MotherWavelet.LoadFromName("db4");
-            var output = Dwt.ExecuteDwt(signal, wavelet, 2, SignalExtension.ExtensionMode.ZeroPadding);
+            var output = DWT.ExecuteDWT(signal, wavelet, 2, SignalExtension.ExtensionMode.ZeroPadding);
 
             var expectedA1 = new[] { 0.10083065061313592, -0.60472387194825949, 1.9356768454450775, 9.564171098531471, 7.4685915826435121, 3.4407781861706259, 3.5505197189413709 };
             var expectedA2 = new[] { 0.0097241173965646223, -0.075213839644193592, 0.22259435703234348, -0.62953234901526167, 11.234286021898358, 6.4201808643834335, 0.81796094874626823 };
@@ -50,7 +50,7 @@ namespace WaveletStudio.Tests.Wavelet
         {
             var signal = new Signal(new double[] { 5, 6, 7, 8, 1, 2, 3, 4 }, 1);
             var wavelet = MotherWavelet.LoadFromName("db4");
-            var output = Dwt.ExecuteDwt(signal, wavelet, 2, SignalExtension.ExtensionMode.PeriodicPadding); //ppd
+            var output = DWT.ExecuteDWT(signal, wavelet, 2, SignalExtension.ExtensionMode.PeriodicPadding); //ppd
 
             var expectedA1 = new[] { 7.5694222332566481, 2.8360543142223662, 5.4861965643864492, 9.564171098531471, 7.5694222332566481, 2.8360543142223662, 5.4861965643864492 };
             var expectedA2 = new[] { 10.254795056347346, 8.000805703744021, 8.7589053589221, 5.7365738310078322, 12.03931261636461, 6.8935291108651908, 6.79029828331375 };
@@ -69,15 +69,15 @@ namespace WaveletStudio.Tests.Wavelet
             var points = new[] { 5, 6, 7, 8, 1, 2, 3, 4, 2.444, 1.1234 };
             var signal = new Signal(points, 1);
             var wavelet = MotherWavelet.LoadFromName("haar");
-            var levels = Dwt.ExecuteDwt(signal, wavelet, 2, SignalExtension.ExtensionMode.SymmetricWholePoint, ConvolutionModeEnum.Normal);
-            var output = Dwt.ExecuteIDwt(levels, wavelet);
+            var levels = DWT.ExecuteDWT(signal, wavelet, 2, SignalExtension.ExtensionMode.SymmetricWholePoint, ConvolutionModeEnum.Normal);
+            var output = DWT.ExecuteIDWT(levels, wavelet);
             Assert.IsTrue(TestUtils.SequenceEquals(output, signal.Samples));
 
-            levels = Dwt.ExecuteDwt(signal, wavelet, 3, SignalExtension.ExtensionMode.SymmetricWholePoint, ConvolutionModeEnum.Normal);
-            output = Dwt.ExecuteIDwt(levels, wavelet, 10);
+            levels = DWT.ExecuteDWT(signal, wavelet, 3, SignalExtension.ExtensionMode.SymmetricWholePoint, ConvolutionModeEnum.Normal);
+            output = DWT.ExecuteIDWT(levels, wavelet, 10);
             Assert.IsTrue(TestUtils.SequenceEquals(output, signal.Samples));
 
-            output = Dwt.ExecuteIDwt(levels, wavelet, -1);
+            output = DWT.ExecuteIDWT(levels, wavelet, -1);
             Assert.IsNull(output);
         }
 
@@ -87,12 +87,12 @@ namespace WaveletStudio.Tests.Wavelet
             var points = new[] { 5, 6, 7, 8, 1, 2, 3, 4, 2.444, 1.1234 };
             var signal = new Signal(points, 1);
             var wavelet = MotherWavelet.LoadFromName("haar");
-            var levels = Dwt.ExecuteDwt(signal, wavelet, 2, SignalExtension.ExtensionMode.SymmetricWholePoint);
-            var output = Dwt.ExecuteIDwt(levels, wavelet);
+            var levels = DWT.ExecuteDWT(signal, wavelet, 2, SignalExtension.ExtensionMode.SymmetricWholePoint);
+            var output = DWT.ExecuteIDWT(levels, wavelet);
             Assert.IsTrue(TestUtils.SequenceEquals(output, signal.Samples));
 
-            levels = Dwt.ExecuteDwt(signal, wavelet, 3, SignalExtension.ExtensionMode.SymmetricWholePoint);
-            output = Dwt.ExecuteIDwt(levels, wavelet, 10);
+            levels = DWT.ExecuteDWT(signal, wavelet, 3, SignalExtension.ExtensionMode.SymmetricWholePoint);
+            output = DWT.ExecuteIDWT(levels, wavelet, 10);
             Assert.IsTrue(TestUtils.SequenceEquals(output, signal.Samples));
         }
     }

@@ -77,18 +77,14 @@ namespace WaveletStudio.Blocks
             for (var i = 0; i < signals.Count; i++)
             {
                 var signal = signals[i];
+                if (filters.Count == 0)
+                {
+                    outputs.Add(signal.Clone());
+                    continue;
+                }
                 var output = signal.Clone();
-                if (i < filters.Count)
-                {
-                    output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filters[i].Samples, ReturnOnlyValid, 0, Mode);                    
-                }
-                else if (filters.Count > 0)
-                {
-                    output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filters[0].Samples, ReturnOnlyValid, 0, Mode);
-                }
-                var samplesDif = Convert.ToDouble(output.Samples.Length) / Convert.ToDouble(signal.Samples.Length);
-                output.SamplingInterval /= samplesDif;
-                output.SamplingRate = Convert.ToInt32(output.SamplingRate * samplesDif);
+                var filterIndex = i < filters.Count ? i : 0;                
+                output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filters[filterIndex].Samples, ReturnOnlyValid, 0, Mode);
                 outputs.Add(output);
             }
             OutputNodes[0].Object = outputs;

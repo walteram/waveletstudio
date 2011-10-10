@@ -8,7 +8,7 @@ namespace WaveletStudio.Tests.Blocks
     public class SignalExtensionBlockTest
     {
         [TestMethod]
-        public void TestScalarOperationBlockExecute()
+        public void TestSignalExtensionBlockTestExecute()
         {
             var signalBlock = new ImportFromTextBlock();
             var extensionBlock = new SignalExtensionBlock { ExtensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint };

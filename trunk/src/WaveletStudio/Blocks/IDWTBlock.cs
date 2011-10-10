@@ -7,23 +7,22 @@ using WaveletStudio.Wavelet;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Wavelet decomposition block
+    /// Inverse Wavelet decomposition block
     /// </summary>
     [Serializable]
-    public class WaveletBlock : BlockBase
+    public class IDWTBlock : BlockBase
     {
         private MotherWavelet _motherWavelet;
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public WaveletBlock()
+        public IDWTBlock()
         {
             BlockBase root = this;
             CreateNodes(ref root);
 
             Level = 1;
-            ExtensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint;
             WaveletNameList = CommonMotherWavelets.Wavelets.Values.Select(it => (string)it[0]).ToList();
             WaveletName = WaveletNameList.ElementAt(0);
         }
@@ -31,12 +30,12 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Name
         /// </summary>
-        public override string Name { get { return "Wavelet"; } }
+        public override string Name { get { return "IDWT"; } }
 
         /// <summary>
         /// Description
         /// </summary>
-        public override string Description { get { return "Wavelet decomposition block"; } }
+        public override string Description { get { return "Inverse Wavelet decomposition block"; } }
 
         /// <summary>
         /// Processing type
@@ -61,7 +60,7 @@ namespace WaveletStudio.Blocks
             }
             set
             {
-                if (value.Contains("|"))
+                if(value.Contains("|")) 
                     value = value.Split('|')[0];
                 if (!LoadWavelets(value))
                 {
@@ -90,60 +89,50 @@ namespace WaveletStudio.Blocks
         public int Level { get; set; }
 
         /// <summary>
-        /// Extension mode
-        /// </summary>
-        [Parameter]
-        public SignalExtension.ExtensionMode ExtensionMode { get; set; }
-
-        /// <summary>
         /// Executes the block
         /// </summary>
         public override void Execute()
         {
-            var connectingNode = InputNodes[0].ConnectingNode as BlockOutputNode;
-            if (connectingNode == null || connectingNode.Object == null)
+            var inputNode1 = InputNodes[0].ConnectingNode as BlockOutputNode;
+            var inputNode2 = InputNodes[1].ConnectingNode as BlockOutputNode;
+            if (inputNode1 == null || inputNode1.Object == null || inputNode2 == null || inputNode2.Object == null)
                 return;
-            var signalIndex = 0;
-            OutputNodes[0].Object.Clear();
-            OutputNodes[1].Object.Clear();
-            OutputNodes[2].Object.Clear();
-            OutputNodes[3].Object.Clear();
-            foreach (var signal in connectingNode.Object)
-            {
-                signalIndex++;
-                var name = signal.Name;
-                if (!string.IsNullOrEmpty(name))
-                    name += " - ";
-                else
-                    name = "Signal " + signalIndex + " - ";
-                var decompositionLevels = DWT.ExecuteDWT(signal, _motherWavelet, Level, ExtensionMode);
-                foreach (var level in decompositionLevels)
-                {
-                    var appSignal = signal.Copy();
-                    appSignal.Name = name + "Approximation Level " + (level.Index + 1);
-                    appSignal.Samples = level.Approximation;
-                    OutputNodes[0].Object.Add(appSignal);
-                    OutputNodes[3].Object.Add(appSignal);
 
-                    var detSignal = signal.Copy();
-                    detSignal.Name = name + "Details Level " + (level.Index + 1);
-                    detSignal.Samples = level.Details;
-                    OutputNodes[1].Object.Add(detSignal);
-                    OutputNodes[3].Object.Add(detSignal);
-                }
-                var reconstruction = DWT.ExecuteIDWT(decompositionLevels, _motherWavelet, Level);
-                var recSignal = signal.Copy();
-                recSignal.Name = name + "Reconstruction";
-                recSignal.Samples = reconstruction;
-                OutputNodes[2].Object.Add(recSignal);
-                OutputNodes[3].Object.Add(recSignal);
-            }
-            if (!Cascade)
-                return;
-            foreach (var output in OutputNodes.Where(output => output.ConnectingNode != null))
+            OutputNodes[0].Object.Clear();
+            var approximations = inputNode1.Object;
+            var details = inputNode2.Object;
+
+            var tempLevels = new List<DecompositionLevel>();
+            var outputs = new List<Signal>();
+
+            var currentName = "";
+            for (var i = 0; i < approximations.Count; i++)
             {
-                output.ConnectingNode.Root.Execute();
+                var name = approximations[i].Name != null ? approximations[i].Name.Split(new[] { " - " }, StringSplitOptions.RemoveEmptyEntries)[0] : "Signal";
+                if (name != currentName && currentName != "")
+                {
+                    outputs.Add(new Signal(DWT.ExecuteIDWT(tempLevels, _motherWavelet, Level)){Name = name});
+                    tempLevels = new List<DecompositionLevel>();
+                }               
+                currentName = name;
+                if (approximations[i].Samples != null && i < details.Count && details[i].Samples != null)
+                {
+                    var level = new DecompositionLevel
+                    {
+                        Approximation = approximations[i].Samples,
+                        Details = details[i].Samples,
+                        Index = i
+                    };
+                    tempLevels.Add(level);
+                }                
+                if (i != approximations.Count - 1) 
+                    continue;
+                outputs.Add(new Signal(DWT.ExecuteIDWT(tempLevels, _motherWavelet, Level)) { Name = name });
             }
+
+            OutputNodes[0].Object = outputs;
+            if (Cascade && OutputNodes[0].ConnectingNode != null)
+                OutputNodes[0].ConnectingNode.Root.Execute();
         }
 
         /// <summary>
@@ -152,13 +141,14 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, "Signal", "In") };
+            root.InputNodes = new List<BlockInputNode>
+                                  {
+                                      new BlockInputNode(ref root, "Aproximation", "Apx"),
+                                      new BlockInputNode(ref root, "Details", "Det")
+                                  };
             root.OutputNodes = new List<BlockOutputNode>
                                    {
-                                       new BlockOutputNode(ref root, "Aproximation", "Apx"),
-                                       new BlockOutputNode(ref root, "Details", "Det"),
-                                       new BlockOutputNode(ref root, "Reconstruction", "Rc"),
-                                       new BlockOutputNode(ref root, "All", "All"),
+                                       new BlockOutputNode(ref root, "Signal", "Out")
                                    };
         }
 
@@ -168,8 +158,8 @@ namespace WaveletStudio.Blocks
         /// <returns></returns>
         public override BlockBase Clone()
         {
-            var block = (WaveletBlock)MemberwiseClone();
-            block.Execute();
+            var block = (IDWTBlock)MemberwiseClone();
+            block.Execute();            
             return block;
         }
 
@@ -179,7 +169,7 @@ namespace WaveletStudio.Blocks
         /// <returns></returns>
         public override BlockBase CloneWithLinks()
         {
-            var block = (WaveletBlock)MemberwiseCloneWithLinks();
+            var block = (IDWTBlock)MemberwiseCloneWithLinks();
             block.Execute();
             return block;
         }

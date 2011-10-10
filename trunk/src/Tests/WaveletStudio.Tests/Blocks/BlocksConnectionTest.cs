@@ -46,7 +46,10 @@ namespace WaveletStudio.Tests.Blocks
             AssertBlock(new SignalExtensionBlock());
             AssertBlock(new ImportFromCSVBlock());
             AssertBlock(new ImportFromTextBlock{Text = "1234"});
+            AssertBlock(new DWTBlock());
+            AssertBlock(new UpSampleBlock());
             AssertBlock(new WaveletBlock());
+            AssertBlock(new IDWTBlock());
         }
 
         private static void AssertBlock(BlockBase block)
@@ -67,7 +70,7 @@ namespace WaveletStudio.Tests.Blocks
             }            
             blockList.ExecuteAll();
             var clone = block.CloneWithLinks();
-            foreach (var outputNode in block.OutputNodes)
+            foreach (var outputNode in clone.OutputNodes)
             {
                 Assert.IsNotNull(outputNode.Object[0].Samples);
             }

@@ -58,10 +58,12 @@ namespace WaveletStudio
         public static void Extend(ref Signal input, ExtensionMode extensionMode, int beforeSize, int afterSize)
         {
             var samples = Extend(input.Samples, extensionMode, beforeSize, afterSize);
-            input.Samples = samples;
+            var previousSamplingInterval = input.SamplingInterval;
             input.CustomPlot = new[]{input.Start, input.Finish};
             input.Start -= input.SamplingInterval * beforeSize;
             input.Finish += input.SamplingInterval * afterSize;
+            input.Samples = samples;
+            input.SamplingInterval = previousSamplingInterval;
         }
         
         /// <summary>

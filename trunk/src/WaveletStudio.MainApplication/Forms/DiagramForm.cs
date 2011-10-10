@@ -174,7 +174,7 @@ namespace WaveletStudio.MainApplication.Forms
                 setupForm = new TextBlockSetupForm(ApplicationUtils.GetResourceString(block.Name), ref block);
             else
                 setupForm = new BlockSetupForm(ApplicationUtils.GetResourceString(block.Name), ref block);
-            setupForm.ShowDialog();
+            setupForm.ShowDialog(this);
             if (setupForm.DialogResult != DialogResult.OK) 
                 return;
             diagramBlock.Refresh(ApplicationUtils.GetResourceImage("img" + setupForm.Block.Name.ToLower() + "mini", 30, 20), ApplicationUtils.GetResourceString(setupForm.Block.Name), setupForm.Block, setupForm.Block.InputNodes.ToArray(), setupForm.Block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
@@ -297,6 +297,17 @@ namespace WaveletStudio.MainApplication.Forms
             diagramForm.Show();
             diagramForm.Focus();
             AddRecentFile(filename);
+
+            var blockList = new BlockList();
+            foreach (var element in diagramForm.Designer.Document.Elements)
+            {
+                if(element is DiagramBlock == false)
+                    continue;
+
+                var block = (BlockBase)((DiagramBlock)element).State;
+                blockList.Add(block);
+            }   
+            blockList.ExecuteAll();
         }
 
         public void SaveAs()

@@ -361,17 +361,19 @@ namespace WaveletStudio.Functions
         /// <returns></returns>
         public static double[] DownSample(double[] input, int factor = 2, bool invert = false)
         {
-            var size = input.Length / factor;
+            var size = invert ? Convert.ToInt32(Math.Ceiling((double)input.Length / factor)) : input.Length / factor;
             var result = MemoryPool.Pool.New<double>(size);
             var j = 0;            
             for (var i = 0; i < input.Length; i++)
             {
                 if (!invert && i % factor == 0)
                     continue;
-                if(invert && i % factor != 0)
-                    continue;
+                if (invert && i % factor != 0)
+                    continue;                
                 result[j] = input[i];
                 j++;
+                if(j>=result.Length)
+                    break;
             }
             return result;
         }
@@ -380,20 +382,20 @@ namespace WaveletStudio.Functions
         /// Increases the sampling rate of the input by inserting n-1 zeros between samples. 
         /// </summary>
         /// <param name="input"></param>
-        /// <param name="paddRight"></param>
-        /// <param name="insertionCount"></param>
+        /// <param name="factor"></param>
+        /// <param name="paddRight"></param>        
         /// <returns></returns>
-        public static double[] UpSample(double[] input, bool paddRight = true, int insertionCount = 1)
+        public static double[] UpSample(double[] input, int factor = 2, bool paddRight = true)
         {
-            if (input.Length == 0)
+            if (input == null || input.Length == 0)
             {
                 return new double[0];
             }
-            var size = input.Length * (insertionCount+1);
-            var result = MemoryPool.Pool.New<double>(size - (paddRight ? insertionCount : 0));
+            var size = input.Length * factor;
+            var result = MemoryPool.Pool.New<double>(size - (paddRight ? factor-1 : 0));
             for (var i = 0; i < input.Length; i++)
             {
-                result[i * (insertionCount + 1)] = input[i];
+                result[i * factor] = input[i];
             }
             return result;
         }
