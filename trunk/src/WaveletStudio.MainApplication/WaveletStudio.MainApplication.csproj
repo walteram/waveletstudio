@@ -254,6 +254,18 @@
   <ItemGroup>
     <None Include="Resources\upsample.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgdwt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgidwt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgdwtmini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgdwtmini1.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

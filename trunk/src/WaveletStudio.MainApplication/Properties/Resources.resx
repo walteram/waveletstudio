@@ -455,4 +455,16 @@ Click in the Signal tab and select a signal source.</value>
   <data name="imgupsamplemini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\upsamplemini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="imgdwt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgdwt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgdwtmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgdwtmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgidwt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgidwt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgidwtmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgdwtmini1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
