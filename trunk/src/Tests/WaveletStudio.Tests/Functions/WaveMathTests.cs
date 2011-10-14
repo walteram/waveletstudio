@@ -123,9 +123,13 @@ namespace WaveletStudio.Tests.Functions
             var expected = new [] {2.1, 3.2, 1, 1.3, 100, 145, 2};
             Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Abs(input)));
 
+            var signal = new Signal(input);
+            WaveMath.Abs(ref signal, input);
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, signal.Samples));
+
             input = new double[] { };
             expected = new double[] { };
-            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Abs(input)));
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Abs(input)));            
         }
 
         [TestMethod]
@@ -135,9 +139,13 @@ namespace WaveletStudio.Tests.Functions
             var expected = new[] { 3.8275318418009276, 1.6401219466856727, 176.13914953808538, 2 };
             Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.AbsFromComplex(input)));
 
+            var signal = new Signal(input) { IsComplex = true };
+            WaveMath.Abs(ref signal, input);
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, signal.Samples));
+
             input = new double[] { };
             expected = new double[] { };
-            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.AbsFromComplex(input)));
+            Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.AbsFromComplex(input)));            
         }
 
         [TestMethod]

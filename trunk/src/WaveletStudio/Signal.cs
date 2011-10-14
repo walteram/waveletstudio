@@ -28,7 +28,11 @@ namespace WaveletStudio
             set
             {
                 if (_samples != null && value != null)
+                {
                     SamplingInterval *= Convert.ToDouble(_samples.Length) / value.Length;
+                    if (IsComplex)
+                        SamplingInterval *= 2;
+                }                
                 _samples = value;
             }
         }

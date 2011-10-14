@@ -84,7 +84,26 @@ namespace WaveletStudio.Functions
         }
 
         /// <summary>
-        /// Calculates the absulte value of an array
+        /// Calculates the absolute value of a signal
+        /// </summary>
+        /// <param name="signal"></param>
+        /// <param name="samples"></param>
+        /// <returns></returns>
+        public static void Abs(ref Signal signal, double[] samples)
+        {
+            if (signal.IsComplex)
+            {                
+                signal.Samples = AbsFromComplex(samples);
+                signal.IsComplex = false;
+            }
+            else
+            {
+                signal.Samples = Abs(samples);
+            }            
+        }
+        
+        /// <summary>
+        /// Calculates the absolute value of an array
         /// </summary>
         /// <param name="samples"></param>
         /// <returns></returns>
@@ -99,7 +118,7 @@ namespace WaveletStudio.Functions
         }
 
         /// <summary>
-        /// Calculates the absulte value of an complex array
+        /// Calculates the absolute value of a complex array
         /// </summary>
         /// <param name="samples"></param>
         /// <returns></returns>

@@ -6,19 +6,18 @@ using WaveletStudio.Functions;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Resample input at higher rate by inserting zeros.
+    /// Absolute value of a signal
     /// </summary>
     [Serializable]
-    public class UpSampleBlock : BlockBase
+    public class AbsoluteValueBlock : BlockBase
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public UpSampleBlock()
+        public AbsoluteValueBlock()
         {
             BlockBase root = this;
             CreateNodes(ref root);
-            Factor = 2;
         }
         
         /// <summary>
@@ -26,21 +25,15 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Name
         {
-            get { return "Upsample"; }
+            get { return "Absolute"; }
         }
-
-        /// <summary>
-        /// Upsample factor
-        /// </summary>
-        [Parameter]
-        public uint Factor { get; set; }
 
         /// <summary>
         /// Description
         /// </summary>
         public override string Description
         {
-            get { return "Resample input at higher rate by inserting zeros."; }
+            get { return "Absolute value of a signal."; }
         }
 
         /// <summary>
@@ -61,7 +54,7 @@ namespace WaveletStudio.Blocks
             foreach (var signal in inputNode.Object)
             {
                 var output = signal.Clone();
-                output.Samples = WaveMath.UpSample(signal.Samples, Convert.ToInt32(Factor));                
+                WaveMath.Abs(ref output, signal.Samples);
                 OutputNodes[0].Object.Add(output);
             }            
             if (Cascade && OutputNodes[0].ConnectingNode != null)
