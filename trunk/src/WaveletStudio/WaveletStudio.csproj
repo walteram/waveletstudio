@@ -43,6 +43,7 @@
     <Compile Include="Blocks\BlockNodeBase.cs" />
     <Compile Include="Blocks\BlockOutputNode.cs" />
     <Compile Include="Blocks\ConvolutionBlock.cs" />
+    <Compile Include="Blocks\AbsoluteValueBlock.cs" />
     <Compile Include="Blocks\IDWTBlock.cs" />
     <Compile Include="Blocks\UpSampleBlock.cs" />
     <Compile Include="Blocks\ImportFromTextBlock.cs" />
