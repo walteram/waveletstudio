@@ -28,6 +28,11 @@ namespace WaveletStudio.MainApplication.Forms
             }
         }
 
+        public string CurrentDirectory
+        {
+            get { return string.IsNullOrEmpty(_currentFile) ? Utils.AssemblyDirectory : Path.GetDirectoryName(_currentFile);}
+        }
+
         private bool _saved;
         public bool Saved
         {
@@ -100,6 +105,7 @@ namespace WaveletStudio.MainApplication.Forms
         {
             var type = Utils.GetType(itemName);
             var block = (BlockBase)Activator.CreateInstance(type);
+            block.CurrentDirectory = CurrentDirectory;
             Designer.Document.Action = DesignerAction.Connect;
             Designer.Document.LinkType = LinkType.RightAngle;
             var diagramBlock = new DiagramBlock(ApplicationUtils.GetResourceImage("img" + block.Name.ToLower() + "mini", 30, 20), ApplicationUtils.GetResourceString(block.Name), block, block.InputNodes.ToArray(), block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
@@ -112,6 +118,7 @@ namespace WaveletStudio.MainApplication.Forms
             foreach (var type in Utils.GetTypes("WaveletStudio.Blocks").Where(t => t.BaseType == typeof(BlockBase)))
             {
                 var block = (BlockBase)Activator.CreateInstance(type);
+                block.CurrentDirectory = CurrentDirectory;
                 if (block.ProcessingType != processingType || type == typeof(GenerateSignalBlock))
                     continue;
 
@@ -168,6 +175,7 @@ namespace WaveletStudio.MainApplication.Forms
                 return;
             var diagramBlock = (DiagramBlock) e.Element;
             var block = (BlockBase) diagramBlock.State;
+            block.CurrentDirectory = CurrentDirectory;
             
             BlockSetupBaseForm setupForm;
             if(block.ProcessingType == BlockBase.ProcessingTypeEnum.Export)
@@ -305,6 +313,7 @@ namespace WaveletStudio.MainApplication.Forms
                     continue;
 
                 var block = (BlockBase)((DiagramBlock)element).State;
+                block.CurrentDirectory = CurrentDirectory;
                 blockList.Add(block);
             }   
             blockList.ExecuteAll();

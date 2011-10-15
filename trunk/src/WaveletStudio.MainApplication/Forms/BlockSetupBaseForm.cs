@@ -14,6 +14,7 @@ namespace WaveletStudio.MainApplication.Forms
     {
         protected readonly BlockBase TempBlock;
         public BlockBase Block { get; set; }
+        protected bool HasFields;
 
         public BlockSetupBaseForm()
         {
@@ -45,12 +46,13 @@ namespace WaveletStudio.MainApplication.Forms
         private void CreateFields()
         {
             var type = TempBlock.GetType();
-            var validPropertyTypes = new List<Type> { typeof(uint),  typeof(int), typeof(decimal), typeof(double), typeof(string), typeof(bool) };
-
             var topLocation = 41;
-            foreach (var property in type.GetProperties().Where(p => p.GetCustomAttributes(typeof(Parameter), true).Length > 0 && p.CanWrite && (p.PropertyType.IsEnum || validPropertyTypes.Contains(p.PropertyType))))
+            var properties = GetProperties(type);
+            HasFields = properties.Count() > 0;
+            foreach (var property in properties)
             {
                 var height = 21;
+                var left = 115;
                 var labelValue = ApplicationUtils.GetResourceString(property.Name);
                 var defaultValue = (property.GetValue(TempBlock, null) ?? "").ToString();
 
@@ -59,7 +61,6 @@ namespace WaveletStudio.MainApplication.Forms
                     var label = new Label { Name = "Label" + property.Name, Text = labelValue + @":", Location = new Point(6, topLocation + 3), Width = 108, Height = height+5, Padding = new Padding(0)};
                     Controls.Add(label);
                 }
-
                 Control field;
                 if (property.PropertyType.IsEnum)
                 {
@@ -71,7 +72,6 @@ namespace WaveletStudio.MainApplication.Forms
                         if (defaultValue == item)
                             ((ComboBox) field).SelectedIndex = ((ComboBox) field).Items.Count -1;    
                     }
-                        
                 }
                 else if (property.PropertyType == typeof(uint) || property.PropertyType == typeof(int) || property.PropertyType == typeof(decimal) || property.PropertyType == typeof(double))
                 {
@@ -94,8 +94,10 @@ namespace WaveletStudio.MainApplication.Forms
                 }
                 else if (property.PropertyType == typeof(bool))
                 {
-                    field = new CheckBox { AutoSize = true, Text = labelValue, Checked = bool.Parse(defaultValue) };
+                    field = new CheckBox { AutoSize = true, Text = labelValue, Checked = bool.Parse(defaultValue)};
                     ((CheckBox)field).CheckedChanged += FieldValueChanged;
+                    if(properties.Count() == 1)
+                        left = 6;
                 }
                 else if (property.PropertyType == typeof(string) && type.GetProperty(property.Name + "List") != null)
                 {
@@ -127,13 +129,20 @@ namespace WaveletStudio.MainApplication.Forms
                 field.Name = "ClassField" + property.Name;
                 field.Size = new Size(180, height);
                 field.Tag = property;
-                field.Location = new Point(115, topLocation);
+
+                field.Location = new Point(left, topLocation);
                 if (property.PropertyType != typeof(bool))
                     field.Text = defaultValue;
 
                 Controls.Add(field);
                 topLocation += height + 5;
             }
+        }
+
+        private static IEnumerable<PropertyInfo> GetProperties(Type type)
+        {
+            var validPropertyTypes = new List<Type> { typeof(uint), typeof(int), typeof(decimal), typeof(double), typeof(string), typeof(bool) };
+            return type.GetProperties().Where(p => p.GetCustomAttributes(typeof(Parameter), true).Length > 0 && p.CanWrite && (p.PropertyType.IsEnum || validPropertyTypes.Contains(p.PropertyType)));
         }
 
         protected void FieldValueChanged(object sender, EventArgs e)

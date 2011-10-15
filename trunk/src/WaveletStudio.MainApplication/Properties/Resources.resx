@@ -467,4 +467,13 @@ Click in the Signal tab and select a signal source.</value>
   <data name="imgidwtmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgdwtmini1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="imgabsolute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgabsolute.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgabsolutemini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgabsolutemini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sortsamples" xml:space="preserve">
+    <value>Sort Samples</value>
+  </data>
 </root>

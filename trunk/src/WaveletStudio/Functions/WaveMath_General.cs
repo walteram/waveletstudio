@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using WaveletStudio.FFT;
 
 namespace WaveletStudio.Functions
@@ -45,7 +46,7 @@ namespace WaveletStudio.Functions
             {
                 return 0;
             }
-            var sortedSamples = Unique(samples);
+            var sortedSamples = UniqueSorted(samples);
             var maxFreq = sortedSamples[0];
             var maxOccurrences = 0;
             foreach (var t in sortedSamples)
@@ -151,30 +152,30 @@ namespace WaveletStudio.Functions
         }
 
         /// <summary>
-        /// Removes the repeated values in an array
+        /// Sort and removes the repeated values in an array
         /// </summary>
         /// <param name="array"></param>
         /// <returns></returns>
-        private static double[] Unique(double[] array)
+        public static double[] UniqueSorted(double[] array)
         {
-            Array.Sort(array);
+            var newArray = (double[])array.Clone();
+            Array.Sort(newArray);
 
             var unqCount = 1;
-            for (var i = 1; i < array.Length; i++)
-                if (Math.Abs(array[i - 1] - array[i]) > Double.Epsilon)
+            for (var i = 1; i < newArray.Length; i++)
+                if (Math.Abs(newArray[i - 1] - newArray[i]) > Double.Epsilon)
                     unqCount++;
 
             var unq = MemoryPool.Pool.New<double>(unqCount);
 
-            unq[0] = array[0];
-            for (int i = 1, j = 1; i < array.Length; i++)
+            unq[0] = newArray[0];
+            for (int i = 1, j = 1; i < newArray.Length; i++)
             {
-                if (Math.Abs(array[i - 1] - array[i]) <= Double.Epsilon) 
+                if (Math.Abs(newArray[i - 1] - newArray[i]) <= Double.Epsilon)
                     continue;
-                unq[j] = array[i];
+                unq[j] = newArray[i];
                 j++;
             }
-
             return unq;
         }
 
