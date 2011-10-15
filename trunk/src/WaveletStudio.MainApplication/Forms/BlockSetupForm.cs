@@ -27,7 +27,12 @@ namespace WaveletStudio.MainApplication.Forms
         {
             UpdateGraph();
             LoadBlockOutputs();
-            UpdateSignalList();            
+            UpdateSignalList();
+            if (!HasFields)
+            {
+                GraphControl.Left = 6;
+                GraphControl.Width = Width - 12;
+            }   
         }
 
         protected void FieldValueChanged()

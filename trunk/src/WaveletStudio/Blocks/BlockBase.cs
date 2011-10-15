@@ -11,6 +11,22 @@ namespace WaveletStudio.Blocks
     [Serializable]
     public abstract class BlockBase
     {
+        private string _currentDirectory;
+
+        /// <summary>
+        /// Current opened file
+        /// </summary>
+        public string CurrentDirectory
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_currentDirectory))
+                    _currentDirectory = Utils.AssemblyDirectory;
+                return _currentDirectory;
+            }
+            set { _currentDirectory = value; }
+        }
+
         /// <summary>
         /// Generated data (used only in text-based blocks)
         /// </summary>

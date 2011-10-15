@@ -48,6 +48,7 @@
     <Compile Include="Blocks\BlockListTest.cs" />
     <Compile Include="Blocks\BlocksConnectionTest.cs" />
     <Compile Include="Blocks\ConvolutionBlockTest.cs" />
+    <Compile Include="Blocks\AbsoluteValueBlockTest.cs" />
     <Compile Include="Blocks\IDWTBlockTest.cs" />
     <Compile Include="Blocks\UpSampleBlockTest.cs" />
     <Compile Include="Blocks\ImportFromTextBlockTest.cs" />

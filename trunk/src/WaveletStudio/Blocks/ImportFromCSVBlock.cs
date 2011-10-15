@@ -98,8 +98,10 @@ namespace WaveletStudio.Blocks
         {
             OutputNodes[0].Object.Clear();
             var filePath = FilePath;
-            if(!Path.IsPathRooted(filePath))
-                filePath = Path.Combine(Utils.AssemblyDirectory, filePath);
+            if (!Path.IsPathRooted(filePath))
+                filePath = Path.Combine(CurrentDirectory, FilePath);
+            if(!File.Exists(filePath))
+                filePath = Path.Combine(Utils.AssemblyDirectory, FilePath);
             if(!File.Exists(filePath))
                 return;
 

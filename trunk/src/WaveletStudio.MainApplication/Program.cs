@@ -38,12 +38,10 @@ namespace WaveletStudio.MainApplication
         private static void ApplicationIdle(object sender, EventArgs e)
         {
             Application.Idle -= ApplicationIdle;
-            if (_splashScreen != null)
-            {
-                _splashScreen.Close();
-                _splashScreen = null;
-            }
-
+            if (_splashScreen == null) 
+                return;
+            _splashScreen.Close();
+            _splashScreen = null;
         }
     }
 }
