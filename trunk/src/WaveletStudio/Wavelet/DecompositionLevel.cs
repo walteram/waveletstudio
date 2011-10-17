@@ -87,7 +87,7 @@ namespace WaveletStudio.Wavelet
             for (var i = 0; i < Details.Length; i++)
             {
                 var sample = Details[i];
-                var norm = WaveMath.NormalDistribution(sample, mean, deviation);
+                var norm = WaveMath.ProbabilityDensityFunction(sample, mean, deviation);
                 if (double.IsNaN(norm))
                     continue;
                 if (norm < min)                

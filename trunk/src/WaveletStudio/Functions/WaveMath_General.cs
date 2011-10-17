@@ -205,21 +205,21 @@ namespace WaveletStudio.Functions
             var result = MemoryPool.Pool.New<double>(x.Length);
             for (var i = 0; i < x.Length; i++)
             {
-                result[i] = NormalDistribution(x[i], mean, deviation);
+                result[i] = ProbabilityDensityFunction(x[i], mean, deviation);
             }
             return result;
         }
 
         /// <summary>
-        /// Calculates the normal (or Gaussian) distribution of a sample
+        /// Calculates the Probability Density Function value of a sample
         /// </summary>
         /// <param name="x"></param>
         /// <param name="mean"></param>
-        /// <param name="deviation"></param>
+        /// <param name="variance"></param>
         /// <returns></returns>
-        public static double NormalDistribution(double x, double mean, double deviation)
+        public static double ProbabilityDensityFunction(double x, double mean, double variance)
         {
-            return (1/Math.Sqrt(2*Math.PI*deviation)) * Math.Exp(-1*(Math.Pow(x - mean, 2)/(2*deviation)));
+            return (1/Math.Sqrt(2*Math.PI*variance)) * Math.Exp(-1*(Math.Pow(x - mean, 2)/(2*variance)));
         }
 
         /// <summary>
@@ -418,6 +418,28 @@ namespace WaveletStudio.Functions
                 result[i * factor] = input[i];
             }
             return result;
+        }
+
+        /// <summary>
+        /// Shift signal
+        /// </summary>
+        /// <param name="signal"></param>
+        /// <param name="delay"></param>
+        public static void Shift(ref Signal signal, double delay)
+        {
+            signal.Start += delay;
+            signal.Finish += delay;
+        }
+
+        /// <summary>
+        /// Invert an array
+        /// </summary>
+        /// <param name="input"></param>
+        public static double[] Invert(double[] input)
+        {
+            var output = (double[])input.Clone();
+            Array.Reverse(output);
+            return output;
         }
 
         /// <summary>

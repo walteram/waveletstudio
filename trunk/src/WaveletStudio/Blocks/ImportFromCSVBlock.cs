@@ -148,14 +148,15 @@ namespace WaveletStudio.Blocks
             if(values.Count == 0)
                 return null;
 
-            return new Signal(values.ToArray())
+            var signal = new Signal(values.ToArray())
                              {
                                  Name = signalName,
                                  Start = SignalStart,
+                                 Finish = SignalStart + SamplingInterval*values.Count - SamplingInterval,
                                  SamplingRate = _samplingRate,
-                                 SamplingInterval = SamplingInterval,
-                                 Finish = SignalStart + SamplingInterval*values.Count - SamplingInterval
-                             };            
+                                 SamplingInterval = SamplingInterval
+                             };
+            return signal;
         }
 
         /// <summary>

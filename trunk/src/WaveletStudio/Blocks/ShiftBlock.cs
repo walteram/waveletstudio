@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
 
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Absolute value of a signal
+    /// Shift signal
     /// </summary>
     [Serializable]
-    public class AbsoluteValueBlock : BlockBase
+    public class ShiftBlock : BlockBase
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public AbsoluteValueBlock()
+        public ShiftBlock()
         {
             BlockBase root = this;
             CreateNodes(ref root);
@@ -24,7 +25,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Name
         {
-            get { return "Absolute"; }
+            get { return "Shift"; }
         }
 
         /// <summary>
@@ -32,7 +33,27 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Description
         {
-            get { return "Absolute value of a signal."; }
+            get { return "Shift signal."; }
+        }
+
+        /// <summary>
+        /// Delay in time
+        /// </summary>
+        [Parameter]
+        public double Delay { get; set; }
+
+        /// <summary>
+        /// Increment for the delay value
+        /// </summary>
+        public decimal DelayIncrement
+        {
+            get
+            {
+                var inputNode = InputNodes[0].ConnectingNode as BlockOutputNode;
+                if (inputNode == null || inputNode.Object == null)
+                    return 0.1m;
+                return Convert.ToDecimal(inputNode.Object[0].SamplingInterval);
+            }
         }
 
         /// <summary>
@@ -52,8 +73,8 @@ namespace WaveletStudio.Blocks
             OutputNodes[0].Object.Clear();
             foreach (var signal in inputNode.Object)
             {
-                var output = signal.Copy();
-                WaveMath.Abs(ref output, signal.Samples);
+                var output = signal.Clone();
+                WaveMath.Shift(ref output, Delay);
                 OutputNodes[0].Object.Add(output);
             }            
             if (Cascade && OutputNodes[0].ConnectingNode != null)

@@ -44,6 +44,9 @@
     <Compile Include="Blocks\BlockOutputNode.cs" />
     <Compile Include="Blocks\ConvolutionBlock.cs" />
     <Compile Include="Blocks\AbsoluteValueBlock.cs" />
+    <Compile Include="Blocks\NormalDistributionBlock.cs" />
+    <Compile Include="Blocks\InvertBlock.cs" />
+    <Compile Include="Blocks\ShiftBlock.cs" />
     <Compile Include="Blocks\UniqueBlock.cs" />
     <Compile Include="Blocks\IDWTBlock.cs" />
     <Compile Include="Blocks\UpSampleBlock.cs" />
@@ -66,6 +69,8 @@
     <Compile Include="Blocks\ScalarOperationBlock.cs" />
     <Compile Include="Blocks\WaveletBlock.cs" />
     <Compile Include="FFT\ManagedFft.cs" />
+    <Compile Include="Functions\NormalDist.cs" />
+    <Compile Include="Functions\NormalDistExample.cs" />
     <Compile Include="Functions\WaveMath_Operations.cs" />
     <Compile Include="MemoryPool.cs" />
     <Compile Include="SignalGeneration\Binary.cs" />

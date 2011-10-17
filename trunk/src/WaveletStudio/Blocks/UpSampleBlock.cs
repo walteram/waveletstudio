@@ -60,7 +60,7 @@ namespace WaveletStudio.Blocks
             OutputNodes[0].Object.Clear();
             foreach (var signal in inputNode.Object)
             {
-                var output = signal.Clone();
+                var output = signal.Copy();
                 output.Samples = WaveMath.UpSample(signal.Samples, Convert.ToInt32(Factor));                
                 OutputNodes[0].Object.Add(output);
             }            

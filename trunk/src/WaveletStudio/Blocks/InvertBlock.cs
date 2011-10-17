@@ -5,15 +5,15 @@ using WaveletStudio.Functions;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Absolute value of a signal
+    /// Invert a signal
     /// </summary>
     [Serializable]
-    public class AbsoluteValueBlock : BlockBase
+    public class InvertBlock : BlockBase
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public AbsoluteValueBlock()
+        public InvertBlock()
         {
             BlockBase root = this;
             CreateNodes(ref root);
@@ -24,7 +24,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Name
         {
-            get { return "Absolute"; }
+            get { return "Invert"; }
         }
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Description
         {
-            get { return "Absolute value of a signal."; }
+            get { return "Invert a signal."; }
         }
 
         /// <summary>
@@ -53,7 +53,8 @@ namespace WaveletStudio.Blocks
             foreach (var signal in inputNode.Object)
             {
                 var output = signal.Copy();
-                WaveMath.Abs(ref output, signal.Samples);
+                var samples = WaveMath.Invert(signal.Samples);
+                output.Samples = samples;
                 OutputNodes[0].Object.Add(output);
             }            
             if (Cascade && OutputNodes[0].ConnectingNode != null)
