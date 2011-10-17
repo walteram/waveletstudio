@@ -51,6 +51,7 @@ namespace WaveletStudio.Tests.Blocks
             AssertBlock(new WaveletBlock());
             AssertBlock(new IDWTBlock());
             AssertBlock(new AbsoluteValueBlock());
+            AssertBlock(new UniqueBlock());
         }
 
         private static void AssertBlock(BlockBase block)

@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
 
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Absolute value of a signal
+    /// Gets the normal distribution of a signal
     /// </summary>
     [Serializable]
-    public class AbsoluteValueBlock : BlockBase
+    [ExcludeFromCodeCoverage]
+    internal class NormalDistributionBlock : BlockBase
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public AbsoluteValueBlock()
+        public NormalDistributionBlock()
         {
             BlockBase root = this;
             CreateNodes(ref root);
@@ -24,7 +28,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Name
         {
-            get { return "Absolute"; }
+            get { return "Normal"; }
         }
 
         /// <summary>
@@ -32,13 +36,25 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Description
         {
-            get { return "Absolute value of a signal."; }
+            get { return "Gets the normal distribution of a signal."; }
         }
 
         /// <summary>
         /// Processing type
         /// </summary>
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Operation; } }
+
+        /// <summary>
+        /// Mean of the signal to be used in the calc. 0 for automatic.
+        /// </summary>
+        [Parameter]
+        public double Mean { get; set; }
+
+        /// <summary>
+        /// Standard deviation to be used in the calc. 0 for automatic.
+        /// </summary>
+        [Parameter]
+        public double StandardDeviation { get; set; }
 
         /// <summary>
         /// Executes the block
@@ -53,11 +69,33 @@ namespace WaveletStudio.Blocks
             foreach (var signal in inputNode.Object)
             {
                 var output = signal.Copy();
-                WaveMath.Abs(ref output, signal.Samples);
+                var mean = Mean;
+                var deviation = StandardDeviation;
+                if (Math.Abs(mean) < float.Epsilon)
+                    mean = WaveMath.Mean(signal.Samples);
+                if (Math.Abs(deviation) < float.Epsilon)
+                    deviation = WaveMath.StandardDeviation(signal.Samples);
+                output.Samples = NormalDistribution(signal.Samples);
                 OutputNodes[0].Object.Add(output);
             }            
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();
+        }
+
+        public static double[] NormalDistribution(double[] x)
+        {
+            var mean = WaveMath.Mean(x);
+            var deviation = WaveMath.StandardDeviation(x);
+
+            var samples = new List<KeyValuePair<int, double>>();
+            var result = MemoryPool.Pool.New<double>(x.Length);
+            for (var i = 0; i < x.Length; i++)
+            {
+                var norm = WaveMath.ProbabilityDensityFunction(x[i], mean, deviation);
+                samples.Add(new KeyValuePair<int, double>(i, norm));
+                result[i] = norm;
+            }
+            return samples.OrderBy(it => it.Value).Select(it => it.Value).ToArray();
         }
 
         /// <summary>

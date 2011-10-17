@@ -76,7 +76,7 @@ namespace WaveletStudio
                 _samplingInterval = value;
                 if (Math.Abs(value - 0d) > double.Epsilon)
                 {
-                    SamplingRate = Convert.ToInt32(Math.Round(1 / value));
+                    _samplingRate = Convert.ToInt32(Math.Round(1 / value));
                 }
             }
         }
@@ -219,7 +219,7 @@ namespace WaveletStudio
         /// <returns></returns>
         public IEnumerable<double[]> GetSamplesPair()
         {
-            if (Samples.Length == 0)
+            if (Samples == null || Samples.Length == 0)
             {
                 return new List<double[]>();
             }

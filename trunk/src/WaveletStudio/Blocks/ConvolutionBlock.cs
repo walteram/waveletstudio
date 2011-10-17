@@ -82,7 +82,7 @@ namespace WaveletStudio.Blocks
                     outputs.Add(signal.Clone());
                     continue;
                 }
-                var output = signal.Clone();
+                var output = signal.Copy();
                 var filterIndex = i < filters.Count ? i : 0;                
                 output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filters[filterIndex].Samples, ReturnOnlyValid, 0, Mode);
                 outputs.Add(output);

@@ -61,7 +61,7 @@ namespace WaveletStudio.Blocks
             OutputNodes[0].Object.Clear();
             foreach (var signal in inputNode.Object)
             {
-                var output = signal.Clone();
+                var output = signal.Copy();
                 output.Samples = SortSamples ? WaveMath.UniqueSorted(signal.Samples) : signal.Samples.Distinct().ToArray();
                 OutputNodes[0].Object.Add(output);
             }            

@@ -75,7 +75,7 @@ namespace WaveletStudio.MainApplication.Forms
                 }
                 else if (property.PropertyType == typeof(uint) || property.PropertyType == typeof(int) || property.PropertyType == typeof(decimal) || property.PropertyType == typeof(double))
                 {
-                    field = new NumericUpDown { Minimum = uint.MinValue, Maximum = uint.MaxValue };
+                    field = new NumericUpDown { Minimum = int.MinValue, Maximum = int.MaxValue };
 
                     ((NumericUpDown)field).Scroll += FieldValueChanged;
                     ((NumericUpDown)field).ValueChanged += FieldValueChanged;
@@ -90,6 +90,24 @@ namespace WaveletStudio.MainApplication.Forms
                     {
                         ((NumericUpDown)field).DecimalPlaces = 3;
                         ((NumericUpDown)field).Increment = 0.1m;
+                    }
+                    var incrementProperty = type.GetProperty(property.Name + "Increment");
+                    if (incrementProperty != null)
+                    {
+                        var increment = Convert.ToDecimal(incrementProperty.GetValue(TempBlock, null));
+                        ((NumericUpDown) field).Increment = increment;
+                    }
+                    var minProperty = type.GetProperty(property.Name + "Min");
+                    if (minProperty != null)
+                    {
+                        var min = Convert.ToDecimal(minProperty.GetValue(TempBlock, null));
+                        ((NumericUpDown)field).Minimum = min;
+                    }
+                    var maxProperty = type.GetProperty(property.Name + "Max");
+                    if (maxProperty != null)
+                    {
+                        var max = Convert.ToDecimal(maxProperty.GetValue(TempBlock, null));
+                        ((NumericUpDown)field).Maximum = max;
                     }
                 }
                 else if (property.PropertyType == typeof(bool))

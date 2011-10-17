@@ -119,13 +119,13 @@ namespace WaveletStudio.Blocks
                 var decompositionLevels = DWT.ExecuteDWT(signal, _motherWavelet, Level, ExtensionMode);
                 foreach (var level in decompositionLevels)
                 {
-                    var appSignal = signal.Clone();
+                    var appSignal = signal.Copy();
                     appSignal.Name = name + "Approximation Level " + (level.Index + 1);
                     appSignal.Samples = level.Approximation;
                     OutputNodes[0].Object.Add(appSignal);
                     OutputNodes[3].Object.Add(appSignal);
 
-                    var detSignal = signal.Clone();
+                    var detSignal = signal.Copy();
                     detSignal.Name = name + "Details Level " + (level.Index + 1);
                     detSignal.Samples = level.Details;
                     OutputNodes[1].Object.Add(detSignal);
