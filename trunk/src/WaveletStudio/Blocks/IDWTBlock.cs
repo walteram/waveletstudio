@@ -40,7 +40,7 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Processing type
         /// </summary>
-        public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Operation; } }
+        public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Transform; } }
 
         /// <summary>
         /// Available wavelet functions

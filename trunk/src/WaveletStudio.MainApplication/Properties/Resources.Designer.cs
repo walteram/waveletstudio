@@ -335,6 +335,20 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imginvert {
+            get {
+                object obj = ResourceManager.GetObject("imginvert", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imginvertmini {
+            get {
+                object obj = ResourceManager.GetObject("imginvertmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgmultiplymini {
             get {
                 object obj = ResourceManager.GetObject("imgmultiplymini", resourceCulture);
@@ -412,6 +426,20 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgshift {
+            get {
+                object obj = ResourceManager.GetObject("imgshift", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgshiftmini {
+            get {
+                object obj = ResourceManager.GetObject("imgshiftmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgsine {
             get {
                 object obj = ResourceManager.GetObject("imgsine", resourceCulture);
@@ -464,6 +492,20 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static System.Drawing.Bitmap imgtriangle {
             get {
                 object obj = ResourceManager.GetObject("imgtriangle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgunique {
+            get {
+                object obj = ResourceManager.GetObject("imgunique", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imguniquemini {
+            get {
+                object obj = ResourceManager.GetObject("imguniquemini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
