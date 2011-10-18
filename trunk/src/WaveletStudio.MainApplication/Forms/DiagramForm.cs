@@ -77,6 +77,7 @@ namespace WaveletStudio.MainApplication.Forms
             LoadSignalTemplates();
             LoadBlocks(SignalTemplatesComposite, BlockBase.ProcessingTypeEnum.CreateSignal);
             LoadBlocks(OperationsFunctionsComposite, BlockBase.ProcessingTypeEnum.Operation);
+            LoadBlocks(TransformsComposite, BlockBase.ProcessingTypeEnum.Transform);
             LoadBlocks(ExportToFileComposite, BlockBase.ProcessingTypeEnum.Export);            
         }
 
@@ -115,7 +116,7 @@ namespace WaveletStudio.MainApplication.Forms
 
         private void LoadBlocks(QCompositeItemBase compositeGroup, BlockBase.ProcessingTypeEnum processingType)
         {
-            foreach (var type in Utils.GetTypes("WaveletStudio.Blocks").Where(t => t.BaseType == typeof(BlockBase)))
+            foreach (var type in Utils.GetTypes("WaveletStudio.Blocks").Where(t => t.BaseType == typeof(BlockBase)).OrderBy(BlockBase.GetName))
             {
                 var block = (BlockBase)Activator.CreateInstance(type);
                 block.CurrentDirectory = CurrentDirectory;

@@ -102,7 +102,11 @@ namespace WaveletStudio.Blocks
             /// <summary>
             /// The block exports the signal
             /// </summary>
-            Export
+            Export,
+            /// <summary>
+            /// The block operates a transform in the signal
+            /// </summary>
+            Transform
         }
 
         /// <summary>
@@ -174,6 +178,19 @@ namespace WaveletStudio.Blocks
                 inputNode = block.InputNodes[0];
 
             outputNode.ConnectTo(inputNode);
+        }
+
+        /// <summary>
+        /// Gets the name of a block
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static string GetName(Type type)
+        {
+            if (type.BaseType != typeof(BlockBase))
+                return "";
+            var block = (BlockBase)Activator.CreateInstance(type);
+            return block.Name;
         }
     }
 }
