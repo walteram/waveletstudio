@@ -182,7 +182,6 @@ namespace WaveletStudio.Functions
             return newArray;
         }
 
-
         /// <summary>
         /// Executes an operation between two or more signals
         /// </summary>

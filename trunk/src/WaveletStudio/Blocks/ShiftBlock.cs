@@ -50,7 +50,7 @@ namespace WaveletStudio.Blocks
             get
             {
                 var inputNode = InputNodes[0].ConnectingNode as BlockOutputNode;
-                if (inputNode == null || inputNode.Object == null)
+                if (inputNode == null || inputNode.Object == null || inputNode.Object.Count == 0)
                     return 0.1m;
                 return Convert.ToDecimal(inputNode.Object[0].SamplingInterval);
             }
