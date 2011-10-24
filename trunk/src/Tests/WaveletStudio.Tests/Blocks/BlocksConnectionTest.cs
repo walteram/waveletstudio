@@ -52,6 +52,8 @@ namespace WaveletStudio.Tests.Blocks
             AssertBlock(new IDWTBlock());
             AssertBlock(new AbsoluteValueBlock());
             AssertBlock(new UniqueBlock());
+            AssertBlock(new InvertBlock());
+            AssertBlock(new ShiftBlock());
         }
 
         private static void AssertBlock(BlockBase block)
@@ -76,6 +78,10 @@ namespace WaveletStudio.Tests.Blocks
             {
                 Assert.IsNotNull(outputNode.Object[0].Samples);
             }
+
+            Assert.IsNotNull(block.Name);
+            Assert.IsNotNull(block.Description);
+            Assert.IsNotNull(block.ProcessingType);
         }
     }
 }
