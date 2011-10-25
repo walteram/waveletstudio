@@ -1,13 +1,56 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Diagnostics;
 
 namespace WaveletStudio.Functions
 {
     //todo: under development. please do not use!
     internal class Interp
     {
+ 
+        public void main ()
+        {
+             int i;       
+     
+             const int n = 9;
+             var x = new double [n];
+             var f = new double[n];
+             var b = new double[n];
+             var c = new double[n];
+             var d = new double[n];
+     
+
+             x[0] = 300.0;   x[1] = 320.0;   x[2] = 340.0;   x[3] = 360.0;
+             x[4] = 380.0;   x[5] = 400.0;   x[6] = 450.0;   x[7] = 500.0;
+             x[8] = 550.0;
+             f[0] = 0.851;   f[1] = 0.872;   f[2] = 0.891;   f[3] = 0.908;
+             f[4] = 0.926;   f[5] = 0.942;   f[6] = 0.981;   f[7] = 1.02;
+             f[8] = 1.05;
+
+             Debug.WriteLine("USING NEVILLE's ALGORITHM");
+             Debug.WriteLine("x = 510 \t " + neville ( n, x, f, 510.0 ));
+             
+             var coeff = divdiff ( n, x, f );
+             Debug.WriteLine("COEFFICIENTS OF NEWTON FORM OF THE INTERPOLATING POLYNOMIAL");
+             for ( i = 0; i < n; i++ )
+                 Debug.WriteLine(coeff[i]);
+             
+             Debug.WriteLine("VALUES FROM NEWTON FORM OF THE INTERPOLATING POLYNOMIAL");
+             Debug.WriteLine("x = 340 '\t' " + nf_eval ( n, x, coeff, 340.0 ));
+             Debug.WriteLine("x = 510 '\t' " + nf_eval ( n, x, coeff, 510.0 ));
+             Debug.WriteLine("x = 385 '\t' " + nf_eval ( n, x, coeff, 385.0 ));
+             Debug.WriteLine("x = 475 '\t' " + nf_eval ( n, x, coeff, 475.0 ));
+             
+   
+             cubic_nak ( n, x, f, ref b, ref c, ref d );
+             Debug.WriteLine("NOT-A-KNOT CUBIC SPLINE COEFFICIENSTS");
+             for ( i = 0; i < n-1; i++ )
+                 Debug.WriteLine(f[i] + "\t" + b[i] + "\t" + c[i] +"\t"+ d[i]); 
+             
+     
+            Debug.WriteLine("VALUES FROM NOT-A-KNOT CUBIC SPLINE");
+            Debug.WriteLine("x = 340 \t" + spline_eval(n, x, f, b, c, d, 340.0));
+            Debug.WriteLine("x = 510 \t" + spline_eval(n, x, f, b, c, d, 510.0));
+        }
+        
         /// <summary>
         // PURPOSE:
         //    evaluate the polynomial which interpolates a given
