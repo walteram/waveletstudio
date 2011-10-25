@@ -69,6 +69,7 @@
     <Compile Include="Blocks\ScalarOperationBlock.cs" />
     <Compile Include="Blocks\WaveletBlock.cs" />
     <Compile Include="FFT\ManagedFft.cs" />
+    <Compile Include="Functions\Interp.cs" />
     <Compile Include="Functions\WaveMath_Convolution.cs" />
     <Compile Include="Functions\WaveMath_Interpolation.cs" />
     <Compile Include="Functions\WaveMath_Operations.cs" />
