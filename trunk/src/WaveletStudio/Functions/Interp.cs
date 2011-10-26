@@ -3,10 +3,10 @@
 namespace WaveletStudio.Functions
 {
     //todo: under development. please do not use!
-    internal class Interp
+    internal static class Interp
     {
  
-        public void main ()
+        public static void main ()
         {
              int i;       
      
@@ -81,7 +81,7 @@ namespace WaveletStudio.Functions
         /// <param name="y"></param>
         /// <param name="t"></param>
         /// <returns></returns>
-        double neville(int n, double[] x, double[] y, double t)
+        static double neville(int n, double[] x, double[] y, double t)
         {
             int i, j;
             var f = new double[n];
@@ -132,7 +132,7 @@ namespace WaveletStudio.Functions
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        double[] divdiff(int n, double[] x, double[] y)
+        static double[] divdiff(int n, double[] x, double[] y)
         {
             int i, j;
 
@@ -183,7 +183,7 @@ namespace WaveletStudio.Functions
         /// <param name="nf"></param>
         /// <param name="t"></param>
         /// <returns></returns>
-        double nf_eval(int n, double[] x, double[] nf, double t)
+        static double nf_eval(int n, double[] x, double[] nf, double t)
         {
             int j;
 
@@ -195,7 +195,7 @@ namespace WaveletStudio.Functions
         }
 
 
-        void tridiagonal(int n, double[] c, ref double[] a, ref double[] b, ref double[] r)
+        static void tridiagonal(int n, double[] c, ref double[] a, ref double[] b, ref double[] r)
         {
             int i;
 
@@ -260,7 +260,7 @@ namespace WaveletStudio.Functions
         /// <param name="b"></param>
         /// <param name="c"></param>
         /// <param name="d"></param>
-        void cubic_nak(int n, double[] x, double[] f, ref double[] b, ref double[] c, ref double[] d)         
+        public static void cubic_nak(int n, double[] x, double[] f, ref double[] b, ref double[] c, ref double[] d)         
         {
              int i;
      
@@ -352,7 +352,7 @@ namespace WaveletStudio.Functions
         /// <param name="d"></param>
         /// <param name="fpa"></param>
         /// <param name="fpb"></param>
-        void cubic_clamped(int n, double[] x, double[] f, ref double[] b, ref double[] c, ref double[] d, double fpa, double fpb)               
+        static void cubic_clamped(int n, double[] x, double[] f, ref double[] b, ref double[] c, ref double[] d, double fpa, double fpb)               
         {
              int i;
      
@@ -434,7 +434,7 @@ namespace WaveletStudio.Functions
         /// <param name="d"></param>
         /// <param name="t"></param>
         /// <returns></returns>
-        double spline_eval(int n, double[] x, double[] f, double[] b, double[] c, double[] d, double t)
+        public static double spline_eval(int n, double[] x, double[] f, double[] b, double[] c, double[] d, double t)
         {
             var i = 1;
             var found = false;

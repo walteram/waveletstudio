@@ -234,6 +234,27 @@ namespace WaveletStudio
         }
 
         /// <summary>
+        /// Get the time series array
+        /// </summary>
+        /// <returns></returns>
+        public double[] GetTimeSeries()
+        {
+            if (Samples == null || Samples.Length == 0)
+            {
+                return new double[0];
+            }
+            var t = new double[_samples.Length];
+            var currentT = Convert.ToDecimal(Start);
+            var interval = Convert.ToDecimal(SamplingInterval);
+            for (var i = 0; i < _samples.Length; i++)
+            {
+                t[i] = Convert.ToDouble(currentT);
+                currentT += interval;
+            }            
+            return t;
+        }
+
+        /// <summary>
         /// Clones the signal, including the samples
         /// </summary>
         /// <returns></returns>
