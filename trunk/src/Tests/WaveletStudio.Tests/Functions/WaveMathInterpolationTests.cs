@@ -62,5 +62,33 @@ namespace WaveletStudio.Tests.Functions
             Assert.AreEqual(4d / 7d, newSignal.SamplingInterval);
             Assert.AreEqual(Convert.ToInt32(1 / (4d / 7d)), newSignal.SamplingRate);
         }
+
+        [TestMethod]
+        public void TestInterpolateCubic()
+        {
+            var signal = new Signal(new double[] { 1, 2, 3, 4 }) { Start = 1, Finish = 4, SamplingInterval = 1 };
+            var newSignal = WaveMath.InterpolateCubic(signal, 2);
+            Assert.AreEqual("1.0 1.5 2.0 2.5 3.0 3.5 4.0", newSignal.ToString(1));
+            Assert.AreEqual(1, newSignal.Start);
+            Assert.AreEqual(4, newSignal.Finish);
+            Assert.AreEqual(0.5, newSignal.SamplingInterval);
+            Assert.AreEqual(2, newSignal.SamplingRate);
+
+            signal = new Signal(new double[] { -7, 4, 8, -2, 1, -55, 2 }) { Start = -1, Finish = 2, SamplingInterval = 4d / 7d };
+            newSignal = WaveMath.InterpolateCubic(signal, 7);
+            Assert.AreEqual("-7.0000 -6.0436 -4.7484 -3.1947 -1.4627 0.3672 2.2149 4.0000 5.6422 7.0613 8.1770 8.9090 9.1770 8.9008 8.0000 6.4543 4.4827 2.3642 0.3778 -1.1977 -2.0833 -2.0000 -0.8092 1.0661 3.0629 4.6179 5.1678 4.1496 1.0000 -4.6313 -12.2428 -21.1202 -30.5489 -39.8148 -48.2032 -55.0000 -59.4906 -60.9607 -58.6960 -51.9819 -40.1041 -22.3483 2.0000", newSignal.ToString(4));
+            Assert.AreEqual(-1, newSignal.Start);
+            Assert.AreEqual(2, newSignal.Finish);
+            Assert.AreEqual(Convert.ToDecimal(4d / 7d / 7d), Convert.ToDecimal(newSignal.SamplingInterval));
+            Assert.AreEqual(Convert.ToInt32(1 / (4d / 7d / 7d)), newSignal.SamplingRate);
+
+            signal = new Signal(new double[] { -7, 4, 8, -2, 1, -55, 2 }) { Start = 1, Finish = 4, SamplingInterval = 4d / 7d };
+            newSignal = WaveMath.InterpolateCubic(signal, 1);
+            Assert.AreEqual("-7, 4, 8, -2, 1, -55, 2", newSignal.ToString(0, ", "));
+            Assert.AreEqual(1, newSignal.Start);
+            Assert.AreEqual(4, newSignal.Finish);
+            Assert.AreEqual(4d / 7d, newSignal.SamplingInterval);
+            Assert.AreEqual(Convert.ToInt32(1 / (4d / 7d)), newSignal.SamplingRate);
+        }
     }
 }

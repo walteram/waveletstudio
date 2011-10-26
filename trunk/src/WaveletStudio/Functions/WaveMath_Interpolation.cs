@@ -85,5 +85,40 @@ namespace WaveletStudio.Functions
             newSignal.SamplingInterval = newInterval;
             return newSignal;
         }
+
+        /// <summary>
+        /// Cubic interpolation. Factor must be >= 2
+        /// </summary>
+        /// <returns></returns>
+        public static Signal InterpolateCubic(Signal signal, uint factor)
+        {
+            if (factor < 2)
+                return signal.Clone();
+
+            var n = signal.Samples.Length;
+            var newSignal = signal.Copy();
+            var newSamples = MemoryPool.Pool.New<double>(Convert.ToInt32(signal.Samples.Length * factor - factor + 1));
+            var time = signal.GetTimeSeries();
+            var b = MemoryPool.Pool.New<double>(n);
+            var c = MemoryPool.Pool.New<double>(n);
+            var d = MemoryPool.Pool.New<double>(n);
+            Interp.cubic_nak(n, time, signal.Samples, ref b, ref c, ref d);
+
+            var newInterval = Convert.ToDecimal(signal.SamplingInterval / factor);
+            var currentX = Convert.ToDecimal(signal.Start);
+            for (var i = 0; i < newSamples.Length; i++)
+            {
+                newSamples[i] = Interp.spline_eval(n, time, signal.Samples, b, c, d, Convert.ToDouble(currentX));
+                currentX += newInterval;                
+            }
+            newSignal.Samples = newSamples;
+            newSignal.SamplingInterval = Convert.ToDouble(newInterval);
+
+            MemoryPool.Pool.RegisterObject(b);
+            MemoryPool.Pool.RegisterObject(c);
+            MemoryPool.Pool.RegisterObject(d);
+
+            return newSignal;
+        }
     }
 }
