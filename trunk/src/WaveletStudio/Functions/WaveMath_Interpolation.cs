@@ -120,5 +120,60 @@ namespace WaveletStudio.Functions
 
             return newSignal;
         }
+
+        /// <summary>
+        /// Interpolation from the Neville's Algorthm. Factor must be >= 2
+        /// </summary>
+        /// <returns></returns>
+        public static Signal InterpolateNeville(Signal signal, uint factor)
+        {
+            if (factor < 2)
+                return signal.Clone();
+
+            var n = signal.Samples.Length;
+            var newSignal = signal.Copy();
+            var newSamples = MemoryPool.Pool.New<double>(Convert.ToInt32(signal.Samples.Length * factor - factor + 1));
+            var time = signal.GetTimeSeries();
+            
+            var newInterval = Convert.ToDecimal(signal.SamplingInterval / factor);
+            var currentX = Convert.ToDecimal(signal.Start);
+            for (var i = 0; i < newSamples.Length; i++)
+            {
+                newSamples[i] = Interp.neville(n, time, signal.Samples, Convert.ToDouble(currentX));
+                currentX += newInterval;
+            }
+            newSignal.Samples = newSamples;
+            newSignal.SamplingInterval = Convert.ToDouble(newInterval);
+
+            return newSignal;
+        }
+
+        /// <summary>
+        /// Interpolation by the Newton Interpolation Polynomial. Factor must be >= 2
+        /// </summary>
+        /// <returns></returns>
+        public static Signal InterpolateNewton(Signal signal, uint factor)
+        {
+            if (factor < 2)
+                return signal.Clone();
+
+            var n = signal.Samples.Length;
+            var newSignal = signal.Copy();
+            var newSamples = MemoryPool.Pool.New<double>(Convert.ToInt32(signal.Samples.Length * factor - factor + 1));
+            var time = signal.GetTimeSeries();            
+            var coeffs = Interp.divdiff(n, time, signal.Samples);
+
+            var newInterval = Convert.ToDecimal(signal.SamplingInterval / factor);
+            var currentX = Convert.ToDecimal(signal.Start);
+            for (var i = 0; i < newSamples.Length; i++)
+            {
+                newSamples[i] = Interp.nf_eval(n, time, coeffs, Convert.ToDouble(currentX));
+                currentX += newInterval;
+            }
+            newSignal.Samples = newSamples;
+            newSignal.SamplingInterval = Convert.ToDouble(newInterval);
+
+            return newSignal;
+        }
     }
 }
