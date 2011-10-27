@@ -81,7 +81,7 @@ namespace WaveletStudio.Functions
         /// <param name="y"></param>
         /// <param name="t"></param>
         /// <returns></returns>
-        static double neville(int n, double[] x, double[] y, double t)
+        public static double neville(int n, double[] x, double[] y, double t)
         {
             int i, j;
             var f = new double[n];
@@ -132,7 +132,7 @@ namespace WaveletStudio.Functions
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        static double[] divdiff(int n, double[] x, double[] y)
+        public static double[] divdiff(int n, double[] x, double[] y)
         {
             int i, j;
 
@@ -183,7 +183,7 @@ namespace WaveletStudio.Functions
         /// <param name="nf"></param>
         /// <param name="t"></param>
         /// <returns></returns>
-        static double nf_eval(int n, double[] x, double[] nf, double t)
+        public static double nf_eval(int n, double[] x, double[] nf, double t)
         {
             int j;
 
