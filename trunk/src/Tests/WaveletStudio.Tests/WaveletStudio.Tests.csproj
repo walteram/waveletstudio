@@ -50,6 +50,8 @@
     <Compile Include="Blocks\BlocksConnectionTest.cs" />
     <Compile Include="Blocks\ConvolutionBlockTest.cs" />
     <Compile Include="Blocks\AbsoluteValueBlockTest.cs" />
+    <Compile Include="Blocks\RepeatBlockTest.cs" />
+    <Compile Include="Blocks\InterpolationBlockTest.cs" />
     <Compile Include="Blocks\UniqueBlockTest.cs" />
     <Compile Include="Blocks\ShiftBlockTest.cs" />
     <Compile Include="Blocks\InvertBlockTest.cs" />

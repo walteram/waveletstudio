@@ -5,6 +5,26 @@ namespace WaveletStudio.Functions
     public static partial class WaveMath
     {
         /// <summary>
+        /// Performs an interpolation in the specified signal
+        /// </summary>
+        /// <param name="signal"></param>
+        /// <param name="factor"></param>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        public static Signal Interpolate(Signal signal, uint factor, InterpolationModeEnum mode)
+        {
+            if (mode == InterpolationModeEnum.Linear)
+                return InterpolateLinear(signal, factor);
+            if (mode == InterpolationModeEnum.Nearest)
+                return InterpolateNearest(signal, factor);
+            if (mode == InterpolationModeEnum.Polynomial)
+                return InterpolatePolynomial(signal, factor);
+            if (mode == InterpolationModeEnum.NewtonForm)
+                return InterpolateNewtonForm(signal, factor);
+            return InterpolateCubic(signal, factor);
+        }
+
+        /// <summary>
         /// Linear interpolation. Factor must be >= 2
         /// </summary>
         /// <returns></returns>
@@ -125,7 +145,7 @@ namespace WaveletStudio.Functions
         /// Interpolation from the Neville's Algorthm. Factor must be >= 2
         /// </summary>
         /// <returns></returns>
-        public static Signal InterpolateNeville(Signal signal, uint factor)
+        public static Signal InterpolatePolynomial(Signal signal, uint factor)
         {
             if (factor < 2)
                 return signal.Clone();
@@ -152,7 +172,7 @@ namespace WaveletStudio.Functions
         /// Interpolation by the Newton Interpolation Polynomial. Factor must be >= 2
         /// </summary>
         /// <returns></returns>
-        public static Signal InterpolateNewton(Signal signal, uint factor)
+        public static Signal InterpolateNewtonForm(Signal signal, uint factor)
         {
             if (factor < 2)
                 return signal.Clone();
@@ -176,7 +196,6 @@ namespace WaveletStudio.Functions
             return newSignal;
         }
 
-
         /// <summary>
         /// Evaluate the polynomial which interpolates a given set of data at a single value of the independent variable using the Neville's algorithm. Based on work by Brian Bradie at tiny.cc/6nbwf
         /// </summary>
@@ -188,7 +207,7 @@ namespace WaveletStudio.Functions
         private static double Neville(int n, double[] x, double[] y, double t)
         {
             int i, j;
-            var f = new double[n];
+            var f = MemoryPool.Pool.New<double>(n);
             for (i = 0; i < n; i++)
                 f[i] = y[i];
 
@@ -199,10 +218,9 @@ namespace WaveletStudio.Functions
                 }
 
             var fxbar = f[n - 1];
-            //delete[] f;
+            MemoryPool.Pool.RegisterObject(f);
             return (fxbar);
         }
-
 
         /// <summary>
         /// Compute the coefficients of the Newton form of the polynomial which interpolates a given set of data. Based on work by Brian Bradie at tiny.cc/6nbwf       
@@ -215,7 +233,7 @@ namespace WaveletStudio.Functions
         {
             int i, j;
 
-            var f = new double[n];
+            var f = MemoryPool.Pool.New<double>(n);
             for (i = 0; i < n; i++)
                 f[i] = y[i];
 
@@ -227,7 +245,6 @@ namespace WaveletStudio.Functions
 
             return (f);
         }
-
 
         /// <summary>
         /// Evaluate the Newton form of the polynomial which interpolates a given set of data at a single value of the independent variable given the coefficients of the Newton form (obtained from 'NewtonDivDiff'). Based on work by Brian Bradie at tiny.cc/6nbwf
@@ -248,7 +265,14 @@ namespace WaveletStudio.Functions
             return (temp);
         }
 
-
+        /// <summary>
+        /// Used in interpolation functions
+        /// </summary>
+        /// <param name="n"></param>
+        /// <param name="c"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="r"></param>
         private static void Tridiagonal(int n, double[] c, ref double[] a, ref double[] b, ref double[] r)
         {
             int i;
@@ -276,14 +300,13 @@ namespace WaveletStudio.Functions
         /// <param name="b">array of size at least n</param>
         /// <param name="c">array of size at least n</param>
         /// <param name="d">array of size at least n</param>
-        public static void CubicNak(int n, double[] x, double[] f, ref double[] b, ref double[] c, ref double[] d)
+        private static void CubicNak(int n, double[] x, double[] f, ref double[] b, ref double[] c, ref double[] d)
         {
             int i;
-
-            var h = new double[n];
-            var dl = new double[n];
-            var dd = new double[n];
-            var du = new double[n];
+            var h = MemoryPool.Pool.New<double>(n);
+            var dl = MemoryPool.Pool.New<double>(n);
+            var dd = MemoryPool.Pool.New<double>(n);
+            var du = MemoryPool.Pool.New<double>(n);
 
             for (i = 0; i < n - 1; i++)
                 h[i] = x[i + 1] - x[i];
@@ -313,61 +336,10 @@ namespace WaveletStudio.Functions
                 b[i] = (f[i + 1] - f[i]) / h[i] - h[i] * (c[i + 1] + 2.0 * c[i]) / 3.0;
             }
 
-            //delete [] h;
-            //delete [] du;
-            //delete [] dd;
-            //delete [] dl;
-        }
-
-        /// <summary>
-        /// Determine the coefficients for the clamped cubic spline for a given set of data
-        /// </summary>
-        /// <param name="n">number of interpolating points</param>
-        /// <param name="x">array containing interpolating points</param>
-        /// <param name="f">array containing function values to be interpolated</param>
-        /// <param name="b">array of size at least n</param>
-        /// <param name="c">array of size at least n</param>
-        /// <param name="d">array of size at least n</param>
-        /// <param name="fpa">derivative of function at x=a</param>
-        /// <param name="fpb">derivative of function at x=b</param>
-        private static void CubicClamped(int n, double[] x, double[] f, ref double[] b, ref double[] c, ref double[] d, double fpa, double fpb)
-        {
-            int i;
-
-            var h = new double[n];
-            var dl = new double[n];
-            var dd = new double[n];
-            var du = new double[n];
-
-            for (i = 0; i < n - 1; i++)
-            {
-                h[i] = x[i + 1] - x[i];
-                dl[i] = du[i] = h[i];
-            }
-
-            dd[0] = 2.0 * h[0];
-            dd[n - 1] = 2.0 * h[n - 2];
-            c[0] = (3.0 / h[0]) * (f[1] - f[0]) - 3.0 * fpa;
-            c[n - 1] = 3.0 * fpb - (3.0 / h[n - 2]) * (f[n - 1] - f[n - 2]);
-            for (i = 0; i < n - 2; i++)
-            {
-                dd[i + 1] = 2.0 * (h[i] + h[i + 1]);
-                c[i + 1] = (3.0 / h[i + 1]) * (f[i + 2] - f[i + 1]) -
-                           (3.0 / h[i]) * (f[i + 1] - f[i]);
-            }
-
-            Tridiagonal(n, dl, ref dd, ref du, ref c);
-
-            for (i = 0; i < n - 1; i++)
-            {
-                d[i] = (c[i + 1] - c[i]) / (3.0 * h[i]);
-                b[i] = (f[i + 1] - f[i]) / h[i] - h[i] * (c[i + 1] + 2.0 * c[i]) / 3.0;
-            }
-
-            //delete [] h;
-            //delete [] du;
-            //delete [] dd;
-            //delete [] dl;
+            MemoryPool.Pool.RegisterObject(h);
+            MemoryPool.Pool.RegisterObject(du);
+            MemoryPool.Pool.RegisterObject(dd);
+            MemoryPool.Pool.RegisterObject(dl);
         }
 
         /// <summary>
@@ -381,7 +353,7 @@ namespace WaveletStudio.Functions
         /// <param name="d">array containing the coefficients of the cubic terms from the cubic spline</param>
         /// <param name="t">value of independent variable at which the interpolating polynomial is to be evaluated</param>
         /// <returns></returns>
-        public static double SplineEval(int n, double[] x, double[] f, double[] b, double[] c, double[] d, double t)
+        private static double SplineEval(int n, double[] x, double[] f, double[] b, double[] c, double[] d, double t)
         {
             var i = 1;
             var found = false;
@@ -395,5 +367,32 @@ namespace WaveletStudio.Functions
             t = f[i - 1] + (t - x[i - 1]) * (b[i - 1] + (t - x[i - 1]) * (c[i - 1] + (t - x[i - 1]) * d[i - 1]));
             return (t);
         }
+    }
+
+    /// <summary>
+    /// Interpolation mode
+    /// </summary>
+    public enum InterpolationModeEnum
+    {
+        /// <summary>
+        /// Linear interpolation
+        /// </summary>
+        Linear,
+        /// <summary>
+        /// Nearest neighbour interpolation
+        /// </summary>
+        Nearest,
+        /// <summary>
+        /// Cubic interpolation (spline)
+        /// </summary>
+        Cubic,
+        /// <summary>
+        /// Polynomial interpolation using the Neville's Algorithm
+        /// </summary>
+        Polynomial,
+        /// <summary>
+        /// Newton form of polynomial interpolation
+        /// </summary>
+        NewtonForm
     }
 }

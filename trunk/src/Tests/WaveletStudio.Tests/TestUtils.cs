@@ -21,5 +21,10 @@ namespace WaveletStudio.Tests
         {
             return (Math.Abs(double1 - double2) <= precision);
         }
+
+        public static bool SequenceAlmostEquals(this double[] double1, double[] double2)
+        {
+            return SequenceEquals(double1, double2);
+        }
     }
 }
