@@ -8,8 +8,6 @@ namespace WaveletStudio.Functions
     /// </summary>
     public static partial class WaveMath
     {
-        
-
         /// <summary>
         /// Calculates the absolute value of a signal
         /// </summary>
@@ -189,6 +187,46 @@ namespace WaveletStudio.Functions
             var output = (double[])input.Clone();
             Array.Reverse(output);
             return output;
+        }
+
+        /// <summary>
+        /// Repeat samples
+        /// </summary>
+        public static Signal Repeat(Signal signal, uint frameSize, uint repetitionCount, bool keepSamplingRate)
+        {
+            var output = signal.Copy();
+            output.Samples = Repeat(signal.Samples, frameSize, repetitionCount);
+            if (keepSamplingRate)
+                output.Finish = output.Start + output.SamplesCount * output.SamplingInterval - output.SamplingInterval;
+            else
+                output.SamplingInterval = Math.Abs(signal.Finish - signal.Start) / output.SamplesCount;
+
+            return output;
+        }
+
+        /// <summary>
+        /// Repeat samples
+        /// </summary>
+        public static double[] Repeat(double[] input, uint frameSize, uint repetitionCount)
+        {
+            if (input == null)
+                return null;
+            if (frameSize == 0 || repetitionCount == 0)
+                return (double[])input.Clone();
+            var output = new List<double>();
+            for (uint i = 0; i < input.Length; i = i + frameSize)
+            {
+                for (var k = 0; k <= repetitionCount; k++)
+                {
+                    for (var j = 0; j < frameSize; j++)
+                    {
+                        if (i + j >= input.Length)
+                            break;
+                        output.Add(input[i + j]);
+                    }    
+                }                
+            }
+            return output.ToArray();
         }
 
         /// <summary>

@@ -44,6 +44,8 @@
     <Compile Include="Blocks\BlockOutputNode.cs" />
     <Compile Include="Blocks\ConvolutionBlock.cs" />
     <Compile Include="Blocks\AbsoluteValueBlock.cs" />
+    <Compile Include="Blocks\RepeatBlock.cs" />
+    <Compile Include="Blocks\InterpolationBlock.cs" />
     <Compile Include="Blocks\NormalDistributionBlock.cs" />
     <Compile Include="Blocks\InvertBlock.cs" />
     <Compile Include="Blocks\ShiftBlock.cs" />

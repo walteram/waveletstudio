@@ -54,6 +54,8 @@ namespace WaveletStudio.Tests.Blocks
             AssertBlock(new UniqueBlock());
             AssertBlock(new InvertBlock());
             AssertBlock(new ShiftBlock());
+            AssertBlock(new InterpolationBlock());
+            AssertBlock(new RepeatBlock());
         }
 
         private static void AssertBlock(BlockBase block)

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Functions;
 
@@ -119,6 +120,67 @@ namespace WaveletStudio.Tests.Functions
 
             output = WaveMath.Invert(null);
             Assert.IsNull(output);
+        }
+
+        [TestMethod]
+        public void TestRepeat()
+        {
+            var samples = new double[] { -1, 2, 3, -4 };
+            var output = WaveMath.Repeat(samples, 1, 1);
+            Assert.IsTrue(output.SequenceEqual(new double[] { -1, -1, 2, 2, 3, 3, -4, -4 }));
+
+            output = WaveMath.Repeat(samples, 1, 2);
+            Assert.IsTrue(output.SequenceEqual(new double[] { -1, -1, -1, 2, 2, 2, 3, 3, 3, -4, -4, -4 }));
+
+            output = WaveMath.Repeat(samples, 1, 3);
+            Assert.IsTrue(output.SequenceEqual(new double[] { -1, -1, -1, -1, 2, 2, 2, 2, 3, 3, 3, 3, -4, -4, -4, -4 }));
+
+            output = WaveMath.Repeat(samples, 1, 4);
+            Assert.IsTrue(output.SequenceEqual(new double[] { -1, -1, -1, -1, -1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, -4, -4, -4, -4, -4 }));
+
+
+            output = WaveMath.Repeat(samples, 2, 1);
+            Assert.IsTrue(output.SequenceEqual(new double[] { -1, 2, -1, 2, 3, -4, 3, -4 }));
+
+            output = WaveMath.Repeat(samples, 2, 2);
+            Assert.IsTrue(output.SequenceEqual(new double[] { -1, 2, -1, 2, -1, 2, 3, -4, 3, -4, 3, -4 }));
+
+            output = WaveMath.Repeat(samples, 2, 3);
+            Assert.IsTrue(output.SequenceEqual(new double[] { -1, 2, -1, 2, -1, 2, -1, 2, 3, -4, 3, -4, 3, -4, 3, -4 }));
+
+            output = WaveMath.Repeat(samples, 3, 4);
+            Assert.IsTrue(output.SequenceEqual(new double[] { -1, 2, 3, -1, 2, 3, -1, 2, 3, -1, 2, 3, -1, 2, 3, -4, -4, -4, -4, -4}));
+
+            output = WaveMath.Repeat(samples, 0, 1);
+            Assert.IsTrue(output.SequenceEqual(new double[] { -1, 2, 3, -4 }));
+
+            output = WaveMath.Repeat(samples, 1, 0);
+            Assert.IsTrue(output.SequenceEqual(new double[] { -1, 2, 3, -4 }));
+
+            samples = new double[] { };
+            output = WaveMath.Repeat(samples, 2, 2);
+            Assert.IsTrue(output.SequenceEqual(new double[] { }));
+
+            samples = DateTime.Now.Second >= 0 ? null : new double[0];
+            output = WaveMath.Repeat(samples, 2, 2);
+            Assert.IsNull(output);
+        }
+
+        [TestMethod]
+        public void TestRepeatSignal()
+        {
+            var samples = new Signal(-1, 2, 3, -4) {Start = -1, Finish = 0.5, SamplingInterval = 0.5};
+            var output = WaveMath.Repeat(samples, 1, 1, true);
+            Assert.IsTrue(output.Samples.SequenceEqual(new double[] {-1, -1, 2, 2, 3, 3, -4, -4}));
+            Assert.AreEqual(0.5, output.SamplingInterval);
+            Assert.AreEqual(-1, output.Start);
+            Assert.AreEqual(2.5, output.Finish);
+
+            output = WaveMath.Repeat(samples, 1, 1, false);
+            Assert.IsTrue(output.Samples.SequenceEqual(new double[] { -1, -1, 2, 2, 3, 3, -4, -4 }));
+            Assert.AreEqual(0.1875, output.SamplingInterval);
+            Assert.AreEqual(-1, output.Start);
+            Assert.AreEqual(0.5, output.Finish);
         }
     }
 }

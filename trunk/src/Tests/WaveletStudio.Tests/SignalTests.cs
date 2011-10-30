@@ -27,30 +27,30 @@ namespace WaveletStudio.Tests
         }
         
         [TestMethod]
-        public void TestGetSamplesPair()
+        public void TestGetSamplesPairAndTimeSeries()
         {
             var signal = new Signal(new double[] { 1, 2, 3, 4, 5 }, 1);            
-            var pair = signal.GetSamplesPair();
+            var pair = signal.GetSamplesPair().ToArray();
+            var time = signal.GetTimeSeries().ToArray();
 
-            var i = 0;
-            foreach (var item in pair)
+            for (var i = 0; i < time.Length; i++)
             {
-                Assert.AreEqual(item[1], i);
-                Assert.AreEqual(item[0], signal.Samples.GetValue(i));                
-                i++;
+                Assert.AreEqual(pair[i][1], i);
+                Assert.AreEqual(pair[i][0], signal.Samples.GetValue(i));
+                Assert.AreEqual(time[i], i);
             }
 
             signal = new Signal();
-            pair = signal.GetSamplesPair();
-            Assert.AreEqual(0, pair.ToList().Count);
+            Assert.AreEqual(0, signal.GetSamplesPair().ToList().Count);
+            Assert.AreEqual(0, signal.GetTimeSeries().ToList().Count);
 
             signal.SamplingInterval = 1d/0d;
-            pair = signal.GetSamplesPair();
-            Assert.AreEqual(0, pair.ToList().Count);
+            Assert.AreEqual(0, signal.GetSamplesPair().ToList().Count);
+            Assert.AreEqual(0, signal.GetTimeSeries().ToList().Count);
 
             signal.Samples = null;
-            pair = signal.GetSamplesPair();
-            Assert.AreEqual(0, pair.ToList().Count);
+            Assert.AreEqual(0, signal.GetSamplesPair().ToList().Count);
+            Assert.AreEqual(0, signal.GetTimeSeries().ToList().Count);
         }
 
         [TestMethod]

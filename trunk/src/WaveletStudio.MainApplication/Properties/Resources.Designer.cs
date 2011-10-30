@@ -335,6 +335,20 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imginterpolate {
+            get {
+                object obj = ResourceManager.GetObject("imginterpolate", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imginterpolatemini {
+            get {
+                object obj = ResourceManager.GetObject("imginterpolatemini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imginvert {
             get {
                 object obj = ResourceManager.GetObject("imginvert", resourceCulture);
