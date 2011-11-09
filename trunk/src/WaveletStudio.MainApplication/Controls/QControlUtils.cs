@@ -18,7 +18,7 @@ namespace WaveletStudio.MainApplication.Controls
             textsGroup.Items.Add(new QCompositeText { Title = title, Configuration = { AlignmentHorizontal = textAlignment, FontDefinition = fontDefinition, FontDefinitionHot = fontDefinition, FontDefinitionPressed = fontDefinition } });
             if (!string.IsNullOrEmpty(text))
             {
-                textsGroup.Items.Add(new QCompositeText { Title = text, Configuration = { AlignmentHorizontal = textAlignment } });
+                textsGroup.Items.Add(new QCompositeText {  Title = text, Configuration = { AlignmentHorizontal = textAlignment } });
             }
             itemGroup.Items.Add(image);
             itemGroup.Items.Add(textsGroup);

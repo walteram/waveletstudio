@@ -296,6 +296,24 @@
   <ItemGroup>
     <None Include="Resources\imginterpolationmini.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgrepeat.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgrepeatmini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgdemux.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgdemuxmini.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgmux.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgmuxmini.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

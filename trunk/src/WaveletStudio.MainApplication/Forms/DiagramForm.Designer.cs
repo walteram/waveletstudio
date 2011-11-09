@@ -62,6 +62,9 @@ namespace WaveletStudio.MainApplication.Forms
             this.TransformsPanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
             this.TransformsComposite = new Qios.DevSuite.Components.QCompositeGroup();
             this.Designer = new DiagramNet.Designer(this.components);
+            this.RoutingRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
+            this.RoutingRibbonPane = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
+            this.RoutingComposite = new Qios.DevSuite.Components.QCompositeGroup();
             ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
             this.Ribbon.SuspendLayout();
@@ -69,6 +72,7 @@ namespace WaveletStudio.MainApplication.Forms
             ((System.ComponentModel.ISupportInitialize)(this.OperationsRibbonPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExportDataRibbonPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.TransformsRibbonPage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoutingRibbonPage)).BeginInit();
             this.SuspendLayout();
             // 
             // qRibbonItem1
@@ -245,6 +249,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.Ribbon.Controls.Add(this.OperationsRibbonPage);
             this.Ribbon.Controls.Add(this.ExportDataRibbonPage);
             this.Ribbon.Controls.Add(this.TransformsRibbonPage);
+            this.Ribbon.Controls.Add(this.RoutingRibbonPage);
             this.Ribbon.Cursor = System.Windows.Forms.Cursors.Default;
             this.Ribbon.Dock = System.Windows.Forms.DockStyle.Top;
             this.Ribbon.Form = this;
@@ -458,7 +463,7 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // ExportDataRibbonPage
             // 
-            this.ExportDataRibbonPage.ButtonOrder = 3;
+            this.ExportDataRibbonPage.ButtonOrder = 4;
             this.ExportDataRibbonPage.Items.Add(this.ExportDataPanel);
             this.ExportDataRibbonPage.Location = new System.Drawing.Point(2, 28);
             this.ExportDataRibbonPage.Name = "ExportDataRibbonPage";
@@ -527,7 +532,7 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // TransformsRibbonPage
             // 
-            this.TransformsRibbonPage.ButtonOrder = 2;
+            this.TransformsRibbonPage.ButtonOrder = 3;
             this.TransformsRibbonPage.Items.Add(this.TransformsPanel);
             this.TransformsRibbonPage.Location = new System.Drawing.Point(2, 28);
             this.TransformsRibbonPage.Name = "TransformsRibbonPage";
@@ -611,6 +616,75 @@ namespace WaveletStudio.MainApplication.Forms
             this.Designer.ElementResized += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementResized);
             this.Designer.ElementConnected += new DiagramNet.Designer.ElementConnectEventHandler(this.DesignerElementConnected);
             // 
+            // RoutingRibbonPage
+            // 
+            this.RoutingRibbonPage.ButtonOrder = 2;
+            this.RoutingRibbonPage.Items.Add(this.RoutingRibbonPane);
+            this.RoutingRibbonPage.Location = new System.Drawing.Point(2, 28);
+            this.RoutingRibbonPage.Name = "RoutingRibbonPage";
+            this.RoutingRibbonPage.PersistGuid = new System.Guid("ebcc77fc-8bf7-4096-993c-4c79ff80b437");
+            this.RoutingRibbonPage.Size = new System.Drawing.Size(940, 106);
+            this.RoutingRibbonPage.Text = "Routing";
+            // 
+            // RoutingRibbonPane
+            // 
+            this.RoutingRibbonPane.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
+            this.RoutingRibbonPane.Items.Add(this.RoutingComposite);
+            this.RoutingRibbonPane.Title = "Signal Routing";
+            // 
+            // RoutingComposite
+            // 
+            this.RoutingComposite.ColorScheme.ButtonPressedBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
+            this.RoutingComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
+            this.RoutingComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
+            this.RoutingComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
+            this.RoutingComposite.ColorScheme.ButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.RoutingComposite.ColorScheme.ButtonPressedBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
+            this.RoutingComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
+            this.RoutingComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
+            this.RoutingComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
+            this.RoutingComposite.ColorScheme.ButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.RoutingComposite.ColorScheme.CompositeItemBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBorder.SetColor("Default", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
+            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.RoutingComposite.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
+            this.RoutingComposite.Configuration.ShrinkHorizontal = true;
+            this.RoutingComposite.Configuration.ShrinkVertical = true;
+            this.RoutingComposite.Configuration.StretchHorizontal = true;
+            this.RoutingComposite.Configuration.StretchVertical = true;
+            // 
             // DiagramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -632,6 +706,7 @@ namespace WaveletStudio.MainApplication.Forms
             ((System.ComponentModel.ISupportInitialize)(this.OperationsRibbonPage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExportDataRibbonPage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TransformsRibbonPage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RoutingRibbonPage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -667,6 +742,9 @@ namespace WaveletStudio.MainApplication.Forms
         private Qios.DevSuite.Components.QCompositeGroup TransformsComposite;  
         private Qios.DevSuite.Components.Ribbon.QRibbonPage ExportDataRibbonPage;
         private Qios.DevSuite.Components.Ribbon.QRibbonPanel ExportDataPanel;
-        private Qios.DevSuite.Components.QCompositeGroup ExportToFileComposite;              
+        private Qios.DevSuite.Components.QCompositeGroup ExportToFileComposite;
+        private Qios.DevSuite.Components.Ribbon.QRibbonPage RoutingRibbonPage;
+        private Qios.DevSuite.Components.Ribbon.QRibbonPanel RoutingRibbonPane;
+        private Qios.DevSuite.Components.QCompositeGroup RoutingComposite;              
     }
 }

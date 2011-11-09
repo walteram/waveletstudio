@@ -56,6 +56,8 @@ namespace WaveletStudio.Tests.Blocks
             AssertBlock(new ShiftBlock());
             AssertBlock(new InterpolationBlock());
             AssertBlock(new RepeatBlock());
+            AssertBlock(new MuxBlock());
+            AssertBlock(new DemuxBlock{OutputCount = 1});
         }
 
         private static void AssertBlock(BlockBase block)

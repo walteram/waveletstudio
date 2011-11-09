@@ -44,6 +44,9 @@
     <Compile Include="Blocks\BlockOutputNode.cs" />
     <Compile Include="Blocks\ConvolutionBlock.cs" />
     <Compile Include="Blocks\AbsoluteValueBlock.cs" />
+    <Compile Include="Blocks\DemuxBlock.cs" />
+    <Compile Include="Blocks\CustomAttributes\TextParameter.cs" />
+    <Compile Include="Blocks\MuxBlock.cs" />
     <Compile Include="Blocks\RepeatBlock.cs" />
     <Compile Include="Blocks\InterpolationBlock.cs" />
     <Compile Include="Blocks\NormalDistributionBlock.cs" />
@@ -74,6 +77,7 @@
     <Compile Include="Functions\WaveMath_Convolution.cs" />
     <Compile Include="Functions\WaveMath_Interpolation.cs" />
     <Compile Include="Functions\WaveMath_Operations.cs" />
+    <Compile Include="Functions\WaveMath_Routing.cs" />
     <Compile Include="Functions\WaveMath_Statistics.cs" />
     <Compile Include="MemoryPool.cs" />
     <Compile Include="SignalGeneration\Binary.cs" />
