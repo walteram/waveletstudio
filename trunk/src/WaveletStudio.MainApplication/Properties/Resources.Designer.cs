@@ -237,6 +237,20 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgdemux {
+            get {
+                object obj = ResourceManager.GetObject("imgdemux", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgdemuxmini {
+            get {
+                object obj = ResourceManager.GetObject("imgdemuxmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgdividemini {
             get {
                 object obj = ResourceManager.GetObject("imgdividemini", resourceCulture);
@@ -370,6 +384,20 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgmux {
+            get {
+                object obj = ResourceManager.GetObject("imgmux", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgmuxmini {
+            get {
+                object obj = ResourceManager.GetObject("imgmuxmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgoperation {
             get {
                 object obj = ResourceManager.GetObject("imgoperation", resourceCulture);
@@ -387,6 +415,20 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static System.Drawing.Bitmap imgramp {
             get {
                 object obj = ResourceManager.GetObject("imgramp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgrepeat {
+            get {
+                object obj = ResourceManager.GetObject("imgrepeat", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgrepeatmini {
+            get {
+                object obj = ResourceManager.GetObject("imgrepeatmini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

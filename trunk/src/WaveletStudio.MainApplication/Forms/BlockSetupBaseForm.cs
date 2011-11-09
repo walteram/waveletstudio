@@ -133,7 +133,7 @@ namespace WaveletStudio.MainApplication.Forms
                 }
                 else
                 {                                       
-                    if (property.Name == "Text")
+                    if (property.Name == "Text" || property.GetCustomAttributes(typeof(TextParameter), true).Length > 0)
                     {
                         field = new TextBox{Multiline = true, ScrollBars = ScrollBars.Vertical };
                         height = 100;

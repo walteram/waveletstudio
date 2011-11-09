@@ -500,4 +500,22 @@ Click in the Signal tab and select a signal source.</value>
   <data name="imginterpolatemini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imginterpolationmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="imgrepeat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgrepeat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgrepeatmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgrepeatmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgdemux" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgdemux.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgdemuxmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgdemuxmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgmux" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgmux.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgmuxmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgmuxmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

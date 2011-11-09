@@ -106,7 +106,12 @@ namespace WaveletStudio.Blocks
             /// <summary>
             /// The block operates a transform in the signal
             /// </summary>
-            Transform
+            Transform,
+            /// <summary>
+            /// Signal routing
+            /// </summary>
+            Routing
+            
         }
 
         /// <summary>

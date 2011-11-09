@@ -74,6 +74,8 @@ namespace WaveletStudio.MainApplication.Forms
             if (outputNode == null || outputNode.Object == null || outputNode.Object.Count == 0)
             {
                 NoDataLabel.Visible = true;
+                GraphControl.Invalidate();
+                GraphControl.Refresh();
                 return;
             }
             NoDataLabel.Visible = false;

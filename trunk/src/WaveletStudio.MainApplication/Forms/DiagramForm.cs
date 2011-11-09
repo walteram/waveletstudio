@@ -77,8 +77,12 @@ namespace WaveletStudio.MainApplication.Forms
             LoadSignalTemplates();
             LoadBlocks(SignalTemplatesComposite, BlockBase.ProcessingTypeEnum.CreateSignal);
             LoadBlocks(OperationsFunctionsComposite, BlockBase.ProcessingTypeEnum.Operation);
+            LoadBlocks(RoutingComposite, BlockBase.ProcessingTypeEnum.Routing);
             LoadBlocks(TransformsComposite, BlockBase.ProcessingTypeEnum.Transform);
-            LoadBlocks(ExportToFileComposite, BlockBase.ProcessingTypeEnum.Export);            
+            LoadBlocks(ExportToFileComposite, BlockBase.ProcessingTypeEnum.Export);
+            Ribbon.ActivateNextTabPage(true);
+            Ribbon.Refresh();
+            Ribbon.ActivatePreviousTabPage(true);
         }
 
         private void LoadSignalTemplates()
