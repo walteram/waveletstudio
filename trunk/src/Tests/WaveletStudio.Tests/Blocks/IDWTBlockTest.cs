@@ -56,5 +56,22 @@ namespace WaveletStudio.Tests.Blocks
                 Assert.IsTrue(true, "Exception thrown! Yeay!");
             }
         }
+
+        [TestMethod]
+        public void TestIDWTBlockExecute2()
+        {
+            var signalBlock = new ImportFromTextBlock { Text = "2.1,3.2,-1,-1.3,-100,-2,15,22" };
+            var dwtBlock = new DWTBlock { WaveletName = "DB4", Level = 2 };
+            var idwtBlock = new IDWTBlock { WaveletName = "DB4", Level = 2 };
+            signalBlock.ConnectTo(dwtBlock);
+            //Connect approximation
+            dwtBlock.OutputNodes[0].ConnectTo(idwtBlock.InputNodes[0]);
+            //Connect details
+            dwtBlock.OutputNodes[1].ConnectTo(idwtBlock.InputNodes[1]);
+            signalBlock.Execute();
+            Console.WriteLine(idwtBlock.OutputNodes[0].Object.ToString(1));
+
+            Assert.AreEqual("2.1 3.2 -1.0 -1.3 -100.0 -2.0 15.0 22.0", idwtBlock.OutputNodes[0].Object.ToString(1));
+        }
     }
 }
