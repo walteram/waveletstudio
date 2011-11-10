@@ -361,12 +361,7 @@ namespace WaveletStudio.MainApplication.Forms
             else if (e.KeyCode == Keys.S && e.Shift)
                 menu.SaveAsMenuItemItemActivated(sender, null);
             else if (e.KeyCode == Keys.S)
-                menu.SaveMenuItemItemActivated(sender, null);
-            else if (e.KeyCode == Keys.A)
-            {
-                Designer.Document.SelectAllElements();
-                Designer.Refresh();
-            }
+                menu.SaveMenuItemItemActivated(sender, null);            
         }
     }
 }
