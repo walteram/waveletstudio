@@ -171,6 +171,6 @@ namespace DiagramNet.Elements
                 }
             }
             return ec;
-        }
+        }        
     }
 }
