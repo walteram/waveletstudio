@@ -103,6 +103,8 @@ namespace WaveletStudio.MainApplication.Forms
             this.NewMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
             this.NewMenuItem.HotkeyText = "N";
             this.NewMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("NewMenuItem.Icon")));
+            this.NewMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
+            this.NewMenuItem.SuppressShortcutToSystem = false;
             this.NewMenuItem.Title = "&New";
             this.NewMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.NewMenuItemItemActivated);
             // 
@@ -112,6 +114,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.OpenMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
             this.OpenMenuItem.HotkeyText = "O";
             this.OpenMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("OpenMenuItem.Icon")));
+            this.OpenMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
             this.OpenMenuItem.Title = "&Open";
             this.OpenMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.OpenMenuItemItemActivated);
             // 
@@ -121,6 +124,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.SaveMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
             this.SaveMenuItem.HotkeyText = "S";
             this.SaveMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("SaveMenuItem.Icon")));
+            this.SaveMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
             this.SaveMenuItem.Title = "&Save";
             this.SaveMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.SaveMenuItemItemActivated);
             // 
@@ -131,6 +135,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.SaveAsMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
             this.SaveAsMenuItem.HotkeyText = "A";
             this.SaveAsMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("SaveAsMenuItem.Icon")));
+            this.SaveAsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftS;
             this.SaveAsMenuItem.Title = "Save &As";
             this.SaveAsMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.SaveAsMenuItemItemActivated);
             // 
@@ -236,6 +241,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.CloseMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
             this.CloseMenuItem.HotkeyText = "C";
             this.CloseMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("CloseMenuItem.Icon")));
+            this.CloseMenuItem.Shortcut = System.Windows.Forms.Shortcut.AltF4;
             this.CloseMenuItem.Title = "&Close";
             this.CloseMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.CloseMenuItemItemActivated);
             // 

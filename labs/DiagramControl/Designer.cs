@@ -23,7 +23,18 @@ namespace DiagramNet
         private MoveAction _moveAction;
 
         // Selection
-        BaseElement _selectedElement;
+        BaseElement PreviousSelectedElement { get; set; }
+        private BaseElement _selectedElement;
+        BaseElement SelectedElement
+        {
+            get { return _selectedElement; }
+            set
+            {
+                PreviousSelectedElement = _selectedElement;
+                _selectedElement = value;
+            }
+        }
+
         private bool _isMultiSelection;
         private readonly RectangleElement _selectionArea = new RectangleElement(0,0,0,0);
         private IController[] _controllers;
@@ -290,29 +301,29 @@ namespace DiagramNet
                         }
 
                         // Search element by click
-                        _selectedElement = _document.FindElement(mousePoint);	
+                        SelectedElement = _document.FindElement(mousePoint);	
                         
-                        if (_selectedElement != null)
+                        if (SelectedElement != null)
                         {
                             //Events
-                            var eventMouseDownArg = new ElementMouseEventArgs(_selectedElement, e.X, e.Y);
+                            var eventMouseDownArg = new ElementMouseEventArgs(SelectedElement, e.X, e.Y);
                             OnElementMouseDown(eventMouseDownArg);
 
                             // Double-click to edit Label
-                            if ((e.Clicks == 2) && (_selectedElement is ILabelElement))
+                            if ((e.Clicks == 2) && (SelectedElement is ILabelElement))
                             {
                                 StartEditLabel();
                                 break;
                             }
 
                             // Element selected
-                            if (_selectedElement is ConnectorElement)
+                            if (SelectedElement is ConnectorElement)
                             {
-                                StartAddLink((ConnectorElement) _selectedElement, mousePoint);
-                                _selectedElement = null;
+                                StartAddLink((ConnectorElement) SelectedElement, mousePoint);
+                                SelectedElement = null;
                             }
                             else
-                                StartSelectElements(_selectedElement, mousePoint);
+                                StartSelectElements(SelectedElement, mousePoint);
                         }
                         else
                         {
@@ -424,10 +435,10 @@ namespace DiagramNet
                 
                 if (_isAddLink)
                 {
-                    _selectedElement = _document.FindElement(dragPoint);
-                    if ((_selectedElement is ConnectorElement) 
-                        && (_document.CanAddLink(_connStart, (ConnectorElement) _selectedElement)))
-                        _linkLine.Connector2 = (ConnectorElement) _selectedElement;
+                    SelectedElement = _document.FindElement(dragPoint);
+                    if ((SelectedElement is ConnectorElement) 
+                        && (_document.CanAddLink(_connStart, (ConnectorElement) SelectedElement)))
+                        _linkLine.Connector2 = (ConnectorElement) SelectedElement;
                     else
                         _linkLine.Connector2 = _connEnd;
 
@@ -444,17 +455,17 @@ namespace DiagramNet
 
         protected override void OnMouseDoubleClick(MouseEventArgs e)
         {
-            if (_selectedElement == null)
+            if (SelectedElement == null)
             {
                 return;                
             }
-            var eventClickArg = new ElementEventArgs(_selectedElement);
+            var eventClickArg = new ElementEventArgs(SelectedElement);
             OnElementDoubleClick(eventClickArg);
 
             _moveAction.End();
             _moveAction = null;
 
-            var eventMouseUpArg = new ElementMouseEventArgs(_selectedElement, e.X, e.Y);
+            var eventMouseUpArg = new ElementMouseEventArgs(SelectedElement, e.X, e.Y);
             OnElementMouseUp(eventMouseUpArg);
 
             if (Changed)
@@ -471,13 +482,13 @@ namespace DiagramNet
             
             if ((_moveAction != null) && (_moveAction.IsMoving))
             {
-                var eventClickArg = new ElementEventArgs(_selectedElement);
+                var eventClickArg = new ElementEventArgs(SelectedElement, PreviousSelectedElement);
                 OnElementClick(eventClickArg);
 
                 _moveAction.End();
                 _moveAction = null;
 
-                var eventMouseUpArg = new ElementMouseEventArgs(_selectedElement, e.X, e.Y);
+                var eventMouseUpArg = new ElementMouseEventArgs(SelectedElement, e.X, e.Y);
                 OnElementMouseUp(eventMouseUpArg);
                 
                 if (Changed)
@@ -821,9 +832,19 @@ namespace DiagramNet
 
             IFormatter formatter = new BinaryFormatter();
             Stream stream = new MemoryStream();
-            formatter.Serialize(stream, _document.SelectedElements.GetArray());
-            var data = new DataObject(DataFormats.GetFormat("Diagram.NET Element Collection").Name,
-                stream);
+            var clones = _document.SelectedElements.GetArrayClone();
+            foreach (var el in clones)
+            {
+                if (el is NodeElement && ((NodeElement)el).Connectors != null)
+                {
+                    foreach (var conn in ((NodeElement)el).Connectors)
+                    {
+                        conn.Links = new ElementCollection();
+                    }
+                }                
+            }
+            formatter.Serialize(stream, clones);
+            var data = new DataObject(DataFormats.GetFormat("Diagram.NET Element Collection").Name, stream);
             Clipboard.SetDataObject(data);
         }
 
@@ -843,6 +864,14 @@ namespace DiagramNet
 
                 foreach(var el in elCol)
                 {
+                    if (el is NodeElement)
+                    {
+                        var node = el as NodeElement;
+                        foreach (var conn in node.Connectors)
+                        {
+                            conn.Links = new ElementCollection();
+                        }
+                    }
                     el.Location = new Point(el.Location.X + pasteStep, el.Location.Y + pasteStep);
                 }
 
@@ -1058,7 +1087,7 @@ namespace DiagramNet
             }
             
             _editLabelAction = new EditLabelAction();
-            _editLabelAction.StartEdit(_selectedElement, _labelTextBox);
+            _editLabelAction.StartEdit(SelectedElement, _labelTextBox);
         }
 
         private void EndEditLabel()
@@ -1076,7 +1105,7 @@ namespace DiagramNet
         private void DeleteElement(Point mousePoint)
         {
             _document.DeleteElement(mousePoint);
-            _selectedElement = null;
+            SelectedElement = null;
             _document.Action = DesignerAction.Select;		
         }
 

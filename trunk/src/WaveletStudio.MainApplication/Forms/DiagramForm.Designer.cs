@@ -61,10 +61,10 @@ namespace WaveletStudio.MainApplication.Forms
             this.TransformsRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
             this.TransformsPanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
             this.TransformsComposite = new Qios.DevSuite.Components.QCompositeGroup();
-            this.Designer = new DiagramNet.Designer(this.components);
             this.RoutingRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
             this.RoutingRibbonPane = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
             this.RoutingComposite = new Qios.DevSuite.Components.QCompositeGroup();
+            this.Designer = new DiagramNet.Designer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
             this.Ribbon.SuspendLayout();
@@ -174,6 +174,8 @@ namespace WaveletStudio.MainApplication.Forms
             // AppMenuButton
             // 
             this.AppMenuButton.ForegroundImage = ((System.Drawing.Image)(resources.GetObject("AppMenuButton.ForegroundImage")));
+            this.AppMenuButton.HotkeyText = "A";
+            this.AppMenuButton.Shortcut = System.Windows.Forms.Shortcut.AltDownArrow;
             // 
             // qRibbonLaunchBar1
             // 
@@ -193,14 +195,14 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // CutElementShortcut
             // 
-            this.CutElementShortcut.HotkeyText = "Cut";
+            this.CutElementShortcut.HotkeyText = "X";
             this.CutElementShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("CutElementShortcut.Icon")));
             this.CutElementShortcut.ToolTipText = "Cut";
             this.CutElementShortcut.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.CutElementShortcutItemActivated);
             // 
             // CopyElementShortcut
             // 
-            this.CopyElementShortcut.HotkeyText = "Copy";
+            this.CopyElementShortcut.HotkeyText = "C";
             this.CopyElementShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("CopyElementShortcut.Icon")));
             this.CopyElementShortcut.Title = "";
             this.CopyElementShortcut.ToolTipText = "Copy";
@@ -209,21 +211,21 @@ namespace WaveletStudio.MainApplication.Forms
             // PasteElementShortcut
             // 
             this.PasteElementShortcut.Configuration.DropDownSeparated = true;
-            this.PasteElementShortcut.HotkeyText = "Paste";
+            this.PasteElementShortcut.HotkeyText = "V";
             this.PasteElementShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("PasteElementShortcut.Icon")));
             this.PasteElementShortcut.ToolTipText = "Paste";
             this.PasteElementShortcut.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.PasteElementShortcutItemActivated);
             // 
             // UndoShortcut
             // 
-            this.UndoShortcut.HotkeyText = "Undo";
+            this.UndoShortcut.HotkeyText = "Z";
             this.UndoShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("UndoShortcut.Icon")));
             this.UndoShortcut.ToolTipText = "Undo";
             this.UndoShortcut.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.UndoShortcutItemActivated);
             // 
             // RedoShortcut
             // 
-            this.RedoShortcut.HotkeyText = "Redo";
+            this.RedoShortcut.HotkeyText = "Y";
             this.RedoShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("RedoShortcut.Icon")));
             this.RedoShortcut.Title = "";
             this.RedoShortcut.ToolTipText = "Redo";
@@ -265,7 +267,7 @@ namespace WaveletStudio.MainApplication.Forms
             // SignalRibbonPage
             // 
             this.SignalRibbonPage.ButtonOrder = 0;
-            this.SignalRibbonPage.HotkeyText = "QR";
+            this.SignalRibbonPage.HotkeyText = "S";
             this.SignalRibbonPage.Items.Add(this.SignalSourcePanel);
             this.SignalRibbonPage.Items.Add(this.SignalTemplatePanel);
             this.SignalRibbonPage.Location = new System.Drawing.Point(2, 28);
@@ -395,6 +397,7 @@ namespace WaveletStudio.MainApplication.Forms
             // OperationsRibbonPage
             // 
             this.OperationsRibbonPage.ButtonOrder = 1;
+            this.OperationsRibbonPage.HotkeyText = "O";
             this.OperationsRibbonPage.Items.Add(this.OperationsFunctionsPanel);
             this.OperationsRibbonPage.Location = new System.Drawing.Point(2, 28);
             this.OperationsRibbonPage.Name = "OperationsRibbonPage";
@@ -464,6 +467,7 @@ namespace WaveletStudio.MainApplication.Forms
             // ExportDataRibbonPage
             // 
             this.ExportDataRibbonPage.ButtonOrder = 4;
+            this.ExportDataRibbonPage.HotkeyText = "E";
             this.ExportDataRibbonPage.Items.Add(this.ExportDataPanel);
             this.ExportDataRibbonPage.Location = new System.Drawing.Point(2, 28);
             this.ExportDataRibbonPage.Name = "ExportDataRibbonPage";
@@ -533,6 +537,7 @@ namespace WaveletStudio.MainApplication.Forms
             // TransformsRibbonPage
             // 
             this.TransformsRibbonPage.ButtonOrder = 3;
+            this.TransformsRibbonPage.HotkeyText = "T";
             this.TransformsRibbonPage.Items.Add(this.TransformsPanel);
             this.TransformsRibbonPage.Location = new System.Drawing.Point(2, 28);
             this.TransformsRibbonPage.Name = "TransformsRibbonPage";
@@ -599,26 +604,10 @@ namespace WaveletStudio.MainApplication.Forms
             this.TransformsComposite.Configuration.StretchHorizontal = true;
             this.TransformsComposite.Configuration.StretchVertical = true;
             // 
-            // Designer
-            // 
-            this.Designer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.Designer.AutoScroll = true;
-            this.Designer.BackColor = System.Drawing.SystemColors.Window;
-            this.Designer.Changed = false;
-            this.Designer.Location = new System.Drawing.Point(2, 168);
-            this.Designer.Name = "Designer";
-            this.Designer.Size = new System.Drawing.Size(940, 289);
-            this.Designer.TabIndex = 54;
-            this.Designer.ElementDoubleClick += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementDoubleClick);
-            this.Designer.ElementMoved += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementMoved);
-            this.Designer.ElementResized += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementResized);
-            this.Designer.ElementConnected += new DiagramNet.Designer.ElementConnectEventHandler(this.DesignerElementConnected);
-            // 
             // RoutingRibbonPage
             // 
             this.RoutingRibbonPage.ButtonOrder = 2;
+            this.RoutingRibbonPage.HotkeyText = "R";
             this.RoutingRibbonPage.Items.Add(this.RoutingRibbonPane);
             this.RoutingRibbonPage.Location = new System.Drawing.Point(2, 28);
             this.RoutingRibbonPage.Name = "RoutingRibbonPage";
@@ -685,6 +674,24 @@ namespace WaveletStudio.MainApplication.Forms
             this.RoutingComposite.Configuration.StretchHorizontal = true;
             this.RoutingComposite.Configuration.StretchVertical = true;
             // 
+            // Designer
+            // 
+            this.Designer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.Designer.AutoScroll = true;
+            this.Designer.BackColor = System.Drawing.SystemColors.Window;
+            this.Designer.Changed = false;
+            this.Designer.Location = new System.Drawing.Point(2, 168);
+            this.Designer.Name = "Designer";
+            this.Designer.Size = new System.Drawing.Size(940, 289);
+            this.Designer.TabIndex = 54;
+            this.Designer.ElementClick += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementClick);
+            this.Designer.ElementDoubleClick += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementDoubleClick);
+            this.Designer.ElementMoved += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementMoved);
+            this.Designer.ElementResized += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementResized);
+            this.Designer.ElementConnected += new DiagramNet.Designer.ElementConnectEventHandler(this.DesignerElementConnected);
+            // 
             // DiagramForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -693,12 +700,14 @@ namespace WaveletStudio.MainApplication.Forms
             this.Controls.Add(this.Designer);
             this.Controls.Add(this.Ribbon);
             this.Controls.Add(this.qRibbonCaption1);
+            this.KeyPreview = true;
             this.Name = "DiagramForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wavelet Studio";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DiagramFormFormClosing);
             this.Load += new System.EventHandler(this.DiagramFormLoad);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DiagramFormKeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).EndInit();
             this.Ribbon.ResumeLayout(false);

@@ -162,5 +162,9 @@ namespace DiagramNet.Elements
 		}
 		#endregion
 
+	    public BaseElement Clone()
+	    {
+	        return (BaseElement)MemberwiseClone();
+	    }
 	}
 }

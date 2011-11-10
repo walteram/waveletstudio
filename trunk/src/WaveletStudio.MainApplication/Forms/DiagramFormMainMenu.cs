@@ -20,28 +20,28 @@ namespace WaveletStudio.MainApplication.Forms
             _diagramForm = diagramForm;
         }
 
-        private void NewMenuItemItemActivated(object sender, QCompositeEventArgs e)
+        public void NewMenuItemItemActivated(object sender, QCompositeEventArgs e)
         {
             var diagramForm = new DiagramForm();
             diagramForm.Show();
         }
 
-        private void SaveAsMenuItemItemActivated(object sender, QCompositeEventArgs e)
+        public void SaveAsMenuItemItemActivated(object sender, QCompositeEventArgs e)
         {
             _diagramForm.SaveAs();
         }
-        
-        private void SaveMenuItemItemActivated(object sender, QCompositeEventArgs e)
+
+        public void SaveMenuItemItemActivated(object sender, QCompositeEventArgs e)
         {
             _diagramForm.Save();
         }
-        
-        private void OpenMenuItemItemActivated(object sender, QCompositeEventArgs e)
+
+        public void OpenMenuItemItemActivated(object sender, QCompositeEventArgs e)
         {
             _diagramForm.OpenFile();
         }
 
-        private void CloseMenuItemItemActivated(object sender, QCompositeEventArgs e)
+        public void CloseMenuItemItemActivated(object sender, QCompositeEventArgs e)
         {
             _diagramForm.CloseWindow();
         }
