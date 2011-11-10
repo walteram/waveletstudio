@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Drawing;
 using System.Reflection;
+using System.Windows.Forms;
 using DiagramNet.Elements.Controllers;
+using DiagramNet.Events;
 
 namespace DiagramNet.Elements
 {
@@ -253,6 +255,33 @@ namespace DiagramNet.Elements
             }
         }
 #endregion
+        
+        public bool OnElementConnected(Designer designer, ElementConnectEventArgs e)
+        {
+            if (e.Link.Connector1.IsStart == e.Link.Connector2.IsStart)
+            {
+                designer.Document.DeleteLink(e.Link);
+                return false;
+            }
+            if (e.Link.Connector1.IsStart)
+            {
+                var con1 = e.Link.Connector1;
+                e.Link.Connector1 = e.Link.Connector2;
+                e.Link.Connector2 = con1;
+                e.Link.Invalidate();
+            }
+            for (var i = designer.Document.Elements.Count - 1; i >= 0; i--)
+            {
+                if (e.Link == designer.Document.Elements[i] || !(designer.Document.Elements[i] is BaseLinkElement))
+                    continue;
+                var link = (BaseLinkElement)designer.Document.Elements[i];
+                if (link.Connector2 == e.Link.Connector2)
+                {
+                    designer.Document.DeleteLink(link);
+                }
+            }
 
+            return true;
+        }
     }
 }

@@ -79,7 +79,7 @@ namespace DiagramNet.Elements.Controllers
 
 		public virtual void DrawSelection(Graphics g)
 		{
-			const int border = 3;
+			const int border = 2;
 
 			var elLocation = El.Location;
 			var elSize = El.Size;
@@ -89,7 +89,7 @@ namespace DiagramNet.Elements.Controllers
 				elLocation.X - border, elLocation.Y - border,
 				elSize.Width + (border * 2), elSize.Height + (border * 2)));
 
-			var brush = new HatchBrush(HatchStyle.SmallCheckerBoard, Color.LightGray, Color.Transparent);
+			var brush = new HatchBrush(HatchStyle.SmallCheckerBoard, Color.Gray, Color.Transparent);
 			var p = new Pen(brush, border);
 			g.DrawRectangle(p, r);
 			

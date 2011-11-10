@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 using System.Runtime.Serialization;
@@ -116,12 +117,15 @@ namespace DiagramNet
         /// </summary>
         private void InitializeComponent()
         {
+            this.SuspendLayout();
             // 
             // Designer
             // 
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Name = "Designer";
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DesignerKeyUp);
+            this.ResumeLayout(false);
 
         }
         #endregion
@@ -227,46 +231,7 @@ namespace DiagramNet
             g.EndContainer(gc);
             g.Transform = mtx;
 
-        }
-
-
-        protected override void OnKeyDown(KeyEventArgs e)
-        {
-            //Delete element
-            if (e.KeyCode == Keys.Delete)
-            {
-                DeleteSelectedElements();
-                EndGeneralAction();
-                base.Invalidate();
-            }
-
-            //Undo
-            if (e.Control && e.KeyCode == Keys.Z)
-            {
-                if (_undo.CanUndo)
-                    Undo();
-            }
-
-            //Copy
-            if ((e.Control) && (e.KeyCode == Keys.C))
-            {
-                Copy();
-            }
-
-            //Paste
-            if ((e.Control) && (e.KeyCode == Keys.V))
-            {
-                Paste();
-            }
-
-            //Cut
-            if ((e.Control) && (e.KeyCode == Keys.X))
-            {
-                Cut();
-            }
-
-            base.OnKeyDown (e);
-        }
+        }        
 
         protected override void OnResize(EventArgs e)
         {
@@ -278,9 +243,6 @@ namespace DiagramNet
         protected override void OnMouseDown(MouseEventArgs e)
         {
             Point mousePoint;
-
-            //ShowSelectionCorner((document.Action==DesignerAction.Select));
-
             switch (_document.Action)
             {
                 // SELECT
@@ -493,6 +455,8 @@ namespace DiagramNet
                 
                 if (Changed)
                     AddUndo();
+
+                CheckControlClick();
             }
 
             // Select
@@ -532,6 +496,17 @@ namespace DiagramNet
 
             base.OnMouseUp (e);
         }
+
+        private void CheckControlClick()
+        {
+            if ((ModifierKeys & Keys.Control) != Keys.Control || SelectedElement == null || PreviousSelectedElement == null || !(SelectedElement is NodeElement) || !(PreviousSelectedElement is NodeElement)) 
+                return;
+            var startConnector = ((NodeElement) PreviousSelectedElement).Connectors.OrderBy(c => c.Links.Count).FirstOrDefault(c => !c.IsStart);
+            var endConnector = ((NodeElement) SelectedElement).Connectors.FirstOrDefault(c => c.IsStart && c.Links.Count == 0);
+            if (startConnector != null && endConnector != null)
+                Document.AddLink(startConnector, endConnector);
+        }
+
         #endregion
 
         #endregion
@@ -933,8 +908,14 @@ namespace DiagramNet
             if (!_document.SelectedElements.Contains(selectedElem))
             {
                 //Clear selection and add new element to selection
-                _document.ClearSelection();
+                if ((ModifierKeys & Keys.Shift) != Keys.Shift)
+                    _document.ClearSelection();
                 _document.SelectElement(selectedElem);
+            }
+            else if ((ModifierKeys & Keys.Shift) == Keys.Shift)
+            { 
+                //Remove current element from selection
+                _document.SelectedElements.Remove(selectedElem);
             }
 
             Changed = false;
@@ -1019,7 +1000,12 @@ namespace DiagramNet
             {
                 _linkLine.Connector1.RemoveLink(_linkLine);
                 _linkLine = _document.AddLink(_linkLine.Connector1, _linkLine.Connector2);
-                OnElementConnected(new ElementConnectEventArgs(_linkLine.Connector1.ParentElement, _linkLine.Connector2.ParentElement, _linkLine));
+                var eventArgs = new ElementConnectEventArgs(_linkLine.Connector1.ParentElement, _linkLine.Connector2.ParentElement, _linkLine);
+                var accepted = true;
+                if (_linkLine.Connector1.ParentElement is DiagramBlock)
+                    accepted = (_linkLine.Connector1.ParentElement as DiagramBlock).OnElementConnected(this, eventArgs);
+                if (accepted)
+                    OnElementConnected(eventArgs);
             }
 
             _connStart = null;
@@ -1146,6 +1132,92 @@ namespace DiagramNet
             _document.AppearancePropertyChanged+=DocumentAppearancePropertyChanged;
             _document.ElementPropertyChanged += DocumentElementPropertyChanged;
             _document.ElementSelection += DocumentElementSelection;
+        }
+
+        private void DesignerKeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void MoveElement(Keys key)
+        {
+            var factor = ((ModifierKeys & Keys.Shift) == Keys.Shift) ? 10 : 1;
+            foreach (BaseElement element in Document.SelectedElements)
+            {
+                var location = element.Location;
+                if ((key & Keys.Down) == Keys.Down)
+                    location.Y += factor;
+                else if ((key & Keys.Right) == Keys.Right)
+                    location.X += factor;
+                else if ((key & Keys.Up) == Keys.Up)
+                    location.Y -= factor;                
+                else if ((key & Keys.Left) == Keys.Left)
+                    location.X -= factor;
+                element.Location = location;
+            }
+            Refresh();
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e)
+        {
+            //Delete element
+            if (e.KeyCode == Keys.Delete)
+            {
+                DeleteSelectedElements();
+                EndGeneralAction();
+                base.Invalidate();
+            }
+
+            //Undo
+            if (e.Control && e.KeyCode == Keys.Z && _undo.CanUndo) 
+                Undo();
+
+            //Copy
+            if ((e.Control) && (e.KeyCode == Keys.C))
+                Copy();
+            
+            //Paste
+            if ((e.Control) && (e.KeyCode == Keys.V))
+                Paste();
+            
+            //Cut
+            if ((e.Control) && (e.KeyCode == Keys.X))
+                Cut();
+            
+            base.OnKeyDown(e);
+        }
+        
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            const int wmKeydown = 0x100;
+            const int wmSyskeydown = 0x104;
+
+            if ((msg.Msg == wmKeydown) || (msg.Msg == wmSyskeydown))
+            {
+                if ((ModifierKeys & Keys.Control) != Keys.Control)
+                {
+                    if ((keyData & Keys.Up) == Keys.Up || (keyData & Keys.Down) == Keys.Down || (keyData & Keys.Right) == Keys.Right || (keyData & Keys.Left) == Keys.Left)
+                        MoveElement(keyData);
+                }
+                else
+                {
+                    if ((keyData & Keys.Down) == Keys.Down)
+                    {
+                        foreach (BaseElement element in Document.SelectedElements)
+                        {
+                            Document.SendToBackElement(element);
+                        }
+                    }
+                    if ((keyData & Keys.Up) == Keys.Up)
+                    {
+                        foreach (BaseElement element in Document.SelectedElements)
+                        {
+                            Document.BringToFrontElement(element);
+                        }
+                    }                    
+                }
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }
