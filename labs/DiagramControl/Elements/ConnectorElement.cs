@@ -8,7 +8,6 @@ namespace DiagramNet.Elements
     public class ConnectorElement: RectangleElement, IControllable 
     {
         private readonly NodeElement _parentElement;
-        private readonly ElementCollection _links = new ElementCollection();
         public bool IsStart;
         public object State;
         public string ShortName;
@@ -18,7 +17,7 @@ namespace DiagramNet.Elements
 
         public ConnectorElement()
         {
-
+            
         }
 
         public ConnectorElement(NodeElement parent): base(new Rectangle(0, 0, 0, 0))
@@ -35,24 +34,24 @@ namespace DiagramNet.Elements
             {
                 return _parentElement;
             }
+            
         }
 
         internal void AddLink(BaseLinkElement lnk)
         {
-            _links.Add(lnk);
+            Links.Add(lnk);
         }
 
         public void RemoveLink(BaseLinkElement lnk)
         {
-            _links.Remove(lnk);
+            Links.Remove(lnk);
         }
 
+        private ElementCollection _links = new ElementCollection();
         public ElementCollection Links
         {
-            get
-            {
-                return _links;
-            }
+            get { return _links; }
+            set { _links = value; }
         }
 
         internal CardinalDirection GetDirection()
@@ -80,7 +79,7 @@ namespace DiagramNet.Elements
             {
                 if (value == base.Location) return;
                 
-                foreach(BaseLinkElement lnk in _links)
+                foreach(BaseLinkElement lnk in Links)
                 {
                     lnk.NeedCalcLink = true;					
                 }
@@ -98,7 +97,7 @@ namespace DiagramNet.Elements
             {
                 if (value == base.Size) return;
 
-                foreach(BaseLinkElement lnk in _links)
+                foreach(BaseLinkElement lnk in Links)
                 {
                     lnk.NeedCalcLink = true;
                 }
