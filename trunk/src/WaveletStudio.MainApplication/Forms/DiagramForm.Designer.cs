@@ -686,7 +686,6 @@ namespace WaveletStudio.MainApplication.Forms
             this.Designer.Name = "Designer";
             this.Designer.Size = new System.Drawing.Size(940, 289);
             this.Designer.TabIndex = 54;
-            this.Designer.ElementClick += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementClick);
             this.Designer.ElementDoubleClick += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementDoubleClick);
             this.Designer.ElementMoved += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementMoved);
             this.Designer.ElementResized += new DiagramNet.Designer.ElementEventHandler(this.DesignerElementResized);

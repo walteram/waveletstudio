@@ -137,33 +137,9 @@ namespace WaveletStudio.MainApplication.Forms
         private void DesignerElementConnected(object sender, ElementConnectEventArgs e)
         {
             Saved = false;
-            if (e.Link.Connector1.IsStart == e.Link.Connector2.IsStart)
-            {
-                Designer.Document.DeleteLink(e.Link);
-                return;
-            }            
-            if (e.Link.Connector1.IsStart)
-            {
-                var con1 = e.Link.Connector1;
-                e.Link.Connector1 = e.Link.Connector2;
-                e.Link.Connector2 = con1;
-                e.Link.Invalidate();
-            }
-            for (var i = Designer.Document.Elements.Count - 1; i >= 0; i--)
-            {
-                if (e.Link == Designer.Document.Elements[i] || !(Designer.Document.Elements[i] is BaseLinkElement))
-                    continue;
-                var link = (BaseLinkElement)Designer.Document.Elements[i];
-                if (link.Connector2 == e.Link.Connector2)
-                {
-                    Designer.Document.DeleteLink(link);
-                }
-            }
-
             var node1 = (BlockNodeBase) e.Link.Connector1.State;
             var node2 = (BlockNodeBase) e.Link.Connector2.State;         
-            node1.ConnectTo(ref node2);
-            
+            node1.ConnectTo(ref node2);            
             try
             {
                 node1.Root.Execute();
@@ -377,63 +353,21 @@ namespace WaveletStudio.MainApplication.Forms
         private void DiagramFormKeyUp(object sender, KeyEventArgs e)
         {
             var menu = (DiagramFormMainMenu) AppMenuButton.CustomChildWindow;
-            if (e.Control)
+            if (!e.Control) return;
+            if (e.KeyCode == Keys.N)
+                menu.NewMenuItemItemActivated(sender, null);
+            else if (e.KeyCode == Keys.O)
+                menu.OpenMenuItemItemActivated(sender, null);
+            else if (e.KeyCode == Keys.S && e.Shift)
+                menu.SaveAsMenuItemItemActivated(sender, null);
+            else if (e.KeyCode == Keys.S)
+                menu.SaveMenuItemItemActivated(sender, null);
+            else if (e.KeyCode == Keys.A)
             {
-                if (e.KeyCode == Keys.N)
-                    menu.NewMenuItemItemActivated(sender, null);
-                else if (e.KeyCode == Keys.O)
-                    menu.OpenMenuItemItemActivated(sender, null);
-                else if (e.KeyCode == Keys.S && e.Shift)
-                    menu.SaveAsMenuItemItemActivated(sender, null);
-                else if (e.KeyCode == Keys.S)
-                    menu.SaveMenuItemItemActivated(sender, null);
-                else if (e.KeyCode == Keys.A)
-                {
-                    Designer.Document.SelectAllElements();
-                    Designer.Refresh();
-                }                    
+                Designer.Document.SelectAllElements();
+                Designer.Refresh();
             }
-            else
-            {
-                if (e.KeyCode == Keys.Down || e.KeyCode == Keys.Right || e.KeyCode == Keys.Left || e.KeyCode == Keys.Up)
-                {                    
-                    foreach (BaseElement element in Designer.Document.SelectedElements)
-                    {
-                        var location = element.Location;
-                        if(e.KeyCode == Keys.Down)
-                            location.Y += 1;
-                        else if(e.KeyCode == Keys.Up)
-                            location.Y -= 1;
-                        else if (e.KeyCode == Keys.Right)
-                            location.X += 1;
-                        else if (e.KeyCode == Keys.Left)
-                            location.X -= 1;
-                        element.Location = location;                        
-                    }
-                    Designer.Refresh();
-                }   
-            }                       
         }
-
-        private void DesignerElementClick(object sender, ElementEventArgs e)
-        {
-            if (Designer.Document.SelectedElements.Count == 0 || (ModifierKeys & Keys.Control) != Keys.Control)
-                return;
-
-            var currentSelected = (DiagramBlock) e.PreviousElement;
-            var newSelected = (DiagramBlock) e.Element;
-            if (currentSelected == null)
-                return;            
-            System.Diagnostics.Debug.WriteLine(((BlockBase)currentSelected.State).Name + " - " + ((BlockBase)newSelected.State).Name);
-
-            var startConnector = currentSelected.Connectors.OrderBy(c => c.Links.Count).FirstOrDefault(c => !c.IsStart);
-            var endConnector = newSelected.Connectors.FirstOrDefault(c => c.IsStart && c.Links.Count == 0);
-
-            if(startConnector != null && endConnector != null)
-                Designer.Document.AddLink(startConnector, endConnector);
-            Designer.Refresh();
-        }
-
     }
 }
 
