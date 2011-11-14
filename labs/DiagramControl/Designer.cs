@@ -1183,6 +1183,13 @@ namespace DiagramNet
             //Cut
             if ((e.Control) && (e.KeyCode == Keys.X))
                 Cut();
+
+            //Select all
+            if ((e.Control) && (e.KeyCode == Keys.A))
+            {
+                Document.SelectAllElements();
+                Refresh();
+            }            
             
             base.OnKeyDown(e);
         }
