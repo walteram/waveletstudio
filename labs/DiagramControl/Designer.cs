@@ -124,7 +124,6 @@ namespace DiagramNet
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.Name = "Designer";
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DesignerKeyUp);
             this.ResumeLayout(false);
 
         }
@@ -147,8 +146,8 @@ namespace DiagramNet
             else
                 base.Invalidate();
 
-            if ((_moveAction != null) && (_moveAction.IsMoving))
-                AutoScrollMinSize = new Size((int) ((_document.Location.X + _document.Size.Width) * _document.Zoom), (int) ((_document.Location.Y + _document.Size.Height) * _document.Zoom));
+            //if ((_moveAction != null) && (_moveAction.IsMoving))
+                AutoScrollMinSize = new Size((int) ((_document.Location.X + _document.Size.Width+10) * _document.Zoom), (int) ((_document.Location.Y + _document.Size.Height) * _document.Zoom));
 
         }
 
@@ -424,6 +423,8 @@ namespace DiagramNet
             var eventClickArg = new ElementEventArgs(SelectedElement);
             OnElementDoubleClick(eventClickArg);
 
+            if (_moveAction == null)
+                return;
             _moveAction.End();
             _moveAction = null;
 
@@ -449,14 +450,14 @@ namespace DiagramNet
 
                 _moveAction.End();
                 _moveAction = null;
-
+                
                 var eventMouseUpArg = new ElementMouseEventArgs(SelectedElement, e.X, e.Y);
                 OnElementMouseUp(eventMouseUpArg);
                 
                 if (Changed)
                     AddUndo();
 
-                CheckControlClick();
+                CheckControlClick();                
             }
 
             // Select
@@ -492,7 +493,8 @@ namespace DiagramNet
 
             RestartInitValues();
 
-            base.Invalidate();
+            //base.Invalidate();
+            Invalidate();
 
             base.OnMouseUp (e);
         }
@@ -1134,11 +1136,6 @@ namespace DiagramNet
             _document.ElementSelection += DocumentElementSelection;
         }
 
-        private void DesignerKeyUp(object sender, KeyEventArgs e)
-        {
-
-        }
-
         private void MoveElement(Keys key)
         {
             var factor = ((ModifierKeys & Keys.Shift) == Keys.Shift) ? 10 : 1;
@@ -1225,6 +1222,23 @@ namespace DiagramNet
                 }
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        public Bitmap GetImage(bool drawGrid, bool whitebackground)
+        {
+            var bmp = new Bitmap(Document.Size.Width + Document.Location.X + 10, Document.Size.Height + Document.Location.Y + 10);
+            var graphics = Graphics.FromImage(bmp);
+            if (whitebackground || drawGrid)
+                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, bmp.Width, bmp.Height);
+            if (drawGrid)                            
+                Document.DrawGrid(graphics, new Rectangle(0, 0, Document.Size.Width + Document.Location.X, Document.Size.Height + Document.Location.Y));
+            
+            var rect = Document.DrawElements(graphics, new Rectangle(0, 0, Document.Size.Width + Document.Location.X, Document.Size.Height + Document.Location.Y));            
+            var finalBmp = new Bitmap(rect.Width - rect.X, rect.Height - rect.Y);
+            var finalGraphics = Graphics.FromImage(finalBmp);
+            finalGraphics.DrawImage(bmp, new Rectangle(0, 0, rect.Width, rect.Height), rect.X, rect.Y, rect.Width, rect.Height, GraphicsUnit.Pixel);
+
+            return finalBmp;
         }
     }
 }

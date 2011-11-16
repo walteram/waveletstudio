@@ -32,7 +32,7 @@ namespace WaveletStudio.Tests.Blocks.CustomAttributes
                         continue;
                     if(!string.IsNullOrEmpty(parameterAttribute.NameResourceName))
                     {
-                        if(string.IsNullOrWhiteSpace(resource.GetString(parameterAttribute.NameResourceName)));
+                        Assert.IsTrue(!string.IsNullOrWhiteSpace(resource.GetString(parameterAttribute.NameResourceName)));
                         Assert.IsTrue(!string.IsNullOrWhiteSpace(resource.GetString(parameterAttribute.DescriptionResourceName)));
                     }
                     Assert.IsTrue(!string.IsNullOrEmpty(descriptor.DisplayName));
