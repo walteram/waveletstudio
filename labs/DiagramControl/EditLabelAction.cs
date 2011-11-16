@@ -123,7 +123,7 @@ namespace DiagramNet
 
 		private static void SetTextBoxBorder(TextBox tb)
 		{
-			Rectangle tbBox = new Rectangle(tb.Location, tb.Size);
+			var tbBox = new Rectangle(tb.Location, tb.Size);
 			tbBox.Inflate(TextBoxBorder, TextBoxBorder);
 			tb.Location = tbBox.Location;
 			tb.Size = tbBox.Size;		

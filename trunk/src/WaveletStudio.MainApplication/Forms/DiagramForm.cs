@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Windows.Forms;
 using DiagramNet;
 using DiagramNet.Elements;
@@ -244,7 +243,7 @@ namespace WaveletStudio.MainApplication.Forms
             }
             catch (Exception exception)
             {
-                MessageBox.Show(@"The file couldn't be opened:" + "\r\n" + exception.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"The file couldn't be opened:" + Environment.NewLine + exception.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -291,7 +290,7 @@ namespace WaveletStudio.MainApplication.Forms
             }
             catch (Exception exception)
             {
-                MessageBox.Show(@"The file couldn't be opened:" + "\r\n" + exception.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"The file couldn't be opened:" + Environment.NewLine + exception.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -341,7 +340,7 @@ namespace WaveletStudio.MainApplication.Forms
             }
             catch (Exception exception)
             {
-                MessageBox.Show(@"The file couldn't be opened:" + "\r\n" + exception.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(@"The file couldn't be opened:" + Environment.NewLine + exception.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

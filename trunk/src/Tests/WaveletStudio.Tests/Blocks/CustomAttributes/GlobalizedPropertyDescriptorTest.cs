@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Resources;
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 using WaveletStudio.Blocks.CustomAttributes;
@@ -52,8 +51,8 @@ namespace WaveletStudio.Tests.Blocks.CustomAttributes
             Assert.AreEqual(false, descriptor.CanResetValue(block));
             Assert.AreEqual(block.GetType(), descriptor.ComponentType);
             Assert.AreEqual("sym2", descriptor.GetValue(block));
-            Assert.AreEqual(Properties.Resources.WaveletName, descriptor.DisplayName);
-            Assert.AreEqual(Properties.Resources.WaveletNameDescription, descriptor.Description);
+            Assert.AreEqual(Resources.WaveletName, descriptor.DisplayName);
+            Assert.AreEqual(Resources.WaveletNameDescription, descriptor.Description);
             Assert.AreEqual(false, descriptor.IsReadOnly);
             Assert.AreEqual("WaveletName", descriptor.Name);
             Assert.AreEqual(typeof(string), descriptor.PropertyType);

@@ -129,11 +129,9 @@ namespace DiagramNet.Elements
 
 		IController IControllable.GetController()
 		{
-			if (_controller == null)
-				_controller = new LineController(this);
-			return _controller;
+		    return _controller ?? (_controller = new LineController(this));
 		}
 
-		#endregion
+	    #endregion
 	}
 }

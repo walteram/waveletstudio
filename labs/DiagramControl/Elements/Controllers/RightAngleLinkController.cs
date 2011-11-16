@@ -30,10 +30,8 @@ namespace DiagramNet.Elements.Controllers
 			if (El.LineElements.Length == 3)
 			{
 				SelectionCorner = new RectangleElement[1];
-				SelectionCorner[0] = new RectangleElement(0, 0, SelCornerSize * 2, SelCornerSize * 2);
-				SelectionCorner[0].BorderColor = Color.Black;
-				SelectionCorner[0].FillColor1 = Color.White;
-				SelectionCorner[0].FillColor2 = Color.Empty;
+			    SelectionCorner[0] = new RectangleElement(0, 0, SelCornerSize*2, SelCornerSize*2)
+			                             {BorderColor = Color.Black, FillColor1 = Color.White, FillColor2 = Color.Empty};
 			}
 			else
 			{
