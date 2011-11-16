@@ -13,19 +13,12 @@ namespace DiagramNet
         public delegate void OnElementMovingDelegate(ElementEventArgs e);
         private OnElementMovingDelegate _onElementMovingDelegate;
 
-        private bool _isMoving;
         private IMoveController[] _moveCtrl;
         private Point _upperSelPoint = Point.Empty;
         private Point _upperSelPointDragOffset = Point.Empty;
         private Document _document;
 
-        public bool IsMoving
-        {
-            get
-            {
-                return _isMoving;
-            }
-        }
+        public bool IsMoving { get; private set; }
 
         public void Start(Point mousePoint, Document document, OnElementMovingDelegate onElementMovingDelegate)
         {
@@ -91,7 +84,7 @@ namespace DiagramNet
             _upperSelPointDragOffset.X = _upperSelPoint.X - mousePoint.X;
             _upperSelPointDragOffset.Y = _upperSelPoint.Y - mousePoint.Y;
 
-            _isMoving = true;
+            IsMoving = true;
         }
 
         public void Move(Point dragPoint)
@@ -150,7 +143,7 @@ namespace DiagramNet
             }
             
 
-            _isMoving = false;
+            IsMoving = false;
 
 //			ElementMouseEventArgs eventMouseUpArg = new ElementMouseEventArgs(selectedElement, e.X, e.Y);
 //			OnElementMouseUp(eventMouseUpArg);

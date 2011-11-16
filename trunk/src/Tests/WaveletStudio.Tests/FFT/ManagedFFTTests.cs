@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.FFT;
@@ -53,7 +54,7 @@ namespace WaveletStudio.Tests.FFT
 
         delegate void FFTAction(ref double[] data, bool forward);
 
-        static bool Test(FFTAction fftFunction, double[] test, double[] answer)
+        static bool Test(FFTAction fftFunction, double[] test, IList<double> answer)
         {
             // Test the given function on the given data and see if the result is the given answer.
 
@@ -75,14 +76,11 @@ namespace WaveletStudio.Tests.FFT
         /// <param name="arr1"></param>
         /// <param name="arr2"></param>
         /// <returns></returns>
-        static bool Compare(double[] arr1, double[] arr2)
+        static bool Compare(IList<double> arr1, IList<double> arr2)
         {
-            if (arr1.Length != arr2.Length)
+            if (arr1.Count != arr2.Count)
                 return false;
-            for (var i = 0; i < arr1.Length; ++i)
-                if ((Math.Abs(arr1[i] - arr2[i]) > 0.0001))
-                    return false;
-            return true;
+            return !arr1.Where((t, i) => (Math.Abs(t - arr2[i]) > 0.0001)).Any();
         }
     }
 }

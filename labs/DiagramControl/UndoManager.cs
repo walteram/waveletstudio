@@ -84,7 +84,7 @@ namespace DiagramNet
 			return mem;
 		}
 
-		private object DeserializeObject(MemoryStream mem)
+		private object DeserializeObject(Stream mem)
 		{
 			mem.Position = 0;
 			IFormatter formatter = new BinaryFormatter();

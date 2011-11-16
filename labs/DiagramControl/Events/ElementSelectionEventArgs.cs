@@ -21,7 +21,7 @@ namespace DiagramNet.Events
 
 		public override string ToString()
 		{
-			return "ElementCollection: " + _elements.Count.ToString();
+			return "ElementCollection: " + _elements.Count;
 		}
 
 	}
