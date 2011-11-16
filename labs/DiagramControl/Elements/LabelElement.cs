@@ -381,16 +381,16 @@ namespace DiagramNet.Elements
 			var mi = FormatterServices.GetSerializableMembers(thisType, context);
 
 			// Deserialize the base class's fields from the info object
-			for (var i = 0 ; i < mi.Length; i++) 
+			foreach (var t in mi)
 			{
-				// Don't deserialize fields for this class
-				if (mi[i].DeclaringType == thisType) continue;
+                 // Don't deserialize fields for this class
+			    if (t.DeclaringType == thisType) continue;
 
-				// To ease coding, treat the member as a FieldInfo object
-				var fi = (FieldInfo) mi[i];
+			    // To ease coding, treat the member as a FieldInfo object
+			    var fi = (FieldInfo) t;
 
-				// Set the field to the deserialized value
-				fi.SetValue(this, info.GetValue(fi.Name, fi.FieldType));
+			    // Set the field to the deserialized value
+			    fi.SetValue(this, info.GetValue(fi.Name, fi.FieldType));
 			}
 
 			// Deserialize the values that were serialized for this class
@@ -437,11 +437,11 @@ namespace DiagramNet.Elements
 			var mi = FormatterServices.GetSerializableMembers(thisType, context);
 
 			// Serialize the base class's fields to the info object
-			for (var i = 0 ; i < mi.Length; i++)
+			foreach (var t in mi)
 			{
-				// Don't serialize fields for this class
-				if (mi[i].DeclaringType == thisType) continue;
-				info.AddValue(mi[i].Name, ((FieldInfo) mi[i]).GetValue(this));
+                // Don't serialize fields for this class
+			    if (t.DeclaringType == thisType) continue;
+			    info.AddValue(t.Name, ((FieldInfo) t).GetValue(this));
 			}
 		}
 		#endregion

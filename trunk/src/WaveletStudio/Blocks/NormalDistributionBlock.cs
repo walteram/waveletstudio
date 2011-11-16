@@ -69,12 +69,12 @@ namespace WaveletStudio.Blocks
             foreach (var signal in inputNode.Object)
             {
                 var output = signal.Copy();
-                var mean = Mean;
-                var deviation = StandardDeviation;
-                if (Math.Abs(mean) < float.Epsilon)
-                    mean = WaveMath.Mean(signal.Samples);
-                if (Math.Abs(deviation) < float.Epsilon)
-                    deviation = WaveMath.StandardDeviation(signal.Samples);
+                //var mean = Mean;
+                //var deviation = StandardDeviation;
+                //if (Math.Abs(mean) < float.Epsilon)
+                //    mean = WaveMath.Mean(signal.Samples);
+                //if (Math.Abs(deviation) < float.Epsilon)
+                //    deviation = WaveMath.StandardDeviation(signal.Samples);
                 output.Samples = NormalDistribution(signal.Samples);
                 OutputNodes[0].Object.Add(output);
             }            

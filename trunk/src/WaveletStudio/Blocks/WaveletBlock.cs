@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using WaveletStudio.Blocks.CustomAttributes;
-using WaveletStudio.Properties;
 using WaveletStudio.Wavelet;
 
 namespace WaveletStudio.Blocks

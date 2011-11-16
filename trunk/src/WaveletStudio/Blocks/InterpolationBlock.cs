@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using WaveletStudio.Blocks.CustomAttributes;
-using WaveletStudio.FFT;
 using WaveletStudio.Functions;
 
 namespace WaveletStudio.Blocks

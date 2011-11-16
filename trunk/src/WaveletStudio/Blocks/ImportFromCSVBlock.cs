@@ -113,12 +113,11 @@ namespace WaveletStudio.Blocks
                 if (lineNumber == 1 && IgnoreFirstRow)
                     continue;
                 var signal = ParseLine(line);
-                if (signal != null)
-                {
-                    if (signal.Name == "")
-                        signal.Name = "Line " + lineNumber;
-                    OutputNodes[0].Object.Add(signal);   
-                }                
+                if (signal == null) 
+                    continue;
+                if (signal.Name == "")
+                    signal.Name = "Line " + lineNumber;
+                OutputNodes[0].Object.Add(signal);
             }
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();            

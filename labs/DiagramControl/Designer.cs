@@ -812,13 +812,11 @@ namespace DiagramNet
             var clones = _document.SelectedElements.GetArrayClone();
             foreach (var el in clones)
             {
-                if (el is NodeElement && ((NodeElement)el).Connectors != null)
+                if (!(el is NodeElement) || ((NodeElement) el).Connectors == null) continue;
+                foreach (var conn in ((NodeElement)el).Connectors)
                 {
-                    foreach (var conn in ((NodeElement)el).Connectors)
-                    {
-                        conn.Links = new ElementCollection();
-                    }
-                }                
+                    conn.Links = new ElementCollection();
+                }
             }
             formatter.Serialize(stream, clones);
             var data = new DataObject(DataFormats.GetFormat("Diagram.NET Element Collection").Name, stream);

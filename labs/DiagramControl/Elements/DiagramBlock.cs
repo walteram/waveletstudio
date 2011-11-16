@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Reflection;
-using System.Windows.Forms;
 using DiagramNet.Elements.Controllers;
 using DiagramNet.Events;
 
@@ -122,9 +121,8 @@ namespace DiagramNet.Elements
             image.Draw(g);
             label.Draw(g);
 
-            for (var i = 0; i < Connects.Length; i++)
+            foreach (var conn in Connects)
             {
-                var conn = Connects[i];
                 int posX;
                 StringAlignment alignment;
                 var labelText = _connectionTextProperty.GetValue(conn.State, null).ToString();

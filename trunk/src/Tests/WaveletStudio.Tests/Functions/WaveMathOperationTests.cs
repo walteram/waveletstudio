@@ -84,7 +84,7 @@ namespace WaveletStudio.Tests.Functions
         public void TestDivideScalar()
         {
             var array1 = new[] { 1.2, 2.3, 3.4, 4.5 };
-            var scalar = 1.1;
+            const double scalar = 1.1;
             var expected = new[] { 1.09090909, 2.09090909, 3.09090909, 4.09090909 };
             Assert.IsTrue(TestUtils.SequenceEquals(expected, WaveMath.Divide(array1, scalar)));
 
