@@ -14,13 +14,13 @@ namespace WaveletStudio.Tests.Blocks
             var signalBlock = new GenerateSignalBlock { TemplateName = "Binary", Start = 0, Finish = 10, SamplingRate = 1, IgnoreLastSample = true };
             var waveletBlock = new DWTBlock
             {
-                WaveletName = "db4",
+                WaveletName = "db4|Daubechies 4",
                 Level = 2,
                 ExtensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint
             };
             waveletBlock.Execute();
             Assert.IsTrue(waveletBlock.WaveletNameList.Count > 0);
-            Assert.AreEqual("db4", waveletBlock.WaveletName);
+            Assert.AreEqual("db4|Daubechies 4", waveletBlock.WaveletName);
 
             signalBlock.OutputNodes[0].ConnectTo(waveletBlock.InputNodes[0]);
             Assert.IsNotNull(waveletBlock.Name);
@@ -41,6 +41,7 @@ namespace WaveletStudio.Tests.Blocks
             Assert.AreEqual(signalBlock.OutputNodes[0].Object.ToString(1), waveletBlock.OutputNodes[3].Object[4].ToString(1));
 
             var block2 = (DWTBlock)waveletBlock.Clone();
+            block2.WaveletName = "db4";
             signalBlock.OutputNodes[0].ConnectTo(block2.InputNodes[0]);
             signalBlock.Execute();
             Assert.AreEqual("0.7 0.9 0.2 0.7 0.7 0.8 0.5 1.2", block2.OutputNodes[0].Object[0].ToString(1));
@@ -74,13 +75,13 @@ namespace WaveletStudio.Tests.Blocks
             var signalBlock = new GenerateSignalBlock { TemplateName = "Binary", Start = 0, Finish = 10, SamplingRate = 1, IgnoreLastSample = true };
             var waveletBlock = new WaveletBlock
                                    {
-                                       WaveletName = "db4",
+                                       WaveletName = "db4|Daubechies 4",
                                        Level = 2,
                                        ExtensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint
                                    };
             waveletBlock.Execute();
             Assert.IsTrue(waveletBlock.WaveletNameList.Count > 0);
-            Assert.AreEqual("db4", waveletBlock.WaveletName);
+            Assert.AreEqual("db4|Daubechies 4", waveletBlock.WaveletName);
 
             signalBlock.OutputNodes[0].ConnectTo(waveletBlock.InputNodes[0]);
             Assert.IsNotNull(waveletBlock.Name);
@@ -101,6 +102,7 @@ namespace WaveletStudio.Tests.Blocks
             Assert.AreEqual(signalBlock.OutputNodes[0].Object.ToString(1), waveletBlock.OutputNodes[3].Object[4].ToString(1));
 
             var block2 = (WaveletBlock)waveletBlock.Clone();
+            block2.WaveletName = "db4";
             signalBlock.OutputNodes[0].ConnectTo(block2.InputNodes[0]);
             signalBlock.Execute();
             Assert.AreEqual("0.7 0.9 0.2 0.7 0.7 0.8 0.5 1.2", block2.OutputNodes[0].Object[0].ToString(1));

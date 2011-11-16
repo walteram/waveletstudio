@@ -6,53 +6,46 @@ using WaveletStudio.Blocks;
 
 namespace WaveletStudio.MainApplication.Forms
 {
-    public partial class BlockSetupForm : BlockSetupBaseForm
+    public partial class BlockPlot : UserControl
     {
-        public BlockSetupForm(string title, ref BlockBase block) : base(title, ref block)
+        public BlockBase Block { get; set; }
+
+        public BlockPlot()
         {
             InitializeComponent();
-            OnBeforeInitializing += BeforeInitializing;
-            OnAfterInitializing += AfterInitializing;
-            OnFieldValueChanged += FieldValueChanged;
-            BeforeInitializing();
-            AfterInitializing();
+            ApplicationUtils.ConfigureGraph(GraphControl, "Output");
         }
 
-        protected void BeforeInitializing()
+        public BlockPlot(ref BlockBase block) 
         {
-            ApplicationUtils.ConfigureGraph(GraphControl, Text);
+            InitializeComponent();
+            ApplicationUtils.ConfigureGraph(GraphControl, block.Name);
+            Block = block;
         }
 
-        protected void AfterInitializing()
+        public new void Refresh()
         {
             UpdateGraph();
             LoadBlockOutputs();
             UpdateSignalList();
-            if (!HasFields)
-            {
-                GraphControl.Left = 6;
-                GraphControl.Width = Width - 12;
-            }   
-        }
-
-        protected void FieldValueChanged()
-        {
-            UpdateGraph();
-            UpdateSignalList();
+            base.Refresh();
         }
 
         private void LoadBlockOutputs()
         {
             ShowOutputList.Items.Clear();
-            foreach (var output in Block.OutputNodes)
+            if (Block != null)
             {
-                if(output.Name != "All")
-                    ShowOutputList.Items.Add(output.Name);
-            }
+                foreach (var output in Block.OutputNodes)
+                {
+                    if (output.Name != "All")
+                        ShowOutputList.Items.Add(output.Name);
+                }
+            }            
             if (ShowOutputList.Items.Count > 0)
                 ShowOutputList.SelectedIndex = 0;
             if (ShowOutputList.Items.Count > 1)
-            {                
+            {
                 ShowOutputList.Visible = true;
                 ShowOutputLabel.Visible = true;
             }
@@ -69,8 +62,10 @@ namespace WaveletStudio.MainApplication.Forms
             var pane = GraphControl.GraphPane;
             if (pane.CurveList.Count > 0)
                 pane.CurveList.Clear();
-            TempBlock.Execute();
-            var outputNode = TempBlock.OutputNodes.FirstOrDefault(it => it.Name == ShowOutputList.Text);
+            if (Block == null)
+                return;
+            Block.Execute();
+            var outputNode = Block.OutputNodes.FirstOrDefault(it => it.Name == ShowOutputList.Text);
             if (outputNode == null || outputNode.Object == null || outputNode.Object.Count == 0)
             {
                 NoDataLabel.Visible = true;
@@ -84,7 +79,7 @@ namespace WaveletStudio.MainApplication.Forms
                 index = 0;
             var signal = outputNode.Object[index];
             var samples = signal.GetSamplesPair();
-            
+
             var yAxys = new ZedGraph.PointPairList();
             yAxys.AddRange(samples.Select(it => new ZedGraph.PointPair(it[1], it[0])));
             pane.AddCurve(outputNode.Name, yAxys, Color.Red, ZedGraph.SymbolType.None);
@@ -113,8 +108,8 @@ namespace WaveletStudio.MainApplication.Forms
             if (!pane.IsZoomed && samples.Count() != 0)
             {
                 pane.XAxis.Scale.Min = samples.ElementAt(0)[1];
-                pane.XAxis.Scale.Max = samples.ElementAt(samples.Count() - 1)[1];                
-            }            
+                pane.XAxis.Scale.Max = samples.ElementAt(samples.Count() - 1)[1];
+            }
             GraphControl.AxisChange();
             GraphControl.Invalidate();
             GraphControl.Refresh();
@@ -122,20 +117,19 @@ namespace WaveletStudio.MainApplication.Forms
 
         private void GraphControlMouseDoubleClick(object sender, MouseEventArgs e)
         {
-            GraphControl.ZoomOutAll(GraphControl.GraphPane);            
-        }
-
-        private void ShowOutputListSelectedIndexChanged(object sender, EventArgs e)
-        {
-            UpdateGraph();
-            UpdateSignalList();
+            GraphControl.ZoomOutAll(GraphControl.GraphPane);
         }
 
         private void UpdateSignalList()
         {
             var currentIndex = ShowOutputSignal.SelectedIndex;
             ShowOutputSignal.Items.Clear();
-            var outputNode = TempBlock.OutputNodes.FirstOrDefault(it => it.Name == ShowOutputList.Text);
+            if (Block == null)
+            {
+                ShowOutputSignal.Visible = false;
+                return;
+            }
+            var outputNode = Block.OutputNodes.FirstOrDefault(it => it.Name == ShowOutputList.Text);
             if (outputNode == null || outputNode.Object == null || outputNode.Object.Count == 0)
             {
                 ShowOutputSignal.Visible = false;
@@ -150,6 +144,12 @@ namespace WaveletStudio.MainApplication.Forms
                     ShowOutputSignal.SelectedIndex = ShowOutputSignal.Items.Count > currentIndex ? currentIndex : 0;
                 ShowOutputSignal.Visible = true;
             }
+        }
+
+        private void ShowOutputListSelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateGraph();
+            UpdateSignalList();
         }
 
         private void ShowOutputSignalSelectedIndexChanged(object sender, EventArgs e)

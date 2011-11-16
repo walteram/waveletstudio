@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using WaveletStudio.Blocks.CustomAttributes;
 
 namespace WaveletStudio.Blocks
@@ -42,7 +43,7 @@ namespace WaveletStudio.Blocks
         }
 
         /// <summary>
-        /// Signal names used in the output (optional) 
+        /// Signal names used in the output (optional, one per line)
         /// </summary>
         [TextParameter]
         public string SignalNames { get; set; }

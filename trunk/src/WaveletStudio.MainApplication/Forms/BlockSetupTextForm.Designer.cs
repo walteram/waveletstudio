@@ -1,6 +1,6 @@
 ﻿namespace WaveletStudio.MainApplication.Forms
 {
-    partial class TextBlockSetupForm
+    partial class BlockSetupTextForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.OutputTextBox = new System.Windows.Forms.TextBox();
+            this.OutputTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // OutputTextBox
@@ -36,12 +36,13 @@
             this.OutputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.OutputTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.OutputTextBox.Location = new System.Drawing.Point(305, 41);
-            this.OutputTextBox.Multiline = true;
             this.OutputTextBox.Name = "OutputTextBox";
-            this.OutputTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.OutputTextBox.ReadOnly = true;
             this.OutputTextBox.Size = new System.Drawing.Size(470, 321);
             this.OutputTextBox.TabIndex = 107;
+            this.OutputTextBox.Text = "";
             this.OutputTextBox.WordWrap = false;
             // 
             // TextBlockSetupForm
@@ -51,14 +52,14 @@
             this.ClientSize = new System.Drawing.Size(787, 374);
             this.Controls.Add(this.OutputTextBox);
             this.Name = "TextBlockSetupForm";
+            this.Controls.SetChildIndex(this.PropertyGrid, 0);
             this.Controls.SetChildIndex(this.OutputTextBox, 0);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox OutputTextBox;
+        private System.Windows.Forms.RichTextBox OutputTextBox;
     }
 }

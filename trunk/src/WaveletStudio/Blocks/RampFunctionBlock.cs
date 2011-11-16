@@ -80,7 +80,6 @@ namespace WaveletStudio.Blocks
         public double RampFinish { get; set; }
 
         private int _samplingRate;
-
         /// <summary>
         /// Sampling rate used on sampling
         /// </summary>

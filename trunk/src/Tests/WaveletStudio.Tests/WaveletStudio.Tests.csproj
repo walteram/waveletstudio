@@ -38,6 +38,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
@@ -50,6 +51,12 @@
     <Compile Include="Blocks\BlocksConnectionTest.cs" />
     <Compile Include="Blocks\ConvolutionBlockTest.cs" />
     <Compile Include="Blocks\AbsoluteValueBlockTest.cs" />
+    <Compile Include="Blocks\CustomAttributes\GlobalizedObjectTest.cs" />
+    <Compile Include="Blocks\CustomAttributes\GlobalizedPropertyDescriptorTest.cs" />
+    <Compile Include="Blocks\CustomAttributes\Mocks.cs" />
+    <Compile Include="Blocks\CustomAttributes\TextParameterTest.cs" />
+    <Compile Include="Blocks\CustomAttributes\ParameterTest.cs" />
+    <Compile Include="Blocks\CustomAttributes\TypeConvertersTest.cs" />
     <Compile Include="Blocks\DemuxBlockTest.cs" />
     <Compile Include="Blocks\MuxBlockTest.cs" />
     <Compile Include="Blocks\RepeatBlockTest.cs" />

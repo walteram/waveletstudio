@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
 
@@ -45,9 +46,10 @@ namespace WaveletStudio.Blocks
         public ConvolutionModeEnum ConvolutionMode { get; set; }
 
         /// <summary>
-        /// The FFT mode to be used.
+        /// The FFT mode to be used on convolution.
         /// </summary>
         [Parameter]
+        [Description("The FFT mode to be used on convolution.")]
         public ManagedFFTModeEnum Mode { get; set; }
 
         /// <summary>

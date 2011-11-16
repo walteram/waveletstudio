@@ -41,7 +41,7 @@ namespace WaveletStudio.Blocks
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.LoadSignal; } }
 
         /// <summary>
-        /// Path to the file
+        /// Absolute or relative path to the file
         /// </summary>
         [Parameter]
         public string FilePath { get; set; }

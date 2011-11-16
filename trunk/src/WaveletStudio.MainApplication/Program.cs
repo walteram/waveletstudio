@@ -23,7 +23,7 @@ namespace WaveletStudio.MainApplication
 
             QColorScheme.Global.CurrentTheme = "LunaSilver";
             QColorScheme.Global.InheritCurrentThemeFromWindows = true;            
-            Application.Run(new AppContext());            
+            Application.Run(new AppContext());             
         }
 
         private static QTranslucentWindow _splashScreen;
