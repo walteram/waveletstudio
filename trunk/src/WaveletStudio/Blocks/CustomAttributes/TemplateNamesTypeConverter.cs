@@ -3,16 +3,17 @@ using System.Linq;
 
 namespace WaveletStudio.Blocks.CustomAttributes
 {
+    /// <summary>
+    /// Template names type converter
+    /// </summary>
     public class TemplateNamesTypeConverter : ListTypeConverter
     {
-        private StandardValuesCollection GetValues()
-        {
-            return new StandardValuesCollection(Utils.GetTypes("WaveletStudio.SignalGeneration").Select(it => it.Name).ToArray());
-        }
-
+        /// <summary>
+        /// Returns the available templates.
+        /// </summary>
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            return GetValues();
+            return new StandardValuesCollection(Utils.GetTypes("WaveletStudio.SignalGeneration").Select(it => it.Name).ToArray());
         }
     }
 }
