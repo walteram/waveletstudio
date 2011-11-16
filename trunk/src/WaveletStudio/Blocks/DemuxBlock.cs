@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using WaveletStudio.Blocks.CustomAttributes;
 
 namespace WaveletStudio.Blocks

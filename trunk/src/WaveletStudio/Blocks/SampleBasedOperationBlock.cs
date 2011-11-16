@@ -58,7 +58,6 @@ namespace WaveletStudio.Blocks
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Operation; } }
 
         private WaveMath.OperationEnum _operation = WaveMath.OperationEnum.Sum;
-
         /// <summary>
         /// Math operation to be used
         /// </summary>

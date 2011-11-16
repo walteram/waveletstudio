@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.ComponentModel;
+using System.ComponentModel.Design;
+using System.Drawing.Design;
 using WaveletStudio.Blocks.CustomAttributes;
 
 namespace WaveletStudio.Blocks
@@ -43,6 +45,7 @@ namespace WaveletStudio.Blocks
         /// Text
         /// </summary>
         [Parameter]
+        [Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
         public string Text { get; set; }
 
         /// <summary>

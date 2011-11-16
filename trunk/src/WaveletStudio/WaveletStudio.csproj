@@ -38,12 +38,19 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Blocks\BlockNodeBase.cs" />
     <Compile Include="Blocks\BlockOutputNode.cs" />
     <Compile Include="Blocks\ConvolutionBlock.cs" />
     <Compile Include="Blocks\AbsoluteValueBlock.cs" />
+    <Compile Include="Blocks\CustomAttributes\TemplateNamesTypeConverter.cs" />
+    <Compile Include="Blocks\CustomAttributes\WaveletNamesTypeConverter.cs" />
+    <Compile Include="Blocks\CustomAttributes\GlobalizedObject.cs" />
+    <Compile Include="Blocks\CustomAttributes\GlobalizedPropertyDescriptor.cs" />
+    <Compile Include="Blocks\CustomAttributes\ListTypeConverter.cs" />
     <Compile Include="Blocks\DemuxBlock.cs" />
     <Compile Include="Blocks\CustomAttributes\TextParameter.cs" />
     <Compile Include="Blocks\MuxBlock.cs" />
@@ -80,6 +87,11 @@
     <Compile Include="Functions\WaveMath_Routing.cs" />
     <Compile Include="Functions\WaveMath_Statistics.cs" />
     <Compile Include="MemoryPool.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SignalGeneration\Binary.cs" />
     <Compile Include="SignalGeneration\Sine.cs" />
     <Compile Include="Utils.cs" />
@@ -97,7 +109,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignalExtension.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

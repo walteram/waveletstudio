@@ -56,11 +56,17 @@
     <Compile Include="AppContext.cs" />
     <Compile Include="ApplicationUtils.cs" />
     <Compile Include="Controls\QControlUtils.cs" />
-    <Compile Include="Forms\BlockSetupForm.cs">
+    <Compile Include="Forms\BlockPlot.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\BlockPlot.Designer.cs">
+      <DependentUpon>BlockPlot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BlockSetupPlotForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\BlockSetupForm.Designer.cs">
-      <DependentUpon>BlockSetupForm.cs</DependentUpon>
+    <Compile Include="Forms\BlockSetupPlotForm.Designer.cs">
+      <DependentUpon>BlockSetupPlotForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\BlockSetupBaseForm.cs">
       <SubType>Form</SubType>
@@ -68,11 +74,23 @@
     <Compile Include="Forms\BlockSetupBaseForm.Designer.cs">
       <DependentUpon>BlockSetupBaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TextBlockSetupForm.cs">
+    <Compile Include="Forms\DiagramFormOutput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\DiagramFormOutput.Designer.cs">
+      <DependentUpon>DiagramFormOutput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DiagramFormProperties.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\DiagramFormProperties.Designer.cs">
+      <DependentUpon>DiagramFormProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BlockSetupTextForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\TextBlockSetupForm.Designer.cs">
-      <DependentUpon>TextBlockSetupForm.cs</DependentUpon>
+    <Compile Include="Forms\BlockSetupTextForm.Designer.cs">
+      <DependentUpon>BlockSetupTextForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DiagramForm.cs">
       <SubType>Form</SubType>
@@ -88,14 +106,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\BlockSetupForm.resx">
-      <DependentUpon>BlockSetupForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\BlockPlot.resx">
+      <DependentUpon>BlockPlot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BlockSetupPlotForm.resx">
+      <DependentUpon>BlockSetupPlotForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BlockSetupBaseForm.resx">
       <DependentUpon>BlockSetupBaseForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\TextBlockSetupForm.resx">
-      <DependentUpon>TextBlockSetupForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\DiagramFormOutput.resx">
+      <DependentUpon>DiagramFormOutput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DiagramFormProperties.resx">
+      <DependentUpon>DiagramFormProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BlockSetupTextForm.resx">
+      <DependentUpon>BlockSetupTextForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DiagramForm.resx">
       <DependentUpon>DiagramForm.cs</DependentUpon>

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Properties;
 using WaveletStudio.Wavelet;
 
 namespace WaveletStudio.Blocks
@@ -24,7 +26,7 @@ namespace WaveletStudio.Blocks
 
             Level = 1;
             ExtensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint;
-            WaveletNameList = CommonMotherWavelets.Wavelets.Values.Select(it => (string)it[0]).ToList();
+            WaveletNameList = CommonMotherWavelets.Wavelets.Values.Select(it => ((string)it[0]).Split('|')[1] + " (" + ((string)it[0]).Split('|')[0] + ")").ToList();
             WaveletName = WaveletNameList.ElementAt(0);
         }
 
@@ -53,6 +55,7 @@ namespace WaveletStudio.Blocks
         /// Wavelet function to be used
         /// </summary>
         [Parameter]
+        [TypeConverter(typeof(WaveletNamesTypeConverter))]
         public string WaveletName
         {
             get
@@ -61,8 +64,6 @@ namespace WaveletStudio.Blocks
             }
             set
             {
-                if (value.Contains("|"))
-                    value = value.Split('|')[0];
                 if (!LoadWavelets(value))
                 {
                     throw new Exception("The wavelet " + value + " does not exist.");
@@ -73,6 +74,11 @@ namespace WaveletStudio.Blocks
 
         private bool LoadWavelets(string waveletName)
         {
+            if (waveletName.Contains("|"))
+                waveletName = waveletName.Split('|')[0];
+            else if (waveletName.Contains("("))
+                waveletName = waveletName.Split('(')[1].Replace(")", "");
+
             if (_motherWavelet == null || waveletName != WaveletName)
             {
                 var motherWavelet = CommonMotherWavelets.GetWaveletFromName(waveletName);

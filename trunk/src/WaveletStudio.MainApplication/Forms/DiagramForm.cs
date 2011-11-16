@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using DiagramNet;
 using DiagramNet.Elements;
@@ -17,6 +19,8 @@ namespace WaveletStudio.MainApplication.Forms
 {
     public partial class DiagramForm : QRibbonForm
     {
+        private readonly DiagramFormProperties _propertiesWindow;
+        private readonly DiagramFormOutput _outputWindow;
         private string _currentFile;
         public string CurrentFile
         {
@@ -53,11 +57,24 @@ namespace WaveletStudio.MainApplication.Forms
             InitializeComponent();
             AppMenuButton.Visible = false;
             CurrentFile = "";
-            ConfigureDesigner();
+            _outputWindow = new DiagramFormOutput {Owner = this, Size = new Size(300, 300)};
+            _outputWindow.DockWindow(RightDockBar);
+            _propertiesWindow = new DiagramFormProperties {Owner = this, Size = new Size(300, 300)};
+            _propertiesWindow.DockWindow(RightDockBar);
+            _propertiesWindow.PropertyGrid.PropertyValueChanged += (o, args) => _outputWindow.BlockPlot.Refresh();
+            _outputWindow.DockWindow(RightDockBar);
+            _propertiesWindow.DockWindow(_outputWindow, QDockOrientation.Vertical, true);
+
+            Designer.ElementDoubleClick += DesignerElementDoubleClick;
+            Designer.ElementMoved += DesignerElementMoved;
+            Designer.ElementResized += DesignerElementResized;
+            Designer.ElementConnected += DesignerElementConnected;
+            Designer.ElementSelection += DesignerElementSelection;
         }
-        
+    
         private void DiagramFormLoad(object sender, EventArgs e)
-        {            
+        {
+            ConfigureDesigner();
             LoadRibbon();            
             WindowState = FormWindowState.Maximized;
             AppMenuButton.Visible = true;                                   
@@ -67,6 +84,7 @@ namespace WaveletStudio.MainApplication.Forms
         {
             Designer.Document.GridSize = new Size(10, 10);
             Designer.Document.PropertyChanged += PropertyChanged;
+            Designer.Document.ZoomChanged += ZoomChanged;
             Designer.Document.ElementPropertyChanged += PropertyChanged;
         }
 
@@ -134,57 +152,11 @@ namespace WaveletStudio.MainApplication.Forms
             }
         }
 
-        private void DesignerElementConnected(object sender, ElementConnectEventArgs e)
+        private void ZoomChanged(object sender, EventArgs e)
         {
-            Saved = false;
-            var node1 = (BlockNodeBase) e.Link.Connector1.State;
-            var node2 = (BlockNodeBase) e.Link.Connector2.State;         
-            node1.ConnectTo(ref node2);            
-            try
-            {
-                node1.Root.Execute();
-            }
-            catch (StackOverflowException)
-            {
-                MessageBox.Show(@"The model throws a stack overflow exception.");
-            }            
-        }
-        
-        private void DesignerElementDoubleClick(object sender, ElementEventArgs e)
-        {
-            if (!(e.Element is DiagramBlock)) 
-                return;
-            var diagramBlock = (DiagramBlock) e.Element;
-            var block = (BlockBase) diagramBlock.State;
-            block.CurrentDirectory = CurrentDirectory;
-            
-            BlockSetupBaseForm setupForm;
-            if(block.ProcessingType == BlockBase.ProcessingTypeEnum.Export)
-                setupForm = new TextBlockSetupForm(ApplicationUtils.GetResourceString(block.Name), ref block);
-            else
-                setupForm = new BlockSetupForm(ApplicationUtils.GetResourceString(block.Name), ref block);
-            setupForm.ShowDialog(this);
-            if (setupForm.DialogResult != DialogResult.OK) 
-                return;
-            diagramBlock.Refresh(ApplicationUtils.GetResourceImage("img" + setupForm.Block.Name.ToLower() + "mini", 30, 20), ApplicationUtils.GetResourceString(setupForm.Block.Name), setupForm.Block, setupForm.Block.InputNodes.ToArray(), setupForm.Block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
-            diagramBlock.Invalidate();
-            diagramBlock.State = setupForm.Block;
-            Saved = false;
-        }
-
-        private void DesignerElementMoved(object sender, ElementEventArgs e)
-        {
-            Saved = false;
-        }
-
-        private void DesignerElementResized(object sender, ElementEventArgs e)
-        {
-            Saved = false;
-        }
-
-        private void PropertyChanged(object sender, EventArgs e)
-        {
-            Saved = false;
+            var zoomValue = Convert.ToInt32(Designer.Document.Zoom*100);
+            ZoomTrackBar.Value = zoomValue;
+            ZoomLabel.Text = zoomValue + @"%";
         }
 
         private void CopyElementShortcutItemActivated(object sender, QCompositeEventArgs e)
@@ -285,6 +257,7 @@ namespace WaveletStudio.MainApplication.Forms
             diagramForm.CurrentFile = filename;
             diagramForm.Show();
             diagramForm.Focus();
+            diagramForm.ConfigureDesigner();
             AddRecentFile(filename);
 
             var blockList = new BlockList();
@@ -315,6 +288,56 @@ namespace WaveletStudio.MainApplication.Forms
                 Designer.SaveBinary(saveDialog.FileName);
                 CurrentFile = saveDialog.FileName;
                 AddRecentFile(CurrentFile);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(@"The file couldn't be opened:" + "\r\n" + exception.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void ExportImage()
+        {
+            var saveDialog = new SaveFileDialog
+            {
+                SupportMultiDottedExtensions = false,
+                Filter = @"PNG|*.png|JPG|*.jpg|BMP|*.bmp|EMF|*.emf|EXIF|*.exif|GIF|*.gif|TIFF|*.tiff|WMF|*.wmf",
+                RestoreDirectory = true,
+                AddExtension = true
+            };
+            if (saveDialog.ShowDialog(this) != DialogResult.OK)
+                return;
+            try
+            {
+                var extension = (Path.GetExtension(saveDialog.FileName) ?? "").Replace(".","").ToLower();
+                var format = ImageFormat.Png;
+                if (extension == "jpg" || extension == "jpeg")
+                    format = ImageFormat.Jpeg;
+                else if (extension == "bmp")
+                    format = ImageFormat.Bmp;
+                else if (extension == "emf")
+                    format = ImageFormat.Emf;
+                else if (extension == "exif")
+                    format = ImageFormat.Exif;
+                else if (extension == "gif")
+                    format = ImageFormat.Gif;
+                else if (extension == "tiff" || extension == "tif")
+                    format = ImageFormat.Tiff;
+                else if (extension == "wmf" || extension == "wmf")
+                    format = ImageFormat.Wmf;
+
+                
+                var bmp = Designer.GetImage(false, format == ImageFormat.Gif || format == ImageFormat.Bmp);
+                var encoder = ImageCodecInfo.GetImageDecoders().FirstOrDefault(codec => codec.FormatID == format.Guid);
+                if (encoder != null && format != ImageFormat.Emf && format != ImageFormat.Wmf)
+                {
+                    var encoderParameters = new EncoderParameters(1);
+                    encoderParameters.Param[0] = new EncoderParameter(Encoder.Quality, 100L);
+                    bmp.Save(saveDialog.FileName, encoder, encoderParameters);
+                }
+                else
+                {
+                    bmp.Save(saveDialog.FileName, format);   
+                }                
             }
             catch (Exception exception)
             {
@@ -361,8 +384,106 @@ namespace WaveletStudio.MainApplication.Forms
             else if (e.KeyCode == Keys.S && e.Shift)
                 menu.SaveAsMenuItemItemActivated(sender, null);
             else if (e.KeyCode == Keys.S)
-                menu.SaveMenuItemItemActivated(sender, null);            
+                menu.SaveMenuItemItemActivated(sender, null);
+            else if (e.KeyCode == Keys.OemMinus)
+                Designer.Document.Zoom -= 0.1f;
+            else if (e.KeyCode == Keys.Oemplus)
+                Designer.Document.Zoom += 0.1f;
         }
+
+        private void ZoomMinusButtonClick(object sender, EventArgs e)
+        {
+            ZoomTrackBar.Value -= 10;
+        }
+
+        private void ZoomTrackBarValueChanged(object sender, EventArgs e)
+        {
+            Designer.Document.Zoom = ZoomTrackBar.Value / 100f;
+            ZoomLabel.Text = ZoomTrackBar.Value + @"%";
+        }
+
+        private void ZoomPlusButtonClick(object sender, EventArgs e)
+        {
+            ZoomTrackBar.Value += 10;
+        }
+
+        private void DesignerElementConnected(object sender, ElementConnectEventArgs e)
+        {
+            Saved = false;
+            var node1 = (BlockNodeBase)e.Link.Connector1.State;
+            var node2 = (BlockNodeBase)e.Link.Connector2.State;
+            node1.ConnectTo(ref node2);
+            try
+            {
+                node1.Root.Execute();
+                Designer.Document.SelectElement(e.Link.Connector2);
+            }
+            catch (StackOverflowException)
+            {
+                MessageBox.Show(@"The model throws a stack overflow exception.");
+            }
+        }
+
+        private void DesignerElementDoubleClick(object sender, ElementEventArgs e)
+        {
+            if (!(e.Element is DiagramBlock))
+                return;
+            var diagramBlock = (DiagramBlock)e.Element;
+            var block = (BlockBase)diagramBlock.State;
+            block.CurrentDirectory = CurrentDirectory;
+
+            BlockSetupBaseForm setupForm;
+            if (block.ProcessingType == BlockBase.ProcessingTypeEnum.Export)
+                setupForm = new BlockSetupTextForm(ApplicationUtils.GetResourceString(block.Name), ref block);
+            else
+                setupForm = new BlockSetupPlotForm(ApplicationUtils.GetResourceString(block.Name), ref block);
+            setupForm.ShowDialog(this);
+            if (setupForm.DialogResult != DialogResult.OK)
+                return;
+
+            _propertiesWindow.PropertyGrid.SelectedObject = setupForm.Block;
+            _propertiesWindow.PropertyGrid.Refresh();
+            _outputWindow.BlockPlot.Block = setupForm.Block;
+            _outputWindow.BlockPlot.Refresh();
+            diagramBlock.Refresh(ApplicationUtils.GetResourceImage("img" + setupForm.Block.Name.ToLower() + "mini", 30, 20), ApplicationUtils.GetResourceString(setupForm.Block.Name), setupForm.Block, setupForm.Block.InputNodes.ToArray(), setupForm.Block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
+            diagramBlock.Invalidate();
+            diagramBlock.State = setupForm.Block;
+            Saved = false;
+        }
+
+        private void DesignerElementMoved(object sender, ElementEventArgs e)
+        {
+            Saved = false;
+        }
+
+        private void DesignerElementResized(object sender, ElementEventArgs e)
+        {
+            Saved = false;
+        }
+
+        private void DesignerElementSelection(object sender, ElementSelectionEventArgs e)
+        {
+            if (e.Elements.Count == 0)
+                return;
+
+            foreach (var element in e.Elements)
+            {
+                if (!(element is DiagramBlock))
+                    continue;
+                var diagramBlock = (DiagramBlock)element;
+                var block = (BlockBase)diagramBlock.State;
+                _propertiesWindow.PropertyGrid.SelectedObject = block;
+                _propertiesWindow.PropertyGrid.Refresh();
+                _outputWindow.BlockPlot.Block = block;
+                _outputWindow.BlockPlot.Refresh();
+                break;
+            }
+        }
+
+        private void PropertyChanged(object sender, EventArgs e)
+        {
+            Saved = false;
+        }        
     }
 }
 

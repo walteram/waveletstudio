@@ -44,6 +44,7 @@ namespace WaveletStudio.Blocks
         {
             ConnectingNode = node;
             node.ConnectingNode = this;
+            ConnectingNode.Root.Execute();
         }
 
         /// <summary>

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 
@@ -18,6 +15,10 @@ namespace WaveletStudio.Tests.Blocks
 
             Assert.AreEqual("", BlockBase.GetName(typeof(Object)));
             Assert.AreEqual("", BlockBase.GetName(typeof(BlockBase)));
+            Assert.AreEqual(true, block.HasParameters());
+
+            var block2 = new InvertBlock();
+            Assert.AreEqual(false, block2.HasParameters());
         }
 
         [TestMethod]

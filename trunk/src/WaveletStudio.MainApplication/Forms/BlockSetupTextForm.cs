@@ -2,9 +2,9 @@
 
 namespace WaveletStudio.MainApplication.Forms
 {
-    public partial class TextBlockSetupForm : BlockSetupBaseForm
+    public partial class BlockSetupTextForm : BlockSetupBaseForm
     {
-        public TextBlockSetupForm(string title, ref BlockBase block) : base(title, ref block)
+        public BlockSetupTextForm(string title, ref BlockBase block) : base(title, ref block)
         {
             InitializeComponent();
             OnFieldValueChanged += FieldValueChanged;

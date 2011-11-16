@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using WaveletStudio.Blocks.CustomAttributes;
 
 namespace WaveletStudio.Blocks
 {
@@ -9,7 +10,7 @@ namespace WaveletStudio.Blocks
     /// Defines a processing block
     /// </summary>
     [Serializable]
-    public abstract class BlockBase
+    public abstract class BlockBase : GlobalizedObject
     {
         private string _currentDirectory;
 
@@ -59,7 +60,7 @@ namespace WaveletStudio.Blocks
 
         /// <summary>
         /// Defines if the Execute method should be cascaded to the connected blocks
-        /// </summary>
+        /// </summary>  
         public bool Cascade { get; set; }
 
         /// <summary>
@@ -196,6 +197,15 @@ namespace WaveletStudio.Blocks
                 return "";
             var block = (BlockBase)Activator.CreateInstance(type);
             return block.Name;
+        }
+
+        /// <summary>
+        /// Returns wether the block has parameters.
+        /// </summary>
+        /// <returns></returns>
+        public bool HasParameters()
+        {
+            return GetType().GetProperties().Any(property => property.GetCustomAttributes(true).OfType<Parameter>().Any());
         }
     }
 }

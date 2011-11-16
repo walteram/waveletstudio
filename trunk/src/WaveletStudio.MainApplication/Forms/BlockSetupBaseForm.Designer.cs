@@ -31,6 +31,7 @@
             this.FormCaption = new Qios.DevSuite.Components.Ribbon.QRibbonCaption();
             this.UseSignalButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
+            this.PropertyGrid = new System.Windows.Forms.PropertyGrid();
             ((System.ComponentModel.ISupportInitialize)(this.FormCaption)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,11 +68,22 @@
             this.CancelButton.Text = "&Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             // 
+            // PropertyGrid
+            // 
+            this.PropertyGrid.Location = new System.Drawing.Point(12, 40);
+            this.PropertyGrid.Name = "PropertyGrid";
+            this.PropertyGrid.PropertySort = System.Windows.Forms.PropertySort.NoSort;
+            this.PropertyGrid.Size = new System.Drawing.Size(282, 285);
+            this.PropertyGrid.TabIndex = 103;
+            this.PropertyGrid.ToolbarVisible = false;
+            this.PropertyGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.PropertyGridPropertyValueChanged);
+            // 
             // BlockSetupBaseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(787, 374);
+            this.Controls.Add(this.PropertyGrid);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.UseSignalButton);
             this.Controls.Add(this.FormCaption);
@@ -91,5 +103,6 @@
         private Qios.DevSuite.Components.Ribbon.QRibbonCaption FormCaption;
         private System.Windows.Forms.Button UseSignalButton;
         private new System.Windows.Forms.Button CancelButton;
+        public System.Windows.Forms.PropertyGrid PropertyGrid;
     }
 }

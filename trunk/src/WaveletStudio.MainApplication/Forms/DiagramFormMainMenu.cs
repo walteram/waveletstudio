@@ -46,10 +46,15 @@ namespace WaveletStudio.MainApplication.Forms
             _diagramForm.CloseWindow();
         }
 
-        private void DiagramFormMainMenuVisibleChanged(object sender, System.EventArgs e)
+        private void DiagramFormMainMenuVisibleChanged(object sender, EventArgs e)
         {
             CreateRecentDocument();
-        }        
+        }
+
+        private void ExportMenuItemItemActivated(object sender, QCompositeEventArgs e)
+        {
+            _diagramForm.ExportImage();
+        }
 
         private void CreateRecentDocument()
         {
@@ -71,6 +76,6 @@ namespace WaveletStudio.MainApplication.Forms
                 compositeItem.ItemActivated += (sender, args) => _diagramForm.OpenFile(((QCompositeItem)sender).ItemName);
                 DocumentItems.Add(compositeItem);
             }
-        }
+        }        
     }
 }

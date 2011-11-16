@@ -16,10 +16,10 @@ namespace WaveletStudio.Tests.Blocks
             const string signal = "Signal1 " + signal1 + "\r\nSignal2 " + signal2;
             var signalBlock = new ImportFromTextBlock { Text = signal, ColumnSeparator = " " };
             var dwtBlock = new DWTBlock { WaveletName = "db4", Level = 2, ExtensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint };
-            var idwtBlock = new IDWTBlock {WaveletName = "db4", Level = 2};
+            var idwtBlock = new IDWTBlock { WaveletName = "db4|Daubechies 4", Level = 2 };
             idwtBlock.Execute();
             Assert.IsTrue(idwtBlock.WaveletNameList.Count > 0);
-            Assert.AreEqual("db4", idwtBlock.WaveletName);
+            Assert.AreEqual("db4|Daubechies 4", idwtBlock.WaveletName);
 
             signalBlock.OutputNodes[0].ConnectTo(dwtBlock.InputNodes[0]);
             dwtBlock.OutputNodes[0].ConnectTo(idwtBlock.InputNodes[0]);
@@ -33,6 +33,7 @@ namespace WaveletStudio.Tests.Blocks
             Assert.AreEqual(signal2, idwtBlock.OutputNodes[0].Object[1].ToString(0));
 
             var block2 = (IDWTBlock)idwtBlock.Clone();
+            block2.WaveletName = "db4";
             signalBlock.OutputNodes[0].ConnectTo(block2.InputNodes[0]);
             idwtBlock.OutputNodes[0].ConnectTo(block2.InputNodes[1]);
             signalBlock.Execute();
