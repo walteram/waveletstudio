@@ -1,5 +1,6 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Linq;
 
 namespace DiagramNet.Elements.Controllers
 {
@@ -51,16 +52,10 @@ namespace DiagramNet.Elements.Controllers
 
 		public bool HitTest(Point p)
 		{
-			foreach(var l in El.LineElements)
-			{
-				var ctrl = ((IControllable) l).GetController();
-				if (ctrl.HitTest(p))
-					return true;
-			}
-			return false;
+		    return El.LineElements.Select(l => ((IControllable) l).GetController()).Any(ctrl => ctrl.HitTest(p));
 		}
 
-		bool IController.HitTest(Rectangle r)
+	    bool IController.HitTest(Rectangle r)
 		{
 			var gp = new GraphicsPath();
 			var mtx = new Matrix();

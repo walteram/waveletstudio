@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 
 namespace DiagramNet.Elements
 {
@@ -82,14 +83,7 @@ namespace DiagramNet.Elements
         public virtual bool IsConnected
         {
             get
-            {
-                foreach (var c in Connects)
-                {
-                    if (c.Links.Count > 0)
-                        return true;
-                }
-                return false;
-            }
+            { return Connects.Any(c => c.Links.Count > 0); }
         }
 
         protected void InitConnectors()

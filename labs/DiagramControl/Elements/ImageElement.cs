@@ -25,7 +25,7 @@ namespace DiagramNet.Elements
 			Height = height;
 		}
 
-		public ImageElement(Image image, RectangleElement rectangle)
+		public ImageElement(Image image, BaseElement rectangle)
 		{
 			_image = image;
 			Left = rectangle.Location.X + rectangle.Size.Width/2 - image.Width/2;

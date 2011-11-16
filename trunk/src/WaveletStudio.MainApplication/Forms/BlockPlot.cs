@@ -78,7 +78,7 @@ namespace WaveletStudio.MainApplication.Forms
             if (index == -1 || index > outputNode.Object.Count - 1)
                 index = 0;
             var signal = outputNode.Object[index];
-            var samples = signal.GetSamplesPair();
+            var samples = signal.GetSamplesPair().ToList();
 
             var yAxys = new ZedGraph.PointPairList();
             yAxys.AddRange(samples.Select(it => new ZedGraph.PointPair(it[1], it[0])));
