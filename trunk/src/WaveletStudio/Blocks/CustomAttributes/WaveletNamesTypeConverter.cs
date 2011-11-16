@@ -4,16 +4,17 @@ using WaveletStudio.Wavelet;
 
 namespace WaveletStudio.Blocks.CustomAttributes
 {
+    /// <summary>
+    /// Wavelet names type converter
+    /// </summary>
     public class WaveletNamesTypeConverter : ListTypeConverter
     {
-        private StandardValuesCollection GetValues()
-        {
-            return new StandardValuesCollection(CommonMotherWavelets.Wavelets.Values.Select(it => ((string)it[0]).Split('|')[1] + " (" + ((string)it[0]).Split('|')[0] + ")").ToList());
-        }
-
+        /// <summary>
+        /// Returns the available wavelets.
+        /// </summary>
         public override StandardValuesCollection GetStandardValues(ITypeDescriptorContext context)
         {
-            return GetValues();
+            return new StandardValuesCollection(CommonMotherWavelets.Wavelets.Values.Select(it => ((string)it[0]).Split('|')[1] + " (" + ((string)it[0]).Split('|')[0] + ")").ToList());
         }
     }
 }
