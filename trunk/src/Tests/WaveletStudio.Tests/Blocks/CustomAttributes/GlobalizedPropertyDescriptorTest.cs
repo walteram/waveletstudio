@@ -31,12 +31,12 @@ namespace WaveletStudio.Tests.Blocks.CustomAttributes
                         continue;
                     if(!string.IsNullOrEmpty(parameterAttribute.NameResourceName))
                     {
-                        Assert.IsTrue(!string.IsNullOrWhiteSpace(resource.GetString(parameterAttribute.NameResourceName)));
-                        Assert.IsTrue(!string.IsNullOrWhiteSpace(resource.GetString(parameterAttribute.DescriptionResourceName)));
+                        Assert.IsTrue(!string.IsNullOrWhiteSpace(resource.GetString(parameterAttribute.NameResourceName)), type.FullName + "." + descriptor.Name + " - DisplayName resource not found: " + parameterAttribute.NameResourceName);
+                        Assert.IsTrue(!string.IsNullOrWhiteSpace(resource.GetString(parameterAttribute.DescriptionResourceName)), type.FullName + "." + descriptor.Name + " - Description resource not found: " + parameterAttribute.DescriptionResourceName);
                     }
-                    Assert.IsTrue(!string.IsNullOrEmpty(descriptor.DisplayName));
-                    Assert.IsTrue(!string.IsNullOrEmpty(descriptor.Description));
-                    Assert.IsTrue(descriptor.Description.EndsWith("."));
+                    Assert.IsTrue(!string.IsNullOrEmpty(descriptor.DisplayName), type.FullName + "." + descriptor.Name + " - DisplayName resource not found");
+                    Assert.IsTrue(!string.IsNullOrEmpty(descriptor.Description), type.FullName + "." + descriptor.Name + " - Description resource not found");
+                    Assert.IsTrue(descriptor.Description.EndsWith("."), type.FullName + "." + descriptor.Name + " - Description resource not ends with '.'");
                 }
             }
         }

@@ -61,6 +61,7 @@
     <Compile Include="Blocks\MuxBlockTest.cs" />
     <Compile Include="Blocks\RepeatBlockTest.cs" />
     <Compile Include="Blocks\InterpolationBlockTest.cs" />
+    <Compile Include="Blocks\SwitchBlockTest.cs" />
     <Compile Include="Blocks\UniqueBlockTest.cs" />
     <Compile Include="Blocks\ShiftBlockTest.cs" />
     <Compile Include="Blocks\InvertBlockTest.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Functions\WaveMathInterpolationTests.cs" />
     <Compile Include="Functions\WaveMathOperationTests.cs" />
     <Compile Include="Functions\WaveMathStatisticsTests.cs" />
+    <Compile Include="Functions\WaveMathRoutingTests.cs" />
     <Compile Include="SignalGeneration\BinaryTest.cs" />
     <Compile Include="SignalGeneration\CosineTest.cs" />
     <Compile Include="SignalGeneration\SawtoothTest.cs" />

@@ -379,4 +379,16 @@ Click in the Signal tab and select a signal source.</value>
   <data name="TemplateNameDescription" xml:space="preserve">
     <value>The signal generation template used by the block.</value>
   </data>
+  <data name="StaticThreshold" xml:space="preserve">
+    <value>Static Threshold</value>
+  </data>
+  <data name="StaticThresholdDescription" xml:space="preserve">
+    <value>Assign the switch threshold that determines which input the block passes to the output.</value>
+  </data>
+  <data name="SwitchCriteria" xml:space="preserve">
+    <value>Switch Criteria</value>
+  </data>
+  <data name="SwitchCriteriaDescription" xml:space="preserve">
+    <value>Criteria for select the output.</value>
+  </data>
 </root>
