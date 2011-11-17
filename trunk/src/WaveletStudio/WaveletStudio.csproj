@@ -46,6 +46,7 @@
     <Compile Include="Blocks\BlockOutputNode.cs" />
     <Compile Include="Blocks\ConvolutionBlock.cs" />
     <Compile Include="Blocks\AbsoluteValueBlock.cs" />
+    <Compile Include="Blocks\SwitchBlock.cs" />
     <Compile Include="Blocks\CustomAttributes\TemplateNamesTypeConverter.cs" />
     <Compile Include="Blocks\CustomAttributes\WaveletNamesTypeConverter.cs" />
     <Compile Include="Blocks\CustomAttributes\GlobalizedObject.cs" />

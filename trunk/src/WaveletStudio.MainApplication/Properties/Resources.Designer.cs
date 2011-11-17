@@ -531,6 +531,20 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgswitch {
+            get {
+                object obj = ResourceManager.GetObject("imgswitch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgswitchmini {
+            get {
+                object obj = ResourceManager.GetObject("imgswitchmini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgtext {
             get {
                 object obj = ResourceManager.GetObject("imgtext", resourceCulture);

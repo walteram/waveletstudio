@@ -764,6 +764,42 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Static Threshold.
+        /// </summary>
+        public static string StaticThreshold {
+            get {
+                return ResourceManager.GetString("StaticThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assign the switch threshold that determines which input the block passes to the output..
+        /// </summary>
+        public static string StaticThresholdDescription {
+            get {
+                return ResourceManager.GetString("StaticThresholdDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch Criteria.
+        /// </summary>
+        public static string SwitchCriteria {
+            get {
+                return ResourceManager.GetString("SwitchCriteria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Criteria for select the output..
+        /// </summary>
+        public static string SwitchCriteriaDescription {
+            get {
+                return ResourceManager.GetString("SwitchCriteriaDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Template.
         /// </summary>
         public static string TemplateName {
