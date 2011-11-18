@@ -34,27 +34,27 @@ namespace WaveletStudio.Tests.Blocks
         [DeploymentItem("example.csv")]
         public void TestCloneWithLinks()
         {
-            AssertBlock(new ConvolutionBlock());
-            AssertBlock(new DownSampleBlock());
-            AssertBlock(new ExportToCSVBlock());
-            AssertBlock(new FFTBlock());
-            AssertBlock(new GenerateSignalBlock());
-            AssertBlock(new IFFTBlock());
-            AssertBlock(new ScalarOperationBlock());
-            AssertBlock(new RampFunctionBlock());
-            AssertBlock(new SampleBasedOperationBlock());
+            AssertBlock(new ConvolutionBlock());                        //Doc - OK
+            AssertBlock(new DownSampleBlock());                         //Doc - OK
+            AssertBlock(new ExportToCSVBlock());                        //Doc - OK
+            AssertBlock(new FFTBlock());                                //Doc - OK
+            AssertBlock(new GenerateSignalBlock());                     //Doc - OK
+            AssertBlock(new IFFTBlock());                               //Doc - OK
+            AssertBlock(new ScalarOperationBlock());                    //Doc - OK
+            AssertBlock(new RampFunctionBlock());                       //Doc - OK
+            AssertBlock(new SampleBasedOperationBlock());               //Doc - OK
             AssertBlock(new SignalExtensionBlock());
-            AssertBlock(new ImportFromCSVBlock());
+            AssertBlock(new ImportFromCSVBlock());                      //Doc - OK
             AssertBlock(new ImportFromTextBlock{Text = "1234"});
-            AssertBlock(new DWTBlock());
+            AssertBlock(new DWTBlock());                                //Doc - OK
             AssertBlock(new UpSampleBlock());
-            AssertBlock(new WaveletBlock());
-            AssertBlock(new IDWTBlock());
-            AssertBlock(new AbsoluteValueBlock());
+            AssertBlock(new WaveletBlock());                            //Doc - OK
+            AssertBlock(new IDWTBlock());                               //Doc - OK
+            AssertBlock(new AbsoluteValueBlock());                      //Doc - OK
             AssertBlock(new UniqueBlock());
             AssertBlock(new InvertBlock());
-            AssertBlock(new ShiftBlock());
-            AssertBlock(new InterpolationBlock());
+            AssertBlock(new ShiftBlock());                              
+            AssertBlock(new InterpolationBlock());                      //Doc - OK
             AssertBlock(new RepeatBlock());
             AssertBlock(new MuxBlock());
             AssertBlock(new DemuxBlock{OutputCount = 1});

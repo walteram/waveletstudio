@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 using WaveletStudio.Functions;
 
@@ -42,6 +43,27 @@ namespace WaveletStudio.Tests.Blocks
             signalBlock.Execute();
             Assert.AreEqual("", block2.OutputNodes[0].Object.ToString(0, " "));
             Assert.AreEqual(0, block2.OutputNodes[0].Object.Count);
+        }
+
+        [TestMethod]
+        public void TestInterpolationDocumentationSample()
+        {
+            //Creates a sample signal with 4 samples
+            var signalBlock = new ImportFromTextBlock {Text="14, 20, 11, 41"};
+
+            //Interpolation block to create 2 samples between each other, 
+            //using Linear Interpolation method
+            var block = new InterpolationBlock{Factor=3, Mode=InterpolationModeEnum.Linear};
+            
+            //Connect and execute blocks
+            signalBlock.ConnectTo(block);
+            signalBlock.Execute();
+
+            Console.WriteLine(block.OutputNodes[0].Object[0].ToString(0));
+
+            //Output: 14 16 18 20 17 14 11 21 31 41
+
+            Assert.AreEqual("14 16 18 20 17 14 11 21 31 41", block.OutputNodes[0].Object[0].ToString(0));
         }
     }
 }

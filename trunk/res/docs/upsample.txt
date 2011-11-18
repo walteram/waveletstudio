@@ -1,0 +1,30 @@
+Resample input at higher rate by inserting zeros between samples.
+
+<h2>Parameters:</h2>
+
+<strong>Factor (uint):</strong>
+Defines the upsample factor used in the block or how many samples will be inserted between samples of the signal. Default value is 2 (insert 1 sample).
+
+<h2>Inputs:</h2>
+This block has only one input: a single signal or a signal list.
+
+<h2>Outputs:</h2>
+This block outputs a single signal or a signal list of downsampled data.
+
+<h2>Usage:</h2>
+
+The following example shows how to create this block using C# 4.
+
+<pre lang="csharp">//Creates a sample signal with 4 samples
+var signalBlock = new ImportFromTextBlock { Text = "14, 20, 11, 41" };
+
+//UpSample block to add 2 samples between each other
+var block = new UpSampleBlock { Factor = 3 };
+
+//Connect and execute blocks
+signalBlock.ConnectTo(block);
+signalBlock.Execute();
+
+Console.WriteLine(block.OutputNodes[0].Object[0].ToString(0));
+
+//Output: 14 0 0 20 0 0 11 0 0 41</pre>
