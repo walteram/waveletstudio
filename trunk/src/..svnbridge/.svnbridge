@@ -31,4 +31,8 @@ TestResults
 *.sdf
 *.vsp
 UpgradeLog.XML
+</Value></Property><Property><Name>bugtraq:number</Name><Value>true</Value></Property><Property><Name>svn:ignore</Name><Value>_ReSharper.WaveletStudio
+TestResults
+*.user
+*.suo
 </Value></Property></Properties></ItemProperties>

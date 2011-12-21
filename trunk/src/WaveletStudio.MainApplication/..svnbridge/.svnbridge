@@ -3,4 +3,7 @@ obj
 </Value></Property><Property><Name>bugtraq:number</Name><Value>true</Value></Property><Property><Name>svn:ignore</Name><Value>bin
 obj
 *.user
+</Value></Property><Property><Name>bugtraq:number</Name><Value>true</Value></Property><Property><Name>svn:ignore</Name><Value>bin
+obj
+*.user
 </Value></Property></Properties></ItemProperties>
