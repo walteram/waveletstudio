@@ -56,7 +56,8 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DiagramNet, Version=0.5.0.23823, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="DiagramNet, Version=0.4.0.33180, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\res\libs\Diagram.net\DiagramNet.dll</HintPath>
     </Reference>
     <Reference Include="Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa, processorArchitecture=MSIL">
