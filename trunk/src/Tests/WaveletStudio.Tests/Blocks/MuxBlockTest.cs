@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 using WaveletStudio.Functions;
 
@@ -7,6 +8,37 @@ namespace WaveletStudio.Tests.Blocks
     [TestClass]
     public class MuxBlockTest
     {
+        [TestMethod]
+        public void TestMuxBlockExecute2()
+        {
+            var signal1 = new ImportFromTextBlock { Text = "1, 2, 3, 4" };
+            var signal2 = new ImportFromTextBlock { Text = "5, 6, 7, 8" };
+            var signal3 = new ImportFromTextBlock { Text = "9, 2, 4, 3" };
+            var muxBlock = new MuxBlock { InputCount = 3 };
+            signal1.ConnectTo(muxBlock);
+            signal2.ConnectTo(muxBlock);
+            signal3.ConnectTo(muxBlock);
+
+            signal1.Execute();
+            signal2.Execute();
+            signal3.Execute();
+
+            Console.WriteLine(muxBlock.OutputNodes[0].Object.Count);
+            Console.WriteLine(muxBlock.OutputNodes[0].Object[0].ToString(0));
+            Console.WriteLine(muxBlock.OutputNodes[0].Object[1].ToString(0));
+            Console.WriteLine(muxBlock.OutputNodes[0].Object[2].ToString(0));
+            //Output: 
+            //3
+            //1 2 3 4
+            //5 6 7 8
+            //9 2 4 3
+
+            Assert.AreEqual(3, muxBlock.OutputNodes[0].Object.Count);
+            Assert.AreEqual("1 2 3 4", muxBlock.OutputNodes[0].Object[0].ToString(0));
+            Assert.AreEqual("5 6 7 8", muxBlock.OutputNodes[0].Object[1].ToString(0));
+            Assert.AreEqual("9 2 4 3", muxBlock.OutputNodes[0].Object[2].ToString(0));            
+        }
+
         [TestMethod]
         public void TestMuxBlockExecute()
         {

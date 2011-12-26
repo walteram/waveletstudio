@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 using WaveletStudio.Functions;
 
@@ -8,7 +9,21 @@ namespace WaveletStudio.Tests.Blocks
     public class RepeatBlockTest
     {
         [TestMethod]
-        public void RepeatBlockExecute()
+        public void RepeatBlockTestExecute2()
+        {
+            var signalBlock = new ImportFromTextBlock { Text = "1, 9, 0, 1, 2, 5, -4, 4" };
+            var repeatBlock = new RepeatBlock{ FrameSize = 4, RepetitionCount = 1};
+
+            signalBlock.ConnectTo(repeatBlock);
+            signalBlock.Execute();
+
+            Console.WriteLine(repeatBlock.OutputNodes[0].Object[0].ToString(0));
+            //Output: 1 9 0 1 1 9 0 1 2 5 -4 4 2 5 -4 4
+            Assert.AreEqual("1 9 0 1 1 9 0 1 2 5 -4 4 2 5 -4 4", repeatBlock.OutputNodes[0].Object[0].ToString(0));
+        }
+
+        [TestMethod]
+        public void RepeatBlockTestExecute()
         {
             var signalBlock = new ImportFromTextBlock{ColumnSeparator = " "};
             var block = new RepeatBlock();

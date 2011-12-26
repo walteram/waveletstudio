@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 using WaveletStudio.Functions;
 
@@ -7,6 +8,26 @@ namespace WaveletStudio.Tests.Blocks
     [TestClass]
     public class DemuxBlockTest
     {
+        [TestMethod]
+        public void TestDemuxBlockExecute2()
+        {
+            var signalBlock = new ImportFromTextBlock {Text = "1, 2, 3, 4 \r\n, 4, 5, 6, 7"};
+            var demuxBlock = new DemuxBlock();
+            
+            signalBlock.ConnectTo(demuxBlock);
+            signalBlock.Execute();
+
+            Console.WriteLine("Signal 1 = " + demuxBlock.OutputNodes[0].Object.ToString(0));
+            Console.WriteLine("Signal 2 = " + demuxBlock.OutputNodes[1].Object.ToString(0));
+            
+            //Output:
+            //Signal 1 = 1 2 3 4
+            //Signal 2 = 4 5 6 7
+
+            Assert.AreEqual("1 2 3 4", demuxBlock.OutputNodes[0].Object.ToString(0));
+            Assert.AreEqual("4 5 6 7", demuxBlock.OutputNodes[1].Object.ToString(0));
+        }
+
         [TestMethod]
         public void TestDemuxBlockExecute()
         {
