@@ -49,6 +49,6 @@ namespace WaveletStudio.Tests.Blocks
             Assert.AreEqual(0.1m, block.DelayIncrement);
             block.InputNodes[0].ConnectingNode = null;
             Assert.AreEqual(0.1m, block.DelayIncrement);  
-        }
+        }        
     }
 }

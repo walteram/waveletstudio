@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 using WaveletStudio.Functions;
 
@@ -7,6 +8,23 @@ namespace WaveletStudio.Tests.Blocks
     [TestClass]
     public class SignalExtensionBlockTest
     {
+        [TestMethod]
+        public void TestSignalExtensionBlockTestExecute2()
+        {
+            var signalBlock = new ImportFromTextBlock{Text = "1, 2, 3, 4, 5, 6, 7, 8"};
+            var extensionBlock = new SignalExtensionBlock
+                                     {
+                                         ExtensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint,
+                                         ExtensionSize = 2
+                                     };
+            signalBlock.ConnectTo(extensionBlock);
+            signalBlock.Execute();
+            Console.WriteLine(extensionBlock.OutputNodes[0].Object.ToString(0));
+            //Output: 2 1 1 2 3 4 5 6 7 8 8 7
+
+            Assert.AreEqual("2 1 1 2 3 4 5 6 7 8 8 7", extensionBlock.OutputNodes[0].Object.ToString(0));
+        }
+
         [TestMethod]
         public void TestSignalExtensionBlockTestExecute()
         {
