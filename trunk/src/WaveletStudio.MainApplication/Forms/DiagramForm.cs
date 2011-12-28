@@ -445,6 +445,20 @@ namespace WaveletStudio.MainApplication.Forms
             _outputWindow.BlockPlot.Block = setupForm.Block;
             _outputWindow.BlockPlot.Refresh();
             diagramBlock.Refresh(ApplicationUtils.GetResourceImage("img" + setupForm.Block.Name.ToLower() + "mini", 30, 20), ApplicationUtils.GetResourceString(setupForm.Block.Name), setupForm.Block, setupForm.Block.InputNodes.ToArray(), setupForm.Block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
+            if (setupForm.InputConnectionsChanged || setupForm.OutputConnectionsChanged)
+            {
+                var links = Designer.Document.Elements.GetArray();
+                foreach (var element in links)
+                {
+                    var link = element as BaseLinkElement;
+                    if (link == null) 
+                        continue;
+                    if (link.Connector1.ParentElement == diagramBlock || link.Connector2.ParentElement == diagramBlock)  //if (setupForm.OutputConnectionsChanged && link.Connector1.ParentElement == diagramBlock || setupForm.InputConnectionsChanged && link.Connector2.ParentElement == diagramBlock)
+                    {
+                        Designer.Document.DeleteLink(link);
+                    }
+                }
+            }            
             diagramBlock.Invalidate();
             diagramBlock.State = setupForm.Block;
             Saved = false;

@@ -9,6 +9,8 @@ namespace WaveletStudio.MainApplication.Forms
     {
         protected readonly BlockBase TempBlock;
         public BlockBase Block { get; set; }
+        public bool InputConnectionsChanged { get; private set; }
+        public bool OutputConnectionsChanged { get; private set; }
         protected bool HasParameters { get; private set; }
 
         public BlockSetupBaseForm()
@@ -42,8 +44,10 @@ namespace WaveletStudio.MainApplication.Forms
         
         private void UseSignalButtonClick(object sender, EventArgs e)
         {
-            var outputNodes = Block.OutputNodes;            
-            var inputNodes = Block.InputNodes;
+            OutputConnectionsChanged = Block.OutputNodes.Count != TempBlock.OutputNodes.Count;
+            InputConnectionsChanged = Block.InputNodes.Count != TempBlock.InputNodes.Count;
+            var outputNodes = OutputConnectionsChanged ? TempBlock.OutputNodes : Block.OutputNodes;
+            var inputNodes = InputConnectionsChanged ? TempBlock.InputNodes : Block.InputNodes;
             Block = TempBlock.Clone();
             Block.OutputNodes = outputNodes;
             Block.InputNodes = inputNodes;

@@ -350,6 +350,24 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Number of Inputs.
+        /// </summary>
+        public static string InputCount {
+            get {
+                return ResourceManager.GetString("InputCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of inputs of the block..
+        /// </summary>
+        public static string InputCountDescription {
+            get {
+                return ResourceManager.GetString("InputCountDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Keep Sampling Rate.
         /// </summary>
         public static string KeepSamplingRate {
@@ -454,6 +472,24 @@ namespace WaveletStudio.Properties {
         public static string OperationDescription {
             get {
                 return ResourceManager.GetString("OperationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Outputs.
+        /// </summary>
+        public static string OutputCount {
+            get {
+                return ResourceManager.GetString("OutputCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of outputs of the block..
+        /// </summary>
+        public static string OutputCountDescription {
+            get {
+                return ResourceManager.GetString("OutputCountDescription", resourceCulture);
             }
         }
         
