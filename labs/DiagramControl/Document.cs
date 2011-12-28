@@ -26,11 +26,8 @@ namespace DiagramNet
         private LinkType _linkType = LinkType.RightAngle;
 
         // Element Collection
-        private readonly ElementCollection _elements = new ElementCollection();
 
         // Selections Collections
-        private readonly ElementCollection _selectedElements = new ElementCollection();
-        private readonly ElementCollection _selectedNodes = new ElementCollection();
 
         //Document Size
         private Point _location = new Point(100, 100);
@@ -45,10 +42,17 @@ namespace DiagramNet
         //Events
         private bool _canFireEvents = true;
 
+        public Document()
+        {
+            SelectedNodes = new ElementCollection();
+            SelectedElements = new ElementCollection();
+            Elements = new ElementCollection();
+        }
+
         #region Add Methods
         public void AddElement(BaseElement el)
         {
-            _elements.Add(el);
+            Elements.Add(el);
             el.AppearanceChanged += ElementAppearanceChanged;
             OnAppearancePropertyChanged(new EventArgs());
         }
@@ -60,12 +64,12 @@ namespace DiagramNet
 
         public void AddElements(BaseElement[] els)
         {
-            _elements.EnabledCalc = false;
+            Elements.EnabledCalc = false;
             foreach (var el in els)
             {
                 AddElement(el);
             }
-            _elements.EnabledCalc = true;
+            Elements.EnabledCalc = true;
         }
 
         internal bool CanAddLink(ConnectorElement connStart, ConnectorElement connEnd)
@@ -84,7 +88,7 @@ namespace DiagramNet
                 else // (linkType == LinkType.RightAngle)
                     lnk = new RightAngleLinkElement(connStart, connEnd);
 
-                _elements.Add(lnk);
+                Elements.Add(lnk);
                 lnk.AppearanceChanged += ElementAppearanceChanged;
                 OnAppearancePropertyChanged(new EventArgs());
                 return lnk;
@@ -120,14 +124,14 @@ namespace DiagramNet
                     }
                 }
                     
-                if (_selectedNodes.Contains(el))
-                    _selectedNodes.Remove(el);
+                if (SelectedNodes.Contains(el))
+                    SelectedNodes.Remove(el);
             }
 
             if (SelectedElements.Contains(el))
-                _selectedElements.Remove(el);
+                SelectedElements.Remove(el);
 
-            _elements.Remove(el);
+            Elements.Remove(el);
                 
             OnAppearancePropertyChanged(new EventArgs());
         }
@@ -140,16 +144,16 @@ namespace DiagramNet
 
         public void DeleteSelectedElements()
         {
-            _selectedElements.EnabledCalc = false;
-            _selectedNodes.EnabledCalc = false;
+            SelectedElements.EnabledCalc = false;
+            SelectedNodes.EnabledCalc = false;
 
-            for(var i = _selectedElements.Count - 1; i >= 0; i-- )
+            for(var i = SelectedElements.Count - 1; i >= 0; i-- )
             {
-                DeleteElement(_selectedElements[i]);
+                DeleteElement(SelectedElements[i]);
             }
 
-            _selectedElements.EnabledCalc = true;
-            _selectedNodes.EnabledCalc = true;
+            SelectedElements.EnabledCalc = true;
+            SelectedNodes.EnabledCalc = true;
         }
 
         public void DeleteLink(BaseLinkElement lnk)
@@ -158,10 +162,10 @@ namespace DiagramNet
             lnk.Connector1.RemoveLink(lnk);
             lnk.Connector2.RemoveLink(lnk);
                             
-            if (_elements.Contains(lnk))
-                _elements.Remove(lnk);
-            if (_selectedElements.Contains(lnk))
-                _selectedElements.Remove(lnk);
+            if (Elements.Contains(lnk))
+                Elements.Remove(lnk);
+            if (SelectedElements.Contains(lnk))
+                SelectedElements.Remove(lnk);
             OnAppearancePropertyChanged(new EventArgs());
         }
         #endregion
@@ -169,26 +173,26 @@ namespace DiagramNet
         #region Select Methods
         public void ClearSelection()
         {
-            _selectedElements.Clear();
-            _selectedNodes.Clear();
-            OnElementSelection(this, new ElementSelectionEventArgs(_selectedElements));
+            SelectedElements.Clear();
+            SelectedNodes.Clear();
+            OnElementSelection(this, new ElementSelectionEventArgs(SelectedElements));
         }
 
         public void SelectElement(BaseElement el)
         {
-            _selectedElements.Add(el);
+            SelectedElements.Add(el);
             if (el is NodeElement)
             {
-                _selectedNodes.Add(el);
+                SelectedNodes.Add(el);
             }
             if (_canFireEvents)
-                OnElementSelection(this, new ElementSelectionEventArgs(_selectedElements));
+                OnElementSelection(this, new ElementSelectionEventArgs(SelectedElements));
         }
 
         public void SelectElements(BaseElement[] els)
         {
-            _selectedElements.EnabledCalc = false;
-            _selectedNodes.EnabledCalc = false;
+            SelectedElements.EnabledCalc = false;
+            SelectedNodes.EnabledCalc = false;
 
             _canFireEvents = false;
             
@@ -203,81 +207,81 @@ namespace DiagramNet
             {
                 _canFireEvents = true;
             }
-            _selectedElements.EnabledCalc = true;
-            _selectedNodes.EnabledCalc = true;
+            SelectedElements.EnabledCalc = true;
+            SelectedNodes.EnabledCalc = true;
             
-            OnElementSelection(this, new ElementSelectionEventArgs(_selectedElements));
+            OnElementSelection(this, new ElementSelectionEventArgs(SelectedElements));
         }
 
         public void SelectElements(Rectangle selectionRectangle)
         {
-            _selectedElements.EnabledCalc = false;
-            _selectedNodes.EnabledCalc = false;
+            SelectedElements.EnabledCalc = false;
+            SelectedNodes.EnabledCalc = false;
             
             // Add all "hitable" elements
-            foreach(BaseElement element in _elements)
+            foreach(BaseElement element in Elements)
             {
                 if (!(element is IControllable)) continue;
                 var ctrl = ((IControllable)element).GetController();
                 if (!ctrl.HitTest(selectionRectangle)) continue;
                 if (!(element is ConnectorElement))
-                    _selectedElements.Add(element);
+                    SelectedElements.Add(element);
                         
                 if (element is NodeElement)
-                    _selectedNodes.Add(element);
+                    SelectedNodes.Add(element);
             }
 
             //if the seleciont isn't a expecific link, remove links
             // without 2 elements in selection
-            if (_selectedElements.Count > 1)
+            if (SelectedElements.Count > 1)
             {
-                foreach(BaseElement el in _elements)
+                foreach(BaseElement el in Elements)
                 {
                     var lnk = el as BaseLinkElement;
                     if (lnk == null) continue;
                     
-                    if ((!_selectedElements.Contains(lnk.Connector1.ParentElement)) ||
-                        (!_selectedElements.Contains(lnk.Connector2.ParentElement)))
+                    if ((!SelectedElements.Contains(lnk.Connector1.ParentElement)) ||
+                        (!SelectedElements.Contains(lnk.Connector2.ParentElement)))
                     {
-                        _selectedElements.Remove(lnk);
+                        SelectedElements.Remove(lnk);
                     }
                 }
             }
 
-            _selectedElements.EnabledCalc = true;
-            _selectedNodes.EnabledCalc = true;
+            SelectedElements.EnabledCalc = true;
+            SelectedNodes.EnabledCalc = true;
             
-            OnElementSelection(this, new ElementSelectionEventArgs(_selectedElements));
+            OnElementSelection(this, new ElementSelectionEventArgs(SelectedElements));
         }
 
         public void SelectAllElements()
         {
-            _selectedElements.EnabledCalc = false;
-            _selectedNodes.EnabledCalc = false;
+            SelectedElements.EnabledCalc = false;
+            SelectedNodes.EnabledCalc = false;
 
-            foreach(BaseElement element in _elements)
+            foreach(BaseElement element in Elements)
             {
                 if (!(element is ConnectorElement))
-                    _selectedElements.Add(element);
+                    SelectedElements.Add(element);
                     
                 if (element is NodeElement)
-                    _selectedNodes.Add(element);
+                    SelectedNodes.Add(element);
             }
 
-            _selectedElements.EnabledCalc = true;
-            _selectedNodes.EnabledCalc = true;
+            SelectedElements.EnabledCalc = true;
+            SelectedNodes.EnabledCalc = true;
             
         }
 
         public BaseElement FindElement(Point point)
         {
-            if ((_elements != null) && (_elements.Count > 0))
+            if ((Elements != null) && (Elements.Count > 0))
             {
                 // First, find elements
                 BaseElement el;
-                for(var i = _elements.Count - 1; i >=0 ; i--)
+                for(var i = Elements.Count - 1; i >=0 ; i--)
                 {
-                    el = _elements[i];
+                    el = Elements[i];
 
                     if (el is BaseLinkElement)
                         continue;
@@ -311,9 +315,9 @@ namespace DiagramNet
                 }
 
                 // Then, find links
-                for(var i = _elements.Count - 1; i >=0 ; i--)
+                for(var i = Elements.Count - 1; i >=0 ; i--)
                 {
-                    el = _elements[i];
+                    el = Elements[i];
 
                     if (!(el is BaseLinkElement))
                         continue;
@@ -351,26 +355,26 @@ namespace DiagramNet
         #region Position Methods
         public void MoveUpElement(BaseElement el)
         {
-            var i = _elements.IndexOf(el);
-            if (i == _elements.Count - 1) return;
-            _elements.ChangeIndex(i, i + 1);
+            var i = Elements.IndexOf(el);
+            if (i == Elements.Count - 1) return;
+            Elements.ChangeIndex(i, i + 1);
             OnAppearancePropertyChanged(new EventArgs());
         }
 
         public void MoveDownElement(BaseElement el)
         {
-            var i = _elements.IndexOf(el);
+            var i = Elements.IndexOf(el);
             if (i == 0) return;
-            _elements.ChangeIndex(i, i - 1);
+            Elements.ChangeIndex(i, i - 1);
             OnAppearancePropertyChanged(new EventArgs());
         }
 
         public void BringToFrontElement(BaseElement el)
         {
-            var i = _elements.IndexOf(el);
-            for (var x = i + 1; x <= _elements.Count - 1; x++)
+            var i = Elements.IndexOf(el);
+            for (var x = i + 1; x <= Elements.Count - 1; x++)
             {
-                _elements.ChangeIndex(i, x);
+                Elements.ChangeIndex(i, x);
                 i = x;
             }
             OnAppearancePropertyChanged(new EventArgs());
@@ -378,10 +382,10 @@ namespace DiagramNet
 
         public void SendToBackElement(BaseElement el)
         {
-            var i = _elements.IndexOf(el);
+            var i = Elements.IndexOf(el);
             for (var x = i - 1; x >= 0; x--)
             {
-                _elements.ChangeIndex(i, x);
+                Elements.ChangeIndex(i, x);
                 i = x;
             }
             OnAppearancePropertyChanged(new EventArgs());
@@ -390,41 +394,24 @@ namespace DiagramNet
 
         internal void CalcWindow(bool forceCalc)
         {
-            _elements.CalcWindow(forceCalc);
-            _selectedElements.CalcWindow(forceCalc);
-            _selectedNodes.CalcWindow(forceCalc);
+            Elements.CalcWindow(forceCalc);
+            SelectedElements.CalcWindow(forceCalc);
+            SelectedNodes.CalcWindow(forceCalc);
         }
 
         #region Properties
-        public ElementCollection Elements
-        {
-            get
-            {
-                return _elements;
-            }
-        }
 
-        public ElementCollection SelectedElements
-        {
-            get
-            {
-                return _selectedElements;
-            }
-        }
+        public ElementCollection Elements { get; private set; }
 
-        public ElementCollection SelectedNodes
-        {
-            get
-            {
-                return _selectedNodes;
-            }
-        }
+        public ElementCollection SelectedElements { get; private set; }
+
+        public ElementCollection SelectedNodes { get; private set; }
 
         public Point Location
         {
             get
             {
-                return _elements.WindowLocation;
+                return Elements.WindowLocation;
             }
         }
 
@@ -432,7 +419,7 @@ namespace DiagramNet
         {
             get
             {
-                return _elements.WindowSize;
+                return Elements.WindowSize;
             }
         }
 
@@ -562,9 +549,9 @@ namespace DiagramNet
             var pointWrited = false;
 
             //Draw Links first
-            for (var i = 0; i <= _elements.Count - 1; i++)
+            for (var i = 0; i <= Elements.Count - 1; i++)
             {
-                var el = _elements[i];
+                var el = Elements[i];
                 if ((el is BaseLinkElement) && (NeedDrawElement(el, clippingRegion)))
                     el.Draw(g);
                                             
@@ -590,9 +577,9 @@ namespace DiagramNet
             }
 
             //Draw the other elements
-            for (var i = 0; i <= _elements.Count - 1; i++)
+            for (var i = 0; i <= Elements.Count - 1; i++)
             {
-                var el = _elements[i];
+                var el = Elements[i];
                 if ((el is BaseLinkElement) || (!NeedDrawElement(el, clippingRegion))) continue;
                 if (el is NodeElement)
                 {
@@ -632,14 +619,14 @@ namespace DiagramNet
 
         internal void DrawSelections(Graphics g, Rectangle clippingRegion)
         {
-            for(var i = _selectedElements.Count - 1; i >=0 ; i--)
+            for(var i = SelectedElements.Count - 1; i >=0 ; i--)
             {
-                if (!(_selectedElements[i] is IControllable)) continue;
-                var ctrl = ((IControllable) _selectedElements[i]).GetController();
+                if (!(SelectedElements[i] is IControllable)) continue;
+                var ctrl = ((IControllable) SelectedElements[i]).GetController();
                 ctrl.DrawSelection(g);
 
-                if (!(_selectedElements[i] is BaseLinkElement)) continue;
-                var link = (BaseLinkElement) _selectedElements[i];
+                if (!(SelectedElements[i] is BaseLinkElement)) continue;
+                var link = (BaseLinkElement) SelectedElements[i];
                 ctrl = ((IControllable) link.Connector1).GetController();
                 ctrl.DrawSelection(g);
 
@@ -731,7 +718,7 @@ namespace DiagramNet
         #region Events Handling
         private void RecreateEventsHandlers()
         {
-            foreach(BaseElement el in _elements)
+            foreach(BaseElement el in Elements)
                 el.AppearanceChanged += ElementAppearanceChanged;			
         }
 
@@ -748,5 +735,6 @@ namespace DiagramNet
             RecreateEventsHandlers();
         }
         #endregion
+
     }
 }
