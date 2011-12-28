@@ -29,7 +29,8 @@ namespace WaveletStudio.Blocks
         private uint _inputCount;
         /// <summary>
         /// Input count
-        /// </summary> //[Parameter]        
+        /// </summary> //
+        [Parameter]        
         public uint InputCount
         {
             get { return _inputCount; }

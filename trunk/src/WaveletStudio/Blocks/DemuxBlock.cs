@@ -29,7 +29,8 @@ namespace WaveletStudio.Blocks
         private uint _outputCount;
         /// <summary>
         /// Number of output ports
-        /// </summary> //[Parameter]        
+        /// </summary>
+        [Parameter]        
         public uint OutputCount
         {
             get { return _outputCount; }

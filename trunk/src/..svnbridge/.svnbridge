@@ -35,4 +35,8 @@ UpgradeLog.XML
 TestResults
 *.user
 *.suo
+</Value></Property><Property><Name>bugtraq:number</Name><Value>true</Value></Property><Property><Name>svn:ignore</Name><Value>_ReSharper.WaveletStudio
+TestResults
+*.user
+WaveletStudio.sln.docstates.suo
 </Value></Property></Properties></ItemProperties>

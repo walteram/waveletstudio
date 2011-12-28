@@ -152,30 +152,16 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override void Execute()
         {
-            var samples = new List<double>();
             var finish = GetFinish();
             var lastValue = Offset;
+            var samples = MemoryPool.Pool.New<double>(Convert.ToInt32(Math.Ceiling((finish - Start) / SamplingInterval + SamplingInterval)));
+            var i = 0;
             for (var x = Start; x <= finish; x += SamplingInterval)
             {
-                double value;
-
-                if (x >= RampStart && x <= RampFinish)
-                {
-                    value = Amplitude * (x-RampStart) + Offset;
-                    if (!ReturnToZero && x <= RampFinish)
-                        lastValue = value;
-                }                
-                else if(x < RampStart)
-                {
-                    value = Offset;
-                }
-                else
-                {
-                    value = lastValue;
-                }
-                samples.Add(value);
+                samples[i] = GetRampValue(x, ref lastValue);
+                i++;
             }
-            var signal = new Signal(samples.ToArray())
+            var signal = new Signal(samples)
             {
                 SamplingRate = SamplingRate,
                 Start = Start,
@@ -185,6 +171,26 @@ namespace WaveletStudio.Blocks
             OutputNodes[0].Object = new List<Signal> { signal };
             if (Cascade && OutputNodes[0].ConnectingNode != null)
                 OutputNodes[0].ConnectingNode.Root.Execute();            
+        }
+
+        private double GetRampValue(double x, ref double lastValue)
+        {
+            double value;
+            if (x >= RampStart && x <= RampFinish)
+            {
+                value = Amplitude*(x - RampStart) + Offset;
+                if (!ReturnToZero && x <= RampFinish)
+                    lastValue = value;
+            }
+            else if (x < RampStart)
+            {
+                value = Offset;
+            }
+            else
+            {
+                value = lastValue;
+            }
+            return value;
         }
 
         /// <summary>

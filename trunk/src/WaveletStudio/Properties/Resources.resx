@@ -391,4 +391,16 @@ Click in the Signal tab and select a signal source.</value>
   <data name="SwitchCriteriaDescription" xml:space="preserve">
     <value>Criteria for select the output.</value>
   </data>
+  <data name="InputCount" xml:space="preserve">
+    <value>Number of Inputs</value>
+  </data>
+  <data name="InputCountDescription" xml:space="preserve">
+    <value>Number of inputs of the block.</value>
+  </data>
+  <data name="OutputCount" xml:space="preserve">
+    <value>Number of Outputs</value>
+  </data>
+  <data name="OutputCountDescription" xml:space="preserve">
+    <value>Number of outputs of the block.</value>
+  </data>
 </root>
