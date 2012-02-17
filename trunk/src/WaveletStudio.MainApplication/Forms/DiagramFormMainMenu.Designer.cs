@@ -50,7 +50,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeSeparator2 = new Qios.DevSuite.Components.QCompositeSeparator();
             this.PrintMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
             this.PrepateMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
-            this.SendMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
+            this.PrintPreviewMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
             this.PublishMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
             this.Separator1 = new Qios.DevSuite.Components.QCompositeSeparator();
             this.CloseMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
@@ -83,6 +83,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeText16 = new Qios.DevSuite.Components.QCompositeText();
             this.qCompositeImage8 = new Qios.DevSuite.Components.QCompositeImage();
             this.ExportMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
+            this.Separator2 = new Qios.DevSuite.Components.QCompositeSeparator();
             this.SuspendLayout();
             // 
             // OptionsButton
@@ -207,8 +208,9 @@ namespace WaveletStudio.MainApplication.Forms
             this.PrintMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
             this.PrintMenuItem.HotkeyText = "P";
             this.PrintMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("PrintMenuItem.Icon")));
+            this.PrintMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
             this.PrintMenuItem.Title = "&Print";
-            this.PrintMenuItem.Visible = false;
+            this.PrintMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.PrintMenuItemItemActivated);
             // 
             // PrepateMenuItem
             // 
@@ -219,14 +221,15 @@ namespace WaveletStudio.MainApplication.Forms
             this.PrepateMenuItem.Title = "Pr&epare";
             this.PrepateMenuItem.Visible = false;
             // 
-            // SendMenuItem
+            // PrintPreviewMenuItem
             // 
-            this.SendMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
-            this.SendMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
-            this.SendMenuItem.HotkeyText = "D";
-            this.SendMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("SendMenuItem.Icon")));
-            this.SendMenuItem.Title = "Sen&d";
-            this.SendMenuItem.Visible = false;
+            this.PrintPreviewMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
+            this.PrintPreviewMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
+            this.PrintPreviewMenuItem.HotkeyText = "D";
+            this.PrintPreviewMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("PrintPreviewMenuItem.Icon")));
+            this.PrintPreviewMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftP;
+            this.PrintPreviewMenuItem.Title = "Preview";
+            this.PrintPreviewMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.PrintPreviewMenuItemItemActivated);
             // 
             // PublishMenuItem
             // 
@@ -409,13 +412,14 @@ namespace WaveletStudio.MainApplication.Forms
             this.Items.Add(this.ExportMenuItem);
             this.Items.Add(this.qCompositeSeparator1);
             this.Items.Add(this.PrintMenuItem);
+            this.Items.Add(this.PrintPreviewMenuItem);
+            this.Items.Add(this.Separator2);
             this.Items.Add(this.PrepateMenuItem);
-            this.Items.Add(this.SendMenuItem);
             this.Items.Add(this.PublishMenuItem);
             this.Items.Add(this.Separator1);
             this.Items.Add(this.CloseMenuItem);
             this.Name = "DiagramFormMainMenu";
-            this.Size = new System.Drawing.Size(424, 293);
+            this.Size = new System.Drawing.Size(424, 364);
             this.VisibleChanged += new System.EventHandler(this.DiagramFormMainMenuVisibleChanged);
             this.ResumeLayout(false);
 
@@ -434,7 +438,7 @@ namespace WaveletStudio.MainApplication.Forms
         private Qios.DevSuite.Components.QCompositeSeparator qCompositeSeparator2;
         private Qios.DevSuite.Components.QCompositeMenuItem PrintMenuItem;
         private Qios.DevSuite.Components.QCompositeMenuItem PrepateMenuItem;
-        private Qios.DevSuite.Components.QCompositeMenuItem SendMenuItem;
+        private Qios.DevSuite.Components.QCompositeMenuItem PrintPreviewMenuItem;
         private Qios.DevSuite.Components.QCompositeMenuItem PublishMenuItem;
         private Qios.DevSuite.Components.QCompositeSeparator Separator1;
         private Qios.DevSuite.Components.QCompositeMenuItem CloseMenuItem;
@@ -475,6 +479,7 @@ namespace WaveletStudio.MainApplication.Forms
         private Qios.DevSuite.Components.QCompositeText qCompositeText16;
         private Qios.DevSuite.Components.QCompositeImage qCompositeImage8;
         private Qios.DevSuite.Components.QCompositeMenuItem ExportMenuItem;
+        private Qios.DevSuite.Components.QCompositeSeparator Separator2;
                 
     }
 }

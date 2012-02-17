@@ -68,12 +68,12 @@ namespace WaveletStudio.MainApplication.Forms
             this.QToolBarHost2 = new Qios.DevSuite.Components.QToolBarHost();
             this.RightDockBar = new Qios.DevSuite.Components.QDockBar();
             this.CenterPanel = new System.Windows.Forms.Panel();
+            this.Designer = new DiagramNet.Designer(this.components);
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.ZoomLabel = new System.Windows.Forms.Label();
             this.ZoomPlusButton = new Qios.DevSuite.Components.QButton();
             this.ZoomMinusButton = new Qios.DevSuite.Components.QButton();
             this.ZoomTrackBar = new System.Windows.Forms.TrackBar();
-            this.Designer = new DiagramNet.Designer(this.components);
             this.diagramFormProperties1 = new WaveletStudio.MainApplication.Forms.DiagramFormProperties();
             ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
@@ -274,7 +274,6 @@ namespace WaveletStudio.MainApplication.Forms
             this.Ribbon.PersistGuid = new System.Guid("f549a281-ecb8-4c57-ab72-08ae6e49b352");
             this.Ribbon.Size = new System.Drawing.Size(946, 138);
             this.Ribbon.TabIndex = 1;
-            this.Ribbon.TabStripConfiguration.ButtonAreaMargin = new Qios.DevSuite.Components.QMargin(35, 5, 0, 0);
             this.Ribbon.Text = "Sinal";
             this.Ribbon.HelpButtonActivated += new System.EventHandler(this.RibbonHelpButtonActivated);
             // 
@@ -732,6 +731,17 @@ namespace WaveletStudio.MainApplication.Forms
             this.CenterPanel.Size = new System.Drawing.Size(904, 296);
             this.CenterPanel.TabIndex = 18;
             // 
+            // Designer
+            // 
+            this.Designer.AutoScroll = true;
+            this.Designer.BackColor = System.Drawing.SystemColors.Window;
+            this.Designer.Changed = false;
+            this.Designer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Designer.Location = new System.Drawing.Point(0, 0);
+            this.Designer.Name = "Designer";
+            this.Designer.Size = new System.Drawing.Size(904, 267);
+            this.Designer.TabIndex = 10;
+            // 
             // BottomPanel
             // 
             this.BottomPanel.Controls.Add(this.ZoomLabel);
@@ -796,30 +806,16 @@ namespace WaveletStudio.MainApplication.Forms
             // ZoomTrackBar
             // 
             this.ZoomTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ZoomTrackBar.AutoSize = false;
-            this.ZoomTrackBar.LargeChange = 20;
+            this.ZoomTrackBar.LargeChange = 2;
             this.ZoomTrackBar.Location = new System.Drawing.Point(713, 3);
             this.ZoomTrackBar.Margin = new System.Windows.Forms.Padding(0);
-            this.ZoomTrackBar.Maximum = 300;
-            this.ZoomTrackBar.Minimum = 10;
+            this.ZoomTrackBar.Maximum = 30;
+            this.ZoomTrackBar.Minimum = 1;
             this.ZoomTrackBar.Name = "ZoomTrackBar";
-            this.ZoomTrackBar.Size = new System.Drawing.Size(167, 24);
-            this.ZoomTrackBar.SmallChange = 10;
+            this.ZoomTrackBar.Size = new System.Drawing.Size(167, 42);
             this.ZoomTrackBar.TabIndex = 9;
-            this.ZoomTrackBar.TickFrequency = 30;
-            this.ZoomTrackBar.Value = 100;
+            this.ZoomTrackBar.Value = 10;
             this.ZoomTrackBar.ValueChanged += new System.EventHandler(this.ZoomTrackBarValueChanged);
-            // 
-            // Designer
-            // 
-            this.Designer.AutoScroll = true;
-            this.Designer.BackColor = System.Drawing.SystemColors.Window;
-            this.Designer.Changed = false;
-            this.Designer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Designer.Location = new System.Drawing.Point(0, 0);
-            this.Designer.Name = "Designer";
-            this.Designer.Size = new System.Drawing.Size(904, 267);
-            this.Designer.TabIndex = 10;
             // 
             // diagramFormProperties1
             // 

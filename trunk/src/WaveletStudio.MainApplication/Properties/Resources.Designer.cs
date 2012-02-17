@@ -142,6 +142,13 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap grid {
+            get {
+                object obj = ResourceManager.GetObject("grid", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Icon icoColor {
             get {
                 object obj = ResourceManager.GetObject("icoColor", resourceCulture);
@@ -153,6 +160,41 @@ namespace WaveletStudio.MainApplication.Properties {
             get {
                 object obj = ResourceManager.GetObject("icoCopy", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap iconclose {
+            get {
+                object obj = ResourceManager.GetObject("iconclose", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap iconprint {
+            get {
+                object obj = ResourceManager.GetObject("iconprint", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap iconprintpreview {
+            get {
+                object obj = ResourceManager.GetObject("iconprintpreview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap iconprintsettings {
+            get {
+                object obj = ResourceManager.GetObject("iconprintsettings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap iconstretch {
+            get {
+                object obj = ResourceManager.GetObject("iconstretch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -612,6 +654,15 @@ namespace WaveletStudio.MainApplication.Properties {
             get {
                 object obj = ResourceManager.GetObject("imgwaveletmini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preview.
+        /// </summary>
+        internal static string Preview {
+            get {
+                return ResourceManager.GetString("Preview", resourceCulture);
             }
         }
         

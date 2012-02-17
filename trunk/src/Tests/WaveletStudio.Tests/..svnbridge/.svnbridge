@@ -3,4 +3,9 @@ obj
 </Value></Property><Property><Name>bugtraq:number</Name><Value>true</Value></Property><Property><Name>svn:ignore</Name><Value>bin
 obj
 *.ReSharper
+</Value></Property><Property><Name>bugtraq:number</Name><Value>true</Value></Property><Property><Name>svn:ignore</Name><Value>bin
+obj
+*.ReSharper
+*.DotSettings
+*.user
 </Value></Property></Properties></ItemProperties>

@@ -1,6 +1,24 @@
-﻿using System;
+﻿/*  Wavelet Studio Signal Processing Library - www.waveletstudio.net
+    Copyright (C) 2011, 2012 Walter V. S. de Amorim - The Wavelet Studio Initiative
+
+    Wavelet Studio is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Wavelet Studio is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>. 
+*/
+
+using System;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -20,6 +38,8 @@ namespace WaveletStudio.MainApplication.Forms
     {
         private readonly DiagramFormProperties _propertiesWindow;
         private readonly DiagramFormOutput _outputWindow;
+        private PrinterSettings _printerSettings;
+
         private string _currentFile;
         public string CurrentFile
         {
@@ -153,9 +173,9 @@ namespace WaveletStudio.MainApplication.Forms
 
         private void ZoomChanged(object sender, EventArgs e)
         {
-            var zoomValue = Convert.ToInt32(Designer.Document.Zoom*100);
+            var zoomValue = Convert.ToInt32(Designer.Document.Zoom*10);
             ZoomTrackBar.Value = zoomValue;
-            ZoomLabel.Text = zoomValue + @"%";
+            ZoomLabel.Text = (zoomValue*10) + @"%";
         }
 
         private void CopyElementShortcutItemActivated(object sender, QCompositeEventArgs e)
@@ -257,6 +277,7 @@ namespace WaveletStudio.MainApplication.Forms
             diagramForm.Show();
             diagramForm.Focus();
             diagramForm.ConfigureDesigner();
+            diagramForm.ZoomTrackBar.Value = Convert.ToInt32(Designer.Document.Zoom * 10);
             AddRecentFile(filename);
 
             var blockList = new BlockList();
@@ -344,6 +365,46 @@ namespace WaveletStudio.MainApplication.Forms
             }
         }
 
+        public void Print(Form mainForm, bool print)
+        {
+            var printDialog = new PrintDialog { Document = GetPrintDocument() };
+            var dialogResult = printDialog.ShowDialog(mainForm);
+            if (dialogResult != DialogResult.OK)
+                return;
+            _printerSettings = printDialog.PrinterSettings;
+            if(print)
+                printDialog.Document.Print();                
+        }
+
+        public void PageSetup(Form mainForm)
+        {
+            var printDialog = new PageSetupDialog { Document = GetPrintDocument() };
+            printDialog.ShowDialog(mainForm);
+        }
+
+        public void PrintPreview()
+        {
+            var printPreviewForm = new PrintPreviewForm(this);
+            printPreviewForm.ShowDialog(this);
+        }
+
+        public PrintDocument GetPrintDocument(Action onEndPrint = null)
+        {
+            const decimal millimeters = 39.37m;
+            var document = new PrintDocument { OriginAtMargins = true};
+            if (_printerSettings != null)
+                document.PrinterSettings = _printerSettings;
+            document.DefaultPageSettings.Landscape = Settings.Default.PrintLandscape;
+            document.DefaultPageSettings.Margins = new Margins(Convert.ToInt32(Settings.Default.PrintMarginLeft * millimeters), Convert.ToInt32(Settings.Default.PrintMarginRight * millimeters), Convert.ToInt32(Settings.Default.PrintMarginTop * millimeters), Convert.ToInt32(Settings.Default.PrintMarginBottom * millimeters));
+            document.PrintPage += (o, args) =>
+                                      {
+                                          args.HasMorePages = Designer.DrawGraphics(args.Graphics, Settings.Default.PrintGrid, false, args.MarginBounds.Left, args.MarginBounds.Top, args.MarginBounds.Width, args.MarginBounds.Height, true, Settings.Default.PrintAllowStretch, 0);
+                                      };
+            if (onEndPrint != null)
+                document.EndPrint += (e, p) => onEndPrint();
+            return document;
+        }
+
         private void AddRecentFile(string filename)
         {
             if ((Path.GetDirectoryName(filename) + "").ToLower() == Utils.AssemblyDirectory.ToLower())
@@ -376,7 +437,11 @@ namespace WaveletStudio.MainApplication.Forms
         {
             var menu = (DiagramFormMainMenu) AppMenuButton.CustomChildWindow;
             if (!e.Control) return;
-            if (e.KeyCode == Keys.N)
+            if (e.Shift && e.KeyCode == Keys.P)
+                menu.PrintPreviewMenuItemItemActivated(sender, null);
+            else if (e.KeyCode == Keys.P)
+                menu.PrintMenuItemItemActivated(sender, null);
+            else if (e.KeyCode == Keys.N)
                 menu.NewMenuItemItemActivated(sender, null);
             else if (e.KeyCode == Keys.O)
                 menu.OpenMenuItemItemActivated(sender, null);
@@ -392,18 +457,20 @@ namespace WaveletStudio.MainApplication.Forms
 
         private void ZoomMinusButtonClick(object sender, EventArgs e)
         {
-            ZoomTrackBar.Value -= 10;
+            if (ZoomTrackBar.Value > 1)
+            ZoomTrackBar.Value -= 1;
         }
 
         private void ZoomTrackBarValueChanged(object sender, EventArgs e)
         {
-            Designer.Document.Zoom = ZoomTrackBar.Value / 100f;
-            ZoomLabel.Text = ZoomTrackBar.Value + @"%";
+            Designer.Document.Zoom = ZoomTrackBar.Value / 10f;
+            ZoomLabel.Text = (ZoomTrackBar.Value*10) + @"%";
         }
 
         private void ZoomPlusButtonClick(object sender, EventArgs e)
         {
-            ZoomTrackBar.Value += 10;
+            if (ZoomTrackBar.Value<30)
+            ZoomTrackBar.Value += 1;
         }
 
         private void DesignerElementConnected(object sender, ElementConnectEventArgs e)

@@ -1,5 +1,7 @@
 using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Windows.Forms;
 using System.IO;
@@ -1224,19 +1226,42 @@ namespace DiagramNet
 
         public Bitmap GetImage(bool drawGrid, bool whitebackground)
         {
-            var bmp = new Bitmap(Document.Size.Width + Document.Location.X + 10, Document.Size.Height + Document.Location.Y + 10);
-            var graphics = Graphics.FromImage(bmp);
+            var docArea = Document.GetArea();
+            var bmp = new Bitmap(docArea.Width - docArea.X, docArea.Height - docArea.Y);
+            var graphics = Graphics.FromImage(bmp);            
             if (whitebackground || drawGrid)
-                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, bmp.Width, bmp.Height);
+                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, bmp.Width, bmp.Height);            
             if (drawGrid)                            
                 Document.DrawGrid(graphics, new Rectangle(0, 0, Document.Size.Width + Document.Location.X, Document.Size.Height + Document.Location.Y));
-            
-            var rect = Document.DrawElements(graphics, new Rectangle(0, 0, Document.Size.Width + Document.Location.X, Document.Size.Height + Document.Location.Y));            
-            var finalBmp = new Bitmap(rect.Width - rect.X, rect.Height - rect.Y);
-            var finalGraphics = Graphics.FromImage(finalBmp);
-            finalGraphics.DrawImage(bmp, new Rectangle(0, 0, rect.Width, rect.Height), rect.X, rect.Y, rect.Width, rect.Height, GraphicsUnit.Pixel);
-
-            return finalBmp;
+            graphics.TranslateTransform(docArea.X * -1, docArea.Y * -1);
+            Document.DrawElementsToGraphics(graphics, null);                        
+            return bmp;
         }
+
+        public bool DrawGraphics(Graphics graphics, bool drawGrid, bool whitebackground, int x, int y, int width, int height, bool scaleToFitPaper, bool allowStretch, int pageNumber)
+        {
+            var scale = 1f;
+            graphics.SetClip(new Rectangle(0,0,width,height));
+            var docArea = Document.GetArea();
+            if (whitebackground || drawGrid)
+                graphics.FillRectangle(new SolidBrush(Color.White), 0, 0, width, height);
+            if (scaleToFitPaper && (docArea.Width > width || docArea.Height > height))
+            {
+                scale = Math.Min(width * 1f / (docArea.Width - docArea.X), height * 1f / (docArea.Height - docArea.Y));
+                if (!allowStretch)
+                    scale = Math.Min(scale, 1);
+                graphics.ScaleTransform(scale, scale);
+            }
+            if (drawGrid)
+                Document.DrawGrid(graphics, new Rectangle(), new Size(Convert.ToInt32(_document.GridSize.Width * scale), Convert.ToInt32(_document.GridSize.Height * scale)));
+            if (pageNumber > 0)
+                graphics.TranslateTransform((docArea.X + width * pageNumber) * -1, (docArea.Y + height * pageNumber) * -1);
+            else
+                graphics.TranslateTransform(docArea.X * -1, docArea.Y * -1);
+            Document.DrawElementsToGraphics(graphics, null);
+            var retValue = scaleToFitPaper || ((docArea.X + width * (pageNumber + 1)) > docArea.Width + docArea.X && (docArea.Y + height * (pageNumber + 1)) > docArea.Height + docArea.Y);
+            
+            return !retValue;
+        }        
     }
 }
