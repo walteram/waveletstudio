@@ -92,6 +92,12 @@
     <Compile Include="Forms\BlockSetupBaseForm.Designer.cs">
       <DependentUpon>BlockSetupBaseForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PrintPreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PrintPreviewForm.Designer.cs">
+      <DependentUpon>PrintPreviewForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\DiagramFormOutput.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BlockSetupBaseForm.resx">
       <DependentUpon>BlockSetupBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintPreviewForm.resx">
+      <DependentUpon>PrintPreviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DiagramFormOutput.resx">
       <DependentUpon>DiagramFormOutput.cs</DependentUpon>
@@ -390,6 +399,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\iconclose.png" />
+    <None Include="Resources\iconprintsettings.png" />
+    <None Include="Resources\iconstretch.png" />
+    <None Include="Resources\grid.png" />
+    <None Include="Resources\iconprint.png" />
+    <None Include="Resources\iconprintpreview.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

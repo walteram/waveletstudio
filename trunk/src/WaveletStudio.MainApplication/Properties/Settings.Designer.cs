@@ -57,5 +57,89 @@ namespace WaveletStudio.MainApplication.Properties {
                 this["AutoShowBlockSetupForm"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool PrintGrid {
+            get {
+                return ((bool)(this["PrintGrid"]));
+            }
+            set {
+                this["PrintGrid"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PrintAllowStretch {
+            get {
+                return ((bool)(this["PrintAllowStretch"]));
+            }
+            set {
+                this["PrintAllowStretch"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.5")]
+        public decimal PrintMarginTop {
+            get {
+                return ((decimal)(this["PrintMarginTop"]));
+            }
+            set {
+                this["PrintMarginTop"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.5")]
+        public decimal PrintMarginLeft {
+            get {
+                return ((decimal)(this["PrintMarginLeft"]));
+            }
+            set {
+                this["PrintMarginLeft"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.5")]
+        public decimal PrintMarginBottom {
+            get {
+                return ((decimal)(this["PrintMarginBottom"]));
+            }
+            set {
+                this["PrintMarginBottom"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2.5")]
+        public decimal PrintMarginRight {
+            get {
+                return ((decimal)(this["PrintMarginRight"]));
+            }
+            set {
+                this["PrintMarginRight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool PrintLandscape {
+            get {
+                return ((bool)(this["PrintLandscape"]));
+            }
+            set {
+                this["PrintLandscape"] = value;
+            }
+        }
     }
 }

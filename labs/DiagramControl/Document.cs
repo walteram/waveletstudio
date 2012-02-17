@@ -495,6 +495,7 @@ namespace DiagramNet
                     value = 0.1f;
                 var changed = Math.Abs(_zoom - value) > float.Epsilon;
                 _zoom = value;
+                GridSize = new Size(Convert.ToInt32(10*value), Convert.ToInt32(10*value));
                 OnPropertyChanged(new EventArgs());
                 if (changed && ZoomChanged != null)
                     ZoomChanged(this, new EventArgs());
@@ -543,7 +544,40 @@ namespace DiagramNet
         #endregion
 
         #region Draw Methods
-        internal Rectangle DrawElements(Graphics g, Rectangle clippingRegion)
+
+        public void DrawElementsToGraphics(Graphics g, Rectangle? clippingRegion)
+        {
+            //Draw Links first
+            for (var i = 0; i <= Elements.Count - 1; i++)
+            {
+                var el = Elements[i];
+                if ((el is BaseLinkElement) && (clippingRegion == null || NeedDrawElement(el, clippingRegion.Value)))
+                    el.Draw(g);
+                if (el is ILabelElement)
+                    ((ILabelElement)el).Label.Draw(g);
+            }
+
+            //Draw the other elements
+            for (var i = 0; i <= Elements.Count - 1; i++)
+            {
+                var el = Elements[i];
+                if ((el is BaseLinkElement) || (clippingRegion != null && !NeedDrawElement(el, clippingRegion.Value))) continue;
+                if (el is NodeElement)
+                {
+                    var n = (NodeElement)el;
+                    n.Draw(g, (_action == DesignerAction.Connect));
+                }
+                else
+                {
+                    el.Draw(g);
+                }
+
+                if (el is ILabelElement)
+                    ((ILabelElement)el).Label.Draw(g);
+            }
+        }
+
+        public Rectangle DrawElements(Graphics g, Rectangle clippingRegion)
         {
             var point = new Rectangle();
             var pointWrited = false;
@@ -563,7 +597,7 @@ namespace DiagramNet
                     point.X = el.Location.X;
                     point.Y = el.Location.Y;
                     point.Width = el.Location.X + el.Size.Width + 4;
-                    point.Height = el.Location.X + el.Size.Height + 1;
+                    point.Height = el.Location.Y + el.Size.Height + 1;
                     pointWrited = true;
                 }
                 if (el.Location.X < point.X)
@@ -608,6 +642,35 @@ namespace DiagramNet
             return point;
         }
 
+        public Rectangle GetArea()
+        {
+            var area = new Rectangle();
+            var pointWrited = false;
+
+            //Links first
+            for (var i = 0; i <= Elements.Count - 1; i++)
+            {
+                var el = Elements[i];                
+                if (!pointWrited)
+                {
+                    area.X = el.Location.X;
+                    area.Y = el.Location.Y;
+                    area.Width = el.Location.X + el.Size.Width + 4;
+                    area.Height = el.Location.Y + el.Size.Height + 1;
+                    pointWrited = true;
+                }
+                if (el.Location.X < area.X)
+                    area.X = el.Location.X;
+                if (el.Location.Y < area.Y)
+                    area.Y = el.Location.Y;
+                if (el.Location.X + el.Size.Width > area.Width)
+                    area.Width = el.Location.X + el.Size.Width + 4;
+                if (el.Location.Y + el.Size.Height > area.Height)
+                    area.Height = el.Location.Y + el.Size.Height + 1;
+            }
+            return area;
+        }
+
         private bool NeedDrawElement(BaseElement el, Rectangle clippingRegion)
         {
             if (!el.Visible) return false;
@@ -637,6 +700,11 @@ namespace DiagramNet
 
         internal void DrawGrid(Graphics g, Rectangle clippingRegion)
         {
+            DrawGrid(g, clippingRegion, _gridSize);
+        }
+
+        internal void DrawGrid(Graphics g, Rectangle clippingRegion, Size gridSize)
+        {
             var p = new Pen(new HatchBrush(HatchStyle.DarkUpwardDiagonal, Color.LightGray, Color.Transparent), 1);
             var maxX = _location.X + Size.Width;
             var maxY = _location.Y + Size.Height;
@@ -647,12 +715,12 @@ namespace DiagramNet
             if (_windowSize.Height / _zoom > maxY)
                 maxY = (int)(_windowSize.Height / _zoom);
 
-            for(var i = 0; i < maxX; i += _gridSize.Width)
+            for (var i = 0; i < maxX; i += gridSize.Width)
             {
                 g.DrawLine(p, i, 0, i, maxY);
             }
 
-            for(var i = 0; i < maxY; i += _gridSize.Height)
+            for (var i = 0; i < maxY; i += gridSize.Height)
             {
                 g.DrawLine(p, 0, i, maxX, i);
             }

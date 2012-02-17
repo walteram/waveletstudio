@@ -80,21 +80,26 @@ namespace DiagramNet.Elements
         {
             for (var i = 0; i < _inputStates.Length; i++)
             {
-                var top = 20 * (i+1);
+                var marginBottom = 0;
+                if (_inputStates.Length > 1 && _inputStates.Length < 5)
+                    marginBottom = 20;
+                var top = ((SizeValue.Height - marginBottom) / (_inputStates.Length + 1)) * (i + 1) - ConnectSize / 2 - 2 - (marginBottom / 4);
                 var loc = new Point(LocationValue.X, LocationValue.Y + top);
                 var connect = Connects[i];
-                connect.Location = new Point(loc.X - ConnectSize, loc.Y - ConnectSize);
+                connect.Location = new Point(loc.X - ConnectSize, loc.Y);
                 connect.Size = new Size(ConnectSize * 2, ConnectSize * 2);
                 connect.IsStart = true;
                 connect.State = _inputStates[i];
-            }
-            var yOffset = _outputStates.Length > 2 ? 10 : 0;
+            }            
             for (var i = 0; i < _outputStates.Length; i++)
             {
-                var top = 20 * (i + 1);
+                var marginBottom = 0;
+                if (_outputStates.Length > 1 && _outputStates.Length < 5)
+                    marginBottom = 20;
+                var top = ((SizeValue.Height - marginBottom) / (_outputStates.Length + 1)) * (i + 1) - ConnectSize / 2 - 2 - (marginBottom / 4);
                 var loc = new Point(LocationValue.X + SizeValue.Width, LocationValue.Y + top);
                 var connect = Connects[_inputStates.Length+i];
-                connect.Location = new Point(loc.X - ConnectSize, loc.Y - ConnectSize - yOffset);
+                connect.Location = new Point(loc.X - ConnectSize, loc.Y);
                 connect.Size = new Size(ConnectSize * 2, ConnectSize * 2);
                 connect.IsStart = false;
                 connect.State = _outputStates[i];
