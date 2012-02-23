@@ -57,9 +57,9 @@ namespace WaveletStudio
         /// <remarks>The counter will be reset by calls to</remarks>
         public long ReclaimedObjectsCount { get; private set; }
 
-        private MemoryPool(int minArrayLength, int poolSizeMB) 
+        private MemoryPool(int minArrayLength, int poolSizeMb) 
         {
-            _maxBytes = poolSizeMB * 1024 * 1024; 
+            _maxBytes = poolSizeMb * 1024 * 1024; 
             _minArrLength = minArrayLength; 
             _livetimes = new List<Array>(500); 
             _pool = new SortedDictionary<int,List<Array>>(); 
@@ -68,13 +68,13 @@ namespace WaveletStudio
         /// Reset and reconfigure the pool 
         /// </summary>
         /// <param name="minArrayLength">Minimum length for array object to be stored inside the pool</param>
-        /// <param name="poolSizeMB">Overall size the memory pool consumes at most</param>
+        /// <param name="poolSizeMb">Overall size the memory pool consumes at most</param>
         /// <remarks>Reset will dispose all objects currently hold in the pool!</remarks>
-        public void Reset (int minArrayLength, int poolSizeMB ) 
+        public void Reset (int minArrayLength, int poolSizeMb ) 
         {
             lock (this) 
             {
-                _maxBytes = poolSizeMB * 1024 * 1024; 
+                _maxBytes = poolSizeMb * 1024 * 1024; 
                 _minArrLength = minArrayLength; 
                 _livetimes = new List<Array>(500); 
                 _pool = new SortedDictionary<int,List<Array>>();

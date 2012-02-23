@@ -44,8 +44,8 @@ namespace WaveletStudio.Tests
             Assert.AreEqual(0, signal.GetTimeSeries().ToList().Count);
 
             signal.SamplingInterval = 1d/0d;
-            Assert.AreEqual(0, signal.GetSamplesPair().ToList().Count);
-            Assert.AreEqual(0, signal.GetTimeSeries().ToList().Count);
+            Assert.AreEqual(0, signal.GetSamplesPair().Count());
+            Assert.AreEqual(0, signal.GetTimeSeries().Count());
 
             signal.Samples = null;
             Assert.AreEqual(0, signal.GetSamplesPair().ToList().Count);

@@ -16,6 +16,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 using WaveletStudio.Functions;
 
 namespace WaveletStudio
@@ -221,10 +222,10 @@ namespace WaveletStudio
             return result;
         }
 
-        private static double[] GetAntisymmetricWholePointBefore(double[] points, int beforeSize)
+        private static double[] GetAntisymmetricWholePointBefore(IList<double> points, int beforeSize)
         {
             var beforeExtension = MemoryPool.Pool.New<double>(beforeSize);
-            if (points.Length == 1)
+            if (points.Count == 1)
             {
                 for (var i = 0; i < beforeSize; i++)
                 {
@@ -235,7 +236,7 @@ namespace WaveletStudio
             var k = beforeSize - 1;
             for (var i = 0; i < beforeSize; i++)
             {
-                var dif = (i + 1 < points.Length) ? points[i] - points[i + 1] : 0;
+                var dif = (i + 1 < points.Count) ? points[i] - points[i + 1] : 0;
                 var previous = i == 0 ? points[0] : beforeExtension[k + 1];
                 beforeExtension[k] = previous + dif;
                 k--;
@@ -243,10 +244,10 @@ namespace WaveletStudio
             return beforeExtension;
         }
 
-        private static double[] GetAntisymmetricWholePointAfter(double[] points, int afterSize)
+        private static double[] GetAntisymmetricWholePointAfter(IList<double> points, int afterSize)
         {
             var afterExtension = MemoryPool.Pool.New<double>(afterSize);
-            if (points.Length == 1)
+            if (points.Count == 1)
             {
                 for (var i = 0; i < afterSize; i++)
                 {
@@ -255,7 +256,7 @@ namespace WaveletStudio
                 return afterExtension;
             }
             var k = 0;
-            for (var i = points.Length - 1; i >= points.Length - afterSize; i--)
+            for (var i = points.Count - 1; i >= points.Count - afterSize; i--)
             {
                 var dif = i >= 1 ? points[i] - points[i - 1] : 0;
                 var previous = k == 0 ? points[i] : afterExtension[k - 1];

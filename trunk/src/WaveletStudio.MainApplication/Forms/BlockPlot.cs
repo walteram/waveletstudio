@@ -20,6 +20,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using WaveletStudio.Blocks;
+using WaveletStudio.MainApplication.Properties;
 
 namespace WaveletStudio.MainApplication.Forms
 {
@@ -30,7 +31,7 @@ namespace WaveletStudio.MainApplication.Forms
         public BlockPlot()
         {
             InitializeComponent();
-            ApplicationUtils.ConfigureGraph(GraphControl, "Output");
+            ApplicationUtils.ConfigureGraph(GraphControl, Resources.Output);
         }
 
         public BlockPlot(ref BlockBase block) 
@@ -55,7 +56,7 @@ namespace WaveletStudio.MainApplication.Forms
             {
                 foreach (var output in Block.OutputNodes)
                 {
-                    if (output.Name != "All")
+                    if (output.Name != Resources.All)
                         ShowOutputList.Items.Add(output.Name);
                 }
             }            
@@ -114,7 +115,7 @@ namespace WaveletStudio.MainApplication.Forms
                                                             {signal.CustomPlot[1], maxValue}, {signal.CustomPlot[1], minValue}, 
                                                             {signal.CustomPlot[1], minValue}, {signal.CustomPlot[0], minValue}
                                                          };
-                    pane.AddCurve("Previous Size", area, Color.Orange, ZedGraph.SymbolType.None);
+                    pane.AddCurve(Resources.PreviousSize, area, Color.Orange, ZedGraph.SymbolType.None);
                 }
             }
 
@@ -155,7 +156,7 @@ namespace WaveletStudio.MainApplication.Forms
             {
                 foreach (var signal in outputNode.Object)
                 {
-                    ShowOutputSignal.Items.Add(string.IsNullOrEmpty(signal.Name) ? "Signal" : signal.Name);
+                    ShowOutputSignal.Items.Add(string.IsNullOrEmpty(signal.Name) ? Resources.Signal : signal.Name);
                 }
                 if (ShowOutputSignal.Items.Count > 0)
                     ShowOutputSignal.SelectedIndex = ShowOutputSignal.Items.Count > currentIndex ? currentIndex : 0;

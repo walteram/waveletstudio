@@ -117,297 +117,303 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AmplitudeDescription" xml:space="preserve">
+    <value>Amplitude do Sinal.</value>
+  </data>
   <data name="ColumnSeparator" xml:space="preserve">
-    <value>Column separator</value>
+    <value>Separador de Colunas</value>
+  </data>
+  <data name="ColumnSeparatorDescription" xml:space="preserve">
+    <value>Caracter separador de colunas (, |, etc).</value>
   </data>
   <data name="convolutionmode" xml:space="preserve">
-    <value>Convolution Mode</value>
+    <value>Modo de Convolução</value>
+  </data>
+  <data name="DecimalPlaces" xml:space="preserve">
+    <value>Casas decimais</value>
+  </data>
+  <data name="DecimalPlacesDescription" xml:space="preserve">
+    <value>Número de casas decimais.</value>
+  </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Atraso</value>
+  </data>
+  <data name="DelayDescription" xml:space="preserve">
+    <value>Tempo de atraso.</value>
   </data>
   <data name="dynamictrigonometricvalues" xml:space="preserve">
-    <value>Dynamic (slower, uses less memory)</value>
+    <value>Dinâmico (mais lento, usa menos memória)</value>
   </data>
   <data name="errorinvalidoriginalsignal" xml:space="preserve">
-    <value>Before performing any operation is necessary to select a source. 
-Click in the Signal tab and select a signal source.</value>
+    <value>Antes de executar qualquer operação é necessário selecionar a origem. 
+Clique na aba Sinal e selecione uma origem de sinal.</value>
+  </data>
+  <data name="ExtensionMode" xml:space="preserve">
+    <value>Modo de Extensão</value>
+  </data>
+  <data name="ExtensionModeDescription" xml:space="preserve">
+    <value>Define como o sinal será extendido.</value>
+  </data>
+  <data name="ExtensionSize" xml:space="preserve">
+    <value>Largura da Extensão</value>
   </data>
   <data name="ExtensionSizeDescription" xml:space="preserve">
-    <value>Extension size (0 to use next power of 2).</value>
+    <value>Largura da extensão (0 para usar a próxima potência de 2).</value>
+  </data>
+  <data name="Factor" xml:space="preserve">
+    <value>Fator</value>
+  </data>
+  <data name="FactorDescription" xml:space="preserve">
+    <value>Fator usado na operação.</value>
+  </data>
+  <data name="FilePath" xml:space="preserve">
+    <value>Arquivo</value>
+  </data>
+  <data name="FilePathDescription" xml:space="preserve">
+    <value>Caminho absoluto ou relativo para o arquivo.</value>
+  </data>
+  <data name="Finish" xml:space="preserve">
+    <value>Tempo de Término</value>
+  </data>
+  <data name="FinishDescription" xml:space="preserve">
+    <value>Término do sinal no tempo.</value>
+  </data>
+  <data name="FrameSize" xml:space="preserve">
+    <value>Largura do Quadro</value>
+  </data>
+  <data name="FrameSizeDescription" xml:space="preserve">
+    <value>Largura do quadro utilizada pelo bloco.</value>
+  </data>
+  <data name="Frequency" xml:space="preserve">
+    <value>Frequência (Hz)</value>
+  </data>
+  <data name="FrequencyDescription" xml:space="preserve">
+    <value>Frequência utilizada pelo bloco.</value>
+  </data>
+  <data name="IgnoreFirstRow" xml:space="preserve">
+    <value>Ignorar a primeira linha</value>
+  </data>
+  <data name="IgnoreFirstRowDescription" xml:space="preserve">
+    <value>Ignora a primeira linha do arquivo (cabeçalho).</value>
+  </data>
+  <data name="IgnoreLastSample" xml:space="preserve">
+    <value>Ignorar última amostra</value>
+  </data>
+  <data name="IgnoreLastSampleDescription" xml:space="preserve">
+    <value>Define se a última amostra será incluída no sinal.</value>
+  </data>
+  <data name="IncludeSignalNameInFirstColumn" xml:space="preserve">
+    <value>Incluir nome do sinal na primeira coluna</value>
+  </data>
+  <data name="IncludeSignalNameInFirstColumnDescription" xml:space="preserve">
+    <value>Informa se o bloco deverá incluir o nome do sinal na primeira coluna.</value>
+  </data>
+  <data name="InputCount" xml:space="preserve">
+    <value>Número de Entradas</value>
+  </data>
+  <data name="InputCountDescription" xml:space="preserve">
+    <value>Número de entradas do bloco.</value>
+  </data>
+  <data name="KeepSamplingRate" xml:space="preserve">
+    <value>Manter taxa de amostragem</value>
+  </data>
+  <data name="KeepSamplingRateDescription" xml:space="preserve">
+    <value>Informa se o bloco deverá manter a taxa de amostragem original, alterando o tempo de início e término do sinal.</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Nível</value>
+  </data>
+  <data name="LevelDescription" xml:space="preserve">
+    <value>Número de níveis a decompor.</value>
+  </data>
+  <data name="Mean" xml:space="preserve">
+    <value>Média</value>
+  </data>
+  <data name="MeanDescription" xml:space="preserve">
+    <value>Valor médio utilizado no bloco.</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Moda</value>
+  </data>
+  <data name="ModeDescription" xml:space="preserve">
+    <value>Valor de moda utilizado no bloco.</value>
+  </data>
+  <data name="Offset" xml:space="preserve">
+    <value>Deslocamento</value>
+  </data>
+  <data name="OffsetDescription" xml:space="preserve">
+    <value>Distância da origem.</value>
+  </data>
+  <data name="Operation" xml:space="preserve">
+    <value>Operação</value>
+  </data>
+  <data name="OperationDescription" xml:space="preserve">
+    <value>Operação matemática a ser aplicada.</value>
+  </data>
+  <data name="OutputCount" xml:space="preserve">
+    <value>Número de Saídas</value>
+  </data>
+  <data name="OutputCountDescription" xml:space="preserve">
+    <value>Número de saídas do bloco.</value>
+  </data>
+  <data name="Phase" xml:space="preserve">
+    <value>Fase</value>
+  </data>
+  <data name="PhaseDescription" xml:space="preserve">
+    <value>Fase a ser utilizada pelo bloco.</value>
+  </data>
+  <data name="ProcessingType" xml:space="preserve">
+    <value>Modo de Processamento</value>
+  </data>
+  <data name="ProcessingTypeDescription" xml:space="preserve">
+    <value>Define a ação a ser tomada pelo bloco.</value>
+  </data>
+  <data name="RampFinish" xml:space="preserve">
+    <value>Final da Rampa</value>
+  </data>
+  <data name="RampFinishDescription" xml:space="preserve">
+    <value>Tempo onde a rampa terá seu término.</value>
+  </data>
+  <data name="RampStart" xml:space="preserve">
+    <value>Início da Rampa</value>
+  </data>
+  <data name="RampStartDescription" xml:space="preserve">
+    <value>Tempo onde a rampa terá seu início.</value>
+  </data>
+  <data name="RepetitionCount" xml:space="preserve">
+    <value>Número de Repetições</value>
+  </data>
+  <data name="RepetitionCountDescription" xml:space="preserve">
+    <value>Quantidade de vezes que o bloco deverá repetir o sinal.</value>
+  </data>
+  <data name="ReturnOnlyValid" xml:space="preserve">
+    <value>Retornar apenas amostras válidas</value>
+  </data>
+  <data name="ReturnOnlyValidDescription" xml:space="preserve">
+    <value>Define se o bloco deverá retornar apenas as amostras válidas (área central)</value>
+  </data>
+  <data name="ReturnToZero" xml:space="preserve">
+    <value>Retornar a Zero</value>
+  </data>
+  <data name="ReturnToZeroDescription" xml:space="preserve">
+    <value>Retorna o valor para zero ao final.</value>
+  </data>
+  <data name="SamplingInterval" xml:space="preserve">
+    <value>Intervalo de amostragem</value>
+  </data>
+  <data name="SamplingIntervalDescription" xml:space="preserve">
+    <value>Intervalo de amostragem utilizado no bloco.</value>
+  </data>
+  <data name="SamplingRate" xml:space="preserve">
+    <value>Taxa de Amostragem (Hz)</value>
+  </data>
+  <data name="SamplingRateDescription" xml:space="preserve">
+    <value>Taxa de amostragem utilizada no bloco.</value>
+  </data>
+  <data name="scalaroperation_text" xml:space="preserve">
+    <value>Valor</value>
+  </data>
+  <data name="SignalIndexes" xml:space="preserve">
+    <value>Índices do Sinal</value>
+  </data>
+  <data name="SignalIndexesDescription" xml:space="preserve">
+    <value>Índices do sinal a serem copiados para a saída. Uma linha por saída, separados por vírgulas.</value>
+  </data>
+  <data name="SignalNameInFirstColumn" xml:space="preserve">
+    <value>Nome do sinal na primeira coluna</value>
+  </data>
+  <data name="SignalNameInFirstColumnDescription" xml:space="preserve">
+    <value>A primeira coluna do texto contém o nome do sinal.</value>
+  </data>
+  <data name="SignalNames" xml:space="preserve">
+    <value>Nomes dos Sinais</value>
+  </data>
+  <data name="SignalNamesDescription" xml:space="preserve">
+    <value>Nomes dos sinais na saída do bloco (opcional, um por linha).</value>
+  </data>
+  <data name="SignalStart" xml:space="preserve">
+    <value>Início</value>
+  </data>
+  <data name="SignalStartDescription" xml:space="preserve">
+    <value>Tempo de início do sinal.</value>
+  </data>
+  <data name="signaltemplates" xml:space="preserve">
+    <value>Modelos de Sinal</value>
+  </data>
+  <data name="SortSamples" xml:space="preserve">
+    <value>Ordenar amostras</value>
+  </data>
+  <data name="SortSamplesDescription" xml:space="preserve">
+    <value>Ordena as amostras do sinal em ordem crescente.</value>
+  </data>
+  <data name="StandardDeviation" xml:space="preserve">
+    <value>Desvio Padrão</value>
+  </data>
+  <data name="StandardDeviationDescription" xml:space="preserve">
+    <value>Valor de desvio padrão utilizado no bloco.</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Início</value>
+  </data>
+  <data name="StartDescription" xml:space="preserve">
+    <value>Tempo de início do sinal.</value>
+  </data>
+  <data name="StaticThreshold" xml:space="preserve">
+    <value>Limite</value>
+  </data>
+  <data name="StaticThresholdDescription" xml:space="preserve">
+    <value>Define o limite que definirá qual bloco será passado para a saída do bloco.</value>
+  </data>
+  <data name="SwitchCriteria" xml:space="preserve">
+    <value>Critério</value>
+  </data>
+  <data name="SwitchCriteriaDescription" xml:space="preserve">
+    <value>Critério para definir qual sinal será passado para a saída do bloco.</value>
+  </data>
+  <data name="TemplateName" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="TemplateNameDescription" xml:space="preserve">
+    <value>Modelo de geração de sinal a ser utilizado pelo bloco.</value>
+  </data>
+  <data name="Text" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="TextDescription" xml:space="preserve">
+    <value>Texto utilizado no bloco.</value>
+  </data>
+  <data name="uselookuptable" xml:space="preserve">
+    <value>Utilizar tabela trigonométrica (mais rápido)</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Valor</value>
+  </data>
+  <data name="ValueDescription" xml:space="preserve">
+    <value>Valor escalar.</value>
+  </data>
+  <data name="WaveletName" xml:space="preserve">
+    <value>Wavelet</value>
+  </data>
+  <data name="WaveletNameDescription" xml:space="preserve">
+    <value>Função Wavelet mãe a ser utilizada.</value>
+  </data>
+  <data name="Absolute" xml:space="preserve">
+    <value>Módulo</value>
+  </data>
+  <data name="AbsoluteDescription" xml:space="preserve">
+    <value>Valor absoluto do sinal.</value>
+  </data>
+  <data name="Output" xml:space="preserve">
+    <value>Saída</value>
+  </data>
+  <data name="Signal" xml:space="preserve">
+    <value>Sinal</value>
   </data>
   <data name="FFT" xml:space="preserve">
     <value>FFT</value>
   </data>
-  <data name="FilePath" xml:space="preserve">
-    <value>File</value>
-  </data>
-  <data name="Finish" xml:space="preserve">
-    <value>Finish Time</value>
-  </data>
-  <data name="Frequency" xml:space="preserve">
-    <value>Frequency (Hz)</value>
-  </data>
-  <data name="IgnoreFirstRow" xml:space="preserve">
-    <value>Ignore first row</value>
-  </data>
-  <data name="IgnoreLastSample" xml:space="preserve">
-    <value>Ignore the last sample</value>
-  </data>
-  <data name="Level" xml:space="preserve">
-    <value>Level</value>
-  </data>
-  <data name="LevelDescription" xml:space="preserve">
-    <value>Number of levels to decompose.</value>
-  </data>
-  <data name="RampFinish" xml:space="preserve">
-    <value>Ramp Finish</value>
-  </data>
-  <data name="RampStart" xml:space="preserve">
-    <value>Ramp Start</value>
-  </data>
-  <data name="ReturnOnlyValid" xml:space="preserve">
-    <value>Return only valid samples</value>
-  </data>
-  <data name="ReturnToZeroDescription" xml:space="preserve">
-    <value>Return value to zero in the end.</value>
-  </data>
-  <data name="SamplingInterval" xml:space="preserve">
-    <value>Sample time interval</value>
-  </data>
-  <data name="SamplingRate" xml:space="preserve">
-    <value>Sampling Rate (Hz)</value>
-  </data>
-  <data name="scalaroperation_text" xml:space="preserve">
-    <value>Scalar</value>
-  </data>
-  <data name="SignalNameInFirstColumn" xml:space="preserve">
-    <value>First column contains signal name</value>
-  </data>
-  <data name="SignalStart" xml:space="preserve">
-    <value>Signal Start</value>
-  </data>
-  <data name="signaltemplates" xml:space="preserve">
-    <value>Signal Templates</value>
-  </data>
-  <data name="SortSamples" xml:space="preserve">
-    <value>Sort Samples</value>
-  </data>
-  <data name="Start" xml:space="preserve">
-    <value>Start Time</value>
-  </data>
-  <data name="TemplateName" xml:space="preserve">
-    <value>Template</value>
-  </data>
-  <data name="uselookuptable" xml:space="preserve">
-    <value>Use trigonometric table (faster)</value>
-  </data>
-  <data name="ExtensionMode" xml:space="preserve">
-    <value>Extension Mode</value>
-  </data>
-  <data name="ExtensionModeDescription" xml:space="preserve">
-    <value>Defines how the signal should be extended during the transform.</value>
-  </data>
-  <data name="WaveletName" xml:space="preserve">
-    <value>Wavelet Name</value>
-  </data>
-  <data name="WaveletNameDescription" xml:space="preserve">
-    <value>Wavelet function to be used.</value>
-  </data>
   <data name="Amplitude" xml:space="preserve">
     <value>Amplitude</value>
-  </data>
-  <data name="AmplitudeDescription" xml:space="preserve">
-    <value>Amplitude of the signal.</value>
-  </data>
-  <data name="ColumnSeparatorDescription" xml:space="preserve">
-    <value>Column separator value (, |, etc).</value>
-  </data>
-  <data name="DecimalPlaces" xml:space="preserve">
-    <value>Decimal Places</value>
-  </data>
-  <data name="DecimalPlacesDescription" xml:space="preserve">
-    <value>Number of decimal places.</value>
-  </data>
-  <data name="Delay" xml:space="preserve">
-    <value>Delay</value>
-  </data>
-  <data name="DelayDescription" xml:space="preserve">
-    <value>Time delay.</value>
-  </data>
-  <data name="ExtensionSize" xml:space="preserve">
-    <value>Extension Size</value>
-  </data>
-  <data name="Factor" xml:space="preserve">
-    <value>Factor</value>
-  </data>
-  <data name="FactorDescription" xml:space="preserve">
-    <value>Factor used in the operation.</value>
-  </data>
-  <data name="FilePathDescription" xml:space="preserve">
-    <value>Absolute or relative path to the file.</value>
-  </data>
-  <data name="FinishDescription" xml:space="preserve">
-    <value>Signal finish time.</value>
-  </data>
-  <data name="FrameSize" xml:space="preserve">
-    <value>Frame Size</value>
-  </data>
-  <data name="FrameSizeDescription" xml:space="preserve">
-    <value>The frame size used in the block.</value>
-  </data>
-  <data name="IgnoreFirstRowDescription" xml:space="preserve">
-    <value>Ignore first row when reading the file.</value>
-  </data>
-  <data name="IgnoreLastSampleDescription" xml:space="preserve">
-    <value>Defines whether the last sample will be included in signal.</value>
-  </data>
-  <data name="IncludeSignalNameInFirstColumn" xml:space="preserve">
-    <value>Include Signal Name in First Column</value>
-  </data>
-  <data name="IncludeSignalNameInFirstColumnDescription" xml:space="preserve">
-    <value>If true, the block includes the signal name in first column.</value>
-  </data>
-  <data name="KeepSamplingRate" xml:space="preserve">
-    <value>Keep Sampling Rate</value>
-  </data>
-  <data name="KeepSamplingRateDescription" xml:space="preserve">
-    <value>If true, keeps the original sampling rate, changing the signal start and finish times.</value>
-  </data>
-  <data name="Mean" xml:space="preserve">
-    <value>Mean</value>
-  </data>
-  <data name="MeanDescription" xml:space="preserve">
-    <value>Mean value used in the block.</value>
-  </data>
-  <data name="Mode" xml:space="preserve">
-    <value>Mode</value>
-  </data>
-  <data name="ModeDescription" xml:space="preserve">
-    <value>Mode used in the block.</value>
-  </data>
-  <data name="Offset" xml:space="preserve">
-    <value>Offset</value>
-  </data>
-  <data name="OffsetDescription" xml:space="preserve">
-    <value>Distance from the origin.</value>
-  </data>
-  <data name="Operation" xml:space="preserve">
-    <value>Operation</value>
-  </data>
-  <data name="OperationDescription" xml:space="preserve">
-    <value>Math operation used in the block.</value>
-  </data>
-  <data name="ProcessingType" xml:space="preserve">
-    <value>Processing Type</value>
-  </data>
-  <data name="ProcessingTypeDescription" xml:space="preserve">
-    <value>Type of action done by the block.</value>
-  </data>
-  <data name="RampFinishDescription" xml:space="preserve">
-    <value>Finish of the ramp in time.</value>
-  </data>
-  <data name="RampStartDescription" xml:space="preserve">
-    <value>Ramp start time.</value>
-  </data>
-  <data name="RepetitionCount" xml:space="preserve">
-    <value>Repetition Count</value>
-  </data>
-  <data name="RepetitionCountDescription" xml:space="preserve">
-    <value>The repetition count used in the block.</value>
-  </data>
-  <data name="ReturnOnlyValidDescription" xml:space="preserve">
-    <value>If true, the block returns only the valid samples (central area).</value>
-  </data>
-  <data name="SamplingIntervalDescription" xml:space="preserve">
-    <value>Sample time interval used in the block.</value>
-  </data>
-  <data name="SamplingRateDescription" xml:space="preserve">
-    <value>Sampling rate used on sampling.</value>
-  </data>
-  <data name="SignalIndexes" xml:space="preserve">
-    <value>Signal Indexes</value>
-  </data>
-  <data name="SignalIndexesDescription" xml:space="preserve">
-    <value>Indexes of the signals to be copied in the output. One line per output, separated with commas (,).</value>
-  </data>
-  <data name="SignalNameInFirstColumnDescription" xml:space="preserve">
-    <value>If true, the first column contains the name of the signal.</value>
-  </data>
-  <data name="SignalNames" xml:space="preserve">
-    <value>Signal Names</value>
-  </data>
-  <data name="SignalNamesDescription" xml:space="preserve">
-    <value>Signal names used in the output (optional, one per line).</value>
-  </data>
-  <data name="SignalStartDescription" xml:space="preserve">
-    <value>Signal start time.</value>
-  </data>
-  <data name="SortSamplesDescription" xml:space="preserve">
-    <value>If true, the block will sort the samples before execute.</value>
-  </data>
-  <data name="StandardDeviation" xml:space="preserve">
-    <value>Standard Deviation</value>
-  </data>
-  <data name="StandardDeviationDescription" xml:space="preserve">
-    <value>Standard deviation value used in the block.</value>
-  </data>
-  <data name="StartDescription" xml:space="preserve">
-    <value>Signal start time.</value>
-  </data>
-  <data name="Text" xml:space="preserve">
-    <value>Text</value>
-  </data>
-  <data name="TextDescription" xml:space="preserve">
-    <value>Text used in the block.</value>
-  </data>
-  <data name="Value" xml:space="preserve">
-    <value>Value</value>
-  </data>
-  <data name="ValueDescription" xml:space="preserve">
-    <value>Scalar value.</value>
-  </data>
-  <data name="FrequencyDescription" xml:space="preserve">
-    <value>Frequency used in the block.</value>
-  </data>
-  <data name="Phase" xml:space="preserve">
-    <value>Phase</value>
-  </data>
-  <data name="PhaseDescription" xml:space="preserve">
-    <value>Phase used in the block.</value>
-  </data>
-  <data name="ReturnToZero" xml:space="preserve">
-    <value>Return to Zero</value>
-  </data>
-  <data name="TemplateNameDescription" xml:space="preserve">
-    <value>The signal generation template used by the block.</value>
-  </data>
-  <data name="StaticThreshold" xml:space="preserve">
-    <value>Static Threshold</value>
-  </data>
-  <data name="StaticThresholdDescription" xml:space="preserve">
-    <value>Assign the switch threshold that determines which input the block passes to the output.</value>
-  </data>
-  <data name="SwitchCriteria" xml:space="preserve">
-    <value>Switch Criteria</value>
-  </data>
-  <data name="SwitchCriteriaDescription" xml:space="preserve">
-    <value>Criteria for select the output.</value>
-  </data>
-  <data name="InputCount" xml:space="preserve">
-    <value>Number of Inputs</value>
-  </data>
-  <data name="InputCountDescription" xml:space="preserve">
-    <value>Number of inputs of the block.</value>
-  </data>
-  <data name="OutputCount" xml:space="preserve">
-    <value>Number of Outputs</value>
-  </data>
-  <data name="OutputCountDescription" xml:space="preserve">
-    <value>Number of outputs of the block.</value>
-  </data>
-  <data name="Absolute" xml:space="preserve">
-    <value>Absolute</value>
-  </data>
-  <data name="AbsoluteDescription" xml:space="preserve">
-    <value>Absolute value of a signal.</value>
   </data>
   <data name="In" xml:space="preserve">
     <value>In</value>
@@ -415,91 +421,85 @@ Click in the Signal tab and select a signal source.</value>
   <data name="Out" xml:space="preserve">
     <value>Out</value>
   </data>
-  <data name="Output" xml:space="preserve">
-    <value>Output</value>
-  </data>
-  <data name="Signal" xml:space="preserve">
-    <value>Signal</value>
-  </data>
   <data name="AbsoluteValue" xml:space="preserve">
-    <value>Absolute Value</value>
+    <value>Valor Absoluto</value>
   </data>
   <data name="All" xml:space="preserve">
-    <value>All</value>
+    <value>Tudo</value>
   </data>
   <data name="Approximation" xml:space="preserve">
-    <value>Approximation</value>
+    <value>Aproximação</value>
   </data>
   <data name="ApproximationLevel" xml:space="preserve">
-    <value>Approximation Level</value>
+    <value>Nível de Aproximação</value>
   </data>
   <data name="Convolution" xml:space="preserve">
-    <value>Convolution</value>
+    <value>Convolução</value>
   </data>
   <data name="ConvolutionDescription" xml:space="preserve">
     <value>Compute convolution of two inputs</value>
   </data>
   <data name="DemuxDescription" xml:space="preserve">
-    <value>Extract and output elements of vector signal.</value>
+    <value>Extrai elementos de um vetor de sinais.</value>
   </data>
   <data name="Details" xml:space="preserve">
-    <value>Details</value>
+    <value>Detalhes</value>
   </data>
   <data name="DetailsLevel" xml:space="preserve">
-    <value>Details Level</value>
+    <value>Nível de Detalhamento</value>
   </data>
   <data name="Downsample" xml:space="preserve">
-    <value>Downsample</value>
+    <value>Sub-amostragem</value>
   </data>
   <data name="DownsampleDescription" xml:space="preserve">
-    <value>Decreases the sampling rate of the input by keeping every odd sample starting with the first sample.</value>
+    <value>Diminui a taxa de amostragem de um sinal removendo as amostras em posições pares do sinal.</value>
   </data>
   <data name="DWTDescription" xml:space="preserve">
-    <value>Wavelet decomposition block</value>
+    <value>Decomposição Wavelet</value>
   </data>
   <data name="ExportToCSV" xml:space="preserve">
-    <value>Export CSV</value>
+    <value>Arquivo CSV</value>
   </data>
   <data name="ExportToCSVDescription" xml:space="preserve">
-    <value>Exports a signal to a CSV file</value>
+    <value>Exporta um sinal para um arquivo CSV</value>
   </data>
   <data name="FFTDescription" xml:space="preserve">
-    <value>Compute fast Fourier transform (FFT) of input.</value>
+    <value>Calcula a Transformada Rápida de Fourier (FFT) de um sinal</value>
   </data>
   <data name="FFTMode" xml:space="preserve">
-    <value>FFT Mode</value>
+    <value>Modo FFT</value>
   </data>
   <data name="FFTModeDescription" xml:space="preserve">
-    <value>The FFT mode to be used on convolution.</value>
+    <value>Modo de operação FFT a ser utilizado durante a convolução.</value>
   </data>
   <data name="IDWTDescription" xml:space="preserve">
-    <value>Inverse Wavelet Decomposition (IDWT) block.</value>
+    <value>Reconstrução Wavelet (IDWT).</value>
   </data>
   <data name="IFFTDescription" xml:space="preserve">
-    <value>Compute inverse fast Fourier transform (IFFT) of input.</value>
+    <value>Calcula a Transformada Inversa de Fourier (IFFT) de um sinal.</value>
   </data>
   <data name="ImportFromCSV" xml:space="preserve">
-    <value>Import from CSV</value>
+    <value>Arquivo CSV</value>
   </data>
   <data name="ImportFromCSVDescription" xml:space="preserve">
-    <value>Generates a signal based on a CSV file.</value>
+    <value>Gera um sinal baseado em um arquivo CSV.</value>
   </data>
   <data name="Input" xml:space="preserve">
-    <value>Input</value>
+    <value>Entrada</value>
   </data>
   <data name="Line" xml:space="preserve">
-    <value>Line</value>
+    <value>Linha</value>
   </data>
   <data name="Reconstruction" xml:space="preserve">
-    <value>Reconstruction</value>
+    <value>Reconstrução</value>
   </data>
   <data name="TemplateNotFound" xml:space="preserve">
-    <value>The template {0} does not exist.</value>
+    <value>O modelo {0} não existe.</value>
   </data>
   <data name="TextBlockDescription" xml:space="preserve">
-    <value>Generates a signal based on a text.</value>
+    <value>Gera um sinal através de um texto.</value>
   </data>
   <data name="WaveletNameNotFound" xml:space="preserve">
-    <value>The wavelet {0} does not exist.</value>
+    <value>A wavelet-mãe {0} não existe.</value>
   </data>
 </root>

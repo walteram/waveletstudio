@@ -61,6 +61,42 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Absolute.
+        /// </summary>
+        public static string Absolute {
+            get {
+                return ResourceManager.GetString("Absolute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Absolute value of a signal..
+        /// </summary>
+        public static string AbsoluteDescription {
+            get {
+                return ResourceManager.GetString("AbsoluteDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Absolute Value.
+        /// </summary>
+        public static string AbsoluteValue {
+            get {
+                return ResourceManager.GetString("AbsoluteValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        public static string All {
+            get {
+                return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Amplitude.
         /// </summary>
         public static string Amplitude {
@@ -79,6 +115,24 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approximation.
+        /// </summary>
+        public static string Approximation {
+            get {
+                return ResourceManager.GetString("Approximation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Approximation Level.
+        /// </summary>
+        public static string ApproximationLevel {
+            get {
+                return ResourceManager.GetString("ApproximationLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Column separator.
         /// </summary>
         public static string ColumnSeparator {
@@ -93,6 +147,24 @@ namespace WaveletStudio.Properties {
         public static string ColumnSeparatorDescription {
             get {
                 return ResourceManager.GetString("ColumnSeparatorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convolution.
+        /// </summary>
+        public static string Convolution {
+            get {
+                return ResourceManager.GetString("Convolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compute convolution of two inputs.
+        /// </summary>
+        public static string ConvolutionDescription {
+            get {
+                return ResourceManager.GetString("ConvolutionDescription", resourceCulture);
             }
         }
         
@@ -142,6 +214,60 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extract and output elements of vector signal..
+        /// </summary>
+        public static string DemuxDescription {
+            get {
+                return ResourceManager.GetString("DemuxDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        public static string Details {
+            get {
+                return ResourceManager.GetString("Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details Level.
+        /// </summary>
+        public static string DetailsLevel {
+            get {
+                return ResourceManager.GetString("DetailsLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Downsample.
+        /// </summary>
+        public static string Downsample {
+            get {
+                return ResourceManager.GetString("Downsample", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Decreases the sampling rate of the input by keeping every odd sample starting with the first sample..
+        /// </summary>
+        public static string DownsampleDescription {
+            get {
+                return ResourceManager.GetString("DownsampleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wavelet decomposition block.
+        /// </summary>
+        public static string DWTDescription {
+            get {
+                return ResourceManager.GetString("DWTDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dynamic (slower, uses less memory).
         /// </summary>
         public static string dynamictrigonometricvalues {
@@ -157,6 +283,24 @@ namespace WaveletStudio.Properties {
         public static string errorinvalidoriginalsignal {
             get {
                 return ResourceManager.GetString("errorinvalidoriginalsignal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export CSV.
+        /// </summary>
+        public static string ExportToCSV {
+            get {
+                return ResourceManager.GetString("ExportToCSV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exports a signal to a CSV file.
+        /// </summary>
+        public static string ExportToCSVDescription {
+            get {
+                return ResourceManager.GetString("ExportToCSVDescription", resourceCulture);
             }
         }
         
@@ -220,6 +364,33 @@ namespace WaveletStudio.Properties {
         public static string FFT {
             get {
                 return ResourceManager.GetString("FFT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compute fast Fourier transform (FFT) of input..
+        /// </summary>
+        public static string FFTDescription {
+            get {
+                return ResourceManager.GetString("FFTDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FFT Mode.
+        /// </summary>
+        public static string FFTMode {
+            get {
+                return ResourceManager.GetString("FFTMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The FFT mode to be used on convolution..
+        /// </summary>
+        public static string FFTModeDescription {
+            get {
+                return ResourceManager.GetString("FFTModeDescription", resourceCulture);
             }
         }
         
@@ -296,6 +467,24 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Inverse Wavelet Decomposition (IDWT) block..
+        /// </summary>
+        public static string IDWTDescription {
+            get {
+                return ResourceManager.GetString("IDWTDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compute inverse fast Fourier transform (IFFT) of input..
+        /// </summary>
+        public static string IFFTDescription {
+            get {
+                return ResourceManager.GetString("IFFTDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ignore first row.
         /// </summary>
         public static string IgnoreFirstRow {
@@ -323,11 +512,38 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Defines it the last sample will be included in signal..
+        ///   Looks up a localized string similar to Defines whether the last sample will be included in signal..
         /// </summary>
         public static string IgnoreLastSampleDescription {
             get {
                 return ResourceManager.GetString("IgnoreLastSampleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import from CSV.
+        /// </summary>
+        public static string ImportFromCSV {
+            get {
+                return ResourceManager.GetString("ImportFromCSV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generates a signal based on a CSV file..
+        /// </summary>
+        public static string ImportFromCSVDescription {
+            get {
+                return ResourceManager.GetString("ImportFromCSVDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In.
+        /// </summary>
+        public static string In {
+            get {
+                return ResourceManager.GetString("In", resourceCulture);
             }
         }
         
@@ -346,6 +562,15 @@ namespace WaveletStudio.Properties {
         public static string IncludeSignalNameInFirstColumnDescription {
             get {
                 return ResourceManager.GetString("IncludeSignalNameInFirstColumnDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Input.
+        /// </summary>
+        public static string Input {
+            get {
+                return ResourceManager.GetString("Input", resourceCulture);
             }
         }
         
@@ -400,6 +625,15 @@ namespace WaveletStudio.Properties {
         public static string LevelDescription {
             get {
                 return ResourceManager.GetString("LevelDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Line.
+        /// </summary>
+        public static string Line {
+            get {
+                return ResourceManager.GetString("Line", resourceCulture);
             }
         }
         
@@ -472,6 +706,24 @@ namespace WaveletStudio.Properties {
         public static string OperationDescription {
             get {
                 return ResourceManager.GetString("OperationDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Out.
+        /// </summary>
+        public static string Out {
+            get {
+                return ResourceManager.GetString("Out", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Output.
+        /// </summary>
+        public static string Output {
+            get {
+                return ResourceManager.GetString("Output", resourceCulture);
             }
         }
         
@@ -562,6 +814,15 @@ namespace WaveletStudio.Properties {
         public static string RampStartDescription {
             get {
                 return ResourceManager.GetString("RampStartDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reconstruction.
+        /// </summary>
+        public static string Reconstruction {
+            get {
+                return ResourceManager.GetString("Reconstruction", resourceCulture);
             }
         }
         
@@ -661,6 +922,15 @@ namespace WaveletStudio.Properties {
         public static string scalaroperation_text {
             get {
                 return ResourceManager.GetString("scalaroperation_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signal.
+        /// </summary>
+        public static string Signal {
+            get {
+                return ResourceManager.GetString("Signal", resourceCulture);
             }
         }
         
@@ -854,11 +1124,29 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The template {0} does not exist..
+        /// </summary>
+        public static string TemplateNotFound {
+            get {
+                return ResourceManager.GetString("TemplateNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Text.
         /// </summary>
         public static string Text {
             get {
                 return ResourceManager.GetString("Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generates a signal based on a text..
+        /// </summary>
+        public static string TextBlockDescription {
+            get {
+                return ResourceManager.GetString("TextBlockDescription", resourceCulture);
             }
         }
         
@@ -913,6 +1201,15 @@ namespace WaveletStudio.Properties {
         public static string WaveletNameDescription {
             get {
                 return ResourceManager.GetString("WaveletNameDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The wavelet {0} does not exist..
+        /// </summary>
+        public static string WaveletNameNotFound {
+            get {
+                return ResourceManager.GetString("WaveletNameNotFound", resourceCulture);
             }
         }
     }

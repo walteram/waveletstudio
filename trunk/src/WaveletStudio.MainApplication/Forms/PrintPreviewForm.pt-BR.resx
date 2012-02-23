@@ -117,46 +117,71 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Caption.Text" xml:space="preserve">
+    <value>Visualizar Impressão</value>
+  </data>
+  <data name="PrintText.Title" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
+  <data name="PrintPanel.Title" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
+  <data name="qCompositeText8.Title" xml:space="preserve">
+    <value>Configurar</value>
+  </data>
+  <data name="qCompositeText1.Title" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="qCompositeText2.Title" xml:space="preserve">
+    <value>Esticar</value>
+  </data>
+  <data name="OptionsPanel.Title" xml:space="preserve">
+    <value>Opções</value>
+  </data>
+  <data name="qCompositeText7.Title" xml:space="preserve">
+    <value>Superior: </value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 301</value>
+  <data name="MarginTopField.InputBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>394, 12</value>
   </data>
-  <data name="&gt;&gt;PropertyGrid.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PropertyGrid, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="qCompositeText4.Title" xml:space="preserve">
+    <value>Esquerda: </value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Qios.DevSuite.Components.QDockingWindow, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  <data name="MarginLeftField.InputBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>356, 35</value>
   </data>
-  <data name="PropertyGrid.Size" type="System.Drawing.Size, System.Drawing">
-    <value>283, 285</value>
+  <data name="qCompositeText5.Title" xml:space="preserve">
+    <value>Direita:</value>
   </data>
-  <data name="&gt;&gt;PropertyGrid.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="MarginRightField.InputBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>450, 35</value>
   </data>
-  <data name="&gt;&gt;PropertyGrid.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="qCompositeText6.Title" xml:space="preserve">
+    <value>      Inferior:</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="PropertyGrid.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="MarginBottomField.InputBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>393, 58</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>DiagramFormProperties</value>
+  <data name="MarginsPanel.Title" xml:space="preserve">
+    <value>Margens (centímetros)</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="PropertyGrid.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="qCompositeText3.Title" xml:space="preserve">
+    <value>Fechar</value>
   </data>
-  <data name="PropertyGrid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="qRibbonPanel1.Title" xml:space="preserve">
+    <value>Visualização</value>
   </data>
-  <data name="&gt;&gt;PropertyGrid.Name" xml:space="preserve">
-    <value>PropertyGrid</value>
+  <data name="PreviewOptionsPage.Text" xml:space="preserve">
+    <value>Visualizar Impressão</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Properties</value>
+    <value>Visualizar Impressão</value>
   </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="Ribbon.Text" xml:space="preserve">
+    <value>Visualizar Impressão</value>
+  </data>
+  <data name="diagramFormProperties1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAB
         AAAAAAAAAACAAACAAAAAgIAAgAAAAIAAgACAgAAAwMDAAMDcwADwyqYABAQEAAgICAAMDAwAERERABYW
@@ -184,10 +209,4 @@
         AAAAAAAAAAAAAPgAAAD8AAAA/gEAAP//AAA=
 </value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>pt-BR</value>
-  </metadata>
 </root>

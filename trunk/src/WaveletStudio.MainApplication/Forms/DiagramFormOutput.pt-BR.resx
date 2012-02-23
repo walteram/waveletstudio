@@ -118,37 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>366, 320</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Qios.DevSuite.Components.QDockingWindow, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
-  </data>
-  <data name="&gt;&gt;BlockPlot.Type" xml:space="preserve">
-    <value>WaveletStudio.MainApplication.Forms.BlockPlot, WaveletStudio.MainApplication, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BlockPlot.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="BlockPlot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>366, 304</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>DiagramFormOutput</value>
-  </data>
-  <data name="&gt;&gt;BlockPlot.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="BlockPlot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;BlockPlot.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Output</value>
-  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAMAICAAAAEAIACoEAAANgAAABgYAAABACAAiAkAAN4QAAAQEAAAAQAgAGgEAABmGgAAKAAAACAA
@@ -285,17 +254,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3ODg2
 </value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BlockPlot.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Saída</value>
   </data>
-  <data name="&gt;&gt;BlockPlot.Name" xml:space="preserve">
-    <value>BlockPlot</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>pt-BR</value>
-  </metadata>
 </root>

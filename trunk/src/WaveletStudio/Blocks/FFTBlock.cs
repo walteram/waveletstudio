@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.FFT;
 using WaveletStudio.Functions;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -51,7 +52,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Description
         {
-            get { return "Compute fast Fourier transform (FFT) of input"; }
+            get { return Resources.FFTDescription; }
         }
         
         /// <summary>
@@ -113,11 +114,11 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, "Signal", "In") };
+            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, Resources.Signal, Resources.In) };
             root.OutputNodes = new List<BlockOutputNode>
                                    {
-                                       new BlockOutputNode(ref root, "Absolute Value", "Abs"),
-                                       new BlockOutputNode(ref root, "Complex FFT", "FFT")
+                                       new BlockOutputNode(ref root, Resources.AbsoluteValue, "Abs"),
+                                       new BlockOutputNode(ref root, Resources.FFT, "FFT")
                                    };
         }
 

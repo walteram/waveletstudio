@@ -14,7 +14,7 @@ namespace WaveletStudio.MainApplication
         [STAThread]
         static void Main()
         {
-            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("en-US");           
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("pt-BR");           
 
             Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);

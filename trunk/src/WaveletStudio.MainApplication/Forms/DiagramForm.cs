@@ -46,7 +46,7 @@ namespace WaveletStudio.MainApplication.Forms
             get { return _currentFile; }
             set
             {
-                Text = @"Wavelet Studio - " + (string.IsNullOrEmpty(value) ? "New Document" : Path.GetFileName(value)) + (!Saved ? "*" : "");
+                Text = string.Format("{0} - {1}{2}", Resources.WaveletStudio, (string.IsNullOrEmpty(value) ? Resources.NewDocument : Path.GetFileName(value)), (!Saved ? Resources.NewDocumentChar : ""));
                 _currentFile = value;
             }
         }
@@ -63,10 +63,10 @@ namespace WaveletStudio.MainApplication.Forms
             set
             {
                 _saved = value;
-                if (_saved && Text.EndsWith("*"))
+                if (_saved && Text.EndsWith(Resources.NewDocumentChar))
                     Text = Text.Substring(0, Text.Length - 1);
-                else if(!_saved  && !Text.EndsWith("*"))
-                    Text = Text + @"*";
+                else if (!_saved && !Text.EndsWith(Resources.NewDocumentChar))
+                    Text = Text + Resources.NewDocumentChar;
                 UpdateActions();
             }
         }
@@ -75,7 +75,7 @@ namespace WaveletStudio.MainApplication.Forms
         {
             InitializeComponent();
             AppMenuButton.Visible = false;
-            CurrentFile = "";
+            CurrentFile = string.Empty;
             _outputWindow = new DiagramFormOutput {Owner = this, Size = new Size(300, 300)};
             _outputWindow.DockWindow(RightDockBar);
             _propertiesWindow = new DiagramFormProperties {Owner = this, Size = new Size(300, 300)};
@@ -175,7 +175,7 @@ namespace WaveletStudio.MainApplication.Forms
         {
             var zoomValue = Convert.ToInt32(Designer.Document.Zoom*10);
             ZoomTrackBar.Value = zoomValue;
-            ZoomLabel.Text = (zoomValue*10) + @"%";
+            ZoomLabel.Text = (zoomValue*10) + "%";
         }
 
         private void CopyElementShortcutItemActivated(object sender, QCompositeEventArgs e)
@@ -227,7 +227,7 @@ namespace WaveletStudio.MainApplication.Forms
             }
             catch (Exception exception)
             {
-                MessageBox.Show(@"The file couldn't be saved: \r\n" + exception.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("{0}: \r\n{1}", Resources.FileCouldntBeSaved, exception.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -235,8 +235,7 @@ namespace WaveletStudio.MainApplication.Forms
         {
             if (Designer.Document.Elements.Count > 0 && !Saved)
             {
-                var questionResult = MessageBox.Show(@"Would you like to save your changes before closing?", @"Atention",
-                                                     MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                var questionResult = MessageBox.Show(Resources.SaveChangesQuestion, Resources.Attention, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (questionResult == DialogResult.Cancel)
                     return;
                 if (questionResult == DialogResult.Yes)
@@ -250,7 +249,7 @@ namespace WaveletStudio.MainApplication.Forms
             var openDialog = new OpenFileDialog
             {
                 SupportMultiDottedExtensions = true,
-                Filter = @"Wavelet Studio Document|*.wsd", //|Wavelet Studio XML Document|*.wsx",
+                Filter = string.Format("{0}|*.wsd", Resources.WaveletStudioDocument), //|Wavelet Studio XML Document|*.wsx",
                 RestoreDirectory = true
             };
             if (openDialog.ShowDialog(this) != DialogResult.OK)
@@ -263,7 +262,7 @@ namespace WaveletStudio.MainApplication.Forms
             }
             catch (Exception exception)
             {
-                MessageBox.Show(@"The file couldn't be opened:" + Environment.NewLine + exception.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("{0}:{1}{2}", Resources.FileCouldntBeOpened, Environment.NewLine, exception.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -298,7 +297,7 @@ namespace WaveletStudio.MainApplication.Forms
             var saveDialog = new SaveFileDialog
             {
                 SupportMultiDottedExtensions = true,
-                Filter = @"Wavelet Studio Document|*.wsd", //|Wavelet Studio XML Document|*.wsx",
+                Filter = string.Format("{0}|*.wsd", Resources.WaveletStudioDocument), //|Wavelet Studio XML Document|*.wsx",
                 RestoreDirectory = true
             };
             if (saveDialog.ShowDialog(this) != DialogResult.OK)
@@ -311,7 +310,7 @@ namespace WaveletStudio.MainApplication.Forms
             }
             catch (Exception exception)
             {
-                MessageBox.Show(@"The file couldn't be opened:" + Environment.NewLine + exception.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("{0}:{1}{2}", Resources.FileCouldntBeSaved, Environment.NewLine, exception.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -320,7 +319,7 @@ namespace WaveletStudio.MainApplication.Forms
             var saveDialog = new SaveFileDialog
             {
                 SupportMultiDottedExtensions = false,
-                Filter = @"PNG|*.png|JPG|*.jpg|BMP|*.bmp|EMF|*.emf|EXIF|*.exif|GIF|*.gif|TIFF|*.tiff|WMF|*.wmf",
+                Filter = "" + "PNG|*.png|JPG|*.jpg|BMP|*.bmp|EMF|*.emf|EXIF|*.exif|GIF|*.gif|TIFF|*.tiff|WMF|*.wmf",
                 RestoreDirectory = true,
                 AddExtension = true
             };
@@ -361,7 +360,7 @@ namespace WaveletStudio.MainApplication.Forms
             }
             catch (Exception exception)
             {
-                MessageBox.Show(@"The file couldn't be opened:" + Environment.NewLine + exception.Message, @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("{0}:{1}{2}", Resources.FileCouldntBeSaved, Environment.NewLine, exception.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -422,14 +421,13 @@ namespace WaveletStudio.MainApplication.Forms
 
         private void RibbonHelpButtonActivated(object sender, EventArgs e)
         {
-            const string target = "http://www.waveletstudio.net";
             try
             {
-                System.Diagnostics.Process.Start(target);
+                System.Diagnostics.Process.Start(Resources.Site);
             }
             catch(Exception)
             {
-                MessageBox.Show(@"You can get help in this application at the folowing site: " + '\n' + target, @"Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(string.Format("{0}:\n{1}", Resources.HelpLinkMessage, Resources.Site), Resources.Help, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -464,7 +462,7 @@ namespace WaveletStudio.MainApplication.Forms
         private void ZoomTrackBarValueChanged(object sender, EventArgs e)
         {
             Designer.Document.Zoom = ZoomTrackBar.Value / 10f;
-            ZoomLabel.Text = (ZoomTrackBar.Value*10) + @"%";
+            ZoomLabel.Text = string.Format("{0}%", (ZoomTrackBar.Value*10));
         }
 
         private void ZoomPlusButtonClick(object sender, EventArgs e)
@@ -486,7 +484,7 @@ namespace WaveletStudio.MainApplication.Forms
             }
             catch (StackOverflowException)
             {
-                MessageBox.Show(@"The model throws a stack overflow exception.");
+                MessageBox.Show(Resources.ModelThrewStackOverflow);
             }
         }
 

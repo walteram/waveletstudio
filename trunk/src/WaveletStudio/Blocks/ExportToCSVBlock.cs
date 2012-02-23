@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -46,12 +47,12 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Name
         /// </summary>
-        public override string Name { get { return "Export CSV"; } }
+        public override string Name { get { return Resources.ExportToCSV; } }
 
         /// <summary>
         /// Description
         /// </summary>
-        public override string Description { get { return "Exports a signal based to a CSV file"; } }
+        public override string Description { get { return Resources.ExportToCSVDescription; } }
 
         /// <summary>
         /// Processing type
@@ -112,7 +113,7 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, "Signal", "S") };            
+            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, Resources.Signal, "S") };            
         }
 
         /// <summary>

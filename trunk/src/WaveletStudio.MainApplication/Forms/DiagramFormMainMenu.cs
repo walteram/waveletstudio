@@ -88,7 +88,7 @@ namespace WaveletStudio.MainApplication.Forms
                                         HotkeyText = i.ToString(),
                                         ItemName = file
                                     };
-                compositeItem.Items.Add(new QCompositeText { Title = @"&" + i });
+                compositeItem.Items.Add(new QCompositeText { Title = string.Format(@"&{0}", i) });
                 compositeItem.Items.Add(new QCompositeText { Title = file, Configuration = { ShrinkHorizontal = true, StretchHorizontal = true } });
                 compositeItem.ItemActivated += (sender, args) => _diagramForm.OpenFile(((QCompositeItem)sender).ItemName);
                 DocumentItems.Add(compositeItem);

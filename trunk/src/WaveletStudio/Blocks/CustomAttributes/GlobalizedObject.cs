@@ -17,6 +17,7 @@
 
 using System;
 using System.ComponentModel;
+using System.Linq;
 
 namespace WaveletStudio.Blocks.CustomAttributes
 {    
@@ -111,15 +112,9 @@ namespace WaveletStudio.Blocks.CustomAttributes
             {
                 var baseProps = TypeDescriptor.GetProperties(this, attributes, true);
                 _globalizedProperties = new PropertyDescriptorCollection(null);
-                foreach (PropertyDescriptor property in baseProps)
+                foreach (var property in baseProps.Cast<PropertyDescriptor>().Where(property => property.Attributes.OfType<Parameter>().Any()))
                 {
-                    foreach (var attribute in property.Attributes)
-                    {
-                        if (!(attribute is Parameter)) 
-                            continue;
-                        _globalizedProperties.Add(new GlobalizedPropertyDescriptor(property));
-                        break;
-                    }                    
+                    _globalizedProperties.Add(new GlobalizedPropertyDescriptor(property));
                 }
             }
             return _globalizedProperties;
@@ -134,15 +129,9 @@ namespace WaveletStudio.Blocks.CustomAttributes
             {
                 var baseProps = TypeDescriptor.GetProperties(this, true);
                 _globalizedProperties = new PropertyDescriptorCollection(null);
-                foreach (PropertyDescriptor property in baseProps)
+                foreach (var property in baseProps.Cast<PropertyDescriptor>().Where(property => property.Attributes.OfType<Parameter>().Any()))
                 {
-                    foreach (var attribute in property.Attributes)
-                    {
-                        if (!(attribute is Parameter)) 
-                            continue;
-                        _globalizedProperties.Add(new GlobalizedPropertyDescriptor(property));
-                        break;
-                    }
+                    _globalizedProperties.Add(new GlobalizedPropertyDescriptor(property));
                 }
             }
             return _globalizedProperties;

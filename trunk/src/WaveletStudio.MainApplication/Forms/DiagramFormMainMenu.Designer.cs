@@ -89,46 +89,38 @@ namespace WaveletStudio.MainApplication.Forms
             // OptionsButton
             // 
             this.OptionsButton.Configuration.AlignmentHorizontal = Qios.DevSuite.Components.QPartAlignment.Far;
-            this.OptionsButton.HotkeyText = "O";
-            this.OptionsButton.Title = "&Options";
+            resources.ApplyResources(this.OptionsButton, "OptionsButton");
             this.OptionsButton.Visible = false;
             // 
             // CloseButton
             // 
             this.CloseButton.Configuration.AlignmentHorizontal = Qios.DevSuite.Components.QPartAlignment.Far;
-            this.CloseButton.HotkeyText = "C";
-            this.CloseButton.Title = "&Close";
+            resources.ApplyResources(this.CloseButton, "CloseButton");
             this.CloseButton.Visible = false;
             // 
             // NewMenuItem
             // 
             this.NewMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
             this.NewMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
-            this.NewMenuItem.HotkeyText = "N";
+            resources.ApplyResources(this.NewMenuItem, "NewMenuItem");
             this.NewMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("NewMenuItem.Icon")));
-            this.NewMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlN;
             this.NewMenuItem.SuppressShortcutToSystem = false;
-            this.NewMenuItem.Title = "&New";
             this.NewMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.NewMenuItemItemActivated);
             // 
             // OpenMenuItem
             // 
             this.OpenMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
             this.OpenMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
-            this.OpenMenuItem.HotkeyText = "O";
+            resources.ApplyResources(this.OpenMenuItem, "OpenMenuItem");
             this.OpenMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("OpenMenuItem.Icon")));
-            this.OpenMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlO;
-            this.OpenMenuItem.Title = "&Open";
             this.OpenMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.OpenMenuItemItemActivated);
             // 
             // SaveMenuItem
             // 
             this.SaveMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
             this.SaveMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
-            this.SaveMenuItem.HotkeyText = "S";
+            resources.ApplyResources(this.SaveMenuItem, "SaveMenuItem");
             this.SaveMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("SaveMenuItem.Icon")));
-            this.SaveMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlS;
-            this.SaveMenuItem.Title = "&Save";
             this.SaveMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.SaveMenuItemItemActivated);
             // 
             // SaveAsMenuItem
@@ -136,124 +128,100 @@ namespace WaveletStudio.MainApplication.Forms
             this.SaveAsMenuItem.Configuration.DropDownSeparated = true;
             this.SaveAsMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
             this.SaveAsMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
-            this.SaveAsMenuItem.HotkeyText = "A";
+            resources.ApplyResources(this.SaveAsMenuItem, "SaveAsMenuItem");
             this.SaveAsMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("SaveAsMenuItem.Icon")));
-            this.SaveAsMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftS;
-            this.SaveAsMenuItem.Title = "Save &As";
             this.SaveAsMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.SaveAsMenuItemItemActivated);
             // 
             // qrsmwMainMenuSaveAs
             // 
-            this.qrsmwMainMenuSaveAs.CaptionText = "Save your file as...";
+            resources.ApplyResources(this.qrsmwMainMenuSaveAs, "qrsmwMainMenuSaveAs");
             this.qrsmwMainMenuSaveAs.Items.Add(this.qcliSaveAsWord);
             this.qrsmwMainMenuSaveAs.Items.Add(this.qcliSaveAsWordTemplate);
             this.qrsmwMainMenuSaveAs.Items.Add(this.qcliSaveAsWord2003);
             this.qrsmwMainMenuSaveAs.Items.Add(this.qcliSaveAsPdf);
             this.qrsmwMainMenuSaveAs.Items.Add(this.qcliSaveAsOtherDocuments);
-            this.qrsmwMainMenuSaveAs.Location = new System.Drawing.Point(17, 17);
             this.qrsmwMainMenuSaveAs.Name = "qrsmwMainMenuSaveAs";
-            this.qrsmwMainMenuSaveAs.Size = new System.Drawing.Size(471, 238);
-            this.qrsmwMainMenuSaveAs.TabIndex = 0;
-            this.qrsmwMainMenuSaveAs.Text = "qRibbonSubMenuWindow1";
-            this.qrsmwMainMenuSaveAs.Visible = false;
             // 
             // qcliSaveAsWord
             // 
-            this.qcliSaveAsWord.Description = "Save the document in the default file format";
-            this.qcliSaveAsWord.HotkeyText = "W";
+            resources.ApplyResources(this.qcliSaveAsWord, "qcliSaveAsWord");
             this.qcliSaveAsWord.Icon = ((System.Drawing.Icon)(resources.GetObject("qcliSaveAsWord.Icon")));
-            this.qcliSaveAsWord.Title = "&Word document";
             // 
             // qcliSaveAsWordTemplate
             // 
-            this.qcliSaveAsWordTemplate.Description = "Save the document as a template that can be used to format future documents";
-            this.qcliSaveAsWordTemplate.HotkeyText = "T";
+            resources.ApplyResources(this.qcliSaveAsWordTemplate, "qcliSaveAsWordTemplate");
             this.qcliSaveAsWordTemplate.Icon = ((System.Drawing.Icon)(resources.GetObject("qcliSaveAsWordTemplate.Icon")));
-            this.qcliSaveAsWordTemplate.Title = "Word &Template";
             // 
             // qcliSaveAsWord2003
             // 
-            this.qcliSaveAsWord2003.Description = "Save a copy of the document  that is fully compatible with Word 97-2003";
-            this.qcliSaveAsWord2003.HotkeyText = "9";
+            resources.ApplyResources(this.qcliSaveAsWord2003, "qcliSaveAsWord2003");
             this.qcliSaveAsWord2003.Icon = ((System.Drawing.Icon)(resources.GetObject("qcliSaveAsWord2003.Icon")));
-            this.qcliSaveAsWord2003.Title = "Word &97-2003";
             // 
             // qcliSaveAsPdf
             // 
-            this.qcliSaveAsPdf.Description = "Publish a copy of the document as a PDF or XPS file";
-            this.qcliSaveAsPdf.HotkeyText = "P";
+            resources.ApplyResources(this.qcliSaveAsPdf, "qcliSaveAsPdf");
             this.qcliSaveAsPdf.Icon = ((System.Drawing.Icon)(resources.GetObject("qcliSaveAsPdf.Icon")));
-            this.qcliSaveAsPdf.Title = "&PDF-XPS";
             // 
             // qcliSaveAsOtherDocuments
             // 
             this.qcliSaveAsOtherDocuments.ChildItems.Add(this.qciSaveAsOther1);
             this.qcliSaveAsOtherDocuments.ChildItems.Add(this.qciSaveAsOther2);
-            this.qcliSaveAsOtherDocuments.Description = "Open the Save As dialog box to select from all possible file types";
-            this.qcliSaveAsOtherDocuments.HotkeyText = "O";
+            resources.ApplyResources(this.qcliSaveAsOtherDocuments, "qcliSaveAsOtherDocuments");
             this.qcliSaveAsOtherDocuments.Icon = ((System.Drawing.Icon)(resources.GetObject("qcliSaveAsOtherDocuments.Icon")));
-            this.qcliSaveAsOtherDocuments.Title = "&Other formats";
             // 
             // qciSaveAsOther1
             // 
-            this.qciSaveAsOther1.Title = "Save as other 1";
+            resources.ApplyResources(this.qciSaveAsOther1, "qciSaveAsOther1");
             // 
             // qciSaveAsOther2
             // 
-            this.qciSaveAsOther2.Title = "Save as other 2";
+            resources.ApplyResources(this.qciSaveAsOther2, "qciSaveAsOther2");
             // 
             // PrintMenuItem
             // 
             this.PrintMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
             this.PrintMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
-            this.PrintMenuItem.HotkeyText = "P";
+            resources.ApplyResources(this.PrintMenuItem, "PrintMenuItem");
             this.PrintMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("PrintMenuItem.Icon")));
-            this.PrintMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlP;
-            this.PrintMenuItem.Title = "&Print";
             this.PrintMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.PrintMenuItemItemActivated);
             // 
             // PrepateMenuItem
             // 
             this.PrepateMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
             this.PrepateMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
-            this.PrepateMenuItem.HotkeyText = "E";
+            resources.ApplyResources(this.PrepateMenuItem, "PrepateMenuItem");
             this.PrepateMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("PrepateMenuItem.Icon")));
-            this.PrepateMenuItem.Title = "Pr&epare";
             this.PrepateMenuItem.Visible = false;
             // 
             // PrintPreviewMenuItem
             // 
             this.PrintPreviewMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
             this.PrintPreviewMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
-            this.PrintPreviewMenuItem.HotkeyText = "D";
+            resources.ApplyResources(this.PrintPreviewMenuItem, "PrintPreviewMenuItem");
             this.PrintPreviewMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("PrintPreviewMenuItem.Icon")));
-            this.PrintPreviewMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftP;
-            this.PrintPreviewMenuItem.Title = "Preview";
             this.PrintPreviewMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.PrintPreviewMenuItemItemActivated);
             // 
             // PublishMenuItem
             // 
             this.PublishMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
             this.PublishMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
-            this.PublishMenuItem.HotkeyText = "U";
+            resources.ApplyResources(this.PublishMenuItem, "PublishMenuItem");
             this.PublishMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("PublishMenuItem.Icon")));
-            this.PublishMenuItem.Title = "P&ublish";
             this.PublishMenuItem.Visible = false;
             // 
             // CloseMenuItem
             // 
             this.CloseMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
             this.CloseMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
-            this.CloseMenuItem.HotkeyText = "C";
+            resources.ApplyResources(this.CloseMenuItem, "CloseMenuItem");
             this.CloseMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("CloseMenuItem.Icon")));
-            this.CloseMenuItem.Shortcut = System.Windows.Forms.Shortcut.AltF4;
-            this.CloseMenuItem.Title = "&Close";
             this.CloseMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.CloseMenuItemItemActivated);
             // 
             // qcitRecentDocument
             // 
             this.qcitRecentDocument.Configuration.ShrinkHorizontal = true;
             this.qcitRecentDocument.Configuration.StretchHorizontal = true;
+            resources.ApplyResources(this.qcitRecentDocument, "qcitRecentDocument");
             this.qcitRecentDocument.Items.Add(this.qctDocumentNumber);
             this.qcitRecentDocument.Items.Add(this.qctDocumentName);
             this.qcitRecentDocument.Items.Add(this.qciPin);
@@ -261,14 +229,14 @@ namespace WaveletStudio.MainApplication.Forms
             // qctDocumentNumber
             // 
             this.qctDocumentNumber.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 0, 0, 5);
-            this.qctDocumentNumber.Title = "&1";
+            resources.ApplyResources(this.qctDocumentNumber, "qctDocumentNumber");
             // 
             // qctDocumentName
             // 
             this.qctDocumentName.Configuration.DrawTextOptions = Qios.DevSuite.Components.QDrawTextOptions.EndEllipsis;
             this.qctDocumentName.Configuration.ShrinkHorizontal = true;
             this.qctDocumentName.Configuration.StretchHorizontal = true;
-            this.qctDocumentName.Title = "DocumentName";
+            resources.ApplyResources(this.qctDocumentName, "qctDocumentName");
             // 
             // qciPin
             // 
@@ -277,12 +245,12 @@ namespace WaveletStudio.MainApplication.Forms
             // qCompositeText1
             // 
             this.qCompositeText1.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 0, 0, 5);
-            this.qCompositeText1.Title = "&1";
+            resources.ApplyResources(this.qCompositeText1, "qCompositeText1");
             // 
             // qCompositeText2
             // 
             this.qCompositeText2.Configuration.StretchHorizontal = true;
-            this.qCompositeText2.Title = "DocumentName";
+            resources.ApplyResources(this.qCompositeText2, "qCompositeText2");
             // 
             // qCompositeImage1
             // 
@@ -291,12 +259,12 @@ namespace WaveletStudio.MainApplication.Forms
             // qCompositeText3
             // 
             this.qCompositeText3.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 0, 0, 5);
-            this.qCompositeText3.Title = "&1";
+            resources.ApplyResources(this.qCompositeText3, "qCompositeText3");
             // 
             // qCompositeText4
             // 
             this.qCompositeText4.Configuration.StretchHorizontal = true;
-            this.qCompositeText4.Title = "DocumentName";
+            resources.ApplyResources(this.qCompositeText4, "qCompositeText4");
             // 
             // qCompositeImage2
             // 
@@ -305,12 +273,12 @@ namespace WaveletStudio.MainApplication.Forms
             // qCompositeText5
             // 
             this.qCompositeText5.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 0, 0, 5);
-            this.qCompositeText5.Title = "&1";
+            resources.ApplyResources(this.qCompositeText5, "qCompositeText5");
             // 
             // qCompositeText6
             // 
             this.qCompositeText6.Configuration.StretchHorizontal = true;
-            this.qCompositeText6.Title = "DocumentName";
+            resources.ApplyResources(this.qCompositeText6, "qCompositeText6");
             // 
             // qCompositeImage3
             // 
@@ -319,12 +287,12 @@ namespace WaveletStudio.MainApplication.Forms
             // qCompositeText7
             // 
             this.qCompositeText7.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 0, 0, 5);
-            this.qCompositeText7.Title = "&1";
+            resources.ApplyResources(this.qCompositeText7, "qCompositeText7");
             // 
             // qCompositeText8
             // 
             this.qCompositeText8.Configuration.StretchHorizontal = true;
-            this.qCompositeText8.Title = "DocumentName";
+            resources.ApplyResources(this.qCompositeText8, "qCompositeText8");
             // 
             // qCompositeImage4
             // 
@@ -333,12 +301,12 @@ namespace WaveletStudio.MainApplication.Forms
             // qCompositeText9
             // 
             this.qCompositeText9.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 0, 0, 5);
-            this.qCompositeText9.Title = "&1";
+            resources.ApplyResources(this.qCompositeText9, "qCompositeText9");
             // 
             // qCompositeText10
             // 
             this.qCompositeText10.Configuration.StretchHorizontal = true;
-            this.qCompositeText10.Title = "DocumentName";
+            resources.ApplyResources(this.qCompositeText10, "qCompositeText10");
             // 
             // qCompositeImage5
             // 
@@ -347,12 +315,12 @@ namespace WaveletStudio.MainApplication.Forms
             // qCompositeText11
             // 
             this.qCompositeText11.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 0, 0, 5);
-            this.qCompositeText11.Title = "&1";
+            resources.ApplyResources(this.qCompositeText11, "qCompositeText11");
             // 
             // qCompositeText12
             // 
             this.qCompositeText12.Configuration.StretchHorizontal = true;
-            this.qCompositeText12.Title = "DocumentName";
+            resources.ApplyResources(this.qCompositeText12, "qCompositeText12");
             // 
             // qCompositeImage6
             // 
@@ -361,12 +329,12 @@ namespace WaveletStudio.MainApplication.Forms
             // qCompositeText13
             // 
             this.qCompositeText13.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 0, 0, 5);
-            this.qCompositeText13.Title = "&1";
+            resources.ApplyResources(this.qCompositeText13, "qCompositeText13");
             // 
             // qCompositeText14
             // 
             this.qCompositeText14.Configuration.StretchHorizontal = true;
-            this.qCompositeText14.Title = "DocumentName";
+            resources.ApplyResources(this.qCompositeText14, "qCompositeText14");
             // 
             // qCompositeImage7
             // 
@@ -375,14 +343,14 @@ namespace WaveletStudio.MainApplication.Forms
             // qCompositeText15
             // 
             this.qCompositeText15.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 0, 0, 5);
-            this.qCompositeText15.Title = "&1";
+            resources.ApplyResources(this.qCompositeText15, "qCompositeText15");
             // 
             // qCompositeText16
             // 
             this.qCompositeText16.Configuration.DrawTextOptions = Qios.DevSuite.Components.QDrawTextOptions.EndEllipsis;
             this.qCompositeText16.Configuration.ShrinkHorizontal = true;
             this.qCompositeText16.Configuration.StretchHorizontal = true;
-            this.qCompositeText16.Title = "DocumentName";
+            resources.ApplyResources(this.qCompositeText16, "qCompositeText16");
             // 
             // qCompositeImage8
             // 
@@ -393,15 +361,13 @@ namespace WaveletStudio.MainApplication.Forms
             this.ExportMenuItem.Configuration.DropDownSeparated = true;
             this.ExportMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
             this.ExportMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
-            this.ExportMenuItem.HotkeyText = "E";
+            resources.ApplyResources(this.ExportMenuItem, "ExportMenuItem");
             this.ExportMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("ExportMenuItem.Icon")));
-            this.ExportMenuItem.Shortcut = System.Windows.Forms.Shortcut.CtrlShiftE;
-            this.ExportMenuItem.Title = "&Export";
             this.ExportMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.ExportMenuItemItemActivated);
             // 
             // DiagramFormMainMenu
             // 
-            this.DocumentCaptionText = "Recent Files";
+            resources.ApplyResources(this, "$this");
             this.FooterItems.Add(this.OptionsButton);
             this.FooterItems.Add(this.CloseButton);
             this.Items.Add(this.NewMenuItem);
@@ -419,7 +385,6 @@ namespace WaveletStudio.MainApplication.Forms
             this.Items.Add(this.Separator1);
             this.Items.Add(this.CloseMenuItem);
             this.Name = "DiagramFormMainMenu";
-            this.Size = new System.Drawing.Size(424, 364);
             this.VisibleChanged += new System.EventHandler(this.DiagramFormMainMenuVisibleChanged);
             this.ResumeLayout(false);
 

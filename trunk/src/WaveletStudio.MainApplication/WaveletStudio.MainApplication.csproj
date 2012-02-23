@@ -130,14 +130,38 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\BlockPlot.pt-BR.resx">
+      <DependentUpon>BlockPlot.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\BlockPlot.resx">
       <DependentUpon>BlockPlot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BlockSetupBaseForm.pt-BR.resx">
+      <DependentUpon>BlockSetupBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BlockSetupPlotForm.pt-BR.resx">
+      <DependentUpon>BlockSetupPlotForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BlockSetupPlotForm.resx">
       <DependentUpon>BlockSetupPlotForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BlockSetupBaseForm.resx">
       <DependentUpon>BlockSetupBaseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DiagramForm.pt-BR.resx">
+      <DependentUpon>DiagramForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DiagramFormMainMenu.pt-BR.resx">
+      <DependentUpon>DiagramFormMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DiagramFormOutput.pt-BR.resx">
+      <DependentUpon>DiagramFormOutput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DiagramFormProperties.pt-BR.resx">
+      <DependentUpon>DiagramFormProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PrintPreviewForm.pt-BR.resx">
+      <DependentUpon>PrintPreviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PrintPreviewForm.resx">
       <DependentUpon>PrintPreviewForm.cs</DependentUpon>
@@ -167,6 +191,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Properties\Resources.pt-BR.resx" />
     <None Include="app.config" />
     <None Include="Properties\DataSources\WaveletStudio.SignalGeneration.CommonSignalBase.datasource" />
     <None Include="Properties\Settings.settings">

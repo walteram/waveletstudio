@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Properties;
 using WaveletStudio.Wavelet;
 
 namespace WaveletStudio.Blocks
@@ -54,7 +55,7 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Description
         /// </summary>
-        public override string Description { get { return "Wavelet decomposition block"; } }
+        public override string Description { get { return Resources.DWTDescription; } }
 
         /// <summary>
         /// Processing type
@@ -82,7 +83,7 @@ namespace WaveletStudio.Blocks
             {
                 if (!LoadWavelets(value))
                 {
-                    throw new Exception("The wavelet " + value + " does not exist.");
+                    throw new Exception(string.Format(Resources.WaveletNameNotFound, value));
                 }
                 _waveletName = value;
             }
@@ -137,25 +138,25 @@ namespace WaveletStudio.Blocks
                 if (!string.IsNullOrEmpty(name))
                     name += " - ";
                 else
-                    name = "Signal " + signalIndex + " - ";
+                    name = Resources.Signal + " " + signalIndex + " - ";
                 var decompositionLevels = DWT.ExecuteDWT(signal, _motherWavelet, Level, ExtensionMode);
                 foreach (var level in decompositionLevels)
                 {
                     var appSignal = signal.Copy();
-                    appSignal.Name = name + "Approximation Level " + (level.Index + 1);
+                    appSignal.Name = name + Resources.ApproximationLevel +" " + (level.Index + 1);
                     appSignal.Samples = level.Approximation;
                     OutputNodes[0].Object.Add(appSignal);
                     OutputNodes[3].Object.Add(appSignal);
 
                     var detSignal = signal.Copy();
-                    detSignal.Name = name + "Details Level " + (level.Index + 1);
+                    detSignal.Name = name + Resources.DetailsLevel + " " + (level.Index + 1);
                     detSignal.Samples = level.Details;
                     OutputNodes[1].Object.Add(detSignal);
                     OutputNodes[3].Object.Add(detSignal);
                 }
                 var reconstruction = DWT.ExecuteIDWT(decompositionLevels, _motherWavelet, Level);
                 var recSignal = signal.Copy();
-                recSignal.Name = name + "Reconstruction";
+                recSignal.Name = name + Resources.Reconstruction;
                 recSignal.Samples = reconstruction;
                 OutputNodes[2].Object.Add(recSignal);
                 OutputNodes[3].Object.Add(recSignal);
@@ -174,13 +175,13 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, "Signal", "In") };
+            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, Resources.Signal, Resources.In) };
             root.OutputNodes = new List<BlockOutputNode>
                                    {
-                                       new BlockOutputNode(ref root, "Aproximation", "Apx"),
-                                       new BlockOutputNode(ref root, "Details", "Det"),
-                                       new BlockOutputNode(ref root, "Reconstruction", "Rc"),
-                                       new BlockOutputNode(ref root, "All", "All"),
+                                       new BlockOutputNode(ref root, Resources.Approximation, "Apx"),
+                                       new BlockOutputNode(ref root, Resources.Details, "Det"),
+                                       new BlockOutputNode(ref root, Resources.Reconstruction, "Rc"),
+                                       new BlockOutputNode(ref root, Resources.All, Resources.All),
                                    };
         }
 

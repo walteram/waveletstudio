@@ -28,30 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BlockSetupTextForm));
             this.OutputTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // OutputTextBox
             // 
-            this.OutputTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.OutputTextBox, "OutputTextBox");
             this.OutputTextBox.BackColor = System.Drawing.SystemColors.Window;
-            this.OutputTextBox.Location = new System.Drawing.Point(305, 41);
             this.OutputTextBox.Name = "OutputTextBox";
             this.OutputTextBox.ReadOnly = true;
-            this.OutputTextBox.Size = new System.Drawing.Size(470, 321);
-            this.OutputTextBox.TabIndex = 107;
-            this.OutputTextBox.Text = "";
-            this.OutputTextBox.WordWrap = false;
             // 
-            // TextBlockSetupForm
+            // BlockSetupTextForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 374);
             this.Controls.Add(this.OutputTextBox);
-            this.Name = "TextBlockSetupForm";
+            this.Name = "BlockSetupTextForm";
             this.Controls.SetChildIndex(this.PropertyGrid, 0);
             this.Controls.SetChildIndex(this.OutputTextBox, 0);
             this.ResumeLayout(false);

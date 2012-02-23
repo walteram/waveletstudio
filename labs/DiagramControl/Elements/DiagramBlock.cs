@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Reflection;
 using DiagramNet.Elements.Controllers;
 using DiagramNet.Events;
+using WaveletStudio.Blocks;
 
 namespace DiagramNet.Elements
 {
@@ -15,8 +16,8 @@ namespace DiagramNet.Elements
         protected RectangleElement Rectangle;
         private Image _image;
         private string _labelText;
-        private object[] _inputStates;
-        private object[] _outputStates;
+        private BlockInputNode[] _inputStates;
+        private BlockOutputNode[] _outputStates;
         private PropertyInfo _connectionTextProperty;
         public object State { get; set; }
 
@@ -27,7 +28,7 @@ namespace DiagramNet.Elements
 
         }
 
-        public DiagramBlock(Image image, string labelText, object blockState, object[] inputStates, object[] outputStates, PropertyInfo connectionTextProperty) : base(_nextPosition, _nextPosition, 80, 80)
+        public DiagramBlock(Image image, string labelText, object blockState, BlockInputNode[] inputStates, BlockOutputNode[] outputStates, PropertyInfo connectionTextProperty) : base(_nextPosition, _nextPosition, 80, 80)
         {
             Overrided = true;
             Rectangle = new RectangleElement(_nextPosition, _nextPosition, 80, 80);
@@ -39,7 +40,7 @@ namespace DiagramNet.Elements
                 _nextPosition = 50;
         }
 
-        public void Refresh(Image image, string labelText, object blockState, object[] inputStates, object[] outputStates, PropertyInfo connectionTextProperty)
+        public void Refresh(Image image, string labelText, object blockState, BlockInputNode[] inputStates, BlockOutputNode[] outputStates, PropertyInfo connectionTextProperty)
         {
             _image = image;
             _labelText = labelText;

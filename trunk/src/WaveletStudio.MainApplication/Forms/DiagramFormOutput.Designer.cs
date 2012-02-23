@@ -38,23 +38,19 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // BlockPlot
             // 
+            resources.ApplyResources(this.BlockPlot, "BlockPlot");
             this.BlockPlot.Block = null;
-            this.BlockPlot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BlockPlot.Location = new System.Drawing.Point(0, 0);
             this.BlockPlot.Name = "BlockPlot";
-            this.BlockPlot.Size = new System.Drawing.Size(366, 304);
-            this.BlockPlot.TabIndex = 0;
             // 
             // DiagramFormOutput
             // 
+            resources.ApplyResources(this, "$this");
             this.CanClose = false;
             this.CanDockOnFormBorder = true;
             this.Controls.Add(this.BlockPlot);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DiagramFormOutput";
-            this.Size = new System.Drawing.Size(366, 320);
             this.SlidingTime = 200;
-            this.Text = "Output";
             this.WindowGroupName = "";
             this.ResumeLayout(false);
 
