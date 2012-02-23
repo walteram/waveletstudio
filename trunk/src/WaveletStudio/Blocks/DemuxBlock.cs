@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -70,7 +71,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Description
         {
-            get { return "Extract and output elements of vector signal."; }
+            get { return Resources.DemuxDescription; }
         }
 
         /// <summary>
@@ -121,11 +122,11 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, "Input", "In") };
+            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, Resources.Input, Resources.In) };
             root.OutputNodes = new List<BlockOutputNode>();
             for (var i = 1; i <= _outputCount; i++)
             {
-                root.OutputNodes.Add(new BlockOutputNode(ref root, "Output " + i, "Out" + i));
+                root.OutputNodes.Add(new BlockOutputNode(ref root, Resources.Output + " " + i, Resources.Out + i));
             }                       
         }
 

@@ -1,0 +1,1 @@
+if exist .\files rmdir .\files /S /Q

@@ -17,9 +17,9 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -45,7 +45,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Name
         {
-            get { return "Convolution"; }
+            get { return Resources.Convolution; }
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Description
         {
-            get { return "Compute convolution of two inputs"; }
+            get { return Resources.ConvolutionDescription; }
         }
 
         /// <summary>
@@ -66,8 +66,7 @@ namespace WaveletStudio.Blocks
         /// The FFT mode to be used on convolution.
         /// </summary>
         [Parameter]
-        [Description("The FFT mode to be used on convolution.")]
-        public ManagedFFTModeEnum Mode { get; set; }
+        public ManagedFFTModeEnum FFTMode { get; set; }
 
         /// <summary>
         /// The block returns only the valid samples (central area)
@@ -103,7 +102,7 @@ namespace WaveletStudio.Blocks
                 }
                 var output = signal.Copy();
                 var filterIndex = i < filters.Count ? i : 0;                
-                output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filters[filterIndex].Samples, ReturnOnlyValid, 0, Mode);
+                output.Samples = WaveMath.Convolve(ConvolutionMode, signal.Samples, filters[filterIndex].Samples, ReturnOnlyValid, 0, FFTMode);
                 outputs.Add(output);
             }
             OutputNodes[0].Object = outputs;
@@ -119,10 +118,10 @@ namespace WaveletStudio.Blocks
         {
             root.InputNodes = new List<BlockInputNode>
                                   {
-                                      new BlockInputNode(ref root, "Signal1", "S1"),
-                                      new BlockInputNode(ref root, "Signal2", "S2")
+                                      new BlockInputNode(ref root, Resources.Signal + "1", "S1"),
+                                      new BlockInputNode(ref root, Resources.Signal + "2", "S2")
                                   };
-            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Output", "Out")};
+            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, Resources.Output, Resources.Out)};
         }
 
         /// <summary>

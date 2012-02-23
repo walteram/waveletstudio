@@ -21,6 +21,7 @@ using System.ComponentModel;
 using System.ComponentModel.Design;
 using System.Drawing.Design;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -46,12 +47,12 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Name
         /// </summary>
-        public override string Name { get { return "Text"; } }
+        public override string Name { get { return Resources.Text; } }
 
         /// <summary>
         /// Description
         /// </summary>
-        public override string Description { get { return "Generates a signal based on a text"; } }
+        public override string Description { get { return Resources.TextBlockDescription; } }
 
         /// <summary>
         /// Processing type
@@ -122,7 +123,7 @@ namespace WaveletStudio.Blocks
                 if (signal == null) 
                     continue;
                 if (signal.Name == "")
-                    signal.Name = "Line " + lineNumber;
+                    signal.Name = Resources.Line + " " + lineNumber;
                 OutputNodes[0].Object.Add(signal);
             }
             if (Cascade && OutputNodes[0].ConnectingNode != null)
@@ -169,7 +170,7 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Signal", "S")};
+            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, Resources.Signal, "S")};
         }
 
 

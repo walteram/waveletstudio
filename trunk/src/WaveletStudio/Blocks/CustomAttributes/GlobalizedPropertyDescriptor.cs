@@ -17,6 +17,7 @@
 
 using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Resources;
 using WaveletStudio.Properties;
 
@@ -63,15 +64,8 @@ namespace WaveletStudio.Blocks.CustomAttributes
         {
             get
             {
-                string displayName = null;
-                foreach (Attribute attribute in _basePropertyDescriptor.Attributes)
-                {
-                    if (!attribute.GetType().Equals(typeof (Parameter))) continue;
-                    displayName = ((Parameter)attribute).NameResourceName;
-                    break;
-                }
-                if (displayName == null)
-                    displayName = _basePropertyDescriptor.DisplayName;
+                var displayName = (from Attribute attribute in _basePropertyDescriptor.Attributes where (attribute.GetType() == typeof (Parameter)) select ((Parameter) attribute).NameResourceName).FirstOrDefault() ??
+                                     _basePropertyDescriptor.DisplayName;
                 var resource = new ResourceManager(typeof(Resources));
                 _localizedName = resource.GetString(displayName) ?? _basePropertyDescriptor.DisplayName;
                 return _localizedName;
@@ -86,15 +80,14 @@ namespace WaveletStudio.Blocks.CustomAttributes
             get
             {
                 string description = null;
-                foreach (Attribute attribute in _basePropertyDescriptor.Attributes)
+                foreach (var attribute in _basePropertyDescriptor.Attributes.Cast<Attribute>().Where(attribute => attribute.GetType() == typeof(Parameter)))
                 {
-                    if (attribute.GetType().Equals(typeof(Parameter)))
-                    {
-                        description = ((Parameter)attribute).DescriptionResourceName;
-                    }
+                    description = ((Parameter)attribute).DescriptionResourceName;
                 }
                 if (description == null)
+                {
                     description = _basePropertyDescriptor.DisplayName + "Description";
+                }
                 var resource = new ResourceManager(typeof(Resources));
                 _localizedDescription = resource.GetString(description) ?? _basePropertyDescriptor.Description;
                 return _localizedDescription;

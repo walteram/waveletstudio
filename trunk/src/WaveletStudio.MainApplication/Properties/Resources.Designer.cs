@@ -61,6 +61,24 @@ namespace WaveletStudio.MainApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All.
+        /// </summary>
+        internal static string All {
+            get {
+                return ResourceManager.GetString("All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attention.
+        /// </summary>
+        internal static string Attention {
+            get {
+                return ResourceManager.GetString("Attention", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Column separator.
         /// </summary>
         internal static string columnseparator {
@@ -84,6 +102,15 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static string dynamictrigonometricvalues {
             get {
                 return ResourceManager.GetString("dynamictrigonometricvalues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
             }
         }
         
@@ -112,6 +139,24 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static string fft {
             get {
                 return ResourceManager.GetString("fft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file couldn&apos;t be opened.
+        /// </summary>
+        internal static string FileCouldntBeOpened {
+            get {
+                return ResourceManager.GetString("FileCouldntBeOpened", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The file couldn&apos;t be saved.
+        /// </summary>
+        internal static string FileCouldntBeSaved {
+            get {
+                return ResourceManager.GetString("FileCouldntBeSaved", resourceCulture);
             }
         }
         
@@ -146,6 +191,24 @@ namespace WaveletStudio.MainApplication.Properties {
             get {
                 object obj = ResourceManager.GetObject("grid", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Help.
+        /// </summary>
+        internal static string Help {
+            get {
+                return ResourceManager.GetString("Help", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can get help in this application at the folowing site.
+        /// </summary>
+        internal static string HelpLinkMessage {
+            get {
+                return ResourceManager.GetString("HelpLinkMessage", resourceCulture);
             }
         }
         
@@ -658,11 +721,56 @@ namespace WaveletStudio.MainApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The model threw a stack overflow exception.
+        /// </summary>
+        internal static string ModelThrewStackOverflow {
+            get {
+                return ResourceManager.GetString("ModelThrewStackOverflow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Document.
+        /// </summary>
+        internal static string NewDocument {
+            get {
+                return ResourceManager.GetString("NewDocument", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to *.
+        /// </summary>
+        internal static string NewDocumentChar {
+            get {
+                return ResourceManager.GetString("NewDocumentChar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Output.
+        /// </summary>
+        internal static string Output {
+            get {
+                return ResourceManager.GetString("Output", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Preview.
         /// </summary>
         internal static string Preview {
             get {
                 return ResourceManager.GetString("Preview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous Size.
+        /// </summary>
+        internal static string PreviousSize {
+            get {
+                return ResourceManager.GetString("PreviousSize", resourceCulture);
             }
         }
         
@@ -721,11 +829,29 @@ namespace WaveletStudio.MainApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Would you like to save your changes before closing?.
+        /// </summary>
+        internal static string SaveChangesQuestion {
+            get {
+                return ResourceManager.GetString("SaveChangesQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scalar.
         /// </summary>
         internal static string scalaroperation_text {
             get {
                 return ResourceManager.GetString("scalaroperation_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signal.
+        /// </summary>
+        internal static string Signal {
+            get {
+                return ResourceManager.GetString("Signal", resourceCulture);
             }
         }
         
@@ -753,6 +879,15 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static string signaltemplates {
             get {
                 return ResourceManager.GetString("signaltemplates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://www.waveletstudio.net.
+        /// </summary>
+        internal static string Site {
+            get {
+                return ResourceManager.GetString("Site", resourceCulture);
             }
         }
         
@@ -789,6 +924,24 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static string uselookuptable {
             get {
                 return ResourceManager.GetString("uselookuptable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wavelet Studio.
+        /// </summary>
+        internal static string WaveletStudio {
+            get {
+                return ResourceManager.GetString("WaveletStudio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wavelet Studio Document.
+        /// </summary>
+        internal static string WaveletStudioDocument {
+            get {
+                return ResourceManager.GetString("WaveletStudioDocument", resourceCulture);
             }
         }
     }

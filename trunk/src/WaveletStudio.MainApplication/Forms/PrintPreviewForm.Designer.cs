@@ -73,6 +73,11 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeText6 = new Qios.DevSuite.Components.QCompositeText();
             this.MarginBottomField = new Qios.DevSuite.Components.QCompositeItemInputBox();
             this.qRibbonPanel1 = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
+            this.CloseComposite = new Qios.DevSuite.Components.QCompositeItem();
+            this.qCompositeGroup1 = new Qios.DevSuite.Components.QCompositeGroup();
+            this.qCompositeGroup3 = new Qios.DevSuite.Components.QCompositeGroup();
+            this.qCompositeImage4 = new Qios.DevSuite.Components.QCompositeImage();
+            this.qCompositeText3 = new Qios.DevSuite.Components.QCompositeText();
             this.CenterPanel = new System.Windows.Forms.Panel();
             this.PrintPreviewControl = new System.Windows.Forms.PrintPreviewControl();
             this.BottomPanel = new System.Windows.Forms.Panel();
@@ -81,11 +86,6 @@ namespace WaveletStudio.MainApplication.Forms
             this.ZoomMinusButton = new Qios.DevSuite.Components.QButton();
             this.ZoomTrackBar = new System.Windows.Forms.TrackBar();
             this.diagramFormProperties1 = new WaveletStudio.MainApplication.Forms.DiagramFormProperties();
-            this.CloseComposite = new Qios.DevSuite.Components.QCompositeItem();
-            this.qCompositeGroup1 = new Qios.DevSuite.Components.QCompositeGroup();
-            this.qCompositeGroup3 = new Qios.DevSuite.Components.QCompositeGroup();
-            this.qCompositeImage4 = new Qios.DevSuite.Components.QCompositeImage();
-            this.qCompositeText3 = new Qios.DevSuite.Components.QCompositeText();
             ((System.ComponentModel.ISupportInitialize)(this.Caption)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
             this.Ribbon.SuspendLayout();
@@ -97,48 +97,38 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // Caption
             // 
+            resources.ApplyResources(this.Caption, "Caption");
             this.Caption.Configuration.ApplicationButtonAreaConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 4, 0, -8);
             this.Caption.Configuration.IconConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            this.Caption.Location = new System.Drawing.Point(0, 0);
             this.Caption.Name = "Caption";
-            this.Caption.Size = new System.Drawing.Size(946, 28);
-            this.Caption.TabIndex = 0;
-            this.Caption.Text = "Print Preview";
             // 
             // Ribbon
             // 
+            resources.ApplyResources(this.Ribbon, "Ribbon");
             this.Ribbon.ActiveTabPage = this.PreviewOptionsPage;
             this.Ribbon.Controls.Add(this.PreviewOptionsPage);
             this.Ribbon.Cursor = System.Windows.Forms.Cursors.Default;
-            this.Ribbon.Dock = System.Windows.Forms.DockStyle.Top;
             this.Ribbon.Form = this;
-            this.Ribbon.Location = new System.Drawing.Point(0, 28);
             this.Ribbon.Name = "Ribbon";
             this.Ribbon.PersistGuid = new System.Guid("f549a281-ecb8-4c57-ab72-08ae6e49b352");
-            this.Ribbon.Size = new System.Drawing.Size(946, 140);
-            this.Ribbon.TabIndex = 1;
             this.Ribbon.TabStripConfiguration.HelpButtonVisible = false;
-            this.Ribbon.Text = "Sinal";
             // 
             // PreviewOptionsPage
             // 
+            resources.ApplyResources(this.PreviewOptionsPage, "PreviewOptionsPage");
             this.PreviewOptionsPage.ButtonOrder = 0;
-            this.PreviewOptionsPage.HotkeyText = "";
             this.PreviewOptionsPage.Items.Add(this.PrintPanel);
             this.PreviewOptionsPage.Items.Add(this.OptionsPanel);
             this.PreviewOptionsPage.Items.Add(this.MarginsPanel);
             this.PreviewOptionsPage.Items.Add(this.qRibbonPanel1);
-            this.PreviewOptionsPage.Location = new System.Drawing.Point(2, 28);
             this.PreviewOptionsPage.Name = "PreviewOptionsPage";
             this.PreviewOptionsPage.PersistGuid = new System.Guid("ea85f321-5f5d-4be5-b84e-e09b73b23a86");
-            this.PreviewOptionsPage.Size = new System.Drawing.Size(940, 108);
-            this.PreviewOptionsPage.Text = "Print Preview";
             // 
             // PrintPanel
             // 
             this.PrintPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
+            resources.ApplyResources(this.PrintPanel, "PrintPanel");
             this.PrintPanel.Items.Add(this.PrintComposite);
-            this.PrintPanel.Title = "Print";
             // 
             // PrintComposite
             // 
@@ -229,6 +219,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.PrintCompositeItem.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
             this.PrintCompositeItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
             this.PrintCompositeItem.Configuration.ShrinkVertical = true;
+            resources.ApplyResources(this.PrintCompositeItem, "PrintCompositeItem");
             this.PrintCompositeItem.Items.Add(this.PrintGroup);
             this.PrintCompositeItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.PrintCompositeItemItemActivated);
             // 
@@ -275,6 +266,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.PrintInnerGroup.ColorScheme.CompositeScrollButtonHotBorder.SetColor("LunaSilver", System.Drawing.Color.White, false);
             this.PrintInnerGroup.ColorScheme.CompositeScrollButtonHotBorder.SetColor("VistaBlack", System.Drawing.Color.White, false);
             this.PrintInnerGroup.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.PrintInnerGroup.Configuration.AlignmentHorizontal = Qios.DevSuite.Components.QPartAlignment.Centered;
             this.PrintInnerGroup.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
             this.PrintInnerGroup.Configuration.Padding = new Qios.DevSuite.Components.QPadding(4, 4, 4, 4);
             this.PrintInnerGroup.Items.Add(this.qCompositeImage1);
@@ -282,6 +274,7 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // qCompositeImage1
             // 
+            this.qCompositeImage1.Configuration.AlignmentHorizontal = Qios.DevSuite.Components.QPartAlignment.Centered;
             this.qCompositeImage1.Configuration.MaximumSize = new System.Drawing.Size(64, 48);
             this.qCompositeImage1.Image = global::WaveletStudio.MainApplication.Properties.Resources.iconprint;
             // 
@@ -293,15 +286,15 @@ namespace WaveletStudio.MainApplication.Forms
             this.PrintText.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
             this.PrintText.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
             this.PrintText.Configuration.StretchHorizontal = true;
-            this.PrintText.Title = "Print";
+            resources.ApplyResources(this.PrintText, "PrintText");
             // 
             // OptionsPanel
             // 
             this.OptionsPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
+            resources.ApplyResources(this.OptionsPanel, "OptionsPanel");
             this.OptionsPanel.Items.Add(this.SettingsComposite);
             this.OptionsPanel.Items.Add(this.GridComposite);
             this.OptionsPanel.Items.Add(this.StretchComposite);
-            this.OptionsPanel.Title = "Options";
             // 
             // SettingsComposite
             // 
@@ -329,6 +322,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.SettingsComposite.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
             this.SettingsComposite.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
             this.SettingsComposite.Configuration.ShrinkVertical = true;
+            resources.ApplyResources(this.SettingsComposite, "SettingsComposite");
             this.SettingsComposite.Items.Add(this.qCompositeGroup6);
             this.SettingsComposite.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.SettingsCompositeItemActivated);
             // 
@@ -394,7 +388,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeText8.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
             this.qCompositeText8.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
             this.qCompositeText8.Configuration.StretchHorizontal = true;
-            this.qCompositeText8.Title = "Settings";
+            resources.ApplyResources(this.qCompositeText8, "qCompositeText8");
             // 
             // GridComposite
             // 
@@ -423,6 +417,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.GridComposite.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
             this.GridComposite.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
             this.GridComposite.Configuration.ShrinkVertical = true;
+            resources.ApplyResources(this.GridComposite, "GridComposite");
             this.GridComposite.Items.Add(this.qCompositeGroup2);
             this.GridComposite.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.GridCompositeItemActivated);
             // 
@@ -487,7 +482,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeText1.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
             this.qCompositeText1.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
             this.qCompositeText1.Configuration.StretchHorizontal = true;
-            this.qCompositeText1.Title = "Grid";
+            resources.ApplyResources(this.qCompositeText1, "qCompositeText1");
             // 
             // StretchComposite
             // 
@@ -516,6 +511,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.StretchComposite.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
             this.StretchComposite.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
             this.StretchComposite.Configuration.ShrinkVertical = true;
+            resources.ApplyResources(this.StretchComposite, "StretchComposite");
             this.StretchComposite.Items.Add(this.qCompositeGroup4);
             this.StretchComposite.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.StretchCompositeItemActivated);
             // 
@@ -581,7 +577,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeText2.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
             this.qCompositeText2.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
             this.qCompositeText2.Configuration.StretchHorizontal = true;
-            this.qCompositeText2.Title = "Stretch";
+            resources.ApplyResources(this.qCompositeText2, "qCompositeText2");
             // 
             // MarginsPanel
             // 
@@ -591,9 +587,9 @@ namespace WaveletStudio.MainApplication.Forms
             this.MarginsPanel.ColorScheme.RibbonItemHotBackground2.ColorReference = "@CompositeItemBackground2";
             this.MarginsPanel.ColorScheme.RibbonItemHotBorder.SetColor("Default", System.Drawing.Color.Empty, false);
             this.MarginsPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
+            resources.ApplyResources(this.MarginsPanel, "MarginsPanel");
             this.MarginsPanel.Items.Add(this.qRibbonItemGroup1);
             this.MarginsPanel.Items.Add(this.qCompositeItem1);
-            this.MarginsPanel.Title = "Margins (centimeters)";
             // 
             // qCompositeItem1
             // 
@@ -645,6 +641,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeItem1.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
             this.qCompositeItem1.Configuration.Padding = new Qios.DevSuite.Components.QPadding(1, 5, 1, 1);
             this.qCompositeItem1.Configuration.StretchVertical = true;
+            resources.ApplyResources(this.qCompositeItem1, "qCompositeItem1");
             this.qCompositeItem1.Items.Add(this.qCompositeItem2);
             this.qCompositeItem1.Items.Add(this.qCompositeItem3);
             this.qCompositeItem1.Items.Add(this.qCompositeItem4);
@@ -683,6 +680,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeItem2.ColorScheme.CompositeItemPressedBorder.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
             this.qCompositeItem2.Configuration.Padding = new Qios.DevSuite.Components.QPadding(43, 1, 1, 1);
             this.qCompositeItem2.Configuration.StretchHorizontal = true;
+            resources.ApplyResources(this.qCompositeItem2, "qCompositeItem2");
             this.qCompositeItem2.Items.Add(this.qCompositeText7);
             this.qCompositeItem2.Items.Add(this.MarginTopField);
             // 
@@ -690,7 +688,7 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             this.qCompositeText7.Configuration.ContentAlignmentVertical = Qios.DevSuite.Components.QPartAlignment.Centered;
             this.qCompositeText7.Configuration.StretchVertical = true;
-            this.qCompositeText7.Title = "Top: ";
+            resources.ApplyResources(this.qCompositeText7, "qCompositeText7");
             // 
             // MarginTopField
             // 
@@ -698,10 +696,27 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // 
             // 
-            this.MarginTopField.InputBox.Location = new System.Drawing.Point(350, 12);
+            this.MarginTopField.InputBox.AccessibleDescription = resources.GetString("MarginTopField.InputBox.AccessibleDescription");
+            this.MarginTopField.InputBox.AccessibleName = resources.GetString("MarginTopField.InputBox.AccessibleName");
+            this.MarginTopField.InputBox.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("MarginTopField.InputBox.Anchor")));
+            this.MarginTopField.InputBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MarginTopField.InputBox.BackgroundImage")));
+            this.MarginTopField.InputBox.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("MarginTopField.InputBox.BackgroundImageLayout")));
+            this.MarginTopField.InputBox.CueText = resources.GetString("MarginTopField.InputBox.CueText");
+            this.MarginTopField.InputBox.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("MarginTopField.InputBox.Dock")));
+            this.MarginTopField.InputBox.Font = ((System.Drawing.Font)(resources.GetObject("MarginTopField.InputBox.Font")));
+            this.MarginTopField.InputBox.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("MarginTopField.InputBox.ImeMode")));
+            this.MarginTopField.InputBox.Location = ((System.Drawing.Point)(resources.GetObject("MarginTopField.InputBox.Location")));
+            this.MarginTopField.InputBox.MaxLength = ((int)(resources.GetObject("MarginTopField.InputBox.MaxLength")));
+            this.MarginTopField.InputBox.Multiline = ((bool)(resources.GetObject("MarginTopField.InputBox.Multiline")));
             this.MarginTopField.InputBox.Name = "";
-            this.MarginTopField.InputBox.Size = new System.Drawing.Size(45, 19);
-            this.MarginTopField.InputBox.TabIndex = 0;
+            this.MarginTopField.InputBox.PasswordChar = ((char)(resources.GetObject("MarginTopField.InputBox.PasswordChar")));
+            this.MarginTopField.InputBox.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("MarginTopField.InputBox.RightToLeft")));
+            this.MarginTopField.InputBox.ScrollBars = ((System.Windows.Forms.ScrollBars)(resources.GetObject("MarginTopField.InputBox.ScrollBars")));
+            this.MarginTopField.InputBox.Size = ((System.Drawing.Size)(resources.GetObject("MarginTopField.InputBox.Size")));
+            this.MarginTopField.InputBox.TabIndex = ((int)(resources.GetObject("MarginTopField.InputBox.TabIndex")));
+            this.MarginTopField.InputBox.TextAlign = ((System.Windows.Forms.HorizontalAlignment)(resources.GetObject("MarginTopField.InputBox.TextAlign")));
+            this.MarginTopField.InputBox.ToolTipText = resources.GetString("MarginTopField.InputBox.ToolTipText");
+            this.MarginTopField.InputBox.WordWrap = ((bool)(resources.GetObject("MarginTopField.InputBox.WordWrap")));
             this.MarginTopField.InputBox.Leave += new System.EventHandler(this.MarginInputBoxTextChanged);
             // 
             // qCompositeItem3
@@ -737,6 +752,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeItem3.ColorScheme.CompositeItemPressedBorder.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
             this.qCompositeItem3.ColorScheme.CompositeItemPressedBorder.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
             this.qCompositeItem3.Configuration.StretchHorizontal = true;
+            resources.ApplyResources(this.qCompositeItem3, "qCompositeItem3");
             this.qCompositeItem3.Items.Add(this.qCompositeText4);
             this.qCompositeItem3.Items.Add(this.MarginLeftField);
             this.qCompositeItem3.Items.Add(this.qCompositeText5);
@@ -746,7 +762,7 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             this.qCompositeText4.Configuration.ContentAlignmentVertical = Qios.DevSuite.Components.QPartAlignment.Centered;
             this.qCompositeText4.Configuration.StretchVertical = true;
-            this.qCompositeText4.Title = "Left: ";
+            resources.ApplyResources(this.qCompositeText4, "qCompositeText4");
             // 
             // MarginLeftField
             // 
@@ -754,10 +770,27 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // 
             // 
-            this.MarginLeftField.InputBox.Location = new System.Drawing.Point(308, 35);
+            this.MarginLeftField.InputBox.AccessibleDescription = resources.GetString("MarginLeftField.InputBox.AccessibleDescription");
+            this.MarginLeftField.InputBox.AccessibleName = resources.GetString("MarginLeftField.InputBox.AccessibleName");
+            this.MarginLeftField.InputBox.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("MarginLeftField.InputBox.Anchor")));
+            this.MarginLeftField.InputBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MarginLeftField.InputBox.BackgroundImage")));
+            this.MarginLeftField.InputBox.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("MarginLeftField.InputBox.BackgroundImageLayout")));
+            this.MarginLeftField.InputBox.CueText = resources.GetString("MarginLeftField.InputBox.CueText");
+            this.MarginLeftField.InputBox.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("MarginLeftField.InputBox.Dock")));
+            this.MarginLeftField.InputBox.Font = ((System.Drawing.Font)(resources.GetObject("MarginLeftField.InputBox.Font")));
+            this.MarginLeftField.InputBox.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("MarginLeftField.InputBox.ImeMode")));
+            this.MarginLeftField.InputBox.Location = ((System.Drawing.Point)(resources.GetObject("MarginLeftField.InputBox.Location")));
+            this.MarginLeftField.InputBox.MaxLength = ((int)(resources.GetObject("MarginLeftField.InputBox.MaxLength")));
+            this.MarginLeftField.InputBox.Multiline = ((bool)(resources.GetObject("MarginLeftField.InputBox.Multiline")));
             this.MarginLeftField.InputBox.Name = "";
-            this.MarginLeftField.InputBox.Size = new System.Drawing.Size(45, 19);
-            this.MarginLeftField.InputBox.TabIndex = 0;
+            this.MarginLeftField.InputBox.PasswordChar = ((char)(resources.GetObject("MarginLeftField.InputBox.PasswordChar")));
+            this.MarginLeftField.InputBox.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("MarginLeftField.InputBox.RightToLeft")));
+            this.MarginLeftField.InputBox.ScrollBars = ((System.Windows.Forms.ScrollBars)(resources.GetObject("MarginLeftField.InputBox.ScrollBars")));
+            this.MarginLeftField.InputBox.Size = ((System.Drawing.Size)(resources.GetObject("MarginLeftField.InputBox.Size")));
+            this.MarginLeftField.InputBox.TabIndex = ((int)(resources.GetObject("MarginLeftField.InputBox.TabIndex")));
+            this.MarginLeftField.InputBox.TextAlign = ((System.Windows.Forms.HorizontalAlignment)(resources.GetObject("MarginLeftField.InputBox.TextAlign")));
+            this.MarginLeftField.InputBox.ToolTipText = resources.GetString("MarginLeftField.InputBox.ToolTipText");
+            this.MarginLeftField.InputBox.WordWrap = ((bool)(resources.GetObject("MarginLeftField.InputBox.WordWrap")));
             this.MarginLeftField.InputBox.Leave += new System.EventHandler(this.MarginInputBoxTextChanged);
             // 
             // qCompositeText5
@@ -765,7 +798,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeText5.Configuration.ContentAlignmentVertical = Qios.DevSuite.Components.QPartAlignment.Centered;
             this.qCompositeText5.Configuration.Margin = new Qios.DevSuite.Components.QMargin(6, 0, 0, 0);
             this.qCompositeText5.Configuration.StretchVertical = true;
-            this.qCompositeText5.Title = "Right:";
+            resources.ApplyResources(this.qCompositeText5, "qCompositeText5");
             // 
             // MarginRightField
             // 
@@ -773,10 +806,27 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // 
             // 
-            this.MarginRightField.InputBox.Location = new System.Drawing.Point(395, 35);
+            this.MarginRightField.InputBox.AccessibleDescription = resources.GetString("MarginRightField.InputBox.AccessibleDescription");
+            this.MarginRightField.InputBox.AccessibleName = resources.GetString("MarginRightField.InputBox.AccessibleName");
+            this.MarginRightField.InputBox.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("MarginRightField.InputBox.Anchor")));
+            this.MarginRightField.InputBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MarginRightField.InputBox.BackgroundImage")));
+            this.MarginRightField.InputBox.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("MarginRightField.InputBox.BackgroundImageLayout")));
+            this.MarginRightField.InputBox.CueText = resources.GetString("MarginRightField.InputBox.CueText");
+            this.MarginRightField.InputBox.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("MarginRightField.InputBox.Dock")));
+            this.MarginRightField.InputBox.Font = ((System.Drawing.Font)(resources.GetObject("MarginRightField.InputBox.Font")));
+            this.MarginRightField.InputBox.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("MarginRightField.InputBox.ImeMode")));
+            this.MarginRightField.InputBox.Location = ((System.Drawing.Point)(resources.GetObject("MarginRightField.InputBox.Location")));
+            this.MarginRightField.InputBox.MaxLength = ((int)(resources.GetObject("MarginRightField.InputBox.MaxLength")));
+            this.MarginRightField.InputBox.Multiline = ((bool)(resources.GetObject("MarginRightField.InputBox.Multiline")));
             this.MarginRightField.InputBox.Name = "";
-            this.MarginRightField.InputBox.Size = new System.Drawing.Size(45, 19);
-            this.MarginRightField.InputBox.TabIndex = 0;
+            this.MarginRightField.InputBox.PasswordChar = ((char)(resources.GetObject("MarginRightField.InputBox.PasswordChar")));
+            this.MarginRightField.InputBox.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("MarginRightField.InputBox.RightToLeft")));
+            this.MarginRightField.InputBox.ScrollBars = ((System.Windows.Forms.ScrollBars)(resources.GetObject("MarginRightField.InputBox.ScrollBars")));
+            this.MarginRightField.InputBox.Size = ((System.Drawing.Size)(resources.GetObject("MarginRightField.InputBox.Size")));
+            this.MarginRightField.InputBox.TabIndex = ((int)(resources.GetObject("MarginRightField.InputBox.TabIndex")));
+            this.MarginRightField.InputBox.TextAlign = ((System.Windows.Forms.HorizontalAlignment)(resources.GetObject("MarginRightField.InputBox.TextAlign")));
+            this.MarginRightField.InputBox.ToolTipText = resources.GetString("MarginRightField.InputBox.ToolTipText");
+            this.MarginRightField.InputBox.WordWrap = ((bool)(resources.GetObject("MarginRightField.InputBox.WordWrap")));
             this.MarginRightField.InputBox.Leave += new System.EventHandler(this.MarginInputBoxTextChanged);
             // 
             // qCompositeItem4
@@ -813,6 +863,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeItem4.ColorScheme.CompositeItemPressedBorder.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
             this.qCompositeItem4.Configuration.Padding = new Qios.DevSuite.Components.QPadding(26, 1, 1, 1);
             this.qCompositeItem4.Configuration.StretchHorizontal = true;
+            resources.ApplyResources(this.qCompositeItem4, "qCompositeItem4");
             this.qCompositeItem4.Items.Add(this.qCompositeText6);
             this.qCompositeItem4.Items.Add(this.MarginBottomField);
             // 
@@ -820,7 +871,7 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             this.qCompositeText6.Configuration.ContentAlignmentVertical = Qios.DevSuite.Components.QPartAlignment.Centered;
             this.qCompositeText6.Configuration.StretchVertical = true;
-            this.qCompositeText6.Title = "Bottom:";
+            resources.ApplyResources(this.qCompositeText6, "qCompositeText6");
             // 
             // MarginBottomField
             // 
@@ -828,130 +879,33 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // 
             // 
-            this.MarginBottomField.InputBox.Location = new System.Drawing.Point(350, 58);
+            this.MarginBottomField.InputBox.AccessibleDescription = resources.GetString("MarginBottomField.InputBox.AccessibleDescription");
+            this.MarginBottomField.InputBox.AccessibleName = resources.GetString("MarginBottomField.InputBox.AccessibleName");
+            this.MarginBottomField.InputBox.Anchor = ((System.Windows.Forms.AnchorStyles)(resources.GetObject("MarginBottomField.InputBox.Anchor")));
+            this.MarginBottomField.InputBox.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("MarginBottomField.InputBox.BackgroundImage")));
+            this.MarginBottomField.InputBox.BackgroundImageLayout = ((System.Windows.Forms.ImageLayout)(resources.GetObject("MarginBottomField.InputBox.BackgroundImageLayout")));
+            this.MarginBottomField.InputBox.CueText = resources.GetString("MarginBottomField.InputBox.CueText");
+            this.MarginBottomField.InputBox.Dock = ((System.Windows.Forms.DockStyle)(resources.GetObject("MarginBottomField.InputBox.Dock")));
+            this.MarginBottomField.InputBox.Font = ((System.Drawing.Font)(resources.GetObject("MarginBottomField.InputBox.Font")));
+            this.MarginBottomField.InputBox.ImeMode = ((System.Windows.Forms.ImeMode)(resources.GetObject("MarginBottomField.InputBox.ImeMode")));
+            this.MarginBottomField.InputBox.Location = ((System.Drawing.Point)(resources.GetObject("MarginBottomField.InputBox.Location")));
+            this.MarginBottomField.InputBox.MaxLength = ((int)(resources.GetObject("MarginBottomField.InputBox.MaxLength")));
+            this.MarginBottomField.InputBox.Multiline = ((bool)(resources.GetObject("MarginBottomField.InputBox.Multiline")));
             this.MarginBottomField.InputBox.Name = "";
-            this.MarginBottomField.InputBox.Size = new System.Drawing.Size(45, 19);
-            this.MarginBottomField.InputBox.TabIndex = 1;
+            this.MarginBottomField.InputBox.PasswordChar = ((char)(resources.GetObject("MarginBottomField.InputBox.PasswordChar")));
+            this.MarginBottomField.InputBox.RightToLeft = ((System.Windows.Forms.RightToLeft)(resources.GetObject("MarginBottomField.InputBox.RightToLeft")));
+            this.MarginBottomField.InputBox.ScrollBars = ((System.Windows.Forms.ScrollBars)(resources.GetObject("MarginBottomField.InputBox.ScrollBars")));
+            this.MarginBottomField.InputBox.Size = ((System.Drawing.Size)(resources.GetObject("MarginBottomField.InputBox.Size")));
+            this.MarginBottomField.InputBox.TabIndex = ((int)(resources.GetObject("MarginBottomField.InputBox.TabIndex")));
+            this.MarginBottomField.InputBox.TextAlign = ((System.Windows.Forms.HorizontalAlignment)(resources.GetObject("MarginBottomField.InputBox.TextAlign")));
+            this.MarginBottomField.InputBox.ToolTipText = resources.GetString("MarginBottomField.InputBox.ToolTipText");
+            this.MarginBottomField.InputBox.WordWrap = ((bool)(resources.GetObject("MarginBottomField.InputBox.WordWrap")));
             this.MarginBottomField.InputBox.Leave += new System.EventHandler(this.MarginInputBoxTextChanged);
             // 
             // qRibbonPanel1
             // 
+            resources.ApplyResources(this.qRibbonPanel1, "qRibbonPanel1");
             this.qRibbonPanel1.Items.Add(this.CloseComposite);
-            this.qRibbonPanel1.Title = "Preview";
-            // 
-            // CenterPanel
-            // 
-            this.CenterPanel.Controls.Add(this.PrintPreviewControl);
-            this.CenterPanel.Controls.Add(this.BottomPanel);
-            this.CenterPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CenterPanel.Location = new System.Drawing.Point(0, 168);
-            this.CenterPanel.Name = "CenterPanel";
-            this.CenterPanel.Size = new System.Drawing.Size(946, 294);
-            this.CenterPanel.TabIndex = 18;
-            // 
-            // PrintPreviewControl
-            // 
-            this.PrintPreviewControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PrintPreviewControl.Location = new System.Drawing.Point(0, 0);
-            this.PrintPreviewControl.Name = "PrintPreviewControl";
-            this.PrintPreviewControl.Size = new System.Drawing.Size(946, 265);
-            this.PrintPreviewControl.TabIndex = 10;
-            // 
-            // BottomPanel
-            // 
-            this.BottomPanel.Controls.Add(this.ZoomLabel);
-            this.BottomPanel.Controls.Add(this.ZoomPlusButton);
-            this.BottomPanel.Controls.Add(this.ZoomMinusButton);
-            this.BottomPanel.Controls.Add(this.ZoomTrackBar);
-            this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.BottomPanel.Location = new System.Drawing.Point(0, 265);
-            this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(946, 29);
-            this.BottomPanel.TabIndex = 9;
-            // 
-            // ZoomLabel
-            // 
-            this.ZoomLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ZoomLabel.AutoSize = true;
-            this.ZoomLabel.Location = new System.Drawing.Point(695, 8);
-            this.ZoomLabel.Name = "ZoomLabel";
-            this.ZoomLabel.Size = new System.Drawing.Size(33, 13);
-            this.ZoomLabel.TabIndex = 7;
-            this.ZoomLabel.Text = "100%";
-            this.ZoomLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // ZoomPlusButton
-            // 
-            this.ZoomPlusButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ZoomPlusButton.Configuration.DrawTextOptions = Qios.DevSuite.Components.QDrawTextOptions.None;
-            this.ZoomPlusButton.Configuration.FontDefinition = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomPlusButton.Configuration.FontDefinitionFocused = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomPlusButton.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomPlusButton.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomPlusButton.Configuration.TextConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 2, 2, 4);
-            this.ZoomPlusButton.Configuration.WrapText = false;
-            this.ZoomPlusButton.Image = null;
-            this.ZoomPlusButton.LocalFont = null;
-            this.ZoomPlusButton.Location = new System.Drawing.Point(923, 3);
-            this.ZoomPlusButton.Name = "ZoomPlusButton";
-            this.ZoomPlusButton.Size = new System.Drawing.Size(22, 24);
-            this.ZoomPlusButton.TabIndex = 10;
-            this.ZoomPlusButton.Text = "+";
-            this.ZoomPlusButton.Click += new System.EventHandler(this.ZoomPlusButtonClick);
-            // 
-            // ZoomMinusButton
-            // 
-            this.ZoomMinusButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ZoomMinusButton.Configuration.DrawTextOptions = Qios.DevSuite.Components.QDrawTextOptions.None;
-            this.ZoomMinusButton.Configuration.FontDefinition = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomMinusButton.Configuration.FontDefinitionFocused = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomMinusButton.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomMinusButton.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomMinusButton.Configuration.TextConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 2, 2, 4);
-            this.ZoomMinusButton.Configuration.WrapText = false;
-            this.ZoomMinusButton.Image = null;
-            this.ZoomMinusButton.LocalFont = null;
-            this.ZoomMinusButton.Location = new System.Drawing.Point(731, 3);
-            this.ZoomMinusButton.Name = "ZoomMinusButton";
-            this.ZoomMinusButton.Size = new System.Drawing.Size(22, 24);
-            this.ZoomMinusButton.TabIndex = 8;
-            this.ZoomMinusButton.Text = "-";
-            this.ZoomMinusButton.Click += new System.EventHandler(this.ZoomMinusButtonClick);
-            // 
-            // ZoomTrackBar
-            // 
-            this.ZoomTrackBar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ZoomTrackBar.LargeChange = 2;
-            this.ZoomTrackBar.Location = new System.Drawing.Point(755, 1);
-            this.ZoomTrackBar.Margin = new System.Windows.Forms.Padding(0);
-            this.ZoomTrackBar.Maximum = 30;
-            this.ZoomTrackBar.Minimum = 1;
-            this.ZoomTrackBar.Name = "ZoomTrackBar";
-            this.ZoomTrackBar.Size = new System.Drawing.Size(167, 42);
-            this.ZoomTrackBar.TabIndex = 9;
-            this.ZoomTrackBar.Value = 10;
-            this.ZoomTrackBar.ValueChanged += new System.EventHandler(this.ZoomTrackBarValueChanged);
-            // 
-            // diagramFormProperties1
-            // 
-            this.diagramFormProperties1.CanClose = false;
-            this.diagramFormProperties1.CanDockBottom = false;
-            this.diagramFormProperties1.CanDockOnOtherControlBottom = false;
-            this.diagramFormProperties1.CanDockOnOtherControlTop = false;
-            this.diagramFormProperties1.CanDockTop = false;
-            this.diagramFormProperties1.DockPosition = Qios.DevSuite.Components.QDockPosition.None;
-            this.diagramFormProperties1.Icon = ((System.Drawing.Icon)(resources.GetObject("diagramFormProperties1.Icon")));
-            this.diagramFormProperties1.Location = new System.Drawing.Point(0, 0);
-            this.diagramFormProperties1.Name = "diagramFormProperties1";
-            this.diagramFormProperties1.Owner = null;
-            this.diagramFormProperties1.PersistGuid = new System.Guid("1915c329-99d5-4532-a105-ca14e4e34bdb");
-            this.diagramFormProperties1.ShowInTaskbarUndocked = true;
-            this.diagramFormProperties1.Size = new System.Drawing.Size(424, 255);
-            this.diagramFormProperties1.SlidingTime = 200;
-            this.diagramFormProperties1.TabIndex = 0;
-            this.diagramFormProperties1.Text = "diagramFormProperties1";
-            this.diagramFormProperties1.Visible = false;
-            this.diagramFormProperties1.WindowGroupName = "";
             // 
             // CloseComposite
             // 
@@ -979,6 +933,8 @@ namespace WaveletStudio.MainApplication.Forms
             this.CloseComposite.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
             this.CloseComposite.Configuration.Padding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
             this.CloseComposite.Configuration.ShrinkVertical = true;
+            this.CloseComposite.Configuration.StretchHorizontal = true;
+            resources.ApplyResources(this.CloseComposite, "CloseComposite");
             this.CloseComposite.Items.Add(this.qCompositeGroup1);
             this.CloseComposite.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.CloseCompositeItemActivated);
             // 
@@ -986,6 +942,7 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             this.qCompositeGroup1.Configuration.Padding = new Qios.DevSuite.Components.QPadding(4, 4, 4, 4);
             this.qCompositeGroup1.Configuration.ShrinkVertical = true;
+            this.qCompositeGroup1.Configuration.StretchHorizontal = true;
             this.qCompositeGroup1.Items.Add(this.qCompositeGroup3);
             // 
             // qCompositeGroup3
@@ -1025,6 +982,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeGroup3.ColorScheme.CompositeScrollButtonHotBorder.SetColor("LunaSilver", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeScrollButtonHotBorder.SetColor("VistaBlack", System.Drawing.Color.White, false);
             this.qCompositeGroup3.ColorScheme.CompositeScrollButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qCompositeGroup3.Configuration.AlignmentHorizontal = Qios.DevSuite.Components.QPartAlignment.Centered;
             this.qCompositeGroup3.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
             this.qCompositeGroup3.Configuration.Padding = new Qios.DevSuite.Components.QPadding(4, 4, 4, 4);
             this.qCompositeGroup3.Items.Add(this.qCompositeImage4);
@@ -1044,21 +1002,99 @@ namespace WaveletStudio.MainApplication.Forms
             this.qCompositeText3.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
             this.qCompositeText3.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition(null, true, false, false, false, -1F);
             this.qCompositeText3.Configuration.StretchHorizontal = true;
-            this.qCompositeText3.Title = "Close";
+            resources.ApplyResources(this.qCompositeText3, "qCompositeText3");
+            // 
+            // CenterPanel
+            // 
+            resources.ApplyResources(this.CenterPanel, "CenterPanel");
+            this.CenterPanel.Controls.Add(this.PrintPreviewControl);
+            this.CenterPanel.Controls.Add(this.BottomPanel);
+            this.CenterPanel.Name = "CenterPanel";
+            // 
+            // PrintPreviewControl
+            // 
+            resources.ApplyResources(this.PrintPreviewControl, "PrintPreviewControl");
+            this.PrintPreviewControl.Name = "PrintPreviewControl";
+            // 
+            // BottomPanel
+            // 
+            resources.ApplyResources(this.BottomPanel, "BottomPanel");
+            this.BottomPanel.Controls.Add(this.ZoomLabel);
+            this.BottomPanel.Controls.Add(this.ZoomPlusButton);
+            this.BottomPanel.Controls.Add(this.ZoomMinusButton);
+            this.BottomPanel.Controls.Add(this.ZoomTrackBar);
+            this.BottomPanel.Name = "BottomPanel";
+            // 
+            // ZoomLabel
+            // 
+            resources.ApplyResources(this.ZoomLabel, "ZoomLabel");
+            this.ZoomLabel.Name = "ZoomLabel";
+            // 
+            // ZoomPlusButton
+            // 
+            resources.ApplyResources(this.ZoomPlusButton, "ZoomPlusButton");
+            this.ZoomPlusButton.Configuration.DrawTextOptions = Qios.DevSuite.Components.QDrawTextOptions.None;
+            this.ZoomPlusButton.Configuration.FontDefinition = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomPlusButton.Configuration.FontDefinitionFocused = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomPlusButton.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomPlusButton.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomPlusButton.Configuration.TextConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 2, 2, 4);
+            this.ZoomPlusButton.Configuration.WrapText = false;
+            this.ZoomPlusButton.Image = null;
+            this.ZoomPlusButton.Name = "ZoomPlusButton";
+            this.ZoomPlusButton.Click += new System.EventHandler(this.ZoomPlusButtonClick);
+            // 
+            // ZoomMinusButton
+            // 
+            resources.ApplyResources(this.ZoomMinusButton, "ZoomMinusButton");
+            this.ZoomMinusButton.Configuration.DrawTextOptions = Qios.DevSuite.Components.QDrawTextOptions.None;
+            this.ZoomMinusButton.Configuration.FontDefinition = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomMinusButton.Configuration.FontDefinitionFocused = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomMinusButton.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomMinusButton.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomMinusButton.Configuration.TextConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 2, 2, 4);
+            this.ZoomMinusButton.Configuration.WrapText = false;
+            this.ZoomMinusButton.Image = null;
+            this.ZoomMinusButton.Name = "ZoomMinusButton";
+            this.ZoomMinusButton.Click += new System.EventHandler(this.ZoomMinusButtonClick);
+            // 
+            // ZoomTrackBar
+            // 
+            resources.ApplyResources(this.ZoomTrackBar, "ZoomTrackBar");
+            this.ZoomTrackBar.LargeChange = 2;
+            this.ZoomTrackBar.Maximum = 30;
+            this.ZoomTrackBar.Minimum = 1;
+            this.ZoomTrackBar.Name = "ZoomTrackBar";
+            this.ZoomTrackBar.Value = 10;
+            this.ZoomTrackBar.ValueChanged += new System.EventHandler(this.ZoomTrackBarValueChanged);
+            // 
+            // diagramFormProperties1
+            // 
+            resources.ApplyResources(this.diagramFormProperties1, "diagramFormProperties1");
+            this.diagramFormProperties1.CanClose = false;
+            this.diagramFormProperties1.CanDockBottom = false;
+            this.diagramFormProperties1.CanDockOnOtherControlBottom = false;
+            this.diagramFormProperties1.CanDockOnOtherControlTop = false;
+            this.diagramFormProperties1.CanDockTop = false;
+            this.diagramFormProperties1.DockPosition = Qios.DevSuite.Components.QDockPosition.None;
+            this.diagramFormProperties1.Icon = ((System.Drawing.Icon)(resources.GetObject("diagramFormProperties1.Icon")));
+            this.diagramFormProperties1.Name = "diagramFormProperties1";
+            this.diagramFormProperties1.Owner = null;
+            this.diagramFormProperties1.PersistGuid = new System.Guid("1915c329-99d5-4532-a105-ca14e4e34bdb");
+            this.diagramFormProperties1.ShowInTaskbarUndocked = true;
+            this.diagramFormProperties1.SlidingTime = 200;
+            this.diagramFormProperties1.WindowGroupName = "";
             // 
             // PrintPreviewForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(946, 462);
             this.Controls.Add(this.CenterPanel);
             this.Controls.Add(this.Ribbon);
             this.Controls.Add(this.Caption);
             this.KeyPreview = true;
             this.Name = "PrintPreviewForm";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Print Preview";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.DiagramFormLoad);
             ((System.ComponentModel.ISupportInitialize)(this.Caption)).EndInit();

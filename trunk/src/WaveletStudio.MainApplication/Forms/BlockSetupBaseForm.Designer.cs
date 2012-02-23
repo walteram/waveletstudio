@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BlockSetupBaseForm));
             this.FormCaption = new Qios.DevSuite.Components.Ribbon.QRibbonCaption();
             this.UseSignalButton = new System.Windows.Forms.Button();
             this.CancelButton = new System.Windows.Forms.Button();
@@ -37,62 +38,45 @@
             // 
             // FormCaption
             // 
+            resources.ApplyResources(this.FormCaption, "FormCaption");
             this.FormCaption.Configuration.ApplicationButtonAreaConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 4, 0, -8);
             this.FormCaption.Configuration.IconConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            this.FormCaption.Location = new System.Drawing.Point(0, 0);
             this.FormCaption.Name = "FormCaption";
-            this.FormCaption.Size = new System.Drawing.Size(787, 28);
-            this.FormCaption.TabIndex = 0;
-            this.FormCaption.Text = "Wavelet Studio";
             // 
             // UseSignalButton
             // 
-            this.UseSignalButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            resources.ApplyResources(this.UseSignalButton, "UseSignalButton");
             this.UseSignalButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.UseSignalButton.Location = new System.Drawing.Point(219, 339);
             this.UseSignalButton.Name = "UseSignalButton";
-            this.UseSignalButton.Size = new System.Drawing.Size(75, 23);
-            this.UseSignalButton.TabIndex = 102;
-            this.UseSignalButton.Text = "&OK";
             this.UseSignalButton.UseVisualStyleBackColor = true;
             this.UseSignalButton.Click += new System.EventHandler(this.UseSignalButtonClick);
             // 
             // CancelButton
             // 
-            this.CancelButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            resources.ApplyResources(this.CancelButton, "CancelButton");
             this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.Location = new System.Drawing.Point(12, 339);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 101;
-            this.CancelButton.Text = "&Cancel";
             this.CancelButton.UseVisualStyleBackColor = true;
             // 
             // PropertyGrid
             // 
-            this.PropertyGrid.Location = new System.Drawing.Point(12, 40);
+            resources.ApplyResources(this.PropertyGrid, "PropertyGrid");
             this.PropertyGrid.Name = "PropertyGrid";
             this.PropertyGrid.PropertySort = System.Windows.Forms.PropertySort.NoSort;
-            this.PropertyGrid.Size = new System.Drawing.Size(282, 285);
-            this.PropertyGrid.TabIndex = 103;
             this.PropertyGrid.ToolbarVisible = false;
             this.PropertyGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.PropertyGridPropertyValueChanged);
             // 
             // BlockSetupBaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 374);
             this.Controls.Add(this.PropertyGrid);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.UseSignalButton);
             this.Controls.Add(this.FormCaption);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(600, 350);
             this.Name = "BlockSetupBaseForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Wavelet Studio";
             ((System.ComponentModel.ISupportInitialize)(this.FormCaption)).EndInit();
             this.ResumeLayout(false);
 

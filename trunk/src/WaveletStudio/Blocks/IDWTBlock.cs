@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Properties;
 using WaveletStudio.Wavelet;
 
 namespace WaveletStudio.Blocks
@@ -53,7 +54,7 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Description
         /// </summary>
-        public override string Description { get { return "Inverse Wavelet decomposition block"; } }
+        public override string Description { get { return Resources.IDWTDescription; } }
 
         /// <summary>
         /// Processing type
@@ -81,7 +82,7 @@ namespace WaveletStudio.Blocks
             {
                 if (!LoadWavelets(value))
                 {
-                    throw new Exception("The wavelet " + value + " does not exist.");
+                    throw new Exception(string.Format(Resources.WaveletNameNotFound, value));
                 }
                 _waveletName = value;
             }
@@ -130,7 +131,7 @@ namespace WaveletStudio.Blocks
             var currentName = "";
             for (var i = 0; i < approximations.Count; i++)
             {
-                var name = approximations[i].Name != null ? approximations[i].Name.Split(new[] { " - " }, StringSplitOptions.RemoveEmptyEntries)[0] : "Signal";
+                var name = approximations[i].Name != null ? approximations[i].Name.Split(new[] { " - " }, StringSplitOptions.RemoveEmptyEntries)[0] : Resources.Signal;
                 if (name != currentName && currentName != "")
                 {
                     outputs.Add(new Signal(DWT.ExecuteIDWT(tempLevels, _motherWavelet, Level)){Name = name});
@@ -165,12 +166,12 @@ namespace WaveletStudio.Blocks
         {
             root.InputNodes = new List<BlockInputNode>
                                   {
-                                      new BlockInputNode(ref root, "Aproximation", "Apx"),
-                                      new BlockInputNode(ref root, "Details", "Det")
+                                      new BlockInputNode(ref root, Resources.Approximation, "Apx"),
+                                      new BlockInputNode(ref root, Resources.Details, "Det")
                                   };
             root.OutputNodes = new List<BlockOutputNode>
                                    {
-                                       new BlockOutputNode(ref root, "Signal", "Out")
+                                       new BlockOutputNode(ref root, Resources.Signal, Resources.Out)
                                    };
         }
 

@@ -117,10 +117,597 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>47</value>
-  </metadata>
+  <data name="&gt;&gt;qCompositeText1.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeText, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="CenterPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ZoomLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="MarginBottomField.InputBox.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="qCompositeText7.Title" xml:space="preserve">
+    <value>Top: </value>
+  </data>
+  <data name="&gt;&gt;qCompositeGroup6.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="ZoomMinusButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;ZoomTrackBar.Name" xml:space="preserve">
+    <value>ZoomTrackBar</value>
+  </data>
+  <data name="qCompositeText6.Title" xml:space="preserve">
+    <value>Bottom:</value>
+  </data>
+  <data name="PreviewOptionsPage.HotkeyText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;qCompositeItem1.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginTopField.InputBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText8.Name" xml:space="preserve">
+    <value>qCompositeText8</value>
+  </data>
+  <data name="&gt;&gt;MarginTopField.Name" xml:space="preserve">
+    <value>MarginTopField</value>
+  </data>
+  <data name="Caption.Text" xml:space="preserve">
+    <value>Print Preview</value>
+  </data>
+  <data name="&gt;&gt;MarginsPanel.Name" xml:space="preserve">
+    <value>MarginsPanel</value>
+  </data>
+  <data name="&gt;&gt;ZoomPlusButton.Name" xml:space="preserve">
+    <value>ZoomPlusButton</value>
+  </data>
+  <data name="ZoomPlusButton.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="ZoomPlusButton.LocalFont" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;qCompositeText6.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeText, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText4.Name" xml:space="preserve">
+    <value>qCompositeText4</value>
+  </data>
+  <data name="MarginRightField.InputBox.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="PrintPreviewControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>946, 265</value>
+  </data>
+  <data name="MarginLeftField.InputBox.MaxLength" type="System.Int32, mscorlib">
+    <value>32767</value>
+  </data>
+  <data name="&gt;&gt;qRibbonItemGroup1.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.Ribbon.QRibbonItemGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginRightField.InputBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="ZoomPlusButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;qCompositeImage5.Name" xml:space="preserve">
+    <value>qCompositeImage5</value>
+  </data>
+  <data name="&gt;&gt;CenterPanel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="MarginRightField.InputBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Tile</value>
+  </data>
+  <data name="&gt;&gt;BottomPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="ZoomLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>33, 13</value>
+  </data>
+  <data name="MarginBottomField.InputBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 19</value>
+  </data>
+  <data name="PrintPanel.Title" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="&gt;&gt;PrintGroup.Name" xml:space="preserve">
+    <value>PrintGroup</value>
+  </data>
+  <data name="MarginRightField.InputBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="MarginBottomField.InputBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="ZoomPlusButton.Text" xml:space="preserve">
+    <value>+</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText7.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeText, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginTopField.InputBox.WordWrap" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="BottomPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="&gt;&gt;ZoomMinusButton.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QButton, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;qCompositeImage2.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeImage, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="BottomPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 265</value>
+  </data>
+  <data name="&gt;&gt;Ribbon.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;qRibbonPanel1.Name" xml:space="preserve">
+    <value>qRibbonPanel1</value>
+  </data>
+  <data name="&gt;&gt;PrintGroup.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;CloseComposite.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginRightField.InputBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="ZoomLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>695, 8</value>
+  </data>
+  <data name="MarginTopField.InputBox.BackgroundImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ZoomPlusButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 24</value>
+  </data>
+  <data name="MarginTopField.InputBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="CenterPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;BottomPanel.Name" xml:space="preserve">
+    <value>BottomPanel</value>
+  </data>
+  <data name="MarginTopField.InputBox.Multiline" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="MarginLeftField.InputBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="diagramFormProperties1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;PrintPreviewControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PrintPreviewControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MarginBottomField.InputBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Tile</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="BottomPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="diagramFormProperties1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>424, 255</value>
+  </data>
+  <data name="&gt;&gt;qCompositeImage1.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeImage, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginBottomField.InputBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="MarginRightField.InputBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="ZoomLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText5.Name" xml:space="preserve">
+    <value>qCompositeText5</value>
+  </data>
+  <data name="PrintPreviewControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="ZoomTrackBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 42</value>
+  </data>
+  <data name="MarginRightField.InputBox.ToolTipText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;SettingsComposite.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;PrintCompositeItem.Name" xml:space="preserve">
+    <value>PrintCompositeItem</value>
+  </data>
+  <data name="qCompositeText3.Title" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="&gt;&gt;ZoomTrackBar.Parent" xml:space="preserve">
+    <value>BottomPanel</value>
+  </data>
+  <data name="qCompositeText2.Title" xml:space="preserve">
+    <value>Stretch</value>
+  </data>
+  <data name="MarginLeftField.InputBox.BackgroundImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;qCompositeItem4.Name" xml:space="preserve">
+    <value>qCompositeItem4</value>
+  </data>
+  <data name="&gt;&gt;SettingsComposite.Name" xml:space="preserve">
+    <value>SettingsComposite</value>
+  </data>
+  <data name="&gt;&gt;GridInnerGroup.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginRightField.InputBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 19</value>
+  </data>
+  <data name="&gt;&gt;PrintPanel.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.Ribbon.QRibbonPanel, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="ZoomTrackBar.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;PrintInnerGroup.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;qCompositeGroup1.Name" xml:space="preserve">
+    <value>qCompositeGroup1</value>
+  </data>
+  <data name="&gt;&gt;PrintCompositeItem.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;OptionsPanel.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.Ribbon.QRibbonPanel, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;MarginBottomField.Name" xml:space="preserve">
+    <value>MarginBottomField</value>
+  </data>
+  <data name="&gt;&gt;MarginTopField.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItemInputBox, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginBottomField.InputBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="qCompositeText5.Title" xml:space="preserve">
+    <value>Right:</value>
+  </data>
+  <data name="&gt;&gt;Caption.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="diagramFormProperties1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;qCompositeGroup3.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;qCompositeItem2.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="qCompositeText1.Title" xml:space="preserve">
+    <value>Grid</value>
+  </data>
+  <data name="ZoomMinusButton.Text" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="&gt;&gt;diagramFormProperties1.Type" xml:space="preserve">
+    <value>WaveletStudio.MainApplication.Forms.DiagramFormProperties, WaveletStudio.MainApplication, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="MarginBottomField.InputBox.Multiline" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText2.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeText, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;qCompositeGroup4.Name" xml:space="preserve">
+    <value>qCompositeGroup4</value>
+  </data>
+  <data name="Ribbon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="MarginTopField.InputBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="PrintPreviewControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>PrintPreviewForm</value>
+  </data>
+  <data name="MarginLeftField.InputBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Tile</value>
+  </data>
+  <data name="&gt;&gt;OptionsPanel.Name" xml:space="preserve">
+    <value>OptionsPanel</value>
+  </data>
+  <data name="MarginRightField.InputBox.Multiline" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="diagramFormProperties1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="MarginTopField.InputBox.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="PrintText.Title" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="MarginTopField.InputBox.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MarginLeftField.InputBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>308, 35</value>
+  </data>
+  <data name="MarginLeftField.InputBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="&gt;&gt;qCompositeImage3.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeImage, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="Caption.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;ZoomMinusButton.Parent" xml:space="preserve">
+    <value>BottomPanel</value>
+  </data>
+  <data name="MarginTopField.InputBox.CueText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="BottomPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>946, 29</value>
+  </data>
+  <data name="&gt;&gt;MarginBottomField.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItemInputBox, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;ZoomLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="CenterPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>946, 294</value>
+  </data>
+  <data name="CenterPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 168</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="MarginTopField.InputBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="&gt;&gt;Caption.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;PrintPreviewControl.Parent" xml:space="preserve">
+    <value>CenterPanel</value>
+  </data>
+  <data name="MarginBottomField.InputBox.CueText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MarginTopField.InputBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 19</value>
+  </data>
+  <data name="MarginBottomField.InputBox.BackgroundImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;CenterPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ZoomPlusButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>923, 3</value>
+  </data>
+  <data name="&gt;&gt;ZoomMinusButton.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Ribbon.Size" type="System.Drawing.Size, System.Drawing">
+    <value>946, 140</value>
+  </data>
+  <data name="&gt;&gt;PreviewOptionsPage.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.Ribbon.QRibbonPage, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="qRibbonPanel1.Title" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="&gt;&gt;qCompositeItem1.Name" xml:space="preserve">
+    <value>qCompositeItem1</value>
+  </data>
+  <data name="MarginBottomField.InputBox.ToolTipText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MarginRightField.InputBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="&gt;&gt;ZoomMinusButton.Name" xml:space="preserve">
+    <value>ZoomMinusButton</value>
+  </data>
+  <data name="qCompositeText4.Title" xml:space="preserve">
+    <value>Left: </value>
+  </data>
+  <data name="MarginLeftField.InputBox.WordWrap" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText8.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeText, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="ZoomTrackBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>755, 1</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText1.Name" xml:space="preserve">
+    <value>qCompositeText1</value>
+  </data>
+  <data name="&gt;&gt;MarginsPanel.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.Ribbon.QRibbonPanel, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginBottomField.InputBox.Font" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MarginTopField.InputBox.ToolTipText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;GridComposite.Name" xml:space="preserve">
+    <value>GridComposite</value>
+  </data>
+  <data name="Caption.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;qCompositeImage4.Name" xml:space="preserve">
+    <value>qCompositeImage4</value>
+  </data>
+  <data name="&gt;&gt;qCompositeGroup4.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;Ribbon.Name" xml:space="preserve">
+    <value>Ribbon</value>
+  </data>
+  <data name="&gt;&gt;ZoomLabel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;PreviewOptionsPage.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;Ribbon.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText3.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeText, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginLeftField.InputBox.ToolTipText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="ZoomLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="MarginRightField.InputBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="&gt;&gt;qCompositeGroup1.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;PrintPreviewControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;qCompositeImage4.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeImage, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;MarginLeftField.Name" xml:space="preserve">
+    <value>MarginLeftField</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText4.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeText, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;ZoomPlusButton.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QButton, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;StretchInnerGroup.Name" xml:space="preserve">
+    <value>StretchInnerGroup</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText6.Name" xml:space="preserve">
+    <value>qCompositeText6</value>
+  </data>
+  <data name="Caption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>946, 28</value>
+  </data>
+  <data name="&gt;&gt;qCompositeImage1.Name" xml:space="preserve">
+    <value>qCompositeImage1</value>
+  </data>
+  <data name="MarginLeftField.InputBox.AccessibleName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;qRibbonPanel1.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.Ribbon.QRibbonPanel, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;PrintText.Name" xml:space="preserve">
+    <value>PrintText</value>
+  </data>
+  <data name="&gt;&gt;ZoomLabel.Parent" xml:space="preserve">
+    <value>BottomPanel</value>
+  </data>
+  <data name="MarginLeftField.InputBox.CueText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;Caption.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.Ribbon.QRibbonCaption, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;GridInnerGroup.Name" xml:space="preserve">
+    <value>GridInnerGroup</value>
+  </data>
+  <data name="&gt;&gt;diagramFormProperties1.Name" xml:space="preserve">
+    <value>diagramFormProperties1</value>
+  </data>
+  <data name="&gt;&gt;PreviewOptionsPage.Parent" xml:space="preserve">
+    <value>Ribbon</value>
+  </data>
+  <data name="&gt;&gt;qCompositeGroup7.Name" xml:space="preserve">
+    <value>qCompositeGroup7</value>
+  </data>
+  <data name="&gt;&gt;qRibbonItemGroup1.Name" xml:space="preserve">
+    <value>qRibbonItemGroup1</value>
+  </data>
+  <data name="MarginRightField.InputBox.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MarginBottomField.InputBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="MarginLeftField.InputBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="&gt;&gt;CloseComposite.Name" xml:space="preserve">
+    <value>CloseComposite</value>
+  </data>
+  <data name="MarginTopField.InputBox.MaxLength" type="System.Int32, mscorlib">
+    <value>32767</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText5.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeText, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginTopField.InputBox.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MarginLeftField.InputBox.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="&gt;&gt;PrintComposite.Name" xml:space="preserve">
+    <value>PrintComposite</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText7.Name" xml:space="preserve">
+    <value>qCompositeText7</value>
+  </data>
+  <data name="&gt;&gt;PrintPanel.Name" xml:space="preserve">
+    <value>PrintPanel</value>
+  </data>
+  <data name="MarginBottomField.InputBox.MaxLength" type="System.Int32, mscorlib">
+    <value>32767</value>
+  </data>
+  <data name="&gt;&gt;StretchComposite.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.Ribbon.QRibbonForm, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;PreviewOptionsPage.Name" xml:space="preserve">
+    <value>PreviewOptionsPage</value>
+  </data>
   <data name="diagramFormProperties1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAAAAABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAB
@@ -149,4 +736,268 @@
         AAAAAAAAAAAAAPgAAAD8AAAA/gEAAP//AAA=
 </value>
   </data>
+  <data name="&gt;&gt;ZoomPlusButton.Parent" xml:space="preserve">
+    <value>BottomPanel</value>
+  </data>
+  <data name="MarginRightField.InputBox.BackgroundImage" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MarginBottomField.InputBox.WordWrap" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="MarginLeftField.InputBox.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MarginRightField.InputBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>395, 35</value>
+  </data>
+  <data name="&gt;&gt;qCompositeGroup7.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginRightField.InputBox.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value />
+  </data>
+  <data name="MarginRightField.InputBox.Font" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MarginTopField.InputBox.Font" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;qCompositeGroup3.Name" xml:space="preserve">
+    <value>qCompositeGroup3</value>
+  </data>
+  <data name="&gt;&gt;CenterPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;PrintInnerGroup.Name" xml:space="preserve">
+    <value>PrintInnerGroup</value>
+  </data>
+  <data name="MarginBottomField.InputBox.AccessibleName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MarginLeftField.InputBox.Size" type="System.Drawing.Size, System.Drawing">
+    <value>45, 19</value>
+  </data>
+  <data name="Ribbon.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="PreviewOptionsPage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>940, 108</value>
+  </data>
+  <data name="MarginTopField.InputBox.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left</value>
+  </data>
+  <data name="ZoomTrackBar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="MarginBottomField.InputBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>350, 58</value>
+  </data>
+  <data name="diagramFormProperties1.Text" xml:space="preserve">
+    <value>diagramFormProperties1</value>
+  </data>
+  <data name="MarginLeftField.InputBox.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;MarginRightField.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItemInputBox, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginRightField.InputBox.AccessibleName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="OptionsPanel.Title" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="&gt;&gt;PrintPreviewControl.Name" xml:space="preserve">
+    <value>PrintPreviewControl</value>
+  </data>
+  <data name="&gt;&gt;qCompositeItem4.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="ZoomLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleRight</value>
+  </data>
+  <data name="MarginBottomField.InputBox.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="&gt;&gt;qCompositeGroup6.Name" xml:space="preserve">
+    <value>qCompositeGroup6</value>
+  </data>
+  <data name="&gt;&gt;Ribbon.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.Ribbon.QRibbon, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginLeftField.InputBox.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MarginLeftField.InputBox.Multiline" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;MarginRightField.Name" xml:space="preserve">
+    <value>MarginRightField</value>
+  </data>
+  <data name="&gt;&gt;GridComposite.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>946, 462</value>
+  </data>
+  <data name="PrintPreviewControl.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="ZoomMinusButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>731, 3</value>
+  </data>
+  <data name="&gt;&gt;qCompositeItem3.Name" xml:space="preserve">
+    <value>qCompositeItem3</value>
+  </data>
+  <data name="&gt;&gt;Caption.Name" xml:space="preserve">
+    <value>Caption</value>
+  </data>
+  <data name="Ribbon.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ZoomTrackBar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;StretchComposite.Name" xml:space="preserve">
+    <value>StretchComposite</value>
+  </data>
+  <data name="&gt;&gt;MarginLeftField.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItemInputBox, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Print Preview</value>
+  </data>
+  <data name="MarginsPanel.Title" xml:space="preserve">
+    <value>Margins (centimeters)</value>
+  </data>
+  <data name="MarginRightField.InputBox.WordWrap" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;PrintText.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeText, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="ZoomTrackBar.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Right</value>
+  </data>
+  <data name="&gt;&gt;qCompositeImage5.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeImage, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginTopField.InputBox.Location" type="System.Drawing.Point, System.Drawing">
+    <value>350, 12</value>
+  </data>
+  <data name="&gt;&gt;qCompositeItem3.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="PreviewOptionsPage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 28</value>
+  </data>
+  <data name="ZoomMinusButton.LocalFont" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;qCompositeImage2.Name" xml:space="preserve">
+    <value>qCompositeImage2</value>
+  </data>
+  <data name="PreviewOptionsPage.Text" xml:space="preserve">
+    <value>Print Preview</value>
+  </data>
+  <data name="&gt;&gt;qCompositeText3.Name" xml:space="preserve">
+    <value>qCompositeText3</value>
+  </data>
+  <data name="MarginBottomField.InputBox.PasswordChar" type="System.Char, mscorlib" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;qCompositeText2.Name" xml:space="preserve">
+    <value>qCompositeText2</value>
+  </data>
+  <data name="MarginTopField.InputBox.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Tile</value>
+  </data>
+  <data name="MarginRightField.InputBox.CueText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;ZoomTrackBar.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;qCompositeGroup2.Name" xml:space="preserve">
+    <value>qCompositeGroup2</value>
+  </data>
+  <data name="&gt;&gt;PrintComposite.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="MarginLeftField.InputBox.Font" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;BottomPanel.Parent" xml:space="preserve">
+    <value>CenterPanel</value>
+  </data>
+  <data name="MarginBottomField.InputBox.AccessibleDescription" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;qCompositeItem2.Name" xml:space="preserve">
+    <value>qCompositeItem2</value>
+  </data>
+  <data name="Ribbon.Text" xml:space="preserve">
+    <value>Sinal</value>
+  </data>
+  <data name="ZoomLabel.Text" xml:space="preserve">
+    <value>100%</value>
+  </data>
+  <data name="&gt;&gt;ZoomLabel.Name" xml:space="preserve">
+    <value>ZoomLabel</value>
+  </data>
+  <data name="&gt;&gt;qCompositeImage3.Name" xml:space="preserve">
+    <value>qCompositeImage3</value>
+  </data>
+  <data name="MarginLeftField.InputBox.ScrollBars" type="System.Windows.Forms.ScrollBars, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="&gt;&gt;BottomPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ZoomMinusButton.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="MarginTopField.InputBox.TextAlign" type="System.Windows.Forms.HorizontalAlignment, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="MarginLeftField.InputBox.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="&gt;&gt;StretchInnerGroup.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;ZoomPlusButton.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MarginRightField.InputBox.MaxLength" type="System.Int32, mscorlib">
+    <value>32767</value>
+  </data>
+  <data name="&gt;&gt;CenterPanel.Name" xml:space="preserve">
+    <value>CenterPanel</value>
+  </data>
+  <data name="&gt;&gt;qCompositeGroup2.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="qCompositeText8.Title" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="MarginTopField.InputBox.AccessibleName" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="MarginBottomField.InputBox.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Inherit</value>
+  </data>
+  <data name="ZoomMinusButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 24</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>47</value>
+  </metadata>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>pt-BR</value>
+  </metadata>
 </root>

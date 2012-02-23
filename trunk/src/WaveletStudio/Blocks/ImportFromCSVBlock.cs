@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -45,12 +46,12 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Name
         /// </summary>
-        public override string Name { get { return "CSV File"; } }
+        public override string Name { get { return Resources.ImportFromCSV; } }
 
         /// <summary>
         /// Description
         /// </summary>
-        public override string Description { get { return "Generates a signal based on a CSV file"; } }
+        public override string Description { get { return Resources.ImportFromCSVDescription; } }
 
         /// <summary>
         /// Processing type
@@ -181,7 +182,7 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Signal", "S")};
+            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, Resources.Signal, "S")};
         }
 
 

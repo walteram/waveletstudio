@@ -19,6 +19,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Properties;
 using WaveletStudio.SignalGeneration;
 
 namespace WaveletStudio.Blocks
@@ -86,7 +87,7 @@ namespace WaveletStudio.Blocks
             {
                 if (!LoadTemplate(value))
                 {
-                    throw new Exception("The template " + value + " does not exist.");   
+                    throw new Exception(string.Format(Resources.TemplateNotFound, value));
                 }
                 _templateName = value;                
             }
@@ -159,7 +160,7 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Signal", "S")};
+            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, Resources.Signal, "S")};
         }
 
         private bool LoadTemplate(string templateName)

@@ -38,23 +38,19 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // PropertyGrid
             // 
-            this.PropertyGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PropertyGrid.Location = new System.Drawing.Point(0, 0);
+            resources.ApplyResources(this.PropertyGrid, "PropertyGrid");
             this.PropertyGrid.Name = "PropertyGrid";
             this.PropertyGrid.PropertySort = System.Windows.Forms.PropertySort.NoSort;
-            this.PropertyGrid.Size = new System.Drawing.Size(283, 285);
-            this.PropertyGrid.TabIndex = 0;
             this.PropertyGrid.ToolbarVisible = false;
             // 
             // DiagramFormProperties
             // 
+            resources.ApplyResources(this, "$this");
             this.CanClose = false;
             this.Controls.Add(this.PropertyGrid);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DiagramFormProperties";
-            this.Size = new System.Drawing.Size(283, 301);
             this.SlidingTime = 200;
-            this.Text = "Properties";
             this.WindowGroupName = "";
             this.ResumeLayout(false);
 
