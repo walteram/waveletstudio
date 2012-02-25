@@ -2,4 +2,9 @@
 bin
 *.vsmdi
 obj
+</Value></Property><Property><Name>bugtraq:number</Name><Value>true</Value></Property><Property><Name>svn:ignore</Name><Value>_ReSharper.Labs
+bin
+*.vsmdi
+obj
+setup
 </Value></Property></Properties></ItemProperties>
