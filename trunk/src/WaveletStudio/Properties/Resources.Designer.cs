@@ -133,6 +133,15 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Binary.
+        /// </summary>
+        public static string Binary {
+            get {
+                return ResourceManager.GetString("Binary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Column separator.
         /// </summary>
         public static string ColumnSeparator {
@@ -174,6 +183,15 @@ namespace WaveletStudio.Properties {
         public static string convolutionmode {
             get {
                 return ResourceManager.GetString("convolutionmode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cosine.
+        /// </summary>
+        public static string Cosine {
+            get {
+                return ResourceManager.GetString("Cosine", resourceCulture);
             }
         }
         
@@ -241,6 +259,15 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Divide.
+        /// </summary>
+        public static string Divide {
+            get {
+                return ResourceManager.GetString("Divide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Downsample.
         /// </summary>
         public static string Downsample {
@@ -301,6 +328,24 @@ namespace WaveletStudio.Properties {
         public static string ExportToCSVDescription {
             get {
                 return ResourceManager.GetString("ExportToCSVDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extend.
+        /// </summary>
+        public static string Extend {
+            get {
+                return ResourceManager.GetString("Extend", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extends a signal using the specified mode.
+        /// </summary>
+        public static string ExtendDescription {
+            get {
+                return ResourceManager.GetString("ExtendDescription", resourceCulture);
             }
         }
         
@@ -521,7 +566,7 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Import from CSV.
+        ///   Looks up a localized string similar to Import CSV.
         /// </summary>
         public static string ImportFromCSV {
             get {
@@ -589,6 +634,42 @@ namespace WaveletStudio.Properties {
         public static string InputCountDescription {
             get {
                 return ResourceManager.GetString("InputCountDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interpolate.
+        /// </summary>
+        public static string Interpolate {
+            get {
+                return ResourceManager.GetString("Interpolate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Performs an interpolation in a signal.
+        /// </summary>
+        public static string InterpolateDescription {
+            get {
+                return ResourceManager.GetString("InterpolateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invert.
+        /// </summary>
+        public static string Invert {
+            get {
+                return ResourceManager.GetString("Invert", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invert a signal..
+        /// </summary>
+        public static string InvertDescription {
+            get {
+                return ResourceManager.GetString("InvertDescription", resourceCulture);
             }
         }
         
@@ -674,6 +755,33 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Multiply.
+        /// </summary>
+        public static string Multiply {
+            get {
+                return ResourceManager.GetString("Multiply", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extract and output elements of vector signal..
+        /// </summary>
+        public static string MuxDescription {
+            get {
+                return ResourceManager.GetString("MuxDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gets the normal distribution of a signal..
+        /// </summary>
+        public static string NormalDescription {
+            get {
+                return ResourceManager.GetString("NormalDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offset.
         /// </summary>
         public static string Offset {
@@ -697,6 +805,15 @@ namespace WaveletStudio.Properties {
         public static string Operation {
             get {
                 return ResourceManager.GetString("Operation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sum, subtract, multiply or divide two signals..
+        /// </summary>
+        public static string OperationBlockDescription {
+            get {
+                return ResourceManager.GetString("OperationBlockDescription", resourceCulture);
             }
         }
         
@@ -782,6 +899,24 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ramp.
+        /// </summary>
+        public static string Ramp {
+            get {
+                return ResourceManager.GetString("Ramp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Generates a Ramp Function.
+        /// </summary>
+        public static string RampDescription {
+            get {
+                return ResourceManager.GetString("RampDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ramp Finish.
         /// </summary>
         public static string RampFinish {
@@ -823,6 +958,24 @@ namespace WaveletStudio.Properties {
         public static string Reconstruction {
             get {
                 return ResourceManager.GetString("Reconstruction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeat.
+        /// </summary>
+        public static string Repeat {
+            get {
+                return ResourceManager.GetString("Repeat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeats parts of a signal..
+        /// </summary>
+        public static string RepeatDescription {
+            get {
+                return ResourceManager.GetString("RepeatDescription", resourceCulture);
             }
         }
         
@@ -917,11 +1070,56 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sawtooth.
+        /// </summary>
+        public static string Sawtooth {
+            get {
+                return ResourceManager.GetString("Sawtooth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scalar.
+        /// </summary>
+        public static string Scalar {
+            get {
+                return ResourceManager.GetString("Scalar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multiply, add or subtract or divide the samples of a signal by a scalar number..
+        /// </summary>
+        public static string ScalarDescription {
+            get {
+                return ResourceManager.GetString("ScalarDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Scalar.
         /// </summary>
         public static string scalaroperation_text {
             get {
                 return ResourceManager.GetString("scalaroperation_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shift.
+        /// </summary>
+        public static string Shift {
+            get {
+                return ResourceManager.GetString("Shift", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shift signal..
+        /// </summary>
+        public static string ShiftDescription {
+            get {
+                return ResourceManager.GetString("ShiftDescription", resourceCulture);
             }
         }
         
@@ -1016,6 +1214,15 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Sine.
+        /// </summary>
+        public static string Sine {
+            get {
+                return ResourceManager.GetString("Sine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sort Samples.
         /// </summary>
         public static string SortSamples {
@@ -1030,6 +1237,15 @@ namespace WaveletStudio.Properties {
         public static string SortSamplesDescription {
             get {
                 return ResourceManager.GetString("SortSamplesDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Square.
+        /// </summary>
+        public static string Square {
+            get {
+                return ResourceManager.GetString("Square", resourceCulture);
             }
         }
         
@@ -1088,6 +1304,33 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Subtract.
+        /// </summary>
+        public static string Subtract {
+            get {
+                return ResourceManager.GetString("Subtract", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sum.
+        /// </summary>
+        public static string Sum {
+            get {
+                return ResourceManager.GetString("Sum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch.
+        /// </summary>
+        public static string Switch {
+            get {
+                return ResourceManager.GetString("Switch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Switch Criteria.
         /// </summary>
         public static string SwitchCriteria {
@@ -1102,6 +1345,15 @@ namespace WaveletStudio.Properties {
         public static string SwitchCriteriaDescription {
             get {
                 return ResourceManager.GetString("SwitchCriteriaDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch output between first input and third input based on value of second input or the threshold value..
+        /// </summary>
+        public static string SwitchDescription {
+            get {
+                return ResourceManager.GetString("SwitchDescription", resourceCulture);
             }
         }
         
@@ -1160,6 +1412,51 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Triangle.
+        /// </summary>
+        public static string Triangle {
+            get {
+                return ResourceManager.GetString("Triangle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unique.
+        /// </summary>
+        public static string Unique {
+            get {
+                return ResourceManager.GetString("Unique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removes the duplicated samples in a signal..
+        /// </summary>
+        public static string UniqueDescription {
+            get {
+                return ResourceManager.GetString("UniqueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Upsample.
+        /// </summary>
+        public static string Upsample {
+            get {
+                return ResourceManager.GetString("Upsample", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resample input at higher rate by inserting zeros..
+        /// </summary>
+        public static string UpsampleDescription {
+            get {
+                return ResourceManager.GetString("UpsampleDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use trigonometric table (faster).
         /// </summary>
         public static string uselookuptable {
@@ -1183,6 +1480,15 @@ namespace WaveletStudio.Properties {
         public static string ValueDescription {
             get {
                 return ResourceManager.GetString("ValueDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wavelet decomposition using the Discreete Wavelet Transform (DWT)..
+        /// </summary>
+        public static string WaveletDescription {
+            get {
+                return ResourceManager.GetString("WaveletDescription", resourceCulture);
             }
         }
         

@@ -17,8 +17,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Resources;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -44,11 +46,11 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode> {new BlockInputNode(ref root, "Signal", "In")};
-            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Output", "Out")};
+            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, Resources.Signal, Resources.In) };
+            root.OutputNodes = new List<BlockOutputNode> { new BlockOutputNode(ref root, Resources.Output, Resources.Out) };
         }
 
-        private string _name = "Scalar";
+        private string _name = Resources.Scalar;
 
         /// <summary>
         /// Name of the block
@@ -58,7 +60,7 @@ namespace WaveletStudio.Blocks
             get { return _name; }
         }
 
-        private string _description = "Multiply, add or subtract or divide the samples of a signal by a scalar number";
+        private string _description = Resources.ScalarDescription;
 
         /// <summary>
         /// Description of the block
@@ -127,7 +129,8 @@ namespace WaveletStudio.Blocks
 
         private void SetOperationDescription()
         {
-            _name = "Scalar " + Enum.GetName(typeof(WaveMath.OperationEnum), Operation);
+            var resourceManager = new ResourceManager(typeof(Resources));
+            _name = resourceManager.GetString(Enum.GetName(typeof(WaveMath.OperationEnum), Operation));
             _description = "y(x) = y(x) " + WaveMath.GetOperationSymbol(Operation) + " " + string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0:0.####}", Value);
         }
         
@@ -147,6 +150,15 @@ namespace WaveletStudio.Blocks
         public override BlockBase CloneWithLinks()
         {
             return MemberwiseCloneWithLinks();
+        }
+
+        /// <summary>
+        /// Gets the name of the class
+        /// </summary>
+        /// <returns></returns>
+        public override string GetAssemblyClassName()
+        {
+            return Enum.GetName(typeof(WaveMath.OperationEnum), Operation);
         }
     }
 }

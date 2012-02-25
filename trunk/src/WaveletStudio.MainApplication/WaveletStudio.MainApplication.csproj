@@ -66,7 +66,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="ZedGraph">
+    <Reference Include="ZedGraph, Version=5.1.5.1817, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
       <HintPath>..\..\res\libs\ZedGraph\ZedGraph.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -91,6 +91,12 @@
     </Compile>
     <Compile Include="Forms\BlockSetupBaseForm.Designer.cs">
       <DependentUpon>BlockSetupBaseForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\OptionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\OptionsForm.Designer.cs">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PrintPreviewForm.cs">
       <SubType>Form</SubType>
@@ -148,6 +154,12 @@
     <EmbeddedResource Include="Forms\BlockSetupBaseForm.resx">
       <DependentUpon>BlockSetupBaseForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OptionsForm.pt-BR.resx">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\OptionsForm.resx">
+      <DependentUpon>OptionsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DiagramForm.pt-BR.resx">
       <DependentUpon>DiagramForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +192,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DiagramFormMainMenu.resx">
       <DependentUpon>DiagramFormMainMenu.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -191,13 +204,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Properties\Resources.pt-BR.resx" />
+    <EmbeddedResource Include="Properties\Resources.pt-BR.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.pt-BR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\DataSources\WaveletStudio.SignalGeneration.CommonSignalBase.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.pt-BR.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.pt-BR.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -424,6 +445,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\imgoperation1.png" />
+    <None Include="Resources\operation_scalar1.png" />
+    <None Include="Resources\csv2.png" />
     <None Include="Resources\iconclose.png" />
     <None Include="Resources\iconprintsettings.png" />
     <None Include="Resources\iconstretch.png" />

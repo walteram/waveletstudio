@@ -10,6 +10,8 @@ namespace WaveletStudio.Tests.Blocks
         [TestMethod]
         public void TestScalarOperationBlockExecute()
         {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
+
             var signalBlock = new GenerateSignalBlock { TemplateName = "Binary", Start = 0, Finish = 5, SamplingRate = 1, IgnoreLastSample = true };
             var scalarBlock = new ScalarOperationBlock
                                   {
@@ -28,6 +30,7 @@ namespace WaveletStudio.Tests.Blocks
             scalarBlock.Operation = WaveMath.OperationEnum.Multiply;
             signalBlock.Execute();
             Assert.AreEqual("0.0 1.5 0.0 1.5 0.0", scalarBlock.OutputNodes[0].Object.ToString(1));
+            Assert.AreEqual("Multiply", scalarBlock.GetAssemblyClassName());
 
             scalarBlock.Operation = WaveMath.OperationEnum.Subtract;
             signalBlock.Execute();

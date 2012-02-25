@@ -104,5 +104,11 @@ namespace WaveletStudio.MainApplication.Forms
         {
             _diagramForm.PrintPreview();            
         }
+
+        private void OptionsMenuItemItemActivated(object sender, QCompositeEventArgs e)
+        {
+            var optionsForm = new OptionsForm();
+            optionsForm.ShowDialog();
+        }
     }
 }

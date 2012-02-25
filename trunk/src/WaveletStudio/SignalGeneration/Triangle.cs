@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.SignalGeneration
 {
@@ -36,7 +37,7 @@ namespace WaveletStudio.SignalGeneration
         /// </summary>
         public override string Name
         {
-            get { return "Triangle"; }
+            get { return Resources.Triangle; }
         }
 
         /// <summary>

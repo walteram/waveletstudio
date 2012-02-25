@@ -17,8 +17,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Resources;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -45,13 +47,13 @@ namespace WaveletStudio.Blocks
         {
             root.InputNodes = new List<BlockInputNode>
                                   {
-                                      new BlockInputNode(ref root, "Signal1", "S1"),
-                                      new BlockInputNode(ref root, "Signal2", "S2")
+                                      new BlockInputNode(ref root, Resources.Signal+"1", "S1"),
+                                      new BlockInputNode(ref root, Resources.Signal+"2", "S2")
                                   };
-            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Output", "Out")};
+            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, Resources.Output, Resources.Out)};
         }
 
-        private string _name = "Operation";
+        private string _name = Resources.Operation;
 
         /// <summary>
         /// Name of the block
@@ -66,7 +68,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Description
         {
-            get { return "Sum, subtract, multiply or divide two or more signals"; }
+            get { return Resources.OperationBlockDescription; }
         }
 
         /// <summary>
@@ -132,7 +134,8 @@ namespace WaveletStudio.Blocks
 
         private void SetOperationDescription()
         {
-            _name = Enum.GetName(typeof(WaveMath.OperationEnum), Operation);
+            var resourceManager = new ResourceManager(typeof (Resources));
+            _name = resourceManager.GetString(Enum.GetName(typeof(WaveMath.OperationEnum), Operation));
         }
 
         /// <summary>
@@ -151,6 +154,15 @@ namespace WaveletStudio.Blocks
         public override BlockBase CloneWithLinks()
         {
             return MemberwiseCloneWithLinks();
+        }
+
+        /// <summary>
+        /// Gets the name of the class
+        /// </summary>
+        /// <returns></returns>
+        public override string GetAssemblyClassName()
+        {
+            return Enum.GetName(typeof(WaveMath.OperationEnum), Operation);
         }
     }
 }

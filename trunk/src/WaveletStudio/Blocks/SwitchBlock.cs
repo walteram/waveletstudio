@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -44,7 +45,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Name
         {
-            get { return "Switch"; }
+            get { return Resources.Switch; }
         }
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Description
         {
-            get { return "Switch output between first input and third input based on value of second input or the threshold value."; }
+            get { return Resources.SwitchDescription; }
         }
 
         /// <summary>
@@ -142,11 +143,11 @@ namespace WaveletStudio.Blocks
         {
             root.InputNodes = new List<BlockInputNode>
                                   {
-                                      new BlockInputNode(ref root, "Input1", "In1"),
-                                      new BlockInputNode(ref root, "Input2", "In2"),
-                                      new BlockInputNode(ref root, "Input3", "In3")
+                                      new BlockInputNode(ref root, Resources.Input + "1", Resources.In + "1"),
+                                      new BlockInputNode(ref root, Resources.Input + "2", Resources.In + "2"),
+                                      new BlockInputNode(ref root, Resources.Input + "3", Resources.In + "3")
                                   };
-            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Output", "Out")};                                
+            root.OutputNodes = new List<BlockOutputNode> { new BlockOutputNode(ref root, Resources.Output, Resources.Out) };                                
         }
 
         /// <summary>

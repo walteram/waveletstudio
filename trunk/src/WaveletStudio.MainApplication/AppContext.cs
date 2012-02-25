@@ -11,7 +11,7 @@ namespace WaveletStudio.MainApplication
     public class AppContext : ApplicationContext
     {
         public static AppContext Context;
-
+        
         public AppContext()
         {
             Context = this;
@@ -25,6 +25,36 @@ namespace WaveletStudio.MainApplication
             MainForm = diagramForm;
             diagramForm.Show();
             LoadLastFile(diagramForm);
+            diagramForm.Focus();
+        }
+
+        public AppContext(string filepath)
+        {
+            Context = this;
+            if (Settings.Default.RecentFileList == null)
+            {
+                Settings.Default.RecentFileList = new StringCollection();
+                Settings.Default.Save();
+            }
+
+            var diagramForm = new DiagramForm();
+            MainForm = diagramForm;
+            diagramForm.Show();
+            if (string.IsNullOrEmpty(filepath))
+            {
+                LoadLastFile(diagramForm);
+            }
+            else
+            {
+                try
+                {
+                    diagramForm.OpenFile(filepath);
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(string.Format("{0}:{1}{2}", Resources.FileCouldntBeOpened, Environment.NewLine, exception.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }            
             diagramForm.Focus();
         }
 

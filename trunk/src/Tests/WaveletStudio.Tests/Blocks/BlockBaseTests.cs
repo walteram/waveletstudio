@@ -12,6 +12,7 @@ namespace WaveletStudio.Tests.Blocks
         {
             var block = new ConvolutionBlock();
             Assert.AreEqual(block.Name, BlockBase.GetName(block.GetType()));
+            Assert.AreEqual("ConvolutionBlock", block.GetAssemblyClassName());
 
             Assert.AreEqual("", BlockBase.GetName(typeof(Object)));
             Assert.AreEqual("", BlockBase.GetName(typeof(BlockBase)));

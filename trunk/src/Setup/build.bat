@@ -4,4 +4,4 @@
 del .\files\Designer\example.csv /Q
 del .\files\Designer\*.pdb /Q
 del .\files\Designer\ZedGraph.xml /Q
-if exist .\files\Designer\pt rmdir .\files\Designer\pt /S /Q
+if exist .\files\Library\pt-BR rmdir .\files\Library\pt-BR /S /Q 

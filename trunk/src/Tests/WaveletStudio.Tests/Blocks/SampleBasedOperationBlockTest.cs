@@ -10,6 +10,7 @@ namespace WaveletStudio.Tests.Blocks
         [TestMethod]
         public void TestSampleBasedOperationBlockExecute()
         {
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo("en-US");
             var signalBlock1 = new GenerateSignalBlock { TemplateName = "Binary", Start = 0, Finish = 5, SamplingRate = 1, IgnoreLastSample = true };
             var signalBlock2 = new GenerateSignalBlock { TemplateName = "Binary", Start = 0, Finish = 5, SamplingRate = 1, IgnoreLastSample = true };
             var block = new SampleBasedOperationBlock { Operation = WaveMath.OperationEnum.Sum };
@@ -20,6 +21,7 @@ namespace WaveletStudio.Tests.Blocks
             Assert.IsNotNull(block.Name);
             Assert.IsNotNull(block.Description);
             Assert.IsNotNull(block.ProcessingType);
+            Assert.AreEqual("Sum", block.GetAssemblyClassName());
 
             signalBlock1.Execute();
             signalBlock2.Execute();
