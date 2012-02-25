@@ -51,7 +51,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.PrintMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
             this.PrepateMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
             this.PrintPreviewMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
-            this.PublishMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
+            this.OptionsMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
             this.Separator1 = new Qios.DevSuite.Components.QCompositeSeparator();
             this.CloseMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
             this.qcitRecentDocument = new Qios.DevSuite.Components.QCompositeItemTemplate();
@@ -201,13 +201,13 @@ namespace WaveletStudio.MainApplication.Forms
             this.PrintPreviewMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("PrintPreviewMenuItem.Icon")));
             this.PrintPreviewMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.PrintPreviewMenuItemItemActivated);
             // 
-            // PublishMenuItem
+            // OptionsMenuItem
             // 
-            this.PublishMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
-            this.PublishMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
-            resources.ApplyResources(this.PublishMenuItem, "PublishMenuItem");
-            this.PublishMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("PublishMenuItem.Icon")));
-            this.PublishMenuItem.Visible = false;
+            this.OptionsMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
+            this.OptionsMenuItem.Configuration.Padding = new Qios.DevSuite.Components.QPadding(5, 1, 1, 1);
+            resources.ApplyResources(this.OptionsMenuItem, "OptionsMenuItem");
+            this.OptionsMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("OptionsMenuItem.Icon")));
+            this.OptionsMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.OptionsMenuItemItemActivated);
             // 
             // CloseMenuItem
             // 
@@ -381,7 +381,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.Items.Add(this.PrintPreviewMenuItem);
             this.Items.Add(this.Separator2);
             this.Items.Add(this.PrepateMenuItem);
-            this.Items.Add(this.PublishMenuItem);
+            this.Items.Add(this.OptionsMenuItem);
             this.Items.Add(this.Separator1);
             this.Items.Add(this.CloseMenuItem);
             this.Name = "DiagramFormMainMenu";
@@ -404,7 +404,7 @@ namespace WaveletStudio.MainApplication.Forms
         private Qios.DevSuite.Components.QCompositeMenuItem PrintMenuItem;
         private Qios.DevSuite.Components.QCompositeMenuItem PrepateMenuItem;
         private Qios.DevSuite.Components.QCompositeMenuItem PrintPreviewMenuItem;
-        private Qios.DevSuite.Components.QCompositeMenuItem PublishMenuItem;
+        private Qios.DevSuite.Components.QCompositeMenuItem OptionsMenuItem;
         private Qios.DevSuite.Components.QCompositeSeparator Separator1;
         private Qios.DevSuite.Components.QCompositeMenuItem CloseMenuItem;
         private Qios.DevSuite.Components.Ribbon.QRibbonSubMenuWindow qrsmwMainMenuSaveAs;

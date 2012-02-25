@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -48,12 +49,12 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Name
         /// </summary>
-        public override string Name { get { return "Ramp"; } }
+        public override string Name { get { return Resources.Ramp; } }
 
         /// <summary>
         /// Description
         /// </summary>
-        public override string Description  { get { return "Generates a Ramp Function"; } }
+        public override string Description  { get { return Resources.RampDescription; } }
 
         /// <summary>
         /// Processing type
@@ -216,7 +217,7 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, "Signal", "S")};
+            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, Resources.Signal, "S")};
         }
 
         /// <summary>

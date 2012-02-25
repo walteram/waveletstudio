@@ -123,6 +123,11 @@
   <data name="Attention" xml:space="preserve">
     <value>Atenção</value>
   </data>
+  <data name="AvailableLanguages" xml:space="preserve">
+    <value>(padrão)
+Inglês (Estados Unidos)
+Português (Brasil)</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Erro</value>
   </data>
@@ -152,6 +157,9 @@
   </data>
   <data name="PreviousSize" xml:space="preserve">
     <value>Tamanho Anterior</value>
+  </data>
+  <data name="RestartNeeded" xml:space="preserve">
+    <value>O programa deverá ser reiniciado para que as alterações tenham efeito.</value>
   </data>
   <data name="SaveChangesQuestion" xml:space="preserve">
     <value>Você gostaria de salvar as alterações antes de fechar o documento?</value>

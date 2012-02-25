@@ -118,19 +118,19 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="imgconvolution" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgConvolutionBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\convolution.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgconvolutionmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgConvolutionBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\convolutionImg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="convolutionmode" xml:space="preserve">
     <value>Convolution Mode</value>
   </data>
-  <data name="imgdownsample" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgDownSampleBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\downsample.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgdownsamplemini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgDownSampleBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\downsampleImg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="errorinvalidoriginalsignal" xml:space="preserve">
@@ -155,13 +155,13 @@ Click in the Signal tab and select a signal source.</value>
   <data name="samplingrate" xml:space="preserve">
     <value>Sampling Rate (Hz)</value>
   </data>
-  <data name="imgsawtooth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSawtooth" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\signals_commonsignals_sawtooth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgscalar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgScalarOperationBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\operation_scalar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgscalarmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgScalarOperationBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\scalarimg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="scalaroperation_text" xml:space="preserve">
@@ -170,10 +170,10 @@ Click in the Signal tab and select a signal source.</value>
   <data name="signaltemplates" xml:space="preserve">
     <value>Signal Templates</value>
   </data>
-  <data name="imgsine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\signals_commonsignals_sine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgsquare" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSquare" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\signals_commonsignals_square.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="start" xml:space="preserve">
@@ -182,16 +182,16 @@ Click in the Signal tab and select a signal source.</value>
   <data name="templatename" xml:space="preserve">
     <value>Template</value>
   </data>
-  <data name="imgtriangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgTriangle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\signals_commonsignals_triangle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgcosine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgCosine" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\signals_commonsignals_cosine.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgfft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgFFTBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\operation_fft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgfftmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgFFTBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgfftmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dynamictrigonometricvalues" xml:space="preserve">
@@ -200,13 +200,13 @@ Click in the Signal tab and select a signal source.</value>
   <data name="uselookuptable" xml:space="preserve">
     <value>Use trigonometric table (faster)</value>
   </data>
-  <data name="imgifft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgIFFTBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgifft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgifftmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgIFFTBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgifftmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgramp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgRampFunctionBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\signals_commonsignals_ramp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rampfinish" xml:space="preserve">
@@ -218,34 +218,34 @@ Click in the Signal tab and select a signal source.</value>
   <data name="returntozero" xml:space="preserve">
     <value>Return value to zero in the end</value>
   </data>
-  <data name="imgdividemini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgDivideMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgdividemini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgmultiplymini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgMultiplyMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgmultiplymini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgoperation" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSampleBasedOperationBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgoperation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgoperationmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSampleBasedOperationBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgoperationMini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgscalardividemini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgScalarDivideMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgscalardividemini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgscalarmultiplymini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgScalarMultiplyMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgscalarmultiplymini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgscalarsubtractmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgScalarSubtractMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgscalarsubtractmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgscalarsummini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgScalarSumMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgscalarsummini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgsubtractmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSubtractMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgsubtractmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgsummini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSumMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgsummini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="columnseparator" xml:space="preserve">
@@ -257,7 +257,7 @@ Click in the Signal tab and select a signal source.</value>
   <data name="ignorefirstrow" xml:space="preserve">
     <value>Ignore first row</value>
   </data>
-  <data name="imgcsvfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgExportToCSVBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\csv.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="samplinginterval" xml:space="preserve">
@@ -269,13 +269,13 @@ Click in the Signal tab and select a signal source.</value>
   <data name="signalstart" xml:space="preserve">
     <value>Signal start time</value>
   </data>
-  <data name="imgwavelet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgWaveletBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgwavelet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgwaveletmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgWaveletBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgwaveletmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgwavelet40x40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgWavelet40x40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgwavelet40x40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
@@ -422,127 +422,124 @@ Click in the Signal tab and select a signal source.</value>
         8/+AAPP/gADz/4AAp/+AAP3/gAD8/4AA+/+AA/r/
 </value>
   </data>
-  <data name="imgsplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSplash" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\splash.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="imgexportcsv" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\csv1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="extensionsize" xml:space="preserve">
     <value>Extension size (0 to use next power of 2)</value>
   </data>
-  <data name="imgdeextend" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgDeextend" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\deextend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgdeextendmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgDeextendMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\deextendimg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgextend" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSignalExtensionBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\extend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgextendmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSignalExtensionBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\extendimg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgtext" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgImportFromTextBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\text.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgtextmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgImportFromTextBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\textmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgupsample" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgUpSampleBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\upsample.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgupsamplemini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgUpSampleBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\upsamplemini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgdwt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgDWTBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgdwt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgdwtmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgDWTBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgdwtmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgidwt" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgIDWTBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgidwt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgidwtmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgIDWTBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgdwtmini1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgabsolute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgAbsoluteValueBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgabsolute.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgabsolutemini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgAbsoluteValueBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgabsolutemini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="sortsamples" xml:space="preserve">
     <value>Sort Samples</value>
   </data>
-  <data name="imgshift" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgShiftBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgshift.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgshiftmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgShiftBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgshiftmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imginvert" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgInvertBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imginvert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imginvertmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgInvertBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imginvertmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgunique" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgUniqueBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgunique.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imguniquemini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgUniqueBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imguniquemini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imginterpolate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgInterpolationBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imginterpolation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imginterpolatemini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgInterpolationBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imginterpolationmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgrepeat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgRepeatBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgrepeat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgrepeatmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgRepeatBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgrepeatmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgdemux" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgDemuxBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgdemux.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgdemuxmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgDemuxBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgdemuxmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgmux" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgMuxBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgmux.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgmuxmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgMuxBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgmuxmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgswitch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSwitchBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgswitch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgswitchmini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="imgSwitchBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgswitchmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconprint" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="iconPrint" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconprint.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconprintpreview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="iconPrintPreview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconprintpreview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="grid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="iconGrid" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\grid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconstretch" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="iconStretch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconstretch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconprintsettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="iconPrintSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconprintsettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Preview" xml:space="preserve">
     <value>Preview</value>
   </data>
-  <data name="iconclose" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="iconClose" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconclose.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="All" xml:space="preserve">
@@ -595,5 +592,25 @@ Click in the Signal tab and select a signal source.</value>
   </data>
   <data name="WaveletStudioDocument" xml:space="preserve">
     <value>Wavelet Studio Document</value>
+  </data>
+  <data name="imgImportFromCSVBlock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\csv2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RestartNeeded" xml:space="preserve">
+    <value>The program needs to be restarted in order to apply new settings.</value>
+  </data>
+  <data name="AvailableLanguages" xml:space="preserve">
+    <value>(default)
+English (United States)
+Portuguese (Brazil)</value>
+  </data>
+  <data name="imgMultiply" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\operation_scalar1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgSum" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgoperation1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

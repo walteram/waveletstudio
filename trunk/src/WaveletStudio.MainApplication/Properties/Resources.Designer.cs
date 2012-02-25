@@ -79,6 +79,17 @@ namespace WaveletStudio.MainApplication.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to (default)
+        ///English (United States)
+        ///Portuguese (Brazil).
+        /// </summary>
+        internal static string AvailableLanguages {
+            get {
+                return ResourceManager.GetString("AvailableLanguages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Column separator.
         /// </summary>
         internal static string columnseparator {
@@ -187,13 +198,6 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap grid {
-            get {
-                object obj = ResourceManager.GetObject("grid", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
         /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
@@ -226,37 +230,51 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap iconclose {
+        internal static System.Drawing.Icon icon {
             get {
-                object obj = ResourceManager.GetObject("iconclose", resourceCulture);
+                object obj = ResourceManager.GetObject("icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap iconClose {
+            get {
+                object obj = ResourceManager.GetObject("iconClose", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap iconprint {
+        internal static System.Drawing.Bitmap iconGrid {
             get {
-                object obj = ResourceManager.GetObject("iconprint", resourceCulture);
+                object obj = ResourceManager.GetObject("iconGrid", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap iconprintpreview {
+        internal static System.Drawing.Bitmap iconPrint {
             get {
-                object obj = ResourceManager.GetObject("iconprintpreview", resourceCulture);
+                object obj = ResourceManager.GetObject("iconPrint", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap iconprintsettings {
+        internal static System.Drawing.Bitmap iconPrintPreview {
             get {
-                object obj = ResourceManager.GetObject("iconprintsettings", resourceCulture);
+                object obj = ResourceManager.GetObject("iconPrintPreview", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap iconstretch {
+        internal static System.Drawing.Bitmap iconPrintSettings {
             get {
-                object obj = ResourceManager.GetObject("iconstretch", resourceCulture);
+                object obj = ResourceManager.GetObject("iconPrintSettings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap iconStretch {
+            get {
+                object obj = ResourceManager.GetObject("iconStretch", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -286,436 +304,450 @@ namespace WaveletStudio.MainApplication.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap imgabsolute {
+        internal static System.Drawing.Bitmap imgAbsoluteValueBlock {
             get {
-                object obj = ResourceManager.GetObject("imgabsolute", resourceCulture);
+                object obj = ResourceManager.GetObject("imgAbsoluteValueBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgabsolutemini {
+        internal static System.Drawing.Bitmap imgAbsoluteValueBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgabsolutemini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgAbsoluteValueBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgconvolution {
+        internal static System.Drawing.Bitmap imgConvolutionBlock {
             get {
-                object obj = ResourceManager.GetObject("imgconvolution", resourceCulture);
+                object obj = ResourceManager.GetObject("imgConvolutionBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgconvolutionmini {
+        internal static System.Drawing.Bitmap imgConvolutionBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgconvolutionmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgConvolutionBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgcosine {
+        internal static System.Drawing.Bitmap imgCosine {
             get {
-                object obj = ResourceManager.GetObject("imgcosine", resourceCulture);
+                object obj = ResourceManager.GetObject("imgCosine", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgcsvfile {
+        internal static System.Drawing.Bitmap imgDeextend {
             get {
-                object obj = ResourceManager.GetObject("imgcsvfile", resourceCulture);
+                object obj = ResourceManager.GetObject("imgDeextend", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgdeextend {
+        internal static System.Drawing.Bitmap imgDeextendMini {
             get {
-                object obj = ResourceManager.GetObject("imgdeextend", resourceCulture);
+                object obj = ResourceManager.GetObject("imgDeextendMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgdeextendmini {
+        internal static System.Drawing.Bitmap imgDemuxBlock {
             get {
-                object obj = ResourceManager.GetObject("imgdeextendmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgDemuxBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgdemux {
+        internal static System.Drawing.Bitmap imgDemuxBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgdemux", resourceCulture);
+                object obj = ResourceManager.GetObject("imgDemuxBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgdemuxmini {
+        internal static System.Drawing.Bitmap imgDivideMini {
             get {
-                object obj = ResourceManager.GetObject("imgdemuxmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgDivideMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgdividemini {
+        internal static System.Drawing.Bitmap imgDownSampleBlock {
             get {
-                object obj = ResourceManager.GetObject("imgdividemini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgDownSampleBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgdownsample {
+        internal static System.Drawing.Bitmap imgDownSampleBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgdownsample", resourceCulture);
+                object obj = ResourceManager.GetObject("imgDownSampleBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgdownsamplemini {
+        internal static System.Drawing.Bitmap imgDWTBlock {
             get {
-                object obj = ResourceManager.GetObject("imgdownsamplemini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgDWTBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgdwt {
+        internal static System.Drawing.Bitmap imgDWTBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgdwt", resourceCulture);
+                object obj = ResourceManager.GetObject("imgDWTBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgdwtmini {
+        internal static System.Drawing.Bitmap imgExportToCSVBlock {
             get {
-                object obj = ResourceManager.GetObject("imgdwtmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgExportToCSVBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgexportcsv {
+        internal static System.Drawing.Bitmap imgFFTBlock {
             get {
-                object obj = ResourceManager.GetObject("imgexportcsv", resourceCulture);
+                object obj = ResourceManager.GetObject("imgFFTBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgextend {
+        internal static System.Drawing.Bitmap imgFFTBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgextend", resourceCulture);
+                object obj = ResourceManager.GetObject("imgFFTBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgextendmini {
+        internal static System.Drawing.Bitmap imgIDWTBlock {
             get {
-                object obj = ResourceManager.GetObject("imgextendmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgIDWTBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgfft {
+        internal static System.Drawing.Bitmap imgIDWTBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgfft", resourceCulture);
+                object obj = ResourceManager.GetObject("imgIDWTBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgfftmini {
+        internal static System.Drawing.Bitmap imgIFFTBlock {
             get {
-                object obj = ResourceManager.GetObject("imgfftmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgIFFTBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgidwt {
+        internal static System.Drawing.Bitmap imgIFFTBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgidwt", resourceCulture);
+                object obj = ResourceManager.GetObject("imgIFFTBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgidwtmini {
+        internal static System.Drawing.Bitmap imgImportFromCSVBlock {
             get {
-                object obj = ResourceManager.GetObject("imgidwtmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgImportFromCSVBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgifft {
+        internal static System.Drawing.Bitmap imgImportFromTextBlock {
             get {
-                object obj = ResourceManager.GetObject("imgifft", resourceCulture);
+                object obj = ResourceManager.GetObject("imgImportFromTextBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgifftmini {
+        internal static System.Drawing.Bitmap imgImportFromTextBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgifftmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgImportFromTextBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imginterpolate {
+        internal static System.Drawing.Bitmap imgInterpolationBlock {
             get {
-                object obj = ResourceManager.GetObject("imginterpolate", resourceCulture);
+                object obj = ResourceManager.GetObject("imgInterpolationBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imginterpolatemini {
+        internal static System.Drawing.Bitmap imgInterpolationBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imginterpolatemini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgInterpolationBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imginvert {
+        internal static System.Drawing.Bitmap imgInvertBlock {
             get {
-                object obj = ResourceManager.GetObject("imginvert", resourceCulture);
+                object obj = ResourceManager.GetObject("imgInvertBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imginvertmini {
+        internal static System.Drawing.Bitmap imgInvertBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imginvertmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgInvertBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgmultiplymini {
+        internal static System.Drawing.Bitmap imgMultiply {
             get {
-                object obj = ResourceManager.GetObject("imgmultiplymini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgMultiply", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgmux {
+        internal static System.Drawing.Bitmap imgMultiplyMini {
             get {
-                object obj = ResourceManager.GetObject("imgmux", resourceCulture);
+                object obj = ResourceManager.GetObject("imgMultiplyMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgmuxmini {
+        internal static System.Drawing.Bitmap imgMuxBlock {
             get {
-                object obj = ResourceManager.GetObject("imgmuxmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgMuxBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgoperation {
+        internal static System.Drawing.Bitmap imgMuxBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgoperation", resourceCulture);
+                object obj = ResourceManager.GetObject("imgMuxBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgoperationmini {
+        internal static System.Drawing.Bitmap imgRampFunctionBlock {
             get {
-                object obj = ResourceManager.GetObject("imgoperationmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgRampFunctionBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgramp {
+        internal static System.Drawing.Bitmap imgRepeatBlock {
             get {
-                object obj = ResourceManager.GetObject("imgramp", resourceCulture);
+                object obj = ResourceManager.GetObject("imgRepeatBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgrepeat {
+        internal static System.Drawing.Bitmap imgRepeatBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgrepeat", resourceCulture);
+                object obj = ResourceManager.GetObject("imgRepeatBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgrepeatmini {
+        internal static System.Drawing.Bitmap imgSampleBasedOperationBlock {
             get {
-                object obj = ResourceManager.GetObject("imgrepeatmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSampleBasedOperationBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgsawtooth {
+        internal static System.Drawing.Bitmap imgSampleBasedOperationBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgsawtooth", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSampleBasedOperationBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgscalar {
+        internal static System.Drawing.Bitmap imgSawtooth {
             get {
-                object obj = ResourceManager.GetObject("imgscalar", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSawtooth", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgscalardividemini {
+        internal static System.Drawing.Bitmap imgScalarDivideMini {
             get {
-                object obj = ResourceManager.GetObject("imgscalardividemini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgScalarDivideMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgscalarmini {
+        internal static System.Drawing.Bitmap imgScalarMultiplyMini {
             get {
-                object obj = ResourceManager.GetObject("imgscalarmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgScalarMultiplyMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgscalarmultiplymini {
+        internal static System.Drawing.Bitmap imgScalarOperationBlock {
             get {
-                object obj = ResourceManager.GetObject("imgscalarmultiplymini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgScalarOperationBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgscalarsubtractmini {
+        internal static System.Drawing.Bitmap imgScalarOperationBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgscalarsubtractmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgScalarOperationBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgscalarsummini {
+        internal static System.Drawing.Bitmap imgScalarSubtractMini {
             get {
-                object obj = ResourceManager.GetObject("imgscalarsummini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgScalarSubtractMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgshift {
+        internal static System.Drawing.Bitmap imgScalarSumMini {
             get {
-                object obj = ResourceManager.GetObject("imgshift", resourceCulture);
+                object obj = ResourceManager.GetObject("imgScalarSumMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgshiftmini {
+        internal static System.Drawing.Bitmap imgShiftBlock {
             get {
-                object obj = ResourceManager.GetObject("imgshiftmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgShiftBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgsine {
+        internal static System.Drawing.Bitmap imgShiftBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgsine", resourceCulture);
+                object obj = ResourceManager.GetObject("imgShiftBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgsplash {
+        internal static System.Drawing.Bitmap imgSignalExtensionBlock {
             get {
-                object obj = ResourceManager.GetObject("imgsplash", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSignalExtensionBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgsquare {
+        internal static System.Drawing.Bitmap imgSignalExtensionBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgsquare", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSignalExtensionBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgsubtractmini {
+        internal static System.Drawing.Bitmap imgSine {
             get {
-                object obj = ResourceManager.GetObject("imgsubtractmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSine", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgsummini {
+        internal static System.Drawing.Bitmap imgSplash {
             get {
-                object obj = ResourceManager.GetObject("imgsummini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSplash", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgswitch {
+        internal static System.Drawing.Bitmap imgSquare {
             get {
-                object obj = ResourceManager.GetObject("imgswitch", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSquare", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgswitchmini {
+        internal static System.Drawing.Bitmap imgSubtractMini {
             get {
-                object obj = ResourceManager.GetObject("imgswitchmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSubtractMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgtext {
+        internal static System.Drawing.Bitmap imgSum {
             get {
-                object obj = ResourceManager.GetObject("imgtext", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSum", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgtextmini {
+        internal static System.Drawing.Bitmap imgSumMini {
             get {
-                object obj = ResourceManager.GetObject("imgtextmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSumMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgtriangle {
+        internal static System.Drawing.Bitmap imgSwitchBlock {
             get {
-                object obj = ResourceManager.GetObject("imgtriangle", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSwitchBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgunique {
+        internal static System.Drawing.Bitmap imgSwitchBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgunique", resourceCulture);
+                object obj = ResourceManager.GetObject("imgSwitchBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imguniquemini {
+        internal static System.Drawing.Bitmap imgTriangle {
             get {
-                object obj = ResourceManager.GetObject("imguniquemini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgTriangle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgupsample {
+        internal static System.Drawing.Bitmap imgUniqueBlock {
             get {
-                object obj = ResourceManager.GetObject("imgupsample", resourceCulture);
+                object obj = ResourceManager.GetObject("imgUniqueBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgupsamplemini {
+        internal static System.Drawing.Bitmap imgUniqueBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgupsamplemini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgUniqueBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgwavelet {
+        internal static System.Drawing.Bitmap imgUpSampleBlock {
             get {
-                object obj = ResourceManager.GetObject("imgwavelet", resourceCulture);
+                object obj = ResourceManager.GetObject("imgUpSampleBlock", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgwavelet40x40 {
+        internal static System.Drawing.Bitmap imgUpSampleBlockMini {
             get {
-                object obj = ResourceManager.GetObject("imgwavelet40x40", resourceCulture);
+                object obj = ResourceManager.GetObject("imgUpSampleBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
-        internal static System.Drawing.Bitmap imgwaveletmini {
+        internal static System.Drawing.Bitmap imgWavelet40x40 {
             get {
-                object obj = ResourceManager.GetObject("imgwaveletmini", resourceCulture);
+                object obj = ResourceManager.GetObject("imgWavelet40x40", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgWaveletBlock {
+            get {
+                object obj = ResourceManager.GetObject("imgWaveletBlock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgWaveletBlockMini {
+            get {
+                object obj = ResourceManager.GetObject("imgWaveletBlockMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -789,6 +821,15 @@ namespace WaveletStudio.MainApplication.Properties {
         internal static string rampstart {
             get {
                 return ResourceManager.GetString("rampstart", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The program needs to be restarted in order to apply new settings..
+        /// </summary>
+        internal static string RestartNeeded {
+            get {
+                return ResourceManager.GetString("RestartNeeded", resourceCulture);
             }
         }
         

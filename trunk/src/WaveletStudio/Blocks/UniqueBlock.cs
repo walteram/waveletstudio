@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using System.Linq;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -44,7 +45,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Name
         {
-            get { return "Unique"; }
+            get { return Resources.Unique; }
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Description
         {
-            get { return "Removes the duplicated samples in a signal."; }
+            get { return Resources.UniqueDescription; }
         }
 
         /// <summary>
@@ -94,8 +95,8 @@ namespace WaveletStudio.Blocks
         {
             root.InputNodes = new List<BlockInputNode>();
             root.OutputNodes = new List<BlockOutputNode>();
-            root.InputNodes.Add(new BlockInputNode(ref root, "Signal", "In"));
-            root.OutputNodes.Add(new BlockOutputNode(ref root, "Output", "Out"));
+            root.InputNodes.Add(new BlockInputNode(ref root, Resources.Signal, Resources.In));
+            root.OutputNodes.Add(new BlockOutputNode(ref root, Resources.Output, Resources.Out));
         }
 
         /// <summary>

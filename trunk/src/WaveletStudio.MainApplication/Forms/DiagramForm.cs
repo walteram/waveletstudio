@@ -127,7 +127,7 @@ namespace WaveletStudio.MainApplication.Forms
             foreach (var type in Utils.GetTypes("WaveletStudio.SignalGeneration"))
             {
                 var signal = (CommonSignalBase)Activator.CreateInstance(type);
-                var item = QControlUtils.CreateCompositeListItem(type.Name, "img" + signal.Name.ToLower(), ApplicationUtils.GetResourceString(signal.Name), "", 1, QPartDirection.Vertical, QPartAlignment.Centered, Color.White);
+                var item = QControlUtils.CreateCompositeListItem(type.Name, "img" + signal.GetAssemblyClassName(), signal.Name, "", 1, QPartDirection.Vertical, QPartAlignment.Centered, Color.White);
                 item.ItemActivated += (sender, args) => CreateSignalGenerationBlock(((QCompositeItem)sender).ItemName);
                 SignalTemplatesComposite.Items.Add(item);
             }
@@ -138,7 +138,7 @@ namespace WaveletStudio.MainApplication.Forms
             var block = new GenerateSignalBlock { TemplateName = templateName };
             Designer.Document.Action = DesignerAction.Connect;
             Designer.Document.LinkType = LinkType.RightAngle;
-            var diagramBlock = new DiagramBlock(ApplicationUtils.GetResourceImage("img" + templateName + "mini", 30, 20), templateName, block, block.InputNodes.ToArray(), block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
+            var diagramBlock = new DiagramBlock(ApplicationUtils.GetResourceImage("img" + templateName + "Mini", 30, 20), block.Name, block, block.InputNodes.ToArray(), block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
             Designer.Document.AddElement(diagramBlock);
             Saved = false;
         }
@@ -150,7 +150,7 @@ namespace WaveletStudio.MainApplication.Forms
             block.CurrentDirectory = CurrentDirectory;
             Designer.Document.Action = DesignerAction.Connect;
             Designer.Document.LinkType = LinkType.RightAngle;
-            var diagramBlock = new DiagramBlock(ApplicationUtils.GetResourceImage("img" + block.Name.ToLower() + "mini", 30, 20), ApplicationUtils.GetResourceString(block.Name), block, block.InputNodes.ToArray(), block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
+            var diagramBlock = new DiagramBlock(ApplicationUtils.GetResourceImage("img" + block.GetAssemblyClassName() + "Mini", 30, 20), ApplicationUtils.GetResourceString(block.Name), block, block.InputNodes.ToArray(), block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
             Designer.Document.AddElement(diagramBlock);
             Saved = false;
         }
@@ -164,7 +164,7 @@ namespace WaveletStudio.MainApplication.Forms
                 if (block.ProcessingType != processingType || type == typeof(GenerateSignalBlock))
                     continue;
 
-                var item = QControlUtils.CreateCompositeListItem(type.FullName, "img" + block.Name.ToLower(), ApplicationUtils.GetResourceString(block.Name), "", 1, QPartDirection.Vertical, QPartAlignment.Centered, Color.White);
+                var item = QControlUtils.CreateCompositeListItem(type.FullName, "img" + block.GetAssemblyClassName(), ApplicationUtils.GetResourceString(block.Name), "", 1, QPartDirection.Vertical, QPartAlignment.Centered, Color.White);
                 
                 item.ItemActivated += (sender, args) => CreateBlock(((QCompositeItem)sender).ItemName);
                 compositeGroup.Items.Add(item);
@@ -175,7 +175,7 @@ namespace WaveletStudio.MainApplication.Forms
         {
             var zoomValue = Convert.ToInt32(Designer.Document.Zoom*10);
             ZoomTrackBar.Value = zoomValue;
-            ZoomLabel.Text = (zoomValue*10) + "%";
+            ZoomLabel.Text = string.Format("{0}%", (zoomValue*10));
         }
 
         private void CopyElementShortcutItemActivated(object sender, QCompositeEventArgs e)
@@ -319,7 +319,7 @@ namespace WaveletStudio.MainApplication.Forms
             var saveDialog = new SaveFileDialog
             {
                 SupportMultiDottedExtensions = false,
-                Filter = "" + "PNG|*.png|JPG|*.jpg|BMP|*.bmp|EMF|*.emf|EXIF|*.exif|GIF|*.gif|TIFF|*.tiff|WMF|*.wmf",
+                Filter = string.Format("PNG|*.png|JPG|*.jpg|BMP|*.bmp|EMF|*.emf|EXIF|*.exif|GIF|*.gif|TIFF|*.tiff|WMF|*.wmf"),
                 RestoreDirectory = true,
                 AddExtension = true
             };
@@ -509,7 +509,7 @@ namespace WaveletStudio.MainApplication.Forms
             _propertiesWindow.PropertyGrid.Refresh();
             _outputWindow.BlockPlot.Block = setupForm.Block;
             _outputWindow.BlockPlot.Refresh();
-            diagramBlock.Refresh(ApplicationUtils.GetResourceImage("img" + setupForm.Block.Name.ToLower() + "mini", 30, 20), ApplicationUtils.GetResourceString(setupForm.Block.Name), setupForm.Block, setupForm.Block.InputNodes.ToArray(), setupForm.Block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
+            diagramBlock.Refresh(ApplicationUtils.GetResourceImage("img" + setupForm.Block.GetAssemblyClassName() + "Mini", 30, 20), ApplicationUtils.GetResourceString(setupForm.Block.Name), setupForm.Block, setupForm.Block.InputNodes.ToArray(), setupForm.Block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
             if (setupForm.InputConnectionsChanged || setupForm.OutputConnectionsChanged)
             {
                 var links = Designer.Document.Elements.GetArray();

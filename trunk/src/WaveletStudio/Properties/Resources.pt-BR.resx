@@ -362,7 +362,7 @@ Clique na aba Sinal e selecione uma origem de sinal.</value>
     <value>Limite</value>
   </data>
   <data name="StaticThresholdDescription" xml:space="preserve">
-    <value>Define o limite que definirá qual bloco será passado para a saída do bloco.</value>
+    <value>Define o limite que definirá qual entrada será passado para a saída do bloco.</value>
   </data>
   <data name="SwitchCriteria" xml:space="preserve">
     <value>Critério</value>
@@ -433,11 +433,17 @@ Clique na aba Sinal e selecione uma origem de sinal.</value>
   <data name="ApproximationLevel" xml:space="preserve">
     <value>Nível de Aproximação</value>
   </data>
+  <data name="Binary" xml:space="preserve">
+    <value>Degrau</value>
+  </data>
   <data name="Convolution" xml:space="preserve">
     <value>Convolução</value>
   </data>
   <data name="ConvolutionDescription" xml:space="preserve">
     <value>Compute convolution of two inputs</value>
+  </data>
+  <data name="Cosine" xml:space="preserve">
+    <value>Cosseno</value>
   </data>
   <data name="DemuxDescription" xml:space="preserve">
     <value>Extrai elementos de um vetor de sinais.</value>
@@ -448,8 +454,11 @@ Clique na aba Sinal e selecione uma origem de sinal.</value>
   <data name="DetailsLevel" xml:space="preserve">
     <value>Nível de Detalhamento</value>
   </data>
+  <data name="Divide" xml:space="preserve">
+    <value>Divisão</value>
+  </data>
   <data name="Downsample" xml:space="preserve">
-    <value>Sub-amostragem</value>
+    <value>Downsample</value>
   </data>
   <data name="DownsampleDescription" xml:space="preserve">
     <value>Diminui a taxa de amostragem de um sinal removendo as amostras em posições pares do sinal.</value>
@@ -462,6 +471,12 @@ Clique na aba Sinal e selecione uma origem de sinal.</value>
   </data>
   <data name="ExportToCSVDescription" xml:space="preserve">
     <value>Exporta um sinal para um arquivo CSV</value>
+  </data>
+  <data name="Extend" xml:space="preserve">
+    <value>Extender</value>
+  </data>
+  <data name="ExtendDescription" xml:space="preserve">
+    <value>Extende o sinal utilizando um dos modos selecionados.</value>
   </data>
   <data name="FFTDescription" xml:space="preserve">
     <value>Calcula a Transformada Rápida de Fourier (FFT) de um sinal</value>
@@ -487,17 +502,104 @@ Clique na aba Sinal e selecione uma origem de sinal.</value>
   <data name="Input" xml:space="preserve">
     <value>Entrada</value>
   </data>
+  <data name="Interpolate" xml:space="preserve">
+    <value>Interpolação</value>
+  </data>
+  <data name="InterpolateDescription" xml:space="preserve">
+    <value>Executa uma interpolação em um sinal.</value>
+  </data>
+  <data name="Invert" xml:space="preserve">
+    <value>Inverter</value>
+  </data>
+  <data name="InvertDescription" xml:space="preserve">
+    <value>Inverte um signal.</value>
+  </data>
   <data name="Line" xml:space="preserve">
     <value>Linha</value>
   </data>
+  <data name="Multiply" xml:space="preserve">
+    <value>Multiplicação</value>
+  </data>
+  <data name="MuxDescription" xml:space="preserve">
+    <value>Extrai elementos de um vetor de sinais.</value>
+  </data>
+  <data name="NormalDescription" xml:space="preserve">
+    <value>Calcula a distribuição normal de um sinal.</value>
+  </data>
+  <data name="OperationBlockDescription" xml:space="preserve">
+    <value>Soma, subtrai, multiplica ou divide dois sinais entre sí.</value>
+  </data>
+  <data name="Ramp" xml:space="preserve">
+    <value>Rampa</value>
+  </data>
+  <data name="RampDescription" xml:space="preserve">
+    <value>Gera uma função rampa.</value>
+  </data>
   <data name="Reconstruction" xml:space="preserve">
     <value>Reconstrução</value>
+  </data>
+  <data name="Repeat" xml:space="preserve">
+    <value>Repetir</value>
+  </data>
+  <data name="RepeatDescription" xml:space="preserve">
+    <value>Repete partes de um sinal.</value>
+  </data>
+  <data name="Sawtooth" xml:space="preserve">
+    <value>Serra</value>
+  </data>
+  <data name="Scalar" xml:space="preserve">
+    <value>Constante</value>
+  </data>
+  <data name="ScalarDescription" xml:space="preserve">
+    <value>Multiplica, soma, subtrai ou divide o sinal por um valor constante.</value>
+  </data>
+  <data name="Shift" xml:space="preserve">
+    <value>Deslocar</value>
+  </data>
+  <data name="ShiftDescription" xml:space="preserve">
+    <value>Desloca um sinal no tempo.</value>
+  </data>
+  <data name="Sine" xml:space="preserve">
+    <value>Seno</value>
+  </data>
+  <data name="Square" xml:space="preserve">
+    <value>Quadrado</value>
+  </data>
+  <data name="Subtract" xml:space="preserve">
+    <value>Subtração</value>
+  </data>
+  <data name="Sum" xml:space="preserve">
+    <value>Soma</value>
+  </data>
+  <data name="Switch" xml:space="preserve">
+    <value>Comutador</value>
+  </data>
+  <data name="SwitchDescription" xml:space="preserve">
+    <value>Seleciona a saída entre a primeira e a terceira entradas utilizando o valor da segunda entrada ou o valor da propriedade Limite.</value>
   </data>
   <data name="TemplateNotFound" xml:space="preserve">
     <value>O modelo {0} não existe.</value>
   </data>
   <data name="TextBlockDescription" xml:space="preserve">
     <value>Gera um sinal através de um texto.</value>
+  </data>
+  <data name="Triangle" xml:space="preserve">
+    <value>Triangular</value>
+  </data>
+  <data name="Unique" xml:space="preserve">
+    <value>Únicos</value>
+  </data>
+  <data name="UniqueDescription" xml:space="preserve">
+    <value>Remove amostras com valores duplicados no sinal.</value>
+  </data>
+  <data name="Upsample" xml:space="preserve">
+    <value>Upsample</value>
+  </data>
+  <data name="UpsampleDescription" xml:space="preserve">
+    <value>Aumenta a taxa de amostragem do sinal inserindo zeros entre as amostras.</value>
+  </data>
+  <data name="WaveletDescription" xml:space="preserve">
+    <value>Decomposição Wavelet através da Transformada Wavelet Discreta (DWT).</value>
   </data>
   <data name="WaveletNameNotFound" xml:space="preserve">
     <value>A wavelet-mãe {0} não existe.</value>

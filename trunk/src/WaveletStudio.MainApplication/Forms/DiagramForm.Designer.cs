@@ -98,8 +98,8 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // qCompositeButton2
             // 
-            resources.ApplyResources(this.qCompositeButton2, "qCompositeButton2");
             this.qCompositeButton2.Icon = ((System.Drawing.Icon)(resources.GetObject("qCompositeButton2.Icon")));
+            resources.ApplyResources(this.qCompositeButton2, "qCompositeButton2");
             // 
             // qCompositeGroup16
             // 
@@ -174,11 +174,11 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // qRibbonCaption1
             // 
-            resources.ApplyResources(this.qRibbonCaption1, "qRibbonCaption1");
             this.qRibbonCaption1.ApplicationButton = this.AppMenuButton;
             this.qRibbonCaption1.Configuration.ApplicationButtonAreaConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 4, 0, -8);
             this.qRibbonCaption1.Configuration.IconConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
             this.qRibbonCaption1.LaunchBar = this.RibbonLaunchBar;
+            resources.ApplyResources(this.qRibbonCaption1, "qRibbonCaption1");
             this.qRibbonCaption1.Name = "qRibbonCaption1";
             // 
             // AppMenuButton
@@ -193,7 +193,6 @@ namespace WaveletStudio.MainApplication.Forms
             this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
             this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
             this.RibbonLaunchBar.Configuration.CustomizeItemConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.RibbonLaunchBar, "RibbonLaunchBar");
             this.RibbonLaunchBar.Items.Add(this.CutElementShortcut);
             this.RibbonLaunchBar.Items.Add(this.CopyElementShortcut);
             this.RibbonLaunchBar.Items.Add(this.PasteElementShortcut);
@@ -248,7 +247,6 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // Ribbon
             // 
-            resources.ApplyResources(this.Ribbon, "Ribbon");
             this.Ribbon.ActiveTabPage = this.SignalRibbonPage;
             this.Ribbon.Controls.Add(this.SignalRibbonPage);
             this.Ribbon.Controls.Add(this.OperationsRibbonPage);
@@ -256,6 +254,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.Ribbon.Controls.Add(this.TransformsRibbonPage);
             this.Ribbon.Controls.Add(this.RoutingRibbonPage);
             this.Ribbon.Cursor = System.Windows.Forms.Cursors.Default;
+            resources.ApplyResources(this.Ribbon, "Ribbon");
             this.Ribbon.Form = this;
             this.Ribbon.Name = "Ribbon";
             this.Ribbon.PersistGuid = new System.Guid("f549a281-ecb8-4c57-ab72-08ae6e49b352");
@@ -263,8 +262,8 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // SignalRibbonPage
             // 
-            resources.ApplyResources(this.SignalRibbonPage, "SignalRibbonPage");
             this.SignalRibbonPage.ButtonOrder = 0;
+            resources.ApplyResources(this.SignalRibbonPage, "SignalRibbonPage");
             this.SignalRibbonPage.Items.Add(this.SignalSourcePanel);
             this.SignalRibbonPage.Items.Add(this.SignalTemplatePanel);
             this.SignalRibbonPage.Name = "SignalRibbonPage";
@@ -273,8 +272,8 @@ namespace WaveletStudio.MainApplication.Forms
             // SignalSourcePanel
             // 
             this.SignalSourcePanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.SignalSourcePanel, "SignalSourcePanel");
             this.SignalSourcePanel.Items.Add(this.SignalSourceComposite);
+            resources.ApplyResources(this.SignalSourcePanel, "SignalSourcePanel");
             // 
             // SignalSourceComposite
             // 
@@ -332,8 +331,8 @@ namespace WaveletStudio.MainApplication.Forms
             // SignalTemplatePanel
             // 
             this.SignalTemplatePanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.SignalTemplatePanel, "SignalTemplatePanel");
             this.SignalTemplatePanel.Items.Add(this.SignalTemplatesComposite);
+            resources.ApplyResources(this.SignalTemplatePanel, "SignalTemplatePanel");
             // 
             // SignalTemplatesComposite
             // 
@@ -390,8 +389,8 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // OperationsRibbonPage
             // 
-            resources.ApplyResources(this.OperationsRibbonPage, "OperationsRibbonPage");
             this.OperationsRibbonPage.ButtonOrder = 1;
+            resources.ApplyResources(this.OperationsRibbonPage, "OperationsRibbonPage");
             this.OperationsRibbonPage.Items.Add(this.OperationsFunctionsPanel);
             this.OperationsRibbonPage.Name = "OperationsRibbonPage";
             this.OperationsRibbonPage.PersistGuid = new System.Guid("e11d0cdc-ac5f-4668-9777-2c1ea1c812c5");
@@ -399,8 +398,8 @@ namespace WaveletStudio.MainApplication.Forms
             // OperationsFunctionsPanel
             // 
             this.OperationsFunctionsPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.OperationsFunctionsPanel, "OperationsFunctionsPanel");
             this.OperationsFunctionsPanel.Items.Add(this.OperationsFunctionsComposite);
+            resources.ApplyResources(this.OperationsFunctionsPanel, "OperationsFunctionsPanel");
             // 
             // OperationsFunctionsComposite
             // 
@@ -457,8 +456,8 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // ExportDataRibbonPage
             // 
-            resources.ApplyResources(this.ExportDataRibbonPage, "ExportDataRibbonPage");
             this.ExportDataRibbonPage.ButtonOrder = 4;
+            resources.ApplyResources(this.ExportDataRibbonPage, "ExportDataRibbonPage");
             this.ExportDataRibbonPage.Items.Add(this.ExportDataPanel);
             this.ExportDataRibbonPage.Name = "ExportDataRibbonPage";
             this.ExportDataRibbonPage.PersistGuid = new System.Guid("9272663a-8526-411c-a907-cafff24991eb");
@@ -466,8 +465,8 @@ namespace WaveletStudio.MainApplication.Forms
             // ExportDataPanel
             // 
             this.ExportDataPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.ExportDataPanel, "ExportDataPanel");
             this.ExportDataPanel.Items.Add(this.ExportToFileComposite);
+            resources.ApplyResources(this.ExportDataPanel, "ExportDataPanel");
             // 
             // ExportToFileComposite
             // 
@@ -524,8 +523,8 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // TransformsRibbonPage
             // 
-            resources.ApplyResources(this.TransformsRibbonPage, "TransformsRibbonPage");
             this.TransformsRibbonPage.ButtonOrder = 3;
+            resources.ApplyResources(this.TransformsRibbonPage, "TransformsRibbonPage");
             this.TransformsRibbonPage.Items.Add(this.TransformsPanel);
             this.TransformsRibbonPage.Name = "TransformsRibbonPage";
             this.TransformsRibbonPage.PersistGuid = new System.Guid("c37e8ecf-4bd2-491d-8c7b-fa771275272a");
@@ -533,8 +532,8 @@ namespace WaveletStudio.MainApplication.Forms
             // TransformsPanel
             // 
             this.TransformsPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.TransformsPanel, "TransformsPanel");
             this.TransformsPanel.Items.Add(this.TransformsComposite);
+            resources.ApplyResources(this.TransformsPanel, "TransformsPanel");
             // 
             // TransformsComposite
             // 
@@ -591,8 +590,8 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // RoutingRibbonPage
             // 
-            resources.ApplyResources(this.RoutingRibbonPage, "RoutingRibbonPage");
             this.RoutingRibbonPage.ButtonOrder = 2;
+            resources.ApplyResources(this.RoutingRibbonPage, "RoutingRibbonPage");
             this.RoutingRibbonPage.Items.Add(this.RoutingRibbonPane);
             this.RoutingRibbonPage.Name = "RoutingRibbonPage";
             this.RoutingRibbonPage.PersistGuid = new System.Guid("ebcc77fc-8bf7-4096-993c-4c79ff80b437");
@@ -600,8 +599,8 @@ namespace WaveletStudio.MainApplication.Forms
             // RoutingRibbonPane
             // 
             this.RoutingRibbonPane.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.RoutingRibbonPane, "RoutingRibbonPane");
             this.RoutingRibbonPane.Items.Add(this.RoutingComposite);
+            resources.ApplyResources(this.RoutingRibbonPane, "RoutingRibbonPane");
             // 
             // RoutingComposite
             // 
@@ -671,17 +670,17 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // RightDockBar
             // 
-            resources.ApplyResources(this.RightDockBar, "RightDockBar");
             this.RightDockBar.ButtonAppearance.BorderWidth = 0;
             this.RightDockBar.ColorScheme.DockBarBorder.SetColor("Default", System.Drawing.SystemColors.Control, false);
+            resources.ApplyResources(this.RightDockBar, "RightDockBar");
             this.RightDockBar.Name = "RightDockBar";
             this.RightDockBar.PersistGuid = new System.Guid("68794aaa-e00f-4e0f-9682-fee069bb40c0");
             // 
             // CenterPanel
             // 
-            resources.ApplyResources(this.CenterPanel, "CenterPanel");
             this.CenterPanel.Controls.Add(this.Designer);
             this.CenterPanel.Controls.Add(this.BottomPanel);
+            resources.ApplyResources(this.CenterPanel, "CenterPanel");
             this.CenterPanel.Name = "CenterPanel";
             // 
             // Designer
@@ -693,11 +692,11 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // BottomPanel
             // 
-            resources.ApplyResources(this.BottomPanel, "BottomPanel");
             this.BottomPanel.Controls.Add(this.ZoomLabel);
             this.BottomPanel.Controls.Add(this.ZoomPlusButton);
             this.BottomPanel.Controls.Add(this.ZoomMinusButton);
             this.BottomPanel.Controls.Add(this.ZoomTrackBar);
+            resources.ApplyResources(this.BottomPanel, "BottomPanel");
             this.BottomPanel.Name = "BottomPanel";
             // 
             // ZoomLabel
@@ -745,7 +744,6 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             // diagramFormProperties1
             // 
-            resources.ApplyResources(this.diagramFormProperties1, "diagramFormProperties1");
             this.diagramFormProperties1.CanClose = false;
             this.diagramFormProperties1.CanDockBottom = false;
             this.diagramFormProperties1.CanDockOnOtherControlBottom = false;
@@ -753,6 +751,7 @@ namespace WaveletStudio.MainApplication.Forms
             this.diagramFormProperties1.CanDockTop = false;
             this.diagramFormProperties1.DockPosition = Qios.DevSuite.Components.QDockPosition.None;
             this.diagramFormProperties1.Icon = ((System.Drawing.Icon)(resources.GetObject("diagramFormProperties1.Icon")));
+            resources.ApplyResources(this.diagramFormProperties1, "diagramFormProperties1");
             this.diagramFormProperties1.Name = "diagramFormProperties1";
             this.diagramFormProperties1.Owner = null;
             this.diagramFormProperties1.PersistGuid = new System.Guid("1915c329-99d5-4532-a105-ca14e4e34bdb");

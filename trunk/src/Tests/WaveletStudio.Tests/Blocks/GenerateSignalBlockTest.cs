@@ -19,6 +19,7 @@ namespace WaveletStudio.Tests.Blocks
             newSignal.Execute();
 
             Assert.IsNotNull(signalBlock.Name);
+            Assert.AreEqual("Binary", signalBlock.GetAssemblyClassName());
             Assert.AreEqual("A=1, F=60, φ=0, D=0; x=0...5, fs=1", signalBlock.Description);            
             Assert.IsNotNull(signalBlock.ProcessingType);
 

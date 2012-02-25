@@ -33,12 +33,12 @@ EnableISX=true
 
 [Files]
 Source: "C:\Program Files\ISTool\isxdl.dll"; Flags: dontcopy
-Source: "..\WaveletStudio.MainApplication\icon.ico"; DestDir: "{app}\Designer"
-Source: "website.url"; DestDir: "{app}\Designer"
-Source: "Files\*.*"; DestDir: "{app}"; Flags: createallsubdirs recursesubdirs
+Source: "..\WaveletStudio.MainApplication\icon.ico"; DestDir: "{app}\Designer"; Flags: ignoreversion replacesameversion
+Source: "website.url"; DestDir: "{app}\Designer"; Flags: ignoreversion replacesameversion
+Source: "Files\*.*"; DestDir: "{app}"; Flags: ignoreversion createallsubdirs recursesubdirs replacesameversion
 
 [Run]
-Filename: "{app}\Designer\WaveletStudio.MainApplication.exe"; WorkingDir: "{app}\Designer\"; Flags: postinstall runascurrentuser skipifsilent; Description: "Abrir o Wavelet Studio Designer"
+Filename: "{app}\Designer\WaveletStudio.MainApplication.exe"; WorkingDir: "{app}\Designer\"; Flags: nowait postinstall skipifsilent; Description: "Abrir o Wavelet Studio Designer"
 
 [Messages]
 brazilianportuguese.WelcomeLabel1=Bem-vindo ao Assistente de Instalação do [name]
@@ -62,7 +62,7 @@ Name: "build.bat"; Flags: abortonerror cmdprompt redirectoutput
 
 [PostCompile]
 Name: "cleanup.bat"; Flags: abortonerror cmdprompt redirectoutput
-
+ 
 [Icons]
 Name: "{group}\Wavelet Studio Designer"; Filename: "{app}\Designer\WaveletStudio.MainApplication.exe"; WorkingDir: "{app}\Designer"; Flags: runmaximized; IconFilename: "{app}\Designer\icon.ico"
 Name: "{group}\Website"; Filename: "{app}\Designer\website.url"

@@ -76,7 +76,6 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Template to be used
         /// </summary>
-        [Parameter]
         public string TemplateName
         {
             get
@@ -193,6 +192,15 @@ namespace WaveletStudio.Blocks
             block._template = _template.Clone();            
             block.Execute();            
             return block;
+        }
+
+        /// <summary>
+        /// Gets the name of the class
+        /// </summary>
+        /// <returns></returns>
+        public override string GetAssemblyClassName()
+        {
+            return _template.GetAssemblyClassName();
         }
 
         /// <summary>

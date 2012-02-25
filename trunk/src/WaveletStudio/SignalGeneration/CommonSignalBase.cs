@@ -140,6 +140,15 @@ namespace WaveletStudio.SignalGeneration
         }
 
         /// <summary>
+        /// Gets the name of the class
+        /// </summary>
+        /// <returns></returns>
+        public virtual string GetAssemblyClassName()
+        {
+            return GetType().Name;
+        }
+
+        /// <summary>
         /// Constructor
         /// </summary>
         protected CommonSignalBase()

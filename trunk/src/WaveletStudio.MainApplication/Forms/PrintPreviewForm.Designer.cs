@@ -276,7 +276,7 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             this.qCompositeImage1.Configuration.AlignmentHorizontal = Qios.DevSuite.Components.QPartAlignment.Centered;
             this.qCompositeImage1.Configuration.MaximumSize = new System.Drawing.Size(64, 48);
-            this.qCompositeImage1.Image = global::WaveletStudio.MainApplication.Properties.Resources.iconprint;
+            this.qCompositeImage1.Image = global::WaveletStudio.MainApplication.Properties.Resources.iconPrint;
             // 
             // PrintText
             // 
@@ -378,7 +378,7 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             this.qCompositeImage5.Configuration.AlignmentHorizontal = Qios.DevSuite.Components.QPartAlignment.Centered;
             this.qCompositeImage5.Configuration.MaximumSize = new System.Drawing.Size(64, 48);
-            this.qCompositeImage5.Image = global::WaveletStudio.MainApplication.Properties.Resources.iconprintsettings;
+            this.qCompositeImage5.Image = global::WaveletStudio.MainApplication.Properties.Resources.iconPrintSettings;
             // 
             // qCompositeText8
             // 
@@ -472,7 +472,7 @@ namespace WaveletStudio.MainApplication.Forms
             // qCompositeImage2
             // 
             this.qCompositeImage2.Configuration.MaximumSize = new System.Drawing.Size(64, 48);
-            this.qCompositeImage2.Image = global::WaveletStudio.MainApplication.Properties.Resources.grid;
+            this.qCompositeImage2.Image = global::WaveletStudio.MainApplication.Properties.Resources.iconGrid;
             // 
             // qCompositeText1
             // 
@@ -567,7 +567,7 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             this.qCompositeImage3.Configuration.AlignmentHorizontal = Qios.DevSuite.Components.QPartAlignment.Centered;
             this.qCompositeImage3.Configuration.MaximumSize = new System.Drawing.Size(64, 48);
-            this.qCompositeImage3.Image = global::WaveletStudio.MainApplication.Properties.Resources.iconstretch;
+            this.qCompositeImage3.Image = global::WaveletStudio.MainApplication.Properties.Resources.iconStretch;
             // 
             // qCompositeText2
             // 
@@ -992,7 +992,7 @@ namespace WaveletStudio.MainApplication.Forms
             // 
             this.qCompositeImage4.Configuration.AlignmentHorizontal = Qios.DevSuite.Components.QPartAlignment.Centered;
             this.qCompositeImage4.Configuration.MaximumSize = new System.Drawing.Size(64, 48);
-            this.qCompositeImage4.Image = global::WaveletStudio.MainApplication.Properties.Resources.iconclose;
+            this.qCompositeImage4.Image = global::WaveletStudio.MainApplication.Properties.Resources.iconClose;
             // 
             // qCompositeText3
             // 

@@ -37,6 +37,7 @@ namespace WaveletStudio.MainApplication.Controls
             {
                 textsGroup.Items.Add(new QCompositeText {  Title = text, Configuration = { AlignmentHorizontal = textAlignment } });
             }
+            image.Configuration.AlignmentHorizontal = QPartAlignment.Centered;
             itemGroup.Items.Add(image);
             itemGroup.Items.Add(textsGroup);
             item.Items.Add(itemGroup);
