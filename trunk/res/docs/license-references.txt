@@ -1,0 +1,14 @@
+Wavelet Studio Designer Dependencies:
+
+- Diagram.Net:
+Diagram.Net is a free open-source diagramming library for .Net, released under the terms of the Apache License 2.0 available at http://www.apache.org/licenses/LICENSE-2.0
+Its source code was changed during the development of Wavelet Studio and is available in our SVN at https://waveletstudio.svn.codeplex.com/svn/labs/DiagramControl
+The original source code is available at http://code.google.com/p/diagramnet/
+
+- ZedGraph
+ZedGraph is a .Net class library for graphics, released under the terms of the GNU Library or Lesser General Public License (LGPL) available at http://www.gnu.org/licenses/lgpl-2.1.html
+More information is available at http://sourceforge.net/projects/zedgraph/
+
+QIOS DevSuite
+The QIOS DevSuite is a free .Net Control Library. More information is available at http://qiosdevsuite.com
+

@@ -3,7 +3,7 @@ WizardImageFile=compiler:WizModernImage-IS.bmp
 AppName=Wavelet Studio
 AppVersion=1.1.0
 ExtraDiskSpaceRequired=500
-SetupIconFile=..\WaveletStudio.MainApplication\icon.ico
+SetupIconFile=..\WaveletStudio.Designer\icon.ico
 DefaultDirName={pf}\WaveletStudio
 AppPublisher=WaveletStudio
 AppPublisherURL=http://www.waveletstudio.net/
@@ -21,8 +21,8 @@ OutputBaseFilename=WaveletStudioSetup
 [Registry]
 Root: HKCR; Subkey: ".wsd"; ValueType: string; ValueName: ""; ValueData: "Wavelet Studio Document"; Flags: uninsdeletevalue
 Root: HKCR; Subkey: "Wavelet Studio Document"; ValueType: string; ValueName: ""; ValueData: "Wavelet Studio Document"; Flags: uninsdeletekey
-Root: HKCR; Subkey: "Wavelet Studio Document\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Designer\WaveletStudio.MainApplication.exe,0"
-Root: HKCR; Subkey: "Wavelet Studio Document\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\Designer\WaveletStudio.MainApplication.exe"" ""%1"""
+Root: HKCR; Subkey: "Wavelet Studio Document\DefaultIcon"; ValueType: string; ValueName: ""; ValueData: "{app}\Designer\WaveletStudio.Designer.exe,0"
+Root: HKCR; Subkey: "Wavelet Studio Document\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\Designer\WaveletStudio.Designer.exe"" ""%1"""
 
 [Languages]
 Name: "brazilianportuguese"; MessagesFile: "compiler:Languages\BrazilianPortuguese.isl"; LicenseFile: "..\..\res\docs\license-pt.txt"
@@ -33,12 +33,13 @@ EnableISX=true
 
 [Files]
 Source: "C:\Program Files\ISTool\isxdl.dll"; Flags: dontcopy
-Source: "..\WaveletStudio.MainApplication\icon.ico"; DestDir: "{app}\Designer"; Flags: ignoreversion replacesameversion
+Source: "..\WaveletStudio.Designer\icon.ico"; DestDir: "{app}\Designer"; Flags: ignoreversion replacesameversion
 Source: "website.url"; DestDir: "{app}\Designer"; Flags: ignoreversion replacesameversion
 Source: "Files\*.*"; DestDir: "{app}"; Flags: ignoreversion createallsubdirs recursesubdirs replacesameversion
+Source: "..\..\res\docs\license-*.txt"; DestDir: "{app}"; Flags: ignoreversion createallsubdirs recursesubdirs replacesameversion
 
 [Run]
-Filename: "{app}\Designer\WaveletStudio.MainApplication.exe"; WorkingDir: "{app}\Designer\"; Flags: nowait postinstall skipifsilent; Description: "Abrir o Wavelet Studio Designer"
+Filename: "{app}\Designer\WaveletStudio.Designer.exe"; WorkingDir: "{app}\Designer\"; Flags: nowait postinstall skipifsilent; Description: "{cm:OpenDesigner}"
 
 [Messages]
 brazilianportuguese.WelcomeLabel1=Bem-vindo ao Assistente de Instalação do [name]
@@ -52,6 +53,8 @@ english.DownloadingDotNet=Downloading Microsoft .NET Framework 4.0
 brazilianportuguese.DownloadingDotNet=Baixando o Microsoft .NET Framework 4.0
 english.DownloadingDotNetDescription=This Application needs to install the Microsoft .NET Framework 4.0. Please wait while setup is downloading extra files to your computer.
 brazilianportuguese.DownloadingDotNetDescription=Este programa requer que o Microsoft .NET Framework 4.0 (Full) esteja instalado. Por favor, aguarde enquanto a instalação faz o download dos arquivos necessários.
+english.OpenDesigner=Run the Wavelet Studio Designer
+brazilianportuguese.OpenDesigner=Executar o Wavelet Studio Designer
 
 [ThirdPartySettings]
 CompileLogMethod=append
@@ -64,7 +67,7 @@ Name: "build.bat"; Flags: abortonerror cmdprompt redirectoutput
 Name: "cleanup.bat"; Flags: abortonerror cmdprompt redirectoutput
  
 [Icons]
-Name: "{group}\Wavelet Studio Designer"; Filename: "{app}\Designer\WaveletStudio.MainApplication.exe"; WorkingDir: "{app}\Designer"; Flags: runmaximized; IconFilename: "{app}\Designer\icon.ico"
+Name: "{group}\Wavelet Studio Designer"; Filename: "{app}\Designer\WaveletStudio.Designer.exe"; WorkingDir: "{app}\Designer"; Flags: runmaximized; IconFilename: "{app}\Designer\icon.ico"
 Name: "{group}\Website"; Filename: "{app}\Designer\website.url"
 
 [Code]

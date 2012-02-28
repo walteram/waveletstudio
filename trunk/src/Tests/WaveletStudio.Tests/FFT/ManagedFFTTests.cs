@@ -76,7 +76,7 @@ namespace WaveletStudio.Tests.FFT
         /// <param name="arr1"></param>
         /// <param name="arr2"></param>
         /// <returns></returns>
-        static bool Compare(IList<double> arr1, IList<double> arr2)
+        static bool Compare(ICollection<double> arr1, IList<double> arr2)
         {
             if (arr1.Count != arr2.Count)
                 return false;
