@@ -226,7 +226,7 @@ namespace DiagramNet.Elements.Controllers
 		public void SetLabelPosition()
 		{
 			var label = ((ILabelElement) El).Label;
-
+            
 			if (El.Lines.Length == 2)
 			{
 				label.Location = El.Lines[0].Point2;

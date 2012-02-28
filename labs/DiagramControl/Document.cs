@@ -156,7 +156,7 @@ namespace DiagramNet
             SelectedNodes.EnabledCalc = true;
         }
 
-        public void DeleteLink(BaseLinkElement lnk)
+        public void DeleteLink(BaseLinkElement lnk, bool callHandler = true)
         {
             if (lnk == null) return;
             lnk.Connector1.RemoveLink(lnk);
@@ -166,6 +166,8 @@ namespace DiagramNet
                 Elements.Remove(lnk);
             if (SelectedElements.Contains(lnk))
                 SelectedElements.Remove(lnk);
+            if (callHandler)
+                OnLinkRemoved(new ElementEventArgs(lnk));
             OnAppearancePropertyChanged(new EventArgs());
         }
         #endregion
@@ -755,6 +757,19 @@ namespace DiagramNet
 
             if (AppearancePropertyChanged != null)
                 AppearancePropertyChanged(this, e);
+            
+        }
+
+        public delegate void ElementEventHandler(object sender, ElementEventArgs e);
+        
+        // Appearance Property Changed
+        [field: NonSerialized]
+        public event ElementEventHandler LinkRemoved;
+
+        protected virtual void OnLinkRemoved(ElementEventArgs e)
+        {
+            if (LinkRemoved != null)
+                LinkRemoved(this, e);
             
         }
 

@@ -28,7 +28,7 @@ namespace DiagramNet.Elements
 
 	    private bool _autoSize;
 		
-		[NonSerialized] private Font _font = new Font(FontFamily.GenericSansSerif, 10);
+		[NonSerialized] private Font _font = new Font(FontFamily.GenericSansSerif, 8);
 		
 		[NonSerialized]
 		private readonly StringFormat _format = new StringFormat(StringFormatFlags.NoWrap);

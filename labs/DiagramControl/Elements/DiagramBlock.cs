@@ -264,7 +264,7 @@ namespace DiagramNet.Elements
         {
             if (e.Link.Connector1.IsStart == e.Link.Connector2.IsStart)
             {
-                designer.Document.DeleteLink(e.Link);
+                designer.Document.DeleteLink(e.Link, false);
                 return false;
             }
             if (e.Link.Connector1.IsStart)
@@ -281,7 +281,7 @@ namespace DiagramNet.Elements
                 var link = (BaseLinkElement)designer.Document.Elements[i];
                 if (link.Connector2 == e.Link.Connector2)
                 {
-                    designer.Document.DeleteLink(link);
+                    designer.Document.DeleteLink(link, false);
                 }
             }
 
