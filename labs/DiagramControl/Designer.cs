@@ -273,7 +273,7 @@ namespace DiagramNet
                             // Double-click to edit Label
                             if ((e.Clicks == 2) && (SelectedElement is ILabelElement))
                             {
-                                StartEditLabel();
+                                //StartEditLabel();
                                 break;
                             }
 
@@ -493,7 +493,7 @@ namespace DiagramNet
 
             RestartInitValues();
 
-            //base.Invalidate();
+            base.Invalidate();
             Invalidate();
 
             base.OnMouseUp (e);
@@ -669,6 +669,18 @@ namespace DiagramNet
             }
         }
 
+        // Selection
+        [Category("Element")]
+        public event ElementEventHandler LinkRemoved;
+
+        protected virtual void OnLinkRemoved(ElementEventArgs e)
+        {
+            if (LinkRemoved != null)
+            {
+                LinkRemoved(this, e);
+            }
+        }
+
         #endregion
 
         #endregion
@@ -701,6 +713,11 @@ namespace DiagramNet
         private void DocumentElementSelection(object sender, ElementSelectionEventArgs e)
         {
             OnElementSelection(e);
+        }
+
+        private void DocumentLinkRemoved(object sender, ElementEventArgs e)
+        {
+            OnLinkRemoved(e);
         }
         #endregion
 
@@ -1132,6 +1149,7 @@ namespace DiagramNet
             _document.AppearancePropertyChanged+=DocumentAppearancePropertyChanged;
             _document.ElementPropertyChanged += DocumentElementPropertyChanged;
             _document.ElementSelection += DocumentElementSelection;
+            _document.LinkRemoved += DocumentLinkRemoved;
         }
 
         private void MoveElement(Keys key)

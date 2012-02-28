@@ -89,6 +89,8 @@ namespace WaveletStudio.MainApplication.Forms
             Designer.ElementResized += DesignerElementResized;
             Designer.ElementConnected += DesignerElementConnected;
             Designer.ElementSelection += DesignerElementSelection;
+            Designer.LinkRemoved += DesignerLinkRemoved;
+
         }
     
         private void DiagramFormLoad(object sender, EventArgs e)
@@ -470,6 +472,21 @@ namespace WaveletStudio.MainApplication.Forms
             if (ZoomTrackBar.Value<30)
             ZoomTrackBar.Value += 1;
         }
+        
+        private void DesignerLinkRemoved(object sender, ElementEventArgs e)
+        {
+            var node1 = (BlockNodeBase)((BaseLinkElement)e.Element).Connector1.State;
+            var node2 = (BlockNodeBase)((BaseLinkElement)e.Element).Connector2.State;
+            node1.ConnectingNode = null;
+            node2.ConnectingNode = null;
+            foreach (var node in node2.Root.OutputNodes)
+            {
+                node.Object.Clear();
+            }
+            node1.Root.Execute();
+            node2.Root.Execute();
+            _outputWindow.BlockPlot.Refresh();
+        }
 
         private void DesignerElementConnected(object sender, ElementConnectEventArgs e)
         {
@@ -520,7 +537,7 @@ namespace WaveletStudio.MainApplication.Forms
                         continue;
                     if (link.Connector1.ParentElement == diagramBlock || link.Connector2.ParentElement == diagramBlock)  //if (setupForm.OutputConnectionsChanged && link.Connector1.ParentElement == diagramBlock || setupForm.InputConnectionsChanged && link.Connector2.ParentElement == diagramBlock)
                     {
-                        Designer.Document.DeleteLink(link);
+                        Designer.Document.DeleteLink(link, false);
                     }
                 }
             }            
