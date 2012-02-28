@@ -26,7 +26,7 @@ namespace WaveletStudio.Tests.Blocks.CustomAttributes
                 foreach (PropertyDescriptor property in properties)
                 {
                     var descriptor = new GlobalizedPropertyDescriptor(property);
-                    var parameterAttribute = property.Attributes.Cast<Attribute>().FirstOrDefault(attribute => attribute.GetType().Equals(typeof (Parameter))) as Parameter;
+                    var parameterAttribute = property.Attributes.Cast<Attribute>().FirstOrDefault(attribute => attribute.GetType() == typeof (Parameter)) as Parameter;
                     if(parameterAttribute == null)
                         continue;
                     if(!string.IsNullOrEmpty(parameterAttribute.NameResourceName))

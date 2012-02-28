@@ -76,7 +76,6 @@ namespace WaveletStudio.Tests.Blocks.CustomAttributes
 
         public void OnComponentChanged()
         {
-            return;
         }
 
         public IContainer Container
