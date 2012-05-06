@@ -2,4 +2,9 @@
 TestResults
 *.vsp
 *.txt
+</Value></Property><Property><Name>bugtraq:number</Name><Value>true</Value></Property><Property><Name>svn:ignore</Name><Value>*.suo
+TestResults
+*.vsp
+*.txt
+*.coverage
 </Value></Property><Property><Name>bugtraq:number</Name><Value>true</Value></Property></Properties></ItemProperties>

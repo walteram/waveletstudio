@@ -53,6 +53,7 @@ namespace WaveletStudio.Tests.Wavelet
         }
 
         [TestMethod]
+        [DeploymentItem("sag.csv")]
         public void TestGetDisturbancesSag()
         {
             var samples = ReadFile("sag.csv");
@@ -65,7 +66,7 @@ namespace WaveletStudio.Tests.Wavelet
         
         private double[] ReadFile(string filename)
         {
-            var path = Path.Combine(Environment.CurrentDirectory, @"..\..\..\..\res\testdata\", filename);
+            var path = Path.Combine(Environment.CurrentDirectory, filename);
             return File.ReadAllText(path).Split(',').Select(it => double.Parse(it.Replace(".", ","))).ToArray();
         }
     }
