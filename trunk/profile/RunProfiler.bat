@@ -1,9 +1,9 @@
 @echo off
 
-call 1_InstrumentON.bat
+call 1_InstrumentON.bat %1
 
-call 2_PerformanceON.bat
+call 2_PerformanceON.bat %1
 
-call 3_RunTestsDebug.bat
+call 3_RunTestsDebug.bat %1
 
-call 4_PerformanceOFF.bat
+call 4_PerformanceOFF.bat %1
