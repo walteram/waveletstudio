@@ -147,7 +147,7 @@ namespace WaveletStudio.Blocks
                                       new BlockInputNode(ref root, Resources.Input + "2", Resources.In + "2"),
                                       new BlockInputNode(ref root, Resources.Input + "3", Resources.In + "3")
                                   };
-            root.OutputNodes = new List<BlockOutputNode> { new BlockOutputNode(ref root, Resources.Output, Resources.Out) };                                
+            root.OutputNodes = BlockOutputNode.CreateSingleOutput(ref root);            
         }
 
         /// <summary>

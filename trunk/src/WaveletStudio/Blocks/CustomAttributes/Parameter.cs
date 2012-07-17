@@ -33,7 +33,12 @@ namespace WaveletStudio.Blocks.CustomAttributes
         /// <summary>
         /// Resource name of the description of the parameter.
         /// </summary>
-        public string DescriptionResourceName { get; set; }        
+        public string DescriptionResourceName { get; set; }
+
+        /// <summary>
+        /// When value is changed, GUI should refresh the block
+        /// </summary>
+        public bool CausesRefresh { get; set; }
 
         /// <summary>
         /// Default constructor

@@ -169,10 +169,7 @@ namespace WaveletStudio.Blocks
                                       new BlockInputNode(ref root, Resources.Approximation, "Apx"),
                                       new BlockInputNode(ref root, Resources.Details, "Det")
                                   };
-            root.OutputNodes = new List<BlockOutputNode>
-                                   {
-                                       new BlockOutputNode(ref root, Resources.Signal, Resources.Out)
-                                   };
+            root.OutputNodes = BlockOutputNode.CreateSingleOutputSignal(ref root);
         }
 
         /// <summary>

@@ -16,6 +16,8 @@
 */
 
 using System;
+using System.Collections.Generic;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -71,6 +73,34 @@ namespace WaveletStudio.Blocks
         public BlockInputNode Clone()
         {
             return (BlockInputNode)MemberwiseClone();
+        }
+
+        /// <summary>
+        /// Create a single input node in a block
+        /// </summary>
+        internal static List<BlockInputNode> CreateSingleInputSignal(ref BlockBase root)
+        {
+            return new List<BlockInputNode> { new BlockInputNode(ref root, Resources.Signal, Resources.In) };
+        }
+
+        /// <summary>
+        /// Create a single input node in a block
+        /// </summary>
+        internal static List<BlockInputNode> CreateSingleInput(ref BlockBase root)
+        {
+            return new List<BlockInputNode> { new BlockInputNode(ref root, Resources.Input, Resources.In) };
+        }
+
+        /// <summary>
+        /// Create two default input nodes in a block
+        /// </summary>
+        internal static List<BlockInputNode> CreateDoubledInput(ref BlockBase root)
+        {
+            return new List<BlockInputNode>
+                                  {
+                                      new BlockInputNode(ref root, Resources.Signal+"1", "S1"),
+                                      new BlockInputNode(ref root, Resources.Signal+"2", "S2")
+                                  };
         }
     }
 }

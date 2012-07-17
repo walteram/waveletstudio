@@ -21685,10 +21685,10 @@
     <value>Functions</value>
   </data>
   <data name="OperationsRibbonPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 29</value>
+    <value>2, 28</value>
   </data>
   <data name="OperationsRibbonPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>940, 105</value>
+    <value>940, 106</value>
   </data>
   <data name="OperationsRibbonPage.Text" xml:space="preserve">
     <value>Operations</value>
@@ -21712,10 +21712,10 @@
     <value>Export to File</value>
   </data>
   <data name="ExportDataRibbonPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 29</value>
+    <value>2, 28</value>
   </data>
   <data name="ExportDataRibbonPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>940, 105</value>
+    <value>940, 106</value>
   </data>
   <data name="ExportDataRibbonPage.Text" xml:space="preserve">
     <value>Export Data</value>
@@ -21739,10 +21739,10 @@
     <value>Transforms</value>
   </data>
   <data name="TransformsRibbonPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 29</value>
+    <value>2, 28</value>
   </data>
   <data name="TransformsRibbonPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>940, 105</value>
+    <value>940, 106</value>
   </data>
   <data name="TransformsRibbonPage.Text" xml:space="preserve">
     <value>Transforms</value>
@@ -21765,14 +21765,17 @@
   <data name="RoutingRibbonPane.Title" xml:space="preserve">
     <value>Signal Routing</value>
   </data>
+  <data name="LogicalRibbonPane.Title" xml:space="preserve">
+    <value>Logic Operations</value>
+  </data>
   <data name="RoutingRibbonPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 29</value>
+    <value>2, 28</value>
   </data>
   <data name="RoutingRibbonPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>940, 105</value>
+    <value>940, 106</value>
   </data>
   <data name="RoutingRibbonPage.Text" xml:space="preserve">
-    <value>Routing</value>
+    <value>Routing/Logical</value>
   </data>
   <data name="&gt;&gt;RoutingRibbonPage.Name" xml:space="preserve">
     <value>RoutingRibbonPage</value>
@@ -21820,7 +21823,7 @@
     <value>Designer</value>
   </data>
   <data name="&gt;&gt;Designer.Type" xml:space="preserve">
-    <value>DiagramNet.Designer, DiagramNet, Version=0.5.0.11380, Culture=neutral, PublicKeyToken=null</value>
+    <value>DiagramNet.Designer, DiagramNet, Version=0.5.0.2687, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;Designer.Parent" xml:space="preserve">
     <value>CenterPanel</value>
@@ -25482,6 +25485,18 @@
     <value>RoutingComposite</value>
   </data>
   <data name="&gt;&gt;RoutingComposite.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;LogicalRibbonPane.Name" xml:space="preserve">
+    <value>LogicalRibbonPane</value>
+  </data>
+  <data name="&gt;&gt;LogicalRibbonPane.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.Ribbon.QRibbonPanel, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;LogicComposite.Name" xml:space="preserve">
+    <value>LogicComposite</value>
+  </data>
+  <data name="&gt;&gt;LogicComposite.Type" xml:space="preserve">
     <value>Qios.DevSuite.Components.QCompositeGroup, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

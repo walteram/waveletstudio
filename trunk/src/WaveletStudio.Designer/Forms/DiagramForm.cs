@@ -28,6 +28,7 @@ using DiagramNet.Events;
 using Qios.DevSuite.Components;
 using Qios.DevSuite.Components.Ribbon;
 using WaveletStudio.Blocks;
+using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Designer.Controls;
 using WaveletStudio.Designer.Properties;
 using WaveletStudio.SignalGeneration;
@@ -81,6 +82,7 @@ namespace WaveletStudio.Designer.Forms
             _propertiesWindow = new DiagramFormProperties {Owner = this, Size = new Size(300, 300)};
             _propertiesWindow.DockWindow(RightDockBar);
             _propertiesWindow.PropertyGrid.PropertyValueChanged += (o, args) => _outputWindow.BlockPlot.Refresh();
+            _propertiesWindow.OnPropertyChanged += PropertyValueChanged;
             _outputWindow.DockWindow(RightDockBar);
             _propertiesWindow.DockWindow(_outputWindow, QDockOrientation.Vertical, true);
 
@@ -91,8 +93,8 @@ namespace WaveletStudio.Designer.Forms
             Designer.ElementSelection += DesignerElementSelection;
             Designer.LinkRemoved += DesignerLinkRemoved;
 
-        }
-    
+        }      
+
         private void DiagramFormLoad(object sender, EventArgs e)
         {
             ConfigureDesigner();
@@ -117,6 +119,7 @@ namespace WaveletStudio.Designer.Forms
             LoadBlocks(SignalTemplatesComposite, BlockBase.ProcessingTypeEnum.CreateSignal);
             LoadBlocks(OperationsFunctionsComposite, BlockBase.ProcessingTypeEnum.Operation);
             LoadBlocks(RoutingComposite, BlockBase.ProcessingTypeEnum.Routing);
+            LoadBlocks(LogicComposite, BlockBase.ProcessingTypeEnum.Logic);
             LoadBlocks(TransformsComposite, BlockBase.ProcessingTypeEnum.Transform);
             LoadBlocks(ExportToFileComposite, BlockBase.ProcessingTypeEnum.Export);
             Ribbon.ActivateNextTabPage(true);
@@ -154,6 +157,12 @@ namespace WaveletStudio.Designer.Forms
             Designer.Document.LinkType = LinkType.RightAngle;
             var diagramBlock = new DiagramBlock(ApplicationUtils.GetResourceImage("img" + block.GetAssemblyClassName() + "Mini", 30, 20), ApplicationUtils.GetResourceString(block.Name), block, block.InputNodes.ToArray(), block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
             Designer.Document.AddElement(diagramBlock);
+            Designer.Document.ClearSelection();
+            Designer.Document.SelectElement(diagramBlock);
+            if (block.CausesRefresh)
+            {
+                RefreshSelectedDiagramBlock();
+            }
             Saved = false;
         }
 
@@ -546,6 +555,28 @@ namespace WaveletStudio.Designer.Forms
             Saved = false;
         }
 
+        private void PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        {
+            var descriptor = e.ChangedItem.PropertyDescriptor as GlobalizedPropertyDescriptor;
+            if (descriptor == null || !descriptor.CausesRefresh || Designer.Document.SelectedElements.Count == 0)
+            {
+                return;
+            }
+            RefreshSelectedDiagramBlock();
+        }
+
+        private void RefreshSelectedDiagramBlock()
+        {
+            var diagramBlock = Designer.Document.SelectedElements[0] as DiagramBlock;
+            if (diagramBlock == null)
+            {
+                return;
+            }
+            var block = (BlockBase)diagramBlock.State;
+            block.CurrentDirectory = CurrentDirectory;
+            diagramBlock.Refresh(ApplicationUtils.GetResourceImage("img" + block.GetAssemblyClassName() + "Mini", 30, 20), ApplicationUtils.GetResourceString(block.Name), block, block.InputNodes.ToArray(), block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
+        }
+
         private void DesignerElementMoved(object sender, ElementEventArgs e)
         {
             Saved = false;
@@ -559,7 +590,13 @@ namespace WaveletStudio.Designer.Forms
         private void DesignerElementSelection(object sender, ElementSelectionEventArgs e)
         {
             if (e.Elements.Count == 0)
+            {
+                _propertiesWindow.PropertyGrid.SelectedObject = null;
+                _propertiesWindow.PropertyGrid.Refresh();
+                _outputWindow.BlockPlot.Block = null;
+                _outputWindow.BlockPlot.Refresh();
                 return;
+            }
 
             foreach (var element in e.Elements)
             {

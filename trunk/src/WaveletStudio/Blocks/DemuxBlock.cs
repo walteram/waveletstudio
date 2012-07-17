@@ -122,7 +122,7 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, Resources.Input, Resources.In) };
+            root.InputNodes = BlockInputNode.CreateSingleInput(ref root);            
             root.OutputNodes = new List<BlockOutputNode>();
             for (var i = 1; i <= _outputCount; i++)
             {

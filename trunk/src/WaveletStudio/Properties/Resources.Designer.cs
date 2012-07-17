@@ -737,6 +737,96 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to And.
+        /// </summary>
+        public static string LogicAnd {
+            get {
+                return ResourceManager.GetString("LogicAnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not.
+        /// </summary>
+        public static string LogicNot {
+            get {
+                return ResourceManager.GetString("LogicNot", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not And.
+        /// </summary>
+        public static string LogicNotAnd {
+            get {
+                return ResourceManager.GetString("LogicNotAnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Or.
+        /// </summary>
+        public static string LogicNotOr {
+            get {
+                return ResourceManager.GetString("LogicNotOr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Not Xor.
+        /// </summary>
+        public static string LogicNotXor {
+            get {
+                return ResourceManager.GetString("LogicNotXor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logic Port.
+        /// </summary>
+        public static string LogicOperation {
+            get {
+                return ResourceManager.GetString("LogicOperation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Point-by-point logic operators (AND, OR, NAND, NOR, XOR, NXOR, NOT)..
+        /// </summary>
+        public static string LogicOperationBlockDescription {
+            get {
+                return ResourceManager.GetString("LogicOperationBlockDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Operator.
+        /// </summary>
+        public static string LogicOperator {
+            get {
+                return ResourceManager.GetString("LogicOperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Or.
+        /// </summary>
+        public static string LogicOr {
+            get {
+                return ResourceManager.GetString("LogicOr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Xor.
+        /// </summary>
+        public static string LogicXor {
+            get {
+                return ResourceManager.GetString("LogicXor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mean.
         /// </summary>
         public static string Mean {

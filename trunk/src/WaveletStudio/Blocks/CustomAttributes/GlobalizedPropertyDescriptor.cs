@@ -32,6 +32,7 @@ namespace WaveletStudio.Blocks.CustomAttributes
         private readonly PropertyDescriptor _basePropertyDescriptor;
         private String _localizedName = "";
         private String _localizedDescription = "";
+        public bool CausesRefresh { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -39,6 +40,10 @@ namespace WaveletStudio.Blocks.CustomAttributes
         public GlobalizedPropertyDescriptor(PropertyDescriptor basePropertyDescriptor) : base(basePropertyDescriptor)
         {
             _basePropertyDescriptor = basePropertyDescriptor;
+            if (_basePropertyDescriptor!= null)
+            {
+                CausesRefresh = (from Attribute attribute in _basePropertyDescriptor.Attributes where (attribute.GetType() == typeof(Parameter)) select ((Parameter)attribute).CausesRefresh).FirstOrDefault();
+            }
         }
 
         /// <summary>

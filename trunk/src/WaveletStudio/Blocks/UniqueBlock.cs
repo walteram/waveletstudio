@@ -16,7 +16,6 @@
 */
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
@@ -93,10 +92,8 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode>();
-            root.OutputNodes = new List<BlockOutputNode>();
-            root.InputNodes.Add(new BlockInputNode(ref root, Resources.Signal, Resources.In));
-            root.OutputNodes.Add(new BlockOutputNode(ref root, Resources.Output, Resources.Out));
+            root.InputNodes = BlockInputNode.CreateSingleInputSignal(ref root);
+            root.OutputNodes = BlockOutputNode.CreateSingleOutput(ref root);
         }
 
         /// <summary>

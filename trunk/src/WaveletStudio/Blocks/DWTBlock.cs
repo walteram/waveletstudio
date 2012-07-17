@@ -175,7 +175,7 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, Resources.Signal, Resources.In) };
+            root.InputNodes = BlockInputNode.CreateSingleInputSignal(ref root);
             root.OutputNodes = new List<BlockOutputNode>
                                    {
                                        new BlockOutputNode(ref root, Resources.Approximation, "Apx"),

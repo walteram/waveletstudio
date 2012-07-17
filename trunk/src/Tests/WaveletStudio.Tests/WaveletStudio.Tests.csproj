@@ -51,6 +51,7 @@
     <Compile Include="Blocks\BlocksConnectionTest.cs" />
     <Compile Include="Blocks\ConvolutionBlockTest.cs" />
     <Compile Include="Blocks\AbsoluteValueBlockTest.cs" />
+    <Compile Include="Blocks\LogicOperationBlockTest.cs" />
     <Compile Include="Blocks\ScaleBlockTest.cs" />
     <Compile Include="Blocks\CustomAttributes\GlobalizedObjectTest.cs" />
     <Compile Include="Blocks\CustomAttributes\GlobalizedPropertyDescriptorTest.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="FFT\ManagedFFTTests.cs" />
     <Compile Include="Functions\WaveMathConvolutionTests.cs" />
     <Compile Include="Functions\WaveMathInterpolationTests.cs" />
+    <Compile Include="Functions\WaveMathLogicOperationTests.cs" />
     <Compile Include="Functions\WaveMathOperationTests.cs" />
     <Compile Include="Functions\WaveMathStatisticsTests.cs" />
     <Compile Include="Functions\WaveMathRoutingTests.cs" />

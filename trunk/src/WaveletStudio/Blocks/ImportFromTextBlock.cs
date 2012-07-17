@@ -170,7 +170,7 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, Resources.Signal, "S")};
+            root.OutputNodes = BlockOutputNode.CreateSingleOutputSignal(ref root);
         }
 
 

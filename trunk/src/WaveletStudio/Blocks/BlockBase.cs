@@ -114,6 +114,10 @@ namespace WaveletStudio.Blocks
             /// </summary>
             Operation,
             /// <summary>
+            /// Logic operations
+            /// </summary>
+            Logic,
+            /// <summary>
             /// The block insert disturbances or noise to the signal
             /// </summary>
             InsertDisturbance,

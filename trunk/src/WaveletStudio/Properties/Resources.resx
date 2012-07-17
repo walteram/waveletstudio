@@ -622,4 +622,34 @@ Click in the Signal tab and select a signal source.</value>
   <data name="TimeScalingFactorDescription" xml:space="preserve">
     <value>Factor to be used in time scaling. If the value is setted to 1, no scaling will be applied to the time variable.</value>
   </data>
+  <data name="LogicAnd" xml:space="preserve">
+    <value>And</value>
+  </data>
+  <data name="LogicNot" xml:space="preserve">
+    <value>Not</value>
+  </data>
+  <data name="LogicNotAnd" xml:space="preserve">
+    <value>Not And</value>
+  </data>
+  <data name="LogicNotOr" xml:space="preserve">
+    <value>Not Or</value>
+  </data>
+  <data name="LogicNotXor" xml:space="preserve">
+    <value>Not Xor</value>
+  </data>
+  <data name="LogicOperator" xml:space="preserve">
+    <value>{0} Operator</value>
+  </data>
+  <data name="LogicOr" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="LogicXor" xml:space="preserve">
+    <value>Xor</value>
+  </data>
+  <data name="LogicOperation" xml:space="preserve">
+    <value>Logic Port</value>
+  </data>
+  <data name="LogicOperationBlockDescription" xml:space="preserve">
+    <value>Point-by-point logic operators (AND, OR, NAND, NOR, XOR, NXOR, NOT).</value>
+  </data>
 </root>
