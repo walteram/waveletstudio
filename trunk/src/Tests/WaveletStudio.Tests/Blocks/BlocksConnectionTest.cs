@@ -60,6 +60,7 @@ namespace WaveletStudio.Tests.Blocks
             AssertBlock(new DemuxBlock{OutputCount = 1});
             AssertBlock(new SwitchBlock());
             AssertBlock(new ScaleBlock());
+            AssertBlock(new LogicOperationBlock());
         }
 
         private static void AssertBlock(BlockBase block)

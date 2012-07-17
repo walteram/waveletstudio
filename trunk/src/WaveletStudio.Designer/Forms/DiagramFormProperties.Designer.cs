@@ -41,6 +41,7 @@ namespace WaveletStudio.Designer.Forms
             this.PropertyGrid.Name = "PropertyGrid";
             this.PropertyGrid.PropertySort = System.Windows.Forms.PropertySort.NoSort;
             this.PropertyGrid.ToolbarVisible = false;
+            this.PropertyGrid.PropertyValueChanged += new System.Windows.Forms.PropertyValueChangedEventHandler(this.PropertyGridPropertyValueChanged);
             // 
             // DiagramFormProperties
             // 

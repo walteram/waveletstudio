@@ -318,6 +318,20 @@ namespace WaveletStudio.Designer.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgAnd {
+            get {
+                object obj = ResourceManager.GetObject("imgAnd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgAndMini {
+            get {
+                object obj = ResourceManager.GetObject("imgAndMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgConvolutionBlock {
             get {
                 object obj = ResourceManager.GetObject("imgConvolutionBlock", resourceCulture);
@@ -524,6 +538,41 @@ namespace WaveletStudio.Designer.Properties {
         internal static System.Drawing.Bitmap imgMuxBlockMini {
             get {
                 object obj = ResourceManager.GetObject("imgMuxBlockMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgNotAndMini {
+            get {
+                object obj = ResourceManager.GetObject("imgNotAndMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgNotMini {
+            get {
+                object obj = ResourceManager.GetObject("imgNotMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgNotOrMini {
+            get {
+                object obj = ResourceManager.GetObject("imgNotOrMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgNotXorMini {
+            get {
+                object obj = ResourceManager.GetObject("imgNotXorMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgOrMini {
+            get {
+                object obj = ResourceManager.GetObject("imgOrMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -762,6 +811,13 @@ namespace WaveletStudio.Designer.Properties {
         internal static System.Drawing.Bitmap imgWaveletBlockMini {
             get {
                 object obj = ResourceManager.GetObject("imgWaveletBlockMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgXorMini {
+            get {
+                object obj = ResourceManager.GetObject("imgXorMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

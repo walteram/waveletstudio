@@ -619,4 +619,28 @@ Portuguese (Brazil)</value>
   <data name="imgScaleBlockMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgscalemini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="imgAnd" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imglogicoperationblock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgAndMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgandmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgNotAndMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgnotandmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgNotMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgnotmini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgNotOrMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgnotormini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgNotXorMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgnotxormini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgOrMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgormini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgXorMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgxormini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -30,7 +30,7 @@ namespace WaveletStudio.Tests.Blocks
             scalarBlock.Operation = WaveMath.OperationEnum.Multiply;
             signalBlock.Execute();
             Assert.AreEqual("0.0 1.5 0.0 1.5 0.0", scalarBlock.OutputNodes[0].Object.ToString(1));
-            Assert.AreEqual("Multiply", scalarBlock.GetAssemblyClassName());
+            Assert.AreEqual("ScalarMultiply", scalarBlock.GetAssemblyClassName());
 
             scalarBlock.Operation = WaveMath.OperationEnum.Subtract;
             signalBlock.Execute();

@@ -16,7 +16,6 @@
 */
 
 using System;
-using System.Collections.Generic;
 using System.Resources;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
@@ -45,12 +44,8 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode>
-                                  {
-                                      new BlockInputNode(ref root, Resources.Signal+"1", "S1"),
-                                      new BlockInputNode(ref root, Resources.Signal+"2", "S2")
-                                  };
-            root.OutputNodes = new List<BlockOutputNode> {new BlockOutputNode(ref root, Resources.Output, Resources.Out)};
+            root.InputNodes = BlockInputNode.CreateDoubledInput(ref root);
+            root.OutputNodes = BlockOutputNode.CreateSingleOutput(ref root);
         }
 
         private string _name = Resources.Operation;
@@ -80,7 +75,7 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Math operation to be used
         /// </summary>
-        [Parameter]
+        [Parameter(CausesRefresh = true)]
         public WaveMath.OperationEnum Operation
         {
             get { return _operation; }

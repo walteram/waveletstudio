@@ -138,6 +138,24 @@ namespace WaveletStudio.Blocks.CustomAttributes
         }
 
         /// <summary>
+        /// Returns the properties of a type.
+        /// </summary>
+        public bool CausesRefresh
+        { 
+            get
+            {
+                var properties = GetProperties();
+                foreach (var property in properties)
+                {
+                    var globalized = property as GlobalizedPropertyDescriptor;
+                    if (globalized.CausesRefresh)
+                        return true;
+                }
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Return the owner (this)
         /// </summary>
         /// <param name="pd"></param>

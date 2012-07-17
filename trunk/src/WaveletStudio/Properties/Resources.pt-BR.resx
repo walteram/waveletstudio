@@ -622,4 +622,34 @@ Clique na aba Sinal e selecione uma origem de sinal.</value>
   <data name="TimeScalingFactorDescription" xml:space="preserve">
     <value>Fator utilizado na escala do tempo. Se o valor for definido como 1, o eixo do tempo não será escalado.</value>
   </data>
+  <data name="LogicAnd" xml:space="preserve">
+    <value>And</value>
+  </data>
+  <data name="LogicNot" xml:space="preserve">
+    <value>Not</value>
+  </data>
+  <data name="LogicNotAnd" xml:space="preserve">
+    <value>Not And</value>
+  </data>
+  <data name="LogicNotOr" xml:space="preserve">
+    <value>Not Or</value>
+  </data>
+  <data name="LogicNotXor" xml:space="preserve">
+    <value>Not Xor</value>
+  </data>
+  <data name="LogicOperator" xml:space="preserve">
+    <value>Operador {0}</value>
+  </data>
+  <data name="LogicOr" xml:space="preserve">
+    <value>Or</value>
+  </data>
+  <data name="LogicXor" xml:space="preserve">
+    <value>Xor</value>
+  </data>
+  <data name="LogicOperation" xml:space="preserve">
+    <value>Porta Lógica</value>
+  </data>
+  <data name="LogicOperationBlockDescription" xml:space="preserve">
+    <value>Operações lógicas (AND, OR, NAND, NOR, XOR, NXOR, NOT).</value>
+  </data>
 </root>

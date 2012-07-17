@@ -299,6 +299,6 @@ namespace WaveletStudio.Functions
             /// Divide
             /// </summary>
             Divide
-        }
+        }        
     }
 }

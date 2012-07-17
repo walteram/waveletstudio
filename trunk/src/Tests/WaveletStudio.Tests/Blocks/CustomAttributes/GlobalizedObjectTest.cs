@@ -19,12 +19,16 @@ namespace WaveletStudio.Tests.Blocks.CustomAttributes
             Assert.IsNull(block.GetDefaultProperty());
             Assert.IsNull(block.GetEditor(typeof(WaveletBlock)));
             Assert.AreEqual(0, block.GetEvents().Count);
-            Assert.IsTrue(block.GetProperties().Count > 0);            
+            Assert.IsTrue(block.GetProperties().Count > 0);
+            Assert.IsFalse(block.CausesRefresh);
             Assert.AreEqual(block, block.GetPropertyOwner(new PropertyDescriptorMock("WaveletName", new Attribute[] { })));
 
             block = new WaveletBlock();
             Assert.AreEqual(0, block.GetEvents(new Attribute[]{}).Count);
             Assert.IsTrue(block.GetProperties(new Attribute[] { }).Count > 0);
+
+            var block2 = new ScalarOperationBlock();
+            Assert.IsTrue(block2.CausesRefresh);
         }
     }
 }

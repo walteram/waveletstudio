@@ -15,13 +15,25 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>. 
 */
 
+using System.Windows.Forms;
+
 namespace WaveletStudio.Designer.Forms
 {
     public partial class DiagramFormProperties
     {
+        public event PropertyValueChangedEventHandler OnPropertyChanged;
+
         public DiagramFormProperties()
         {
             InitializeComponent();
+        }
+
+        private void PropertyGridPropertyValueChanged(object s, PropertyValueChangedEventArgs e)
+        {
+            if (OnPropertyChanged != null)
+            {
+                OnPropertyChanged(s, e);
+            }            
         }
     }
 }

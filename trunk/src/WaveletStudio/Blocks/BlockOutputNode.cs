@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
@@ -77,6 +78,22 @@ namespace WaveletStudio.Blocks
         public BlockOutputNode Clone()
         {
             return (BlockOutputNode)MemberwiseClone();
-        }        
+        }
+
+        /// <summary>
+        /// Create a single output node in a block
+        /// </summary>
+        internal static List<BlockOutputNode> CreateSingleOutput(ref BlockBase root)
+        {
+            return new List<BlockOutputNode> { new BlockOutputNode(ref root, Resources.Output, Resources.Out) };
+        }
+        
+        /// <summary>
+        /// Create a single output node in a block
+        /// </summary>
+        internal static List<BlockOutputNode> CreateSingleOutputSignal(ref BlockBase root)
+        {
+            return new List<BlockOutputNode> { new BlockOutputNode(ref root, Resources.Signal, Resources.Out) };
+        }
     }
 }

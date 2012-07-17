@@ -72,7 +72,9 @@
             this.ZoomPlusButton = new Qios.DevSuite.Components.QButton();
             this.ZoomMinusButton = new Qios.DevSuite.Components.QButton();
             this.ZoomTrackBar = new System.Windows.Forms.TrackBar();
-            this.diagramFormProperties1 = new DiagramFormProperties();
+            this.diagramFormProperties1 = new WaveletStudio.Designer.Forms.DiagramFormProperties();
+            this.LogicalRibbonPane = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
+            this.LogicComposite = new Qios.DevSuite.Components.QCompositeGroup();
             ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
             this.Ribbon.SuspendLayout();
@@ -591,6 +593,7 @@
             this.RoutingRibbonPage.ButtonOrder = 2;
             resources.ApplyResources(this.RoutingRibbonPage, "RoutingRibbonPage");
             this.RoutingRibbonPage.Items.Add(this.RoutingRibbonPane);
+            this.RoutingRibbonPage.Items.Add(this.LogicalRibbonPane);
             this.RoutingRibbonPage.Name = "RoutingRibbonPage";
             this.RoutingRibbonPage.PersistGuid = new System.Guid("ebcc77fc-8bf7-4096-993c-4c79ff80b437");
             // 
@@ -757,6 +760,65 @@
             this.diagramFormProperties1.SlidingTime = 200;
             this.diagramFormProperties1.WindowGroupName = "";
             // 
+            // LogicalRibbonPane
+            // 
+            this.LogicalRibbonPane.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
+            this.LogicalRibbonPane.Items.Add(this.LogicComposite);
+            resources.ApplyResources(this.LogicalRibbonPane, "LogicalRibbonPane");
+            // 
+            // LogicComposite
+            // 
+            this.LogicComposite.ColorScheme.ButtonPressedBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
+            this.LogicComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
+            this.LogicComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
+            this.LogicComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
+            this.LogicComposite.ColorScheme.ButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.LogicComposite.ColorScheme.ButtonPressedBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
+            this.LogicComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
+            this.LogicComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
+            this.LogicComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
+            this.LogicComposite.ColorScheme.ButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.LogicComposite.ColorScheme.CompositeItemBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBorder.SetColor("Default", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
+            this.LogicComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.LogicComposite.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
+            this.LogicComposite.Configuration.ShrinkHorizontal = true;
+            this.LogicComposite.Configuration.ShrinkVertical = true;
+            this.LogicComposite.Configuration.StretchHorizontal = true;
+            this.LogicComposite.Configuration.StretchVertical = true;
+            // 
             // DiagramForm
             // 
             resources.ApplyResources(this, "$this");
@@ -833,6 +895,8 @@
         private Qios.DevSuite.Components.QButton ZoomPlusButton;
         private Qios.DevSuite.Components.QButton ZoomMinusButton;
         private System.Windows.Forms.TrackBar ZoomTrackBar;
-        internal DiagramNet.Designer Designer;              
+        internal DiagramNet.Designer Designer;
+        private Qios.DevSuite.Components.Ribbon.QRibbonPanel LogicalRibbonPane;
+        private Qios.DevSuite.Components.QCompositeGroup LogicComposite;              
     }
 }

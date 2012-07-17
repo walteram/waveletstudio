@@ -16,7 +16,6 @@
 */
 
 using System;
-using System.Collections.Generic;
 using System.Resources;
 using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Functions;
@@ -46,8 +45,8 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, Resources.Signal, Resources.In) };
-            root.OutputNodes = new List<BlockOutputNode> { new BlockOutputNode(ref root, Resources.Output, Resources.Out) };
+            root.InputNodes = BlockInputNode.CreateSingleInputSignal(ref root);
+            root.OutputNodes = BlockOutputNode.CreateSingleOutput(ref root);
         }
 
         private string _name = Resources.Scalar;
@@ -79,7 +78,7 @@ namespace WaveletStudio.Blocks
         /// <summary>
         /// Math operation to be used
         /// </summary>
-        [Parameter]
+        [Parameter(CausesRefresh = true)]
         public WaveMath.OperationEnum Operation
         {
             get { return _operation; }
@@ -158,7 +157,7 @@ namespace WaveletStudio.Blocks
         /// <returns></returns>
         public override string GetAssemblyClassName()
         {
-            return Enum.GetName(typeof(WaveMath.OperationEnum), Operation);
+            return "Scalar" + Enum.GetName(typeof(WaveMath.OperationEnum), Operation);
         }
     }
 }
