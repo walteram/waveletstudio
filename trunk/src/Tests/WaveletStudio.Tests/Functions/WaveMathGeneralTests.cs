@@ -182,5 +182,16 @@ namespace WaveletStudio.Tests.Functions
             Assert.AreEqual(-1, output.Start);
             Assert.AreEqual(0.5, output.Finish);
         }
+
+        [TestMethod]
+        public void TestLimitRange()
+        {
+            Assert.AreEqual(10, WaveMath.LimitRange(5, 10, 20));
+            Assert.AreEqual(200, WaveMath.LimitRange(500, 100, 200));
+            Assert.AreEqual(3000, WaveMath.LimitRange(3000, 1000, 3500));
+            Assert.AreEqual(4000, WaveMath.LimitRange(4000, 4000, 4001));
+            Assert.AreEqual(5000, WaveMath.LimitRange(5000, 4000, 5000));
+            Assert.AreEqual(6000, WaveMath.LimitRange(6000, 6000, 6000));
+        }
     }
 }

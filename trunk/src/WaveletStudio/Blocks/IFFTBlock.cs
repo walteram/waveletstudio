@@ -79,7 +79,7 @@ namespace WaveletStudio.Blocks
             foreach (var inputSignal in inputNode.Object)
             {
                 var ifft = (double[])inputSignal.Samples.Clone();
-                ManagedFFT.FFT(ref ifft, false, Mode);
+                ManagedFFT.Instance.FFT(ref ifft, false, Mode);
                 ifft = WaveMath.DownSample(ifft, 2, true);
 
                 var signal = new Signal(ifft)

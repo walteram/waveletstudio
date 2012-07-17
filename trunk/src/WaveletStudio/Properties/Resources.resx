@@ -604,4 +604,22 @@ Click in the Signal tab and select a signal source.</value>
   <data name="WaveletNameNotFound" xml:space="preserve">
     <value>The wavelet {0} does not exist.</value>
   </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="ScaleDescription" xml:space="preserve">
+    <value>Compresses or dilates a signal by multiplying the time and/or amplitude by a factor.</value>
+  </data>
+  <data name="AmplitudeScalingFactor" xml:space="preserve">
+    <value>Amplitude scaling factor</value>
+  </data>
+  <data name="TimeScalingFactor" xml:space="preserve">
+    <value>Time scaling factor</value>
+  </data>
+  <data name="AmplitudeScalingFactorDescription" xml:space="preserve">
+    <value>Factor to be used in amplitude scaling. If the value is setted to 1, no scaling will be applied to the amplitude variable.</value>
+  </data>
+  <data name="TimeScalingFactorDescription" xml:space="preserve">
+    <value>Factor to be used in time scaling. If the value is setted to 1, no scaling will be applied to the time variable.</value>
+  </data>
 </root>

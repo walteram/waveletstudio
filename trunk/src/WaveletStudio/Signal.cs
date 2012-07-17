@@ -18,6 +18,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WaveletStudio.Functions;
 
 namespace WaveletStudio
 {
@@ -54,6 +55,16 @@ namespace WaveletStudio
             }
         }
 
+        /// <summary>
+        /// Returns the value of the sample in the specified index
+        /// </summary>        
+        /// <exception cref="IndexOutOfRangeException">Throws System.IndexOutOfRangeException if specified index is less than 0 or equals or greater than the number of samples in the signal.</exception>
+        public double this[int index]
+        {
+            get { return _samples[index]; }
+            set { _samples[index] = value; }
+        }
+        
         /// <summary>
         /// Gets the number of samples in the signal
         /// </summary>
@@ -159,7 +170,7 @@ namespace WaveletStudio
         /// <returns></returns>
         public bool LengthIsPowerOf2()
         {
-            return IsPowerOf2(Samples.Length);
+            return WaveMath.IsPowerOf2(Samples.Length);
         }
 
         /// <summary>
@@ -173,19 +184,14 @@ namespace WaveletStudio
                 return;
             }
             var length = Samples.Length;
-            while (!(IsPowerOf2(length)) && length > 0)
+            while (!(WaveMath.IsPowerOf2(length)) && length > 0)
             {
                 length--;
             }
             var newArray = MemoryPool.Pool.New<double>(length);
             Array.Copy(Samples, newArray, length);
             Samples = newArray;
-        }
-
-        private bool IsPowerOf2(int x)
-        {
-            return (x != 0) && ((x & (x - 1)) == 0);
-        }
+        }       
 
         /// <summary>
         /// Gets all the samples of the signal separated with a space
@@ -269,6 +275,11 @@ namespace WaveletStudio
                 currentT += interval;
             }            
             return t;
+        }
+
+        public int GetSampleIndexByTime(double time)
+        {
+            return Convert.ToInt32(WaveMath.LimitRange(Math.Floor((time - Start) / SamplingInterval), 0, SamplesCount-1));
         }
 
         /// <summary>

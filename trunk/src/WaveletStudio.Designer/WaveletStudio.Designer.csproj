@@ -451,6 +451,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\imgscalemini.png" />
+    <None Include="Resources\imgscale.png" />
     <None Include="Resources\imgoperation1.png" />
     <None Include="Resources\operation_scalar1.png" />
     <None Include="Resources\csv2.png" />

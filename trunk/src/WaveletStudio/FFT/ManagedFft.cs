@@ -15,15 +15,18 @@ namespace WaveletStudio.FFT
     /// compute complex to complex FFTs. Use FFTReal for real to complex 
     /// FFTs which are much faster than standard FFTs.
     /// </summary>
-    public static class ManagedFFT
+    public class ManagedFFT
     {
+        private static ManagedFFT _instance;
+        public static ManagedFFT Instance { get { return _instance ?? (_instance = new ManagedFFT()); } }
+
         /// <summary>
         /// Compute the forward or inverse Fourier Transform of data using the specified mode
         /// </summary>
         /// <param name="data">The complex data stored as alternating real and imaginary parts</param>
         /// <param name="forward">true for a forward transform, false for inverse transform</param>
         /// <param name="mode">Mode to be used</param>
-        public static void FFT(ref double[] data, bool forward, ManagedFFTModeEnum mode)
+        public void FFT(ref double[] data, bool forward, ManagedFFTModeEnum mode)
         {
             if(mode == ManagedFFTModeEnum.DynamicTrigonometricValues)
                 DynamicFFT(ref data, forward);
@@ -40,7 +43,7 @@ namespace WaveletStudio.FFT
         /// and imaginary parts</param>
         /// <param name="forward">true for a forward transform, false for 
         /// inverse transform</param>
-        public static void DynamicFFT(ref double[] data, bool forward)
+        public void DynamicFFT(ref double[] data, bool forward)
         {
             var n = data.Length;
             // checks n is a power of 2 in 2's complement format
@@ -102,7 +105,7 @@ namespace WaveletStudio.FFT
         /// and imaginary parts</param>
         /// <param name="forward">true for a forward transform, false for 
         /// inverse transform</param>
-        public static void TableFFT(ref double[] data, bool forward)
+        public void TableFFT(ref double[] data, bool forward)
         {
             var n = data.Length;
             // checks n is a power of 2 in 2's complement format
@@ -116,7 +119,7 @@ namespace WaveletStudio.FFT
             Reverse(ref data, n); // bit index data reversal
 
             // make table if needed
-            if (CosTable.Count != n)
+            if (_cosTable.Count != n)
                 Initialize(n);
 
             // do transform: so single point transforms, then doubles, etc.
@@ -128,8 +131,8 @@ namespace WaveletStudio.FFT
                 var istep = 2 * mmax;
                 for (var m = 0; m < istep; m += 2)
                 {
-                    var wr = CosTable[tptr];
-                    var wi = sign * SinTable[tptr++];
+                    var wr = _cosTable[tptr];
+                    var wi = sign * _sinTable[tptr++];
                     for (var k = m; k < 2 * n; k += 2 * istep)
                     {
                         var j = k + istep;
@@ -166,7 +169,7 @@ namespace WaveletStudio.FFT
         /// and imaginary parts</param>
         /// <param name="forward">true for a forward transform, false for 
         /// inverse transform</param>
-        public static void RealFFT(ref double[] data, bool forward)
+        public void RealFFT(ref double[] data, bool forward)
         {
             var n = data.Length; // # of real inputs, 1/2 the complex length
             // checks n is a power of 2 in 2's complement format
@@ -240,13 +243,13 @@ namespace WaveletStudio.FFT
         /// Fills in tables for speed. Done automatically in TableFFT
         /// </summary>
         /// <param name="size">The size of the FFT in samples</param>
-        public static void Initialize(int size)
+        public void Initialize(int size)
         {
-            lock (CosTable)
-            lock (SinTable)
+            lock (_cosTable)
+            lock (_sinTable)
             {
-                CosTable.Clear();
-                SinTable.Clear();
+                _cosTable.Clear();
+                _sinTable.Clear();
 
                 // forward pass
                 var n = size;
@@ -262,8 +265,8 @@ namespace WaveletStudio.FFT
                     wpr = -2 * wpr * wpr;
                     for (var m = 0; m < istep; m += 2)
                     {
-                        CosTable.Add(wr);
-                        SinTable.Add(wi);
+                        _cosTable.Add(wr);
+                        _sinTable.Add(wi);
                         var t = wr;
                         wr = wr * wpr - wi * wpi + wr;
                         wi = wi * wpr + t * wpi + wi;
@@ -280,7 +283,7 @@ namespace WaveletStudio.FFT
         /// </summary>
         /// <param name="data"></param>
         /// <param name="n"></param>
-        private static void Reverse(ref double[] data, int n)
+        private void Reverse(ref double[] data, int n)
         {
             // bit reverse the indices. This is exercise 5 in section 
             // 7.2.1.1 of Knuth's TAOCP the idea is a binary counter 
@@ -329,10 +332,13 @@ namespace WaveletStudio.FFT
         }
 
         /// <summary>
-        /// Precomputed sin/cos tables for speed
+        /// Precomputed cos table for speed
         /// </summary>
-        private static readonly List<double> CosTable = new List<double>();
+        private readonly List<double> _cosTable = new List<double>();
 
-        private static readonly List<double> SinTable = new List<double>();
+        /// <summary>
+        /// Precomputed sin table for speed
+        /// </summary>
+        private readonly List<double> _sinTable = new List<double>();        
     }
 }

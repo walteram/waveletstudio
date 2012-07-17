@@ -196,7 +196,6 @@ namespace WaveletStudio.Functions
         /// <summary>
         /// Invert an array
         /// </summary>
-        /// <param name="input"></param>
         public static double[] Invert(double[] input)
         {
             if (input == null)
@@ -204,6 +203,14 @@ namespace WaveletStudio.Functions
             var output = (double[])input.Clone();
             Array.Reverse(output);
             return output;
+        }
+
+        /// <summary>
+        /// Returns true if the value of parameter x is a power of 2
+        /// </summary>
+        public static bool IsPowerOf2(int x)
+        {
+            return (x != 0) && ((x & (x - 1)) == 0);
         }
 
         /// <summary>
@@ -244,6 +251,14 @@ namespace WaveletStudio.Functions
                 }                
             }
             return output.ToArray();
+        }
+
+        /// <summary>
+        /// Limits the range of a number by the maximun and minimun values
+        /// </summary>
+        public static double LimitRange(double value, double minValue, double maxValue)
+        {
+            return Math.Max(minValue, Math.Min(value, maxValue));
         }
 
         /// <summary>

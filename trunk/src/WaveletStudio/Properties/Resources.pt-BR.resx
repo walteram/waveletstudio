@@ -604,4 +604,22 @@ Clique na aba Sinal e selecione uma origem de sinal.</value>
   <data name="WaveletNameNotFound" xml:space="preserve">
     <value>A wavelet-mãe {0} não existe.</value>
   </data>
+  <data name="AmplitudeScalingFactor" xml:space="preserve">
+    <value>Fator de Escala da Amplitude</value>
+  </data>
+  <data name="Scale" xml:space="preserve">
+    <value>Escala</value>
+  </data>
+  <data name="ScaleDescription" xml:space="preserve">
+    <value>Comprime ou dilata um sinal multiplicando tempo e/ou amplitude por um fator especificado.</value>
+  </data>
+  <data name="TimeScalingFactor" xml:space="preserve">
+    <value>Fator de Escala do Tempo</value>
+  </data>
+  <data name="AmplitudeScalingFactorDescription" xml:space="preserve">
+    <value>Fator utilizado na escala da amplitude. Se o valor for definido como 1, o eixo da amplitude não será escalado.</value>
+  </data>
+  <data name="TimeScalingFactorDescription" xml:space="preserve">
+    <value>Fator utilizado na escala do tempo. Se o valor for definido como 1, o eixo do tempo não será escalado.</value>
+  </data>
 </root>

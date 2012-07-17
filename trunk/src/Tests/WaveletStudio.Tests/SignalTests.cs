@@ -10,6 +10,30 @@ namespace WaveletStudio.Tests
     public class SignalTests
     {
         [TestMethod]
+        public void TestSignalIndexer()
+        {
+            var signal = new Signal(new double[] { 0, 10, 2 }, 1);
+            Assert.AreEqual(0, signal[0]);
+            Assert.AreEqual(10, signal[1]);
+            Assert.AreEqual(2, signal[2]);
+
+            signal[1] = 100;
+            Assert.AreEqual(100, signal[1]);
+        }
+
+        [TestMethod]
+        public void TestGetSampleIndexByTime()
+        {
+            var signal = new Signal(new double[] {10, 20, 30, 40}, 2) {Start = 10};
+            Assert.AreEqual(0, signal.GetSampleIndexByTime(9));
+            Assert.AreEqual(0, signal.GetSampleIndexByTime(10.0));
+            Assert.AreEqual(1, signal.GetSampleIndexByTime(10.5));
+            Assert.AreEqual(2, signal.GetSampleIndexByTime(11.0));
+            Assert.AreEqual(3, signal.GetSampleIndexByTime(11.5));
+            Assert.AreEqual(3, signal.GetSampleIndexByTime(12));
+        }
+        
+        [TestMethod]
         public void TestSamplesCount()
         {
             var signal = new Signal(new double[] { 1, 2, 3, 4, 5 }, 1);

@@ -109,14 +109,14 @@ namespace WaveletStudio.Functions
                 filterFFT[i * 2] = filter[i];
             }
 
-            ManagedFFT.FFT(ref inputFFT, true, mode);
-            ManagedFFT.FFT(ref filterFFT, true, mode);
+            ManagedFFT.Instance.FFT(ref inputFFT, true, mode);
+            ManagedFFT.Instance.FFT(ref filterFFT, true, mode);
             for (var i = 0; i < ifft.Length; i = i + 2)
             {
                 ifft[i] = inputFFT[i] * filterFFT[i] - inputFFT[i + 1] * filterFFT[i + 1];
                 ifft[i + 1] = (inputFFT[i] * filterFFT[i + 1] + inputFFT[i + 1] * filterFFT[i]) * -1;
             }
-            ManagedFFT.FFT(ref ifft, false, mode);
+            ManagedFFT.Instance.FFT(ref ifft, false, mode);
 
             var ifft2 = MemoryPool.Pool.New<double>(size);
             ifft2[0] = ifft[0];

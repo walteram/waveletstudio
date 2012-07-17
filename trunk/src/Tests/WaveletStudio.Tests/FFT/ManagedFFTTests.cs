@@ -38,17 +38,17 @@ namespace WaveletStudio.Tests.FFT
                 var answerReal = tests[testIndex + 1];
                 var answerComplex = tests[testIndex + 2];
 
-                Assert.IsTrue(Test(ManagedFFT.RealFFT, test, answerReal));
-                Assert.IsTrue(Test(ManagedFFT.DynamicFFT, test, answerComplex));
-                Assert.IsTrue(Test(ManagedFFT.TableFFT, test, answerComplex));                
+                Assert.IsTrue(Test(ManagedFFT.Instance.RealFFT, test, answerReal));
+                Assert.IsTrue(Test(ManagedFFT.Instance.DynamicFFT, test, answerComplex));
+                Assert.IsTrue(Test(ManagedFFT.Instance.TableFFT, test, answerComplex));                
             }            
 
             var data = tests[0].ToArray();
-            ManagedFFT.FFT(ref data, true, ManagedFFTModeEnum.DynamicTrigonometricValues);
+            ManagedFFT.Instance.FFT(ref data, true, ManagedFFTModeEnum.DynamicTrigonometricValues);
             Assert.IsTrue(Compare(data, tests[2]));
 
             data = tests[0].ToArray();
-            ManagedFFT.FFT(ref data, true, ManagedFFTModeEnum.UseLookupTable);
+            ManagedFFT.Instance.FFT(ref data, true, ManagedFFTModeEnum.UseLookupTable);
             Assert.IsTrue(Compare(data, tests[2]));
         }
 
