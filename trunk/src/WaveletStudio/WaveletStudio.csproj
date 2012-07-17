@@ -46,6 +46,7 @@
     <Compile Include="Blocks\BlockOutputNode.cs" />
     <Compile Include="Blocks\ConvolutionBlock.cs" />
     <Compile Include="Blocks\AbsoluteValueBlock.cs" />
+    <Compile Include="Blocks\ShiftBlock.cs" />
     <Compile Include="Blocks\SwitchBlock.cs" />
     <Compile Include="Blocks\CustomAttributes\TemplateNamesTypeConverter.cs" />
     <Compile Include="Blocks\CustomAttributes\WaveletNamesTypeConverter.cs" />
@@ -59,7 +60,7 @@
     <Compile Include="Blocks\InterpolationBlock.cs" />
     <Compile Include="Blocks\NormalDistributionBlock.cs" />
     <Compile Include="Blocks\InvertBlock.cs" />
-    <Compile Include="Blocks\ShiftBlock.cs" />
+    <Compile Include="Blocks\ScaleBlock.cs" />
     <Compile Include="Blocks\UniqueBlock.cs" />
     <Compile Include="Blocks\IDWTBlock.cs" />
     <Compile Include="Blocks\UpSampleBlock.cs" />

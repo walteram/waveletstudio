@@ -18,25 +18,25 @@
 using System;
 using System.Collections.Generic;
 using WaveletStudio.Blocks.CustomAttributes;
-using WaveletStudio.FFT;
-using WaveletStudio.Functions;
 using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// FFT
+    /// Shift signal
     /// </summary>
     [Serializable]
-    public class FFTBlock : BlockBase
+    public class ScaleBlock : BlockBase
     {
         /// <summary>
         /// Constructor
         /// </summary>
-        public FFTBlock()
+        public ScaleBlock()
         {
             BlockBase root = this;
             CreateNodes(ref root);
+            TimeScalingFactor = 1;
+            AmplitudeScalingFactor = 1;
         }
         
         /// <summary>
@@ -44,27 +44,43 @@ namespace WaveletStudio.Blocks
         /// </summary>
         public override string Name
         {
-            get { return "FFT"; }
+            get { return Resources.Scale; }
         }
 
         /// <summary>
-        /// Description of the block
+        /// Description
         /// </summary>
         public override string Description
         {
-            get { return Resources.FFTDescription; }
+            get { return Resources.ScaleDescription; }
         }
-        
+
+        private double _timeScalingFactor;
+        /// <summary>
+        /// Factor to be used in time scaling. If the value is setted to 1, no scaling will be applied to the time variable.
+        /// </summary>
+        [Parameter]
+        public double TimeScalingFactor
+        {
+            get { return _timeScalingFactor; }
+            set { _timeScalingFactor = Math.Max(0, value); }
+        }
+
+        private double _amplitudeScalingFactor;
+        /// <summary>
+        /// Factor to be used in amplitude scaling. If the value is setted to 1, no scaling will be applied to the amplitude variable.
+        /// </summary>
+        [Parameter]
+        public double AmplitudeScalingFactor
+        {
+            get { return _amplitudeScalingFactor; }
+            set { _amplitudeScalingFactor = Math.Max(0, value); }
+        }
+
         /// <summary>
         /// Processing type
         /// </summary>
-        public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Transform; } }
-
-        /// <summary>
-        /// Computation mode
-        /// </summary>
-        [Parameter]
-        public ManagedFFTModeEnum Mode { get; set; } 
+        public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Operation; } }
 
         /// <summary>
         /// Executes the block
@@ -76,36 +92,27 @@ namespace WaveletStudio.Blocks
                 return;
 
             OutputNodes[0].Object.Clear();
-            OutputNodes[1].Object.Clear();
-            foreach (var inputSignal in inputNode.Object)
+            foreach (var signal in inputNode.Object)
             {
-                var fft = WaveMath.UpSample(inputSignal.Samples);
-                ManagedFFT.Instance.FFT(ref fft, true, Mode);
-                var abs = WaveMath.AbsFromComplex(fft);
-                abs = WaveMath.Normalize(fft.SubArray(abs.Length / 2), abs.Length);
-
-                var absSignal = new Signal(abs)
+                var output = signal.Clone();
+                if (Math.Abs(_amplitudeScalingFactor - 1) > double.Epsilon)
                 {
-                    Start = 0,
-                    Finish = abs.Length - 1,
-                    SamplingInterval = 0.5 / (Convert.ToDouble(abs.Length) / Convert.ToDouble(inputSignal.SamplingRate))
-                };
-                var fftSignal = new Signal(fft)
+                    for (var i = 0; i < output.SamplesCount; i++)
+                    {
+                        output[i] *= _amplitudeScalingFactor;
+                    }
+                }
+                if (Math.Abs(_timeScalingFactor - 1) > double.Epsilon && _timeScalingFactor > 0)
                 {
-                    Start = 0,
-                    Finish = fft.Length - 1,
-                    IsComplex = true,
-                    SamplingInterval = (Convert.ToDouble(abs.Length) / Convert.ToDouble(inputSignal.SamplingRate))
-                };
-
-                OutputNodes[0].Object.Add(absSignal);
-                OutputNodes[1].Object.Add(fftSignal);
-            }
-            
+                    output.Finish *= _timeScalingFactor;
+                    output.SamplingInterval *= _timeScalingFactor;                    
+                }                            
+                OutputNodes[0].Object.Add(output);
+            }            
             if (Cascade && OutputNodes[0].ConnectingNode != null)
+            {
                 OutputNodes[0].ConnectingNode.Root.Execute();
-            if (Cascade && OutputNodes[1].ConnectingNode != null)
-                OutputNodes[1].ConnectingNode.Root.Execute();
+            }
         }
 
         /// <summary>
@@ -114,12 +121,10 @@ namespace WaveletStudio.Blocks
         /// <param name="root"></param>
         protected override sealed void CreateNodes(ref BlockBase root)
         {
-            root.InputNodes = new List<BlockInputNode> { new BlockInputNode(ref root, Resources.Signal, Resources.In) };
-            root.OutputNodes = new List<BlockOutputNode>
-                                   {
-                                       new BlockOutputNode(ref root, Resources.AbsoluteValue, "Abs"),
-                                       new BlockOutputNode(ref root, Resources.FFT, "FFT")
-                                   };
+            root.InputNodes = new List<BlockInputNode>();
+            root.OutputNodes = new List<BlockOutputNode>();
+            root.InputNodes.Add(new BlockInputNode(ref root, Resources.Signal, Resources.In));
+            root.OutputNodes.Add(new BlockOutputNode(ref root, Resources.Output, Resources.Out));
         }
 
         /// <summary>
