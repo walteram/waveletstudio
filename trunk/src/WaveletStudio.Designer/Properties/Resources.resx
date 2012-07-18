@@ -643,4 +643,28 @@ Portuguese (Brazil)</value>
   <data name="imgXorMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgxormini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="imgScalarMultiply" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\operation_scalar2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgEqualsTo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgrelational.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgEqualsToMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgEqualsToMini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgGreaterOrEqualsThanMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgGreaterOrEqualsThanMini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgGreaterThanMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgGreaterThanMini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgLessOrEqualsThanMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgLessOrEqualsThanMini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgLessThanMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgLessThanMini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="imgNotEqualsToMini" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgNotEqualsToMini.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

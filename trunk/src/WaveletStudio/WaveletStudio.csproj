@@ -46,6 +46,7 @@
     <Compile Include="Blocks\BlockOutputNode.cs" />
     <Compile Include="Blocks\ConvolutionBlock.cs" />
     <Compile Include="Blocks\AbsoluteValueBlock.cs" />
+    <Compile Include="Blocks\RelationalOperatorBlock.cs" />
     <Compile Include="Blocks\LogicOperationBlock.cs" />
     <Compile Include="Blocks\ShiftBlock.cs" />
     <Compile Include="Blocks\SwitchBlock.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Blocks\ScalarOperationBlock.cs" />
     <Compile Include="Blocks\WaveletBlock.cs" />
     <Compile Include="FFT\ManagedFft.cs" />
+    <Compile Include="Functions\WaveMath_RelationalOperations.cs" />
     <Compile Include="Functions\WaveMath_LogicOperations.cs" />
     <Compile Include="Functions\WaveMath_Convolution.cs" />
     <Compile Include="Functions\WaveMath_Interpolation.cs" />

@@ -61,6 +61,7 @@ namespace WaveletStudio.Tests.Blocks
             AssertBlock(new SwitchBlock());
             AssertBlock(new ScaleBlock());
             AssertBlock(new LogicOperationBlock());
+            AssertBlock(new RelationalOperatorBlock());
         }
 
         private static void AssertBlock(BlockBase block)

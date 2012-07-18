@@ -451,6 +451,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\imgLessThanMini.png" />
+    <None Include="Resources\imgGreaterThanMini.png" />
+    <None Include="Resources\imgNotEqualsToMini.png" />
+    <None Include="Resources\imgEqualsToMini.png" />
+    <None Include="Resources\imgLessOrEqualsThanMini.png" />
+    <None Include="Resources\imgGreaterOrEqualsThanMini.png" />
+    <None Include="Resources\imgrelational.png" />
+    <None Include="Resources\operation_scalar2.png" />
     <None Include="Resources\imglogicoperationblock.png" />
     <None Include="Resources\imgnotmini.png" />
     <None Include="Resources\imgnotandmini.png" />

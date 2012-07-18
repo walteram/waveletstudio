@@ -322,6 +322,15 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S1 = S2.
+        /// </summary>
+        public static string EqualsTo {
+            get {
+                return ResourceManager.GetString("EqualsTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Before performing any operation is necessary to select a source. 
         ///Click in the Signal tab and select a signal source..
         /// </summary>
@@ -530,6 +539,24 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S1 &gt;= S2.
+        /// </summary>
+        public static string GreaterOrEqualsThan {
+            get {
+                return ResourceManager.GetString("GreaterOrEqualsThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S1 &gt; S2.
+        /// </summary>
+        public static string GreaterThan {
+            get {
+                return ResourceManager.GetString("GreaterThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Inverse Wavelet Decomposition (IDWT) block..
         /// </summary>
         public static string IDWTDescription {
@@ -706,6 +733,24 @@ namespace WaveletStudio.Properties {
         public static string KeepSamplingRateDescription {
             get {
                 return ResourceManager.GetString("KeepSamplingRateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S1 &lt;= S2.
+        /// </summary>
+        public static string LessOrEqualsThan {
+            get {
+                return ResourceManager.GetString("LessOrEqualsThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S1 &lt; S2.
+        /// </summary>
+        public static string LessThan {
+            get {
+                return ResourceManager.GetString("LessThan", resourceCulture);
             }
         }
         
@@ -890,6 +935,15 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to S1 &lt;&gt; S2.
+        /// </summary>
+        public static string NotEqualsTo {
+            get {
+                return ResourceManager.GetString("NotEqualsTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Offset.
         /// </summary>
         public static string Offset {
@@ -904,6 +958,24 @@ namespace WaveletStudio.Properties {
         public static string OffsetDescription {
             get {
                 return ResourceManager.GetString("OffsetDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operand.
+        /// </summary>
+        public static string Operand {
+            get {
+                return ResourceManager.GetString("Operand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operand type to be used by the block..
+        /// </summary>
+        public static string OperandDescription {
+            get {
+                return ResourceManager.GetString("OperandDescription", resourceCulture);
             }
         }
         
@@ -1070,6 +1142,24 @@ namespace WaveletStudio.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Relational.
+        /// </summary>
+        public static string RelationalOperator {
+            get {
+                return ResourceManager.GetString("RelationalOperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conversion to boolean based on &gt;, &lt;, &gt;=, &lt;=, &lt;&gt;, = an static value, the previous sample or the next sample..
+        /// </summary>
+        public static string RelationalOperatorDescription {
+            get {
+                return ResourceManager.GetString("RelationalOperatorDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Repeat.
         /// </summary>
         public static string Repeat {
@@ -1210,6 +1300,24 @@ namespace WaveletStudio.Properties {
         public static string scalaroperation_text {
             get {
                 return ResourceManager.GetString("scalaroperation_text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scalar Value.
+        /// </summary>
+        public static string ScalarValue {
+            get {
+                return ResourceManager.GetString("ScalarValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value used if Operand property is set to Scalar..
+        /// </summary>
+        public static string ScalarValueDescription {
+            get {
+                return ResourceManager.GetString("ScalarValueDescription", resourceCulture);
             }
         }
         

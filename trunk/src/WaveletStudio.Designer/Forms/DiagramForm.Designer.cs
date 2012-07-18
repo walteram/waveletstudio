@@ -62,6 +62,8 @@
             this.RoutingRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
             this.RoutingRibbonPane = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
             this.RoutingComposite = new Qios.DevSuite.Components.QCompositeGroup();
+            this.LogicalRibbonPane = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
+            this.LogicComposite = new Qios.DevSuite.Components.QCompositeGroup();
             this.qCompositeWindow1 = new Qios.DevSuite.Components.QCompositeWindow();
             this.QToolBarHost2 = new Qios.DevSuite.Components.QToolBarHost();
             this.RightDockBar = new Qios.DevSuite.Components.QDockBar();
@@ -73,8 +75,6 @@
             this.ZoomMinusButton = new Qios.DevSuite.Components.QButton();
             this.ZoomTrackBar = new System.Windows.Forms.TrackBar();
             this.diagramFormProperties1 = new WaveletStudio.Designer.Forms.DiagramFormProperties();
-            this.LogicalRibbonPane = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
-            this.LogicComposite = new Qios.DevSuite.Components.QCompositeGroup();
             ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
             this.Ribbon.SuspendLayout();
@@ -91,15 +91,12 @@
             // 
             // qRibbonItem1
             // 
-            this.qRibbonItem1.Configuration.Direction = Qios.DevSuite.Components.QPartDirection.Vertical;
-            this.qRibbonItem1.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
             resources.ApplyResources(this.qRibbonItem1, "qRibbonItem1");
-            this.qRibbonItem1.Icon = ((System.Drawing.Icon)(resources.GetObject("qRibbonItem1.Icon")));
             // 
             // qCompositeButton2
             // 
-            this.qCompositeButton2.Icon = ((System.Drawing.Icon)(resources.GetObject("qCompositeButton2.Icon")));
             resources.ApplyResources(this.qCompositeButton2, "qCompositeButton2");
+            this.qCompositeButton2.Icon = ((System.Drawing.Icon)(resources.GetObject("qCompositeButton2.Icon")));
             // 
             // qCompositeGroup16
             // 
@@ -174,11 +171,11 @@
             // 
             // qRibbonCaption1
             // 
+            resources.ApplyResources(this.qRibbonCaption1, "qRibbonCaption1");
             this.qRibbonCaption1.ApplicationButton = this.AppMenuButton;
             this.qRibbonCaption1.Configuration.ApplicationButtonAreaConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 4, 0, -8);
             this.qRibbonCaption1.Configuration.IconConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
             this.qRibbonCaption1.LaunchBar = this.RibbonLaunchBar;
-            resources.ApplyResources(this.qRibbonCaption1, "qRibbonCaption1");
             this.qRibbonCaption1.Name = "qRibbonCaption1";
             // 
             // AppMenuButton
@@ -193,6 +190,7 @@
             this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
             this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
             this.RibbonLaunchBar.Configuration.CustomizeItemConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
+            resources.ApplyResources(this.RibbonLaunchBar, "RibbonLaunchBar");
             this.RibbonLaunchBar.Items.Add(this.CutElementShortcut);
             this.RibbonLaunchBar.Items.Add(this.CopyElementShortcut);
             this.RibbonLaunchBar.Items.Add(this.PasteElementShortcut);
@@ -247,6 +245,7 @@
             // 
             // Ribbon
             // 
+            resources.ApplyResources(this.Ribbon, "Ribbon");
             this.Ribbon.ActiveTabPage = this.SignalRibbonPage;
             this.Ribbon.Controls.Add(this.SignalRibbonPage);
             this.Ribbon.Controls.Add(this.OperationsRibbonPage);
@@ -254,7 +253,6 @@
             this.Ribbon.Controls.Add(this.TransformsRibbonPage);
             this.Ribbon.Controls.Add(this.RoutingRibbonPage);
             this.Ribbon.Cursor = System.Windows.Forms.Cursors.Default;
-            resources.ApplyResources(this.Ribbon, "Ribbon");
             this.Ribbon.Form = this;
             this.Ribbon.Name = "Ribbon";
             this.Ribbon.PersistGuid = new System.Guid("f549a281-ecb8-4c57-ab72-08ae6e49b352");
@@ -262,8 +260,8 @@
             // 
             // SignalRibbonPage
             // 
-            this.SignalRibbonPage.ButtonOrder = 0;
             resources.ApplyResources(this.SignalRibbonPage, "SignalRibbonPage");
+            this.SignalRibbonPage.ButtonOrder = 0;
             this.SignalRibbonPage.Items.Add(this.SignalSourcePanel);
             this.SignalRibbonPage.Items.Add(this.SignalTemplatePanel);
             this.SignalRibbonPage.Name = "SignalRibbonPage";
@@ -272,8 +270,8 @@
             // SignalSourcePanel
             // 
             this.SignalSourcePanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            this.SignalSourcePanel.Items.Add(this.SignalSourceComposite);
             resources.ApplyResources(this.SignalSourcePanel, "SignalSourcePanel");
+            this.SignalSourcePanel.Items.Add(this.SignalSourceComposite);
             // 
             // SignalSourceComposite
             // 
@@ -331,8 +329,8 @@
             // SignalTemplatePanel
             // 
             this.SignalTemplatePanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            this.SignalTemplatePanel.Items.Add(this.SignalTemplatesComposite);
             resources.ApplyResources(this.SignalTemplatePanel, "SignalTemplatePanel");
+            this.SignalTemplatePanel.Items.Add(this.SignalTemplatesComposite);
             // 
             // SignalTemplatesComposite
             // 
@@ -389,8 +387,8 @@
             // 
             // OperationsRibbonPage
             // 
-            this.OperationsRibbonPage.ButtonOrder = 1;
             resources.ApplyResources(this.OperationsRibbonPage, "OperationsRibbonPage");
+            this.OperationsRibbonPage.ButtonOrder = 1;
             this.OperationsRibbonPage.Items.Add(this.OperationsFunctionsPanel);
             this.OperationsRibbonPage.Name = "OperationsRibbonPage";
             this.OperationsRibbonPage.PersistGuid = new System.Guid("e11d0cdc-ac5f-4668-9777-2c1ea1c812c5");
@@ -398,8 +396,8 @@
             // OperationsFunctionsPanel
             // 
             this.OperationsFunctionsPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            this.OperationsFunctionsPanel.Items.Add(this.OperationsFunctionsComposite);
             resources.ApplyResources(this.OperationsFunctionsPanel, "OperationsFunctionsPanel");
+            this.OperationsFunctionsPanel.Items.Add(this.OperationsFunctionsComposite);
             // 
             // OperationsFunctionsComposite
             // 
@@ -456,8 +454,8 @@
             // 
             // ExportDataRibbonPage
             // 
-            this.ExportDataRibbonPage.ButtonOrder = 4;
             resources.ApplyResources(this.ExportDataRibbonPage, "ExportDataRibbonPage");
+            this.ExportDataRibbonPage.ButtonOrder = 4;
             this.ExportDataRibbonPage.Items.Add(this.ExportDataPanel);
             this.ExportDataRibbonPage.Name = "ExportDataRibbonPage";
             this.ExportDataRibbonPage.PersistGuid = new System.Guid("9272663a-8526-411c-a907-cafff24991eb");
@@ -465,8 +463,8 @@
             // ExportDataPanel
             // 
             this.ExportDataPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            this.ExportDataPanel.Items.Add(this.ExportToFileComposite);
             resources.ApplyResources(this.ExportDataPanel, "ExportDataPanel");
+            this.ExportDataPanel.Items.Add(this.ExportToFileComposite);
             // 
             // ExportToFileComposite
             // 
@@ -523,8 +521,8 @@
             // 
             // TransformsRibbonPage
             // 
-            this.TransformsRibbonPage.ButtonOrder = 3;
             resources.ApplyResources(this.TransformsRibbonPage, "TransformsRibbonPage");
+            this.TransformsRibbonPage.ButtonOrder = 3;
             this.TransformsRibbonPage.Items.Add(this.TransformsPanel);
             this.TransformsRibbonPage.Name = "TransformsRibbonPage";
             this.TransformsRibbonPage.PersistGuid = new System.Guid("c37e8ecf-4bd2-491d-8c7b-fa771275272a");
@@ -532,8 +530,8 @@
             // TransformsPanel
             // 
             this.TransformsPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            this.TransformsPanel.Items.Add(this.TransformsComposite);
             resources.ApplyResources(this.TransformsPanel, "TransformsPanel");
+            this.TransformsPanel.Items.Add(this.TransformsComposite);
             // 
             // TransformsComposite
             // 
@@ -590,8 +588,8 @@
             // 
             // RoutingRibbonPage
             // 
-            this.RoutingRibbonPage.ButtonOrder = 2;
             resources.ApplyResources(this.RoutingRibbonPage, "RoutingRibbonPage");
+            this.RoutingRibbonPage.ButtonOrder = 2;
             this.RoutingRibbonPage.Items.Add(this.RoutingRibbonPane);
             this.RoutingRibbonPage.Items.Add(this.LogicalRibbonPane);
             this.RoutingRibbonPage.Name = "RoutingRibbonPage";
@@ -600,8 +598,8 @@
             // RoutingRibbonPane
             // 
             this.RoutingRibbonPane.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            this.RoutingRibbonPane.Items.Add(this.RoutingComposite);
             resources.ApplyResources(this.RoutingRibbonPane, "RoutingRibbonPane");
+            this.RoutingRibbonPane.Items.Add(this.RoutingComposite);
             // 
             // RoutingComposite
             // 
@@ -656,115 +654,11 @@
             this.RoutingComposite.Configuration.StretchHorizontal = true;
             this.RoutingComposite.Configuration.StretchVertical = true;
             // 
-            // qCompositeWindow1
-            // 
-            resources.ApplyResources(this.qCompositeWindow1, "qCompositeWindow1");
-            this.qCompositeWindow1.Name = "qCompositeWindow1";
-            // 
-            // QToolBarHost2
-            // 
-            resources.ApplyResources(this.QToolBarHost2, "QToolBarHost2");
-            this.QToolBarHost2.Name = "QToolBarHost2";
-            this.QToolBarHost2.PersistGuid = new System.Guid("2ed0b02b-fbb2-42f5-932f-cfa32800a886");
-            this.QToolBarHost2.ToolBarHostPadding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
-            this.QToolBarHost2.ToolBarMargin = new Qios.DevSuite.Components.QMargin(0, 0, 0, 0);
-            // 
-            // RightDockBar
-            // 
-            this.RightDockBar.ButtonAppearance.BorderWidth = 0;
-            this.RightDockBar.ColorScheme.DockBarBorder.SetColor("Default", System.Drawing.SystemColors.Control, false);
-            resources.ApplyResources(this.RightDockBar, "RightDockBar");
-            this.RightDockBar.Name = "RightDockBar";
-            this.RightDockBar.PersistGuid = new System.Guid("68794aaa-e00f-4e0f-9682-fee069bb40c0");
-            // 
-            // CenterPanel
-            // 
-            this.CenterPanel.Controls.Add(this.Designer);
-            this.CenterPanel.Controls.Add(this.BottomPanel);
-            resources.ApplyResources(this.CenterPanel, "CenterPanel");
-            this.CenterPanel.Name = "CenterPanel";
-            // 
-            // Designer
-            // 
-            resources.ApplyResources(this.Designer, "Designer");
-            this.Designer.BackColor = System.Drawing.SystemColors.Window;
-            this.Designer.Changed = false;
-            this.Designer.Name = "Designer";
-            // 
-            // BottomPanel
-            // 
-            this.BottomPanel.Controls.Add(this.ZoomLabel);
-            this.BottomPanel.Controls.Add(this.ZoomPlusButton);
-            this.BottomPanel.Controls.Add(this.ZoomMinusButton);
-            this.BottomPanel.Controls.Add(this.ZoomTrackBar);
-            resources.ApplyResources(this.BottomPanel, "BottomPanel");
-            this.BottomPanel.Name = "BottomPanel";
-            // 
-            // ZoomLabel
-            // 
-            resources.ApplyResources(this.ZoomLabel, "ZoomLabel");
-            this.ZoomLabel.Name = "ZoomLabel";
-            // 
-            // ZoomPlusButton
-            // 
-            resources.ApplyResources(this.ZoomPlusButton, "ZoomPlusButton");
-            this.ZoomPlusButton.Configuration.DrawTextOptions = Qios.DevSuite.Components.QDrawTextOptions.None;
-            this.ZoomPlusButton.Configuration.FontDefinition = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomPlusButton.Configuration.FontDefinitionFocused = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomPlusButton.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomPlusButton.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomPlusButton.Configuration.TextConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 2, 2, 4);
-            this.ZoomPlusButton.Configuration.WrapText = false;
-            this.ZoomPlusButton.Image = null;
-            this.ZoomPlusButton.Name = "ZoomPlusButton";
-            this.ZoomPlusButton.Click += new System.EventHandler(this.ZoomPlusButtonClick);
-            // 
-            // ZoomMinusButton
-            // 
-            resources.ApplyResources(this.ZoomMinusButton, "ZoomMinusButton");
-            this.ZoomMinusButton.Configuration.DrawTextOptions = Qios.DevSuite.Components.QDrawTextOptions.None;
-            this.ZoomMinusButton.Configuration.FontDefinition = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomMinusButton.Configuration.FontDefinitionFocused = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomMinusButton.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomMinusButton.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
-            this.ZoomMinusButton.Configuration.TextConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 2, 2, 4);
-            this.ZoomMinusButton.Configuration.WrapText = false;
-            this.ZoomMinusButton.Image = null;
-            this.ZoomMinusButton.Name = "ZoomMinusButton";
-            this.ZoomMinusButton.Click += new System.EventHandler(this.ZoomMinusButtonClick);
-            // 
-            // ZoomTrackBar
-            // 
-            resources.ApplyResources(this.ZoomTrackBar, "ZoomTrackBar");
-            this.ZoomTrackBar.LargeChange = 2;
-            this.ZoomTrackBar.Maximum = 30;
-            this.ZoomTrackBar.Minimum = 1;
-            this.ZoomTrackBar.Name = "ZoomTrackBar";
-            this.ZoomTrackBar.Value = 10;
-            this.ZoomTrackBar.ValueChanged += new System.EventHandler(this.ZoomTrackBarValueChanged);
-            // 
-            // diagramFormProperties1
-            // 
-            this.diagramFormProperties1.CanClose = false;
-            this.diagramFormProperties1.CanDockBottom = false;
-            this.diagramFormProperties1.CanDockOnOtherControlBottom = false;
-            this.diagramFormProperties1.CanDockOnOtherControlTop = false;
-            this.diagramFormProperties1.CanDockTop = false;
-            this.diagramFormProperties1.DockPosition = Qios.DevSuite.Components.QDockPosition.None;
-            this.diagramFormProperties1.Icon = ((System.Drawing.Icon)(resources.GetObject("diagramFormProperties1.Icon")));
-            resources.ApplyResources(this.diagramFormProperties1, "diagramFormProperties1");
-            this.diagramFormProperties1.Name = "diagramFormProperties1";
-            this.diagramFormProperties1.Owner = null;
-            this.diagramFormProperties1.PersistGuid = new System.Guid("1915c329-99d5-4532-a105-ca14e4e34bdb");
-            this.diagramFormProperties1.ShowInTaskbarUndocked = true;
-            this.diagramFormProperties1.SlidingTime = 200;
-            this.diagramFormProperties1.WindowGroupName = "";
-            // 
             // LogicalRibbonPane
             // 
             this.LogicalRibbonPane.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            this.LogicalRibbonPane.Items.Add(this.LogicComposite);
             resources.ApplyResources(this.LogicalRibbonPane, "LogicalRibbonPane");
+            this.LogicalRibbonPane.Items.Add(this.LogicComposite);
             // 
             // LogicComposite
             // 
@@ -818,6 +712,110 @@
             this.LogicComposite.Configuration.ShrinkVertical = true;
             this.LogicComposite.Configuration.StretchHorizontal = true;
             this.LogicComposite.Configuration.StretchVertical = true;
+            // 
+            // qCompositeWindow1
+            // 
+            resources.ApplyResources(this.qCompositeWindow1, "qCompositeWindow1");
+            this.qCompositeWindow1.Name = "qCompositeWindow1";
+            // 
+            // QToolBarHost2
+            // 
+            resources.ApplyResources(this.QToolBarHost2, "QToolBarHost2");
+            this.QToolBarHost2.Name = "QToolBarHost2";
+            this.QToolBarHost2.PersistGuid = new System.Guid("2ed0b02b-fbb2-42f5-932f-cfa32800a886");
+            this.QToolBarHost2.ToolBarHostPadding = new Qios.DevSuite.Components.QPadding(0, 0, 0, 0);
+            this.QToolBarHost2.ToolBarMargin = new Qios.DevSuite.Components.QMargin(0, 0, 0, 0);
+            // 
+            // RightDockBar
+            // 
+            resources.ApplyResources(this.RightDockBar, "RightDockBar");
+            this.RightDockBar.ButtonAppearance.BorderWidth = 0;
+            this.RightDockBar.ColorScheme.DockBarBorder.SetColor("Default", System.Drawing.SystemColors.Control, false);
+            this.RightDockBar.Name = "RightDockBar";
+            this.RightDockBar.PersistGuid = new System.Guid("68794aaa-e00f-4e0f-9682-fee069bb40c0");
+            // 
+            // CenterPanel
+            // 
+            resources.ApplyResources(this.CenterPanel, "CenterPanel");
+            this.CenterPanel.Controls.Add(this.Designer);
+            this.CenterPanel.Controls.Add(this.BottomPanel);
+            this.CenterPanel.Name = "CenterPanel";
+            // 
+            // Designer
+            // 
+            resources.ApplyResources(this.Designer, "Designer");
+            this.Designer.BackColor = System.Drawing.SystemColors.Window;
+            this.Designer.Changed = false;
+            this.Designer.Name = "Designer";
+            // 
+            // BottomPanel
+            // 
+            resources.ApplyResources(this.BottomPanel, "BottomPanel");
+            this.BottomPanel.Controls.Add(this.ZoomLabel);
+            this.BottomPanel.Controls.Add(this.ZoomPlusButton);
+            this.BottomPanel.Controls.Add(this.ZoomMinusButton);
+            this.BottomPanel.Controls.Add(this.ZoomTrackBar);
+            this.BottomPanel.Name = "BottomPanel";
+            // 
+            // ZoomLabel
+            // 
+            resources.ApplyResources(this.ZoomLabel, "ZoomLabel");
+            this.ZoomLabel.Name = "ZoomLabel";
+            // 
+            // ZoomPlusButton
+            // 
+            resources.ApplyResources(this.ZoomPlusButton, "ZoomPlusButton");
+            this.ZoomPlusButton.Configuration.DrawTextOptions = Qios.DevSuite.Components.QDrawTextOptions.None;
+            this.ZoomPlusButton.Configuration.FontDefinition = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomPlusButton.Configuration.FontDefinitionFocused = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomPlusButton.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomPlusButton.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomPlusButton.Configuration.TextConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 2, 2, 4);
+            this.ZoomPlusButton.Configuration.WrapText = false;
+            this.ZoomPlusButton.Image = null;
+            this.ZoomPlusButton.Name = "ZoomPlusButton";
+            this.ZoomPlusButton.Click += new System.EventHandler(this.ZoomPlusButtonClick);
+            // 
+            // ZoomMinusButton
+            // 
+            resources.ApplyResources(this.ZoomMinusButton, "ZoomMinusButton");
+            this.ZoomMinusButton.Configuration.DrawTextOptions = Qios.DevSuite.Components.QDrawTextOptions.None;
+            this.ZoomMinusButton.Configuration.FontDefinition = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomMinusButton.Configuration.FontDefinitionFocused = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomMinusButton.Configuration.FontDefinitionHot = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomMinusButton.Configuration.FontDefinitionPressed = new Qios.DevSuite.Components.QFontDefinition("Arial", true, false, false, false, 12F);
+            this.ZoomMinusButton.Configuration.TextConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 2, 2, 4);
+            this.ZoomMinusButton.Configuration.WrapText = false;
+            this.ZoomMinusButton.Image = null;
+            this.ZoomMinusButton.Name = "ZoomMinusButton";
+            this.ZoomMinusButton.Click += new System.EventHandler(this.ZoomMinusButtonClick);
+            // 
+            // ZoomTrackBar
+            // 
+            resources.ApplyResources(this.ZoomTrackBar, "ZoomTrackBar");
+            this.ZoomTrackBar.LargeChange = 2;
+            this.ZoomTrackBar.Maximum = 30;
+            this.ZoomTrackBar.Minimum = 1;
+            this.ZoomTrackBar.Name = "ZoomTrackBar";
+            this.ZoomTrackBar.Value = 10;
+            this.ZoomTrackBar.ValueChanged += new System.EventHandler(this.ZoomTrackBarValueChanged);
+            // 
+            // diagramFormProperties1
+            // 
+            resources.ApplyResources(this.diagramFormProperties1, "diagramFormProperties1");
+            this.diagramFormProperties1.CanClose = false;
+            this.diagramFormProperties1.CanDockBottom = false;
+            this.diagramFormProperties1.CanDockOnOtherControlBottom = false;
+            this.diagramFormProperties1.CanDockOnOtherControlTop = false;
+            this.diagramFormProperties1.CanDockTop = false;
+            this.diagramFormProperties1.DockPosition = Qios.DevSuite.Components.QDockPosition.None;
+            this.diagramFormProperties1.Icon = ((System.Drawing.Icon)(resources.GetObject("diagramFormProperties1.Icon")));
+            this.diagramFormProperties1.Name = "diagramFormProperties1";
+            this.diagramFormProperties1.Owner = null;
+            this.diagramFormProperties1.PersistGuid = new System.Guid("1915c329-99d5-4532-a105-ca14e4e34bdb");
+            this.diagramFormProperties1.ShowInTaskbarUndocked = true;
+            this.diagramFormProperties1.SlidingTime = 200;
+            this.diagramFormProperties1.WindowGroupName = "";
             // 
             // DiagramForm
             // 
