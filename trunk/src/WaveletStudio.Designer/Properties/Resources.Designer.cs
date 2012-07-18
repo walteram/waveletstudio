@@ -416,6 +416,20 @@ namespace WaveletStudio.Designer.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgEqualsTo {
+            get {
+                object obj = ResourceManager.GetObject("imgEqualsTo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgEqualsToMini {
+            get {
+                object obj = ResourceManager.GetObject("imgEqualsToMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgExportToCSVBlock {
             get {
                 object obj = ResourceManager.GetObject("imgExportToCSVBlock", resourceCulture);
@@ -433,6 +447,20 @@ namespace WaveletStudio.Designer.Properties {
         internal static System.Drawing.Bitmap imgFFTBlockMini {
             get {
                 object obj = ResourceManager.GetObject("imgFFTBlockMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgGreaterOrEqualsThanMini {
+            get {
+                object obj = ResourceManager.GetObject("imgGreaterOrEqualsThanMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgGreaterThanMini {
+            get {
+                object obj = ResourceManager.GetObject("imgGreaterThanMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -514,6 +542,20 @@ namespace WaveletStudio.Designer.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap imgLessOrEqualsThanMini {
+            get {
+                object obj = ResourceManager.GetObject("imgLessOrEqualsThanMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgLessThanMini {
+            get {
+                object obj = ResourceManager.GetObject("imgLessThanMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap imgMultiply {
             get {
                 object obj = ResourceManager.GetObject("imgMultiply", resourceCulture);
@@ -545,6 +587,13 @@ namespace WaveletStudio.Designer.Properties {
         internal static System.Drawing.Bitmap imgNotAndMini {
             get {
                 object obj = ResourceManager.GetObject("imgNotAndMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgNotEqualsToMini {
+            get {
+                object obj = ResourceManager.GetObject("imgNotEqualsToMini", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -622,6 +671,13 @@ namespace WaveletStudio.Designer.Properties {
         internal static System.Drawing.Bitmap imgScalarDivideMini {
             get {
                 object obj = ResourceManager.GetObject("imgScalarDivideMini", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap imgScalarMultiply {
+            get {
+                object obj = ResourceManager.GetObject("imgScalarMultiply", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

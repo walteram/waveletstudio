@@ -615,7 +615,8 @@ namespace WaveletStudio.Designer.Forms
         private void PropertyChanged(object sender, EventArgs e)
         {
             Saved = false;
-        }        
+        }
+
     }
 }
 

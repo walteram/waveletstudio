@@ -121,105 +121,10 @@
   <data name="qRibbonItem1.HotkeyText" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="qRibbonItem1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAIAICAAAAEAIACoEAAAJgAAABAQAAABACAAaAQAAM4QAAAoAAAAIAAAAEAAAAABACAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAOAAAAEwAA
-        ABMAAAATAAAAEwAAABMAAAATAAAAEwAAABMAAAAOAAAABQAAAAAAAAAAAAAAAAAAAAUAAAAOAAAAEwAA
-        ABMAAAATAAAAEwAAABMAAAATAAAAEwAAABMAAAATAAAADgAAAAUAAAAAAAAAAAAAAAAAAAAAAAAADgAA
-        ACsAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAACsAAAAOAAAAAAAAAAAAAAAAAAAADgAA
-        ACsAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAA6AAAAOgAAADoAAAArAAAADgAAAAAAAAAAAAAAAAAA
-        AAB7UTr/c0ky/2xCK/9sQiv/bEIr/21DLP9sQiv/bEIr/2xCK/+Zfm3/AAAAOgAAABMAAAAAAAAAAAAA
-        AADHsKD/e1E6/3NJMv9sQiv/bEIr/21DLP9sQiv/bEIr/2xCK/9sQiv/oIp7/wAAADoAAAATAAAAAAAA
-        AAAAAAAAAAAAAKqAaf/Zr5j/8six/9yym/+3jXb/k2lS/3FHMP9aMBn/TyUO/2xCK/8AAAA6AAAAEwAA
-        AAAAAAAAAAAAALiOd/+qgGn/2a+Y/9yym/+3jXb/k2lS/3FHMP9aMBn/TyUO/0EXAP9sQiv/AAAAOgAA
-        ABMAAAAAAAAAAAAAAAAAAAAAqoBp/9mvmP/yyLH/3LKb/7mPeP+SaFH/ckgx/1owGf9PJQ7/bEIr/wAA
-        ADoAAAATAAAAAAAAAAAAAAAAuY94/6qAaf/Zr5j/3LKb/7mPeP+SaFH/ckgx/1owGf9PJQ7/QRcA/2xC
-        K/8AAAA6AAAAEwAAAAAAAAAAAAAAAAAAAADiuKH//93L///u5f//387/7MKr/8qgif+tg2z/mG5X/4xi
-        S/9tQyz/AAAAOgAAABMAAAAAAAAAAAAAAAC5j3j/4beg///dy///387/68Gq/8qgif+sgmv/l21W/4he
-        R/96UDn/bEIr/wAAADoAAAATAAAAAAAAAAAAAAAAAAAAANWrlP/+1L3//+fb///Xwv/ftZ7/vZN8/5xy
-        W/+FW0T/d002/2xCK/8AAAA6AAAAEwAAAAAAAAAAAAAAALmPeP/Vq5T//tS9///Xwv/ftZ7/vZN8/5xy
-        W/+FW0T/d002/2c9Jv9tQyz/AAAAOgAAABMAAAAAAAAAAAAAAAAAAAAA1auU//7Uvf//59v//9fC/9+1
-        nv+9k3z/nHJb/4VbRP93TTb/bEIr/wAAADoAAAATAAAAAAAAAAAAAAAAupB5/9WrlP//1b7//9fC/+C2
-        n/+9k3z/nXNc/4ZcRf93TTb/Zz0m/21DLP8AAAA6AAAAEwAAAAAAAAAAAAAAAAAAAADVq5T//tS9///n
-        2///18L/37We/72TfP+cclv/hVtE/3dNNv9tQyz/AAAAOgAAABMAAAAAAAAAAAAAAAC6kHn/1auU//7U
-        vf//18L/37We/72TfP+cclv/hVtE/3dNNv9nPSb/bEIr/wAAADoAAAATAAAAAAAAAAAAAAAAAAAAANWr
-        lP/+1L3//+fb///Xwv/ftZ7/vZN8/5xyW/+FW0T/d002/21DLP8AAAA/AAAAIgAAABMAAAATAAAAE7qQ
-        ef/Vq5T//tS9///Xwv/ftZ7/vZN8/5xyW/+FW0T/d002/2c9Jv9sQiv/AAAAOgAAABMAAAAAAAAAAAAA
-        AAAAAAAA1auU//7Uvf//59v//9fC/+G3oP+9k3z/nXNc/4VbRP93TTb/bEIr/wAAAEgAAAA/AAAAOgAA
-        ADoAAAA6vJJ7/9WrlP/+1L3//9fC/+G3oP+9k3z/nXNc/4VbRP93TTb/Zz0m/2xCK/8AAAA6AAAAEwAA
-        AAAAAAAAAAAAAAAAAADVq5T//tS9///m2v//18L/4beg/72TfP+dc1z/hVtE/3dNNv9sQiv/SB4H/2g+
-        J/+Yblf/aD4n/0geB/+7kXr/1auU//7Uvf//18L/4beg/72TfP+dc1z/hVtE/3dNNv9nPSb/bEIr/wAA
-        ADAAAAAOAAAAAAAAAAAAAAAAAAAAAPXLtP//6+H///r5///s4v//1b7/4rih/8edhv+1i3T/qoBp/2xC
-        K/9VKxT/eU84/7CGb/95Tzj/VSsU/7ySe//1y7T//+vh///s4v//1b7/4rih/8edhv+1i3T/qoBp/51z
-        XP9sSzf/AAAAGAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAAAM2jjP/Bl4D/tYt0/6l/aP+cclv/hVtE/3tR
-        Ov9zSTL/bEIr/2xCK/9sQiv/ZDoj/3hON/+FW0T/qH5n/6h+Z/+6kHn/vZN8/6l/aP+UalP/h11G/31T
-        PP93TTb/bEs3/wAAAA4AAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADVq5T/8cew///j
-        1f//3Mn/8six/9qwmf/Aln//qoBp/5RqU/9kOiP/upB5//jOt///387/8six/9Sqk/+0inP/mG5X/4Vb
-        RP+FW0T/cUcw/wAAADoAAAATAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANWr
-        lP/xx7D//+PV///dy//xx7D/2rCZ/8GXgP+nfWb/lGpT/2U7JP+6kHn/+M63///fzv/xx7D/1KqT/7SK
-        c/+Yblf/hVtE/4VbRP9xRzD/AAAAOgAAABMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAA1auU//HHsP//49X//93L//HHsP/asJn/wZeA/6d9Zv+UalP/ZTsk/7qQef/4zrf//9/O//HH
-        sP/UqpP/tIpz/5huV/+FW0T/hVtE/3FHMP8AAAA6AAAAEwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAADVq5T/78Wu///j1f//3Mn/8six/9qwmf/Aln//qoBp/5VrVP9kOiP/upB5//fN
-        tv//387/8six/9Sqk/+0inP/mG5X/4VbRP+FW0T/ckgx/wAAADAAAAAOAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAPXLtP//387///bz///v5///4dL/+c+4/+S6o//Rp5D/wZeA/2g+
-        J//1y7T//+ba///07v//4dL/9Mqz/9qwmf/EmoP/tYt0/7WLdP9xRzD/AAAAGAAAAAUAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANqwmf/Rp5D/uY94/66Ebf+hd2D/lGpT/4lf
-        SP9/VT7/bUMs/4VbRP+ofmf/xpyF/8CWf/+sgmv/lWtU/4lfSP9/VT7/dlNA/wAAAB0AAAAFAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAyqCJ///j1f//3Mn/8six/9qw
-        mf/Aln//qH5n/3hON/9zSTL/mW9Y//nPuP//387/8six/9Sqk/+0inP/mG5X/4BWP/8AAAAwAAAADgAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADCnYj///bz///w
-        6P//4tT/+c+4/+S6o//Rp5D/n3Ve/3tROv/No4z//+ba///07v//4tT/9Mqz/9uxmv/EmoP/fFZB/wAA
-        ABgAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAC8mYb/v5V+/7SKc/+pf2j/nnRd/5RqU/+zmov/AAAAHcywnv+pf2j/x52G/8GXgP+tg2z/lWtU/4Ni
-        Tv8AAAAOAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAzqSN//LPvP/asJn/rIJr/wAAADAAAAAOAAAAAM6kjf/yz7z/2rCZ/6yC
-        a/8AAAAwAAAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADXrZb/9t7R/+bJuf+5j3j/AAAAGAAAAAUAAAAA162W//be
-        0f/mybn/uY94/wAAABgAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACrgWr/pXtk/wAAAA4AAAAFAAAAAAAA
-        AAAAAAAAq4Fq/6V7ZP8AAAAOAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//////////4AHAAeABwAHgAcAB4AHAAeAB
-        wAHgAcAB4AHAAeABwAHgAcAB4AAAAeAAAAHgAAAB4AAAAfAAAAP8AAAP/AAAD/wAAA/8AAAP/AAAD/4A
-        AB/+AAA//gAAP/8AAH//wIH//8CB///hw///////////////////////KAAAABAAAAAgAAAAAQAgAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwjHf/oHhg/5BgQP+QWED/kFhA/4dJK/8AAAAAAAAAAAAA
-        AAC0hmf/nHdh/6BwUP+QWED/kFAw/3c6HP8AAAAAsJCA///4///gyMD/0KCQ/8CAYP+AQCD/AAAAAAAA
-        AAAAAAAAsIBg//Do4P/gyMD/0KiQ/7B4UP+ASCD/AAAAALCQgP//+P//4MjA/9CgkP/AgGD/gEAg/wAA
-        AAAAAAAAAAAAALCAYP/w6OD/8ODg/+DAsP/AiHD/gEgw/wAAAACwkID///j//+DIwP/QoJD/wIBg/4BA
-        IP8AAAAAAAAAAAAAAACwgGD/8Ojg//Dg4P/gwLD/wIhw/4BIMP8AAAAAwJiA///////w6OD/4MjA/9Cg
-        gP+AQCD/AAAAAAAAAAAAAAAAsIBg//Do4P/w4OD/4MCw/8CIcP+ASDD/AAAAAMOklP+wiHD/oGhQ/5BQ
-        MP+ASDD/gEgg/4A4EP+OTSj/sIhw/6BoUP+QWDD/kEgw/4BAIP9wOBD/kFgw/wAAAADawrP/sIhw////
-        ///g0MD/0KCQ/6BwUP+AQBD/AAAAALCQcP/g2ND/8NjQ/9CgkP+weFD/gDgg/9K6o/8AAAAAAAAAAMCQ
-        gP/w8PD///jw//DYwP+wgGD/gEgg/5VXNP+wkHD////////48P/w0MD/sHhQ/4BIIP8AAAAAAAAAAAAA
-        AAAAAAAAwJiA/7CAYP+gaFD/kFAw/5BYQP+caET/sHhg/7CIcP+gcFD/gEgw/4BIIP8AAAAAAAAAAAAA
-        AAAAAAAAAAAAAMCYgP//+P//4MCw/8CQcP+ASCD/AAAAAMCYgP//+P//4Miw/9CggP+ASCD/AAAAAAAA
-        AAAAAAAAAAAAAAAAAADNsqP/sJCA/6BoUP+QUDD/h1E6/wAAAADAqJD/sJCA/6BoUP+QUDD/h1E6/wAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAALCEcP//+PD/gEYo/wAAAAAAAAAAAAAAALCEcP//+PD/gEYo/wAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADGqJn/tI12/5xpRf8AAAAAAAAAAAAAAADNsqP/tI12/5xp
-        Rf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAAA4EAAAOBAAADgZT/A4G9/wOB2/8AAcL/AQGe/4AD
-        fP/AB1v/wQdE/8EHNv/jjyv/448AOv//ABP//wAA
-</value>
-  </data>
   <data name="qRibbonItem1.Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="qCompositeButton2.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAQAEBAAAAAAIABoBAAARgAAACAgAAAAACAAqBAAAK4EAAAwMAAAAAAgAKglAABWFQAAQEAAAAAA
@@ -21578,44 +21483,47 @@
         AAD//wAA//8AAA==
 </value>
   </data>
+  <data name="SignalSourcePanel.Title" xml:space="preserve">
+    <value>Origem</value>
+  </data>
+  <data name="SignalTemplatePanel.Title" xml:space="preserve">
+    <value>Modelos</value>
+  </data>
   <data name="SignalRibbonPage.Text" xml:space="preserve">
     <value>Sinal</value>
   </data>
-  <data name="OperationsRibbonPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 29</value>
-  </data>
-  <data name="OperationsRibbonPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>940, 105</value>
+  <data name="OperationsFunctionsPanel.Title" xml:space="preserve">
+    <value>Funções</value>
   </data>
   <data name="OperationsRibbonPage.Text" xml:space="preserve">
     <value>Operações</value>
   </data>
-  <data name="ExportDataRibbonPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 29</value>
-  </data>
-  <data name="ExportDataRibbonPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>940, 105</value>
+  <data name="ExportDataPanel.Title" xml:space="preserve">
+    <value>Arquivo</value>
   </data>
   <data name="ExportDataRibbonPage.Text" xml:space="preserve">
     <value>Exportar Dados</value>
   </data>
-  <data name="TransformsRibbonPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 29</value>
-  </data>
-  <data name="TransformsRibbonPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>940, 105</value>
+  <data name="TransformsPanel.Title" xml:space="preserve">
+    <value>Transformadas</value>
   </data>
   <data name="TransformsRibbonPage.Text" xml:space="preserve">
     <value>Transformadas</value>
   </data>
-  <data name="RoutingRibbonPage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 29</value>
+  <data name="RoutingRibbonPane.Title" xml:space="preserve">
+    <value>Roteamento de Sinais</value>
   </data>
-  <data name="RoutingRibbonPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>940, 105</value>
+  <data name="LogicalRibbonPane.Title" xml:space="preserve">
+    <value>Operações Lógicas</value>
   </data>
   <data name="RoutingRibbonPage.Text" xml:space="preserve">
-    <value>Roteamento</value>
+    <value>Roteamento/Comparação</value>
+  </data>
+  <data name="ZoomLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="ZoomTrackBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -24897,30 +24805,6 @@
   </data>
   <data name="Ribbon.Text" xml:space="preserve">
     <value>Wavelet Studio</value>
-  </data>
-  <data name="SignalSourcePanel.Title" xml:space="preserve">
-    <value>Origem</value>
-  </data>
-  <data name="SignalTemplatePanel.Title" xml:space="preserve">
-    <value>Modelos</value>
-  </data>
-  <data name="OperationsFunctionsPanel.Title" xml:space="preserve">
-    <value>Funções</value>
-  </data>
-  <data name="ExportDataPanel.Title" xml:space="preserve">
-    <value>Arquivo</value>
-  </data>
-  <data name="TransformsPanel.Title" xml:space="preserve">
-    <value>Transformadas</value>
-  </data>
-  <data name="RoutingRibbonPane.Title" xml:space="preserve">
-    <value>Roteamento de Sinais</value>
-  </data>
-  <data name="ZoomLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="ZoomTrackBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="diagramFormProperties1.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

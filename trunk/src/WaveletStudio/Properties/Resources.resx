@@ -652,4 +652,40 @@ Click in the Signal tab and select a signal source.</value>
   <data name="LogicOperationBlockDescription" xml:space="preserve">
     <value>Point-by-point logic operators (AND, OR, NAND, NOR, XOR, NXOR, NOT).</value>
   </data>
+  <data name="Operand" xml:space="preserve">
+    <value>Operand</value>
+  </data>
+  <data name="OperandDescription" xml:space="preserve">
+    <value>Operand type to be used by the block.</value>
+  </data>
+  <data name="ScalarValue" xml:space="preserve">
+    <value>Scalar Value</value>
+  </data>
+  <data name="ScalarValueDescription" xml:space="preserve">
+    <value>Value used if Operand property is set to Scalar.</value>
+  </data>
+  <data name="RelationalOperator" xml:space="preserve">
+    <value>Relational</value>
+  </data>
+  <data name="RelationalOperatorDescription" xml:space="preserve">
+    <value>Conversion to boolean based on &gt;, &lt;, &gt;=, &lt;=, &lt;&gt;, = an static value, the previous sample or the next sample.</value>
+  </data>
+  <data name="EqualsTo" xml:space="preserve">
+    <value>S1 = S2</value>
+  </data>
+  <data name="GreaterOrEqualsThan" xml:space="preserve">
+    <value>S1 &gt;= S2</value>
+  </data>
+  <data name="GreaterThan" xml:space="preserve">
+    <value>S1 &gt; S2</value>
+  </data>
+  <data name="LessOrEqualsThan" xml:space="preserve">
+    <value>S1 &lt;= S2</value>
+  </data>
+  <data name="LessThan" xml:space="preserve">
+    <value>S1 &lt; S2</value>
+  </data>
+  <data name="NotEqualsTo" xml:space="preserve">
+    <value>S1 &lt;&gt; S2</value>
+  </data>
 </root>

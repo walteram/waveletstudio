@@ -652,4 +652,22 @@ Clique na aba Sinal e selecione uma origem de sinal.</value>
   <data name="LogicOperationBlockDescription" xml:space="preserve">
     <value>Operações lógicas (AND, OR, NAND, NOR, XOR, NXOR, NOT).</value>
   </data>
+  <data name="Operand" xml:space="preserve">
+    <value>Operando</value>
+  </data>
+  <data name="OperandDescription" xml:space="preserve">
+    <value>Tipo de operando utilizado pelo bloco.</value>
+  </data>
+  <data name="ScalarValue" xml:space="preserve">
+    <value>Valor Constante</value>
+  </data>
+  <data name="ScalarValueDescription" xml:space="preserve">
+    <value>Valor utilizado quando o Operando é definido para Escalar.</value>
+  </data>
+  <data name="RelationalOperator" xml:space="preserve">
+    <value>Comparação</value>
+  </data>
+  <data name="RelationalOperatorDescription" xml:space="preserve">
+    <value>Operadores de Comparação.</value>
+  </data>
 </root>
