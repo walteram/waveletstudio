@@ -1,9 +1,26 @@
-﻿using System.Drawing;
+﻿/*  Wavelet Studio Signal Processing Library - www.waveletstudio.net
+    Copyright (C) 2011, 2012 Walter V. S. de Amorim - The Wavelet Studio Initiative
+
+    Wavelet Studio is free software: you can redistribute it and/or modify
+    it under the terms of the GNU Lesser General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Wavelet Studio is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>. 
+*/
+
+using System.Drawing;
 using System.Drawing.Drawing2D;
 using WaveletStudio.Designer.Properties;
 using ZedGraph;
 
-namespace WaveletStudio.Designer
+namespace WaveletStudio.Designer.Utils
 {
     internal static class ApplicationUtils
     {
@@ -51,6 +68,22 @@ namespace WaveletStudio.Designer
             pane.Legend.IsVisible = false;
             pane.XAxis.Title.IsVisible = false;
             pane.YAxis.Title.IsVisible = false;
+        }
+
+        public static string RemoveSpecialChars(this string text)
+        {
+            const string past = "ÄÅÁÂÀÃäáâàãÉÊËÈéêëèÍÎÏÌíîïìÖÓÔÒÕöóôòõÜÚÛüúûùÇç ";
+            const string future = "AAAAAAaaaaaEEEEeeeeIIIIiiiiOOOOOoooooUUUuuuuCc_";
+            const string not = "()@$%?#\"'\\/:<>|*-+";
+            for (var i = 0; i < past.Length; i++)
+            {
+                text = text.Replace(past[i].ToString(), future[i].ToString());
+            }
+            for (var i = 0; i < not.Length; i++)
+            {
+                text = text.Replace(not[i].ToString(), "");
+            }
+            return text;
         }
     }
 }

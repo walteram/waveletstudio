@@ -20,7 +20,7 @@ using System.Drawing;
 using Qios.DevSuite.Components;
 using WaveletStudio.Designer.Properties;
 
-namespace WaveletStudio.Designer.Controls
+namespace WaveletStudio.Designer.Utils
 {
     public static class QControlUtils
     {

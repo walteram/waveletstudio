@@ -29,8 +29,8 @@ using Qios.DevSuite.Components;
 using Qios.DevSuite.Components.Ribbon;
 using WaveletStudio.Blocks;
 using WaveletStudio.Blocks.CustomAttributes;
-using WaveletStudio.Designer.Controls;
 using WaveletStudio.Designer.Properties;
+using WaveletStudio.Designer.Utils;
 using WaveletStudio.SignalGeneration;
 
 namespace WaveletStudio.Designer.Forms
@@ -54,7 +54,7 @@ namespace WaveletStudio.Designer.Forms
 
         public string CurrentDirectory
         {
-            get { return string.IsNullOrEmpty(_currentFile) ? Utils.AssemblyDirectory : Path.GetDirectoryName(_currentFile);}
+            get { return string.IsNullOrEmpty(_currentFile) ? WaveletStudio.Utils.AssemblyDirectory : Path.GetDirectoryName(_currentFile);}
         }
 
         private bool _saved;
@@ -128,8 +128,8 @@ namespace WaveletStudio.Designer.Forms
         }
 
         private void LoadSignalTemplates()
-        {            
-            foreach (var type in Utils.GetTypes("WaveletStudio.SignalGeneration"))
+        {
+            foreach (var type in WaveletStudio.Utils.GetTypes("WaveletStudio.SignalGeneration"))
             {
                 var signal = (CommonSignalBase)Activator.CreateInstance(type);
                 var item = QControlUtils.CreateCompositeListItem(type.Name, "img" + signal.GetAssemblyClassName(), signal.Name, "", 1, QPartDirection.Vertical, QPartAlignment.Centered, Color.White);
@@ -150,7 +150,7 @@ namespace WaveletStudio.Designer.Forms
 
         private void CreateBlock(string itemName)
         {
-            var type = Utils.GetType(itemName);
+            var type = WaveletStudio.Utils.GetType(itemName);
             var block = (BlockBase)Activator.CreateInstance(type);
             block.CurrentDirectory = CurrentDirectory;
             Designer.Document.Action = DesignerAction.Connect;
@@ -168,7 +168,7 @@ namespace WaveletStudio.Designer.Forms
 
         private void LoadBlocks(QCompositeItemBase compositeGroup, BlockBase.ProcessingTypeEnum processingType)
         {
-            foreach (var type in Utils.GetTypes("WaveletStudio.Blocks").Where(t => t.BaseType == typeof(BlockBase)).OrderBy(BlockBase.GetName))
+            foreach (var type in WaveletStudio.Utils.GetTypes("WaveletStudio.Blocks").Where(t => t.BaseType == typeof(BlockBase)).OrderBy(BlockBase.GetName))
             {
                 var block = (BlockBase)Activator.CreateInstance(type);
                 block.CurrentDirectory = CurrentDirectory;
@@ -280,7 +280,7 @@ namespace WaveletStudio.Designer.Forms
         public void OpenFile(string filename)
         {
             if (!Path.IsPathRooted(filename))
-                filename = Path.Combine(Utils.AssemblyDirectory, filename);
+                filename = Path.Combine(WaveletStudio.Utils.AssemblyDirectory, filename);
             var diagramForm = Designer.Document.Elements.Count > 0 ? new DiagramForm() : this;
             diagramForm.Designer.OpenBinary(filename);
             diagramForm.CurrentFile = filename;
@@ -417,7 +417,7 @@ namespace WaveletStudio.Designer.Forms
 
         private void AddRecentFile(string filename)
         {
-            if ((Path.GetDirectoryName(filename) + "").ToLower() == Utils.AssemblyDirectory.ToLower())
+            if ((Path.GetDirectoryName(filename) + "").ToLower() == WaveletStudio.Utils.AssemblyDirectory.ToLower())
                 filename = Path.GetFileName(filename) + "";
             if (Settings.Default.RecentFileList.Contains(filename))
                 Settings.Default.RecentFileList.Remove(filename);
@@ -617,6 +617,39 @@ namespace WaveletStudio.Designer.Forms
             Saved = false;
         }
 
+        public void ExportCode()
+        {
+            var saveDialog = new SaveFileDialog
+            {
+                SupportMultiDottedExtensions = true,
+                Filter = string.Format("{0}|*.cs", Resources.CSharpFile),
+                RestoreDirectory = true
+            };
+            var className = Path.GetFileNameWithoutExtension(CurrentFile).RemoveSpecialChars();
+            if (string.IsNullOrEmpty(saveDialog.FileName))
+            {
+                saveDialog.FileName = className + ".cs";
+            }
+            if (saveDialog.ShowDialog(this) != DialogResult.OK)
+            {
+                return;
+            }
+            try
+            {
+                var filename = "Model" + className;
+                var codeGenerator = new CodeGenerator
+                {
+                    BlockList = Designer.Document.Elements.GetArray().OfType<DiagramBlock>().Select(it => it.State).OfType<BlockBase>().ToList(),
+                    ClassName = filename
+                };
+                var code = codeGenerator.GenerateCode();                
+                File.WriteAllText(saveDialog.FileName, code);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(string.Format("{0}:{1}{2}", Resources.FileCouldntBeSaved, Environment.NewLine, exception.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
+        }
     }
 }
 

@@ -21,6 +21,7 @@ using System.Linq;
 using System.Windows.Forms;
 using WaveletStudio.Blocks;
 using WaveletStudio.Designer.Properties;
+using WaveletStudio.Designer.Utils;
 
 namespace WaveletStudio.Designer.Forms
 {

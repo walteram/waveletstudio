@@ -1573,10 +1573,10 @@
         AB/wAAA/8AAAf/AAAP/wAAH/8AAD//AAB/8=
 </value>
   </data>
-  <data name="&gt;&gt;qCompositeImage1.Type" xml:space="preserve">
-    <value>Qios.DevSuite.Components.QCompositeImage, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GenerateCodeMenuItem.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
+    <value>CtrlShiftG</value>
+  </data>
   <data name="PrintMenuItem.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
     <value>CtrlP</value>
   </data>
@@ -1598,9 +1598,6 @@
   </data>
   <data name="&gt;&gt;qCompositeImage8.Type" xml:space="preserve">
     <value>Qios.DevSuite.Components.QCompositeImage, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
-  </data>
-  <data name="&gt;&gt;Separator1.Name" xml:space="preserve">
-    <value>Separator1</value>
   </data>
   <data name="qCompositeText14.Title" xml:space="preserve">
     <value>DocumentName</value>
@@ -1720,14 +1717,17 @@
   <data name="qrsmwMainMenuSaveAs.Text" xml:space="preserve">
     <value>qRibbonSubMenuWindow1</value>
   </data>
-  <data name="qctDocumentName.Title" xml:space="preserve">
-    <value>DocumentName</value>
+  <data name="&gt;&gt;SaveAsMenuItem.Name" xml:space="preserve">
+    <value>SaveAsMenuItem</value>
   </data>
   <data name="&gt;&gt;qCompositeText10.Name" xml:space="preserve">
     <value>qCompositeText10</value>
   </data>
   <data name="PrepateMenuItem.Title" xml:space="preserve">
     <value>Pr&amp;epare</value>
+  </data>
+  <data name="qCompositeText9.Title" xml:space="preserve">
+    <value>&amp;1</value>
   </data>
   <data name="&gt;&gt;qCompositeText2.Type" xml:space="preserve">
     <value>Qios.DevSuite.Components.QCompositeText, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
@@ -1817,6 +1817,82 @@
   <data name="qCompositeText13.Title" xml:space="preserve">
     <value>&amp;1</value>
   </data>
+  <data name="GenerateCodeMenuItem.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAAAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAGAAAADoAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAA
+        ADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANgQEBDkAAAApAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/v7942dnZ49jY2OLX19fi19fX4tfX1+LX19fi1tbW4tbW
+        1uLW1tbi1dXV4tPT0+LT09Pi09PT4tPT0+LT09Pi09PT4tPT0+LT09Pi09PT4tPT0+LU1NTh1dXV48HB
+        wbUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANLS0o7y8vL/7+/v/+7u7v/u7u7/7u7u/+3t
+        7f/t7e3/7e3t/+zs7P/s7Oz/6+vr/+vr6//q6ur/6urq/+rq6v/p6en/6enp/+np6f/p6en/6Ojo/+jo
+        6P/s7Oz/0dHR0gAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzc3Ni+/v7//s7Oz/6+vr/+vr
+        6//r6+v/6urq/+rq6v/q6ur/6enp/+np6f/p6en/6enp/+jo6P/o6Oj/5+fn/+bm5v/m5ub/5ubm/+bm
+        5v/l5eX/5eXl/+np6f/Pz8/OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADPz8+L8PDw/+3t
+        7f/t7e3/7Ozs/+zs7P/s7Oz/6+vr/+vr6//r6+v/6urq/+rq6v/q6ur/6enp/+np6f/p6Oj/6Ojo/+fn
+        5//n5+f/5+fn/+bm5v/m5ub/6urq/8/Pz84AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANHR
+        0Yvx8fH/7u3t/+/w8f/x9Pb/8PP1/+/y9f/v8vX/7/L0/+7y9P/u8vT/7vL1/+7x9P/t8fX/7fH1/+3x
+        9f/t8fX/7PD1/+zw9f/r8PX/6evu/+fm5v/q6ur/z8/PzgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAA0dHRi/Hx8f/v8fL/5+Hb/9vLvP/czcD/3M3A/9zNwP/bzL7/28u8/9vJuv/ayLf/2sa0/9rF
+        sf/ZxK7/2cKs/9jBqf/Yv6f/2L6l/9a6nP/f0ML/6ezu/+vr6//R0dHOAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAADR0dGL8vLy/+/w8f/p5eH/4dbM/+LYz//i2M//4tfO/+HWzf/h1sv/4dXK/+DT
+        yP/g0sb/39HE/9/Qwv/fz8D/3s6+/97Nvf/ezLv/3Mm2/+PZz//q7O7/7Ozs/9HR0c4AAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAANHR0Yvz8/P/7+7u//Hy9P/z+Pv/8vb6//L2+v/y9vr/8vb6//L2
+        +v/y9vr/8fb7//H2+//x9vv/8fb7//D2/P/w9vz/8Pb8/+/2/P/v9/7/7fD0/+np6P/t7e3/0tLSzgAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA09PTi/X19f/y8/T/6ubi/+HWy//i2M//4tjO/+LX
+        zv/i183/4tbM/+LWyv/h1Mj/4dPG/+DSxP/g0cH/39C//9/Pvf/fzrz/3s26/93KtP/k2s//7O3v/+7u
+        7v/T09POAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADT09OL9vb2//T19v/q497/3cy+/97P
+        wv/dzsH/3c7B/93Nv//czL3/3Mq7/9zJuP/cyLb/28ez/9vGsP/axK7/2sKr/9rBqf/ZwKf/17uf/+HT
+        xf/t7/L/7+/v/9PT084AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANPT04v29vb/8/Py//T1
+        9v/2+fz/9fj6//X4+v/09/r/8/f6//P3+v/z9/v/8/f7//L3/P/y+P3/8/j9//L4/v/y+P7/8vj+//H3
+        /v/y+P//7/L2/+vr6v/v7+//09PTzgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA09PTi/f3
+        9//09PT/8/Pz//Pz8//z8/P/8fDv//Du7P/u6uj/6+fi/+nj3P/p4tv/6OHY/+ff1f/n3tT/597T/+fe
+        0v/n3dL/5t3S/+Xbzv/p5N3/7e7v//Dw8P/U1NTOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AADT09OL+Pj4//X19f/09PT/9PT0//Pz8//v7On/6+Tf/+fc0//h0cP/3Me0/9vEr//awqr/2Lyi/9a6
+        nv/WuZv/1reY/9W2l//Vtpf/07GO/+HPvf/w8/b/8fHx/9bW1s4AAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAPHT54H/+f////n///76/f/09PT/9fX1//f4+P/19vf/9ff4//X4+v/2+fz/9vn8//X5
+        /f/1+f3/9Pj9//P4/f/z9/3/8/f9//L3/P/y+P3/8PP2/+7t7f/y8vL/1tbWzgAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAXkjhXPatczFy+d/90vYb/ydjM//r6+v/18/T/7uvt//36/f/9+f3/8/Pz//Pz
+        8v/y8vH/8vHv//Hw7v/w7+z/7+3q/+/s6f/u6+f/7evn/+3q5f/t7Or/7u7v//Ly8v/W1tbOAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAzMzMFEp0ztAyzO/8FuDj/CLc8/wC2JP9ZuHL//////7rdwv+Fv5L/2ePa/8HT
+        xP/6+vr/8e7s/+vk3v/l2M3/4M+9/9zFrv/av6T/17ma/9Wzkv/UsY7/0aqD/+DMuf/x9Pf/8vLy/9bW
+        1s4AAAAAAAAAAAAAAAAAAAAAAAAAABaEJnILnSv/ApUi5o+4lb/n5eX/xtrJ/7XSuv//////uOTF/4PL
+        lv+h1K//gMaS///+///19fX/9fb2//X29//19vf/9fb4//X2+P/09vj/9Pb4//T1+P/z9fj/8vP0//Dv
+        7//z8/P/1tbWzgAAAAAAAAAAAAAAAAAAAAB/AEAEGoMmxw2MIv8AUABT/ej9b//+/////f////7///r5
+        +f+hzKr/kcme/7XXvv+Vz6X///////X19f/19fX/9fX1//X19f/09PT/9PT0//Tz8//z8/P/8/Pz//Ly
+        8v/y8vL/8vLy//X19f/X19fOAAAAAAAAAAAAAAAAAAAAANNkmxcrhzHfEIAc/wAAABvk3uZ9+vr6//j4
+        +P//////09/S/wCeI/8quFD/Pb5h/2G+ev/m5uX/+/v7//b29v/29vb/9fX1//X19f/19fX/9PT0//T0
+        9P/09PT/9PT0//Pz8//09PT/9/f3/9nZ2c4AAAAAAAAAAAAAAAAAAAAAv3+/BGCfY8kZgyP/ACMAOvrr
+        +nL6+/r/+vr7///////l5+L/RqpY/wqsMf8Hvjr/AMEp/6fNr///////9/f3//b29v/29vb/9vb2//X1
+        9f/19fX/9fX1//X19f/29vb/9vb2//b29v/6+vr/2dnZzQAAAAAAAAAAAAAAAAAAAAAAAAAAmLmWfFal
+        X/8MbhHBsq+tnP/2/v/z7fD/3eHc///////K28j/gax+/6HMp/9SsWX/2+fd//39/f/4+Pj/9/f3//f3
+        9//39/f/9/f3//f39//39/f/9/f3//j4+P/4+Pj/+fn5//z8/P/f39/PAAAAAAAAAAAAAAAAAAAAAAAA
+        AADYsbENlb6Y1WOubf9DlEv/UJJU/yaALf92pXf//vz9/5i3lf+QsYz/udC5/6PCpP//////+Pj4//j4
+        +P/4+Pj/+Pj4//j4+P/4+Pj/+Pj4//n5+f/5+fn/+vr6//v7+//6+vr/+fn5/97e3tEAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAADvr88QpMKikou8j+x2s3z/baty/8DTv//q6eb/RpNK/zKKN/8pgiv/U5NS/+Lj
+        4P/9/f3/+fn5//n5+f/5+fn/+fn5//n5+f/6+vr/+/v7//39/f/9/f3/+/v7//f39//z8/P/3NzczgAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3dHXh/n09//99vr///3//+7u6/+dwJz/aatu/z+a
+        SP8EeQn/rsKq///////5+fn/+vr6//r6+v/6+vr/+/v7//v7+//7+/v/9PT0//T09P/09PT/7Ozs/9zc
+        3P/Ozs6eAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADU1NaK+/v7//n5+f/3+Pj//////9rj
+        1/+zxK//y9XH/5S1kv/q7ej//f39//r6+v/6+vr/+/v7//v7+//7+/v//v7+//Pz8/+zs7P/ubm5/7u7
+        u/+7u7v/w8PD1cXFxRYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANXV1Yv6+vr/+Pj4//j4
+        +P//////0d7P/7DFrf/K18b/uMm1///////6+vr/+/v7//v7+//7+/v//Pz8//z8/P//////6enp/9DQ
+        0P//////6urq/93d3dTc3NwWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1dXVi/r6
+        +v/5+fn/+fn5//7+///a4tj/wtC9/8jVxP+1x7H///////v7+//7+/v//Pz8//z8/P/8/Pz//Pz8//7+
+        /v/n5+f/0NDQ//Ly8v/Z2dnXubm5FgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AADV1dWL+/v7//n5+f/6+vr/+vr6//z6+////f7/7/Ds/+7v6//9/f3//Pz8//z8/P/8/Pz//Pz8//39
+        /f/8/Pz/+vr6/+Li4v/Kysr/4eHh2Ly8vBcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAANfX143+/v7//Pz8//z8/P/9/f3//f39//3+/v////////////7+/v/+/v7//v7+////
+        /////////v7+//n5+f/19fX/2dnZ/8vLy9jIyMgXAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAyMjIfu3t7ebs7Ozl7e3t5e3t7eXt7e3l7e3t5e7u7uXu7u7l7u7u5e7u
+        7uXu7u7l7u7u5e7u7uXs7Ozl6Ojo5eHh4eTOzs60pqamFwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABSUlIccHBwMGxsbC1paWkuaWlpLmlpaS5paWkuaWlpLmlp
+        aS5paWkuaWlpLmlpaS5paWkuaWlpLm9vby50dHQudnZ2KQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA//////gAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AA
+        AA/wAAAP8AAAD/AAAA/wAAAP8AAAD8AAAA/AAAAPmAAAD5gAAA+YAAAPwAAAD8AAAA/gAAAP8AAAD/AA
+        AB/wAAA/8AAAf/AAAP/wAAH/+AAD//////8=
+</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>DiagramFormMainMenu</value>
   </data>
@@ -1884,6 +1960,9 @@
   </data>
   <data name="&gt;&gt;ExportMenuItem.Name" xml:space="preserve">
     <value>ExportMenuItem</value>
+  </data>
+  <data name="&gt;&gt;GenerateCodeMenuItem.Name" xml:space="preserve">
+    <value>GenerateCodeMenuItem</value>
   </data>
   <data name="SaveAsMenuItem.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
     <value>CtrlShiftS</value>
@@ -2470,6 +2549,9 @@
   <data name="&gt;&gt;qcliSaveAsWord.Name" xml:space="preserve">
     <value>qcliSaveAsWord</value>
   </data>
+  <data name="GenerateCodeMenuItem.Title" xml:space="preserve">
+    <value>&amp;Generate Code</value>
+  </data>
   <data name="SaveAsMenuItem.Title" xml:space="preserve">
     <value>Save &amp;As</value>
   </data>
@@ -2529,6 +2611,9 @@
   <data name="&gt;&gt;qCompositeText16.Type" xml:space="preserve">
     <value>Qios.DevSuite.Components.QCompositeText, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
   </data>
+  <data name="qrsmwMainMenuSaveAs.Size" type="System.Drawing.Size, System.Drawing">
+    <value>471, 238</value>
+  </data>
   <data name="qcliSaveAsPdf.Title" xml:space="preserve">
     <value>&amp;PDF-XPS</value>
   </data>
@@ -2540,6 +2625,9 @@
   </data>
   <data name="&gt;&gt;OptionsMenuItem.Name" xml:space="preserve">
     <value>OptionsMenuItem</value>
+  </data>
+  <data name="&gt;&gt;GenerateCodeMenuItem.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeMenuItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
   </data>
   <data name="OpenMenuItem.Shortcut" type="System.Windows.Forms.Shortcut, System.Windows.Forms">
     <value>CtrlO</value>
@@ -2562,81 +2650,8 @@
   <data name="&gt;&gt;qCompositeText6.Name" xml:space="preserve">
     <value>qCompositeText6</value>
   </data>
-  <data name="PrintPreviewMenuItem.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ2dnCGdnZxhnZ2cgZ2dnIGdn
-        ZyBnZ2cgZ2dnIGdnZyBnZ2cgZ2dnIGdnZyBnZ2cgZ2dnIGdnZyBnZ2cYZ2dnCAB4af8AeGn/AHhp/wB4
-        af8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABnZ2cYZ2dnSGdn
-        Z2BnZ2dgZ2dnYGdnZ2BnZ2dgZ2dnYGdnZ2BnZ2dgZ2dnYGdnZ2BnZ2dgZ2dnYGdnZ0hnZ2cYAHhp/wB4
-        af8AeGn/AHhp/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALqn
-        l/+ol4f/kX1s/4BtWf+AbVn/gG1Z/4BtWf+AbVn/gG1Z/4BtWf+AbVn/gG1Z/4BtWf+AbVn/Z2dnYGdn
-        ZyAAeGn/AHhp/wB4af8AeGn/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAuqeX//7+/f/+/v3///39//79/P/+/Pv//vz7//78+//++/v//vv6//36+f/9+vn//fr4/4Bt
-        Wf9nZ2dgZ2dnIAB4af8AeGn/AHhp/wB4af8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAC7p5j//v7+/7utof+dg3H/nYNx/52Dcf+dg3H/nYNx/52Dcf+dg3H/nYNx/52D
-        cf/++/n/gG1Z/2dnZ2BnZ2cgAHhp/wB4af8AeGn/AHhp/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAALunmP/+/v7/vKyi///p0///9ev/9sm4/8qKav/KmHD/8rqY/+OL
-        Wf/aek3/nYNx//77+v+AbVn/Z2dnYGdnZyAAeGn/AHhp/wB4af8AeGn/AAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAZ2dnCGdnZxhnZ2cgZ2dnIGdnZyBnZ2cgu6eZ//////+8raL/yI9h//r9////8uj/wIZY/8iP
-        Yf//8uj/zoNC//3mu/+dg3H//fz7/4BtWf8ZdGm7AHhp/wB4af8AeGn/AHhp/wB4af8JdmmbZ2dnGGdn
-        ZwgAAAAAAAAAAGdnZwhnZ2coZ2dnUGdnZ2BnZ2dgZ2dnYGdnZ2C7p5n//////72to//95rv/0qJ5/8WI
-        Zv/95rv//ea7/86DQv/95rv//ea7/52Dcf/i7uv/D3dn/xGHeOEp1sHSJvjd7Sb43e0u58/KNbKioRB1
-        acoEd2nqLHFoMQAAAAAAAAAAZ2dnGI6Liv9xaGj/bmRk/2xiYv9MSkn/T05M/7yomf//////vK2i//zq
-        wP/86sD//OrA//zqwP/86sD//OrA//zqwP/86sD/nYNx/xqHef8ssZz/I//j/yP/4/8j/+P/I//j/yP/
-        4/8j/+P/St3K/yiCd6ACeGnmAAAAAAAAAACOjo3/lZWU/56enf+enp3/hISD/zs6Ov87Ojr/vKia////
-        //+9rqL//uzC//7swv/+7ML//uzC//7swv9/l////uzC//7swv9GfW3/JKWV/yP/4/8j/+P/I//j/yP/
-        4/8j/+P/I//j/yP/4/8j/+P/LufPygZ3abUAeGmNAAAAAJKRkf+gn5//oJ+f/6Cfn/+Xl5f/Ozo6/zs6
-        Ov+qmIv/5ubm/6+ekv/u3LD/7tyw/+7csP/u3LD/Z4L1/8js7P9ngvX/69uz/wB4af8f8Nb/I//j/yP/
-        4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/Jcm0egB4aeIAAAAAi4uL/5OLi/+RiYn/kYmJ/5GJ
-        if9ycXH/cnFx/3Jxcf9ycXH/cnFx/3Jxcf9ycXH/cnFx/3Jxcf9ycXH/cnFx/3Jxcf9ycXH/B4Jz/yP/
-        4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8n9tu1AHhp4gAAAACLi4v/ubm5/8nK
-        yv/Jycn/yMjI/4aGhv+oqKj/qKio/6ioqP+oqKj/qKio/6ioqP+oqKj/qKio/6ioqP+oqKj/lJST/3Wd
-        mP8RopD/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/I//j/yT84eYAeGmqAAAAAI6O
-        jf/Pz8//ycrK/8nJyf/IyMj/hoaG/6ioqP+oqKj/qKio/6ioqP+oqKj/qKio/6ioqP+oqKj/qKio/6io
-        qP+ampr/46Vl/wB4af8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/JPzh5gB4
-        af8AAAAAjo6N/8/Pz//Jysr/ycnJ/8jIyP+Ghob/qKio/6ioqP+oqKj/qKio/6ioqP+oqKj/qKio/6io
-        qP+oqKj/qKio/6GhoP+hoJ//AHhp/x/w1v8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/
-        4/8h48q9AHhp/wAAAACSkZH/9/f3//Ly8v/x8fH/8PDw/6GgoP/Q0ND/0NDQ/9DQ0P/Q0ND/0NDQ/9DQ
-        0P/Q0ND/0NDQ/9DQ0P/Q0ND/0NDQ/9DQ0P9Dppr/DKWS/yP/4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/
-        4/8j/+P/I//j/wiKes0AeGmNAAAAAJOTk//29vb/ycrK/7m5uf/t7e3/jYuK/8bGxv/Gxsb/xsbG/8bG
-        xv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/8bGxv8KhXb/F9K6/yP/4/8j/+P/I//j/yP/
-        4/8j/+P/I//j/yP/4/8cvKjcAnhp5gAAAAAAAAAAlpWV//b39//u7u7/7u7u/+7u7v+OjYz/xsbG/8bG
-        xv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/6DDvv8KhXb/DKWS/x/w
-        1v8j/+P/I//j/yP/4/8f8Nb/FJSE/wV5a+80cGg4AAAAAAAAAACYl5f/+fn5//Pz8//y8vL/8fHx/4+O
-        jf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJ
-        yf9BpJj/AHhp/wB4af8RopD/CYR0/wB4af8xb2f/Z2dnYGdnZyAAAAAAAAAAAJqZmf/6+/r/9/b2//b2
-        9v/29vb/kI+O/87Ozv/Ozs7/zs7O/87Ozv/Ozs7/zs7O/87Ozv/Ozs7/zs7O/87Ozv/Ozs7/zs7O/87O
-        zv/Ozs7/zs7O/87Ozv+CgoH/1+Xj/5rCvf/n5+f/5+fn/25kZP9nZ2dgZ2dnIAAAAAAAAAAAmpmZ//z8
-        /P/6+vr/+vr6//r6+v+QkI//0dHR/9HR0f/R0dH/0dHR/9HR0f/R0dH/0dHR/9HR0f/R0dH/0dHR/9HR
-        0f/R0dH/0dHR/9HR0f/R0dH/0dHR/4ODg//09PT/w8PD/6SkpP/n5+f/bmRk/2dnZ2BnZ2cgAAAAAAAA
-        AACamZn//////////////////////5CQj//Z2dn/2dnZ/9nZ2f/Z2dn/2dnZ/9nZ2f/Z2dn/2dnZ/9nZ
-        2f/Z2dn/2dnZ/9nZ2f/Z2dn/2dnZ/9nZ2f/Z2dn/hYSD//T09P/09PT/9PT0//T09P9uZGT/Z2dnSGdn
-        ZxgAAAAAAAAAANrZ2f+ura3/rq2t/66trf+ura3/kpKS/5KSkf+RkZH/kZGR/5GQkP+QkJD/kI+P/4+O
-        jv+Ojo7/jo2N/42MjP+MjIz/i4uL/4qJiv+JiYn/iYmJ/4iHh/+Hhob/kpGS/5CPkP+Ojo7/jIyM/729
-        vf9nZ2cYZ2dnCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACRkI//bGtr/7qnl//+/v3//v79///9
-        /f/+/fz//vz7//78+//+/Pv//vv7//77+v/9+vn//fr5//36+P+AbVn/bm1s/4eGhf9nZ2dQZ2dnGAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKWkpP9UVFP/u6eY//7+
-        /v/+/v3//v39//7+/P/+/fz//v38//79+//+/Pv//fz6//37+v/9+/r//vv5/4BtWf9VVFP/l5eW/2dn
-        ZzBnZ2cIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7Ozs/15d
-        Xf+7p5j//v7+//7+/v///f7//v39///9/P/+/f3//v38//78+//+/Pv//vz7//38+v/++/r/gG1Z/15d
-        XP9nZ2dQZ2dnGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAZGNj/7unmf////////7////+/v/+/v3///79//7+/f/+/vz//v38//78/P/+/fz//fz7//38
-        +/+AbVn/ZGNj/2dnZzBnZ2cIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAu6eZ///////////////+//7//v///v7//v7+///+/f///f3//v38//79
-        /P/+/fz//vz7/4BtWf9nZ2dgZ2dnIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC8qJn///////////////////7+//7//v////7//v7+//7+
-        /f///v3///39//79/f/+/fz/gG1Z/2dnZ2BnZ2cgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALyomv/////////////////////////////+
-        /v///v7///7+/////v///v7///39//7+/f+RfWz/Z2dnSGdnZxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvKia/7uomv+7p5n/u6aY/7qm
-        lv+6pJb/uaSV/7iilP+4opL/tqGR/7afkP+1no//tZ2N/7Wdjf9nZ2cYZ2dnCAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAA//////8AAA//AAAP/wAAD/8AAA//AAAP/wAAD8AAAAGAAAABgAAAAYAA
-        AACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAAB/AAAP/wA
-        AD/8AAB//gAAf/8AAP//AAD//wAA//8AAP8=
-</value>
+  <data name="&gt;&gt;qCompositeImage1.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QCompositeImage, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
   </data>
   <data name="&gt;&gt;qCompositeImage1.Name" xml:space="preserve">
     <value>qCompositeImage1</value>
@@ -3303,7 +3318,7 @@
 </value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>424, 400</value>
+    <value>424, 440</value>
   </data>
   <data name="&gt;&gt;qCompositeText15.Type" xml:space="preserve">
     <value>Qios.DevSuite.Components.QCompositeText, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
@@ -3345,17 +3360,20 @@
         v8B9fuKaH2hr/j/BB18jAYsoTiTRAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="&gt;&gt;Separator1.Name" xml:space="preserve">
+    <value>Separator1</value>
+  </data>
   <data name="&gt;&gt;OptionsMenuItem.Type" xml:space="preserve">
     <value>Qios.DevSuite.Components.QCompositeMenuItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
-  </data>
-  <data name="OpenMenuItem.HotkeyText" xml:space="preserve">
-    <value>O</value>
   </data>
   <data name="qCompositeText15.Title" xml:space="preserve">
     <value>&amp;1</value>
   </data>
   <data name="&gt;&gt;qCompositeText7.Name" xml:space="preserve">
     <value>qCompositeText7</value>
+  </data>
+  <data name="qctDocumentName.Title" xml:space="preserve">
+    <value>DocumentName</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>Qios.DevSuite.Components.Ribbon.QRibbonMenuWindow, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
@@ -3948,8 +3966,81 @@
   <data name="qcliSaveAsWord2003.Title" xml:space="preserve">
     <value>Word &amp;97-2003</value>
   </data>
-  <data name="&gt;&gt;SaveAsMenuItem.Name" xml:space="preserve">
-    <value>SaveAsMenuItem</value>
+  <data name="PrintPreviewMenuItem.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAZ2dnCGdnZxhnZ2cgZ2dnIGdn
+        ZyBnZ2cgZ2dnIGdnZyBnZ2cgZ2dnIGdnZyBnZ2cgZ2dnIGdnZyBnZ2cYZ2dnCAB4af8AeGn/AHhp/wB4
+        af8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABnZ2cYZ2dnSGdn
+        Z2BnZ2dgZ2dnYGdnZ2BnZ2dgZ2dnYGdnZ2BnZ2dgZ2dnYGdnZ2BnZ2dgZ2dnYGdnZ0hnZ2cYAHhp/wB4
+        af8AeGn/AHhp/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALqn
+        l/+ol4f/kX1s/4BtWf+AbVn/gG1Z/4BtWf+AbVn/gG1Z/4BtWf+AbVn/gG1Z/4BtWf+AbVn/Z2dnYGdn
+        ZyAAeGn/AHhp/wB4af8AeGn/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAuqeX//7+/f/+/v3///39//79/P/+/Pv//vz7//78+//++/v//vv6//36+f/9+vn//fr4/4Bt
+        Wf9nZ2dgZ2dnIAB4af8AeGn/AHhp/wB4af8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAC7p5j//v7+/7utof+dg3H/nYNx/52Dcf+dg3H/nYNx/52Dcf+dg3H/nYNx/52D
+        cf/++/n/gG1Z/2dnZ2BnZ2cgAHhp/wB4af8AeGn/AHhp/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAALunmP/+/v7/vKyi///p0///9ev/9sm4/8qKav/KmHD/8rqY/+OL
+        Wf/aek3/nYNx//77+v+AbVn/Z2dnYGdnZyAAeGn/AHhp/wB4af8AeGn/AAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAZ2dnCGdnZxhnZ2cgZ2dnIGdnZyBnZ2cgu6eZ//////+8raL/yI9h//r9////8uj/wIZY/8iP
+        Yf//8uj/zoNC//3mu/+dg3H//fz7/4BtWf8ZdGm7AHhp/wB4af8AeGn/AHhp/wB4af8JdmmbZ2dnGGdn
+        ZwgAAAAAAAAAAGdnZwhnZ2coZ2dnUGdnZ2BnZ2dgZ2dnYGdnZ2C7p5n//////72to//95rv/0qJ5/8WI
+        Zv/95rv//ea7/86DQv/95rv//ea7/52Dcf/i7uv/D3dn/xGHeOEp1sHSJvjd7Sb43e0u58/KNbKioRB1
+        acoEd2nqLHFoMQAAAAAAAAAAZ2dnGI6Liv9xaGj/bmRk/2xiYv9MSkn/T05M/7yomf//////vK2i//zq
+        wP/86sD//OrA//zqwP/86sD//OrA//zqwP/86sD/nYNx/xqHef8ssZz/I//j/yP/4/8j/+P/I//j/yP/
+        4/8j/+P/St3K/yiCd6ACeGnmAAAAAAAAAACOjo3/lZWU/56enf+enp3/hISD/zs6Ov87Ojr/vKia////
+        //+9rqL//uzC//7swv/+7ML//uzC//7swv9/l////uzC//7swv9GfW3/JKWV/yP/4/8j/+P/I//j/yP/
+        4/8j/+P/I//j/yP/4/8j/+P/LufPygZ3abUAeGmNAAAAAJKRkf+gn5//oJ+f/6Cfn/+Xl5f/Ozo6/zs6
+        Ov+qmIv/5ubm/6+ekv/u3LD/7tyw/+7csP/u3LD/Z4L1/8js7P9ngvX/69uz/wB4af8f8Nb/I//j/yP/
+        4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/Jcm0egB4aeIAAAAAi4uL/5OLi/+RiYn/kYmJ/5GJ
+        if9ycXH/cnFx/3Jxcf9ycXH/cnFx/3Jxcf9ycXH/cnFx/3Jxcf9ycXH/cnFx/3Jxcf9ycXH/B4Jz/yP/
+        4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8n9tu1AHhp4gAAAACLi4v/ubm5/8nK
+        yv/Jycn/yMjI/4aGhv+oqKj/qKio/6ioqP+oqKj/qKio/6ioqP+oqKj/qKio/6ioqP+oqKj/lJST/3Wd
+        mP8RopD/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/I//j/yT84eYAeGmqAAAAAI6O
+        jf/Pz8//ycrK/8nJyf/IyMj/hoaG/6ioqP+oqKj/qKio/6ioqP+oqKj/qKio/6ioqP+oqKj/qKio/6io
+        qP+ampr/46Vl/wB4af8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/JPzh5gB4
+        af8AAAAAjo6N/8/Pz//Jysr/ycnJ/8jIyP+Ghob/qKio/6ioqP+oqKj/qKio/6ioqP+oqKj/qKio/6io
+        qP+oqKj/qKio/6GhoP+hoJ//AHhp/x/w1v8j/+P/I//j/yP/4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/
+        4/8h48q9AHhp/wAAAACSkZH/9/f3//Ly8v/x8fH/8PDw/6GgoP/Q0ND/0NDQ/9DQ0P/Q0ND/0NDQ/9DQ
+        0P/Q0ND/0NDQ/9DQ0P/Q0ND/0NDQ/9DQ0P9Dppr/DKWS/yP/4/8j/+P/I//j/yP/4/8j/+P/I//j/yP/
+        4/8j/+P/I//j/wiKes0AeGmNAAAAAJOTk//29vb/ycrK/7m5uf/t7e3/jYuK/8bGxv/Gxsb/xsbG/8bG
+        xv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/8bGxv8KhXb/F9K6/yP/4/8j/+P/I//j/yP/
+        4/8j/+P/I//j/yP/4/8cvKjcAnhp5gAAAAAAAAAAlpWV//b39//u7u7/7u7u/+7u7v+OjYz/xsbG/8bG
+        xv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/8bGxv/Gxsb/xsbG/6DDvv8KhXb/DKWS/x/w
+        1v8j/+P/I//j/yP/4/8f8Nb/FJSE/wV5a+80cGg4AAAAAAAAAACYl5f/+fn5//Pz8//y8vL/8fHx/4+O
+        jf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJyf/Jycn/ycnJ/8nJ
+        yf9BpJj/AHhp/wB4af8RopD/CYR0/wB4af8xb2f/Z2dnYGdnZyAAAAAAAAAAAJqZmf/6+/r/9/b2//b2
+        9v/29vb/kI+O/87Ozv/Ozs7/zs7O/87Ozv/Ozs7/zs7O/87Ozv/Ozs7/zs7O/87Ozv/Ozs7/zs7O/87O
+        zv/Ozs7/zs7O/87Ozv+CgoH/1+Xj/5rCvf/n5+f/5+fn/25kZP9nZ2dgZ2dnIAAAAAAAAAAAmpmZ//z8
+        /P/6+vr/+vr6//r6+v+QkI//0dHR/9HR0f/R0dH/0dHR/9HR0f/R0dH/0dHR/9HR0f/R0dH/0dHR/9HR
+        0f/R0dH/0dHR/9HR0f/R0dH/0dHR/4ODg//09PT/w8PD/6SkpP/n5+f/bmRk/2dnZ2BnZ2cgAAAAAAAA
+        AACamZn//////////////////////5CQj//Z2dn/2dnZ/9nZ2f/Z2dn/2dnZ/9nZ2f/Z2dn/2dnZ/9nZ
+        2f/Z2dn/2dnZ/9nZ2f/Z2dn/2dnZ/9nZ2f/Z2dn/hYSD//T09P/09PT/9PT0//T09P9uZGT/Z2dnSGdn
+        ZxgAAAAAAAAAANrZ2f+ura3/rq2t/66trf+ura3/kpKS/5KSkf+RkZH/kZGR/5GQkP+QkJD/kI+P/4+O
+        jv+Ojo7/jo2N/42MjP+MjIz/i4uL/4qJiv+JiYn/iYmJ/4iHh/+Hhob/kpGS/5CPkP+Ojo7/jIyM/729
+        vf9nZ2cYZ2dnCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACRkI//bGtr/7qnl//+/v3//v79///9
+        /f/+/fz//vz7//78+//+/Pv//vv7//77+v/9+vn//fr5//36+P+AbVn/bm1s/4eGhf9nZ2dQZ2dnGAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKWkpP9UVFP/u6eY//7+
+        /v/+/v3//v39//7+/P/+/fz//v38//79+//+/Pv//fz6//37+v/9+/r//vv5/4BtWf9VVFP/l5eW/2dn
+        ZzBnZ2cIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7Ozs/15d
+        Xf+7p5j//v7+//7+/v///f7//v39///9/P/+/f3//v38//78+//+/Pv//vz7//38+v/++/r/gG1Z/15d
+        XP9nZ2dQZ2dnGAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAZGNj/7unmf////////7////+/v/+/v3///79//7+/f/+/vz//v38//78/P/+/fz//fz7//38
+        +/+AbVn/ZGNj/2dnZzBnZ2cIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAu6eZ///////////////+//7//v///v7//v7+///+/f///f3//v38//79
+        /P/+/fz//vz7/4BtWf9nZ2dgZ2dnIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC8qJn///////////////////7+//7//v////7//v7+//7+
+        /f///v3///39//79/f/+/fz/gG1Z/2dnZ2BnZ2cgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALyomv/////////////////////////////+
+        /v///v7///7+/////v///v7///39//7+/f+RfWz/Z2dnSGdnZxgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvKia/7uomv+7p5n/u6aY/7qm
+        lv+6pJb/uaSV/7iilP+4opL/tqGR/7afkP+1no//tZ2N/7Wdjf9nZ2cYZ2dnCAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAA//////8AAA//AAAP/wAAD/8AAA//AAAP/wAAD8AAAAGAAAABgAAAAYAA
+        AACAAAAAgAAAAIAAAACAAAAAgAAAAIAAAACAAAABgAAAAYAAAAGAAAABgAAAAYAAAAGAAAAB/AAAP/wA
+        AD/8AAB//gAAf/8AAP//AAD//wAA//8AAP8=
+</value>
   </data>
   <data name="&gt;&gt;qcliSaveAsPdf.Name" xml:space="preserve">
     <value>qcliSaveAsPdf</value>
@@ -4071,8 +4162,8 @@
   <data name="CloseMenuItem.Title" xml:space="preserve">
     <value>&amp;Close</value>
   </data>
-  <data name="&gt;&gt;qCompositeText13.Name" xml:space="preserve">
-    <value>qCompositeText13</value>
+  <data name="GenerateCodeMenuItem.HotkeyText" xml:space="preserve">
+    <value>G</value>
   </data>
   <data name="ExportMenuItem.Title" xml:space="preserve">
     <value>&amp;Export</value>
@@ -4303,8 +4394,8 @@
   <data name="&gt;&gt;PrintMenuItem.Type" xml:space="preserve">
     <value>Qios.DevSuite.Components.QCompositeMenuItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
   </data>
-  <data name="qrsmwMainMenuSaveAs.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 238</value>
+  <data name="&gt;&gt;qCompositeText13.Name" xml:space="preserve">
+    <value>qCompositeText13</value>
   </data>
   <data name="PrintMenuItem.Title" xml:space="preserve">
     <value>&amp;Print</value>
@@ -4343,8 +4434,8 @@
   <data name="&gt;&gt;PrepateMenuItem.Type" xml:space="preserve">
     <value>Qios.DevSuite.Components.QCompositeMenuItem, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
   </data>
-  <data name="qCompositeText9.Title" xml:space="preserve">
-    <value>&amp;1</value>
+  <data name="OpenMenuItem.HotkeyText" xml:space="preserve">
+    <value>O</value>
   </data>
   <data name="&gt;&gt;qCompositeText3.Name" xml:space="preserve">
     <value>qCompositeText3</value>
