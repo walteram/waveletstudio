@@ -43,7 +43,7 @@ namespace WaveletStudio.SignalGeneration
         {
             var samples = new List<double>();
             var finish = Convert.ToDecimal(GetFinish());
-            var lastValue = 1;
+            var lastValue = Phase == 0.5 ? 0 : 1;
             for (var x = Convert.ToDecimal(Start); x <= finish; x += Convert.ToDecimal(SamplingInterval))
             {
                 lastValue = lastValue == 1 ? 0 : 1;
