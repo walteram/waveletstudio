@@ -116,14 +116,6 @@ namespace WaveletStudio.Blocks
                 return;
             
             OutputNodes[0].Object.Clear();
-            if (Operand == OperandEnum.StaticValue)
-            {
-                OutputNodes[0].Object.Add(WaveMath.ExecuteRelationalOperation(Operation, inputNode1.Object[0], ScalarValue));
-            }
-            else if (Operand == OperandEnum.Signal)
-            {
-                OutputNodes[0].Object.Add(WaveMath.ExecuteRelationalOperation(Operation, inputNode1.Object[0], ScalarValue));
-            }
             for (var i = 0; i < inputNode1.Object.Count; i++)
             {
                 var signal1 = inputNode1.Object[i];
