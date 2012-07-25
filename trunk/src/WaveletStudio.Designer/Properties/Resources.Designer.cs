@@ -108,6 +108,15 @@ namespace WaveletStudio.Designer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C# File.
+        /// </summary>
+        internal static string CSharpFile {
+            get {
+                return ResourceManager.GetString("CSharpFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Dynamic (slower, uses less memory).
         /// </summary>
         internal static string dynamictrigonometricvalues {

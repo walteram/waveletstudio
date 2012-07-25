@@ -17,8 +17,13 @@
 
 using System;
 using System.IO;
+using System.Linq;
+using System.Text;
+using DiagramNet.Elements;
 using Qios.DevSuite.Components;
+using WaveletStudio.Blocks;
 using WaveletStudio.Designer.Properties;
+using WaveletStudio.Designer.Utils;
 
 namespace WaveletStudio.Designer.Forms
 {
@@ -79,7 +84,7 @@ namespace WaveletStudio.Designer.Forms
             var i = 0;
             foreach (var file in Settings.Default.RecentFileList)
             {
-                if (!File.Exists(file) && !File.Exists(Path.Combine(Utils.AssemblyDirectory, file))) 
+                if (!File.Exists(file) && !File.Exists(Path.Combine(WaveletStudio.Utils.AssemblyDirectory, file))) 
                     continue;
                 i++;
                 var compositeItem = new QCompositeItem
@@ -109,6 +114,11 @@ namespace WaveletStudio.Designer.Forms
         {
             var optionsForm = new OptionsForm();
             optionsForm.ShowDialog();
+        }
+
+        private void GenerateCodeMenuItemItemActivated(object sender, QCompositeEventArgs e)
+        {
+            _diagramForm.ExportCode();
         }
     }
 }

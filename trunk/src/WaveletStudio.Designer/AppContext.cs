@@ -68,7 +68,7 @@ namespace WaveletStudio.Designer
             {
                 var filepath = file;
                 if (!Path.IsPathRooted(filepath))
-                    filepath = Path.Combine(Utils.AssemblyDirectory, filepath);
+                    filepath = Path.Combine(WaveletStudio.Utils.AssemblyDirectory, filepath);
                 if (!File.Exists(filepath))
                     continue;
                 try

@@ -46,12 +46,14 @@ namespace WaveletStudio.Blocks
         private void ExecuteBlock(BlockBase block)
         {
             block.Execute();
-            if (block.Cascade) 
+            if (block.Cascade)
+            {
                 return;
+            }
             foreach (var node in block.OutputNodes.Where(node => node.ConnectingNode != null))
             {
                 ExecuteBlock(node.ConnectingNode.Root);
             }
-        }        
+        }
     }
 }

@@ -128,6 +128,9 @@
 Inglês (Estados Unidos)
 Português (Brasil)</value>
   </data>
+  <data name="CSharpFile" xml:space="preserve">
+    <value>Arquivo C#</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Erro</value>
   </data>

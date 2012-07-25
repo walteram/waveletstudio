@@ -84,6 +84,7 @@ namespace WaveletStudio.Designer.Forms
             this.qCompositeImage8 = new Qios.DevSuite.Components.QCompositeImage();
             this.ExportMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
             this.Separator2 = new Qios.DevSuite.Components.QCompositeSeparator();
+            this.GenerateCodeMenuItem = new Qios.DevSuite.Components.QCompositeMenuItem();
             this.SuspendLayout();
             // 
             // OptionsButton
@@ -365,6 +366,13 @@ namespace WaveletStudio.Designer.Forms
             this.ExportMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("ExportMenuItem.Icon")));
             this.ExportMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.ExportMenuItemItemActivated);
             // 
+            // GenerateCodeMenuItem
+            // 
+            this.GenerateCodeMenuItem.Configuration.IconConfiguration.IconSize = new System.Drawing.Size(32, 32);
+            resources.ApplyResources(this.GenerateCodeMenuItem, "GenerateCodeMenuItem");
+            this.GenerateCodeMenuItem.Icon = ((System.Drawing.Icon)(resources.GetObject("GenerateCodeMenuItem.Icon")));
+            this.GenerateCodeMenuItem.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.GenerateCodeMenuItemItemActivated);
+            // 
             // DiagramFormMainMenu
             // 
             resources.ApplyResources(this, "$this");
@@ -376,6 +384,7 @@ namespace WaveletStudio.Designer.Forms
             this.Items.Add(this.SaveAsMenuItem);
             this.Items.Add(this.qCompositeSeparator2);
             this.Items.Add(this.ExportMenuItem);
+            this.Items.Add(this.GenerateCodeMenuItem);
             this.Items.Add(this.qCompositeSeparator1);
             this.Items.Add(this.PrintMenuItem);
             this.Items.Add(this.PrintPreviewMenuItem);
@@ -445,6 +454,7 @@ namespace WaveletStudio.Designer.Forms
         private Qios.DevSuite.Components.QCompositeImage qCompositeImage8;
         private Qios.DevSuite.Components.QCompositeMenuItem ExportMenuItem;
         private Qios.DevSuite.Components.QCompositeSeparator Separator2;
+        private Qios.DevSuite.Components.QCompositeMenuItem GenerateCodeMenuItem;
                 
     }
 }

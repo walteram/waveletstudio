@@ -75,8 +75,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppContext.cs" />
-    <Compile Include="ApplicationUtils.cs" />
-    <Compile Include="Controls\QControlUtils.cs" />
+    <Compile Include="Utils\ApplicationUtils.cs" />
+    <Compile Include="Utils\CodeGenerator.cs" />
+    <Compile Include="Utils\QControlUtils.cs" />
     <Compile Include="Forms\BlockPlot.cs">
       <SubType>UserControl</SubType>
     </Compile>
