@@ -1,7 +1,7 @@
 [Setup]
 WizardImageFile=compiler:WizModernImage-IS.bmp
 AppName=Wavelet Studio
-AppVersion=1.1.0
+AppVersion=1.2.0
 ExtraDiskSpaceRequired=500
 SetupIconFile=..\WaveletStudio.Designer\icon.ico
 DefaultDirName={pf}\WaveletStudio
