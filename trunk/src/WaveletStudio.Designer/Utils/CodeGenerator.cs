@@ -33,27 +33,27 @@ namespace WaveletStudio.Designer.Utils
             }
             AppendClassDeclarationCode();
             
-            _text.AppendLine(Ident(4) + "//Declaring the blocks");
+            _text.AppendLine(Ident(3) + "//Declaring the blocks");
             foreach (var blockInfo in _generatedBlocks)
             {
                 GenerateDeclarationCode(blockInfo);
             }
             _text.AppendLine();
             
-            _text.AppendLine(Ident(4) + "//Connecting the blocks");
+            _text.AppendLine(Ident(3) + "//Connecting the blocks");
             foreach (var blockInfo in _generatedBlocks)
             {
                 GenerateConnectionCode(blockInfo);
             }
             _text.AppendLine();
 
-            _text.AppendLine(Ident(4) + "//Appending the blocks to a block list and execute all");
-            _text.AppendLine(Ident(4) + "var blockList = new BlockList();");
+            _text.AppendLine(Ident(3) + "//Appending the blocks to a block list and execute all");
+            _text.AppendLine(Ident(3) + "var blockList = new BlockList();");
             foreach (var blockInfo in _generatedBlocks)
             {
-                _text.AppendLine(Ident(4) + "blockList.Add(" + blockInfo.VariableName + ");");
+                _text.AppendLine(Ident(3) + "blockList.Add(" + blockInfo.VariableName + ");");
             }
-            _text.AppendLine(Ident(4) + "blockList.ExecuteAll();");
+            _text.AppendLine(Ident(3) + "blockList.ExecuteAll();");
             AppendClassEndCode();
             return _text.ToString();
         }
@@ -94,7 +94,7 @@ namespace WaveletStudio.Designer.Utils
             _text.AppendLine("using WaveletStudio.Blocks;");
             _text.AppendLine("using WaveletStudio.Functions;");
             _text.AppendLine();
-            _text.AppendLine("namespace WaveletStudio.Designer");
+            _text.AppendLine("namespace WaveletStudioUserModels");
             _text.AppendLine("{");
             _text.AppendLine(Ident(1) + "public class " + ClassName);
             _text.AppendLine(Ident(1) + "{");
@@ -116,20 +116,20 @@ namespace WaveletStudio.Designer.Utils
             var type = block.GetType();
             var parameterProperties = type.GetProperties().Where(property => property.GetCustomAttributes(true).OfType<Parameter>().Any()).ToList();
             var variableName = blockInfo.VariableName;
-            _text.Append(Ident(4) + "var " + variableName + " = new " + type.Name);
+            _text.Append(Ident(3) + "var " + variableName + " = new " + type.Name);
             if (parameterProperties.Count == 0)
             {
                 _text.AppendLine("();");
             }
             else
             {
-                _text.AppendLine(Environment.NewLine + Ident(4) + "{");
+                _text.AppendLine(Environment.NewLine + Ident(3) + "{");
                 for (var i = 0; i < parameterProperties.Count; i++)
                 {
                     var property = parameterProperties[i];
-                    _text.AppendLine(Ident(5) + property.Name + " = " + GetPropertyValue(property, block) + (i < parameterProperties.Count -1 ? "," : ""));
+                    _text.AppendLine(Ident(4) + property.Name + " = " + GetPropertyValue(property, block) + (i < parameterProperties.Count -1 ? "," : ""));
                 }
-                _text.AppendLine(Ident(4) + "};");
+                _text.AppendLine(Ident(3) + "};");
             }
         }
 
@@ -148,7 +148,7 @@ namespace WaveletStudio.Designer.Utils
                     {
                         if (connectedBlock.Block.InputNodes[j].ConnectingNode == outputNode)
                         {
-                            _text.AppendLine(Ident(4) + variableName + ".OutputNodes[" + i + "].ConnectTo(" + connectedBlock.VariableName + ".InputNodes[" + j + "]);");
+                            _text.AppendLine(Ident(3) + variableName + ".OutputNodes[" + i + "].ConnectTo(" + connectedBlock.VariableName + ".InputNodes[" + j + "]);");
                         }
                     }                    
                 }
@@ -209,23 +209,6 @@ namespace WaveletStudio.Designer.Utils
                 return Convert.ToDecimal(value).ToString("0.0###############", CultureInfo.InvariantCulture);
             }
             return "\"" + value + "\"";
-        }
-
-        private void GenerateExecuteBlockCode(GeneratedBlockInfo blockInfo)
-        {
-            _text.AppendLine(Ident(4) + blockInfo.VariableName + ".Execute();");
-            if (blockInfo.Block.Cascade)
-            {
-                return;
-            }
-            foreach (var node in blockInfo.Block.OutputNodes.Where(node => node.ConnectingNode != null))            
-            {
-                var connectedBlockInfo = _generatedBlocks.FirstOrDefault(it => it.Block == node.ConnectingNode.Root);
-                if(connectedBlockInfo!=null)
-                {
-                    GenerateExecuteBlockCode(connectedBlockInfo);
-                }                
-            }
         }
     }
 }
