@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B84405B3-006D-456C-ABEC-A62E971EB68F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{441F1F6E-719C-439F-86D7-0E3A991500AF}"
@@ -17,9 +19,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaveletStudio.Designer", "WaveletStudio.Designer\WaveletStudio.Designer.csproj", "{BE6CA208-A810-4103-BC06-B0F833379369}"
 EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = WaveletStudio.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|Mixed Platforms = Debug|Mixed Platforms
@@ -66,5 +65,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{441F1F6E-719C-439F-86D7-0E3A991500AF} = {B84405B3-006D-456C-ABEC-A62E971EB68F}
 		{A182FEB7-2FB2-448F-A62C-751F73B8E63B} = {B84405B3-006D-456C-ABEC-A62E971EB68F}
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = WaveletStudio.vsmdi
 	EndGlobalSection
 EndGlobal

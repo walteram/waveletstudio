@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using Qios.DevSuite.Components;
 using WaveletStudio.Designer.Properties;
+using WaveletStudio.Designer.Resources;
 
 namespace WaveletStudio.Designer
 {
@@ -15,7 +16,7 @@ namespace WaveletStudio.Designer
         /// </summary>
         [STAThread]
         static void Main(string[] parameters)
-        {            
+        {
             var language = Settings.Default.Language;
             if (!string.IsNullOrEmpty(language) && language!="-")
             {
@@ -27,17 +28,9 @@ namespace WaveletStudio.Designer
 
             ShowSplashScreen();
 
-            if (string.IsNullOrEmpty(Settings.Default.Theme) || Settings.Default.Theme == "-")
-            {
-                QColorScheme.Global.InheritCurrentThemeFromGlobal = true;
-                QColorScheme.Global.InheritCurrentThemeFromWindows = true;
-            }
-            else
-            {
-                QColorScheme.Global.CurrentTheme = Settings.Default.Theme;
-                QColorScheme.Global.InheritCurrentThemeFromWindows = false;   
-            }
-
+            QColorScheme.Global.InheritCurrentThemeFromGlobal = true;
+            QColorScheme.Global.InheritCurrentThemeFromWindows = false;
+            
             var file = "";
             foreach (var parameter in parameters.Where(File.Exists))
             {
@@ -50,7 +43,7 @@ namespace WaveletStudio.Designer
 
         public static void ShowSplashScreen()
         {
-            _splashScreen = new QTranslucentWindow {BackgroundImage = new Bitmap(Resources.imgSplash), TopMost = true};
+            _splashScreen = new QTranslucentWindow {BackgroundImage = new Bitmap(Images.imgSplash), TopMost = true};
             _splashScreen.ShowCenteredOnScreen();
             Application.Idle += ApplicationIdle;
         }

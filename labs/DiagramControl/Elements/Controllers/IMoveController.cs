@@ -11,6 +11,7 @@ namespace DiagramNet.Elements.Controllers
 
 		void Start(Point posStart);
 		void Move(Point posCurrent);
+        bool WillMove(Point posCurrent);
 		void End();
 
 		bool CanMove {get;}

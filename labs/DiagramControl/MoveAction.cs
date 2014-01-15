@@ -104,18 +104,19 @@ namespace DiagramNet
 
             foreach (var ctrl in _moveCtrl)
             {
-                if (ctrl == null)
+                if (ctrl == null || !ctrl.WillMove(dragPoint))
                     continue;
+
                 ctrl.OwnerElement.Invalidate();
                 _onElementMovingDelegate(new ElementEventArgs(ctrl.OwnerElement));
                 ctrl.Move(dragPoint);
                 if (ctrl.OwnerElement is NodeElement)
                 {
-                    UpdateLinkPosition((NodeElement) ctrl.OwnerElement);
+                    UpdateLinkPosition((NodeElement)ctrl.OwnerElement);
                 }
                 var lblCtrl = ControllerHelper.GetLabelController(ctrl.OwnerElement);
                 if (lblCtrl != null)
-                    lblCtrl.SetLabelPosition();
+                    lblCtrl.SetLabelPosition();                
             }
         }
 

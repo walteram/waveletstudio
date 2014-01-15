@@ -117,7 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="FormCaption.Size" type="System.Drawing.Size, System.Drawing">
+    <value>789, 28</value>
+  </data>
+  <data name="UseSignalButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>219, 341</value>
+  </data>
+  <data name="CancelButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 341</value>
+  </data>
   <data name="CancelButton.Text" xml:space="preserve">
     <value>&amp;Cancelar</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>789, 376</value>
   </data>
 </root>

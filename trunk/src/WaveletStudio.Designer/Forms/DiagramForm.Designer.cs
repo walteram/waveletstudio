@@ -46,24 +46,10 @@
             this.qRibbonItem17 = new Qios.DevSuite.Components.Ribbon.QRibbonItem();
             this.Ribbon = new Qios.DevSuite.Components.Ribbon.QRibbon();
             this.SignalRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
-            this.SignalSourcePanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
-            this.SignalSourceComposite = new Qios.DevSuite.Components.QCompositeGroup();
-            this.SignalTemplatePanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
-            this.SignalTemplatesComposite = new Qios.DevSuite.Components.QCompositeGroup();
             this.OperationsRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
-            this.OperationsFunctionsPanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
-            this.OperationsFunctionsComposite = new Qios.DevSuite.Components.QCompositeGroup();
             this.ExportDataRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
-            this.ExportDataPanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
-            this.ExportToFileComposite = new Qios.DevSuite.Components.QCompositeGroup();
             this.TransformsRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
-            this.TransformsPanel = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
-            this.TransformsComposite = new Qios.DevSuite.Components.QCompositeGroup();
             this.RoutingRibbonPage = new Qios.DevSuite.Components.Ribbon.QRibbonPage();
-            this.RoutingRibbonPane = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
-            this.RoutingComposite = new Qios.DevSuite.Components.QCompositeGroup();
-            this.LogicalRibbonPane = new Qios.DevSuite.Components.Ribbon.QRibbonPanel();
-            this.LogicComposite = new Qios.DevSuite.Components.QCompositeGroup();
             this.qCompositeWindow1 = new Qios.DevSuite.Components.QCompositeWindow();
             this.QToolBarHost2 = new Qios.DevSuite.Components.QToolBarHost();
             this.RightDockBar = new Qios.DevSuite.Components.QDockBar();
@@ -92,11 +78,12 @@
             // qRibbonItem1
             // 
             resources.ApplyResources(this.qRibbonItem1, "qRibbonItem1");
+            this.qRibbonItem1.Icon = ((System.Drawing.Icon)(resources.GetObject("qRibbonItem1.Icon")));
             // 
             // qCompositeButton2
             // 
-            resources.ApplyResources(this.qCompositeButton2, "qCompositeButton2");
             this.qCompositeButton2.Icon = ((System.Drawing.Icon)(resources.GetObject("qCompositeButton2.Icon")));
+            resources.ApplyResources(this.qCompositeButton2, "qCompositeButton2");
             // 
             // qCompositeGroup16
             // 
@@ -171,17 +158,39 @@
             // 
             // qRibbonCaption1
             // 
-            resources.ApplyResources(this.qRibbonCaption1, "qRibbonCaption1");
             this.qRibbonCaption1.ApplicationButton = this.AppMenuButton;
+            this.qRibbonCaption1.ColorScheme.RibbonCaptionApplicationText.SetColor("VistaBlack", System.Drawing.Color.Black, false);
+            this.qRibbonCaption1.ColorScheme.RibbonCaptionBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qRibbonCaption1.ColorScheme.RibbonCaptionBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qRibbonCaption1.ColorScheme.RibbonCaptionBorder.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qRibbonCaption1.ColorScheme.RibbonCaptionInactiveApplicationText.SetColor("VistaBlack", System.Drawing.Color.Black, false);
+            this.qRibbonCaption1.ColorScheme.RibbonCaptionInactiveBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qRibbonCaption1.ColorScheme.RibbonCaptionInactiveBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.qRibbonCaption1.ColorScheme.RibbonCaptionInactiveBorder.SetColor("VistaBlack", System.Drawing.Color.White, false);
             this.qRibbonCaption1.Configuration.ApplicationButtonAreaConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 4, 0, -8);
             this.qRibbonCaption1.Configuration.IconConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
             this.qRibbonCaption1.LaunchBar = this.RibbonLaunchBar;
+            resources.ApplyResources(this.qRibbonCaption1, "qRibbonCaption1");
             this.qRibbonCaption1.Name = "qRibbonCaption1";
+            this.qRibbonCaption1.TextChanged += new System.EventHandler(this.qRibbonCaption1_TextChanged);
             // 
             // AppMenuButton
             // 
+            this.AppMenuButton.ColorScheme.RibbonApplicationButtonBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.AppMenuButton.ColorScheme.RibbonApplicationButtonBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.AppMenuButton.ColorScheme.RibbonApplicationButtonBorder.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.AppMenuButton.ColorScheme.RibbonApplicationButtonGlow.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.AppMenuButton.ColorScheme.RibbonApplicationButtonHotBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.AppMenuButton.ColorScheme.RibbonApplicationButtonHotBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.AppMenuButton.ColorScheme.RibbonApplicationButtonHotBorder.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.AppMenuButton.ColorScheme.RibbonApplicationButtonHotGlow.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.AppMenuButton.ColorScheme.RibbonApplicationButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.AppMenuButton.ColorScheme.RibbonApplicationButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.AppMenuButton.ColorScheme.RibbonApplicationButtonPressedBorder.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.AppMenuButton.ColorScheme.RibbonApplicationButtonPressedGlow.SetColor("VistaBlack", System.Drawing.Color.White, false);
             this.AppMenuButton.ForegroundImage = ((System.Drawing.Image)(resources.GetObject("AppMenuButton.ForegroundImage")));
             resources.ApplyResources(this.AppMenuButton, "AppMenuButton");
+            this.AppMenuButton.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.AppMenuButton_ItemActivated);
             // 
             // RibbonLaunchBar
             // 
@@ -189,8 +198,13 @@
             this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarBackground1.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
             this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
             this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
+            this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarBorder.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarInactiveBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarInactiveBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.RibbonLaunchBar.ColorScheme.RibbonLaunchBarInactiveBorder.SetColor("VistaBlack", System.Drawing.Color.White, false);
             this.RibbonLaunchBar.Configuration.CustomizeItemConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.RibbonLaunchBar, "RibbonLaunchBar");
             this.RibbonLaunchBar.Items.Add(this.CutElementShortcut);
             this.RibbonLaunchBar.Items.Add(this.CopyElementShortcut);
             this.RibbonLaunchBar.Items.Add(this.PasteElementShortcut);
@@ -202,18 +216,32 @@
             // 
             // CutElementShortcut
             // 
+            this.CutElementShortcut.ColorScheme.RibbonItemActiveBackground1.SetColor("VistaBlack", System.Drawing.Color.Thistle, false);
+            this.CutElementShortcut.ColorScheme.RibbonItemActiveBackground2.SetColor("VistaBlack", System.Drawing.Color.Thistle, false);
+            this.CutElementShortcut.ColorScheme.RibbonItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Thistle, false);
+            this.CutElementShortcut.ColorScheme.RibbonItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Thistle, false);
+            this.CutElementShortcut.ColorScheme.RibbonItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Purple, false);
+            this.CutElementShortcut.Configuration.Appearance.Shape = new Qios.DevSuite.Components.QShape(Qios.DevSuite.Components.QBaseShapeType.SquareButton);
             resources.ApplyResources(this.CutElementShortcut, "CutElementShortcut");
             this.CutElementShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("CutElementShortcut.Icon")));
             this.CutElementShortcut.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.CutElementShortcutItemActivated);
             // 
             // CopyElementShortcut
             // 
+            this.CopyElementShortcut.ColorScheme.RibbonItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Thistle, false);
+            this.CopyElementShortcut.ColorScheme.RibbonItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Thistle, false);
+            this.CopyElementShortcut.ColorScheme.RibbonItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Purple, false);
+            this.CopyElementShortcut.Configuration.Appearance.Shape = new Qios.DevSuite.Components.QShape(Qios.DevSuite.Components.QBaseShapeType.SquareButton);
             resources.ApplyResources(this.CopyElementShortcut, "CopyElementShortcut");
             this.CopyElementShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("CopyElementShortcut.Icon")));
             this.CopyElementShortcut.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.CopyElementShortcutItemActivated);
             // 
             // PasteElementShortcut
             // 
+            this.PasteElementShortcut.ColorScheme.RibbonItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Thistle, false);
+            this.PasteElementShortcut.ColorScheme.RibbonItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Thistle, false);
+            this.PasteElementShortcut.ColorScheme.RibbonItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Purple, false);
+            this.PasteElementShortcut.Configuration.Appearance.Shape = new Qios.DevSuite.Components.QShape(Qios.DevSuite.Components.QBaseShapeType.SquareButton);
             this.PasteElementShortcut.Configuration.DropDownSeparated = true;
             resources.ApplyResources(this.PasteElementShortcut, "PasteElementShortcut");
             this.PasteElementShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("PasteElementShortcut.Icon")));
@@ -221,12 +249,20 @@
             // 
             // UndoShortcut
             // 
+            this.UndoShortcut.ColorScheme.RibbonItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Thistle, false);
+            this.UndoShortcut.ColorScheme.RibbonItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Thistle, false);
+            this.UndoShortcut.ColorScheme.RibbonItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Purple, false);
+            this.UndoShortcut.Configuration.Appearance.Shape = new Qios.DevSuite.Components.QShape(Qios.DevSuite.Components.QBaseShapeType.SquareButton);
             resources.ApplyResources(this.UndoShortcut, "UndoShortcut");
             this.UndoShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("UndoShortcut.Icon")));
             this.UndoShortcut.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.UndoShortcutItemActivated);
             // 
             // RedoShortcut
             // 
+            this.RedoShortcut.ColorScheme.RibbonItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Thistle, false);
+            this.RedoShortcut.ColorScheme.RibbonItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Thistle, false);
+            this.RedoShortcut.ColorScheme.RibbonItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Purple, false);
+            this.RedoShortcut.Configuration.Appearance.Shape = new Qios.DevSuite.Components.QShape(Qios.DevSuite.Components.QBaseShapeType.SquareButton);
             resources.ApplyResources(this.RedoShortcut, "RedoShortcut");
             this.RedoShortcut.Icon = ((System.Drawing.Icon)(resources.GetObject("RedoShortcut.Icon")));
             this.RedoShortcut.ItemActivated += new Qios.DevSuite.Components.QCompositeEventHandler(this.RedoShortcutItemActivated);
@@ -245,473 +281,97 @@
             // 
             // Ribbon
             // 
-            resources.ApplyResources(this.Ribbon, "Ribbon");
             this.Ribbon.ActiveTabPage = this.SignalRibbonPage;
+            this.Ribbon.ColorScheme.CompositeItemExpandedBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.CompositeItemExpandedBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(163)))), ((int)(((byte)(0)))), ((int)(((byte)(171))))), false);
+            this.Ribbon.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(163)))), ((int)(((byte)(0)))), ((int)(((byte)(171))))), false);
+            this.Ribbon.ColorScheme.CompositeItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(0)))), ((int)(((byte)(171))))), false);
+            this.Ribbon.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(0)))), ((int)(((byte)(171))))), false);
+            this.Ribbon.ColorScheme.CompositeItemPressedBorder.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.RibbonBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.Ribbon.ColorScheme.RibbonBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.Ribbon.ColorScheme.RibbonContentBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.RibbonContentBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.RibbonContentBorder.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.RibbonContentShade.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.RibbonPanelText.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.RibbonTabButtonActiveBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.Ribbon.ColorScheme.RibbonTabButtonActiveBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.Ribbon.ColorScheme.RibbonTabButtonHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.RibbonTabButtonHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.RibbonTabButtonHotBorder.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.RibbonTabButtonHotOutline.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.Ribbon.ColorScheme.RibbonTabButtonHotText.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(163)))), ((int)(((byte)(0)))), ((int)(((byte)(171))))), false);
+            this.Ribbon.ColorScheme.RibbonTabButtonShade.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.Ribbon.ColorScheme.RibbonTabButtonText.SetColor("VistaBlack", System.Drawing.Color.Black, false);
             this.Ribbon.Controls.Add(this.SignalRibbonPage);
             this.Ribbon.Controls.Add(this.OperationsRibbonPage);
             this.Ribbon.Controls.Add(this.ExportDataRibbonPage);
             this.Ribbon.Controls.Add(this.TransformsRibbonPage);
             this.Ribbon.Controls.Add(this.RoutingRibbonPage);
             this.Ribbon.Cursor = System.Windows.Forms.Cursors.Default;
+            resources.ApplyResources(this.Ribbon, "Ribbon");
             this.Ribbon.Form = this;
             this.Ribbon.Name = "Ribbon";
             this.Ribbon.PersistGuid = new System.Guid("f549a281-ecb8-4c57-ab72-08ae6e49b352");
+            this.Ribbon.TabStripConfiguration.ButtonConfiguration.AppearanceActive.Shape = new Qios.DevSuite.Components.QShape(Qios.DevSuite.Components.QBaseShapeType.SquareTab);
+            this.Ribbon.TabStripConfiguration.ButtonConfiguration.AppearanceHot.Shape = new Qios.DevSuite.Components.QShape(Qios.DevSuite.Components.QBaseShapeType.SquareTab);
             this.Ribbon.HelpButtonActivated += new System.EventHandler(this.RibbonHelpButtonActivated);
             // 
             // SignalRibbonPage
             // 
-            resources.ApplyResources(this.SignalRibbonPage, "SignalRibbonPage");
             this.SignalRibbonPage.ButtonOrder = 0;
-            this.SignalRibbonPage.Items.Add(this.SignalSourcePanel);
-            this.SignalRibbonPage.Items.Add(this.SignalTemplatePanel);
+            this.SignalRibbonPage.ColorScheme.RibbonPageBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.SignalRibbonPage.ColorScheme.RibbonPageBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.SignalRibbonPage.ColorScheme.RibbonPanelHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.SignalRibbonPage.ColorScheme.RibbonPanelHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.SignalRibbonPage.ColorScheme.RibbonSeparator1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.SignalRibbonPage.ColorScheme.RibbonSeparator2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            resources.ApplyResources(this.SignalRibbonPage, "SignalRibbonPage");
             this.SignalRibbonPage.Name = "SignalRibbonPage";
             this.SignalRibbonPage.PersistGuid = new System.Guid("ea85f321-5f5d-4be5-b84e-e09b73b23a86");
             // 
-            // SignalSourcePanel
-            // 
-            this.SignalSourcePanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.SignalSourcePanel, "SignalSourcePanel");
-            this.SignalSourcePanel.Items.Add(this.SignalSourceComposite);
-            // 
-            // SignalSourceComposite
-            // 
-            this.SignalSourceComposite.ColorScheme.ButtonPressedBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.SignalSourceComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.SignalSourceComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.SignalSourceComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.SignalSourceComposite.ColorScheme.ButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.SignalSourceComposite.ColorScheme.ButtonPressedBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.SignalSourceComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.SignalSourceComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.SignalSourceComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.SignalSourceComposite.ColorScheme.ButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBorder.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.SignalSourceComposite.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
-            this.SignalSourceComposite.Configuration.ShrinkHorizontal = true;
-            this.SignalSourceComposite.Configuration.ShrinkVertical = true;
-            this.SignalSourceComposite.Configuration.StretchHorizontal = true;
-            this.SignalSourceComposite.Configuration.StretchVertical = true;
-            // 
-            // SignalTemplatePanel
-            // 
-            this.SignalTemplatePanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.SignalTemplatePanel, "SignalTemplatePanel");
-            this.SignalTemplatePanel.Items.Add(this.SignalTemplatesComposite);
-            // 
-            // SignalTemplatesComposite
-            // 
-            this.SignalTemplatesComposite.ColorScheme.ButtonPressedBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.SignalTemplatesComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.SignalTemplatesComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.SignalTemplatesComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.SignalTemplatesComposite.ColorScheme.ButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.SignalTemplatesComposite.ColorScheme.ButtonPressedBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.SignalTemplatesComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.SignalTemplatesComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.SignalTemplatesComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.SignalTemplatesComposite.ColorScheme.ButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBorder.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.SignalTemplatesComposite.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
-            this.SignalTemplatesComposite.Configuration.ShrinkHorizontal = true;
-            this.SignalTemplatesComposite.Configuration.ShrinkVertical = true;
-            this.SignalTemplatesComposite.Configuration.StretchHorizontal = true;
-            this.SignalTemplatesComposite.Configuration.StretchVertical = true;
-            // 
             // OperationsRibbonPage
             // 
-            resources.ApplyResources(this.OperationsRibbonPage, "OperationsRibbonPage");
             this.OperationsRibbonPage.ButtonOrder = 1;
-            this.OperationsRibbonPage.Items.Add(this.OperationsFunctionsPanel);
+            this.OperationsRibbonPage.ColorScheme.RibbonPageBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.OperationsRibbonPage.ColorScheme.RibbonPageBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.OperationsRibbonPage.ColorScheme.RibbonSeparator1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.OperationsRibbonPage.ColorScheme.RibbonSeparator2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.OperationsRibbonPage.ColorScheme.RibbonTabButtonBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.OperationsRibbonPage.ColorScheme.RibbonTabButtonBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            resources.ApplyResources(this.OperationsRibbonPage, "OperationsRibbonPage");
             this.OperationsRibbonPage.Name = "OperationsRibbonPage";
             this.OperationsRibbonPage.PersistGuid = new System.Guid("e11d0cdc-ac5f-4668-9777-2c1ea1c812c5");
             // 
-            // OperationsFunctionsPanel
-            // 
-            this.OperationsFunctionsPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.OperationsFunctionsPanel, "OperationsFunctionsPanel");
-            this.OperationsFunctionsPanel.Items.Add(this.OperationsFunctionsComposite);
-            // 
-            // OperationsFunctionsComposite
-            // 
-            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.OperationsFunctionsComposite.ColorScheme.ButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBorder.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.OperationsFunctionsComposite.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
-            this.OperationsFunctionsComposite.Configuration.ShrinkHorizontal = true;
-            this.OperationsFunctionsComposite.Configuration.ShrinkVertical = true;
-            this.OperationsFunctionsComposite.Configuration.StretchHorizontal = true;
-            this.OperationsFunctionsComposite.Configuration.StretchVertical = true;
-            // 
             // ExportDataRibbonPage
             // 
-            resources.ApplyResources(this.ExportDataRibbonPage, "ExportDataRibbonPage");
             this.ExportDataRibbonPage.ButtonOrder = 4;
-            this.ExportDataRibbonPage.Items.Add(this.ExportDataPanel);
+            this.ExportDataRibbonPage.ColorScheme.RibbonPageBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.ExportDataRibbonPage.ColorScheme.RibbonPageBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            resources.ApplyResources(this.ExportDataRibbonPage, "ExportDataRibbonPage");
             this.ExportDataRibbonPage.Name = "ExportDataRibbonPage";
             this.ExportDataRibbonPage.PersistGuid = new System.Guid("9272663a-8526-411c-a907-cafff24991eb");
             // 
-            // ExportDataPanel
-            // 
-            this.ExportDataPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.ExportDataPanel, "ExportDataPanel");
-            this.ExportDataPanel.Items.Add(this.ExportToFileComposite);
-            // 
-            // ExportToFileComposite
-            // 
-            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.ExportToFileComposite.ColorScheme.ButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBorder.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.ExportToFileComposite.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
-            this.ExportToFileComposite.Configuration.ShrinkHorizontal = true;
-            this.ExportToFileComposite.Configuration.ShrinkVertical = true;
-            this.ExportToFileComposite.Configuration.StretchHorizontal = true;
-            this.ExportToFileComposite.Configuration.StretchVertical = true;
-            // 
             // TransformsRibbonPage
             // 
-            resources.ApplyResources(this.TransformsRibbonPage, "TransformsRibbonPage");
             this.TransformsRibbonPage.ButtonOrder = 3;
-            this.TransformsRibbonPage.Items.Add(this.TransformsPanel);
+            this.TransformsRibbonPage.ColorScheme.RibbonPageBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.TransformsRibbonPage.ColorScheme.RibbonPageBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            resources.ApplyResources(this.TransformsRibbonPage, "TransformsRibbonPage");
             this.TransformsRibbonPage.Name = "TransformsRibbonPage";
             this.TransformsRibbonPage.PersistGuid = new System.Guid("c37e8ecf-4bd2-491d-8c7b-fa771275272a");
             // 
-            // TransformsPanel
-            // 
-            this.TransformsPanel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.TransformsPanel, "TransformsPanel");
-            this.TransformsPanel.Items.Add(this.TransformsComposite);
-            // 
-            // TransformsComposite
-            // 
-            this.TransformsComposite.ColorScheme.ButtonPressedBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.TransformsComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.TransformsComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.TransformsComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.TransformsComposite.ColorScheme.ButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.TransformsComposite.ColorScheme.ButtonPressedBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.TransformsComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.TransformsComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.TransformsComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.TransformsComposite.ColorScheme.ButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.TransformsComposite.ColorScheme.CompositeItemBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBorder.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.TransformsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.TransformsComposite.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
-            this.TransformsComposite.Configuration.ShrinkHorizontal = true;
-            this.TransformsComposite.Configuration.ShrinkVertical = true;
-            this.TransformsComposite.Configuration.StretchHorizontal = true;
-            this.TransformsComposite.Configuration.StretchVertical = true;
-            // 
             // RoutingRibbonPage
             // 
-            resources.ApplyResources(this.RoutingRibbonPage, "RoutingRibbonPage");
             this.RoutingRibbonPage.ButtonOrder = 2;
-            this.RoutingRibbonPage.Items.Add(this.RoutingRibbonPane);
-            this.RoutingRibbonPage.Items.Add(this.LogicalRibbonPane);
+            this.RoutingRibbonPage.ColorScheme.RibbonPageBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            this.RoutingRibbonPage.ColorScheme.RibbonPageBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
+            resources.ApplyResources(this.RoutingRibbonPage, "RoutingRibbonPage");
             this.RoutingRibbonPage.Name = "RoutingRibbonPage";
             this.RoutingRibbonPage.PersistGuid = new System.Guid("ebcc77fc-8bf7-4096-993c-4c79ff80b437");
-            // 
-            // RoutingRibbonPane
-            // 
-            this.RoutingRibbonPane.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.RoutingRibbonPane, "RoutingRibbonPane");
-            this.RoutingRibbonPane.Items.Add(this.RoutingComposite);
-            // 
-            // RoutingComposite
-            // 
-            this.RoutingComposite.ColorScheme.ButtonPressedBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.RoutingComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.RoutingComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.RoutingComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.RoutingComposite.ColorScheme.ButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.RoutingComposite.ColorScheme.ButtonPressedBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.RoutingComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.RoutingComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.RoutingComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.RoutingComposite.ColorScheme.ButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.RoutingComposite.ColorScheme.CompositeItemBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBorder.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.RoutingComposite.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
-            this.RoutingComposite.Configuration.ShrinkHorizontal = true;
-            this.RoutingComposite.Configuration.ShrinkVertical = true;
-            this.RoutingComposite.Configuration.StretchHorizontal = true;
-            this.RoutingComposite.Configuration.StretchVertical = true;
-            // 
-            // LogicalRibbonPane
-            // 
-            this.LogicalRibbonPane.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
-            resources.ApplyResources(this.LogicalRibbonPane, "LogicalRibbonPane");
-            this.LogicalRibbonPane.Items.Add(this.LogicComposite);
-            // 
-            // LogicComposite
-            // 
-            this.LogicComposite.ColorScheme.ButtonPressedBackground1.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.LogicComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.LogicComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.LogicComposite.ColorScheme.ButtonPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.LogicComposite.ColorScheme.ButtonPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.LogicComposite.ColorScheme.ButtonPressedBackground2.SetColor("Default", System.Drawing.Color.Empty, false);
-            this.LogicComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.Empty, false);
-            this.LogicComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.Empty, false);
-            this.LogicComposite.ColorScheme.ButtonPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.Empty, false);
-            this.LogicComposite.ColorScheme.ButtonPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.Empty, false);
-            this.LogicComposite.ColorScheme.CompositeItemBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBackground1.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBackground1.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBackground1.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBackground2.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBackground2.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBackground2.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBorder.SetColor("Default", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaBlue", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaOlive", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBorder.SetColor("LunaSilver", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemHotBorder.SetColor("VistaBlack", System.Drawing.Color.Transparent, false);
-            this.LogicComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("Default", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemPressedBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("Default", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaBlue", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaOlive", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("LunaSilver", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.CompositeItemPressedBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
-            this.LogicComposite.ColorScheme.Scope = Qios.DevSuite.Components.QColorSchemeScope.All;
-            this.LogicComposite.Configuration.ShrinkHorizontal = true;
-            this.LogicComposite.Configuration.ShrinkVertical = true;
-            this.LogicComposite.Configuration.StretchHorizontal = true;
-            this.LogicComposite.Configuration.StretchVertical = true;
             // 
             // qCompositeWindow1
             // 
@@ -720,6 +380,8 @@
             // 
             // QToolBarHost2
             // 
+            this.QToolBarHost2.ColorScheme.ToolBarHostBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.QToolBarHost2.ColorScheme.ToolBarHostBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
             resources.ApplyResources(this.QToolBarHost2, "QToolBarHost2");
             this.QToolBarHost2.Name = "QToolBarHost2";
             this.QToolBarHost2.PersistGuid = new System.Guid("2ed0b02b-fbb2-42f5-932f-cfa32800a886");
@@ -728,17 +390,19 @@
             // 
             // RightDockBar
             // 
-            resources.ApplyResources(this.RightDockBar, "RightDockBar");
             this.RightDockBar.ButtonAppearance.BorderWidth = 0;
+            this.RightDockBar.ColorScheme.DockBarBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.RightDockBar.ColorScheme.DockBarBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
             this.RightDockBar.ColorScheme.DockBarBorder.SetColor("Default", System.Drawing.SystemColors.Control, false);
+            resources.ApplyResources(this.RightDockBar, "RightDockBar");
             this.RightDockBar.Name = "RightDockBar";
             this.RightDockBar.PersistGuid = new System.Guid("68794aaa-e00f-4e0f-9682-fee069bb40c0");
             // 
             // CenterPanel
             // 
-            resources.ApplyResources(this.CenterPanel, "CenterPanel");
             this.CenterPanel.Controls.Add(this.Designer);
             this.CenterPanel.Controls.Add(this.BottomPanel);
+            resources.ApplyResources(this.CenterPanel, "CenterPanel");
             this.CenterPanel.Name = "CenterPanel";
             // 
             // Designer
@@ -750,11 +414,12 @@
             // 
             // BottomPanel
             // 
-            resources.ApplyResources(this.BottomPanel, "BottomPanel");
+            this.BottomPanel.BackColor = System.Drawing.Color.White;
             this.BottomPanel.Controls.Add(this.ZoomLabel);
             this.BottomPanel.Controls.Add(this.ZoomPlusButton);
             this.BottomPanel.Controls.Add(this.ZoomMinusButton);
             this.BottomPanel.Controls.Add(this.ZoomTrackBar);
+            resources.ApplyResources(this.BottomPanel, "BottomPanel");
             this.BottomPanel.Name = "BottomPanel";
             // 
             // ZoomLabel
@@ -802,7 +467,6 @@
             // 
             // diagramFormProperties1
             // 
-            resources.ApplyResources(this.diagramFormProperties1, "diagramFormProperties1");
             this.diagramFormProperties1.CanClose = false;
             this.diagramFormProperties1.CanDockBottom = false;
             this.diagramFormProperties1.CanDockOnOtherControlBottom = false;
@@ -810,6 +474,7 @@
             this.diagramFormProperties1.CanDockTop = false;
             this.diagramFormProperties1.DockPosition = Qios.DevSuite.Components.QDockPosition.None;
             this.diagramFormProperties1.Icon = ((System.Drawing.Icon)(resources.GetObject("diagramFormProperties1.Icon")));
+            resources.ApplyResources(this.diagramFormProperties1, "diagramFormProperties1");
             this.diagramFormProperties1.Name = "diagramFormProperties1";
             this.diagramFormProperties1.Owner = null;
             this.diagramFormProperties1.PersistGuid = new System.Guid("1915c329-99d5-4532-a105-ca14e4e34bdb");
@@ -819,8 +484,19 @@
             // 
             // DiagramForm
             // 
+            this.Appearance.BackgroundStyle = Qios.DevSuite.Components.QColorStyle.Solid;
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ColorScheme.RibbonFormBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormBorder.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormInactiveBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormInactiveBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormInactiveBorder.SetColor("Default", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormInactiveBorder.SetColor("LunaBlue", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormInactiveBorder.SetColor("LunaOlive", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormInactiveBorder.SetColor("LunaSilver", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormInactiveBorder.SetColor("VistaBlack", System.Drawing.Color.White, false);
             this.Controls.Add(this.CenterPanel);
             this.Controls.Add(this.RightDockBar);
             this.Controls.Add(this.QToolBarHost2);
@@ -831,6 +507,7 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DiagramFormFormClosing);
             this.Load += new System.EventHandler(this.DiagramFormLoad);
+            this.TextChanged += new System.EventHandler(this.DiagramForm_TextChanged);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DiagramFormKeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.qRibbonCaption1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).EndInit();
@@ -866,23 +543,11 @@
         private Qios.DevSuite.Components.Ribbon.QRibbonCaption qRibbonCaption1;
         private Qios.DevSuite.Components.Ribbon.QRibbon Ribbon;
         private Qios.DevSuite.Components.Ribbon.QRibbonPage SignalRibbonPage;
-        private Qios.DevSuite.Components.Ribbon.QRibbonPanel SignalSourcePanel;
-        private Qios.DevSuite.Components.QCompositeGroup SignalSourceComposite;
-        private Qios.DevSuite.Components.Ribbon.QRibbonPanel SignalTemplatePanel;
-        private Qios.DevSuite.Components.QCompositeGroup SignalTemplatesComposite;
         private Qios.DevSuite.Components.Ribbon.QRibbonPage OperationsRibbonPage;
-        private Qios.DevSuite.Components.Ribbon.QRibbonPanel OperationsFunctionsPanel;
-        private Qios.DevSuite.Components.QCompositeGroup OperationsFunctionsComposite;
         private Qios.DevSuite.Components.QCompositeSeparator Separator1;
         private Qios.DevSuite.Components.Ribbon.QRibbonPage TransformsRibbonPage;
-        private Qios.DevSuite.Components.Ribbon.QRibbonPanel TransformsPanel;
-        private Qios.DevSuite.Components.QCompositeGroup TransformsComposite;  
         private Qios.DevSuite.Components.Ribbon.QRibbonPage ExportDataRibbonPage;
-        private Qios.DevSuite.Components.Ribbon.QRibbonPanel ExportDataPanel;
-        private Qios.DevSuite.Components.QCompositeGroup ExportToFileComposite;
         private Qios.DevSuite.Components.Ribbon.QRibbonPage RoutingRibbonPage;
-        private Qios.DevSuite.Components.Ribbon.QRibbonPanel RoutingRibbonPane;
-        private Qios.DevSuite.Components.QCompositeGroup RoutingComposite;
         private DiagramFormProperties diagramFormProperties1;
         private Qios.DevSuite.Components.QCompositeWindow qCompositeWindow1;
         private Qios.DevSuite.Components.QDockBar RightDockBar;
@@ -893,8 +558,6 @@
         private Qios.DevSuite.Components.QButton ZoomPlusButton;
         private Qios.DevSuite.Components.QButton ZoomMinusButton;
         private System.Windows.Forms.TrackBar ZoomTrackBar;
-        internal DiagramNet.Designer Designer;
-        private Qios.DevSuite.Components.Ribbon.QRibbonPanel LogicalRibbonPane;
-        private Qios.DevSuite.Components.QCompositeGroup LogicComposite;              
+        internal DiagramNet.Designer Designer;              
     }
 }

@@ -163,7 +163,7 @@ namespace WaveletStudio.Designer.Utils
                 baseVariableName += "Block";
             }
             baseVariableName = char.ToLower(baseVariableName[0]) + baseVariableName.Substring(1);
-            if(!_generatedBlocks.Any(it => it.VariableName == baseVariableName))
+            if(_generatedBlocks.All(it => it.VariableName != baseVariableName))
             {
                 return baseVariableName;
             }

@@ -17,7 +17,8 @@
 
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using WaveletStudio.Designer.Properties;
+using System.Globalization;
+using WaveletStudio.Designer.Resources;
 using ZedGraph;
 
 namespace WaveletStudio.Designer.Utils
@@ -27,10 +28,10 @@ namespace WaveletStudio.Designer.Utils
         public static string GetResourceString(string name)
         {
             var key = name.ToLower().Replace(" ", "");
-            var resource = Resources.ResourceManager.GetObject(key) ?? "";
+            var resource = DesignerResources.ResourceManager.GetObject(key) ?? "";
             if (resource.GetType() != typeof(string)) 
             {
-                resource = Resources.ResourceManager.GetString(key + "_text") ?? "";
+                resource = DesignerResources.ResourceManager.GetString(key + "_text") ?? "";
             }
             if (resource.ToString() == "")
             {
@@ -42,12 +43,22 @@ namespace WaveletStudio.Designer.Utils
         public static Image GetResourceImage(string name, int width = 64, int height = 48)
         {
             var bitmap = new Bitmap(width, height);
-            var image = (Resources.ResourceManager.GetObject(name.Replace(" ", ""))) as Image;
+            var image = (Images.ResourceManager.GetObject(name.Replace(" ", ""))) as Image;
             if (image == null && name.ToLower().EndsWith("mini"))
                 return GetResourceImage(name.Substring(0, name.Length - 4), width, height);
             if (image == null)
                 return bitmap;
             
+            return image.ResizeTo(width, height);
+        }
+
+        public static Image ResizeTo(this Image image, int width, int height)
+        {
+            if (image.Width < width && image.Height < height)
+            {
+                return image;
+            }
+            var bitmap = new Bitmap(width, height);
             var graph = Graphics.FromImage(bitmap);
             graph.SmoothingMode = SmoothingMode.HighQuality;
             graph.DrawImage(image, 0, 0, width, height);
@@ -77,11 +88,11 @@ namespace WaveletStudio.Designer.Utils
             const string not = "()@$%?#\"'\\/:<>|*-+";
             for (var i = 0; i < past.Length; i++)
             {
-                text = text.Replace(past[i].ToString(), future[i].ToString());
+                text = text.Replace(past[i].ToString(CultureInfo.InvariantCulture), future[i].ToString(CultureInfo.InvariantCulture));
             }
-            for (var i = 0; i < not.Length; i++)
+            foreach (var t in not)
             {
-                text = text.Replace(not[i].ToString(), "");
+                text = text.Replace(t.ToString(CultureInfo.InvariantCulture), "");
             }
             return text;
         }
