@@ -702,20 +702,20 @@ namespace DiagramNet
 
         internal void DrawGrid(Graphics g, Rectangle clippingRegion)
         {
-            DrawGrid(g, clippingRegion, _gridSize);
+            DrawGrid(g, clippingRegion, _gridSize, 1, Size.Width * (int)Zoom, Size.Height * (int)Zoom);
         }
 
-        internal void DrawGrid(Graphics g, Rectangle clippingRegion, Size gridSize)
+        internal void DrawGrid(Graphics g, Rectangle clippingRegion, Size gridSize, float scale, int w, int h)
         {
             var p = new Pen(new HatchBrush(HatchStyle.DarkUpwardDiagonal, Color.LightGray, Color.Transparent), 1);
-            var maxX = _location.X + Size.Width;
-            var maxY = _location.Y + Size.Height;
+            var maxX = _location.X + w;
+            var maxY = _location.Y + h;
 
             if (_windowSize.Width / _zoom > maxX)
-                maxX = (int)(_windowSize.Width / _zoom);
+                maxX = (int)((_windowSize.Width / _zoom));
 
             if (_windowSize.Height / _zoom > maxY)
-                maxY = (int)(_windowSize.Height / _zoom);
+                maxY = (int)((_windowSize.Height / _zoom));
 
             for (var i = 0; i < maxX; i += gridSize.Width)
             {
@@ -818,6 +818,34 @@ namespace DiagramNet
             RecreateEventsHandlers();
         }
         #endregion
+
+        public int ElementCount()
+        {
+            var count = 0;
+            for (var i = 0; i <= Elements.Count - 1; i++)
+            {
+                var el = Elements[i];
+                if (el is DiagramBlock)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
+
+        public int LinkCount()
+        {
+            var count = 0;
+            for (var i = 0; i <= Elements.Count - 1; i++)
+            {
+                var el = Elements[i];
+                if (el is BaseLinkElement)
+                {
+                    count++;
+                }
+            }
+            return count;
+        }
 
     }
 }

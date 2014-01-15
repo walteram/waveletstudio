@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using WaveletStudio.Designer.Forms;
 using WaveletStudio.Designer.Properties;
+using WaveletStudio.Designer.Resources;
 
 namespace WaveletStudio.Designer
 {
@@ -24,7 +25,7 @@ namespace WaveletStudio.Designer
             var diagramForm = new DiagramForm();
             MainForm = diagramForm;
             diagramForm.Show();
-            LoadLastFile(diagramForm);
+            //LoadLastFile(diagramForm);
             diagramForm.Focus();
         }
 
@@ -36,8 +37,9 @@ namespace WaveletStudio.Designer
                 Settings.Default.RecentFileList = new StringCollection();
                 Settings.Default.Save();
             }
-
+            
             var diagramForm = new DiagramForm();
+            
             MainForm = diagramForm;
             diagramForm.Show();
             if (string.IsNullOrEmpty(filepath))
@@ -48,11 +50,11 @@ namespace WaveletStudio.Designer
             {
                 try
                 {
-                    diagramForm.OpenFile(filepath);
+                    diagramForm.OpenFileByPath(filepath);
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show(string.Format("{0}:{1}{2}", Resources.FileCouldntBeOpened, Environment.NewLine, exception.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(string.Format("{0}:{1}{2}", DesignerResources.FileCouldntBeOpened, Environment.NewLine, exception.Message), DesignerResources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }            
             diagramForm.Focus();
@@ -73,7 +75,7 @@ namespace WaveletStudio.Designer
                     continue;
                 try
                 {
-                    diagramForm.OpenFile(filepath);
+                    diagramForm.OpenFileByPath(filepath);
                     break;
                 }
                 catch (Exception)

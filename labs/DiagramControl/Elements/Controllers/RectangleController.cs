@@ -109,6 +109,17 @@ namespace DiagramNet.Elements.Controllers
 			IsDragging = true;
 		}
 
+        bool IMoveController.WillMove(Point posCurrent)
+        {
+            if (!IsDragging) return false;
+            var dragPointEl = posCurrent;
+            dragPointEl.Offset(DragOffset.X, DragOffset.Y);
+            if (dragPointEl.X < 0) dragPointEl.X = 0;
+            if (dragPointEl.Y < 0) dragPointEl.Y = 0;
+
+            return El.Location.X != dragPointEl.X || El.Location.Y != dragPointEl.Y;
+        }
+
 		void IMoveController.Move(Point posCurrent)
 		{
 		    if (!IsDragging) return;

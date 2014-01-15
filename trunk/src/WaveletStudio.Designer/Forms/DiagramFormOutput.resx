@@ -117,185 +117,181 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GraphControl.TabIndex" type="System.Int32, mscorlib">
+    <value>112</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>366, 320</value>
+  <data name="NoDataLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleCenter</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Qios.DevSuite.Components.QDockingWindow, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  <data name="GraphControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
   </data>
-  <data name="&gt;&gt;BlockPlot.Type" xml:space="preserve">
-    <value>WaveletStudio.Designer.Forms.BlockPlot, WaveletStudio.Designer, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BlockPlot.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="BlockPlot.Size" type="System.Drawing.Size, System.Drawing">
-    <value>366, 304</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>DiagramFormOutput</value>
-  </data>
-  <data name="&gt;&gt;BlockPlot.Parent" xml:space="preserve">
+  <data name="&gt;&gt;ShowOutputSignal.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="BlockPlot.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;ShowOutputList.Name" xml:space="preserve">
+    <value>ShowOutputList</value>
   </data>
-  <data name="&gt;&gt;BlockPlot.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="ShowOutputSignal.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left, Right</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Output</value>
   </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAMAICAAAAEAIACoEAAANgAAABgYAAABACAAiAkAAN4QAAAQEAAAAQAgAGgEAABmGgAAKAAAACAA
-        AABAAAAAAQAgAAAAAACAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAPAAAAFQAAABYAAAAWAAAAFgAA
-        ABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAA
-        ABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABYAAAAWAAAAFgAAABAAAAAFAAAADwAAAC8AAABBAAAAQwAA
-        AEMAAABDAAAAQwAAAEMAAABDAAAAQwAAAEMAAABDAAAAQwAAAEMAAABDAAAAQwAAAEMAAABDAAAAQwAA
-        AEMAAABDAAAAQwAAAEMAAABDAAAAQwAAAEMAAABDAAAAQwAAAEMAAABCAAAAMQAAABAAAAAVoqKi46Wl
-        pf+kpKP/o6Oj/6Ojo/+jo6P/o6Oj/6Ojo/+jo6P/o6Oj/6Ojo/+jo6P/o6Oj/6Ojo/+jo6P/o6Oj/6Oj
-        o/+jo6P/o6Oj/6Ojo/+jo6P/o6Oj/6Ojo/+jo6P/o6Oj/6Ojo/+jo6P/o6Oj/6Wlpf+mpqbzAAAAFgAA
-        ABalpaX/////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////6Wl
-        pf8AAAAWAAAAFqOjo///////vMDb/3aAz//s6+T/4+Ph/+Hh4P/g4OD/4eHh/+Hh4f/h4eH/4ODg/+Dg
-        4P/h4eH/4eHh/+Hh4f/g4OD/4ODg/+Hh4f/h4eH/4eHh/+Dg4P/g4OD/4eHh/+Hh4f/h4eH/4ODg/+Dg
-        4P//////o6Oj/wAAABYAAAAWo6Oj///////s7fn/BBa5/9PU3v///////v7+//39/f//////3t7e////
-        ///9/f3//f39///////e3t7///////39/f/9/f3//////97e3v///////f39//39/f//////3t7e////
-        ///9/f3//v7+//////+jo6P/AAAAFgAAABajo6P///////////9rdtX/e4TO///////8/Pv/+/v7//39
-        /f/d3d3//f39//v7+//7+/v//f39/93d3f/9/f3/+/v7//v7+//9/f3/3d3d//39/f/7+/v/+/v7//39
-        /f/d3d3//f39//v7+//8/Pz//////6Ojo/8AAAAWAAAAFqOjo//////////8/7vA6f8iM77////9//39
-        +f/6+vn//Pz7/9zc2//8/Pv/+vr5//r6+f/8/Pv/3Nzb//z8+//6+vn/+vr5//z8+//c3Nv//Pz7//r6
-        +f/6+vn//Pz7/9zc2//8/Pv/+vr5//v7+f//////o6Oj/wAAABYAAAAWo6Oj///////+/fv////9/yM0
-        vv/c3vH////7//r6+v/7+/v/29vb//v7+//5+fr/+fn6//v7+//b29v/+/v7//n5+v/5+fr/+/v7/9vb
-        2//7+/v/+fn6//n5+v/7+/v/29vb//v7+//5+fn/+vr6//////+jo6P/AAAAFgAAABajo6P//////9vb
-        2P/k49v/bHbL/15pyP/l5Nr/3NvY/9ra2f/b29r/2trZ/9rZ2P/b2tr/3dvb/9/d3f/d3Nv/29ra/9rZ
-        2P/a2tn/29va/9ra2f/Z2dj/2dnY/9vb2v/c3Nz/29zc/9ra2v/Z2dn//////6Ojo/8AAAAWAAAAFqOj
-        o///////+ff3///9+f/P0Nj/GCrA//j49//9+/j/+vj4/9rY2f/7+fr//vn7///8////////7d/l////
-        /////P///vn7//v5+f/a2Nn/+fj4//j39//4+Pr/+/z//9ze5P/9////+/3///r6/f//////o6Oj/wAA
-        ABYAAAAWo6Oj//39/P/19fT/+Pj1/+Tj2P9JV8z/p63h//389f/49/X/2tjY///7/f/39PX/WLOK/wCL
-        SP8Aey7/AII6/1m0i//18/T//vn6/9jX1//29vf/9vf5//j7///o3MP/wJtQ/7V5BP+sbAD/6t7K//7+
-        //+jo6T/AAAAFgAAABajo6P//Pz8//Tz8//29PT/3tzW/6iu4v82RsX////2//349//k2t7/qdbA/wCB
-        Of9Eq3z/0ubc/+7e5P/n7ur/Hpxj/wqTVP/19PT/3djb//j4/f/z8/P/x5xK/7R6Bv/EqG//8Ozk//f5
-        ///19vn//P3+/6OjpP8AAAAWAAAAFqSkpP/7+/v/8/Py//T08v/Y2NT////2/yg5wv/Jy+r////8/4K6
-        n/8AhD3/qtTB///6/v/9+Pn/2tbX//74+v///P//DJRX/1u1jv/m3uf/7uTW/76MKf/Jnkv/9fX3/9fa
-        3//19/n/8/T1//Pz8v/7/Pz/pKSk/wAAABYAAAAWpKSk//z8+//S0tL/09PT/9bW1f/d3NX/eYHK/0lR
-        yv/B1cH/AIY9/4K4oP/i2N3/19TW/9TU1P/V1NX/1dTV/9zW2f/I0M3/AIZA/6C3lv+9fAv/wZtS/9bb
-        5P/V19v/1dXX/9PU1P/S0tL/0tLS//z8+/+kpKT/AAAAFgAAABakpKT/+vr5//Hv7v/x8O//1NPR//f1
-        8f/38fP/IzPC/wqSVv9jsYn///f6//bx8f/x8O//8vDv/9TS0f/y8PD/9PHx///3/P9vwKP/EoEv/9yo
-        YP/3+P//8vL0//Lx8f/U0tH/8vDv//Dv7v/w7+7/+vr5/6SkpP8AAAAWAAAAFqSkpP/5+fj/7e7t/+7u
-        7f/R0dD/9PHx///5+f9Wr4j/AHVP/+PW3f/69vL/7+7t/+3t7P/u7u3/0NDP/+7v7v/v7/H/9/b+/8yh
-        U/8Agzr/udzT//fy9v/u7u7/7u/t/9HRz//w8O7/7u/s/+7u7P/5+fj/pKSk/wAAABYAAAAWpKSk//n4
-        9//s6+r/7uzr/9PQz//78vT/pdG7/wCLPf9gc8j/OUPH//Dv7P/z8ev/7uzq/+7s6//Pzs3/7u3u/+/x
-        9v/YvIz/x4Yb/1yphP8wpHL//fL1//Dt7P/w7+z/1tTO//j27f/29Oz/8O/r//r59/+kpKT/AAAAFgAA
-        ABakpKT/+fn4/+/s7P/z7u//3NPV/8zf1f8AhT3/lMyu///+9v9DTsP/OUnI/+7t6v/18uv/8e/s/9HQ
-        z//w8fT/5d3N/7JzAP/u4dP/1tbZ/wCHP//f6OD/+/Xw//z57f+qrMv/ZXDR/wIVu//18+v/+vr4/6Sk
-        pP8AAAAWAAAAFqWlpf/9+vv/2tHT/+LV2P+iv7H/AII6/3uzmf/c09T/19TP/9HQzv9ATsL/M0LA/7e6
-        yv/a2c7/1tfS/9TY3P+7iSP/xahs/9jZ2v/k29n/QKdy/0Wgev+Zl9D/M0HC/yU2wP9zfcf/v7/L/9HR
-        yv/5+ff/pKSk/wAAABYAAAAWpqWl///6/f8AgDX/AH0v/wCIRv+fzbf/9+3w/+7q6v/t6+n/0tDL//n3
-        6v+Ci9T/Cx6+/2dy0/+aodX/y696/8qWKf/9/vv/z9Lo/5WVzf9QZMX/AIQ7/1Jczf+lqN7/3NnM//Ty
-        6v/u7Oj/6unn//j39/+kpKT/AAAAFgAAABalpaX/+/j4//Tr7f/57vH/2c/S//Dq6//p5+b/5+bk/+fn
-        5f/Kysn/6+vm//Hw5v/a2+P/gYvc/0RKqv/BgQD/KDGo/wkexf8pOsX/TlnE/5yY3/8lomL/cb6T//zz
-        7//Qzsv/6enl/+bm4//l5uP/9vb1/6SkpP8AAAAWAAAAFqSkpf/39/b/5+Xk/+nm5v/Mysn/5+bl/+Xk
-        4//l5OP/5uXk/8rIyP/n5uT/5+bk/+vr6v/t7eX/wI0i/9W3eP/y8/H/9PLo//Ty5//W08r/9+/r/7TU
-        wf8AhTz/6+fm/9HLzP/n5eX/5ePi/+Tj4v/29vX/pKSk/wAAABYAAAAWpKSl//f19P/l5OL/5uXj/8rJ
-        x//m5eP/5eTi/+Xk4v/m5eP/ysnH/+fm5P/m5+f/6Ovy/8mjWP+6jDD/6u3z/+jo5//o5+P/6ejk/8zK
-        x//s6Ob/+Ovu/x2aYf9ptZP/2M3P/+rn5v/l5OL/5eTh//f19P+kpKX/AAAAFgAAABalpaX/9vb1/8TD
-        wv/HxcT/yMfH/8fFxf/FxMT/xcTE/8fHxf/JyMj/yMnL/8nM1P+7lk3/uIci/8nJyf/Iycz/x8XF/8XE
-        xP/HxcX/yMfH/8nHxf/PyMr/qr60/wB/M/+twLb/1MrN/8vHx//Fw8P/9vb1/6Wlpf8AAAAWAAAAFqWl
-        pf/29vX/4uHg/+Tj4v/HxcP/4+Lh/+Lh4P/j4uD/5OTj/8jJy//m6vL/yKFX/7qEF//g3NP/x8nL/+Tj
-        4v/i4d//4uHf/+Pi4P/HxcP/5OLg/+bi4f/w5uj/ZrSQ/wCFPf/F187/8+fq/+ji4v/39vb/paWl/wAA
-        ABYAAAAWpaWl//b29//g4uX/4uXp/8THyf/h4+T/4OHi/+Di5f/i5uz/xMG5/76LJv+8iSX/3+Dg/+Hk
-        5v/DxML/4ODf/9/f3f/f393/4ODe/8LDwP/g4N7/4N/d/+Pg4P/v5ej/Z6mK/wCFPf8Aeyv/xNTL//j1
-        9f+lpaX/AAAAFgAAABalpab/9/j6/7+TOv+/jzL/v66O/9/f4P/e3t//0sCh/8WgVf+1dgD/y610/+Dk
-        6v/f3+H/39/d/8HAv//f3tz/3dza/93c2v/f3tz/wcC//9/e3P/d3Nr/3tzb/+Pf3v/Nw8f/7+Pm/+vh
-        4//j3t3/9/X0/6Wlpf8AAAAWAAAAFqWlpf/29/j/2tjV/8mrcP+2hSH/tHUA/7N0AP++kDT/x6Ri/8C8
-        s//f4eX/3d3e/9zc2v/d3Nr/v7+9/93c2v/c29n/3NvZ/93c2v+/v73/3dza/9zb2f/c29n/3tzb/8HA
-        vv/g3dz/3tza/9zb2f/29PP/paWl/wAAABYAAAAVpaWl//b19f/a2dr/2tzf/9ze5P/c3+b/3N/l/9ze
-        4//b3eD/29vc/9rZ2f/Z2Nb/2djW/9rY1v/a2df/2tjW/9nY1v/Z2Nb/2tjW/9rZ1//a2Nb/2djW/9nY
-        1v/a2Nb/2tnX/9rY1v/Z19X/2NfV//b19P+lpaX/AAAAFQAAAA2mpqb/+Pj3//X19P/19fX/9fb2//X2
-        9v/19vb/9fb2//X19f/19fT/9fX0//X19P/19fT/9fX0//X19P/19fT/9fX0//X19P/19fT/9fX0//X1
-        9P/19fT/9fX0//X19P/19fT/9fX0//T19P/19fT/+Pj3/6ampv8AAAANAAAABKWlpbSmpqb/paWl/6Wl
-        pf+lpaX/paWl/6Wlpf+lpaX/paWl/6Wlpf+lpaX/paWl/6Wlpf+lpaX/paWl/6Wlpf+lpaX/paWl/6Wl
-        pf+lpaX/paWl/6Wlpf+lpaX/paWl/6Wlpf+lpaX/paWl/6Wlpf+mpqb/paWltAAAAAQAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgA
-        AAAYAAAAMAAAAAEAIAAAAAAAYAkAAAAAAAAAAAAAAAAAAAAAAABKS1ELAAAAGwAAACAAAAAhAAAAIQAA
-        ACEAAAAhAAAAIQAAACEAAAAhAAAAIQAAACEAAAAhAAAAIQAAACEAAAAhAAAAIQAAACEAAAAhAAAAIQAA
-        ACEAAAAhAAAAHF1dXQsUFBQvUVFRlFJSUaBRUVGhUVFRoVFRUaFRUVGhUVFRoVFRUaFRUVGhUVFRoVFR
-        UaFRUVGhUVFRoVFRUaFRUVGhUVFRoVFRUaFRUVGhUVFRoVFRUaFRUVGhUlJSmRQUFDIpKSlOxsbG++jo
-        6P7o6Oj/6Ojo/ujo6P7o6Oj/6Ojo/ujo6P7o6Oj/6Ojo/ujo6P/o6Oj+6Ojo/ujo6P7o6Oj/6Ojo/ujo
-        6P7o6Oj/6Ojo/ujo6P7o6Oj/xsbG/SkpKU8oKChQ0dHR/9XY6f98hdD/6Ofl/+jo5//n5+f/5OTk/+bm
-        5v/n5+f/6Ojo/+Li4v/o6Oj/5+fn/+jo6P/i4uL/6Ojo/+fn5//m5ub/5OTk/+fn5//t7e3/0dHR/ygo
-        KFAoKChQ0dHR/vf4/P5TX8r/09Xq/v39/f78/Pz/7e3t/vX19f78/Pz//Pz8/uXl5f/9/f3++/v7/v39
-        /f7l5eX//Pz8/vv7+/729vb/7e3t/vz8/P79/f3/0NDQ/igoKFAoKChQ0dHR/v7+/f6LlNv/m6Pf/v39
-        +v76+vr/7Ozr/vT08/76+vn/+/v6/uTk4//7+/r++vr5/vv7+v7k5OP/+/v6/vr6+f709PP/7Ozr/vr6
-        +f78/Pv/0NDQ/igoKFAoKChQ0dHR//f39f/Hy+f/eILU/+nq7//y8vL/5+fm/+zs7P/x8fH/8vLy/+Lh
-        4f/z8vL/8fHx//Ly8v/h4eH/8vLy//Hx8f/t7e3/5+fn//Hx8f/19fX/0dHR/ygoKFAoKChQ0dHR/u/u
-        7f7c3OT/bHbK/sHE3/7s6uj/4uHg/ubl5f7s6er/7evs/ujh5P/t7Oz+7Onq/urp6f7e3d3/6Ojn/ujo
-        6P7n6On/4+Xm/urr7P7v7/D/0NDQ/igoKFAoKChQ0NDP/vf39v7z8u7/jZTQ/pui3/78+vX/6efm/vTx
-        8/7b6eL/YLaO/jyZYv9Qqnr+vN3O/vv3+P7g39//9vb3/vf5/P7j1rr/xqNb/sGSQP7y6+D/0NDR/igo
-        KFAoKChQz8/P//X19f/v7uz/zc7e/1Vizf/09PT/5Obj/5HFq/88oGv/p9TA/+bf4f/H4dX/MKNv/53Q
-        uf/l4OP/7ebZ/8+rZ//Fn1T/3dG6//T19//29/n/z9DQ/ygoKFApKSlQz8/P/ujo6P7g4N//4uLc/neB
-        zf6epdv/kMSm/kGebv7P2tX/6ebo/tvZ2v/q5uj+q82+/jyicf7Hw6v/yqFW/suygf7h4uX/3N7g/uLj
-        5P7o6ej/z8/P/igoKFApKSlQz8/O/+3s6//k4+L/4uHe/93b6f8vVK//QaRz/7rXyP/v6uv/6uno/9rY
-        1//r6en/7+vt/3rAo/9dkkn/37+P/+rp6f/l5OX/397d/+no5//t7Ov/z8/O/ygoKFApKSlQzs7N/u/w
-        7/7n5uX/4+Dg/uvv6/42mXP/aJKi/ufj6v7v7uz/7e3r/tfX1v/u7u/+7+vp/tOtbP43nWj/x9/Y/vDu
-        7/7n5+X/4uHe/vDw7P7x8e7/zs7N/igoKFApKSlQzs7N/vDu7v7q5ub/3dzb/na6lv5jrpD/doDR/n6H
-        1P7w7+r/8O7q/tjW1f/t7O3+17+T/tWsav54tZn/g8Gh/vPv7f7o5+T/t7nV/oiQ1v708+7/zs7N/igo
-        KFApKSlQ0M/P/ubg4f7Y1dT/ca6N/lGjef7P1M7/x8bR/lplxf57g8z/09PT/tfX0v/Vzrz+wpxP/tbK
-        tv60y7z/Tah8/p+vxv5daMr/WmbG/oeNx/7h4dv/zs7N/igoKFApKSlQ0s/Q/22yif88mWL/dLeW/+Pl
-        4//s6ej/3dzZ/+zq4f+GjtT/VmLO/36Gzf++mVb/sKGb/6yy4v97gMv/Nn6I/0V6oP/Cwdz/5ePa/+3r
-        5//s7Or/zc3N/ygoKFApKSlQzs7O/vDr7P7p4uT/3tra/ujm5f7m5eP/2NfW/uHg3f7p6eX/zM/j/o9/
-        hP+7mWD+hY3R/oqS1v6goc7/mr+7/kWncf7q5eL/3NnY/ubl4/7p6ef/zMzM/igoKFApKSlQzczM/uno
-        5v7f3tz/2NfV/uXk4v7l5OL/19bV/t/e3P7n5+j/3dC1/sGWQP/m4tn+6urm/uvq5P7W08//6ufk/kqo
-        ev6cxLH/39nZ/ubk4v7p6Ob/zczM/igoKVApKSlQzc3N/9bV1P/My8r/y8nJ/8zLy//NzMv/y8vK/83P
-        0f/FtZf/vpZG/8e+q//OztD/zcvL/83My//KyMf/0s7N/8HJxP8zlV3/qb+y/9POz//Y1dX/zc3N/ykp
-        KVApKSlQzc3N/ubm5/7b3N3/09TU/uHh4f7i4uP/1NTU/s69mf7EnE3/1sms/szNzP/h4d/+4N/d/uHg
-        3v7My8n/4uDe/ufi4v6Mv6X/SqJ0/nOwif7e4d7/zs3N/ikpKVApKSlQzc7P/tO6if7GqG//z8q+/t7f
-        4P7TwqT/wp1U/sOdU/7Z0cL/39/f/snIx//e3tz+3dza/t7e3P7IyMb/3t3b/t7c2/7Z19b/s8S5/rHI
-        tv7i4t//zszM/ikpKVApKSlQzc3O/+Hf3v/KsH3/vpVF/72POf/Hp2j/ybuf/9jY2P/c29v/29vZ/8vL
-        yf/c2tj/29rY/9za2P/Ly8n/29rY/9va2P/X1tT/09HP/93b2f/i4N//zczM/ykpKVApKSlMzs7N/uvq
-        6v7n6er/6Ort/ujq7f7o6ez/5+jp/ufn5v7n5uX/5+bk/ufn5f/n5uT+5ubk/ufm5P7n5+X/5+bk/ubm
-        5P7n5uX/5+bl/ubm5P7q6uj/zs3N/ikpKUyRj4k2r6+v4rm5uf65ubn/uLm5/ri5uf65ubn/uLi4/ri4
-        uP65ubj/uLi4/rm5uP+4uLj+uLi4/ri4uP65ubj/uLi4/ri4uP65ubj/uLi4/ri4uP65ubn/r6+v4ped
-        mTYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAEAAAACAAAAABACAAAAAAAEAE
-        AAAAAAAAAAAAAAAAAAAAAAAAISEkFAAAACsAAAAsAAAALAAAACwAAAAsAAAALAAAACwAAAAsAAAALAAA
-        ACwAAAAsAAAALAAAACwAAAAsKSkpFVFRUYPR0dH/0dHR/9HR0f/R0dH/0dHR/9HR0f/R0dH/0dHR/9HR
-        0f/R0dH/0dHR/9HR0f/R0dH/0dHR/1JSUodRUVGK6er0/46V0v/w8O//7+/v/+fn5//u7u7/5+fn/+/v
-        7//v7+//5+fn/+7u7v/n5+f/7+/v//f39/9RUVGKUVFRiv///v9we9L//f38//v7+//s7Oz/+vr6/+zs
-        7P/7+/v/+/v7/+zs7P/6+vr/7Ozs//v7+//9/fz/UVFRilFRUYr19fT/nKPY/8fK4//q6un/4uLi/+np
-        6f/k4+P/6+rq/+rp6f/i4uL/6enp/+Pj4//q6ur/9PT0/1FRUYpRUVGK+vr5/+rq5/+Aidn/+/n2/+vp
-        6v/T597/e7mW/5XMsP/79/j/6Ofn//f4+v/f1L3/1riA//j18f9RUVGKUVFRivf39//o5+T/gYvX//Hw
-        9P+Du57/e76d/+Xk5P/A39H/WbSL/+rk5f/Qrmz/0byS//P09P/3+Pn/UVFSilJSUoru7e3/29va/9HQ
-        4P9Neqj/ebmY/+jj5P/b2tr/5eLj/43Dq/+Sl0z/4NjK/9zb3f/h4eD/7u3t/1JSUopSUlKK8vLx/+De
-        3f/k6+b/LYh3/8G/4P/v7uv/3t7d/+7v8P/Ytn7/UauA//Tv8f/h4N3/8/Ls//Tz8f9SUlKKUlJSiu/s
-        7P/U1dP/UaZ5/9Hc0f9jbcb/s7bX/9zb1v/Zy7D/z7WG/363mP+uxcb/f4fO/2Zwx//u7en/UlJSilJS
-        Uoq718X/dLCO/9vi3v/q6Of/4N/Z/5ad1v9xesv/n31S/3+K2/9zes3/OpB//9PQ2f/s6+b/7+/t/1JS
-        UopSUlKK7u3s/9nX1v/l5OP/5eTj/9jX1f/o6On/zKpj/+bf0P/u7OX/4d3Y/3K3k/+/zcX/5uTj/+3s
-        6/9SUlKKUlJSiuTk4//Ozcz/1NPS/9TU0//P0dT/waFj/8q9ov/V1NT/1NPS/8/Ny//T09H/RJ5t/9XT
-        0//m5OT/UlJSilJSUorj2MT/ybqc/9/g4f/WyrH/wJtU/9bLtP/R0dH/3t7c/97e3P/Q0M7/393c/8HM
-        xf92sYz/5efk/1JSUopSUlKK6Ofn/826lf/HqXL/z7uW/9XU0//a2tn/1NPR/9vZ1//b2df/1NPR/9rZ
-        1//U09H/3NrY/+jm5f9SUlKKgYB9cc7Ozf/Nzc3/zc3N/83Nzf/Nzcz/zc3M/83NzP/Nzcz/zc3M/83N
-        zP/Nzcz/zc3M/8zNzP/Ozs3/g4aEcQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3ODg2
-</value>
+  <data name="&gt;&gt;GraphControl.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="BlockPlot.TabIndex" type="System.Int32, mscorlib">
+  <data name="ShowOutputList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 23</value>
+  </data>
+  <data name="NoDataLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>61, 48</value>
+  </data>
+  <data name="&gt;&gt;NoDataLabel.Name" xml:space="preserve">
+    <value>NoDataLabel</value>
+  </data>
+  <data name="&gt;&gt;ShowOutputSignal.Name" xml:space="preserve">
+    <value>ShowOutputSignal</value>
+  </data>
+  <data name="NoDataLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;ShowOutputList.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>DiagramFormOutput</value>
+  </data>
+  <data name="GraphControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>286, 288</value>
+  </data>
+  <data name="NoDataLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="NoDataLabel.Text" xml:space="preserve">
+    <value>Connect the block inputs to see the graph.</value>
+  </data>
+  <data name="ShowOutputLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 15</value>
+  </data>
+  <data name="&gt;&gt;ShowOutputLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ShowOutputLabel.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;ShowOutputLabel.Name" xml:space="preserve">
+    <value>ShowOutputLabel</value>
+  </data>
+  <data name="ShowOutputLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;ShowOutputSignal.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;BlockPlot.Name" xml:space="preserve">
-    <value>BlockPlot</value>
+  <data name="&gt;&gt;GraphControl.Name" xml:space="preserve">
+    <value>GraphControl</value>
   </data>
+  <data name="ShowOutputLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="ShowOutputSignal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 297</value>
+  </data>
+  <data name="ShowOutputLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 301</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QDockingWindow, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="NoDataLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
+  <data name="NoDataLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>199, 188</value>
+  </data>
+  <data name="ShowOutputList.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 297</value>
+  </data>
+  <data name="&gt;&gt;qTranslucentWindowComponent1.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.QTranslucentWindowComponent, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  </data>
+  <data name="&gt;&gt;ShowOutputList.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;GraphControl.Type" xml:space="preserve">
+    <value>ZedGraph.ZedGraphControl, ZedGraph, Version=5.1.5.1817, Culture=neutral, PublicKeyToken=02a83cbd123fcd60</value>
+  </data>
+  <data name="&gt;&gt;NoDataLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;ShowOutputSignal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ShowOutputList.TabIndex" type="System.Int32, mscorlib">
+    <value>114</value>
+  </data>
+  <data name="&gt;&gt;GraphControl.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="ShowOutputList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="ShowOutputLabel.Text" xml:space="preserve">
+    <value>Output:</value>
+  </data>
+  <data name="&gt;&gt;ShowOutputLabel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;qTranslucentWindowComponent1.Name" xml:space="preserve">
+    <value>qTranslucentWindowComponent1</value>
+  </data>
+  <data name="ShowOutputSignal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>122, 23</value>
+  </data>
+  <data name="GraphControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="ShowOutputLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>113</value>
+  </data>
+  <data name="&gt;&gt;ShowOutputLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;NoDataLabel.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="NoDataLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;NoDataLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="ShowOutputSignal.TabIndex" type="System.Int32, mscorlib">
+    <value>116</value>
+  </data>
+  <data name="NoDataLabel.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>117, 58</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>296, 349</value>
+  </data>
+  <data name="&gt;&gt;ShowOutputList.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>pt-BR</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>pt-BR</value>
+  <metadata name="qTranslucentWindowComponent1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>

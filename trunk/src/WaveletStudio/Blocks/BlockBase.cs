@@ -220,6 +220,16 @@ namespace WaveletStudio.Blocks
             return block.Name;
         }
 
+        public string GetProcessingTypeName()
+        {
+            return GetProcessingTypeName(ProcessingType);
+        }
+
+        public static string GetProcessingTypeName(ProcessingTypeEnum processingType)
+        {
+            return Enum.GetName(typeof(ProcessingTypeEnum), processingType);
+        }
+
         /// <summary>
         /// Gets the name of the class
         /// </summary>

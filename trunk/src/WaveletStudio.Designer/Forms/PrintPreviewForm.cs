@@ -16,9 +16,14 @@
 */
 
 using System;
+using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
+using Qios.DevSuite.Components;
 using Qios.DevSuite.Components.Ribbon;
 using WaveletStudio.Designer.Properties;
+using WaveletStudio.Designer.Resources;
+using WaveletStudio.Designer.Utils;
 
 namespace WaveletStudio.Designer.Forms
 {
@@ -34,9 +39,32 @@ namespace WaveletStudio.Designer.Forms
         public PrintPreviewForm(DiagramForm diagramForm)
         {
             InitializeComponent();
-            _diagramForm = diagramForm;            
+            _diagramForm = diagramForm;
+            CreateButtons();
             UpdateMarginFields();
             RefreshDocument();
+        }
+
+        private void CreateButtons()
+        {
+            var printGroup = PreviewOptionsPage.CreateCompositeGroup(null);
+            CreateButton(printGroup, DesignerResources.Print, Images.iconprint1, PrintCompositeItemItemActivated, false);
+
+            var settingsGroup = PreviewOptionsPage.CreateCompositeGroup(DesignerResources.Settings);
+            CreateButton(settingsGroup, DesignerResources.Settings, Images.iconprintsettings1, SettingsCompositeItemActivated, false);
+            CreateButton(settingsGroup, "GRID", Images.iconGrid, GridCompositeItemActivated, Settings.Default.PrintGrid);
+            CreateButton(settingsGroup, "STRETCH", Images.iconstretch1, StretchCompositeItemActivated, Settings.Default.PrintAllowStretch);
+
+            var closeGroup = PreviewOptionsPage.CreateCompositeGroup("");
+            CreateButton(closeGroup, "CLOSE", Images.iconclose, CloseCompositeItemActivated, false);
+        }
+
+        private void CreateButton(QCompositeGroup group, string title, Image image, QCompositeEventHandler onClickAction, bool isChecked)
+        {
+            var item = QControlUtils.CreateCompositeItem(title, image);
+            item.ItemActivated += onClickAction;
+            item.Checked = isChecked;
+            group.Items.Add(item);
         }
 
         public void RefreshDocument()
@@ -47,36 +75,36 @@ namespace WaveletStudio.Designer.Forms
         private void DiagramFormLoad(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Maximized;
-            Text = string.Format("{0} [{1}]", _diagramForm.Text, Resources.Preview);
-            GridComposite.Checked = Settings.Default.PrintGrid;
-            StretchComposite.Checked = Settings.Default.PrintAllowStretch;
+            Text = string.Format("{0} [{1}]", _diagramForm.Text, DesignerResources.Preview);            
             ZoomTrackBar.Value = 6;
         }
        
-        private void PrintCompositeItemItemActivated(object sender, Qios.DevSuite.Components.QCompositeEventArgs e)
+        private void PrintCompositeItemItemActivated(object sender, QCompositeEventArgs e)
         {
             _diagramForm.Print(this, true);
             RefreshDocument();
         }
 
-        private void SettingsCompositeItemActivated(object sender, Qios.DevSuite.Components.QCompositeEventArgs e)
+        private void SettingsCompositeItemActivated(object sender, QCompositeEventArgs e)
         {
             _diagramForm.Print(this, false);
             RefreshDocument();
         }
 
-        private void GridCompositeItemActivated(object sender, Qios.DevSuite.Components.QCompositeEventArgs e)
+        private void GridCompositeItemActivated(object sender, QCompositeEventArgs e)
         {
-            GridComposite.Checked = !GridComposite.Checked;
-            Settings.Default.PrintGrid = GridComposite.Checked;
+            var composite = (QCompositeItem) sender;
+            composite.Checked = !composite.Checked;
+            Settings.Default.PrintGrid = composite.Checked;
             Settings.Default.Save();
             RefreshDocument();
         }
 
-        private void StretchCompositeItemActivated(object sender, Qios.DevSuite.Components.QCompositeEventArgs e)
+        private void StretchCompositeItemActivated(object sender, QCompositeEventArgs e)
         {
-            StretchComposite.Checked = !StretchComposite.Checked;
-            Settings.Default.PrintAllowStretch = StretchComposite.Checked;
+            var composite = (QCompositeItem)sender;
+            composite.Checked = !composite.Checked;
+            Settings.Default.PrintAllowStretch = composite.Checked;
             Settings.Default.Save();
             RefreshDocument();
         }
@@ -96,10 +124,10 @@ namespace WaveletStudio.Designer.Forms
 
         private void UpdateMarginFields()
         {
-            MarginTopField.InputBox.Text = Settings.Default.PrintMarginTop.ToString();
-            MarginLeftField.InputBox.Text = Settings.Default.PrintMarginLeft.ToString();
-            MarginRightField.InputBox.Text = Settings.Default.PrintMarginRight.ToString();
-            MarginBottomField.InputBox.Text = Settings.Default.PrintMarginBottom.ToString();
+            MarginTopField.InputBox.Text = Settings.Default.PrintMarginTop.ToString(CultureInfo.InvariantCulture);
+            MarginLeftField.InputBox.Text = Settings.Default.PrintMarginLeft.ToString(CultureInfo.InvariantCulture);
+            MarginRightField.InputBox.Text = Settings.Default.PrintMarginRight.ToString(CultureInfo.InvariantCulture);
+            MarginBottomField.InputBox.Text = Settings.Default.PrintMarginBottom.ToString(CultureInfo.InvariantCulture);
         }
 
         private decimal ParseMargin(string newValue, decimal oldValue, ref bool changed)
@@ -136,7 +164,7 @@ namespace WaveletStudio.Designer.Forms
                 ZoomTrackBar.Value += 1;
         }
 
-        private void CloseCompositeItemActivated(object sender, Qios.DevSuite.Components.QCompositeEventArgs e)
+        private void CloseCompositeItemActivated(object sender, QCompositeEventArgs e)
         {
             Close();
         }            

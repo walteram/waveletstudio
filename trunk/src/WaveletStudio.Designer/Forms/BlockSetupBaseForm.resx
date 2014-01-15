@@ -120,10 +120,6 @@
   <data name="&gt;&gt;CancelButton.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="UseSignalButton.TabIndex" type="System.Int32, mscorlib">
-    <value>102</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="UseSignalButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>219, 339</value>
@@ -153,8 +149,8 @@
   <data name="&gt;&gt;PropertyGrid.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;UseSignalButton.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;PropertyGrid.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;FormCaption.Name" xml:space="preserve">
     <value>FormCaption</value>
@@ -165,17 +161,14 @@
   <data name="PropertyGrid.Size" type="System.Drawing.Size, System.Drawing">
     <value>282, 285</value>
   </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterParent</value>
+  <data name="&gt;&gt;UseSignalButton.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>787, 374</value>
   </data>
-  <data name="PropertyGrid.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 40</value>
-  </data>
-  <data name="&gt;&gt;PropertyGrid.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterParent</value>
   </data>
   <data name="CancelButton.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
@@ -189,17 +182,18 @@
   <data name="FormCaption.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>600, 350</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="CancelButton.TabIndex" type="System.Int32, mscorlib">
     <value>101</value>
   </data>
-  <data name="&gt;&gt;FormCaption.Type" xml:space="preserve">
-    <value>Qios.DevSuite.Components.Ribbon.QRibbonCaption, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
+  <data name="UseSignalButton.TabIndex" type="System.Int32, mscorlib">
+    <value>102</value>
   </data>
   <data name="FormCaption.Size" type="System.Drawing.Size, System.Drawing">
     <value>787, 28</value>
-  </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>600, 350</value>
   </data>
   <data name="CancelButton.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 339</value>
@@ -213,11 +207,17 @@
   <data name="FormCaption.Text" xml:space="preserve">
     <value>Wavelet Studio</value>
   </data>
+  <data name="PropertyGrid.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 40</value>
+  </data>
   <data name="PropertyGrid.TabIndex" type="System.Int32, mscorlib">
     <value>103</value>
   </data>
   <data name="&gt;&gt;UseSignalButton.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="&gt;&gt;FormCaption.Type" xml:space="preserve">
+    <value>Qios.DevSuite.Components.Ribbon.QRibbonCaption, Qios.DevSuite.Components, Version=4.0.0.20, Culture=neutral, PublicKeyToken=3cc53827b79c92fa</value>
   </data>
   <data name="&gt;&gt;UseSignalButton.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

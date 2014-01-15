@@ -39,6 +39,12 @@
             // FormCaption
             // 
             resources.ApplyResources(this.FormCaption, "FormCaption");
+            this.FormCaption.ColorScheme.RibbonCaptionApplicationText.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48))))), false);
+            this.FormCaption.ColorScheme.RibbonCaptionBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.FormCaption.ColorScheme.RibbonCaptionBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.FormCaption.ColorScheme.RibbonCaptionInactiveApplicationText.SetColor("VistaBlack", System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(48)))), ((int)(((byte)(48))))), false);
+            this.FormCaption.ColorScheme.RibbonCaptionInactiveBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.FormCaption.ColorScheme.RibbonCaptionInactiveBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
             this.FormCaption.Configuration.ApplicationButtonAreaConfiguration.Margin = new Qios.DevSuite.Components.QMargin(0, 4, 0, -8);
             this.FormCaption.Configuration.IconConfiguration.Visible = Qios.DevSuite.Components.QTristateBool.False;
             this.FormCaption.Name = "FormCaption";
@@ -69,7 +75,12 @@
             // BlockSetupBaseForm
             // 
             resources.ApplyResources(this, "$this");
+            this.Appearance.Shape = new Qios.DevSuite.Components.QShape(Qios.DevSuite.Components.QBaseShapeType.RectangleShapedWindow);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ColorScheme.RibbonFormBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormInactiveBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormInactiveBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
             this.Controls.Add(this.PropertyGrid);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.UseSignalButton);

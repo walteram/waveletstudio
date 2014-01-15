@@ -21,6 +21,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using Qios.DevSuite.Components.Ribbon;
 using WaveletStudio.Designer.Properties;
+using WaveletStudio.Designer.Resources;
 
 namespace WaveletStudio.Designer.Forms
 {
@@ -31,7 +32,7 @@ namespace WaveletStudio.Designer.Forms
             InitializeComponent();
 
             LanguageList.Items.Clear();
-            foreach(var lang in Resources.AvailableLanguages.Split(new[]{Environment.NewLine}, StringSplitOptions.None))
+            foreach (var lang in DesignerResources.AvailableLanguages.Split(new[] { Environment.NewLine }, StringSplitOptions.None))
             {
                 LanguageList.Items.Add(lang);
             }
@@ -82,7 +83,7 @@ namespace WaveletStudio.Designer.Forms
             Settings.Default.AutoLoadLastFile = AutoLoadLastFileField.Checked;
             Settings.Default.Save();
 
-            MessageBox.Show(Resources.RestartNeeded, Resources.Attention, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(DesignerResources.RestartNeeded, DesignerResources.Attention, MessageBoxButtons.OK, MessageBoxIcon.Information);
             Close();
         }
 

@@ -16,6 +16,7 @@
 */
 
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
@@ -29,7 +30,9 @@ using Qios.DevSuite.Components;
 using Qios.DevSuite.Components.Ribbon;
 using WaveletStudio.Blocks;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Designer.Documents;
 using WaveletStudio.Designer.Properties;
+using WaveletStudio.Designer.Resources;
 using WaveletStudio.Designer.Utils;
 using WaveletStudio.SignalGeneration;
 
@@ -39,37 +42,25 @@ namespace WaveletStudio.Designer.Forms
     {
         private readonly DiagramFormProperties _propertiesWindow;
         private readonly DiagramFormOutput _outputWindow;
+        private readonly FileForm _fileForm;
         private PrinterSettings _printerSettings;
+
+        public DocumentModel DocumentModel { get; private set; }
 
         private string _currentFile;
         public string CurrentFile
         {
             get { return _currentFile; }
-            set
+            set 
             {
-                Text = string.Format("{0} - {1}{2}", Resources.WaveletStudio, (string.IsNullOrEmpty(value) ? Resources.NewDocument : Path.GetFileName(value)), (!Saved ? Resources.NewDocumentChar : ""));
                 _currentFile = value;
+                UpdateFormTitle();
             }
         }
 
         public string CurrentDirectory
         {
             get { return string.IsNullOrEmpty(_currentFile) ? WaveletStudio.Utils.AssemblyDirectory : Path.GetDirectoryName(_currentFile);}
-        }
-
-        private bool _saved;
-        public bool Saved
-        {
-            get { return _saved; }
-            set
-            {
-                _saved = value;
-                if (_saved && Text.EndsWith(Resources.NewDocumentChar))
-                    Text = Text.Substring(0, Text.Length - 1);
-                else if (!_saved && !Text.EndsWith(Resources.NewDocumentChar))
-                    Text = Text + Resources.NewDocumentChar;
-                UpdateActions();
-            }
         }
 
         public DiagramForm()
@@ -81,11 +72,12 @@ namespace WaveletStudio.Designer.Forms
             _outputWindow.DockWindow(RightDockBar);
             _propertiesWindow = new DiagramFormProperties {Owner = this, Size = new Size(300, 300)};
             _propertiesWindow.DockWindow(RightDockBar);
-            _propertiesWindow.PropertyGrid.PropertyValueChanged += (o, args) => _outputWindow.BlockPlot.Refresh();
+            _propertiesWindow.PropertyGrid.PropertyValueChanged += (o, args) => _outputWindow.Refresh();
             _propertiesWindow.OnPropertyChanged += PropertyValueChanged;
             _outputWindow.DockWindow(RightDockBar);
             _propertiesWindow.DockWindow(_outputWindow, QDockOrientation.Vertical, true);
-
+            _fileForm = new FileForm(this);
+            
             Designer.ElementDoubleClick += DesignerElementDoubleClick;
             Designer.ElementMoved += DesignerElementMoved;
             Designer.ElementResized += DesignerElementResized;
@@ -93,14 +85,43 @@ namespace WaveletStudio.Designer.Forms
             Designer.ElementSelection += DesignerElementSelection;
             Designer.LinkRemoved += DesignerLinkRemoved;
 
-        }      
+            DocumentModel = new DocumentModel
+            {
+                Document = Designer.Document,
+                CreatedAt = DateTime.Now,
+                Author = new CurrentUserDiscoverer().Discover(),
+                OnSaveChanged = OnSavedChanged
+            };
+        }
+
+        private void OnSavedChanged()
+        {
+            UpdateFormTitle();
+            UpdateUndoAndRedo();
+        }
+
+        private void UpdateUndoAndRedo()
+        {
+            UndoShortcut.Enabled = Designer.CanUndo;
+            RedoShortcut.Enabled = Designer.CanRedo;
+        }
+
+        public void UpdateFormTitle()
+        {
+            var isSaved = DocumentModel == null || DocumentModel.Saved;
+            Text = DesignerResources.WaveletStudio + @" ─ " + 
+                   (string.IsNullOrEmpty(CurrentFile) ? DesignerResources.NewDocument : Path.GetFileName(CurrentFile)) +
+                   (!isSaved ? DesignerResources.NewDocumentChar : "");           
+
+            
+        }        
 
         private void DiagramFormLoad(object sender, EventArgs e)
         {
             ConfigureDesigner();
             LoadRibbon();            
             WindowState = FormWindowState.Maximized;
-            AppMenuButton.Visible = true;                                   
+            AppMenuButton.Visible = true;             
         }
 
         private void ConfigureDesigner()
@@ -113,15 +134,18 @@ namespace WaveletStudio.Designer.Forms
 
         private void LoadRibbon()
         {
-            AppMenuButton.CustomChildWindow = new DiagramFormMainMenu(this);
-            LoadBlocks(SignalSourceComposite, BlockBase.ProcessingTypeEnum.LoadSignal);
+            //AppMenuButton.CustomChildWindow = new FileForm(this); //new DiagramFormMainMenu(this);
+            LoadBlocks(SignalRibbonPage, BlockBase.ProcessingTypeEnum.LoadSignal);
             LoadSignalTemplates();
-            LoadBlocks(SignalTemplatesComposite, BlockBase.ProcessingTypeEnum.CreateSignal);
-            LoadBlocks(OperationsFunctionsComposite, BlockBase.ProcessingTypeEnum.Operation);
-            LoadBlocks(RoutingComposite, BlockBase.ProcessingTypeEnum.Routing);
-            LoadBlocks(LogicComposite, BlockBase.ProcessingTypeEnum.Logic);
-            LoadBlocks(TransformsComposite, BlockBase.ProcessingTypeEnum.Transform);
-            LoadBlocks(ExportToFileComposite, BlockBase.ProcessingTypeEnum.Export);
+            LoadBlocks(OperationsRibbonPage, BlockBase.ProcessingTypeEnum.Operation);
+            LoadBlocks(RoutingRibbonPage, BlockBase.ProcessingTypeEnum.Routing);
+            LoadBlocks(RoutingRibbonPage, BlockBase.ProcessingTypeEnum.Logic, true);
+            LoadBlocks(TransformsRibbonPage, BlockBase.ProcessingTypeEnum.Transform);
+            LoadBlocks(ExportDataRibbonPage, BlockBase.ProcessingTypeEnum.Export);
+            foreach (var tabPage in Ribbon.Controls.OfType<QRibbonPage>())
+            {
+                tabPage.Text = tabPage.Text.ToUpperInvariant();
+            }
             Ribbon.ActivateNextTabPage(true);
             Ribbon.Refresh();
             Ribbon.ActivatePreviousTabPage(true);
@@ -129,13 +153,15 @@ namespace WaveletStudio.Designer.Forms
 
         private void LoadSignalTemplates()
         {
+            var composite = SignalRibbonPage.CreateCompositeGroup(DesignerResources.SignalTemplates, true);
             foreach (var type in WaveletStudio.Utils.GetTypes("WaveletStudio.SignalGeneration"))
             {
                 var signal = (CommonSignalBase)Activator.CreateInstance(type);
-                var item = QControlUtils.CreateCompositeListItem(type.Name, "img" + signal.GetAssemblyClassName(), signal.Name, "", 1, QPartDirection.Vertical, QPartAlignment.Centered, Color.White);
+                var item = QControlUtils.CreateCompositeItem(type.Name, "img" + signal.GetAssemblyClassName(), signal.Name);
                 item.ItemActivated += (sender, args) => CreateSignalGenerationBlock(((QCompositeItem)sender).ItemName);
-                SignalTemplatesComposite.Items.Add(item);
+                composite.Items.Add(item);
             }
+            LoadBlocks(composite, BlockBase.ProcessingTypeEnum.CreateSignal);
         }
 
         private void CreateSignalGenerationBlock(string templateName)
@@ -145,7 +171,7 @@ namespace WaveletStudio.Designer.Forms
             Designer.Document.LinkType = LinkType.RightAngle;
             var diagramBlock = new DiagramBlock(ApplicationUtils.GetResourceImage("img" + templateName + "Mini", 30, 20), block.Name, block, block.InputNodes.ToArray(), block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
             Designer.Document.AddElement(diagramBlock);
-            Saved = false;
+            DocumentModel.Touch();            
         }
 
         private void CreateBlock(string itemName)
@@ -163,22 +189,29 @@ namespace WaveletStudio.Designer.Forms
             {
                 RefreshSelectedDiagramBlock();
             }
-            Saved = false;
+            DocumentModel.Touch();            
         }
 
-        private void LoadBlocks(QCompositeItemBase compositeGroup, BlockBase.ProcessingTypeEnum processingType)
+        private void LoadBlocks(QRibbonPage page, BlockBase.ProcessingTypeEnum processingType, bool createSeparatorBefore = false)
         {
-            foreach (var type in WaveletStudio.Utils.GetTypes("WaveletStudio.Blocks").Where(t => t.BaseType == typeof(BlockBase)).OrderBy(BlockBase.GetName))
-            {
-                var block = (BlockBase)Activator.CreateInstance(type);
-                block.CurrentDirectory = CurrentDirectory;
-                if (block.ProcessingType != processingType || type == typeof(GenerateSignalBlock))
-                    continue;
+            var title = DesignerResources.ResourceManager.GetString(BlockBase.GetProcessingTypeName(processingType));
+            var composite = page.CreateCompositeGroup(title, createSeparatorBefore);
+            LoadBlocks(composite, processingType);
+        }
 
-                var item = QControlUtils.CreateCompositeListItem(type.FullName, "img" + block.GetAssemblyClassName(), ApplicationUtils.GetResourceString(block.Name), "", 1, QPartDirection.Vertical, QPartAlignment.Centered, Color.White);
-                
-                item.ItemActivated += (sender, args) => CreateBlock(((QCompositeItem)sender).ItemName);
-                compositeGroup.Items.Add(item);
+        private void LoadBlocks(QCompositeItemBase composite, BlockBase.ProcessingTypeEnum processingType)
+        {
+            foreach (var type in WaveletStudio.Utils.GetTypes("WaveletStudio.Blocks").Where(t => t.BaseType == typeof (BlockBase)).OrderBy(BlockBase.GetName))
+            {
+                var block = (BlockBase) Activator.CreateInstance(type);
+                block.CurrentDirectory = CurrentDirectory;
+                if (block.ProcessingType != processingType || type == typeof (GenerateSignalBlock))
+                {
+                    continue;
+                }
+                var item = QControlUtils.CreateCompositeItem(type.FullName, "img" + block.GetAssemblyClassName(), ApplicationUtils.GetResourceString(block.Name));
+                item.ItemActivated += (sender, args) => CreateBlock(((QCompositeItem) sender).ItemName);
+                composite.Items.Add(item);
             }
         }
 
@@ -202,130 +235,142 @@ namespace WaveletStudio.Designer.Forms
         private void CutElementShortcutItemActivated(object sender, QCompositeEventArgs e)
         {
             Designer.Cut();
-        }
-
-        private void UpdateActions()
-        {
-            UndoShortcut.Enabled = Designer.CanUndo;
-            RedoShortcut.Enabled = Designer.CanRedo;
-        }
+        }        
 
         private void UndoShortcutItemActivated(object sender, QCompositeEventArgs e)
         {
             if (Designer.CanUndo)
-                Designer.Undo();            
-            Saved = false;
+                Designer.Undo();
+            DocumentModel.Touch();            
         }
 
         private void RedoShortcutItemActivated(object sender, QCompositeEventArgs e)
         {
             if (Designer.CanRedo)
                 Designer.Redo();
-            Saved = false;
+            DocumentModel.Touch();            
         }
 
-        public void Save()
+        public bool Save()
         {
             if (string.IsNullOrEmpty(CurrentFile))
             {
-                SaveAs();
-                return;
+                return SaveAs();                
             }
             try
             {
-                Designer.SaveBinary(CurrentFile);
-                AddRecentFile(CurrentFile);
+                new DocumentSerializer().Save(DocumentModel, CurrentFile);
+                AddRecentFile(CurrentFile, Designer);
+                return true;
             }
             catch (Exception exception)
             {
-                MessageBox.Show(string.Format("{0}: \r\n{1}", Resources.FileCouldntBeSaved, exception.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("{0}: \r\n{1}", DesignerResources.FileCouldntBeSaved, exception.Message), DesignerResources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
-        public void CloseWindow()
+        private void DiagramFormFormClosing(object sender, FormClosingEventArgs e)
         {
-            if (Designer.Document.Elements.Count > 0 && !Saved)
+            if (Designer.Document.Elements.Count > 0 && !DocumentModel.Saved)
             {
-                var questionResult = MessageBox.Show(Resources.SaveChangesQuestion, Resources.Attention, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                var questionResult = MessageBox.Show(DesignerResources.SaveChangesQuestion, DesignerResources.Attention, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (questionResult == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
                     return;
+                }
                 if (questionResult == DialogResult.Yes)
+                {
                     Save();
+                }
             }
-            Close();
+            _fileForm.Close();
+            AppContext.Context.FormClosing(this);
         }
 
-        public void OpenFile()
+        public void New()
         {
-            var openDialog = new OpenFileDialog
-            {
-                SupportMultiDottedExtensions = true,
-                Filter = string.Format("{0}|*.wsd", Resources.WaveletStudioDocument), //|Wavelet Studio XML Document|*.wsx",
-                RestoreDirectory = true
-            };
-            if (openDialog.ShowDialog(this) != DialogResult.OK)
-                return;
-
-            try
-            {
-                OpenFile(openDialog.FileName);
-                AddRecentFile(openDialog.FileName);
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show(string.Format("{0}:{1}{2}", Resources.FileCouldntBeOpened, Environment.NewLine, exception.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void OpenFile(string filename)
-        {
-            if (!Path.IsPathRooted(filename))
-                filename = Path.Combine(WaveletStudio.Utils.AssemblyDirectory, filename);
-            var diagramForm = Designer.Document.Elements.Count > 0 ? new DiagramForm() : this;
-            diagramForm.Designer.OpenBinary(filename);
-            diagramForm.CurrentFile = filename;
+            var diagramForm = new DiagramForm();
             diagramForm.Show();
             diagramForm.Focus();
-            diagramForm.ConfigureDesigner();
-            diagramForm.ZoomTrackBar.Value = Convert.ToInt32(Designer.Document.Zoom * 10);
-            AddRecentFile(filename);
-
-            var blockList = new BlockList();
-            foreach (var element in diagramForm.Designer.Document.Elements)
-            {
-                if(element is DiagramBlock == false)
-                    continue;
-
-                var block = (BlockBase)((DiagramBlock)element).State;
-                block.CurrentDirectory = CurrentDirectory;
-                blockList.Add(block);
-            }   
-            blockList.ExecuteAll();
         }
 
-        public void SaveAs()
+        public void OpenFileByPath(string filename)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+                if (!Path.IsPathRooted(filename))
+                {
+                    filename = Path.Combine(WaveletStudio.Utils.AssemblyDirectory, filename);
+                }
+
+                var documentModel = new DocumentSerializer().Load(filename);
+                documentModel.OnSaveChanged = OnSavedChanged;
+
+                var diagramForm = Designer.Document.Elements.Count > 0 ? new DiagramForm() : this;
+                diagramForm.Cursor = Cursors.WaitCursor;
+                diagramForm.DocumentModel = documentModel;                
+                diagramForm.Designer.SetDocument(documentModel.Document);
+                diagramForm.CurrentFile = filename;
+                diagramForm.Show();
+                diagramForm.Focus();
+                diagramForm.ConfigureDesigner();
+                diagramForm.ZoomTrackBar.Value = Convert.ToInt32(Designer.Document.Zoom * 10);
+                AddRecentFile(filename, diagramForm.Designer);
+
+                var blockList = new BlockList();
+                foreach (var element in diagramForm.Designer.Document.Elements)
+                {
+                    if (element is DiagramBlock == false)
+                        continue;
+
+                    var block = (BlockBase)((DiagramBlock)element).State;
+                    block.CurrentDirectory = CurrentDirectory;
+                    blockList.Add(block);
+                }
+                blockList.ExecuteAll();
+                diagramForm.Cursor = Cursors.Default;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(string.Format("{0}:{1}{2}", DesignerResources.FileCouldntBeOpened, Environment.NewLine, exception.Message), DesignerResources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);                
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        }
+
+        public bool SaveAs()
         {
             var saveDialog = new SaveFileDialog
             {
                 SupportMultiDottedExtensions = true,
-                Filter = string.Format("{0}|*.wsd", Resources.WaveletStudioDocument), //|Wavelet Studio XML Document|*.wsx",
+                Filter = string.Format("{0}|*.wsd", DesignerResources.WaveletStudioDocument), //|Wavelet Studio XML Document|*.wsx",
                 RestoreDirectory = true
             };
             if (saveDialog.ShowDialog(this) != DialogResult.OK)
-                return;
+            {
+                return false;
+            }
             try
             {
-                Designer.SaveBinary(saveDialog.FileName);
-                CurrentFile = saveDialog.FileName;
-                AddRecentFile(CurrentFile);
+                var serializer = new DocumentSerializer();
+                serializer.Save(DocumentModel, saveDialog.FileName);
+                CurrentFile = saveDialog.FileName;                
+                AddRecentFile(CurrentFile, Designer);
+                return true;
             }
             catch (Exception exception)
             {
-                MessageBox.Show(string.Format("{0}:{1}{2}", Resources.FileCouldntBeSaved, Environment.NewLine, exception.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("{0}:{1}{2}", DesignerResources.FileCouldntBeSaved, Environment.NewLine, exception.Message), DesignerResources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
-        public void ExportImage()
+        public bool ExportImage()
         {
             var saveDialog = new SaveFileDialog
             {
@@ -335,7 +380,9 @@ namespace WaveletStudio.Designer.Forms
                 AddExtension = true
             };
             if (saveDialog.ShowDialog(this) != DialogResult.OK)
-                return;
+            {
+                return false;
+            }
             try
             {
                 var extension = (Path.GetExtension(saveDialog.FileName) ?? "").Replace(".","").ToLower();
@@ -367,11 +414,13 @@ namespace WaveletStudio.Designer.Forms
                 else
                 {
                     bmp.Save(saveDialog.FileName, format);   
-                }                
+                }
+                return true;
             }
             catch (Exception exception)
             {
-                MessageBox.Show(string.Format("{0}:{1}{2}", Resources.FileCouldntBeSaved, Environment.NewLine, exception.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(string.Format("{0}:{1}{2}", DesignerResources.FileCouldntBeSaved, Environment.NewLine, exception.Message), DesignerResources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
 
@@ -403,7 +452,9 @@ namespace WaveletStudio.Designer.Forms
             const decimal millimeters = 39.37m;
             var document = new PrintDocument { OriginAtMargins = true};
             if (_printerSettings != null)
+            {
                 document.PrinterSettings = _printerSettings;
+            }
             document.DefaultPageSettings.Landscape = Settings.Default.PrintLandscape;
             document.DefaultPageSettings.Margins = new Margins(Convert.ToInt32(Settings.Default.PrintMarginLeft * millimeters), Convert.ToInt32(Settings.Default.PrintMarginRight * millimeters), Convert.ToInt32(Settings.Default.PrintMarginTop * millimeters), Convert.ToInt32(Settings.Default.PrintMarginBottom * millimeters));
             document.PrintPage += (o, args) =>
@@ -415,53 +466,72 @@ namespace WaveletStudio.Designer.Forms
             return document;
         }
 
-        private void AddRecentFile(string filename)
-        {
-            if ((Path.GetDirectoryName(filename) + "").ToLower() == WaveletStudio.Utils.AssemblyDirectory.ToLower())
-                filename = Path.GetFileName(filename) + "";
-            if (Settings.Default.RecentFileList.Contains(filename))
-                Settings.Default.RecentFileList.Remove(filename);
-            Settings.Default.RecentFileList.Insert(0, filename);
-            Settings.Default.Save();
-        }
-
-        private void DiagramFormFormClosing(object sender, FormClosingEventArgs e)
-        {
-            AppContext.Context.FormClosing(this);
-        }
+        private void AddRecentFile(string filename, DiagramNet.Designer designer)
+        {      
+            var recentFileList = RecentFileList.ReadFromFile();
+            recentFileList.RemoveAll(f => f.FilePath.ToLower() == filename.ToLower());
+            recentFileList.Add(new RecentFile
+            {
+                FilePath = filename,
+                Thumbnail = designer.GetThumbnail(),
+                DateAdded = DateTime.Now
+            });
+            while (recentFileList.Count > 15)
+            {
+                recentFileList.RemoveAt(0);
+            }
+            recentFileList.SaveToFile();
+        }        
 
         private void RibbonHelpButtonActivated(object sender, EventArgs e)
         {
             try
             {
-                System.Diagnostics.Process.Start(Resources.Site);
+                Process.Start(DesignerResources.SiteUrl);
             }
             catch(Exception)
             {
-                MessageBox.Show(string.Format("{0}:\n{1}", Resources.HelpLinkMessage, Resources.Site), Resources.Help, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(string.Format("{0}:\n{1}", DesignerResources.HelpLinkMessage, DesignerResources.SiteUrl), DesignerResources.Help, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         private void DiagramFormKeyUp(object sender, KeyEventArgs e)
         {
-            var menu = (DiagramFormMainMenu) AppMenuButton.CustomChildWindow;
-            if (!e.Control) return;
-            if (e.Shift && e.KeyCode == Keys.P)
-                menu.PrintPreviewMenuItemItemActivated(sender, null);
-            else if (e.KeyCode == Keys.P)
-                menu.PrintMenuItemItemActivated(sender, null);
+            if (!e.Control)
+            {
+                return;
+            }
+            if (e.KeyCode == Keys.P)
+            {
+                _fileForm.InitPrint();
+                _fileForm.ShowDialog();
+            }
             else if (e.KeyCode == Keys.N)
-                menu.NewMenuItemItemActivated(sender, null);
+            {
+                var diagramForm = new DiagramForm();
+                diagramForm.Show();
+            }
             else if (e.KeyCode == Keys.O)
-                menu.OpenMenuItemItemActivated(sender, null);
+            {
+                _fileForm.InitOpen();
+                _fileForm.ShowDialog();
+            }
             else if (e.KeyCode == Keys.S && e.Shift)
-                menu.SaveAsMenuItemItemActivated(sender, null);
+            {
+                SaveAs();
+            }
             else if (e.KeyCode == Keys.S)
-                menu.SaveMenuItemItemActivated(sender, null);
+            {
+                Save();
+            }
             else if (e.KeyCode == Keys.OemMinus)
+            {
                 Designer.Document.Zoom -= 0.1f;
+            }
             else if (e.KeyCode == Keys.Oemplus)
+            {
                 Designer.Document.Zoom += 0.1f;
+            }
         }
 
         private void ZoomMinusButtonClick(object sender, EventArgs e)
@@ -494,12 +564,12 @@ namespace WaveletStudio.Designer.Forms
             }
             node1.Root.Execute();
             node2.Root.Execute();
-            _outputWindow.BlockPlot.Refresh();
+            _outputWindow.Refresh();
         }
 
         private void DesignerElementConnected(object sender, ElementConnectEventArgs e)
         {
-            Saved = false;
+            DocumentModel.Touch();            
             var node1 = (BlockNodeBase)e.Link.Connector1.State;
             var node2 = (BlockNodeBase)e.Link.Connector2.State;
             node1.ConnectTo(ref node2);
@@ -510,7 +580,7 @@ namespace WaveletStudio.Designer.Forms
             }
             catch (StackOverflowException)
             {
-                MessageBox.Show(Resources.ModelThrewStackOverflow);
+                MessageBox.Show(DesignerResources.ModelThrewStackOverflow);
             }
         }
 
@@ -533,8 +603,8 @@ namespace WaveletStudio.Designer.Forms
 
             _propertiesWindow.PropertyGrid.SelectedObject = setupForm.Block;
             _propertiesWindow.PropertyGrid.Refresh();
-            _outputWindow.BlockPlot.Block = setupForm.Block;
-            _outputWindow.BlockPlot.Refresh();
+            _outputWindow.Block = setupForm.Block;
+            _outputWindow.Refresh();
             diagramBlock.Refresh(ApplicationUtils.GetResourceImage("img" + setupForm.Block.GetAssemblyClassName() + "Mini", 30, 20), ApplicationUtils.GetResourceString(setupForm.Block.Name), setupForm.Block, setupForm.Block.InputNodes.ToArray(), setupForm.Block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
             if (setupForm.InputConnectionsChanged || setupForm.OutputConnectionsChanged)
             {
@@ -552,7 +622,7 @@ namespace WaveletStudio.Designer.Forms
             }            
             diagramBlock.Invalidate();
             diagramBlock.State = setupForm.Block;
-            Saved = false;
+            DocumentModel.Touch();            
         }
 
         private void PropertyValueChanged(object s, PropertyValueChangedEventArgs e)
@@ -579,12 +649,12 @@ namespace WaveletStudio.Designer.Forms
 
         private void DesignerElementMoved(object sender, ElementEventArgs e)
         {
-            Saved = false;
+            DocumentModel.Touch();            
         }
 
         private void DesignerElementResized(object sender, ElementEventArgs e)
         {
-            Saved = false;
+            DocumentModel.Touch();
         }
 
         private void DesignerElementSelection(object sender, ElementSelectionEventArgs e)
@@ -593,8 +663,8 @@ namespace WaveletStudio.Designer.Forms
             {
                 _propertiesWindow.PropertyGrid.SelectedObject = null;
                 _propertiesWindow.PropertyGrid.Refresh();
-                _outputWindow.BlockPlot.Block = null;
-                _outputWindow.BlockPlot.Refresh();
+                _outputWindow.Block = null;
+                _outputWindow.Refresh();
                 return;
             }
 
@@ -606,23 +676,23 @@ namespace WaveletStudio.Designer.Forms
                 var block = (BlockBase)diagramBlock.State;
                 _propertiesWindow.PropertyGrid.SelectedObject = block;
                 _propertiesWindow.PropertyGrid.Refresh();
-                _outputWindow.BlockPlot.Block = block;
-                _outputWindow.BlockPlot.Refresh();
+                _outputWindow.Block = block;
+                _outputWindow.Refresh();
                 break;
             }
         }
 
         private void PropertyChanged(object sender, EventArgs e)
         {
-            Saved = false;
+            DocumentModel.Touch();           
         }
 
-        public void ExportCode()
+        public bool ExportCode()
         {
             var saveDialog = new SaveFileDialog
             {
                 SupportMultiDottedExtensions = true,
-                Filter = string.Format("{0}|*.cs", Resources.CSharpFile),
+                Filter = string.Format("{0}|*.cs", DesignerResources.CSharpFile),
                 RestoreDirectory = true
             };
             var className = Path.GetFileNameWithoutExtension(CurrentFile).RemoveSpecialChars();
@@ -632,7 +702,7 @@ namespace WaveletStudio.Designer.Forms
             }
             if (saveDialog.ShowDialog(this) != DialogResult.OK)
             {
-                return;
+                return false;
             }
             try
             {
@@ -644,11 +714,37 @@ namespace WaveletStudio.Designer.Forms
                 };
                 var code = codeGenerator.GenerateCode();                
                 File.WriteAllText(saveDialog.FileName, code);
+                return true;
             }
             catch (Exception exception)
             {
-                MessageBox.Show(string.Format("{0}:{1}{2}", Resources.FileCouldntBeSaved, Environment.NewLine, exception.Message), Resources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }            
+                MessageBox.Show(string.Format("{0}:{1}{2}", DesignerResources.FileCouldntBeSaved, Environment.NewLine, exception.Message), DesignerResources.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        private void AppMenuButton_ItemActivated(object sender, QCompositeEventArgs e)
+        {
+            _fileForm.InitInformations();
+            _fileForm.ShowDialog();
+            if (_fileForm.ActionResult == FileForm.ActionTaken.New)
+            {
+                New();
+            }
+            else if (_fileForm.ActionResult == FileForm.ActionTaken.Open)
+            {
+                OpenFileByPath(_fileForm.FilePath);
+            }
+        }
+
+        private void DiagramForm_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void qRibbonCaption1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

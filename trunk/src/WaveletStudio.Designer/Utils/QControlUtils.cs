@@ -18,55 +18,122 @@
 using System;
 using System.Drawing;
 using Qios.DevSuite.Components;
-using WaveletStudio.Designer.Properties;
+using Qios.DevSuite.Components.Ribbon;
+using WaveletStudio.Designer.Resources;
 
 namespace WaveletStudio.Designer.Utils
 {
     public static class QControlUtils
     {
-        public static QCompositeItem CreateCompositeListItem(string itemName, string imageResourceName, string title, string text, int borderWidth, QPartDirection direction, QPartAlignment textAlignment, Color? color, int imageWidth = 64, int imageHeight = 48)
+        internal static void CreatePanel(out QRibbonPanel panel, out QCompositeGroup composite, string title)
         {
-            var item = new QCompositeItem();
-            var image = GetImageFromResource(imageResourceName);
-            var itemGroup = GetSolidColorCompositeGroup(direction, color, 1);
-            var textsGroup = GetSolidColorCompositeGroup(QPartDirection.Vertical, color, 0, true, false);
-            var fontDefinition = new QFontDefinition { Bold = true, Size = -1 };
-            image.Configuration.MaximumSize = new Size(imageWidth, imageHeight);
-            textsGroup.Items.Add(new QCompositeText { Title = title, Configuration = { AlignmentHorizontal = textAlignment, FontDefinition = fontDefinition, FontDefinitionHot = fontDefinition, FontDefinitionPressed = fontDefinition } });
-            if (!string.IsNullOrEmpty(text))
+            var currentStyle = QColorScheme.Global.CurrentTheme;
+            panel = new QRibbonPanel {Title = title};
+            panel.ColorScheme.RibbonPanelActiveBackground1.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelActiveBackground2.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelActiveBorder.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelBackground1.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelBackground2.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelBorder.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelCaptionArea1.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelCaptionArea2.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelCaptionShowDialog.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelCaptionShowDialogDisabled.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelCaptionShowDialogHot.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelHotBackground1.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelHotBackground2.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelHotBorder.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelHotCaptionArea1.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelHotCaptionArea2.SetColor(currentStyle, Color.Empty, false);
+            panel.ColorScheme.RibbonPanelText.SetColor(currentStyle, Color.Black, false);
+            panel.ColorScheme.RibbonPanelTextActive.SetColor(currentStyle, Color.Black, false);
+            panel.ColorScheme.RibbonPanelTextHot.SetColor(currentStyle, Color.Black, false);
+            panel.Configuration.CaptionConfiguration.ShowDialogConfiguration.Visible = QTristateBool.False;
+
+            composite = new QCompositeGroup();
+            composite.ColorScheme.ButtonPressedBackground1.SetColor(currentStyle, Color.Empty, false);
+            composite.ColorScheme.ButtonPressedBackground2.SetColor(currentStyle, Color.Empty, false);
+            composite.ColorScheme.CompositeItemBackground1.SetColor(currentStyle, Color.White, false);
+            composite.ColorScheme.CompositeItemBackground2.SetColor(currentStyle, Color.White, false);
+            composite.ColorScheme.CompositeItemHotBackground1.SetColor(currentStyle, Color.Transparent, false);
+            composite.ColorScheme.CompositeItemHotBackground2.SetColor(currentStyle, Color.Transparent, false);
+            composite.ColorScheme.CompositeItemHotBorder.SetColor(currentStyle, Color.Transparent, false);
+            composite.ColorScheme.CompositeItemPressedBackground1.SetColor(currentStyle, Color.White, false);
+            composite.ColorScheme.CompositeItemPressedBackground2.SetColor(currentStyle, Color.White, false);
+            composite.ColorScheme.Scope = QColorSchemeScope.All;
+            composite.Configuration.ShrinkHorizontal = true;
+            composite.Configuration.ShrinkVertical = true;
+            composite.Configuration.StretchHorizontal = true;
+            composite.Configuration.StretchVertical = true;
+
+            panel.Items.Add(composite);            
+        }
+
+        public static QCompositeGroup CreateCompositeGroup(this QRibbonPage parentPage, string title, bool createSeparatorBefore = false)
+        {
+            QRibbonPanel panel;
+            QCompositeGroup compositeGroup;
+            CreatePanel(out panel, out compositeGroup, title);
+            if (createSeparatorBefore)
             {
-                textsGroup.Items.Add(new QCompositeText {  Title = text, Configuration = { AlignmentHorizontal = textAlignment } });
+                parentPage.Items.Add(new QCompositeSeparator());
             }
+            parentPage.Items.Add(panel);            
+            return compositeGroup;
+        }
+
+        public static QCompositeItem CreateCompositeItem(string title, Image image)
+        {
+            return CreateCompositeItem(null, new QCompositeImage { Image = image }, title, true);
+        }
+
+        public static QCompositeItem CreateCompositeItem(string itemName, string imageResourceName, string title)
+        {
+            return CreateCompositeItem(itemName, GetImageFromResource(imageResourceName), title, false);
+        }
+
+        public static QCompositeItem CreateCompositeItem(string itemName, QCompositeImage image, string title, bool useOriginalImageSize)
+        {
+            var currentStyle = QColorScheme.Global.CurrentTheme;
+            var item = new QCompositeItem();
+            item.ColorScheme.ButtonPressedBackground1.SetColor(currentStyle, Color.White, false);
+            item.ColorScheme.ButtonPressedBackground2.SetColor(currentStyle, Color.White, false);
+            item.Configuration.Appearance.Shape = new QShape(QBaseShapeType.SquareButton);
+            var itemGroup = GetSolidColorCompositeGroup(QPartDirection.Vertical, Color.White, 1);
+            var textsGroup = GetSolidColorCompositeGroup(QPartDirection.Vertical, Color.White, 0, true, false);
+            var fontDefinition = new QFontDefinition { Bold = true, Size = -1 };
             image.Configuration.AlignmentHorizontal = QPartAlignment.Centered;
-            itemGroup.Items.Add(image);
+            itemGroup.Items.Add(image);            
+            if (!useOriginalImageSize)
+            {
+                image.Configuration.MaximumSize = new Size(36, 27);
+            }
+            textsGroup.Items.Add(new QCompositeText
+            {
+                Title = title,
+                Configuration =
+                {
+                    AlignmentHorizontal = QPartAlignment.Centered,
+                    FontDefinition = fontDefinition,
+                    FontDefinitionHot = fontDefinition,
+                    FontDefinitionPressed = fontDefinition
+                }
+            });
             itemGroup.Items.Add(textsGroup);
             item.Items.Add(itemGroup);
-
-            if (color != null)
-            {
-                item.ColorScheme.CompositeItemPressedBackground1.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
-                item.ColorScheme.CompositeItemPressedBackground2.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
-                item.ColorScheme.CompositeItemBackground1.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
-                item.ColorScheme.CompositeItemBackground2.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
-            }
             item.ItemName = itemName;
             item.Configuration.Margin = new QMargin(3, 3, 3, 3);
             item.Configuration.Padding = new QPadding(4, 4, 4, 4);
-            if (direction == QPartDirection.Horizontal)
-            {
-                item.Configuration.StretchHorizontal = true;
-            }
-            else
-            {
-                item.Configuration.StretchVertical = true;
-            }
-            item.Configuration.Appearance.BorderWidth = borderWidth;
+            item.Configuration.StretchVertical = true;
+            item.Configuration.Appearance.BorderWidth = 1;
+            item.Configuration.MinimumSize = new Size(70, 50);
             return item;
         }
 
         private static QCompositeGroup GetSolidColorCompositeGroup(QPartDirection direction, Color? color, int borderWidth, bool stretchHorizontal = true, bool stretchVertical = true)
         {
             var group = new QCompositeGroup { Configuration = { Direction = direction } };
+            group.Configuration.Appearance.Shape = new QShape(QBaseShapeType.SquareButton);
             if (color != null)
             {
                 group.ColorScheme.CompositeItemHotBackground1.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
@@ -79,8 +146,11 @@ namespace WaveletStudio.Designer.Utils
                 group.ColorScheme.CompositeItemBackground2.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
                 group.ColorScheme.CompositeItemDisabledBackground1.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
                 group.ColorScheme.CompositeItemDisabledBackground2.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
-                group.ColorScheme.CompositeItemPressedBackground1.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
-                group.ColorScheme.CompositeItemPressedBackground2.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
+                group.ColorScheme.CompositeItemPressedBorder.SetColor(QColorScheme.Global.CurrentTheme, Color.Empty);
+                group.ColorScheme.CompositeItemHotBorder.SetColor(QColorScheme.Global.CurrentTheme, Color.Empty);
+                group.ColorScheme.CompositeGroupBackground1.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
+                group.ColorScheme.CompositeGroupBackground2.SetColor(QColorScheme.Global.CurrentTheme, color.Value);
+
                 group.Configuration.Appearance.BorderWidth = borderWidth;
             }
             if (stretchHorizontal)
@@ -96,7 +166,7 @@ namespace WaveletStudio.Designer.Utils
 
         private static QCompositeImage GetImageFromResource(string name)
         {
-            var image =  Resources.ResourceManager.GetObject(name.Replace(" ", "")) ?? new Bitmap(64,48);
+            var image =  Images.ResourceManager.GetObject(name.Replace(" ", "")) ?? new Bitmap(64,48);
             try
             {
                 return new QCompositeImage { Image = (Image)image };

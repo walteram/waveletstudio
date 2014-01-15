@@ -32,6 +32,10 @@
             this.OutputTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
+            // PropertyGrid
+            // 
+            resources.ApplyResources(this.PropertyGrid, "PropertyGrid");
+            // 
             // OutputTextBox
             // 
             resources.ApplyResources(this.OutputTextBox, "OutputTextBox");
