@@ -29,6 +29,8 @@ namespace DocumentationExtractor
         public string Category { get; set; }
         
         public string Type { get; set; }
+        
+        public string DocUrl { get; set; }
 
         public override string ToString()
         {

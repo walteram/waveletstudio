@@ -16,6 +16,31 @@ namespace DocumentationExtractor.Steps
 
         public void Run(List<Member> members)
         {
+            WriteMemberDocs(members);
+            WriteBlockList(members);
+        }
+
+        private void WriteBlockList(IEnumerable<Member> members)
+        {
+            var text = new StringBuilder();
+            text.AppendLine("! *Block List*");
+            text.AppendLine("");
+
+            foreach (var member in members.Where(member => member.Type == "Block"))
+            {
+                var docUrl = member.DocUrl ?? "https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20"+member.Name;
+                text.Append("!! <[image:" + member.Image + "|"+ docUrl + "] ");
+                text.AppendLine("*[url:" + member.Name + "|"+docUrl+"]*");
+                text.AppendLine(member.Description);
+                text.AppendLine("");
+            }
+
+            var filename = Path.Combine(_docPath, "BlockList.txt");
+            File.WriteAllText(filename, text.ToString());
+        }
+
+        private void WriteMemberDocs(IEnumerable<Member> members)
+        {
             foreach (var member in members)
             {
                 var text = GetText(member);
@@ -24,7 +49,7 @@ namespace DocumentationExtractor.Steps
             }
         }
 
-        private string GetText(Member member)
+        private static string GetText(Member member)
         {
             var text = new StringBuilder(256);
             text.Append("! ");

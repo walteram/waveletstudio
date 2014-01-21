@@ -56,7 +56,7 @@ namespace DocumentationExtractor.Steps
             }
         }
 
-        private void LoadParameterDescription(XmlDocument xmlDocument, Member member, string memberFullName, string parameterName, string parameterType)
+        private static void LoadParameterDescription(XmlNode xmlDocument, Member member, string memberFullName, string parameterName, string parameterType)
         {
             var propertyName = "P:" + memberFullName + "." + parameterName;
             foreach (XmlNode xmlNode in xmlDocument.ChildNodes[1].ChildNodes[1].ChildNodes)
@@ -195,6 +195,10 @@ namespace DocumentationExtractor.Steps
             else if (paraNodeValue.ToLower().StartsWith("inoutgraph:"))
             {
                 member.InOutGraph = member.InOutGraph.AppendLineSection(paraNodeValue);
+            }
+            else if (paraNodeValue.ToLower().StartsWith("docurl:"))
+            {
+                member.DocUrl = member.DocUrl.AppendLineSection(paraNodeValue);
             }
             else
             {

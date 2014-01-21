@@ -1,0 +1,183 @@
+! *Block List*
+
+!! <[image:http://i.imgur.com/fzFnv6Z.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20AbsoluteValueBlock] *[url:AbsoluteValueBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20AbsoluteValueBlock]*
+Outputs the absolute value of a signal.
+
+!! <[image:http://i.imgur.com/kUEo44z.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ConvolutionBlock] *[url:ConvolutionBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ConvolutionBlock]*
+The Convolution block convolves the signal of the first input with the signal of second input (filter). Both the signal and filter can be lists. Each signal in the first list will be convolved with the correspondent filter in the second. If the number of filters in the filter list is lesser than the number of filters, the first filter will be used.
+
+!! <[image:http://i.imgur.com/x1BWSo9.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20GenerateSignalBlock] *[url:GenerateSignalBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20GenerateSignalBlock]*
+Generates a signal based on one of the following templates:
+
+Sine     :=  y(x) = A * sin(2 * PI * t) + D
+Cosine   :=  y(x) = A * cos(2 * PI * t) + D
+Sawtooth :=  y(x) = A * 2*(t - floor(t+0.5)) + D
+Square   :=  y(x) = A * sign(sin(2 * PI * t)) + D
+Triangle :=  y(x) = A * (1-4*abs(round(t-0.25)-(t-0.25))) + D
+
+Where:
+A := Amplitude
+D := Offset
+t := f*x+φ
+f := Frequency
+φ := Phase
+
+This block has no inputs.
+
+!! <[image:http://i.imgur.com/pKW0rXZ.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20DemuxBlock] *[url:DemuxBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20DemuxBlock]*
+Extracts the components of an input signal and outputs the components as separate signals.
+
+!! <[image:http://i.imgur.com/Jv0LDXT.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20DownSampleBlock] *[url:DownSampleBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20DownSampleBlock]*
+Decreases the sampling rate of the input by deleting samples.
+
+!! <[image:http://i.imgur.com/eB1KiuV.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20DWTBlock] *[url:DWTBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20DWTBlock]*
+The DWT block decomposes a signal using the specified wavelet function.
+
+!! <[image:http://i.imgur.com/bA6qk6M.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ExportToCSVBlock] *[url:ExportToCSVBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ExportToCSVBlock]*
+Exports a single signal or a signal list to a CSV file.
+A CSV (comma-separated values) is a text file with the data (samples) separated with commas or another character.
+This block has no outputs.
+
+!! <[image:|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20SignalExtensionBlock] *[url:SignalExtensionBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20SignalExtensionBlock]*
+Signal extension
+
+!! <[image:http://i.imgur.com/tpcUlFu.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20FFTBlock] *[url:FFTBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20FFTBlock]*
+Executes the Forward Fast Fourier Transform (FFT) using the Managed FFT function.
+
+!! <[image:http://i.imgur.com/ta1Fi8v.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20IDWTBlock] *[url:IDWTBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20IDWTBlock]*
+The IDWT block reconstructs a signal using the specified wavelet coefficients.
+
+!! <[image:http://i.imgur.com/AeAyClJ.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20IFFTBlock] *[url:IFFTBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20IFFTBlock]*
+Executes the Backward Fast Fourier Transform (FFT) using the Managed FFT function.
+
+!! <[image:http://i.imgur.com/ApwmTG2.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ImportFromCSVBlock] *[url:ImportFromCSVBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ImportFromCSVBlock]*
+Generates a signal based on a CSV file.
+A CSV (comma-separated values) is a text file with the data (samples) separated with commas or another char. Each line in the file represents a signal. For example:"}
+{code:c#}
+signal_name,sample1,sample2,sample3,sample4
+Signal1, 1.1, 9.12, 0.123, 0
+Signal2, 1.1, 4.56, 0.123, -45
+{code:c#}
+{"
+This example shows a file with 2 signals, with 4 samples in each one. The first column in the file is optional and represents the name of the signal. The header is optional too.
+This block has no inputs.
+
+!! <[image:http://i.imgur.com/qxPtNRn.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20InterpolationBlock] *[url:InterpolationBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20InterpolationBlock]*
+Increases the sampling rate of a signal using linear, nearest, cubic, Newton’s or polynomial interpolation methods.
+
+!! <[image:http://i.imgur.com/7PhV0G4.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20InvertBlock] *[url:InvertBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20InvertBlock]*
+Inverts a signal. For example, if we have a signal with 8 samples like this one:
+"}
+{code:c#}
+2, 3, -4, 8, 7, 1, 2, -3
+{code:c#}
+{"
+
+the block will output a new signal with the folowing samples:
+"}
+{code:c#}
+-3, 2, 1, 7, 8, -4, 3, 2
+{code:c#}
+{"
+
+This block has no inputs.
+
+!! <[image:|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20LogicOperationBlock] *[url:LogicOperationBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20LogicOperationBlock]*
+Point-by-point logic operators (AND, OR, NAND, NOR, XOR, NXOR, NOT).
+
+!! <[image:http://i.imgur.com/d3hUAji.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20MuxBlock] *[url:MuxBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20MuxBlock]*
+Combine several input signals into vector. For example, if we connect 3 blocks to the MuxBlock, it will output a single signal list, with 3 items.
+
+!! <[image:http://i.imgur.com/uC6ViMz.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20SampleBasedOperationBlock] *[url:SampleBasedOperationBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20SampleBasedOperationBlock]*
+Sum, subtract, multiply or divide two or more signals, sample-by-sample.
+
+!! <[image:http://i.imgur.com/o0NVryg.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20RampFunctionBlock] *[url:RampFunctionBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20RampFunctionBlock]*
+Generates a Ramp signal using the following function:
+y(t) = A * (t - t0) + D     ∀ t >= t0, t <= t1
+                    y(t) = D                    ∀ t < t0
+                    y(t) = D + x(t1)            ∀ t > t1 | D  (if ReturnToZero parameter is true)
+Where:
+A := amplitude
+D := offset
+t0 := ramp start
+t1 := ramp finish
+This block has no inputs.
+
+!! <[image:http://i.imgur.com/yJvRKtq.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20RelationalOperatorBlock] *[url:RelationalOperatorBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20RelationalOperatorBlock]*
+Conversion to boolean based on >, <, >=, <=, <>, = an static value, the previous sample or the next sample.
+For each sample in the signal S1, the Relational Operation Block will compare the sample using the specified operation and returns 1 if true or 0 if false.
+
+!! <[image:http://i.imgur.com/LC6BDlw.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20RepeatBlock] *[url:RepeatBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20RepeatBlock]*
+Repeats samples of a signal.
+
+For example, if we have a signal with 8 samples like this one:"}
+{code:c#}
+1, 9, 0, 1, 2, 5, -4, 4
+{code:c#}
+{"
+and set the FrameSize parameter to 4, the block will output a new signal with the folowing samples:"}
+{code:c#}
+1, 9, 0, 1,   1, 9, 0, 1,   2, 5, -4, 4,   2, 5, -4, 4
+{code:c#}
+{"
+
+!! <[image:http://i.imgur.com/gC28gvP.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ScalarOperationBlock] *[url:ScalarOperationBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ScalarOperationBlock]*
+Executes a scalar operation in a signal. The available operations are sum, subtraction, multiplication and division. The operation is made sample-by-sample.
+
+!! <[image:http://i.imgur.com/quStjHO.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ScaleBlock] *[url:ScaleBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ScaleBlock]*
+Dilate or contract a signal in time and/or amplitude.
+
+!! <[image:http://i.imgur.com/3D9pbJc.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ShiftBlock] *[url:ShiftBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ShiftBlock]*
+Shifts a signal in time modifying the Start property.
+
+!! <[image:http://i.imgur.com/V34q36D.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20SwitchBlock] *[url:SwitchBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20SwitchBlock]*
+Switch output between first input (A) and third input (B) based on value of second input or the threshold value, using the specified switch criteria. For example, let’s consider the following scenario:"}
+{code:c#}
+Signal A: 1, 3, 4, -4, 8, 3, 2, -10
+Signal B: 3, -2, 4, -6, 7, 1, 4, 3
+Threshold: 2
+Switch Criteria: Select B when B is greater than threshold
+{code:c#}
+{"
+The Switch Criteria is a parameter defining when the value of the signal B will be selected, instead of selecting the value of the signal A. The block will output a new signal with the folowing samples:"}
+{code:c#}
+3 3 4 -4 7 3 4 3
+{code:c#}
+{"
+The #1 sample (3) was selected from signal B (the value from B is greater than the threshold);
+The #2 sample (3) was selected from signal A (the value from B is not greater than the threshold);
+The #3 sample (4) was selected from signal B (the value from B is greater than the threshold);
+and so on.
+
+!! <[image:http://i.imgur.com/Hr0LdvL.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ImportFromTextBlock] *[url:ImportFromTextBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20ImportFromTextBlock]*
+Generates a signal based on a text.
+This block has no inputs.
+
+!! <[image:http://i.imgur.com/fVvqcwZ.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20UniqueBlock] *[url:UniqueBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20UniqueBlock]*
+Removes duplicated samples in a signal.
+
+For example, if we have a signal with 8 samples like this one:"}
+{code:c#}
+1, 3, -4, 8, 3, 4, 1, -3
+{code:c#}
+{"
+the block will output a new signal with the folowing samples:"}
+{code:c#}
+1, 3, -4, 8, 4, -3
+{code:c#}
+{"
+
+!! <[image:http://i.imgur.com/zOOdBZS.png|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20UpSampleBlock] *[url:UpSampleBlock|https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20UpSampleBlock]*
+Resample input at higher rate by inserting zeros.
+
+For example, if we have a signal with 8 samples like this one:"}
+{code:c#}
+1.1, 9.12, 0.123, 1, 1.1, 4.56, 0.123, -45
+{code:c#}
+{"
+the block will output a new signal with the folowing samples:"}
+{code:c#}
+1.1, 0, 9.12, 0, 0.123, 0, 1, 0, 1.1, 0, 4.56, 0, 0.123, 0, -45
+{code:c#}
+{"
+

@@ -32,18 +32,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DiagramNet">
+      <HintPath>..\..\trunk\res\libs\Diagram.net\DiagramNet.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="ZedGraph, Version=5.1.5.1817, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\trunk\res\libs\ZedGraph\ZedGraph.dll</HintPath>
+      <HintPath>..\..\trunk\res\libs\ZedGraph\ZedGraph.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Member.cs" />
-    <Compile Include="Steps\Class1.cs" />
     <Compile Include="Steps\CreateCodePlexMarkup.cs" />
     <Compile Include="Steps\GenerateInOutGraph.cs" />
     <Compile Include="Steps\ReflectionLoader.cs" />
@@ -58,11 +60,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\trunk\src\WaveletStudio.Designer\WaveletStudio.Designer.csproj">
+    <ProjectReference Include="..\..\trunk\src\WaveletStudio.Designer\WaveletStudio.Designer.csproj">
       <Project>{be6ca208-a810-4103-bc06-b0f833379369}</Project>
       <Name>WaveletStudio.Designer</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\trunk\src\WaveletStudio\WaveletStudio.csproj">
+    <ProjectReference Include="..\..\trunk\src\WaveletStudio\WaveletStudio.csproj">
       <Project>{003d0672-355f-416b-9e88-dc95f0762329}</Project>
       <Name>WaveletStudio</Name>
     </ProjectReference>

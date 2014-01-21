@@ -20,6 +20,7 @@ namespace DocumentationExtractor
                 throw new ArgumentOutOfRangeException();
             }
             _members = new List<Member>(128);
+            Console.WriteLine(@"Generating documentation...");
 
             var xmlPath = args[0];
             var outputPath = args[1];
@@ -32,7 +33,6 @@ namespace DocumentationExtractor
                 new CreateCodePlexMarkup(outputPath),
             };
             steps.Run(_members);
-            //Console.ReadKey();
         }
     }
 }

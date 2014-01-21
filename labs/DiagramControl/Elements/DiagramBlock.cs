@@ -21,30 +21,31 @@ namespace DiagramNet.Elements
         public object State { get; set; }
 
         private static int _nextPosition = 50;
+        private const int BlockSize = 80;
 
         public DiagramBlock()
         {
 
         }
 
-        public DiagramBlock(Image image, string labelText, object blockState, object[] inputStates, object[] outputStates, PropertyInfo connectionTextProperty, bool autoRefresh)
-            : base(0, 0, 80, 80)
+        public DiagramBlock(Image image, string labelText, object blockState, object[] inputStates, object[] outputStates, PropertyInfo connectionTextProperty, bool autoRefresh, bool useNextPosition = false)
+            : base(useNextPosition ? _nextPosition : 0, useNextPosition ? _nextPosition : 0, BlockSize, BlockSize)
         {
             Overrided = true;
-            Rectangle = new RectangleElement(_nextPosition, _nextPosition, 80, 80);
+            Rectangle = new RectangleElement(_nextPosition, _nextPosition, BlockSize, BlockSize);
             FillColor1 = Color.White;
             FillColor2 = Color.White;
             if (autoRefresh)
             {
                 Refresh(image, labelText, blockState, inputStates, outputStates, connectionTextProperty);
-            }            
+            }
         }
 
         public DiagramBlock(Image image, string labelText, object blockState, object[] inputStates, object[] outputStates, PropertyInfo connectionTextProperty)
-            : base(_nextPosition, _nextPosition, 80, 80)
+            : base(_nextPosition, _nextPosition, BlockSize, BlockSize)
         {
             Overrided = true;
-            Rectangle = new RectangleElement(_nextPosition, _nextPosition, 80, 80);
+            Rectangle = new RectangleElement(_nextPosition, _nextPosition, BlockSize, BlockSize);
             FillColor1 = Color.White;
             FillColor2 = Color.White;
             Refresh(image, labelText, blockState, inputStates, outputStates,connectionTextProperty);
