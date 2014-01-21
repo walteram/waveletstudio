@@ -24,7 +24,29 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Removes the duplicated samples in a signal
+    /// <para>Removes duplicated samples in a signal.</para>
+    /// <para> </para>
+    /// <para>For example, if we have a signal with 8 samples like this one:</para>
+    /// <code>1, 3, -4, 8, 3, 4, 1, -3</code>
+    /// <para>the block will output a new signal with the folowing samples:</para>
+    /// <code>1, 3, -4, 8, 4, -3</code>
+    /// <para>Image: http://i.imgur.com/fVvqcwZ.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/HdzUh01.png </para>
+    /// <example>
+    ///     <code>
+    ///         var signal = new ImportFromTextBlock { Text = "1, 3, -4, 8, 3, 4, 1, -3" };
+    ///         var block = new UniqueBlock 
+    ///         { 
+    ///             SortSamples = false 
+    ///         };
+    ///         
+    ///         signal.ConnectTo(block);
+    ///         signal.Execute();
+    ///         
+    ///         Console.WriteLine(block.Output[0].ToString(0));
+    ///         //Output: 1, 3, -4, 8, 4, -3
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class UniqueBlock : BlockBase
@@ -61,7 +83,7 @@ namespace WaveletStudio.Blocks
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Operation; } }
 
         /// <summary>
-        /// If true, the block sort the samples 
+        /// If true, the block sorts the samples after remove the duplicated samples. Default value is true.
         /// </summary>
         [Parameter]
         public bool SortSamples { get; set; }

@@ -288,4 +288,7 @@ Click in the Signal tab and select a signal source.</value>
   <data name="Unknown" xml:space="preserve">
     <value>Unknown</value>
   </data>
+  <data name="Others" xml:space="preserve">
+    <value>Others</value>
+  </data>
 </root>

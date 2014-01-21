@@ -1,0 +1,14 @@
+! *Block: Logic Port*
+
+{"Point-by-point logic operators (AND, OR, NAND, NOR, XOR, NXOR, NOT)."}
+
+!! *Parameters:*
+
+*Operation:* {"Math operation to be used"}
+> Or - Or (||)
+> Xor - Xor (^)
+> NotOr - Not Or (!||)
+> NotXor - Not Xor (!^)
+> Not - Not (!)
+
+

@@ -23,7 +23,29 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Repeat samples of a signal
+    /// <para>Repeats samples of a signal.</para>
+    /// <para> </para>
+    /// <para>For example, if we have a signal with 8 samples like this one:</para>
+    /// <code>1, 9, 0, 1, 2, 5, -4, 4</code>
+    /// <para>and set the FrameSize parameter to 4, the block will output a new signal with the folowing samples:</para>
+    /// <code>1, 9, 0, 1,   1, 9, 0, 1,   2, 5, -4, 4,   2, 5, -4, 4</code>
+    /// <para>Image: http://i.imgur.com/LC6BDlw.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/Pkjnhp9.png </para>    
+    /// <example>
+    ///     <code>
+    ///         var signal = new ImportFromTextBlock { Text = "0, 3, -3, 0, 2, 2, 2, 0" };
+    ///         var block = new RepeatBlock
+    ///         { 
+    ///             FrameSize = 4, 
+    ///             RepetitionCount = 1
+    ///         };
+    ///         signal.ConnectTo(block);
+    ///         signal.Execute();
+    ///         
+    ///         Console.WriteLine(block.Output[0].ToString(0));
+    ///         //Output: 0 3 -3 0 0 3 -3 0 2 2 2 0 2 2 2 0
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class RepeatBlock : BlockBase
@@ -48,16 +70,16 @@ namespace WaveletStudio.Blocks
         }
 
         /// <summary>
-        /// Repetition count
-        /// </summary>
-        [Parameter]
-        public uint RepetitionCount { get; set; }
-
-        /// <summary>
-        /// Frame size
+        /// The number of times the block will repeat the frame. Default value is 1.
         /// </summary>
         [Parameter]
         public uint FrameSize { get; set; }
+
+        /// <summary>
+        /// The number of samples to be repeated per time. Default value is 1.
+        /// </summary>
+        [Parameter]
+        public uint RepetitionCount { get; set; }
 
         /// <summary>
         /// If true, keeps the original sampling rate, changing the signal start and finish times

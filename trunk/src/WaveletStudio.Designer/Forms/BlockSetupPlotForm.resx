@@ -117,12 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GraphControl.TabIndex" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="NoDataLabel.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleCenter</value>
   </data>
-  <data name="&gt;&gt;ShowOutputList.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="GraphControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>303, 40</value>
   </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
@@ -133,8 +137,17 @@
   <data name="&gt;&gt;ShowOutputList.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="ShowOutputSignal.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;GraphControl.Parent" xml:space="preserve">
     <value>$this</value>
+  </data>
+  <data name="NoDataLabel.TabIndex" type="System.Int32, mscorlib">
+    <value>105</value>
+  </data>
+  <data name="&gt;&gt;PropertyGrid.Name" xml:space="preserve">
+    <value>PropertyGrid</value>
   </data>
   <data name="ShowOutputList.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 21</value>
@@ -163,14 +176,15 @@
   <data name="&gt;&gt;PropertyGrid.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="NoDataLabel.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="GraphControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>471, 295</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>787, 374</value>
-  </data>
-  <data name="&gt;&gt;ShowOutputSignal.Parent" xml:space="preserve">
-    <value>$this</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="NoDataLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="ShowOutputLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 13</value>
@@ -178,34 +192,32 @@
   <data name="&gt;&gt;ShowOutputLabel.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="ShowOutputSignal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>264, 21</value>
+  <data name="&gt;&gt;ShowOutputLabel.Name" xml:space="preserve">
+    <value>ShowOutputLabel</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="ShowOutputLabel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;ShowOutputLabel.Name" xml:space="preserve">
-    <value>ShowOutputLabel</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>787, 374</value>
   </data>
   <data name="&gt;&gt;ShowOutputSignal.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;NoDataLabel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;ShowOutputSignal.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="ShowOutputLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="ShowOutputSignal.Location" type="System.Drawing.Point, System.Drawing">
     <value>512, 342</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="NoDataLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
   <data name="ShowOutputLabel.Location" type="System.Drawing.Point, System.Drawing">
     <value>307, 345</value>
   </data>
-  <data name="&gt;&gt;NoDataLabel.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>WaveletStudio.Designer.Forms.BlockSetupBaseForm, WaveletStudio.Designer, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;GraphControl.Name" xml:space="preserve">
     <value>GraphControl</value>
@@ -213,14 +225,17 @@
   <data name="NoDataLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 50</value>
   </data>
+  <data name="&gt;&gt;NoDataLabel.Name" xml:space="preserve">
+    <value>NoDataLabel</value>
+  </data>
   <data name="ShowOutputList.Location" type="System.Drawing.Point, System.Drawing">
     <value>385, 342</value>
   </data>
-  <data name="ShowOutputLabel.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
+  <data name="&gt;&gt;ShowOutputList.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;GraphControl.Type" xml:space="preserve">
-    <value>ZedGraph.ZedGraphControl, ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60</value>
+    <value>ZedGraph.ZedGraphControl, ZedGraph, Version=5.1.5.1817, Culture=neutral, PublicKeyToken=02a83cbd123fcd60</value>
   </data>
   <data name="ShowOutputSignal.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left, Right</value>
@@ -240,11 +255,11 @@
   <data name="ShowOutputLabel.Text" xml:space="preserve">
     <value>Show Output:</value>
   </data>
-  <data name="NoDataLabel.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;ShowOutputLabel.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="ShowOutputSignal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 21</value>
   </data>
   <data name="GraphControl.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -252,35 +267,20 @@
   <data name="ShowOutputLabel.TabIndex" type="System.Int32, mscorlib">
     <value>103</value>
   </data>
-  <data name="NoDataLabel.TabIndex" type="System.Int32, mscorlib">
-    <value>105</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>WaveletStudio.Designer.Forms.BlockSetupBaseForm, WaveletStudio.Designer, Version=1.1.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;ShowOutputLabel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;NoDataLabel.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="GraphControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>303, 40</value>
+  <data name="&gt;&gt;NoDataLabel.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;PropertyGrid.Name" xml:space="preserve">
-    <value>PropertyGrid</value>
-  </data>
-  <data name="&gt;&gt;NoDataLabel.Name" xml:space="preserve">
-    <value>NoDataLabel</value>
+  <data name="&gt;&gt;NoDataLabel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="ShowOutputSignal.TabIndex" type="System.Int32, mscorlib">
     <value>106</value>
-  </data>
-  <data name="GraphControl.TabIndex" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="ShowOutputSignal.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

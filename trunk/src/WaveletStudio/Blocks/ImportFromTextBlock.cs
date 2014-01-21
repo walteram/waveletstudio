@@ -26,7 +26,27 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Generates a signal based on a text
+    /// <para>Generates a signal based on a text.</para>
+    /// <para>Image: http://i.imgur.com/Hr0LdvL.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/7CCftqM.png </para>
+    /// <para>This block has no inputs.</para>
+    /// <example>
+    ///     <code>
+    ///         var block = new ImportFromTextBlock
+    ///         {
+    ///             Text = "0, 2, -1, 4.1, 3, -1, 4, 0",
+    ///             ColumnSeparator = ",",
+    ///             SignalStart = 0,
+    ///             SamplingInterval = 0.1,
+    ///             SignalNameInFirstColumn = false
+    ///         };
+    ///         block.Execute();
+    ///         
+    ///         Console.WriteLine(block.Output[0].ToString(1, ","));
+    ///         
+    ///         //Console Output: 0.0, 2.0, -1.0, 4.1, 3.0, -1.0, 4.0, 0.0
+    ///     </code>
+    /// </example>
     /// </summary>
     [SingleInputOutputBlock]
     [Serializable]
@@ -60,20 +80,20 @@ namespace WaveletStudio.Blocks
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.LoadSignal; } }
 
         /// <summary>
-        /// Text
+        /// The text to be processed.
         /// </summary>
         [Parameter]
         [Editor(typeof(MultilineStringEditor), typeof(UITypeEditor))]
         public string Text { get; set; }
 
         /// <summary>
-        /// Column separator
+        /// The string to be used to split the data. Default value is “,”.
         /// </summary>
         [Parameter]
         public string ColumnSeparator { get; set; }
 
         /// <summary>
-        /// Signal start
+        /// The start of the signal in time. Used to plot the data properly. Default value is 0.
         /// </summary>
         [Parameter]
         public int SignalStart { get; set; }
@@ -83,7 +103,7 @@ namespace WaveletStudio.Blocks
         private double _samplingInterval;
 
         /// <summary>
-        /// Sampling interval
+        /// The number of samples per unit of time. Used to plot the data properly. Default value is 0.
         /// </summary>
         [Parameter]
         public double SamplingInterval 
@@ -100,7 +120,7 @@ namespace WaveletStudio.Blocks
         }
 
         /// <summary>
-        /// If true, the first column contains the name of the signal
+        /// If true, the first column in the file will be used as the name of the signal. Default value is false.
         /// </summary>
         [Parameter]
         public bool SignalNameInFirstColumn { get; set; }

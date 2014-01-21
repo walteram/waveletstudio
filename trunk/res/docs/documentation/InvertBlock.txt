@@ -1,0 +1,35 @@
+! >[image:http://i.imgur.com/7PhV0G4.png]*Block: Invert*
+
+{"Inverts a signal. For example, if we have a signal with 8 samples like this one:
+"}
+{code:c#}
+2, 3, -4, 8, 7, 1, 2, -3
+{code:c#}
+{"
+
+the block will output a new signal with the folowing samples:
+"}
+{code:c#}
+-3, 2, 1, 7, 8, -4, 3, 2
+{code:c#}
+{"
+
+This block has no inputs."}
+
+!! *Example:*
+
+{"The following example shows an usage in C#."}
+
+{code:c#}
+var signal = new ImportFromTextBlock { Text = "2, 3, -4, 8, 7, 1, 2, -3" };
+var block = new InvertBlock();
+signal.ConnectTo(block);
+signal.Execute();
+
+Console.WriteLine(block.Output[0].ToString(0));
+//Output: -3 2 1 7 8 -4 3 2
+{code:c#}
+
+The above example generates the following set of inputs and outputs:
+[image:http://i.imgur.com/nXdS5DB.png]
+

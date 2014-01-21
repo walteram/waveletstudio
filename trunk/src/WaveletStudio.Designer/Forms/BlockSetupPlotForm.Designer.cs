@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BlockSetupPlotForm));
             this.GraphControl = new ZedGraph.ZedGraphControl();
             this.ShowOutputLabel = new System.Windows.Forms.Label();
@@ -70,7 +71,6 @@
             // 
             resources.ApplyResources(this.NoDataLabel, "NoDataLabel");
             this.NoDataLabel.BackColor = System.Drawing.Color.White;
-            this.NoDataLabel.MinimumSize = new System.Drawing.Size(100, 50);
             this.NoDataLabel.Name = "NoDataLabel";
             // 
             // ShowOutputSignal
@@ -84,7 +84,12 @@
             // BlockSetupPlotForm
             // 
             resources.ApplyResources(this, "$this");
+            this.Appearance.Shape = new Qios.DevSuite.Components.QShape(Qios.DevSuite.Components.QBaseShapeType.RectangleShapedWindow);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ColorScheme.RibbonFormBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormInactiveBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
+            this.ColorScheme.RibbonFormInactiveBackground2.SetColor("VistaBlack", System.Drawing.Color.White, false);
             this.Controls.Add(this.ShowOutputSignal);
             this.Controls.Add(this.NoDataLabel);
             this.Controls.Add(this.ShowOutputList);
@@ -104,10 +109,10 @@
 
         #endregion
 
-        private ZedGraph.ZedGraphControl GraphControl;
         private System.Windows.Forms.Label ShowOutputLabel;
         private System.Windows.Forms.ComboBox ShowOutputList;
         private System.Windows.Forms.Label NoDataLabel;
         private System.Windows.Forms.ComboBox ShowOutputSignal;
+        internal ZedGraph.ZedGraphControl GraphControl;
     }
 }

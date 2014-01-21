@@ -11,7 +11,15 @@ namespace WaveletStudio.Tests.Blocks
         [TestMethod]
         public void TestDWTBlockExecute()
         {
-            var signalBlock = new GenerateSignalBlock { TemplateName = "Binary", Start = 0, Finish = 10, SamplingRate = 1, IgnoreLastSample = true };
+            var signalBlock = new GenerateSignalBlock
+            {
+                TemplateName = "Binary", 
+                Start = 0, 
+                Finish = 10, 
+                SamplingRate = 1,
+                Frequency = 10,
+                IgnoreLastSample = true
+            };
             var waveletBlock = new DWTBlock
             {
                 WaveletName = "db4|Daubechies 4",
@@ -73,7 +81,7 @@ namespace WaveletStudio.Tests.Blocks
         public void TestWaveletBlockExecute()
         {
             var signalBlock = new GenerateSignalBlock { TemplateName = "Binary", Start = 0, Finish = 10, SamplingRate = 1, IgnoreLastSample = true };
-            var waveletBlock = new WaveletBlock
+            var waveletBlock = new DWTBlock
                                    {
                                        WaveletName = "db4|Daubechies 4",
                                        Level = 2,
@@ -101,14 +109,14 @@ namespace WaveletStudio.Tests.Blocks
             Assert.AreEqual("-0.1 -0.4 0.0 -0.3 0.1 0.2 0.1", waveletBlock.OutputNodes[3].Object[3].ToString(1));
             Assert.AreEqual(signalBlock.OutputNodes[0].Object.ToString(1), waveletBlock.OutputNodes[3].Object[4].ToString(1));
 
-            var block2 = (WaveletBlock)waveletBlock.Clone();
+            var block2 = (DWTBlock)waveletBlock.Clone();
             block2.WaveletName = "db4";
             signalBlock.OutputNodes[0].ConnectTo(block2.InputNodes[0]);
             signalBlock.Execute();
             Assert.AreEqual("0.7 0.9 0.2 0.7 0.7 0.8 0.5 1.2", block2.OutputNodes[0].Object[0].ToString(1));
 
             waveletBlock.Cascade = false;
-            block2 = (WaveletBlock)waveletBlock.Clone();
+            block2 = (DWTBlock)waveletBlock.Clone();
             waveletBlock.OutputNodes[0].ConnectTo(block2.InputNodes[0]);
             signalBlock.Execute();
             Assert.AreEqual(0, block2.OutputNodes[0].Object.Count);

@@ -26,7 +26,35 @@ using WaveletStudio.Wavelet;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Inverse Wavelet decomposition block
+    /// <para>The IDWT block reconstructs a signal using the specified wavelet coefficients.</para>
+    /// <para>Image: http://i.imgur.com/ta1Fi8v.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/53Dc5F8.png </para>
+    /// <para>Outputs: This block has two inputs:</para>
+    /// <para>Outputs:  0 – Aproximation Coefficients of decomposition</para>
+    /// <para>Outputs:  1 – Details coefficients of decomposition</para>
+    /// <para>Inputs: This block has only one output: the reconstructed signal.</para>
+    /// 
+    /// <example>
+    ///     <code>
+    ///     var approximation = new ImportFromTextBlock { Text = "0.0, 0.0, 1.4, 1.4, 0.0, 0.0, 1.4, 1.4, 0.0, 0.0, 1.5, 1.3, 0.0, 0.0, 1.4, 1.4" };
+    ///     var details = new ImportFromTextBlock { Text = "0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.1, -0.1, 0.0, 0.0, 0.0, 0.0" };
+    ///     var block = new IDWTBlock
+    ///     {
+    ///         WaveletName = "haar",
+    ///         Level = 1
+    ///     };
+    ///     
+    ///     var signalList = new BlockList { approximation, details, block };            
+    ///     approximation.ConnectTo(block);
+    ///     details.ConnectTo(block);
+    ///     signalList.ExecuteAll();
+    ///     
+    ///     Console.WriteLine(block.OutputNodes[0].Object.ToString(1));
+    /// 
+    ///     //Console Output:
+    ///     //0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 1.0 1.1 0.8 1.0 0.0 0.0 0.0 0.0 1.0 1.0 1.0 0.0
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class IDWTBlock : BlockBase

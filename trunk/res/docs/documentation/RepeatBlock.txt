@@ -1,0 +1,44 @@
+! >[image:http://i.imgur.com/LC6BDlw.png]*Block: Repeat*
+
+{"Repeats samples of a signal.
+
+For example, if we have a signal with 8 samples like this one:"}
+{code:c#}
+1, 9, 0, 1, 2, 5, -4, 4
+{code:c#}
+{"
+and set the FrameSize parameter to 4, the block will output a new signal with the folowing samples:"}
+{code:c#}
+1, 9, 0, 1,   1, 9, 0, 1,   2, 5, -4, 4,   2, 5, -4, 4
+{code:c#}
+{""}
+
+!! *Parameters:*
+
+*FrameSize:* {"The number of times the block will repeat the frame. Default value is 1."}
+
+*RepetitionCount:* {"The number of samples to be repeated per time. Default value is 1."}
+
+*KeepSamplingRate:* {"If true, keeps the original sampling rate, changing the signal start and finish times"}
+
+!! *Example:*
+
+{"The following example shows an usage in C#."}
+
+{code:c#}
+var signal = new ImportFromTextBlock { Text = "0, 3, -3, 0, 2, 2, 2, 0" };
+var block = new RepeatBlock
+{
+    FrameSize = 4,
+    RepetitionCount = 1
+};
+signal.ConnectTo(block);
+signal.Execute();
+
+Console.WriteLine(block.Output[0].ToString(0));
+//Output: 0 3 -3 0 0 3 -3 0 2 2 2 0 2 2 2 0
+{code:c#}
+
+The above example generates the following set of inputs and outputs:
+[image:http://i.imgur.com/Pkjnhp9.png]
+

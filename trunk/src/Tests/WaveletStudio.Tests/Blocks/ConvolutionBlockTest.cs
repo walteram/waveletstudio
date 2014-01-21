@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 using WaveletStudio.Functions;
@@ -23,25 +24,26 @@ namespace WaveletStudio.Tests.Blocks
             Assert.IsNotNull(convolutionBlock.ProcessingType);
 
             signalBlock1.Execute();
-            Assert.AreEqual("1.2 2.2 1.2 2.2 1.2", convolutionBlock.OutputNodes[0].Object[0].ToString(1));
+            Assert.AreEqual("1.2 2.2 1.2 2.2 1.2", convolutionBlock.Output[0].ToString(1));
 
             signalBlock2.Execute();
             Assert.IsNotNull(convolutionBlock.OutputNodes[0].Object);
-            Assert.AreEqual("22.80", convolutionBlock.OutputNodes[0].Object.ToString(2)); 
+            Assert.AreEqual("22.80", convolutionBlock.Output[0].ToString(2)); 
 
             convolutionBlock.ReturnOnlyValid = false;
             signalBlock1.Execute();
-            Assert.AreEqual("2.76 9.02 12.78 18.04 22.80 18.04 12.78 9.02 2.76", convolutionBlock.OutputNodes[0].Object.ToString(2));
+            Assert.AreEqual("2.76 9.02 12.78 18.04 22.80 18.04 12.78 9.02 2.76", convolutionBlock.Output[0].ToString(2));
 
             var convolutionBlock2 = (ConvolutionBlock)convolutionBlock.Clone();
             convolutionBlock.OutputNodes[0].ConnectTo(convolutionBlock2.InputNodes[0]);
             signalBlock2.OutputNodes[0].ConnectTo(convolutionBlock2.InputNodes[1]);
             signalBlock2.Execute();
-            Assert.AreEqual("6.348 29.854 65.508 113.520 177.480 221.144 230.292 221.144 177.480 113.520 65.508 29.854 6.348", convolutionBlock2.OutputNodes[0].Object.ToString(3));
+            Assert.AreEqual("6.348 29.854 65.508 113.520 177.480 221.144 230.292 221.144 177.480 113.520 65.508 29.854 6.348", 
+                            convolutionBlock2.Output[0].ToString(3));
 
             signalBlock1.OutputNodes[0].Object.Add(new Signal(new double[] { 1, 2, 3, 4 }));
             convolutionBlock.Execute();
-            Assert.AreEqual("2.300 7.900 15.800 27.000 29.000 23.700 20.100 0.000", convolutionBlock.OutputNodes[0].Object[1].ToString(3));
+            Assert.AreEqual("2.300 7.900 15.800 27.000 29.000 23.700 20.100 0.000", convolutionBlock.Output[0, 1].ToString(3));
 
             convolutionBlock2 = (ConvolutionBlock)convolutionBlock.Clone();
             convolutionBlock.Cascade = false;

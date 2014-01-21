@@ -314,7 +314,7 @@ Click in the Signal tab and select a signal source.</value>
     <value>The repetition count used in the block.</value>
   </data>
   <data name="ReturnOnlyValidDescription" xml:space="preserve">
-    <value>If true, the block returns only the valid samples (central area).</value>
+    <value>If true, the block will return only the central part of the convolution resulting in a new signal with (S – F + 1) samples (S = size of signal, F = size of filter). If false, all the convolution will returned and resulting in a new signal with (S + F – 1) samples. Default value is false.</value>
   </data>
   <data name="SamplingIntervalDescription" xml:space="preserve">
     <value>Sample time interval used in the block.</value>
@@ -687,5 +687,11 @@ Click in the Signal tab and select a signal source.</value>
   </data>
   <data name="NotEqualsTo" xml:space="preserve">
     <value>S1 &lt;&gt; S2</value>
+  </data>
+  <data name="Rescale" xml:space="preserve">
+    <value>Rescale</value>
+  </data>
+  <data name="RescaleDescription" xml:space="preserve">
+    <value>Rescale outputs in the "ALL" output to the original signal size, reverting the downsample and extension effects. Warning: the "ALL" output will be modified, and the signal in this output cannot be reconstructed. Default value is false.</value>
   </data>
 </root>

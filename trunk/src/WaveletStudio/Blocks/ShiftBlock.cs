@@ -23,7 +23,20 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Shift signal
+    /// <para>Shifts a signal in time modifying the Start property.</para>
+    /// <para>Image: http://i.imgur.com/3D9pbJc.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/CZ9mozs.png </para>
+    /// <example>
+    ///     <code>
+    ///         var block = new ShiftBlock { Delay = 1.7 };
+    ///         var signal = new ImportFromTextBlock { Text = "0, 1, -1, 3, 0", SignalStart = 1 };
+    ///         signal.ConnectTo(block);
+    ///         signal.Execute();
+    /// 
+    ///         Console.WriteLine(block.Output[0].Start);
+    ///         //Output: 2.7
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class ShiftBlock : BlockBase

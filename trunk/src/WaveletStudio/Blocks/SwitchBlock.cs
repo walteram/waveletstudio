@@ -25,7 +25,45 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Combine several input signals into vector
+    /// <para>Switch output between first input (A) and third input (B) based on value of second input or the threshold value, using the specified switch criteria. For example, let’s consider the following scenario:</para>
+    /// <code>
+    /// Signal A: 1, 3, 4, -4, 8, 3, 2, -10
+    /// Signal B: 3, -2, 4, -6, 7, 1, 4, 3
+    /// Threshold: 2
+    /// Switch Criteria: Select B when B is greater than threshold
+    /// </code>
+    /// <para>The Switch Criteria is a parameter defining when the value of the signal B will be selected, instead of selecting the value of the signal A. The block will output a new signal with the folowing samples:</para>
+    /// <code>
+    /// 3 3 4 -4 7 3 4 3
+    /// </code>
+    /// <para>The #1 sample (3) was selected from signal B (the value from B is greater than the threshold);</para>
+    /// <para>The #2 sample (3) was selected from signal A (the value from B is not greater than the threshold);</para>
+    /// <para>The #3 sample (4) was selected from signal B (the value from B is greater than the threshold);</para>
+    /// <para>and so on.</para>
+    /// <para>Image: http://i.imgur.com/V34q36D.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/16EmhjY.png </para>
+    /// <para>Inputs: 0 - Signal A</para>
+    /// <para>Inputs: 1 - Threshold signal(optional)</para>
+    /// <para>Inputs: 2 - Signal B</para>
+    /// <para>Outputs: This block outputs a single signal or a signal list of switched samples.</para>
+    /// <example>
+    ///     <code>
+    ///         var signal1 = new ImportFromTextBlock { Text = "1, 3, 4, -4, 8, 3, 2, -10" };
+    ///         var signal2 = new ImportFromTextBlock { Text = "3, -2, 4, -6, 7, 1, 4, 3" };
+    ///         var block = new SwitchBlock 
+    ///         { 
+    ///             StaticThreshold = 2, 
+    ///             SwitchCriteria = WaveMath.SwitchCriteriaEnum.BIsGreaterThanThreshold 
+    ///         };
+    ///         signal1.OutputNodes[0].ConnectTo(block.InputNodes[0]);
+    ///         signal2.OutputNodes[0].ConnectTo(block.InputNodes[2]);
+    ///         signal1.Execute();
+    ///         signal2.Execute();
+    ///         
+    ///         Console.WriteLine(block.OutputNodes[0].Object.ToString(0));
+    ///         //Output: 3 3 4 -4 7 3 4 3
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class SwitchBlock : BlockBase
@@ -49,13 +87,13 @@ namespace WaveletStudio.Blocks
         }
 
         /// <summary>
-        /// Criteria for select the output.
+        /// Defines when the value of the signal B will be selected, instead of selecting the value of the signal A
         /// </summary>
         [Parameter]
         public WaveMath.SwitchCriteriaEnum SwitchCriteria { get; set; }
 
         /// <summary>
-        /// Assign the switch threshold that determines which input the block passes to the output.
+        /// Assign the switch threshold that determines which input the block passes to the output. You can use this parameter to set a static value, or use the second input of the block to define a signal as a threshold.
         /// </summary>
         [Parameter]
         public double StaticThreshold { get; set; }        

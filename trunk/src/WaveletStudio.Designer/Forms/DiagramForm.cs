@@ -111,9 +111,7 @@ namespace WaveletStudio.Designer.Forms
             var isSaved = DocumentModel == null || DocumentModel.Saved;
             Text = DesignerResources.WaveletStudio + @" ─ " + 
                    (string.IsNullOrEmpty(CurrentFile) ? DesignerResources.NewDocument : Path.GetFileName(CurrentFile)) +
-                   (!isSaved ? DesignerResources.NewDocumentChar : "");           
-
-            
+                   (!isSaved ? DesignerResources.NewDocumentChar : "");            
         }        
 
         private void DiagramFormLoad(object sender, EventArgs e)
@@ -557,13 +555,19 @@ namespace WaveletStudio.Designer.Forms
             var node1 = (BlockNodeBase)((BaseLinkElement)e.Element).Connector1.State;
             var node2 = (BlockNodeBase)((BaseLinkElement)e.Element).Connector2.State;
             node1.ConnectingNode = null;
-            node2.ConnectingNode = null;
-            foreach (var node in node2.Root.OutputNodes)
+            if (node2 != null)
             {
-                node.Object.Clear();
-            }
+                node2.ConnectingNode = null;
+                foreach (var node in node2.Root.OutputNodes)
+                {
+                    node.Object.Clear();
+                }
+            }            
             node1.Root.Execute();
-            node2.Root.Execute();
+            if (node2 != null)
+            {
+                node2.Root.Execute();
+            }
             _outputWindow.Refresh();
         }
 

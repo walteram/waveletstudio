@@ -56,7 +56,7 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DiagramNet, Version=0.5.0.4607, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="DiagramNet, Version=0.5.0.24023, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\res\libs\Diagram.net\DiagramNet.dll</HintPath>
     </Reference>
@@ -235,6 +235,7 @@
     <EmbeddedResource Include="Resources\DesignerResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DesignerResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Images.resx">
       <Generator>ResXFileCodeGenerator</Generator>

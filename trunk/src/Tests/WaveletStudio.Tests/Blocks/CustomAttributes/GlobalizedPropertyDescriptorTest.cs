@@ -44,7 +44,7 @@ namespace WaveletStudio.Tests.Blocks.CustomAttributes
         [TestMethod]
         public void TestGlobalizedPropertyDescriptor()
         {
-            var block = new WaveletBlock{WaveletName = "sym2"};
+            var block = new DWTBlock { WaveletName = "sym2" };
             var baseProps = TypeDescriptor.GetProperties(block, new Attribute[] { }, true);
             var waveletNameProperty = baseProps.Cast<PropertyDescriptor>().FirstOrDefault(baseProp => baseProp.Name == "WaveletName");            
             var descriptor = new GlobalizedPropertyDescriptor(waveletNameProperty);

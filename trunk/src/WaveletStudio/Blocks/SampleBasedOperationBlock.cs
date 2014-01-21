@@ -24,7 +24,28 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Sum, subtract, multiply or divided two or more signals
+    /// <para>Sum, subtract, multiply or divide two or more signals, sample-by-sample.</para>
+    /// <para>Image: http://i.imgur.com/uC6ViMz.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/4esHEoS.png </para>
+    /// <example>
+    ///     <code>
+    ///         var signal1 = new ImportFromTextBlock { Text = "1, 3, -2, 9, 4, -2, 4, 0" };
+    ///         var signal2 = new ImportFromTextBlock { Text = "0, 2, -1, 2, 3, 2, 4, 0" };
+    ///         var block = new SampleBasedOperationBlock
+    ///         {
+    ///             Operation = WaveMath.OperationEnum.Multiply                
+    ///         };
+    ///         
+    ///         signal1.ConnectTo(block);
+    ///         signal2.ConnectTo(block);
+    ///         signal1.Execute();
+    ///         signal2.Execute();
+    ///         
+    ///         Console.WriteLine(block.Output[0].ToString(0));
+    ///         //Console Output:
+    ///         //0 6 3 18 12 -4 16 0
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class SampleBasedOperationBlock : BlockBase

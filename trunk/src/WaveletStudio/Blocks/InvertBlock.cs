@@ -22,7 +22,29 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Invert a signal
+    /// <para> </para>
+    /// <para>Inverts a signal. For example, if we have a signal with 8 samples like this one:</para>
+    /// <para> </para>
+    /// <code>2, 3, -4, 8, 7, 1, 2, -3</code>
+    /// <para> </para>
+    /// <para>the block will output a new signal with the folowing samples:</para>
+    /// <para> </para>
+    /// <code>-3, 2, 1, 7, 8, -4, 3, 2</code>
+    /// <para> </para>
+    /// <para>This block has no inputs.</para>
+    /// <para>Image: http://i.imgur.com/7PhV0G4.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/nXdS5DB.png </para>
+    /// <example>
+    ///     <code>
+    ///         var signal = new ImportFromTextBlock { Text = "2, 3, -4, 8, 7, 1, 2, -3" };
+    ///         var block = new InvertBlock();
+    ///         signal.ConnectTo(block);
+    ///         signal.Execute();
+    ///         
+    ///         Console.WriteLine(block.Output[0].ToString(0));
+    ///         //Output: -3 2 1 7 8 -4 3 2
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class InvertBlock : BlockBase

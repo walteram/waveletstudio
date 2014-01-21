@@ -485,6 +485,7 @@
             // DiagramForm
             // 
             this.Appearance.BackgroundStyle = Qios.DevSuite.Components.QColorStyle.Solid;
+            this.Appearance.Shape = new Qios.DevSuite.Components.QShape(Qios.DevSuite.Components.QBaseShapeType.RectangleShapedWindow);
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ColorScheme.RibbonFormBackground1.SetColor("VistaBlack", System.Drawing.Color.White, false);
