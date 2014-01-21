@@ -24,7 +24,37 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Generates a signal based on a CSV file
+    /// <para>Generates a signal based on a CSV file.</para>
+    /// <para>A CSV (comma-separated values) is a text file with the data (samples) separated with commas or another char. Each line in the file represents a signal. For example:</para>
+    /// <code>
+    ///     signal_name,sample1,sample2,sample3,sample4
+    ///     Signal1, 1.1, 9.12, 0.123, 0
+    ///     Signal2, 1.1, 4.56, 0.123, -45
+    /// </code>
+    /// <para>This example shows a file with 2 signals, with 4 samples in each one. The first column in the file is optional and represents the name of the signal. The header is optional too.</para>
+    /// <para>Image: http://i.imgur.com/ApwmTG2.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/yUw6HcU.png </para>
+    /// <para>This block has no inputs.</para>
+    /// <example>
+    ///     <code>
+    ///         File.WriteAllText(@"C:\Temp\File.csv", "0, 2, -1, 4.1, 3, -1, 4, 0");
+    ///     
+    ///         var block = new ImportFromCSVBlock
+    ///         {
+    ///             ColumnSeparator = ",",
+    ///             SignalStart = 0,
+    ///             SamplingInterval = 0.1,
+    ///             IgnoreFirstRow = false,
+    ///             SignalNameInFirstColumn = false,
+    ///             FilePath = @"C:\Temp\File.csv"
+    ///         };
+    ///         block.Execute();
+    ///         
+    ///         Console.WriteLine(block.Output[0].ToString(1, ","));
+    ///         
+    ///         //Console Output: 0.0, 2.0, -1.0, 4.1, 3.0, -1.0, 4.0, 0.0
+    ///     </code>
+    /// </example>
     /// </summary>
     [SingleInputOutputBlock]
     [Serializable]

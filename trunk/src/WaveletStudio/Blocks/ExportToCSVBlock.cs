@@ -24,7 +24,28 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Exports a single signal or a signal list to a CSV file
+    /// <para>Exports a single signal or a signal list to a CSV file.</para>
+    /// <para>A CSV (comma-separated values) is a text file with the data (samples) separated with commas or another character.</para>
+    /// <para>This block has no outputs.</para> 
+    /// <para>Image: http://i.imgur.com/bA6qk6M.png </para>
+    /// 
+    /// <example>
+    ///     <code>
+    ///         var signal = new ImportFromTextBlock { Text = "1, 2, 3, 4, -1" };
+    ///         var block = new ExportToCSVBlock
+    ///         {
+    ///             FilePath = "file1.csv",
+    ///             ColumnSeparator = ";", 
+    ///             IncludeSignalNameInFirstColumn = true,
+    ///             DecimalPlaces = 1
+    ///         };
+    ///         signal.ConnectTo(block);
+    ///         signal.Execute();
+    ///     
+    ///         //Ouput in file1.csv
+    ///         //Line 1;1.0;2.0;3.0;4.0;-1.0
+    ///     </code>
+    /// </example>
     /// </summary>
     [SingleInputOutputBlock]
     [Serializable]
@@ -59,25 +80,25 @@ namespace WaveletStudio.Blocks
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Export; } }
 
         /// <summary>
-        /// Path to the file
+        /// The path to the file. You can use a relative (ex.: ../file.csv) or absolute path (ex.: C:\file.csv). Default value is “output.csv”.
         /// </summary>
         [Parameter]
         public string FilePath { get; set; }
 
         /// <summary>
-        /// Column separator
+        /// The string to be used to split the data. Default value is “,”.
         /// </summary>
         [Parameter]
         public string ColumnSeparator { get; set; }
 
         /// <summary>
-        /// Number of decimal places
+        /// The number of decimal places to be used in the output file. Default value is 3.
         /// </summary>
         [Parameter]
         public int DecimalPlaces { get; set; }
 
         /// <summary>
-        /// Include signal name in first column
+        /// Include signal name in first column.
         /// </summary>
         [Parameter]
         public bool IncludeSignalNameInFirstColumn { get; set; }

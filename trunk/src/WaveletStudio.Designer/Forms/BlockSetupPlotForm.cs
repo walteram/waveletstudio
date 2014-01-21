@@ -132,7 +132,7 @@ namespace WaveletStudio.Designer.Forms
             {
                 pane.XAxis.Scale.Min = samples.ElementAt(0)[1];
                 pane.XAxis.Scale.Max = samples.ElementAt(samples.Count() - 1)[1];                
-            }            
+            }
             GraphControl.AxisChange();
             GraphControl.Invalidate();
             GraphControl.Refresh();

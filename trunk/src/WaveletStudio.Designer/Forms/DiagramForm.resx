@@ -20814,7 +20814,7 @@
     <value>0, 0</value>
   </data>
   <data name="qRibbonCaption1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>946, 28</value>
+    <value>948, 28</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="qRibbonCaption1.TabIndex" type="System.Int32, mscorlib">
@@ -20842,7 +20842,7 @@
     <value>2, 31</value>
   </data>
   <data name="SignalRibbonPage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>940, 100</value>
+    <value>942, 100</value>
   </data>
   <data name="SignalRibbonPage.Text" xml:space="preserve">
     <value>Signal</value>
@@ -20968,7 +20968,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>946, 538</value>
+    <value>948, 540</value>
   </data>
   <data name="Designer.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -20980,7 +20980,7 @@
     <value>0, 0</value>
   </data>
   <data name="Designer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>904, 346</value>
+    <value>906, 348</value>
   </data>
   <data name="Designer.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -21007,7 +21007,7 @@
     <value>NoControl</value>
   </data>
   <data name="ZoomLabel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>653, 8</value>
+    <value>655, 8</value>
   </data>
   <data name="ZoomLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>33, 13</value>
@@ -21040,7 +21040,7 @@
     <value />
   </data>
   <data name="ZoomPlusButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>881, 3</value>
+    <value>883, 3</value>
   </data>
   <data name="ZoomPlusButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 24</value>
@@ -21070,7 +21070,7 @@
     <value />
   </data>
   <data name="ZoomMinusButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>689, 3</value>
+    <value>691, 3</value>
   </data>
   <data name="ZoomMinusButton.Size" type="System.Drawing.Size, System.Drawing">
     <value>22, 24</value>
@@ -21100,7 +21100,7 @@
     <value>NoControl</value>
   </data>
   <data name="ZoomTrackBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>713, 3</value>
+    <value>715, 3</value>
   </data>
   <data name="ZoomTrackBar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -21127,10 +21127,10 @@
     <value>Bottom</value>
   </data>
   <data name="BottomPanel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 346</value>
+    <value>0, 348</value>
   </data>
   <data name="BottomPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>904, 29</value>
+    <value>906, 29</value>
   </data>
   <data name="BottomPanel.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -21154,7 +21154,7 @@
     <value>0, 163</value>
   </data>
   <data name="CenterPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>904, 375</value>
+    <value>906, 377</value>
   </data>
   <data name="CenterPanel.TabIndex" type="System.Int32, mscorlib">
     <value>18</value>
@@ -21175,10 +21175,10 @@
     <value>Right</value>
   </data>
   <data name="RightDockBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>904, 163</value>
+    <value>906, 163</value>
   </data>
   <data name="RightDockBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>22, 375</value>
+    <value>22, 377</value>
   </data>
   <data name="RightDockBar.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -21202,10 +21202,10 @@
     <value>Right</value>
   </data>
   <data name="QToolBarHost2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>926, 163</value>
+    <value>928, 163</value>
   </data>
   <data name="QToolBarHost2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 375</value>
+    <value>20, 377</value>
   </data>
   <data name="QToolBarHost2.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -24597,7 +24597,7 @@
     <value>0, 28</value>
   </data>
   <data name="Ribbon.Size" type="System.Drawing.Size, System.Drawing">
-    <value>946, 135</value>
+    <value>948, 135</value>
   </data>
   <data name="Ribbon.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

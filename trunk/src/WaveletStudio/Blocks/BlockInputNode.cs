@@ -28,13 +28,30 @@ namespace WaveletStudio.Blocks
     public class BlockInputNode : BlockNodeBase
     {
         /// <summary>
+        /// 
+        /// </summary>
+        public List<Signal> Object
+        {
+            get
+            {
+                var outputNode = ConnectingNode as BlockOutputNode;
+                if (outputNode == null)
+                {
+                    return null;
+                }
+                return outputNode.Object;
+            }
+        }
+
+
+        /// <summary>
         /// Default constructor
         /// </summary>
         public BlockInputNode()
         {
 
         }
-
+        
         /// <summary>
         /// Constructor
         /// </summary>
@@ -101,6 +118,11 @@ namespace WaveletStudio.Blocks
                                       new BlockInputNode(ref root, Resources.Signal+"1", "S1"),
                                       new BlockInputNode(ref root, Resources.Signal+"2", "S2")
                                   };
+        }
+
+        public override List<Signal> SignalList()
+        {
+            return Object;
         }
     }
 }

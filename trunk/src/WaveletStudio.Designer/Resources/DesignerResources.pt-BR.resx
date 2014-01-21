@@ -212,4 +212,7 @@ Português (Brasil)</value>
   <data name="Unknown" xml:space="preserve">
     <value>Desconhecido</value>
   </data>
+  <data name="Others" xml:space="preserve">
+    <value>Outros</value>
+  </data>
 </root>

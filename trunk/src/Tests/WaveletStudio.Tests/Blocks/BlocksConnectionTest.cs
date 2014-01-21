@@ -48,7 +48,7 @@ namespace WaveletStudio.Tests.Blocks
             AssertBlock(new ImportFromTextBlock{Text = "1234"});
             AssertBlock(new DWTBlock());
             AssertBlock(new UpSampleBlock());
-            AssertBlock(new WaveletBlock());
+            AssertBlock(new DWTBlock());
             AssertBlock(new IDWTBlock());
             AssertBlock(new AbsoluteValueBlock());
             AssertBlock(new UniqueBlock());

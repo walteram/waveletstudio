@@ -24,7 +24,26 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Executes a scalar operation in a signal
+    /// <para>Executes a scalar operation in a signal. The available operations are sum, subtraction, multiplication and division. The operation is made sample-by-sample.</para>
+    /// <para>Image: http://i.imgur.com/gC28gvP.png</para>
+    /// <para>InOutGraph: http://i.imgur.com/HE2eGMN.png </para>
+    /// <example>
+    ///     <code>
+    ///         var signal = new ImportFromTextBlock { Text = "1, 3, -2, 9, 4.5, -2, 4, 0" };
+    ///         var block = new ScalarOperationBlock
+    ///         {
+    ///             Operation = WaveMath.OperationEnum.Sum,
+    ///             Value = 1.5
+    ///         };
+    ///     
+    ///         signal.ConnectTo(block);
+    ///         signal.Execute();
+    ///     
+    ///         Console.WriteLine(block.Output[0].ToString(0, ", "));
+    ///         //Console Output:
+    ///         //2.5, 4.5, -0.5, 10.5, 6.0, -0.5, 5.5, 1.5
+    ///     </code>
+    /// </example>
     /// </summary>
     [SingleInputOutputBlock]
     [Serializable]

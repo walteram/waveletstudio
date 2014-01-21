@@ -1,0 +1,60 @@
+! >[image:http://i.imgur.com/o0NVryg.png]*Block: Ramp*
+
+{"Generates a Ramp signal using the following function:
+y(t) = A * (t - t0) + D     ∀ t >= t0, t <= t1
+                    y(t) = D                    ∀ t < t0
+                    y(t) = D + x(t1)            ∀ t > t1 | D  (if ReturnToZero parameter is true)
+Where:
+A := amplitude
+D := offset
+t0 := ramp start
+t1 := ramp finish
+This block has no inputs."}
+
+!! *Parameters:*
+
+*Amplitude:* {"Amplitude of the ramp. Default value is 1."}
+
+*Offset:* {"Offset of the signal in the y axis. Default value is 0."}
+
+*Start:* {"Start of the signal in the time. Default value is 0."}
+
+*Finish:* {"Finish of the signal in the time. Default value is 1."}
+
+*RampStart:* {"Start of the ramp in the time. Default value is 0."}
+
+*RampFinish:* {"Finish of the ramp in the time. Default value is 1."}
+
+*SamplingRate:* {"Sampling rate used on signal generation. Default value is 32768 (32KHz)."}
+
+*IgnoreLastSample:* {"If true, the last sample is not included in the created signal. Default value is false."}
+
+*ReturnToZero:* {"If true, the value will return to 0 at the finish of the ramp. Default value is true."}
+
+!! *Example:*
+
+{"In this example we create a signal in a ramp shape. The signal starts at 0s and ends at 16s. The ramp starts at 3s and ends at 8s. The sampling rate is 1 (1Hz). The amplitude of the ramp is 1 and the signal offset is 1. The signal will return to the offset value (1) after the end of the ramp (8s). The last sample of the signal is included."}
+
+{code:c#}
+var block = new RampFunctionBlock
+{
+    Start = 0,
+    Finish = 16,
+    RampStart = 3,
+    RampFinish = 8,
+    SamplingRate = 1,
+    Amplitude = 1,
+    Offset = 1,
+    ReturnToZero = true,
+    IgnoreLastSample = false
+};
+block.Execute();
+
+Console.WriteLine(block.Output[0].ToString(0));
+//Console Output:
+//1, 1, 1, 1, 2, 3, 4, 5, 6, 1, 1, 1, 1, 1, 1, 1, 1
+{code:c#}
+
+The above example generates the following set of inputs and outputs:
+[image:http://i.imgur.com/Vr3VOtk.png]
+

@@ -24,7 +24,31 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Conversion to boolean based on &gt;, &lt;, &gt;=, &lt;=, &lt;&gt;, = an static value, the previous sample or the next sample.
+    /// <para>Conversion to boolean based on &gt;, &lt;, &gt;=, &lt;=, &lt;&gt;, = an static value, the previous sample or the next sample.</para>
+    /// <para>For each sample in the signal S1, the Relational Operation Block will compare the sample using the specified operation and returns 1 if true or 0 if false.</para>
+    /// <para>Image: http://i.imgur.com/yJvRKtq.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/P56gqBS.png </para>
+    /// <example>
+    ///     <code>
+    ///         var signal1 = new ImportFromTextBlock { Text = "1, 3, -2, 9, 4, 2, 4, 0" };
+    ///         var signal2 = new ImportFromTextBlock { Text = "0, 2, -1, 2, 3, 2, 4, 0" };
+    ///         var block = new RelationalOperatorBlock
+    ///         {
+    ///             Operation = WaveMath.RelationalOperatorEnum.GreaterThan,
+    ///             Operand = RelationalOperatorBlock.OperandEnum.Signal,
+    ///         };
+    ///         
+    ///         signal1.ConnectTo(block);
+    ///         signal2.ConnectTo(block);
+    ///         signal1.Execute();
+    ///         signal2.Execute();
+    ///         
+    ///         Console.WriteLine(block.Output[0].ToString(0));
+    ///         //Console Output:
+    ///         //1 1 0 1 1 0 0 0 
+    ///         //This means that samples at index 0, 1, 3 and 4 of signal1 area greater than the respective samples of signal2
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class RelationalOperatorBlock : BlockBase
@@ -86,11 +110,26 @@ namespace WaveletStudio.Blocks
             }
         }
 
+        /// <summary>
+        /// Operand type
+        /// </summary>
         public enum OperandEnum
         {
+            /// <summary>
+            /// An static scalar value
+            /// </summary>
             StaticValue,
+            /// <summary>
+            /// The previous sample of the same signal
+            /// </summary>
             PreviousSample,
+            /// <summary>
+            /// The next sample of the same signal
+            /// </summary>
             NextSample,
+            /// <summary>
+            /// Another signal (S2)
+            /// </summary>
             Signal
         }
 

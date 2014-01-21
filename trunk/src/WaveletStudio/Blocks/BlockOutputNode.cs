@@ -95,5 +95,10 @@ namespace WaveletStudio.Blocks
         {
             return new List<BlockOutputNode> { new BlockOutputNode(ref root, Resources.Signal, Resources.Out) };
         }
+
+        public override List<Signal> SignalList()
+        {
+            return Object;
+        }
     }
 }

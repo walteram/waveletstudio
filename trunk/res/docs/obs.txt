@@ -1,0 +1,37 @@
+Novos blocos
+
+- Cortar um sinal
+- Gerar Senoide (soma de senos e cossenos)
+- Função especial (ex.: sin(3.75*2*pi*x) + cos(7*2*pi*x) + cos(11*2*pi*x)
+- DHT
+- Blocos com formato especifico
+	- Display (grafico)
+	- Constante
+- Plot x, y
+- Visualizações do FFT: abs(y), abs(y).^2, log(abs(y)), y.*conj(y)/n
+
+
+Implementar
+
+- Documentar melhor as formas de conectar os blocos e obter entradas e saídas
+- Documentar melhor os blocos. Um bom é o SwitchBlock.
+- No bloco IFFT, ter uma saida do sinal original (primeira metade). Ver FFT.wsd.
+- Blocos FFT e IFFT manter as propriedades do sinal original (inicio, fim, etc). Informar na doc que tamanho do sinal deve ser base2
+- Bloco IFFT: Ter uma propriedade "Tamanho do sinal original"
+- Usuario poder escolher uma imagem para o bloco
+- Anotações
+- Inserir imagem
+- Expression Parser, multiline
+- Aplicar cor dos blocos e nas conexões
+- Derivações do Diagram block com outros formatos (ex. redondo)
+- Bloco FFT: numero maximo de frequencias (ver http://www.dsplog.com/2007/06/17/interpreting-the-output-of-fft-operation-in-matlab/ e http://www.mathworks.com/help/matlab/ref/fft.html)
+- Bloco Invert: inverter tambem em Y, só inverte em X.
+- Parameter pegar a documentação do XML ao inves de resource
+- Bloco Mux: deixar igual o matlab
+- Ajustar outputs de todos os examples
+
+Bugs:
+
+- Bloco DWT, traduzir propriedade Rescale e adicionar descrição
+- Corrigir a saida ABS do bloco FFT
+- Atualizar documentação no site

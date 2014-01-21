@@ -17,6 +17,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using WaveletStudio.Blocks.CustomAttributes;
@@ -133,9 +134,34 @@ namespace WaveletStudio.Blocks
             /// Signal routing
             /// </summary>
             Routing
-            
         }
 
+        private BlockInputSignalBridge _input;
+
+        /// <summary>
+        /// Gets a signal in the input connector
+        /// </summary>
+        public BlockInputSignalBridge Input
+        {
+            get
+            {
+                return _input ?? (_input = new BlockInputSignalBridge(this));
+            }
+        }
+
+        private BlockOutputSignalBridge _output;
+
+        /// <summary>
+        /// Gets a signal in the output connector
+        /// </summary>
+        public BlockOutputSignalBridge Output
+        {
+            get
+            {
+                return _output ?? (_output = new BlockOutputSignalBridge(this));
+            }
+        }
+        
         /// <summary>
         /// Constructor
         /// </summary>
@@ -143,6 +169,8 @@ namespace WaveletStudio.Blocks
         {
             Id = Guid.NewGuid();
             Cascade = true;
+            InputNodes = new List<BlockInputNode>();
+            OutputNodes = new List<BlockOutputNode>();
         }
 
         /// <summary>
@@ -164,8 +192,15 @@ namespace WaveletStudio.Blocks
         protected new BlockBase MemberwiseClone()
         {
             var block = (BlockBase)base.MemberwiseClone();
+            block.ResetShortcuts();
             CreateNodes(ref block);
             return block;
+        }
+
+        private void ResetShortcuts()
+        {
+            _input = null;
+            _output = null;
         }
 
         /// <summary>
@@ -185,6 +220,7 @@ namespace WaveletStudio.Blocks
             {
                 block.OutputNodes.Add(blockOutputNode.Clone());
             }
+            block.ResetShortcuts();
             return block;
         }
 
@@ -220,11 +256,17 @@ namespace WaveletStudio.Blocks
             return block.Name;
         }
 
+        /// <summary>
+        /// Gets the name of the processing type
+        /// </summary>
         public string GetProcessingTypeName()
         {
             return GetProcessingTypeName(ProcessingType);
         }
 
+        /// <summary>
+        /// Gets the name of a processing type
+        /// </summary>
         public static string GetProcessingTypeName(ProcessingTypeEnum processingType)
         {
             return Enum.GetName(typeof(ProcessingTypeEnum), processingType);

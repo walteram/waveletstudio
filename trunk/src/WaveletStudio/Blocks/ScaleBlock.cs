@@ -17,12 +17,30 @@
 
 using System;
 using WaveletStudio.Blocks.CustomAttributes;
+using WaveletStudio.Functions;
 using WaveletStudio.Properties;
 
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Shift signal
+    /// <para>Dilate or contract a signal in time and/or amplitude.</para>
+    /// <para>Image: http://i.imgur.com/quStjHO.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/Loo4dme.png </para>
+    /// <example>
+    ///     <code>
+    ///         var signal = new ImportFromTextBlock { Text = "1, 3, -2, 9, 4.5, -2, 4, 0" };
+    ///         var block = new ScaleBlock
+    ///         {
+    ///             TimeScalingFactor = 2,
+    ///             AmplitudeScalingFactor = 1.5
+    ///         };
+    ///     
+    ///         signal.ConnectTo(block);
+    ///         signal.Execute();
+    ///     
+    ///         Console.WriteLine(block.Output[0].ToString(0, ", "));    
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class ScaleBlock : BlockBase
@@ -93,19 +111,7 @@ namespace WaveletStudio.Blocks
             OutputNodes[0].Object.Clear();
             foreach (var signal in inputNode.Object)
             {
-                var output = signal.Clone();
-                if (Math.Abs(_amplitudeScalingFactor - 1) > double.Epsilon)
-                {
-                    for (var i = 0; i < output.SamplesCount; i++)
-                    {
-                        output[i] *= _amplitudeScalingFactor;
-                    }
-                }
-                if (Math.Abs(_timeScalingFactor - 1) > double.Epsilon && _timeScalingFactor > 0)
-                {
-                    output.Finish *= _timeScalingFactor;
-                    output.SamplingInterval *= _timeScalingFactor;                    
-                }                            
+                var output = WaveMath.Scale(signal, _amplitudeScalingFactor, _timeScalingFactor);                
                 OutputNodes[0].Object.Add(output);
             }            
             if (Cascade && OutputNodes[0].ConnectingNode != null)

@@ -25,7 +25,28 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// FFT
+    /// <para>Executes the Forward Fast Fourier Transform (FFT) using the Managed FFT function.</para>
+    /// <para>Image: http://i.imgur.com/tpcUlFu.png </para>
+    /// <para>InOutGraph:  </para>
+    /// <para>Inputs: This block has only one input: the signal or signal list to be computed.</para>
+    /// <para>Outputs: This block has two outputs:</para>
+    /// <para>Outputs:  0 – Absolute Value (abs): Absolute values of transform. Usefull to plot the transform.</para>
+    /// <para>Outputs:  1 – Complex FFT (fft): Complex values of transform (real and imaginary part). You must use this output if you plan to reconstruct the original signal.</para>
+    /// <example>
+    ///     <code>
+    ///         var signal = new ImportFromTextBlock { Text = "-1, 6, 5, -0.5, 0.5, 0, 0.25, 2, 0, -4, 4, 0, 1, -3, -1, 2, -3, 0, 0, 3, 0, -0.1, 1, 1.1, -3, 0, 0, 1, 5, -1, -0.5, -4.5, -4, 4, 0, -0.25, 3, 2" };
+    ///         var block = new FFTBlock
+    ///         {
+    ///             Mode = ManagedFFTModeEnum.UseLookupTable
+    ///         };
+    ///         
+    ///         signal.ConnectTo(block);
+    ///         signal.Execute();
+    ///         
+    ///         Console.WriteLine("Abs: " + block.OutputNodes[0].Object.ToString(1));
+    ///         Console.WriteLine("FFT: " + block.OutputNodes[1].Object.ToString(1));
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class FFTBlock : BlockBase
@@ -81,21 +102,20 @@ namespace WaveletStudio.Blocks
             {
                 var fft = WaveMath.UpSample(inputSignal.Samples);
                 ManagedFFT.Instance.FFT(ref fft, true, Mode);
-                var abs = WaveMath.AbsFromComplex(fft);
-                abs = WaveMath.Normalize(fft.SubArray(abs.Length / 2), abs.Length);
+                var abs = WaveMath.AbsFromComplex(fft, 0, fft.Length/2);
+                abs = WaveMath.Normalize(abs, abs.Length);
 
                 var absSignal = new Signal(abs)
                 {
                     Start = 0,
-                    Finish = abs.Length - 1,
-                    SamplingInterval = 0.5 / (Convert.ToDouble(abs.Length) / Convert.ToDouble(inputSignal.SamplingRate))
+                    Finish = abs.Length - 1
                 };
                 var fftSignal = new Signal(fft)
                 {
                     Start = 0,
                     Finish = fft.Length - 1,
                     IsComplex = true,
-                    SamplingInterval = (Convert.ToDouble(abs.Length) / Convert.ToDouble(inputSignal.SamplingRate))
+                    SamplingInterval = fft.Length
                 };
 
                 OutputNodes[0].Object.Add(absSignal);

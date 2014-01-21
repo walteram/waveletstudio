@@ -23,7 +23,27 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Interpolation
+    /// <para>Increases the sampling rate of a signal using linear, nearest, cubic, Newton’s or polynomial interpolation methods.</para>
+    /// <para>Image: http://i.imgur.com/qxPtNRn.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/sGvyqsu.png </para>
+    /// 
+    /// <example>
+    ///     <code>
+    ///         //Creates a signal with 4 samples
+    ///         var signal = new ImportFromTextBlock { Text = "14, 20, 11, 41" };
+    ///         var block = new InterpolationBlock
+    ///         {
+    ///             Factor = 10, //(will insert 9 samples)
+    ///             Mode=InterpolationModeEnum.Polynomial
+    ///         };
+    ///                     
+    ///         //Connect and execute blocks
+    ///         signal.ConnectTo(block);
+    ///         signal.Execute();
+    ///         
+    ///         Console.WriteLine(block.Output[0].ToString(1));
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class InterpolationBlock : BlockBase
@@ -61,13 +81,14 @@ namespace WaveletStudio.Blocks
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Operation; } }
 
         /// <summary>
-        /// Interpolation mode
+        /// Defines the interpolation method used by the block:
         /// </summary>
         [Parameter]
         public InterpolationModeEnum Mode { get; set; }
 
         /// <summary>
-        /// Interpolation factor
+        /// Defines the interpolation factor used in the interpolation function or how many 
+        /// samples will be inserted between samples of the signal. Default value is 5 (insert 4 samples).
         /// </summary>
         [Parameter]
         public uint Factor { get; set; }

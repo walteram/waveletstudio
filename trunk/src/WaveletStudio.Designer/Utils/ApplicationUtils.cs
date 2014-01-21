@@ -23,7 +23,7 @@ using ZedGraph;
 
 namespace WaveletStudio.Designer.Utils
 {
-    internal static class ApplicationUtils
+    public static class ApplicationUtils
     {
         public static string GetResourceString(string name)
         {

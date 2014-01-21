@@ -9,6 +9,9 @@
 //------------------------------------------------------------------------------
 
 namespace WaveletStudio.Designer.Resources {
+    using System;
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -309,6 +312,15 @@ namespace WaveletStudio.Designer.Resources {
         internal static string Operation {
             get {
                 return ResourceManager.GetString("Operation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Others.
+        /// </summary>
+        internal static string Others {
+            get {
+                return ResourceManager.GetString("Others", resourceCulture);
             }
         }
         

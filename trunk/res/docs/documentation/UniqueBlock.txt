@@ -1,0 +1,40 @@
+! >[image:http://i.imgur.com/fVvqcwZ.png]*Block: Unique*
+
+{"Removes duplicated samples in a signal.
+
+For example, if we have a signal with 8 samples like this one:"}
+{code:c#}
+1, 3, -4, 8, 3, 4, 1, -3
+{code:c#}
+{"
+the block will output a new signal with the folowing samples:"}
+{code:c#}
+1, 3, -4, 8, 4, -3
+{code:c#}
+{""}
+
+!! *Parameters:*
+
+*SortSamples:* {"If true, the block sorts the samples after remove the duplicated samples. Default value is true."}
+
+!! *Example:*
+
+{"The following example shows an usage in C#."}
+
+{code:c#}
+var signal = new ImportFromTextBlock { Text = "1, 3, -4, 8, 3, 4, 1, -3" };
+var block = new UniqueBlock
+{
+    SortSamples = false
+};
+
+signal.ConnectTo(block);
+signal.Execute();
+
+Console.WriteLine(block.Output[0].ToString(0));
+//Output: 1, 3, -4, 8, 4, -3
+{code:c#}
+
+The above example generates the following set of inputs and outputs:
+[image:http://i.imgur.com/HdzUh01.png]
+

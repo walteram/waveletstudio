@@ -27,6 +27,19 @@ namespace DiagramNet.Elements
 
         }
 
+        public DiagramBlock(Image image, string labelText, object blockState, object[] inputStates, object[] outputStates, PropertyInfo connectionTextProperty, bool autoRefresh)
+            : base(0, 0, 80, 80)
+        {
+            Overrided = true;
+            Rectangle = new RectangleElement(_nextPosition, _nextPosition, 80, 80);
+            FillColor1 = Color.White;
+            FillColor2 = Color.White;
+            if (autoRefresh)
+            {
+                Refresh(image, labelText, blockState, inputStates, outputStates, connectionTextProperty);
+            }            
+        }
+
         public DiagramBlock(Image image, string labelText, object blockState, object[] inputStates, object[] outputStates, PropertyInfo connectionTextProperty)
             : base(_nextPosition, _nextPosition, 80, 80)
         {
@@ -115,6 +128,19 @@ namespace DiagramNet.Elements
             BorderWidthValue = Rectangle.BorderWidth;
             OpacityValue = Rectangle.Opacity;
             VisibleValue = Rectangle.Visible;
+        }
+
+        public Image GetImage()
+        {
+            var image = new Bitmap(87, 81);
+            var g = Graphics.FromImage(image);
+            g.TranslateTransform(-47,-50);
+            Draw(g);
+            foreach (var conn in Connects)
+            {
+                conn.Draw(g);
+            }
+            return image;
         }
 
         internal override void Draw(Graphics g)

@@ -23,7 +23,29 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Resample input at higher rate by inserting zeros.
+    /// <para>Resample input at higher rate by inserting zeros.</para>
+    /// <para> </para>
+    /// <para>For example, if we have a signal with 8 samples like this one:</para>
+    /// <code>1.1, 9.12, 0.123, 1, 1.1, 4.56, 0.123, -45</code>
+    /// <para>the block will output a new signal with the folowing samples:</para>
+    /// <code>1.1, 0, 9.12, 0, 0.123, 0, 1, 0, 1.1, 0, 4.56, 0, 0.123, 0, -45</code>
+    /// <para>Image: http://i.imgur.com/zOOdBZS.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/SS0Uk7T.png </para>
+    /// <example>
+    ///     <code>
+    ///         var signal = new ImportFromTextBlock { Text = "2, 3, -1, 1" };
+    ///         var block = new UpSampleBlock 
+    ///         {
+    ///             Factor = 3
+    ///         };
+    ///         
+    ///         signal.ConnectTo(block);
+    ///         signal.Execute();
+    /// 
+    ///         Console.WriteLine(block.Output[0].ToString(0));
+    ///         //Output: 2 0 0 3 0 0 -1 0 0 1
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class UpSampleBlock : BlockBase
@@ -47,7 +69,7 @@ namespace WaveletStudio.Blocks
         }
 
         /// <summary>
-        /// Upsample factor
+        /// Upsample factor. Default value is 2.
         /// </summary>
         [Parameter]
         public uint Factor { get; set; }

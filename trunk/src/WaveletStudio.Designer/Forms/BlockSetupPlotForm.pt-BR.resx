@@ -124,4 +124,7 @@
   <data name="ShowOutputLabel.Text" xml:space="preserve">
     <value>Exibir Saída:</value>
   </data>
+  <data name="NoDataLabel.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>100, 50</value>
+  </data>
 </root>

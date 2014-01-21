@@ -212,7 +212,7 @@ namespace WaveletStudio
         /// <returns></returns>
         public static double[] Deextend(double[] input, int size)
         {
-            if (input.Length <= 2)
+            if (input.Length <= 2 || size > input.Length)
             {
                 return input;
             }

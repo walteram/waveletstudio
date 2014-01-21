@@ -25,7 +25,26 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// IFFT
+    /// <para>Executes the Backward Fast Fourier Transform (FFT) using the Managed FFT function.</para>
+    /// <para>Image: http://i.imgur.com/AeAyClJ.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/qPxeOtO.png </para>
+    /// <example>
+    ///     <code>
+    ///         var freqInput = new ImportFromTextBlock { Text = "12.3, 0.0, 4.5, 7.2, -5.8, 4.5, -7.5, -2.3, -2.8, 0.0, -7.5, 2.3, -5.8, -4.5, 4.5, -7.2" };
+    ///         var block = new IFFTBlock
+    ///         {
+    ///             Mode = ManagedFFTModeEnum.UseLookupTable
+    ///         };
+    ///     
+    ///         freqInput.ConnectTo(block);
+    ///         freqInput.Execute();
+    ///     
+    ///         Console.WriteLine(block.OutputNodes[0].Object.ToString(1));            
+    ///     
+    ///         //Console output:
+    ///         //-1.0, 6.0, 5.0, -0.5, 0.5, 0.0, 0.3, 2.0
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class IFFTBlock : BlockBase
@@ -86,7 +105,7 @@ namespace WaveletStudio.Blocks
                 {
                     Start = 0,
                     Finish = ifft.Length - 1,
-                    SamplingInterval = 0.5 / (Convert.ToDouble(ifft.Length) / Convert.ToDouble(inputSignal.SamplingRate))
+                    SamplingInterval = 1
                 };
                 OutputNodes[0].Object.Add(signal);
             }

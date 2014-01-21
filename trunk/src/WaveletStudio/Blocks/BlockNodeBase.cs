@@ -16,6 +16,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 
 namespace WaveletStudio.Blocks
 {
@@ -44,6 +45,11 @@ namespace WaveletStudio.Blocks
         /// The another node connected to this
         /// </summary>
         public BlockNodeBase ConnectingNode { get; set; }
+
+        /// <summary>
+        /// Returns the signals of the node
+        /// </summary>
+        public abstract List<Signal> SignalList();
 
         /// <summary>
         /// Constructor

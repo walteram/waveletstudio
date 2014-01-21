@@ -23,7 +23,34 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Combine several input signals into vector
+    /// <para>Combine several input signals into vector. For example, if we connect 3 blocks to the MuxBlock, it will output a single signal list, with 3 items.</para>
+    /// <para>Image: http://i.imgur.com/d3hUAji.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/Ds4ezaH.png </para>
+    /// <example>
+    ///     <code>
+    ///         var signal1 = new ImportFromTextBlock { Text = "1, 7, 3, 1" };
+    ///         var signal2 = new ImportFromTextBlock { Text = "5, 7, 2, 8" };
+    ///         var signal3 = new ImportFromTextBlock { Text = "9, 8, 4, 3" };
+    ///         var block = new MuxBlock { InputCount = 3 };
+    ///         signal1.ConnectTo(block);
+    ///         signal2.ConnectTo(block);
+    ///         signal3.ConnectTo(block);
+    ///         signal1.Execute();
+    ///         signal2.Execute();
+    ///         signal3.Execute();
+    ///     
+    ///         Console.WriteLine(block.OutputNodes[0].Object.Count);
+    ///         Console.WriteLine(block.Output[0, 0].ToString(0));
+    ///         Console.WriteLine(block.Output[0, 1].ToString(0));
+    ///         Console.WriteLine(block.Output[0, 2].ToString(0));
+    ///         
+    ///         //Output:
+    ///         //3
+    ///         //1 7 3 1
+    ///         //5 7 2 8
+    ///         //9 8 4 3
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class MuxBlock : BlockBase
@@ -46,7 +73,7 @@ namespace WaveletStudio.Blocks
 
         private uint _inputCount;
         /// <summary>
-        /// Input count
+        /// Number of inputs
         /// </summary> //
         [Parameter]        
         public uint InputCount

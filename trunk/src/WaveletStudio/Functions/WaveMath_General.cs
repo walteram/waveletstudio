@@ -66,12 +66,21 @@ namespace WaveletStudio.Functions
         /// <returns></returns>
         public static double[] AbsFromComplex(double[] samples)
         {
-            var newArray = MemoryPool.Pool.New<double>(Convert.ToInt32(Math.Ceiling(samples.Length / 2d)));
-            for (var i = 0; i < samples.Length; i = i + 2)
+            return AbsFromComplex(samples, 0, samples.Length);
+        }
+
+        /// <summary>
+        /// Calculates the absolute value of a complex array
+        /// </summary>
+        /// <returns></returns>
+        public static double[] AbsFromComplex(double[] samples, int start, int size)
+        {
+            var newArray = MemoryPool.Pool.New<double>(Convert.ToInt32(Math.Ceiling(size / 2d)));
+            for (var i = start; i < size; i = i + 2)
             {
                 var real = samples[i];
-                var complex = i + 1 < samples.Length ? samples[i + 1] : 0;
-                newArray[i/2] = Math.Sqrt(Math.Pow(real, 2) + Math.Pow(complex, 2));
+                var complex = i + 1 < size ? samples[i + 1] : 0;
+                newArray[i / 2] = Math.Sqrt(Math.Pow(real, 2) + Math.Pow(complex, 2));
             }
             return newArray;
         }
@@ -135,6 +144,27 @@ namespace WaveletStudio.Functions
         }
 
         /// <summary>
+        /// Scales a signal
+        /// </summary>
+        public static Signal Scale(Signal signal, double amplitudeScalingFactor, double timeScalingFactor)
+        {
+            var output = signal.Clone();
+            if (Math.Abs(amplitudeScalingFactor - 1) > double.Epsilon)
+            {
+                for (var i = 0; i < output.SamplesCount; i++)
+                {
+                    output[i] *= amplitudeScalingFactor;
+                }
+            }
+            if (Math.Abs(timeScalingFactor - 1) > double.Epsilon && timeScalingFactor > 0)
+            {
+                output.Finish *= timeScalingFactor;
+                output.SamplingInterval *= timeScalingFactor;
+            }
+            return output;
+        }
+
+        /// <summary>
         /// Decreases the sampling rate of the input by keeping every odd sample starting with the first sample.
         /// </summary>
         /// <param name="input"></param>
@@ -163,12 +193,10 @@ namespace WaveletStudio.Functions
         /// <summary>
         /// Increases the sampling rate of the input by inserting n-1 zeros between samples. 
         /// </summary>
-        /// <param name="input"></param>
-        /// <param name="factor"></param>
-        /// <param name="paddRight"></param>        
         /// <returns></returns>
         public static double[] UpSample(double[] input, int factor = 2, bool paddRight = true)
         {
+            //TODO: implement offset
             if (input == null || input.Length == 0)
             {
                 return new double[0];

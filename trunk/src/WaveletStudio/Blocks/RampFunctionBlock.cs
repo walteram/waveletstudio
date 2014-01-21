@@ -23,7 +23,44 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Generates a Ramp function
+    /// <para>Generates a Ramp signal using the following function:</para>
+    /// <para>
+    ///     <code>
+    ///         y(t) = A * (t - t0) + D     ∀ t &gt;= t0, t &lt;= t1
+    ///         y(t) = D                    ∀ t &lt; t0
+    ///         y(t) = D + x(t1)            ∀ t &gt; t1 | D  (if ReturnToZero parameter is true)
+    ///     </code>
+    /// </para>
+    /// <para>Where:</para>
+    /// <para>A := amplitude</para>
+    /// <para>D := offset</para>
+    /// <para>t0 := ramp start</para>
+    /// <para>t1 := ramp finish</para>
+    /// <para>This block has no inputs.</para>
+    /// <para>Image: http://i.imgur.com/o0NVryg.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/Vr3VOtk.png </para>
+    /// <example>
+    ///     <para>In this example we create a signal in a ramp shape. The signal starts at 0s and ends at 16s. The ramp starts at 3s and ends at 8s. The sampling rate is 1 (1Hz). The amplitude of the ramp is 1 and the signal offset is 1. The signal will return to the offset value (1) after the end of the ramp (8s). The last sample of the signal is included.</para>
+    ///     <code>
+    ///         var block = new RampFunctionBlock
+    ///         {
+    ///             Start = 0,
+    ///             Finish = 16,
+    ///             RampStart = 3,
+    ///             RampFinish = 8,
+    ///             SamplingRate = 1,
+    ///             Amplitude = 1,
+    ///             Offset = 1,
+    ///             ReturnToZero = true,
+    ///             IgnoreLastSample = false
+    ///         };
+    ///         block.Execute();
+    /// 
+    ///         Console.WriteLine(block.Output[0].ToString(0));
+    ///         //Console Output:
+    ///         //1, 1, 1, 1, 2, 3, 4, 5, 6, 1, 1, 1, 1, 1, 1, 1, 1
+    ///     </code>
+    /// </example>
     /// </summary>
     [SingleInputOutputBlock]
     [Serializable]
@@ -62,44 +99,44 @@ namespace WaveletStudio.Blocks
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.CreateSignal; } }
 
         /// <summary>
-        /// Amplitude of the signal
+        /// Amplitude of the ramp. Default value is 1.
         /// </summary>
         [Parameter]
         public double Amplitude { get; set; }
 
         /// <summary>
-        /// Distance from the origin
+        /// Offset of the signal in the y axis. Default value is 0.
         /// </summary>
         [Parameter]
         public double Offset { get; set; }
 
         /// <summary>
-        /// Start of the signal in time
+        /// Start of the signal in the time. Default value is 0.
         /// </summary>
         [Parameter]
         public double Start { get; set; }
 
         /// <summary>
-        /// Finish of the signal in time
+        /// Finish of the signal in the time. Default value is 1.
         /// </summary>
         [Parameter]
         public double Finish { get; set; }
 
         /// <summary>
-        /// Start of the ramp in time
+        /// Start of the ramp in the time. Default value is 0.
         /// </summary>
         [Parameter]
         public double RampStart { get; set; }
 
         /// <summary>
-        /// Finish of the ramp in time
+        /// Finish of the ramp in the time. Default value is 1.
         /// </summary>
         [Parameter]
         public double RampFinish { get; set; }
 
         private int _samplingRate;
         /// <summary>
-        /// Sampling rate used on sampling
+        /// Sampling rate used on signal generation. Default value is 32768 (32KHz).
         /// </summary>
         [Parameter]
         public int SamplingRate
@@ -133,7 +170,7 @@ namespace WaveletStudio.Blocks
         }
 
         /// <summary>
-        /// Defines it the last sample will be included in signal
+        /// If true, the last sample is not included in the created signal. Default value is false.
         /// </summary>
         [Parameter]
         public bool IgnoreLastSample { get; set; }
@@ -160,7 +197,7 @@ namespace WaveletStudio.Blocks
         }
 
         /// <summary>
-        /// Return the sample value to 0 
+        /// If true, the value will return to 0 at the finish of the ramp. Default value is true.
         /// </summary>
         [Parameter]
         public bool ReturnToZero { get; set; }

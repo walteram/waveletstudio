@@ -23,7 +23,23 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Decreases the sampling rate of the input by keeping every odd sample starting with the first sample.
+    /// <para>Decreases the sampling rate of the input by deleting samples. </para>
+    /// <para>Image: http://i.imgur.com/Jv0LDXT.png </para>
+    /// <para>InOutGraph:  http://i.imgur.com/Rd79evq.png </para>
+    /// 
+    /// <example>
+    ///     <code>
+    ///         var signal = new ImportFromTextBlock { Text = "0, 1, -1, 5, 4, -1, 0" };
+    ///         var block = new DownSampleBlock();
+    ///         
+    ///         signal.ConnectTo(block);
+    ///         signal.Execute();
+    /// 
+    ///         Console.WriteLine(block.OutputNodes[0].Object.ToString(0));
+    ///         //Console Output:
+    ///         //0 -1 4 0
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class DownSampleBlock : BlockBase
@@ -60,7 +76,7 @@ namespace WaveletStudio.Blocks
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Operation; } }
 
         /// <summary>
-        /// Downsample factor
+        /// Downsample factor. Default is 2.
         /// </summary>
         [Parameter]
         public uint Factor { get; set; }

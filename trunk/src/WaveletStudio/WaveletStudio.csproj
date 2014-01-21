@@ -21,8 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>bin\Debug\WaveletStudio.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>none</DebugType>
@@ -42,10 +41,14 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Blocks\BlockInOutSignalBridgeBase.cs" />
+    <Compile Include="Blocks\BlockInputSignalBridge.cs" />
     <Compile Include="Blocks\BlockNodeBase.cs" />
     <Compile Include="Blocks\BlockOutputNode.cs" />
+    <Compile Include="Blocks\BlockOutputSignalBridge.cs" />
     <Compile Include="Blocks\ConvolutionBlock.cs" />
     <Compile Include="Blocks\AbsoluteValueBlock.cs" />
+    <Compile Include="Blocks\IBlockInOutSignal.cs" />
     <Compile Include="Blocks\RelationalOperatorBlock.cs" />
     <Compile Include="Blocks\LogicOperationBlock.cs" />
     <Compile Include="Blocks\ShiftBlock.cs" />
