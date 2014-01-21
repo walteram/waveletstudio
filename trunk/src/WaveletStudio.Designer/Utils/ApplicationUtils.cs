@@ -18,6 +18,9 @@
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Globalization;
+using System.Linq;
+using DiagramNet.Elements;
+using WaveletStudio.Blocks;
 using WaveletStudio.Designer.Resources;
 using ZedGraph;
 
@@ -25,6 +28,16 @@ namespace WaveletStudio.Designer.Utils
 {
     public static class ApplicationUtils
     {
+        public static DiagramBlock CreateDiagramBlock(BlockBase block, bool useNextPosition)
+        {
+            var className = block.GetAssemblyClassName();
+            var imageName = "img" + className + "Mini";
+            var image = GetResourceImage(imageName, 30, 20);
+            var label = GetResourceString(block.Name);
+            var shortname = typeof(BlockOutputNode).GetProperty("ShortName");
+            return new DiagramBlock(image, label, block, block.InputNodes.ToArray<object>(), block.OutputNodes.ToArray<object>(), shortname, true, useNextPosition);
+        }
+
         public static string GetResourceString(string name)
         {
             var key = name.ToLower().Replace(" ", "");

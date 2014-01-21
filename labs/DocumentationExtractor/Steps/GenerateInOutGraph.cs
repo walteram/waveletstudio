@@ -9,8 +9,6 @@ using Microsoft.CSharp;
 using WaveletStudio;
 using WaveletStudio.Blocks;
 using WaveletStudio.Designer.Resources;
-using WaveletStudio.Designer.Utils;
-using WaveletStudio.Functions;
 using ZedGraph;
 
 namespace DocumentationExtractor.Steps
@@ -38,7 +36,7 @@ namespace DocumentationExtractor.Steps
             }
         }
 
-        public Type LoadCompiledExampleType(Member member)
+        private Type LoadCompiledExampleType(Member member)
         {
             using (var provider = new CSharpCodeProvider())
             {
@@ -141,7 +139,7 @@ namespace DocumentationExtractor.Steps
             }
         }
         
-        private static void MergeImages(List<Image> images, string filePath)
+        private static void MergeImages(IReadOnlyList<Image> images, string filePath)
         {
             var width = images.Count > 1 ? images[0].Width * 2 + 2 : images[0].Width;
             var rows = images.Count / 2;
@@ -256,8 +254,6 @@ namespace DocumentationExtractor.Steps
             pane.YAxis.Title.IsVisible = false;
             pane.YAxis.Scale.Min = minY;
             pane.YAxis.Scale.Max = maxY;
-            //pane.YAxis.Scale.MagAuto = false;
-            
             pane.AxisChange();
             return pane.GetImage();
         }

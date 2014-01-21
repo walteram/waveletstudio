@@ -132,7 +132,6 @@ namespace WaveletStudio.Designer.Forms
 
         private void LoadRibbon()
         {
-            //AppMenuButton.CustomChildWindow = new FileForm(this); //new DiagramFormMainMenu(this);
             LoadBlocks(SignalRibbonPage, BlockBase.ProcessingTypeEnum.LoadSignal);
             LoadSignalTemplates();
             LoadBlocks(OperationsRibbonPage, BlockBase.ProcessingTypeEnum.Operation);
@@ -167,7 +166,7 @@ namespace WaveletStudio.Designer.Forms
             var block = new GenerateSignalBlock { TemplateName = templateName };
             Designer.Document.Action = DesignerAction.Connect;
             Designer.Document.LinkType = LinkType.RightAngle;
-            var diagramBlock = new DiagramBlock(ApplicationUtils.GetResourceImage("img" + templateName + "Mini", 30, 20), block.Name, block, block.InputNodes.ToArray(), block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
+            var diagramBlock = ApplicationUtils.CreateDiagramBlock(block, true);
             Designer.Document.AddElement(diagramBlock);
             DocumentModel.Touch();            
         }
@@ -179,7 +178,7 @@ namespace WaveletStudio.Designer.Forms
             block.CurrentDirectory = CurrentDirectory;
             Designer.Document.Action = DesignerAction.Connect;
             Designer.Document.LinkType = LinkType.RightAngle;
-            var diagramBlock = new DiagramBlock(ApplicationUtils.GetResourceImage("img" + block.GetAssemblyClassName() + "Mini", 30, 20), ApplicationUtils.GetResourceString(block.Name), block, block.InputNodes.ToArray(), block.OutputNodes.ToArray(), typeof(BlockOutputNode).GetProperty("ShortName"));
+            var diagramBlock = ApplicationUtils.CreateDiagramBlock(block, true); ;
             Designer.Document.AddElement(diagramBlock);
             Designer.Document.ClearSelection();
             Designer.Document.SelectElement(diagramBlock);

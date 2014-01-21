@@ -25,7 +25,7 @@ namespace WaveletStudio.Designer
             var diagramForm = new DiagramForm();
             MainForm = diagramForm;
             diagramForm.Show();
-            //LoadLastFile(diagramForm);
+            LoadLastFile(diagramForm);
             diagramForm.Focus();
         }
 
