@@ -34,6 +34,7 @@ namespace WaveletStudio.Blocks
     /// <para>This example shows a file with 2 signals, with 4 samples in each one. The first column in the file is optional and represents the name of the signal. The header is optional too.</para>
     /// <para>Image: http://i.imgur.com/ApwmTG2.png </para>
     /// <para>InOutGraph: http://i.imgur.com/yUw6HcU.png </para>
+    /// <para>Title: Import CSV</para>
     /// <para>This block has no inputs.</para>
     /// <example>
     ///     <code>

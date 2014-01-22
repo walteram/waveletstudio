@@ -24,11 +24,13 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// <para>The Convolution block convolves the signal of the first input with the signal of second input (filter). Both the signal and filter can be lists. Each signal in the first list will be convolved with the correspondent filter in the second. If the number of filters in the filter list is lesser than the number of filters, the first filter will be used.</para>
+    /// <para>The Convolution block convolves the signal of the first input with the signal of second input (filter).</para>
+    /// <para>Both the signal and filter can be lists. Each signal in the first list will be convolved with the correspondent filter in the second. If the number of filters in the filter list is lesser than the number of filters, the first filter will be used.</para>
     /// <para>Inputs: This block has two inputs: the signal list and the filter list.</para>
     /// <para>Outputs: This block has only one output: the result of convolution between the inputs.</para>
     /// <para>Image: http://i.imgur.com/kUEo44z.png </para>
     /// <para>InOutGraph: http://i.imgur.com/rvyncoK.png </para>
+    /// <para>Title: Convolution</para>
     /// <example>
     ///     <code>
     ///         var signal = new ImportFromTextBlock { Text = "0, 0, 1, 1, 1, 1, 0, 0" };
@@ -58,7 +60,7 @@ namespace WaveletStudio.Blocks
         /// Constructor
         /// </summary>
         public ConvolutionBlock()
-        {
+        {            
             BlockBase root = this;
             CreateNodes(ref root);
             ConvolutionMode = ConvolutionModeEnum.ManagedFFT;

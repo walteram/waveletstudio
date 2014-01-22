@@ -26,6 +26,7 @@ namespace WaveletStudio.Blocks
     /// <para>Shifts a signal in time modifying the Start property.</para>
     /// <para>Image: http://i.imgur.com/3D9pbJc.png </para>
     /// <para>InOutGraph: http://i.imgur.com/CZ9mozs.png </para>
+    /// <para>Title: Shift </para>
     /// <example>
     ///     <code>
     ///         var block = new ShiftBlock { Delay = 1.7 };

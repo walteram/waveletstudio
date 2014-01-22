@@ -25,7 +25,8 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// <para>Switch output between first input (A) and third input (B) based on value of second input or the threshold value, using the specified switch criteria. For example, let’s consider the following scenario:</para>
+    /// <para>Switch output between first input (A) and third input (B) based on value of second input or the threshold value, using the specified switch criteria.</para>
+    /// <para>For example, let’s consider the following scenario:</para>
     /// <code>
     /// Signal A: 1, 3, 4, -4, 8, 3, 2, -10
     /// Signal B: 3, -2, 4, -6, 7, 1, 4, 3
@@ -42,6 +43,7 @@ namespace WaveletStudio.Blocks
     /// <para>and so on.</para>
     /// <para>Image: http://i.imgur.com/V34q36D.png </para>
     /// <para>InOutGraph: http://i.imgur.com/16EmhjY.png </para>
+    /// <para>Title: Switch </para>
     /// <para>Inputs: 0 - Signal A</para>
     /// <para>Inputs: 1 - Threshold signal(optional)</para>
     /// <para>Inputs: 2 - Signal B</para>

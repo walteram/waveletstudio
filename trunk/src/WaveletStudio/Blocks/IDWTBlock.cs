@@ -29,6 +29,7 @@ namespace WaveletStudio.Blocks
     /// <para>The IDWT block reconstructs a signal using the specified wavelet coefficients.</para>
     /// <para>Image: http://i.imgur.com/ta1Fi8v.png </para>
     /// <para>InOutGraph: http://i.imgur.com/53Dc5F8.png </para>
+    /// <para>Title: IDWT </para>
     /// <para>Outputs: This block has two inputs:</para>
     /// <para>Outputs:  0 – Aproximation Coefficients of decomposition</para>
     /// <para>Outputs:  1 – Details coefficients of decomposition</para>

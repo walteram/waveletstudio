@@ -16,12 +16,7 @@
 */
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using WaveletStudio.Blocks.CustomAttributes;
 using WaveletStudio.Properties;
-using WaveletStudio.Wavelet;
 
 namespace WaveletStudio.Blocks
 {
@@ -31,13 +26,6 @@ namespace WaveletStudio.Blocks
     [Obsolete("Use the DWTBlock instead.")]
     public class WaveletBlock : DWTBlock
     {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public WaveletBlock()
-        {            
-        }
-
         /// <summary>
         /// Name
         /// </summary>

@@ -1,4 +1,4 @@
-! >[image:http://i.imgur.com/fzFnv6Z.png]*Block: Absolute*
+! >[image:http://i.imgur.com/fzFnv6Z.png]*Block: Absolute Value*
 
 {"Outputs the absolute value of a signal."}
 

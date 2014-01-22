@@ -26,7 +26,7 @@ namespace WaveletStudio.Blocks
     /// <para>Increases the sampling rate of a signal using linear, nearest, cubic, Newton’s or polynomial interpolation methods.</para>
     /// <para>Image: http://i.imgur.com/qxPtNRn.png </para>
     /// <para>InOutGraph: http://i.imgur.com/sGvyqsu.png </para>
-    /// 
+    /// <para>Title: Interpolation </para>
     /// <example>
     ///     <code>
     ///         //Creates a signal with 4 samples

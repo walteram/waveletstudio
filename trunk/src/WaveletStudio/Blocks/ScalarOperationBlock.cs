@@ -24,9 +24,11 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// <para>Executes a scalar operation in a signal. The available operations are sum, subtraction, multiplication and division. The operation is made sample-by-sample.</para>
+    /// <para>Executes a scalar operation in a signal (sum, subtraction, multiplication and division).</para>
+    /// <para>The operation is made sample-by-sample.</para>
     /// <para>Image: http://i.imgur.com/gC28gvP.png</para>
     /// <para>InOutGraph: http://i.imgur.com/HE2eGMN.png </para>
+    /// <para>Title: Scalar Operation </para>
     /// <example>
     ///     <code>
     ///         var signal = new ImportFromTextBlock { Text = "1, 3, -2, 9, 4.5, -2, 4, 0" };

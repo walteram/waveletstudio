@@ -31,6 +31,7 @@ namespace WaveletStudio.Blocks
     /// <code>1.1, 0, 9.12, 0, 0.123, 0, 1, 0, 1.1, 0, 4.56, 0, 0.123, 0, -45</code>
     /// <para>Image: http://i.imgur.com/zOOdBZS.png </para>
     /// <para>InOutGraph: http://i.imgur.com/SS0Uk7T.png </para>
+    /// <para>Title: Upsample</para>
     /// <example>
     ///     <code>
     ///         var signal = new ImportFromTextBlock { Text = "2, 3, -1, 1" };

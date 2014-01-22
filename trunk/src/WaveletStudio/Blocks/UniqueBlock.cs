@@ -32,6 +32,7 @@ namespace WaveletStudio.Blocks
     /// <code>1, 3, -4, 8, 4, -3</code>
     /// <para>Image: http://i.imgur.com/fVvqcwZ.png </para>
     /// <para>InOutGraph: http://i.imgur.com/HdzUh01.png </para>
+    /// <para>Title: Unique </para>
     /// <example>
     ///     <code>
     ///         var signal = new ImportFromTextBlock { Text = "1, 3, -4, 8, 3, 4, 1, -3" };

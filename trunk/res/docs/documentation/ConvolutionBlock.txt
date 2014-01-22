@@ -1,6 +1,7 @@
 ! >[image:http://i.imgur.com/kUEo44z.png]*Block: Convolution*
 
-{"The Convolution block convolves the signal of the first input with the signal of second input (filter). Both the signal and filter can be lists. Each signal in the first list will be convolved with the correspondent filter in the second. If the number of filters in the filter list is lesser than the number of filters, the first filter will be used."}
+{"The Convolution block convolves the signal of the first input with the signal of second input (filter).
+Both the signal and filter can be lists. Each signal in the first list will be convolved with the correspondent filter in the second. If the number of filters in the filter list is lesser than the number of filters, the first filter will be used."}
 
 !! *Parameters:*
 

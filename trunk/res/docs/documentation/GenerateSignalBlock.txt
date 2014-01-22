@@ -1,4 +1,4 @@
-! >[image:http://i.imgur.com/x1BWSo9.png]*Block: Cosine*
+! >[image:http://i.imgur.com/NHAXyQY.png]*Block: Generate Signal*
 
 {"Generates a signal based on one of the following templates:
 

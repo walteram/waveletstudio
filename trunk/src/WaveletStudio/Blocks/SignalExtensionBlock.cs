@@ -22,7 +22,25 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Signal extension
+    /// <para>Extends a signal using the specified mode.</para>
+    /// <para>Image: http://i.imgur.com/WDWxwms.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/W9tQojd.png </para>
+    /// <para>Title: Signal Extension </para>
+    /// <example>
+    ///     <code>
+    ///         var signal = new ImportFromTextBlock{Text = "1, 2, 3, 4, 5, 6, 7, 8"};
+    ///         var block = new SignalExtensionBlock
+    ///         {
+    ///             ExtensionMode = SignalExtension.ExtensionMode.SymmetricHalfPoint,
+    ///             ExtensionSize = 2
+    ///         };
+    ///         signal.ConnectTo(block);
+    ///         signal.Execute();
+    /// 
+    ///         Console.WriteLine(block.Output[0].ToString(0));
+    ///         //Output: 2 1 1 2 3 4 5 6 7 8 8 7
+    ///     </code>
+    /// </example>
     /// </summary>
     [SingleInputOutputBlock]
     [Serializable]
@@ -62,13 +80,13 @@ namespace WaveletStudio.Blocks
         public override ProcessingTypeEnum ProcessingType { get { return ProcessingTypeEnum.Operation; } }
 
         /// <summary>
-        /// Extension mode
+        /// One of the following extension modes:
         /// </summary>
         [Parameter]
         public SignalExtension.ExtensionMode ExtensionMode { get; set; }
 
         /// <summary>
-        /// Extension size. If zero, extents no next power of 2.
+        /// Extension size. If zero (default), extents no next power of 2.
         /// </summary>
         [Parameter]
         public int ExtensionSize { get; set; }

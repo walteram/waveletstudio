@@ -36,4 +36,6 @@ Console.WriteLine("Abs: " + block.OutputNodes[0].Object.ToString(1));
 Console.WriteLine("FFT: " + block.OutputNodes[1].Object.ToString(1));
 {code:c#}
 
+The above example generates the following set of inputs and outputs:
+[image:http://i.imgur.com/MRddB2k.png]
 

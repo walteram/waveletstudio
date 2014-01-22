@@ -41,8 +41,9 @@ namespace WaveletStudio.Blocks
     /// <para>φ := Phase</para>
     /// <para> </para>
     /// <para>This block has no inputs.</para>
-    /// <para>Image: http://i.imgur.com/x1BWSo9.png </para>
+    /// <para>Image: http://i.imgur.com/NHAXyQY.png </para>
     /// <para>InOutGraph: http://i.imgur.com/UXmuIau.png </para>
+    /// <para>Title: Generate Signal </para>
     /// <example>
     ///     <code>
     ///         var block = new GenerateSignalBlock

@@ -26,6 +26,7 @@ namespace WaveletStudio.Blocks
     /// <para>Dilate or contract a signal in time and/or amplitude.</para>
     /// <para>Image: http://i.imgur.com/quStjHO.png </para>
     /// <para>InOutGraph: http://i.imgur.com/Loo4dme.png </para>
+    /// <para>Title: Scale </para>
     /// <example>
     ///     <code>
     ///         var signal = new ImportFromTextBlock { Text = "1, 3, -2, 9, 4.5, -2, 4, 0" };

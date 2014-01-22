@@ -30,6 +30,7 @@ namespace WaveletStudio.Blocks
     /// <para>The DWT block decomposes a signal using the specified wavelet function.</para>
     /// <para>Image: http://i.imgur.com/eB1KiuV.png </para>
     /// <para>InOutGraph: http://i.imgur.com/4vDa0Ta.png </para>
+    /// <para>Title: DWT </para>
     /// <para>Inputs: This block has only one input: the signal to perform the wavelet decomposition.</para>
     /// <para>Outputs: This block has four outputs:</para>
     /// <para>Outputs:  0 – Approximation (Apx): Decomposition approximation levels</para>

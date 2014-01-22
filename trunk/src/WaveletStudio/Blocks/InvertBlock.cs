@@ -23,7 +23,8 @@ namespace WaveletStudio.Blocks
 {
     /// <summary>
     /// <para> </para>
-    /// <para>Inverts a signal. For example, if we have a signal with 8 samples like this one:</para>
+    /// <para>Inverts a signal in time. </para>
+    /// <para>For example, if we have a signal with 8 samples like this one:</para>
     /// <para> </para>
     /// <code>2, 3, -4, 8, 7, 1, 2, -3</code>
     /// <para> </para>
@@ -34,6 +35,7 @@ namespace WaveletStudio.Blocks
     /// <para>This block has no inputs.</para>
     /// <para>Image: http://i.imgur.com/7PhV0G4.png </para>
     /// <para>InOutGraph: http://i.imgur.com/nXdS5DB.png </para>
+    /// <para>Title: Invert </para>
     /// <example>
     ///     <code>
     ///         var signal = new ImportFromTextBlock { Text = "2, 3, -4, 8, 7, 1, 2, -3" };

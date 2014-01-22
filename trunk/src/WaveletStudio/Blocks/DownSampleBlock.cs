@@ -26,7 +26,7 @@ namespace WaveletStudio.Blocks
     /// <para>Decreases the sampling rate of the input by deleting samples. </para>
     /// <para>Image: http://i.imgur.com/Jv0LDXT.png </para>
     /// <para>InOutGraph:  http://i.imgur.com/Rd79evq.png </para>
-    /// 
+    /// <para>Title: Downsample </para>
     /// <example>
     ///     <code>
     ///         var signal = new ImportFromTextBlock { Text = "0, 1, -1, 5, 4, -1, 0" };
