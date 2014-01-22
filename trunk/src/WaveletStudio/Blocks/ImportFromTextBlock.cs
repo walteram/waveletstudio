@@ -30,6 +30,7 @@ namespace WaveletStudio.Blocks
     /// <para>Image: http://i.imgur.com/Hr0LdvL.png </para>
     /// <para>InOutGraph: http://i.imgur.com/7CCftqM.png </para>
     /// <para>This block has no inputs.</para>
+    /// <para>Title: Import from Text</para>
     /// <example>
     ///     <code>
     ///         var block = new ImportFromTextBlock

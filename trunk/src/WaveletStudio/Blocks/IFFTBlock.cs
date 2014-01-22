@@ -28,6 +28,7 @@ namespace WaveletStudio.Blocks
     /// <para>Executes the Backward Fast Fourier Transform (FFT) using the Managed FFT function.</para>
     /// <para>Image: http://i.imgur.com/AeAyClJ.png </para>
     /// <para>InOutGraph: http://i.imgur.com/qPxeOtO.png </para>
+    /// <para>Title: IFFT </para>
     /// <example>
     ///     <code>
     ///         var freqInput = new ImportFromTextBlock { Text = "12.3, 0.0, 4.5, 7.2, -5.8, 4.5, -7.5, -2.3, -2.8, 0.0, -7.5, 2.3, -5.8, -4.5, 4.5, -7.2" };

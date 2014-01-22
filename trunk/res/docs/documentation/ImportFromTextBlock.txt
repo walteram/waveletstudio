@@ -1,4 +1,4 @@
-! >[image:http://i.imgur.com/Hr0LdvL.png]*Block: Text*
+! >[image:http://i.imgur.com/Hr0LdvL.png]*Block: Import from Text*
 
 {"Generates a signal based on a text.
 This block has no inputs."}

@@ -23,9 +23,11 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// <para>Combine several input signals into vector. For example, if we connect 3 blocks to the MuxBlock, it will output a single signal list, with 3 items.</para>
+    /// <para>Combine several input signals into vector.</para>
+    /// <para>For example, if we connect 3 blocks to the MuxBlock, it will output a single signal list, with 3 items.</para>
     /// <para>Image: http://i.imgur.com/d3hUAji.png </para>
     /// <para>InOutGraph: http://i.imgur.com/Ds4ezaH.png </para>
+    /// <para>Title: Mux</para>
     /// <example>
     ///     <code>
     ///         var signal1 = new ImportFromTextBlock { Text = "1, 7, 3, 1" };

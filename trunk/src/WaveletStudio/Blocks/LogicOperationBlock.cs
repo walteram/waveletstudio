@@ -24,7 +24,29 @@ using WaveletStudio.Properties;
 namespace WaveletStudio.Blocks
 {
     /// <summary>
-    /// Point-by-point logic operators (AND, OR, NAND, NOR, XOR, NXOR, NOT).
+    /// <para>Point-by-point logic operators (AND, OR, NAND, NOR, XOR, NXOR, NOT).</para>
+    /// <para>Image: http://i.imgur.com/UHylTMu.png </para>
+    /// <para>InOutGraph: http://i.imgur.com/YqQmQsr.png </para>
+    /// <para>Title: Logic Port</para>
+    /// <example>
+    ///     <code>
+    ///         var signal1 = new ImportFromTextBlock{ Text =  "0, 15, -1, 1, 0, -15, 1,"};
+    ///         var signal2 = new ImportFromTextBlock { Text = "0, -1, 11, 0, 1, 0, 1" };
+    ///         
+    ///         var block = new LogicOperationBlock
+    ///         {
+    ///             Operation = WaveMath.LogicalOperationEnum.And
+    ///         };
+    ///         
+    ///         signal1.ConnectTo(block);
+    ///         signal2.ConnectTo(block);
+    ///         signal1.Execute();
+    ///         signal2.Execute();
+    ///         
+    ///         Console.WriteLine(block.Output[0].ToString(0));
+    ///         //Console Output: 0 1 1 0 0 0 1
+    ///     </code>
+    /// </example>
     /// </summary>
     [Serializable]
     public class LogicOperationBlock : BlockBase

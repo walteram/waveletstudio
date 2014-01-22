@@ -1,6 +1,7 @@
-! >[image:http://i.imgur.com/gC28gvP.png]*Block: Scalar*
+! >[image:http://i.imgur.com/gC28gvP.png]*Block: Scalar Operation*
 
-{"Executes a scalar operation in a signal. The available operations are sum, subtraction, multiplication and division. The operation is made sample-by-sample."}
+{"Executes a scalar operation in a signal (sum, subtraction, multiplication and division).
+The operation is made sample-by-sample."}
 
 !! *Parameters:*
 

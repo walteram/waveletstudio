@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WaveletStudio.Blocks;
 using WaveletStudio.Functions;
 
@@ -7,6 +8,26 @@ namespace WaveletStudio.Tests.Blocks
     [TestClass]
     public class LogicOperationBlockTest
     {
+        [TestMethod]
+        public void AaTeste11()
+        {
+            var signal1 = new ImportFromTextBlock{ Text =  "0, 15, -1, 1, 0, -15, 1,"};
+            var signal2 = new ImportFromTextBlock { Text = "0, -1, 11, 0, 1, 0, 1" };
+
+            var block = new LogicOperationBlock
+            {
+                Operation = WaveMath.LogicalOperationEnum.And
+            };
+
+            signal1.ConnectTo(block);
+            signal2.ConnectTo(block);
+            signal1.Execute();
+            signal2.Execute();
+
+            Console.WriteLine(block.Output[0].ToString(0));
+            //Console Output: 0 1 1 0 0 0 1
+        }
+
         [TestMethod]
         public void TestSampleBasedOperationBlockExecute()
         {

@@ -31,6 +31,7 @@ namespace WaveletStudio.Blocks
     /// <code>1, 9, 0, 1,   1, 9, 0, 1,   2, 5, -4, 4,   2, 5, -4, 4</code>
     /// <para>Image: http://i.imgur.com/LC6BDlw.png </para>
     /// <para>InOutGraph: http://i.imgur.com/Pkjnhp9.png </para>    
+    /// <para>Title: Repeat </para>
     /// <example>
     ///     <code>
     ///         var signal = new ImportFromTextBlock { Text = "0, 3, -3, 0, 2, 2, 2, 0" };

@@ -26,6 +26,7 @@ namespace WaveletStudio.Blocks
     /// <para>Extracts the components of an input signal and outputs the components as separate signals.</para>
     /// <para>Image: http://i.imgur.com/pKW0rXZ.png </para>
     /// <para>InOutGraph: http://i.imgur.com/cHMpTVx.png </para>
+    /// <para>Title: Demux </para>
     /// <example>
     ///     <code>
     ///         var signal = new ImportFromTextBlock {Text = "0, 3, -1, 2, 0, \r\n 0, -1, 2, 3, 0"};

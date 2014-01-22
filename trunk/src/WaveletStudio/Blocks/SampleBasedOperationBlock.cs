@@ -27,6 +27,7 @@ namespace WaveletStudio.Blocks
     /// <para>Sum, subtract, multiply or divide two or more signals, sample-by-sample.</para>
     /// <para>Image: http://i.imgur.com/uC6ViMz.png </para>
     /// <para>InOutGraph: http://i.imgur.com/4esHEoS.png </para>
+    /// <para>Title: Operation </para>
     /// <example>
     ///     <code>
     ///         var signal1 = new ImportFromTextBlock { Text = "1, 3, -2, 9, 4, -2, 4, 0" };

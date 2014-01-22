@@ -1,4 +1,4 @@
-! >[image:http://i.imgur.com/yJvRKtq.png]*Block: Relational*
+! >[image:http://i.imgur.com/yJvRKtq.png]*Block: Relational Operation*
 
 {"Conversion to boolean based on >, <, >=, <=, <>, = an static value, the previous sample or the next sample.
 For each sample in the signal S1, the Relational Operation Block will compare the sample using the specified operation and returns 1 if true or 0 if false."}

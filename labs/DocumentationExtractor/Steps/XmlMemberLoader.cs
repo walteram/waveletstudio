@@ -196,9 +196,9 @@ namespace DocumentationExtractor.Steps
             {
                 member.InOutGraph = member.InOutGraph.AppendLineSection(paraNodeValue);
             }
-            else if (paraNodeValue.ToLower().StartsWith("docurl:"))
+            else if (paraNodeValue.ToLower().StartsWith("title:"))
             {
-                member.DocUrl = member.DocUrl.AppendLineSection(paraNodeValue);
+                member.Title = member.Title.AppendLineSection(paraNodeValue);
             }
             else
             {

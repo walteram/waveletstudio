@@ -25,7 +25,7 @@ namespace WaveletStudio.Blocks
     /// <para>Outputs the absolute value of a signal.</para>
     /// <para>Image: http://i.imgur.com/fzFnv6Z.png </para>
     /// <para>InOutGraph: http://i.imgur.com/HouxION.png </para>
-    /// 
+    /// <para>Title: Absolute Value</para>
     /// <example>
     ///     <code>
     ///         var block = new AbsoluteValueBlock();

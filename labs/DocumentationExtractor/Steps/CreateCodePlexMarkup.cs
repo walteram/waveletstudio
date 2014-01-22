@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,12 +27,17 @@ namespace DocumentationExtractor.Steps
             text.AppendLine("! *Block List*");
             text.AppendLine("");
 
-            foreach (var member in members.Where(member => member.Type == "Block"))
+            foreach (var member in members.Where(member => member.Type == "Block").OrderBy(m => m.Title))
             {
-                var docUrl = member.DocUrl ?? "https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20"+member.Name;
+                if (string.IsNullOrEmpty(member.Image))
+                {
+                    throw new NotImplementedException("Block without documentation: " + member.Name);
+                }
+                var title = member.Title ?? member.FriendlyName;
+                var docUrl = "https://waveletstudio.codeplex.com/wikipage?title=Block%3a%20" + title;
                 text.Append("!! <[image:" + member.Image + "|"+ docUrl + "] ");
-                text.AppendLine("*[url:" + member.Name + "|"+docUrl+"]*");
-                text.AppendLine(member.Description);
+                text.AppendLine("*[url:" + title + "|" + docUrl + "]*");
+                text.AppendLine(member.Description.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)[0]);
                 text.AppendLine("");
             }
 
@@ -51,13 +57,14 @@ namespace DocumentationExtractor.Steps
 
         private static string GetText(Member member)
         {
+            var title = member.Title ?? member.FriendlyName;
             var text = new StringBuilder(256);
             text.Append("! ");
             if (!string.IsNullOrEmpty(member.Image))
             {
                 text.Append(">[image:" + member.Image + "]");
             }
-            text.AppendLine("*" + member.Type + ": " + (member.FriendlyName ?? member.Name) + "*");
+            text.AppendLine("*" + member.Type + ": " + title + "*");
             text.AppendLine();
             text.AppendLine("{\"" + member.Description + "\"}");
             text.AppendLine();

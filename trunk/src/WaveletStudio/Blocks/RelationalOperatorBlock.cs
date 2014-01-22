@@ -28,6 +28,7 @@ namespace WaveletStudio.Blocks
     /// <para>For each sample in the signal S1, the Relational Operation Block will compare the sample using the specified operation and returns 1 if true or 0 if false.</para>
     /// <para>Image: http://i.imgur.com/yJvRKtq.png </para>
     /// <para>InOutGraph: http://i.imgur.com/P56gqBS.png </para>
+    /// <para>Title: Relational Operation </para>
     /// <example>
     ///     <code>
     ///         var signal1 = new ImportFromTextBlock { Text = "1, 3, -2, 9, 4, 2, 4, 0" };

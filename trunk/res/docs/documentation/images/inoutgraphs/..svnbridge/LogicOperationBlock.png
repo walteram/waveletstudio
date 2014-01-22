@@ -2,9 +2,5 @@
 *.user
 </Value></Property><Property><Name>svn:global-ignores</Name><Value>bin
 obj
-</Value></Property><Property><Name>svn:ignore</Name><Value>*.suo
-*.user
-</Value></Property><Property><Name>svn:global-ignores</Name><Value>bin
-obj
 TestResults
-</Value></Property></Properties></ItemProperties>
+</Value></Property><Property><Name>svn:mime-type</Name><Value>application/octet-stream</Value></Property></Properties></ItemProperties>

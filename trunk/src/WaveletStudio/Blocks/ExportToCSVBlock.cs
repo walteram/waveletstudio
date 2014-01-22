@@ -28,7 +28,7 @@ namespace WaveletStudio.Blocks
     /// <para>A CSV (comma-separated values) is a text file with the data (samples) separated with commas or another character.</para>
     /// <para>This block has no outputs.</para> 
     /// <para>Image: http://i.imgur.com/bA6qk6M.png </para>
-    /// 
+    /// <para>Title: Export CSV </para>
     /// <example>
     ///     <code>
     ///         var signal = new ImportFromTextBlock { Text = "1, 2, 3, 4, -1" };

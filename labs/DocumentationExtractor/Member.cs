@@ -30,7 +30,7 @@ namespace DocumentationExtractor
         
         public string Type { get; set; }
         
-        public string DocUrl { get; set; }
+        public string Title { get; set; }
 
         public override string ToString()
         {

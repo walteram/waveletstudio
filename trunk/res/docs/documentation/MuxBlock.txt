@@ -1,6 +1,7 @@
 ! >[image:http://i.imgur.com/d3hUAji.png]*Block: Mux*
 
-{"Combine several input signals into vector. For example, if we connect 3 blocks to the MuxBlock, it will output a single signal list, with 3 items."}
+{"Combine several input signals into vector.
+For example, if we connect 3 blocks to the MuxBlock, it will output a single signal list, with 3 items."}
 
 !! *Parameters:*
 

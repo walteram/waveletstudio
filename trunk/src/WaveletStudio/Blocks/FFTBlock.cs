@@ -27,7 +27,8 @@ namespace WaveletStudio.Blocks
     /// <summary>
     /// <para>Executes the Forward Fast Fourier Transform (FFT) using the Managed FFT function.</para>
     /// <para>Image: http://i.imgur.com/tpcUlFu.png </para>
-    /// <para>InOutGraph:  </para>
+    /// <para>InOutGraph: http://i.imgur.com/MRddB2k.png </para>
+    /// <para>Title: FFT </para>
     /// <para>Inputs: This block has only one input: the signal or signal list to be computed.</para>
     /// <para>Outputs: This block has two outputs:</para>
     /// <para>Outputs:  0 – Absolute Value (abs): Absolute values of transform. Usefull to plot the transform.</para>

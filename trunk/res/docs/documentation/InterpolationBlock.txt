@@ -1,4 +1,4 @@
-! >[image:http://i.imgur.com/qxPtNRn.png]*Block: Interpolate*
+! >[image:http://i.imgur.com/qxPtNRn.png]*Block: Interpolation*
 
 {"Increases the sampling rate of a signal using linear, nearest, cubic, Newton’s or polynomial interpolation methods."}
 

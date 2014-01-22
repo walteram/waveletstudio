@@ -1,6 +1,7 @@
 ! >[image:http://i.imgur.com/7PhV0G4.png]*Block: Invert*
 
-{"Inverts a signal. For example, if we have a signal with 8 samples like this one:
+{"Inverts a signal in time.
+For example, if we have a signal with 8 samples like this one:
 "}
 {code:c#}
 2, 3, -4, 8, 7, 1, 2, -3
