@@ -1,7 +1,7 @@
 [Setup]
 WizardImageFile=compiler:WizModernImage-IS.bmp
 AppName=Wavelet Studio
-AppVersion=1.2.0
+AppVersion=1.3.0
 ExtraDiskSpaceRequired=500
 SetupIconFile=..\WaveletStudio.Designer\icon.ico
 DefaultDirName={pf}\WaveletStudio
@@ -35,8 +35,8 @@ EnableISX=true
 Source: "C:\Program Files\ISTool\isxdl.dll"; Flags: dontcopy
 Source: "..\WaveletStudio.Designer\icon.ico"; DestDir: "{app}\Designer"; Flags: ignoreversion replacesameversion
 Source: "website.url"; DestDir: "{app}\Designer"; Flags: ignoreversion replacesameversion
-Source: "Files\*.*"; DestDir: "{app}"; Flags: ignoreversion createallsubdirs recursesubdirs replacesameversion
-Source: "..\..\res\docs\license-*.txt"; DestDir: "{app}"; Flags: ignoreversion createallsubdirs recursesubdirs replacesameversion
+Source: "Files\*.*"; Excludes: "documentation"; DestDir: "{app}"; Flags: ignoreversion createallsubdirs recursesubdirs replacesameversion
+Source: "..\..\res\docs\license-*.txt"; Excludes: "documentation"; DestDir: "{app}"; Flags: ignoreversion createallsubdirs recursesubdirs replacesameversion
 
 [Run]
 Filename: "{app}\Designer\WaveletStudio.Designer.exe"; WorkingDir: "{app}\Designer\"; Flags: nowait postinstall skipifsilent; Description: "{cm:OpenDesigner}"
@@ -69,6 +69,9 @@ Name: "cleanup.bat"; Flags: abortonerror cmdprompt redirectoutput
 [Icons]
 Name: "{group}\Wavelet Studio Designer"; Filename: "{app}\Designer\WaveletStudio.Designer.exe"; WorkingDir: "{app}\Designer"; Flags: runmaximized; IconFilename: "{app}\Designer\icon.ico"
 Name: "{group}\Website"; Filename: "{app}\Designer\website.url"
+
+[ThirdParty]
+CompileLogMethod=append
 
 [Code]
 var

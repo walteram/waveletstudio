@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Forms;
 
 namespace WaveletStudio.Designer.Utils
 {
@@ -45,7 +46,18 @@ namespace WaveletStudio.Designer.Utils
 
         private static string GetFileName()
         {
-            return Path.Combine(WaveletStudio.Utils.AssemblyDirectory, "Recents.dat");
+            var tempDir = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "WaveletStudio");
+            if (!Directory.Exists(tempDir))
+            {
+                try
+                {
+                    Directory.CreateDirectory(tempDir);
+                }
+                catch (Exception)
+                {                    
+                }                
+            }
+            return Path.Combine(tempDir, "Recents.dat");
         }
     }
 
