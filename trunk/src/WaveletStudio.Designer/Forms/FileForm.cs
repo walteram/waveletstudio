@@ -53,16 +53,19 @@ namespace WaveletStudio.Designer.Forms
         public void InitInformations()
         {
             TabControl.SelectTab(InformationsTabPage);
+            TabControl_SelectedIndexChanged(null, null);
         }
 
         public void InitOpen()
         {
             TabControl.SelectTab(OpenTabPage);
+            TabControl_SelectedIndexChanged(null, null);
         }
 
         public void InitPrint()
         {
             TabControl.SelectTab(PrintTabPage);
+            TabControl_SelectedIndexChanged(null, null);
         }
 
         private void FileWindow_Load(object sender, EventArgs e)

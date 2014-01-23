@@ -29,6 +29,7 @@ Implementar
 - Parameter pegar a documentação do XML ao inves de resource
 - Bloco Mux: deixar igual o matlab
 - Ajustar outputs de todos os examples
+- Bloco LogicOperationBlock: Adicionar parametro 'Tratar Numeros negativos como [falso|verdadeiro]
 
 Bugs:
 
